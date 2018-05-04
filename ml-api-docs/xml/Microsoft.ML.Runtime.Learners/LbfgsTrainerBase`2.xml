@@ -1,0 +1,1024 @@
+﻿<Type Name="LbfgsTrainerBase&lt;TOutput,TPredictor&gt;" FullName="Microsoft.ML.Runtime.Learners.LbfgsTrainerBase&lt;TOutput,TPredictor&gt;">
+  <TypeSignature Language="C#" Value="public abstract class LbfgsTrainerBase&lt;TOutput,TPredictor&gt; : Microsoft.ML.Runtime.Training.TrainerBase&lt;Microsoft.ML.Runtime.Data.RoleMappedData,TPredictor&gt;, Microsoft.ML.Runtime.IIncrementalTrainer&lt;Microsoft.ML.Runtime.Data.RoleMappedData,TPredictor&gt;, Microsoft.ML.Runtime.ITrainer&lt;Microsoft.ML.Runtime.Data.RoleMappedData&gt; where TPredictor : class, IPredictorProducing&lt;TOutput&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit LbfgsTrainerBase`2&lt;TOutput, class (class Microsoft.ML.Runtime.IPredictorProducing`1&lt;!TOutput&gt;) TPredictor&gt; extends Microsoft.ML.Runtime.Training.TrainerBase`2&lt;class Microsoft.ML.Runtime.Data.RoleMappedData, !TPredictor&gt; implements class Microsoft.ML.Runtime.IIncrementalTrainer`2&lt;class Microsoft.ML.Runtime.Data.RoleMappedData, !TPredictor&gt;, class Microsoft.ML.Runtime.ITrainer, class Microsoft.ML.Runtime.ITrainer`1&lt;class Microsoft.ML.Runtime.Data.RoleMappedData&gt;" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2" />
+  <TypeSignature Language="VB.NET" Value="Public MustInherit Class LbfgsTrainerBase(Of TOutput, TPredictor)&#xA;Inherits TrainerBase(Of RoleMappedData, TPredictor)&#xA;Implements IIncrementalTrainer(Of RoleMappedData, TPredictor), ITrainer(Of RoleMappedData)" />
+  <TypeSignature Language="F#" Value="type LbfgsTrainerBase&lt;'Output, 'Predictor (requires 'Predictor : null and 'Predictor :&gt; IPredictorProducing&lt;'Output&gt;)&gt; = class&#xA;    inherit TrainerBase&lt;RoleMappedData, 'Predictor (requires 'Predictor : null and 'Predictor :&gt; IPredictorProducing&lt;'Output&gt;)&gt;&#xA;    interface IIncrementalTrainer&lt;RoleMappedData, 'Predictor (requires 'Predictor : null and 'Predictor :&gt; IPredictorProducing&lt;'Output&gt;)&gt;&#xA;    interface ITrainer&lt;RoleMappedData&gt;&#xA;    interface ITrainer" />
+  <TypeSignature Language="C++ CLI" Value="generic &lt;typename TOutput, typename TPredictor&gt;&#xA; where TPredictor : class, IPredictorProducing&lt;TOutput&gt;public ref class LbfgsTrainerBase abstract : Microsoft::ML::Runtime::Training::TrainerBase&lt;Microsoft::ML::Runtime::Data::RoleMappedData ^, TPredictor&gt;, Microsoft::ML::Runtime::IIncrementalTrainer&lt;Microsoft::ML::Runtime::Data::RoleMappedData ^, TPredictor&gt;, Microsoft::ML::Runtime::ITrainer&lt;Microsoft::ML::Runtime::Data::RoleMappedData ^&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <TypeParameters>
+    <TypeParameter Name="TOutput" />
+    <TypeParameter Name="TPredictor">
+      <Constraints>
+        <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
+        <InterfaceName>Microsoft.ML.Runtime.IPredictorProducing&lt;TOutput&gt;</InterfaceName>
+      </Constraints>
+    </TypeParameter>
+  </TypeParameters>
+  <Base>
+    <BaseTypeName>Microsoft.ML.Runtime.Training.TrainerBase&lt;Microsoft.ML.Runtime.Data.RoleMappedData,TPredictor&gt;</BaseTypeName>
+    <BaseTypeArguments>
+      <BaseTypeArgument TypeParamName="!0">Microsoft.ML.Runtime.Data.RoleMappedData</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="!1">TPredictor</BaseTypeArgument>
+    </BaseTypeArguments>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.IIncrementalTrainer&lt;Microsoft.ML.Runtime.Data.RoleMappedData,TPredictor&gt;</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.ITrainer&lt;Microsoft.ML.Runtime.Data.RoleMappedData&gt;</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <typeparam name="TOutput">To be added.</typeparam>
+    <typeparam name="TPredictor">To be added.</typeparam>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="AccumulateOneGradient">
+      <MemberSignature Language="C#" Value="protected abstract float AccumulateOneGradient (ref Microsoft.ML.Runtime.Data.VBuffer&lt;float&gt; feat, float label, float weight, ref Microsoft.ML.Runtime.Data.VBuffer&lt;float&gt; xDense, ref Microsoft.ML.Runtime.Data.VBuffer&lt;float&gt; grad, ref float[] scratch);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance float32 AccumulateOneGradient(valuetype Microsoft.ML.Runtime.Data.VBuffer`1&lt;float32&gt;&amp; feat, float32 label, float32 weight, valuetype Microsoft.ML.Runtime.Data.VBuffer`1&lt;float32&gt;&amp; xDense, valuetype Microsoft.ML.Runtime.Data.VBuffer`1&lt;float32&gt;&amp; grad, float32[]&amp; scratch) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.AccumulateOneGradient(Microsoft.ML.Runtime.Data.VBuffer{System.Single}@,System.Single,System.Single,Microsoft.ML.Runtime.Data.VBuffer{System.Single}@,Microsoft.ML.Runtime.Data.VBuffer{System.Single}@,System.Single[]@)" />
+      <MemberSignature Language="VB.NET" Value="Protected MustOverride Function AccumulateOneGradient (ByRef feat As VBuffer(Of Single), label As Single, weight As Single, ByRef xDense As VBuffer(Of Single), ByRef grad As VBuffer(Of Single), ByRef scratch As Single()) As Single" />
+      <MemberSignature Language="F#" Value="abstract member AccumulateOneGradient :  * single * single *  *  *  -&gt; single" Usage="lbfgsTrainerBase.AccumulateOneGradient (feat, label, weight, xDense, grad, scratch)" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; abstract float AccumulateOneGradient(Microsoft::ML::Runtime::Data::VBuffer&lt;float&gt; % feat, float label, float weight, Microsoft::ML::Runtime::Data::VBuffer&lt;float&gt; % xDense, Microsoft::ML::Runtime::Data::VBuffer&lt;float&gt; % grad, cli::array &lt;float&gt; ^ % scratch);" />
+      <MemberSignature Language="C++ WINRT" Value=" abstract float AccumulateOneGradient(Microsoft::ML::Runtime::Data::VBuffer&lt;float&gt; &amp; feat, float label, float weight, Microsoft::ML::Runtime::Data::VBuffer&lt;float&gt; &amp; xDense, Microsoft::ML::Runtime::Data::VBuffer&lt;float&gt; &amp; grad, std::Array &lt;float&gt; const &amp; &amp; scratch);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="feat" Type="Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;&amp;" RefType="ref" />
+        <Parameter Name="label" Type="System.Single" />
+        <Parameter Name="weight" Type="System.Single" />
+        <Parameter Name="xDense" Type="Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;&amp;" RefType="ref" />
+        <Parameter Name="grad" Type="Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;&amp;" RefType="ref" />
+        <Parameter Name="scratch" Type="System.Single[]&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="feat">To be added.</param>
+        <param name="label">To be added.</param>
+        <param name="weight">To be added.</param>
+        <param name="xDense">To be added.</param>
+        <param name="grad">To be added.</param>
+        <param name="scratch">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BiasCount">
+      <MemberSignature Language="C#" Value="protected int BiasCount { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 BiasCount" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.BiasCount" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly Property BiasCount As Integer" />
+      <MemberSignature Language="F#" Value="member this.BiasCount : int" Usage="Microsoft.ML.Runtime.Learners.LbfgsTrainerBase&lt;'Output, 'Predictor (requires 'Predictor : null and 'Predictor :&gt; Microsoft.ML.Runtime.IPredictorProducing&lt;'Output&gt;)&gt;.BiasCount" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; property int BiasCount { int get(); };" />
+      <MemberSignature Language="C++ CX" Value="protected:&#xA; property int BiasCount { int get(); };" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CheckLabel">
+      <MemberSignature Language="C#" Value="protected abstract void CheckLabel (Microsoft.ML.Runtime.Data.RoleMappedData data);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void CheckLabel(class Microsoft.ML.Runtime.Data.RoleMappedData data) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.CheckLabel(Microsoft.ML.Runtime.Data.RoleMappedData)" />
+      <MemberSignature Language="VB.NET" Value="Protected MustOverride Sub CheckLabel (data As RoleMappedData)" />
+      <MemberSignature Language="F#" Value="abstract member CheckLabel : Microsoft.ML.Runtime.Data.RoleMappedData -&gt; unit" Usage="lbfgsTrainerBase.CheckLabel data" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; abstract void CheckLabel(Microsoft::ML::Runtime::Data::RoleMappedData ^ data);" />
+      <MemberSignature Language="C++ CX" Value="protected:&#xA; abstract void CheckLabel(Microsoft::ML::Runtime::Data::RoleMappedData ^ data);" />
+      <MemberSignature Language="C++ WINRT" Value=" abstract void CheckLabel(Microsoft::ML::Runtime::Data::RoleMappedData const &amp; data);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data" Type="Microsoft.ML.Runtime.Data.RoleMappedData" />
+      </Parameters>
+      <Docs>
+        <param name="data">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ClassCount">
+      <MemberSignature Language="C#" Value="protected virtual int ClassCount { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 ClassCount" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.ClassCount" />
+      <MemberSignature Language="VB.NET" Value="Protected Overridable ReadOnly Property ClassCount As Integer" />
+      <MemberSignature Language="F#" Value="member this.ClassCount : int" Usage="Microsoft.ML.Runtime.Learners.LbfgsTrainerBase&lt;'Output, 'Predictor (requires 'Predictor : null and 'Predictor :&gt; Microsoft.ML.Runtime.IPredictorProducing&lt;'Output&gt;)&gt;.ClassCount" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; virtual property int ClassCount { int get(); };" />
+      <MemberSignature Language="C++ CX" Value="protected:&#xA; virtual property int ClassCount { int get(); };" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ComputeTrainingStatistics">
+      <MemberSignature Language="C#" Value="protected abstract void ComputeTrainingStatistics (Microsoft.ML.Runtime.IChannel ch, Microsoft.ML.Runtime.Training.FloatLabelCursor.Factory cursorFactory, float loss, int numParams);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void ComputeTrainingStatistics(class Microsoft.ML.Runtime.IChannel ch, class Microsoft.ML.Runtime.Training.FloatLabelCursor/Factory cursorFactory, float32 loss, int32 numParams) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.ComputeTrainingStatistics(Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Training.FloatLabelCursor.Factory,System.Single,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected MustOverride Sub ComputeTrainingStatistics (ch As IChannel, cursorFactory As FloatLabelCursor.Factory, loss As Single, numParams As Integer)" />
+      <MemberSignature Language="F#" Value="abstract member ComputeTrainingStatistics : Microsoft.ML.Runtime.IChannel * Microsoft.ML.Runtime.Training.FloatLabelCursor.Factory * single * int -&gt; unit" Usage="lbfgsTrainerBase.ComputeTrainingStatistics (ch, cursorFactory, loss, numParams)" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; abstract void ComputeTrainingStatistics(Microsoft::ML::Runtime::IChannel ^ ch, Microsoft::ML::Runtime::Training::FloatLabelCursor::Factory ^ cursorFactory, float loss, int numParams);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
+        <Parameter Name="cursorFactory" Type="Microsoft.ML.Runtime.Training.FloatLabelCursor+Factory" />
+        <Parameter Name="loss" Type="System.Single" />
+        <Parameter Name="numParams" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="ch">To be added.</param>
+        <param name="cursorFactory">To be added.</param>
+        <param name="loss">To be added.</param>
+        <param name="numParams">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurrentWeights">
+      <MemberSignature Language="C#" Value="protected Microsoft.ML.Runtime.Data.VBuffer&lt;float&gt; CurrentWeights;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype Microsoft.ML.Runtime.Data.VBuffer`1&lt;float32&gt; CurrentWeights" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.CurrentWeights" />
+      <MemberSignature Language="VB.NET" Value="Protected CurrentWeights As VBuffer(Of Single) " />
+      <MemberSignature Language="F#" Value="val mutable CurrentWeights : Microsoft.ML.Runtime.Data.VBuffer&lt;single&gt;" Usage="Microsoft.ML.Runtime.Learners.LbfgsTrainerBase&lt;'Output, 'Predictor (requires 'Predictor : null and 'Predictor :&gt; Microsoft.ML.Runtime.IPredictorProducing&lt;'Output&gt;)&gt;.CurrentWeights" />
+      <MemberSignature Language="C++ CLI" Value="protected: Microsoft::ML::Runtime::Data::VBuffer&lt;float&gt; CurrentWeights;" />
+      <MemberSignature Language="C++ WINRT" Value="Microsoft::ML::Runtime::Data::VBuffer&lt;float&gt; CurrentWeights;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DenseOptimizer">
+      <MemberSignature Language="C#" Value="protected readonly bool DenseOptimizer;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly bool DenseOptimizer" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.DenseOptimizer" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly DenseOptimizer As Boolean " />
+      <MemberSignature Language="F#" Value="val mutable DenseOptimizer : bool" Usage="Microsoft.ML.Runtime.Learners.LbfgsTrainerBase&lt;'Output, 'Predictor (requires 'Predictor : null and 'Predictor :&gt; Microsoft.ML.Runtime.IPredictorProducing&lt;'Output&gt;)&gt;.DenseOptimizer" />
+      <MemberSignature Language="C++ CLI" Value="protected: initonly bool DenseOptimizer;" />
+      <MemberSignature Language="C++ CX" Value="protected: initonly bool DenseOptimizer;" />
+      <MemberSignature Language="C++ WINRT" Value="initonly bool DenseOptimizer;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DifferentiableFunction">
+      <MemberSignature Language="C#" Value="protected virtual float DifferentiableFunction (ref Microsoft.ML.Runtime.Data.VBuffer&lt;float&gt; x, ref Microsoft.ML.Runtime.Data.VBuffer&lt;float&gt; gradient, Microsoft.ML.Runtime.IProgressChannelProvider progress);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance float32 DifferentiableFunction(valuetype Microsoft.ML.Runtime.Data.VBuffer`1&lt;float32&gt;&amp; x, valuetype Microsoft.ML.Runtime.Data.VBuffer`1&lt;float32&gt;&amp; gradient, class Microsoft.ML.Runtime.IProgressChannelProvider progress) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.DifferentiableFunction(Microsoft.ML.Runtime.Data.VBuffer{System.Single}@,Microsoft.ML.Runtime.Data.VBuffer{System.Single}@,Microsoft.ML.Runtime.IProgressChannelProvider)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overridable Function DifferentiableFunction (ByRef x As VBuffer(Of Single), ByRef gradient As VBuffer(Of Single), progress As IProgressChannelProvider) As Single" />
+      <MemberSignature Language="F#" Value="abstract member DifferentiableFunction :  *  * Microsoft.ML.Runtime.IProgressChannelProvider -&gt; single&#xA;override this.DifferentiableFunction :  *  * Microsoft.ML.Runtime.IProgressChannelProvider -&gt; single" Usage="lbfgsTrainerBase.DifferentiableFunction (x, gradient, progress)" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; virtual float DifferentiableFunction(Microsoft::ML::Runtime::Data::VBuffer&lt;float&gt; % x, Microsoft::ML::Runtime::Data::VBuffer&lt;float&gt; % gradient, Microsoft::ML::Runtime::IProgressChannelProvider ^ progress);" />
+      <MemberSignature Language="C++ WINRT" Value=" virtual float DifferentiableFunction(Microsoft::ML::Runtime::Data::VBuffer&lt;float&gt; &amp; x, Microsoft::ML::Runtime::Data::VBuffer&lt;float&gt; &amp; gradient, Microsoft::ML::Runtime::IProgressChannelProvider const &amp; progress);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="x" Type="Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;&amp;" RefType="ref" />
+        <Parameter Name="gradient" Type="Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;&amp;" RefType="ref" />
+        <Parameter Name="progress" Type="Microsoft.ML.Runtime.IProgressChannelProvider" />
+      </Parameters>
+      <Docs>
+        <param name="x">To be added.</param>
+        <param name="gradient">To be added.</param>
+        <param name="progress">To be added.</param>
+        <summary>
+            The gradient being used by the optimizer
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DifferentiableFunctionComputeChunk">
+      <MemberSignature Language="C#" Value="protected float DifferentiableFunctionComputeChunk (int ichk, ref Microsoft.ML.Runtime.Data.VBuffer&lt;float&gt; xDense, ref Microsoft.ML.Runtime.Data.VBuffer&lt;float&gt; grad, Microsoft.ML.Runtime.IProgressChannel pch);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance float32 DifferentiableFunctionComputeChunk(int32 ichk, valuetype Microsoft.ML.Runtime.Data.VBuffer`1&lt;float32&gt;&amp; xDense, valuetype Microsoft.ML.Runtime.Data.VBuffer`1&lt;float32&gt;&amp; grad, class Microsoft.ML.Runtime.IProgressChannel pch) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.DifferentiableFunctionComputeChunk(System.Int32,Microsoft.ML.Runtime.Data.VBuffer{System.Single}@,Microsoft.ML.Runtime.Data.VBuffer{System.Single}@,Microsoft.ML.Runtime.IProgressChannel)" />
+      <MemberSignature Language="VB.NET" Value="Protected Function DifferentiableFunctionComputeChunk (ichk As Integer, ByRef xDense As VBuffer(Of Single), ByRef grad As VBuffer(Of Single), pch As IProgressChannel) As Single" />
+      <MemberSignature Language="F#" Value="member this.DifferentiableFunctionComputeChunk : int *  *  * Microsoft.ML.Runtime.IProgressChannel -&gt; single" Usage="lbfgsTrainerBase.DifferentiableFunctionComputeChunk (ichk, xDense, grad, pch)" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; float DifferentiableFunctionComputeChunk(int ichk, Microsoft::ML::Runtime::Data::VBuffer&lt;float&gt; % xDense, Microsoft::ML::Runtime::Data::VBuffer&lt;float&gt; % grad, Microsoft::ML::Runtime::IProgressChannel ^ pch);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ichk" Type="System.Int32" />
+        <Parameter Name="xDense" Type="Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;&amp;" RefType="ref" />
+        <Parameter Name="grad" Type="Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;&amp;" RefType="ref" />
+        <Parameter Name="pch" Type="Microsoft.ML.Runtime.IProgressChannel" />
+      </Parameters>
+      <Docs>
+        <param name="ichk">To be added.</param>
+        <param name="xDense">To be added.</param>
+        <param name="grad">To be added.</param>
+        <param name="pch">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DifferentiableFunctionMultithreaded">
+      <MemberSignature Language="C#" Value="protected virtual float DifferentiableFunctionMultithreaded (ref Microsoft.ML.Runtime.Data.VBuffer&lt;float&gt; xDense, ref Microsoft.ML.Runtime.Data.VBuffer&lt;float&gt; gradient, Microsoft.ML.Runtime.IProgressChannel pch);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance float32 DifferentiableFunctionMultithreaded(valuetype Microsoft.ML.Runtime.Data.VBuffer`1&lt;float32&gt;&amp; xDense, valuetype Microsoft.ML.Runtime.Data.VBuffer`1&lt;float32&gt;&amp; gradient, class Microsoft.ML.Runtime.IProgressChannel pch) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.DifferentiableFunctionMultithreaded(Microsoft.ML.Runtime.Data.VBuffer{System.Single}@,Microsoft.ML.Runtime.Data.VBuffer{System.Single}@,Microsoft.ML.Runtime.IProgressChannel)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overridable Function DifferentiableFunctionMultithreaded (ByRef xDense As VBuffer(Of Single), ByRef gradient As VBuffer(Of Single), pch As IProgressChannel) As Single" />
+      <MemberSignature Language="F#" Value="abstract member DifferentiableFunctionMultithreaded :  *  * Microsoft.ML.Runtime.IProgressChannel -&gt; single&#xA;override this.DifferentiableFunctionMultithreaded :  *  * Microsoft.ML.Runtime.IProgressChannel -&gt; single" Usage="lbfgsTrainerBase.DifferentiableFunctionMultithreaded (xDense, gradient, pch)" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; virtual float DifferentiableFunctionMultithreaded(Microsoft::ML::Runtime::Data::VBuffer&lt;float&gt; % xDense, Microsoft::ML::Runtime::Data::VBuffer&lt;float&gt; % gradient, Microsoft::ML::Runtime::IProgressChannel ^ pch);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="xDense" Type="Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;&amp;" RefType="ref" />
+        <Parameter Name="gradient" Type="Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;&amp;" RefType="ref" />
+        <Parameter Name="pch" Type="Microsoft.ML.Runtime.IProgressChannel" />
+      </Parameters>
+      <Docs>
+        <param name="xDense">To be added.</param>
+        <param name="gradient">To be added.</param>
+        <param name="pch">To be added.</param>
+        <summary>
+            Batch-parallel optimizer
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>
+            REVIEW: consider getting rid of multithread-targeted members
+            Using TPL, the distinction between Multithreaded and Sequential implementations is unnecessary
+            </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DifferentiableFunctionStream">
+      <MemberSignature Language="C#" Value="protected float DifferentiableFunctionStream (Microsoft.ML.Runtime.Training.FloatLabelCursor.Factory cursorFactory, ref Microsoft.ML.Runtime.Data.VBuffer&lt;float&gt; xDense, ref Microsoft.ML.Runtime.Data.VBuffer&lt;float&gt; grad, Microsoft.ML.Runtime.IProgressChannel pch);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance float32 DifferentiableFunctionStream(class Microsoft.ML.Runtime.Training.FloatLabelCursor/Factory cursorFactory, valuetype Microsoft.ML.Runtime.Data.VBuffer`1&lt;float32&gt;&amp; xDense, valuetype Microsoft.ML.Runtime.Data.VBuffer`1&lt;float32&gt;&amp; grad, class Microsoft.ML.Runtime.IProgressChannel pch) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.DifferentiableFunctionStream(Microsoft.ML.Runtime.Training.FloatLabelCursor.Factory,Microsoft.ML.Runtime.Data.VBuffer{System.Single}@,Microsoft.ML.Runtime.Data.VBuffer{System.Single}@,Microsoft.ML.Runtime.IProgressChannel)" />
+      <MemberSignature Language="VB.NET" Value="Protected Function DifferentiableFunctionStream (cursorFactory As FloatLabelCursor.Factory, ByRef xDense As VBuffer(Of Single), ByRef grad As VBuffer(Of Single), pch As IProgressChannel) As Single" />
+      <MemberSignature Language="F#" Value="member this.DifferentiableFunctionStream : Microsoft.ML.Runtime.Training.FloatLabelCursor.Factory *  *  * Microsoft.ML.Runtime.IProgressChannel -&gt; single" Usage="lbfgsTrainerBase.DifferentiableFunctionStream (cursorFactory, xDense, grad, pch)" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; float DifferentiableFunctionStream(Microsoft::ML::Runtime::Training::FloatLabelCursor::Factory ^ cursorFactory, Microsoft::ML::Runtime::Data::VBuffer&lt;float&gt; % xDense, Microsoft::ML::Runtime::Data::VBuffer&lt;float&gt; % grad, Microsoft::ML::Runtime::IProgressChannel ^ pch);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="cursorFactory" Type="Microsoft.ML.Runtime.Training.FloatLabelCursor+Factory" />
+        <Parameter Name="xDense" Type="Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;&amp;" RefType="ref" />
+        <Parameter Name="grad" Type="Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;&amp;" RefType="ref" />
+        <Parameter Name="pch" Type="Microsoft.ML.Runtime.IProgressChannel" />
+      </Parameters>
+      <Docs>
+        <param name="cursorFactory">To be added.</param>
+        <param name="xDense">To be added.</param>
+        <param name="grad">To be added.</param>
+        <param name="pch">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EnforceNonNegativity">
+      <MemberSignature Language="C#" Value="protected readonly bool EnforceNonNegativity;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly bool EnforceNonNegativity" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.EnforceNonNegativity" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly EnforceNonNegativity As Boolean " />
+      <MemberSignature Language="F#" Value="val mutable EnforceNonNegativity : bool" Usage="Microsoft.ML.Runtime.Learners.LbfgsTrainerBase&lt;'Output, 'Predictor (requires 'Predictor : null and 'Predictor :&gt; Microsoft.ML.Runtime.IPredictorProducing&lt;'Output&gt;)&gt;.EnforceNonNegativity" />
+      <MemberSignature Language="C++ CLI" Value="protected: initonly bool EnforceNonNegativity;" />
+      <MemberSignature Language="C++ CX" Value="protected: initonly bool EnforceNonNegativity;" />
+      <MemberSignature Language="C++ WINRT" Value="initonly bool EnforceNonNegativity;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EnsureBiases">
+      <MemberSignature Language="C#" Value="protected void EnsureBiases (ref Microsoft.ML.Runtime.Data.VBuffer&lt;float&gt; vec);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void EnsureBiases(valuetype Microsoft.ML.Runtime.Data.VBuffer`1&lt;float32&gt;&amp; vec) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.EnsureBiases(Microsoft.ML.Runtime.Data.VBuffer{System.Single}@)" />
+      <MemberSignature Language="VB.NET" Value="Protected Sub EnsureBiases (ByRef vec As VBuffer(Of Single))" />
+      <MemberSignature Language="F#" Value="member this.EnsureBiases :  -&gt; unit" Usage="lbfgsTrainerBase.EnsureBiases vec" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; void EnsureBiases(Microsoft::ML::Runtime::Data::VBuffer&lt;float&gt; % vec);" />
+      <MemberSignature Language="C++ WINRT" Value="void EnsureBiases(Microsoft::ML::Runtime::Data::VBuffer&lt;float&gt; &amp; vec);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="vec" Type="Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="vec">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitializeOptimizer">
+      <MemberSignature Language="C#" Value="protected virtual Microsoft.ML.Runtime.Numeric.Optimizer InitializeOptimizer (Microsoft.ML.Runtime.IChannel ch, Microsoft.ML.Runtime.Training.FloatLabelCursor.Factory cursorFactory, out Microsoft.ML.Runtime.Data.VBuffer&lt;float&gt; init, out Microsoft.ML.Runtime.Numeric.ITerminationCriterion terminationCriterion);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Microsoft.ML.Runtime.Numeric.Optimizer InitializeOptimizer(class Microsoft.ML.Runtime.IChannel ch, class Microsoft.ML.Runtime.Training.FloatLabelCursor/Factory cursorFactory, [out] valuetype Microsoft.ML.Runtime.Data.VBuffer`1&lt;float32&gt;&amp; init, [out] class Microsoft.ML.Runtime.Numeric.ITerminationCriterion&amp; terminationCriterion) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.InitializeOptimizer(Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Training.FloatLabelCursor.Factory,Microsoft.ML.Runtime.Data.VBuffer{System.Single}@,Microsoft.ML.Runtime.Numeric.ITerminationCriterion@)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overridable Function InitializeOptimizer (ch As IChannel, cursorFactory As FloatLabelCursor.Factory, ByRef init As VBuffer(Of Single), ByRef terminationCriterion As ITerminationCriterion) As Optimizer" />
+      <MemberSignature Language="F#" Value="abstract member InitializeOptimizer : Microsoft.ML.Runtime.IChannel * Microsoft.ML.Runtime.Training.FloatLabelCursor.Factory *  *  -&gt; Microsoft.ML.Runtime.Numeric.Optimizer&#xA;override this.InitializeOptimizer : Microsoft.ML.Runtime.IChannel * Microsoft.ML.Runtime.Training.FloatLabelCursor.Factory *  *  -&gt; Microsoft.ML.Runtime.Numeric.Optimizer" Usage="lbfgsTrainerBase.InitializeOptimizer (ch, cursorFactory, init, terminationCriterion)" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; virtual Microsoft::ML::Runtime::Numeric::Optimizer ^ InitializeOptimizer(Microsoft::ML::Runtime::IChannel ^ ch, Microsoft::ML::Runtime::Training::FloatLabelCursor::Factory ^ cursorFactory, [Runtime::InteropServices::Out] Microsoft::ML::Runtime::Data::VBuffer&lt;float&gt; % init, [Runtime::InteropServices::Out] Microsoft::ML::Runtime::Numeric::ITerminationCriterion ^ % terminationCriterion);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Numeric.Optimizer</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
+        <Parameter Name="cursorFactory" Type="Microsoft.ML.Runtime.Training.FloatLabelCursor+Factory" />
+        <Parameter Name="init" Type="Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;&amp;" RefType="out" />
+        <Parameter Name="terminationCriterion" Type="Microsoft.ML.Runtime.Numeric.ITerminationCriterion&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="ch">To be added.</param>
+        <param name="cursorFactory">To be added.</param>
+        <param name="init">To be added.</param>
+        <param name="terminationCriterion">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitializeWeights">
+      <MemberSignature Language="C#" Value="protected Microsoft.ML.Runtime.Data.VBuffer&lt;float&gt; InitializeWeights (System.Collections.Generic.IEnumerable&lt;float&gt; weights, System.Collections.Generic.IEnumerable&lt;float&gt; biases);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance valuetype Microsoft.ML.Runtime.Data.VBuffer`1&lt;float32&gt; InitializeWeights(class System.Collections.Generic.IEnumerable`1&lt;float32&gt; weights, class System.Collections.Generic.IEnumerable`1&lt;float32&gt; biases) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.InitializeWeights(System.Collections.Generic.IEnumerable{System.Single},System.Collections.Generic.IEnumerable{System.Single})" />
+      <MemberSignature Language="VB.NET" Value="Protected Function InitializeWeights (weights As IEnumerable(Of Single), biases As IEnumerable(Of Single)) As VBuffer(Of Single)" />
+      <MemberSignature Language="F#" Value="member this.InitializeWeights : seq&lt;single&gt; * seq&lt;single&gt; -&gt; Microsoft.ML.Runtime.Data.VBuffer&lt;single&gt;" Usage="lbfgsTrainerBase.InitializeWeights (weights, biases)" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; Microsoft::ML::Runtime::Data::VBuffer&lt;float&gt; InitializeWeights(System::Collections::Generic::IEnumerable&lt;float&gt; ^ weights, System::Collections::Generic::IEnumerable&lt;float&gt; ^ biases);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="weights" Type="System.Collections.Generic.IEnumerable&lt;System.Single&gt;" />
+        <Parameter Name="biases" Type="System.Collections.Generic.IEnumerable&lt;System.Single&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="weights">To be added.</param>
+        <param name="biases">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitializeWeightsFromPredictor">
+      <MemberSignature Language="C#" Value="protected abstract Microsoft.ML.Runtime.Data.VBuffer&lt;float&gt; InitializeWeightsFromPredictor (TPredictor srcPredictor);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype Microsoft.ML.Runtime.Data.VBuffer`1&lt;float32&gt; InitializeWeightsFromPredictor(!TPredictor srcPredictor) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.InitializeWeightsFromPredictor(`1)" />
+      <MemberSignature Language="VB.NET" Value="Protected MustOverride Function InitializeWeightsFromPredictor (srcPredictor As TPredictor) As VBuffer(Of Single)" />
+      <MemberSignature Language="F#" Value="abstract member InitializeWeightsFromPredictor : 'Predictor -&gt; Microsoft.ML.Runtime.Data.VBuffer&lt;single&gt;" Usage="lbfgsTrainerBase.InitializeWeightsFromPredictor srcPredictor" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; abstract Microsoft::ML::Runtime::Data::VBuffer&lt;float&gt; InitializeWeightsFromPredictor(TPredictor srcPredictor);" />
+      <MemberSignature Language="C++ WINRT" Value=" abstract Microsoft::ML::Runtime::Data::VBuffer&lt;float&gt; InitializeWeightsFromPredictor(TPredictor srcPredictor);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="srcPredictor" Type="TPredictor" />
+      </Parameters>
+      <Docs>
+        <param name="srcPredictor">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitializeWeightsSgd">
+      <MemberSignature Language="C#" Value="protected virtual Microsoft.ML.Runtime.Data.VBuffer&lt;float&gt; InitializeWeightsSgd (Microsoft.ML.Runtime.IChannel ch, Microsoft.ML.Runtime.Training.FloatLabelCursor.Factory cursorFactory);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype Microsoft.ML.Runtime.Data.VBuffer`1&lt;float32&gt; InitializeWeightsSgd(class Microsoft.ML.Runtime.IChannel ch, class Microsoft.ML.Runtime.Training.FloatLabelCursor/Factory cursorFactory) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.InitializeWeightsSgd(Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Training.FloatLabelCursor.Factory)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overridable Function InitializeWeightsSgd (ch As IChannel, cursorFactory As FloatLabelCursor.Factory) As VBuffer(Of Single)" />
+      <MemberSignature Language="F#" Value="abstract member InitializeWeightsSgd : Microsoft.ML.Runtime.IChannel * Microsoft.ML.Runtime.Training.FloatLabelCursor.Factory -&gt; Microsoft.ML.Runtime.Data.VBuffer&lt;single&gt;&#xA;override this.InitializeWeightsSgd : Microsoft.ML.Runtime.IChannel * Microsoft.ML.Runtime.Training.FloatLabelCursor.Factory -&gt; Microsoft.ML.Runtime.Data.VBuffer&lt;single&gt;" Usage="lbfgsTrainerBase.InitializeWeightsSgd (ch, cursorFactory)" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; virtual Microsoft::ML::Runtime::Data::VBuffer&lt;float&gt; InitializeWeightsSgd(Microsoft::ML::Runtime::IChannel ^ ch, Microsoft::ML::Runtime::Training::FloatLabelCursor::Factory ^ cursorFactory);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
+        <Parameter Name="cursorFactory" Type="Microsoft.ML.Runtime.Training.FloatLabelCursor+Factory" />
+      </Parameters>
+      <Docs>
+        <param name="ch">To be added.</param>
+        <param name="cursorFactory">To be added.</param>
+        <summary>
+            Initialize weights by running SGD up to specified tolerance.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWtsDiameter">
+      <MemberSignature Language="C#" Value="protected readonly float InitWtsDiameter;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly float32 InitWtsDiameter" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.InitWtsDiameter" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly InitWtsDiameter As Single " />
+      <MemberSignature Language="F#" Value="val mutable InitWtsDiameter : single" Usage="Microsoft.ML.Runtime.Learners.LbfgsTrainerBase&lt;'Output, 'Predictor (requires 'Predictor : null and 'Predictor :&gt; Microsoft.ML.Runtime.IPredictorProducing&lt;'Output&gt;)&gt;.InitWtsDiameter" />
+      <MemberSignature Language="C++ CLI" Value="protected: initonly float InitWtsDiameter;" />
+      <MemberSignature Language="C++ CX" Value="protected: initonly float InitWtsDiameter;" />
+      <MemberSignature Language="C++ WINRT" Value="initonly float InitWtsDiameter;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="L1Weight">
+      <MemberSignature Language="C#" Value="protected readonly float L1Weight;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly float32 L1Weight" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.L1Weight" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly L1Weight As Single " />
+      <MemberSignature Language="F#" Value="val mutable L1Weight : single" Usage="Microsoft.ML.Runtime.Learners.LbfgsTrainerBase&lt;'Output, 'Predictor (requires 'Predictor : null and 'Predictor :&gt; Microsoft.ML.Runtime.IPredictorProducing&lt;'Output&gt;)&gt;.L1Weight" />
+      <MemberSignature Language="C++ CLI" Value="protected: initonly float L1Weight;" />
+      <MemberSignature Language="C++ CX" Value="protected: initonly float L1Weight;" />
+      <MemberSignature Language="C++ WINRT" Value="initonly float L1Weight;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="L2Weight">
+      <MemberSignature Language="C#" Value="protected readonly float L2Weight;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly float32 L2Weight" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.L2Weight" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly L2Weight As Single " />
+      <MemberSignature Language="F#" Value="val mutable L2Weight : single" Usage="Microsoft.ML.Runtime.Learners.LbfgsTrainerBase&lt;'Output, 'Predictor (requires 'Predictor : null and 'Predictor :&gt; Microsoft.ML.Runtime.IPredictorProducing&lt;'Output&gt;)&gt;.L2Weight" />
+      <MemberSignature Language="C++ CLI" Value="protected: initonly float L2Weight;" />
+      <MemberSignature Language="C++ CX" Value="protected: initonly float L2Weight;" />
+      <MemberSignature Language="C++ WINRT" Value="initonly float L2Weight;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxIterations">
+      <MemberSignature Language="C#" Value="protected readonly int MaxIterations;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly int32 MaxIterations" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.MaxIterations" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly MaxIterations As Integer " />
+      <MemberSignature Language="F#" Value="val mutable MaxIterations : int" Usage="Microsoft.ML.Runtime.Learners.LbfgsTrainerBase&lt;'Output, 'Predictor (requires 'Predictor : null and 'Predictor :&gt; Microsoft.ML.Runtime.IPredictorProducing&lt;'Output&gt;)&gt;.MaxIterations" />
+      <MemberSignature Language="C++ CLI" Value="protected: initonly int MaxIterations;" />
+      <MemberSignature Language="C++ CX" Value="protected: initonly int MaxIterations;" />
+      <MemberSignature Language="C++ WINRT" Value="initonly int MaxIterations;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxNormalizationExamples">
+      <MemberSignature Language="C#" Value="protected readonly long MaxNormalizationExamples;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly int64 MaxNormalizationExamples" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.MaxNormalizationExamples" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly MaxNormalizationExamples As Long " />
+      <MemberSignature Language="F#" Value="val mutable MaxNormalizationExamples : int64" Usage="Microsoft.ML.Runtime.Learners.LbfgsTrainerBase&lt;'Output, 'Predictor (requires 'Predictor : null and 'Predictor :&gt; Microsoft.ML.Runtime.IPredictorProducing&lt;'Output&gt;)&gt;.MaxNormalizationExamples" />
+      <MemberSignature Language="C++ CLI" Value="protected: initonly long MaxNormalizationExamples;" />
+      <MemberSignature Language="C++ CX" Value="protected: initonly long long MaxNormalizationExamples;" />
+      <MemberSignature Language="C++ WINRT" Value="initonly long MaxNormalizationExamples;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int64</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MemorySize">
+      <MemberSignature Language="C#" Value="protected readonly int MemorySize;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly int32 MemorySize" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.MemorySize" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly MemorySize As Integer " />
+      <MemberSignature Language="F#" Value="val mutable MemorySize : int" Usage="Microsoft.ML.Runtime.Learners.LbfgsTrainerBase&lt;'Output, 'Predictor (requires 'Predictor : null and 'Predictor :&gt; Microsoft.ML.Runtime.IPredictorProducing&lt;'Output&gt;)&gt;.MemorySize" />
+      <MemberSignature Language="C++ CLI" Value="protected: initonly int MemorySize;" />
+      <MemberSignature Language="C++ CX" Value="protected: initonly int MemorySize;" />
+      <MemberSignature Language="C++ WINRT" Value="initonly int MemorySize;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NeedNormalization">
+      <MemberSignature Language="C#" Value="public override bool NeedNormalization { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool NeedNormalization" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.NeedNormalization" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property NeedNormalization As Boolean" />
+      <MemberSignature Language="F#" Value="member this.NeedNormalization : bool" Usage="Microsoft.ML.Runtime.Learners.LbfgsTrainerBase&lt;'Output, 'Predictor (requires 'Predictor : null and 'Predictor :&gt; Microsoft.ML.Runtime.IPredictorProducing&lt;'Output&gt;)&gt;.NeedNormalization" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; virtual property bool NeedNormalization { bool get(); };" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA; virtual property bool NeedNormalization { bool get(); };" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NumFeatures">
+      <MemberSignature Language="C#" Value="protected int NumFeatures;" />
+      <MemberSignature Language="ILAsm" Value=".field family int32 NumFeatures" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.NumFeatures" />
+      <MemberSignature Language="VB.NET" Value="Protected NumFeatures As Integer " />
+      <MemberSignature Language="F#" Value="val mutable NumFeatures : int" Usage="Microsoft.ML.Runtime.Learners.LbfgsTrainerBase&lt;'Output, 'Predictor (requires 'Predictor : null and 'Predictor :&gt; Microsoft.ML.Runtime.IPredictorProducing&lt;'Output&gt;)&gt;.NumFeatures" />
+      <MemberSignature Language="C++ CLI" Value="protected: int NumFeatures;" />
+      <MemberSignature Language="C++ CX" Value="protected: int NumFeatures;" />
+      <MemberSignature Language="C++ WINRT" Value="int NumFeatures;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NumGoodRows">
+      <MemberSignature Language="C#" Value="protected long NumGoodRows;" />
+      <MemberSignature Language="ILAsm" Value=".field family int64 NumGoodRows" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.NumGoodRows" />
+      <MemberSignature Language="VB.NET" Value="Protected NumGoodRows As Long " />
+      <MemberSignature Language="F#" Value="val mutable NumGoodRows : int64" Usage="Microsoft.ML.Runtime.Learners.LbfgsTrainerBase&lt;'Output, 'Predictor (requires 'Predictor : null and 'Predictor :&gt; Microsoft.ML.Runtime.IPredictorProducing&lt;'Output&gt;)&gt;.NumGoodRows" />
+      <MemberSignature Language="C++ CLI" Value="protected: long NumGoodRows;" />
+      <MemberSignature Language="C++ CX" Value="protected: long long NumGoodRows;" />
+      <MemberSignature Language="C++ WINRT" Value="long NumGoodRows;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int64</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NumThreads">
+      <MemberSignature Language="C#" Value="protected readonly Nullable&lt;int&gt; NumThreads;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly valuetype System.Nullable`1&lt;int32&gt; NumThreads" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.NumThreads" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly NumThreads As Nullable(Of Integer) " />
+      <MemberSignature Language="F#" Value="val mutable NumThreads : Nullable&lt;int&gt;" Usage="Microsoft.ML.Runtime.Learners.LbfgsTrainerBase&lt;'Output, 'Predictor (requires 'Predictor : null and 'Predictor :&gt; Microsoft.ML.Runtime.IPredictorProducing&lt;'Output&gt;)&gt;.NumThreads" />
+      <MemberSignature Language="C++ CLI" Value="protected: initonly Nullable&lt;int&gt; NumThreads;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Nullable&lt;System.Int32&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OptTol">
+      <MemberSignature Language="C#" Value="protected readonly float OptTol;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly float32 OptTol" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.OptTol" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly OptTol As Single " />
+      <MemberSignature Language="F#" Value="val mutable OptTol : single" Usage="Microsoft.ML.Runtime.Learners.LbfgsTrainerBase&lt;'Output, 'Predictor (requires 'Predictor : null and 'Predictor :&gt; Microsoft.ML.Runtime.IPredictorProducing&lt;'Output&gt;)&gt;.OptTol" />
+      <MemberSignature Language="C++ CLI" Value="protected: initonly float OptTol;" />
+      <MemberSignature Language="C++ CX" Value="protected: initonly float OptTol;" />
+      <MemberSignature Language="C++ WINRT" Value="initonly float OptTol;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PreTrainingProcessInstance">
+      <MemberSignature Language="C#" Value="protected virtual void PreTrainingProcessInstance (float label, ref Microsoft.ML.Runtime.Data.VBuffer&lt;float&gt; feat, float weight);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void PreTrainingProcessInstance(float32 label, valuetype Microsoft.ML.Runtime.Data.VBuffer`1&lt;float32&gt;&amp; feat, float32 weight) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.PreTrainingProcessInstance(System.Single,Microsoft.ML.Runtime.Data.VBuffer{System.Single}@,System.Single)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overridable Sub PreTrainingProcessInstance (label As Single, ByRef feat As VBuffer(Of Single), weight As Single)" />
+      <MemberSignature Language="F#" Value="abstract member PreTrainingProcessInstance : single *  * single -&gt; unit&#xA;override this.PreTrainingProcessInstance : single *  * single -&gt; unit" Usage="lbfgsTrainerBase.PreTrainingProcessInstance (label, feat, weight)" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; virtual void PreTrainingProcessInstance(float label, Microsoft::ML::Runtime::Data::VBuffer&lt;float&gt; % feat, float weight);" />
+      <MemberSignature Language="C++ WINRT" Value=" virtual void PreTrainingProcessInstance(float label, Microsoft::ML::Runtime::Data::VBuffer&lt;float&gt; &amp; feat, float weight);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="label" Type="System.Single" />
+        <Parameter Name="feat" Type="Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;&amp;" RefType="ref" />
+        <Parameter Name="weight" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="label">To be added.</param>
+        <param name="feat">To be added.</param>
+        <param name="weight">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ProcessPriorDistribution">
+      <MemberSignature Language="C#" Value="protected abstract void ProcessPriorDistribution (float label, float weight);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void ProcessPriorDistribution(float32 label, float32 weight) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.ProcessPriorDistribution(System.Single,System.Single)" />
+      <MemberSignature Language="VB.NET" Value="Protected MustOverride Sub ProcessPriorDistribution (label As Single, weight As Single)" />
+      <MemberSignature Language="F#" Value="abstract member ProcessPriorDistribution : single * single -&gt; unit" Usage="lbfgsTrainerBase.ProcessPriorDistribution (label, weight)" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; abstract void ProcessPriorDistribution(float label, float weight);" />
+      <MemberSignature Language="C++ CX" Value="protected:&#xA; abstract void ProcessPriorDistribution(float label, float weight);" />
+      <MemberSignature Language="C++ WINRT" Value=" abstract void ProcessPriorDistribution(float label, float weight);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="label" Type="System.Single" />
+        <Parameter Name="weight" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="label">To be added.</param>
+        <param name="weight">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Quiet">
+      <MemberSignature Language="C#" Value="protected readonly bool Quiet;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly bool Quiet" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.Quiet" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly Quiet As Boolean " />
+      <MemberSignature Language="F#" Value="val mutable Quiet : bool" Usage="Microsoft.ML.Runtime.Learners.LbfgsTrainerBase&lt;'Output, 'Predictor (requires 'Predictor : null and 'Predictor :&gt; Microsoft.ML.Runtime.IPredictorProducing&lt;'Output&gt;)&gt;.Quiet" />
+      <MemberSignature Language="C++ CLI" Value="protected: initonly bool Quiet;" />
+      <MemberSignature Language="C++ CX" Value="protected: initonly bool Quiet;" />
+      <MemberSignature Language="C++ WINRT" Value="initonly bool Quiet;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SgdInitializationTolerance">
+      <MemberSignature Language="C#" Value="protected readonly float SgdInitializationTolerance;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly float32 SgdInitializationTolerance" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.SgdInitializationTolerance" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly SgdInitializationTolerance As Single " />
+      <MemberSignature Language="F#" Value="val mutable SgdInitializationTolerance : single" Usage="Microsoft.ML.Runtime.Learners.LbfgsTrainerBase&lt;'Output, 'Predictor (requires 'Predictor : null and 'Predictor :&gt; Microsoft.ML.Runtime.IPredictorProducing&lt;'Output&gt;)&gt;.SgdInitializationTolerance" />
+      <MemberSignature Language="C++ CLI" Value="protected: initonly float SgdInitializationTolerance;" />
+      <MemberSignature Language="C++ CX" Value="protected: initonly float SgdInitializationTolerance;" />
+      <MemberSignature Language="C++ WINRT" Value="initonly float SgdInitializationTolerance;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShowTrainingStats">
+      <MemberSignature Language="C#" Value="protected readonly bool ShowTrainingStats;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly bool ShowTrainingStats" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.ShowTrainingStats" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly ShowTrainingStats As Boolean " />
+      <MemberSignature Language="F#" Value="val mutable ShowTrainingStats : bool" Usage="Microsoft.ML.Runtime.Learners.LbfgsTrainerBase&lt;'Output, 'Predictor (requires 'Predictor : null and 'Predictor :&gt; Microsoft.ML.Runtime.IPredictorProducing&lt;'Output&gt;)&gt;.ShowTrainingStats" />
+      <MemberSignature Language="C++ CLI" Value="protected: initonly bool ShowTrainingStats;" />
+      <MemberSignature Language="C++ CX" Value="protected: initonly bool ShowTrainingStats;" />
+      <MemberSignature Language="C++ WINRT" Value="initonly bool ShowTrainingStats;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Train">
+      <MemberSignature Language="C#" Value="public override void Train (Microsoft.ML.Runtime.Data.RoleMappedData data);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Train(class Microsoft.ML.Runtime.Data.RoleMappedData data) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.Train(Microsoft.ML.Runtime.Data.RoleMappedData)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Sub Train (data As RoleMappedData)" />
+      <MemberSignature Language="F#" Value="override this.Train : Microsoft.ML.Runtime.Data.RoleMappedData -&gt; unit" Usage="lbfgsTrainerBase.Train data" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; override void Train(Microsoft::ML::Runtime::Data::RoleMappedData ^ data);" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA; override void Train(Microsoft::ML::Runtime::Data::RoleMappedData ^ data);" />
+      <MemberSignature Language="C++ WINRT" Value=" override void Train(Microsoft::ML::Runtime::Data::RoleMappedData const &amp; data);" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.ITrainer`1.Train(`0)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data" Type="Microsoft.ML.Runtime.Data.RoleMappedData" />
+      </Parameters>
+      <Docs>
+        <param name="data">To be added.</param>
+        <summary>
+            The basic training calls the optimizer
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Train">
+      <MemberSignature Language="C#" Value="public void Train (Microsoft.ML.Runtime.Data.RoleMappedData data, TPredictor predictor);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Train(class Microsoft.ML.Runtime.Data.RoleMappedData data, !TPredictor predictor) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.Train(Microsoft.ML.Runtime.Data.RoleMappedData,`1)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Train (data As RoleMappedData, predictor As TPredictor)" />
+      <MemberSignature Language="F#" Value="override this.Train : Microsoft.ML.Runtime.Data.RoleMappedData * 'Predictor -&gt; unit" Usage="lbfgsTrainerBase.Train (data, predictor)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; virtual void Train(Microsoft::ML::Runtime::Data::RoleMappedData ^ data, TPredictor predictor);" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA; void Train(Microsoft::ML::Runtime::Data::RoleMappedData ^ data, TPredictor predictor);" />
+      <MemberSignature Language="C++ WINRT" Value="void Train(Microsoft::ML::Runtime::Data::RoleMappedData const &amp; data, TPredictor predictor);" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.IIncrementalTrainer`2.Train(`0,`1)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data" Type="Microsoft.ML.Runtime.Data.RoleMappedData" />
+        <Parameter Name="predictor" Type="TPredictor" />
+      </Parameters>
+      <Docs>
+        <param name="data">To be added.</param>
+        <param name="predictor">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UseThreads">
+      <MemberSignature Language="C#" Value="protected readonly bool UseThreads;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly bool UseThreads" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.UseThreads" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly UseThreads As Boolean " />
+      <MemberSignature Language="F#" Value="val mutable UseThreads : bool" Usage="Microsoft.ML.Runtime.Learners.LbfgsTrainerBase&lt;'Output, 'Predictor (requires 'Predictor : null and 'Predictor :&gt; Microsoft.ML.Runtime.IPredictorProducing&lt;'Output&gt;)&gt;.UseThreads" />
+      <MemberSignature Language="C++ CLI" Value="protected: initonly bool UseThreads;" />
+      <MemberSignature Language="C++ CX" Value="protected: initonly bool UseThreads;" />
+      <MemberSignature Language="C++ WINRT" Value="initonly bool UseThreads;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WantCaching">
+      <MemberSignature Language="C#" Value="public override bool WantCaching { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool WantCaching" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.WantCaching" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property WantCaching As Boolean" />
+      <MemberSignature Language="F#" Value="member this.WantCaching : bool" Usage="Microsoft.ML.Runtime.Learners.LbfgsTrainerBase&lt;'Output, 'Predictor (requires 'Predictor : null and 'Predictor :&gt; Microsoft.ML.Runtime.IPredictorProducing&lt;'Output&gt;)&gt;.WantCaching" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; virtual property bool WantCaching { bool get(); };" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA; virtual property bool WantCaching { bool get(); };" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WeightCount">
+      <MemberSignature Language="C#" Value="protected int WeightCount { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 WeightCount" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.WeightCount" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly Property WeightCount As Integer" />
+      <MemberSignature Language="F#" Value="member this.WeightCount : int" Usage="Microsoft.ML.Runtime.Learners.LbfgsTrainerBase&lt;'Output, 'Predictor (requires 'Predictor : null and 'Predictor :&gt; Microsoft.ML.Runtime.IPredictorProducing&lt;'Output&gt;)&gt;.WeightCount" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; property int WeightCount { int get(); };" />
+      <MemberSignature Language="C++ CX" Value="protected:&#xA; property int WeightCount { int get(); };" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WeightSum">
+      <MemberSignature Language="C#" Value="protected double WeightSum;" />
+      <MemberSignature Language="ILAsm" Value=".field family float64 WeightSum" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2.WeightSum" />
+      <MemberSignature Language="VB.NET" Value="Protected WeightSum As Double " />
+      <MemberSignature Language="F#" Value="val mutable WeightSum : double" Usage="Microsoft.ML.Runtime.Learners.LbfgsTrainerBase&lt;'Output, 'Predictor (requires 'Predictor : null and 'Predictor :&gt; Microsoft.ML.Runtime.IPredictorProducing&lt;'Output&gt;)&gt;.WeightSum" />
+      <MemberSignature Language="C++ CLI" Value="protected: double WeightSum;" />
+      <MemberSignature Language="C++ CX" Value="protected: double WeightSum;" />
+      <MemberSignature Language="C++ WINRT" Value="double WeightSum;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

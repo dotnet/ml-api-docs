@@ -1,0 +1,98 @@
+﻿<Type Name="ISchemaBoundRowMapper" FullName="Microsoft.ML.Runtime.Data.ISchemaBoundRowMapper">
+  <TypeSignature Language="C#" Value="public interface ISchemaBoundRowMapper : Microsoft.ML.Runtime.Data.ISchemaBoundMapper" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ISchemaBoundRowMapper implements class Microsoft.ML.Runtime.Data.ISchemaBoundMapper" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.ISchemaBoundRowMapper" />
+  <TypeSignature Language="VB.NET" Value="Public Interface ISchemaBoundRowMapper&#xA;Implements ISchemaBoundMapper" />
+  <TypeSignature Language="F#" Value="type ISchemaBoundRowMapper = interface&#xA;    interface ISchemaBoundMapper" />
+  <TypeSignature Language="C++ CLI" Value="public interface class ISchemaBoundRowMapper : Microsoft::ML::Runtime::Data::ISchemaBoundMapper" />
+  <TypeSignature Language="C++ CX" Value="public interface class ISchemaBoundRowMapper : Microsoft::ML::Runtime::Data::ISchemaBoundMapper" />
+  <TypeSignature Language="C++ WINRT" Value="__interface ISchemaBoundRowMapper : Microsoft::ML::Runtime::Data::ISchemaBoundMapper" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Core</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.Data.ISchemaBoundMapper</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+            This interface extends <see cref="T:Microsoft.ML.Runtime.Data.ISchemaBoundMapper" /> with an additional method: <see cref="M:Microsoft.ML.Runtime.Data.ISchemaBoundRowMapper.GetOutputRow(Microsoft.ML.Runtime.Data.IRow,System.Func{System.Int32,System.Boolean},System.Action@)" />. This method
+            takes an input IRow and a predicate indicating which output columns are active, and returns a new IRow 
+            containing the output columns.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="GetDependencies">
+      <MemberSignature Language="C#" Value="public Func&lt;int,bool&gt; GetDependencies (Func&lt;int,bool&gt; predicate);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Func`2&lt;int32, bool&gt; GetDependencies(class System.Func`2&lt;int32, bool&gt; predicate) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ISchemaBoundRowMapper.GetDependencies(System.Func{System.Int32,System.Boolean})" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetDependencies (predicate As Func(Of Integer, Boolean)) As Func(Of Integer, Boolean)" />
+      <MemberSignature Language="F#" Value="abstract member GetDependencies : Func&lt;int, bool&gt; -&gt; Func&lt;int, bool&gt;" Usage="iSchemaBoundRowMapper.GetDependencies predicate" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; Func&lt;int, bool&gt; ^ GetDependencies(Func&lt;int, bool&gt; ^ predicate);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Func&lt;System.Int32,System.Boolean&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="predicate">To be added.</param>
+        <summary>
+            Given a predicate specifying which output columns are needed, return a predicate
+            indicating which input columns are needed.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetOutputRow">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IRow GetOutputRow (Microsoft.ML.Runtime.Data.IRow input, Func&lt;int,bool&gt; predicate, out Action disposer);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IRow GetOutputRow(class Microsoft.ML.Runtime.Data.IRow input, class System.Func`2&lt;int32, bool&gt; predicate, [out] class System.Action&amp; disposer) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ISchemaBoundRowMapper.GetOutputRow(Microsoft.ML.Runtime.Data.IRow,System.Func{System.Int32,System.Boolean},System.Action@)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetOutputRow (input As IRow, predicate As Func(Of Integer, Boolean), ByRef disposer As Action) As IRow" />
+      <MemberSignature Language="F#" Value="abstract member GetOutputRow : Microsoft.ML.Runtime.Data.IRow * Func&lt;int, bool&gt; *  -&gt; Microsoft.ML.Runtime.Data.IRow" Usage="iSchemaBoundRowMapper.GetOutputRow (input, predicate, disposer)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; Microsoft::ML::Runtime::Data::IRow ^ GetOutputRow(Microsoft::ML::Runtime::Data::IRow ^ input, Func&lt;int, bool&gt; ^ predicate, [Runtime::InteropServices::Out] Action ^ % disposer);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IRow</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IRow" />
+        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+        <Parameter Name="disposer" Type="System.Action&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="input">To be added.</param>
+        <param name="predicate">To be added.</param>
+        <param name="disposer">To be added.</param>
+        <summary>
+            Get an IRow based on the input IRow with the indicated active columns. The active columns are those for which
+            predicate(col) returns true. The schema of the returned IRow will be the same as the OutputSchema, but getting 
+            values on inactive columns will throw. Null predicates are disallowed.
+            The schema of input should match the InputSchema.
+            This method creates a live connection between the input IRow and the output IRow. In particular, when the
+            getters of the output IRow are invoked, they invoke the getters of the input row and base the output values on 
+            the current values of the input IRow. The output IRow values are re-computed when requested through the getters.
+            The optional disposer is invoked by the cursor wrapping, when it no longer needs the IRow.
+            If no action is needed when the cursor is Disposed, the override should set disposer to null,
+            otherwise it should be set to a delegate to be invoked by the cursor's Dispose method. It's best
+            for this action to be idempotent - calling it multiple times should be equivalent to calling it once.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
