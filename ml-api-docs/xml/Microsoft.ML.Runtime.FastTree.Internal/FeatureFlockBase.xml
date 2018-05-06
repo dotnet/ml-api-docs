@@ -1,0 +1,331 @@
+﻿<Type Name="FeatureFlockBase" FullName="Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase">
+  <TypeSignature Language="C#" Value="public abstract class FeatureFlockBase" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit FeatureFlockBase extends System.Object" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase" />
+  <TypeSignature Language="VB.NET" Value="Public MustInherit Class FeatureFlockBase" />
+  <TypeSignature Language="F#" Value="type FeatureFlockBase = class" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+            A feature flock is a collection of features, grouped together because storing the
+            features and performing the key operations on them in a collection can be done
+            more efficiently than if they were stored as separate features.
+            
+            Since this is a collection of features, feature specific quantities and methods
+            will have a feature index parameter. Note that this index is always, for every
+            flock, from 0 up to but not including <see cref="F:Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase.Count" />. Now,
+            in the larger context of a <see cref="T:Microsoft.ML.Runtime.FastTree.Internal.Dataset" /> holding many flocks, the
+            individual features might have some sort of "dataset-wide" index, but this is
+            considered the business of the dataset, not the flocks themselves. See
+            <see cref="M:Microsoft.ML.Runtime.FastTree.Internal.Dataset.MapFeatureToFlockAndSubFeature(System.Int32,System.Int32@,System.Int32@)" /> to see some details of this
+            dataset-wide versus flock-wide feature index.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected FeatureFlockBase (int count, bool categorical = false);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(int32 count, bool categorical) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase.#ctor(System.Int32,System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Protected Sub New (count As Integer, Optional categorical As Boolean = false)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase : int * bool -&gt; Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase" Usage="new Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase (count, categorical)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="count" Type="System.Int32" />
+        <Parameter Name="categorical" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="count">To be added.</param>
+        <param name="categorical">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BinCount">
+      <MemberSignature Language="C#" Value="public abstract int BinCount (int featureIndex);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance int32 BinCount(int32 featureIndex) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase.BinCount(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function BinCount (featureIndex As Integer) As Integer" />
+      <MemberSignature Language="F#" Value="abstract member BinCount : int -&gt; int" Usage="featureFlockBase.BinCount featureIndex" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureIndex" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="featureIndex">The index of the feature within the flock</param>
+        <summary>
+            Given a feature index, return the number of distinct bins there are for that feature.
+            This will be the length of <see cref="M:Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase.BinUpperBounds(System.Int32)" /> for this feature. This is also
+            the upper exclusive limit on the binned value seen for this feature.
+            </summary>
+        <returns>The number of distinct bins for that feature within the flock</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BinUpperBounds">
+      <MemberSignature Language="C#" Value="public abstract double[] BinUpperBounds (int featureIndex);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance float64[] BinUpperBounds(int32 featureIndex) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase.BinUpperBounds(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function BinUpperBounds (featureIndex As Integer) As Double()" />
+      <MemberSignature Language="F#" Value="abstract member BinUpperBounds : int -&gt; double[]" Usage="featureFlockBase.BinUpperBounds featureIndex" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureIndex" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="featureIndex"></param>
+        <summary>
+            An array of increasing values, forming the boundaries of all the binned values.
+            </summary>
+        <returns>The bin upper bounds for a feature. This array will have the same
+            length as <see cref="M:Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase.BinCount(System.Int32)" />.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Categorical">
+      <MemberSignature Language="C#" Value="public bool Categorical;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool Categorical" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase.Categorical" />
+      <MemberSignature Language="VB.NET" Value="Public Categorical As Boolean " />
+      <MemberSignature Language="F#" Value="val mutable Categorical : bool" Usage="Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase.Categorical" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Flock is a categorical feature.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Count">
+      <MemberSignature Language="C#" Value="public readonly int Count;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly int32 Count" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase.Count" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Count As Integer " />
+      <MemberSignature Language="F#" Value="val mutable Count : int" Usage="Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase.Count" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The number of features contained within this flock.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateSufficientStats">
+      <MemberSignature Language="C#" Value="public abstract Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase CreateSufficientStats (bool hasWeights);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase CreateSufficientStats(bool hasWeights) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase.CreateSufficientStats(System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function CreateSufficientStats (hasWeights As Boolean) As SufficientStatsBase" />
+      <MemberSignature Language="F#" Value="abstract member CreateSufficientStats : bool -&gt; Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase" Usage="featureFlockBase.CreateSufficientStats hasWeights" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="hasWeights" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="hasWeights">Whether structures related to tracking
+            example weights should be allocated</param>
+        <summary>
+            A reusable structure for tracking the sufficient statistics for tree learning
+            of the features in this flock.
+            </summary>
+        <returns>A sufficient statistics object</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Examples">
+      <MemberSignature Language="C#" Value="public abstract int Examples { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Examples" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase.Examples" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride ReadOnly Property Examples As Integer" />
+      <MemberSignature Language="F#" Value="member this.Examples : int" Usage="Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase.Examples" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The number of training examples represented by the features within this flock.
+            This should be the same for all flocks within a dataset.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetFlockIndexer">
+      <MemberSignature Language="C#" Value="public abstract Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase.FlockForwardIndexerBase GetFlockIndexer ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase/FlockForwardIndexerBase GetFlockIndexer() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase.GetFlockIndexer" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function GetFlockIndexer () As FeatureFlockBase.FlockForwardIndexerBase" />
+      <MemberSignature Language="F#" Value="abstract member GetFlockIndexer : unit -&gt; Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase.FlockForwardIndexerBase" Usage="featureFlockBase.GetFlockIndexer " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase+FlockForwardIndexerBase</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            Returns a forward indexer for all features within the flock.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetIndexer">
+      <MemberSignature Language="C#" Value="public virtual Microsoft.ML.Runtime.FastTree.Internal.IIntArrayForwardIndexer GetIndexer (int featureIndex);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.FastTree.Internal.IIntArrayForwardIndexer GetIndexer(int32 featureIndex) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase.GetIndexer(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Overridable Function GetIndexer (featureIndex As Integer) As IIntArrayForwardIndexer" />
+      <MemberSignature Language="F#" Value="abstract member GetIndexer : int -&gt; Microsoft.ML.Runtime.FastTree.Internal.IIntArrayForwardIndexer&#xA;override this.GetIndexer : int -&gt; Microsoft.ML.Runtime.FastTree.Internal.IIntArrayForwardIndexer" Usage="featureFlockBase.GetIndexer featureIndex" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.FastTree.Internal.IIntArrayForwardIndexer</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureIndex" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="featureIndex">To be added.</param>
+        <summary>
+            Returns a forward indexer for a single feature. This has a default implementation that
+            relies on <see cref="M:Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase.GetFlockIndexer" />, but base classes may find it beneficial from
+            a performance perspective to provide their own implementation.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SizeInBytes">
+      <MemberSignature Language="C#" Value="public abstract long SizeInBytes ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance int64 SizeInBytes() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase.SizeInBytes" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function SizeInBytes () As Long" />
+      <MemberSignature Language="F#" Value="abstract member SizeInBytes : unit -&gt; int64" Usage="featureFlockBase.SizeInBytes " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int64</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            An approximation of the size in bytes used by this structure. Used for estimating
+            memory usage of the tree learner.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Split">
+      <MemberSignature Language="C#" Value="public abstract Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase[] Split (int[][] assignment);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase[] Split(int32[][] assignment) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase.Split(System.Int32[][])" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function Split (assignment As Integer()()) As FeatureFlockBase()" />
+      <MemberSignature Language="F#" Value="abstract member Split : int[][] -&gt; Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase[]" Usage="featureFlockBase.Split assignment" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="assignment" Type="System.Int32[][]" />
+      </Parameters>
+      <Docs>
+        <param name="assignment">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Trust">
+      <MemberSignature Language="C#" Value="public abstract double Trust (int featureIndex);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance float64 Trust(int32 featureIndex) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase.Trust(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function Trust (featureIndex As Integer) As Double" />
+      <MemberSignature Language="F#" Value="abstract member Trust : int -&gt; double" Usage="featureFlockBase.Trust featureIndex" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureIndex" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="featureIndex">To be added.</param>
+        <summary>
+            The multiplier on the gain for any particular feature. This can be used to make
+            features appear more or less attractive. The default value should be considered
+            to be 1.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

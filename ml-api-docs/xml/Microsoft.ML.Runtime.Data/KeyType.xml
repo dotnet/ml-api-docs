@@ -1,0 +1,205 @@
+﻿<Type Name="KeyType" FullName="Microsoft.ML.Runtime.Data.KeyType">
+  <TypeSignature Language="C#" Value="public sealed class KeyType : Microsoft.ML.Runtime.Data.PrimitiveType" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit KeyType extends Microsoft.ML.Runtime.Data.PrimitiveType" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.KeyType" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class KeyType&#xA;Inherits PrimitiveType" />
+  <TypeSignature Language="F#" Value="type KeyType = class&#xA;    inherit PrimitiveType" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Core</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Microsoft.ML.Runtime.Data.PrimitiveType</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+            KeyTypes are for "id"-like data. The information happens to be stored in an unsigned integer
+            type, but the information is not inherently numeric, so, typically, arithmetic is not
+            meaningful. Examples are SSNs, phone numbers, auto-generated/incremented key values,
+            class numbers, etc. For example, in multi-class classification, the label is typically
+            a class number which is naturally a KeyType.
+            
+            KeyTypes can be contiguous (the class number example), in which case they can have
+            a cardinality/Count. For non-contiguous KeyTypes the Count property returns zero.
+            Any KeyType (contiguous or not) can have a Min value. The Min value is always &gt;= 0.
+            
+            Note that the representation value does not necessarily match the logical value.
+            For example, if a KeyType has range 1000-5000, then it has a Min of 1000, Count
+            of 4001, but the representational values are 1-4001. The representation value zero
+            is reserved to mean none/invalid.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public KeyType (Microsoft.ML.Runtime.Data.DataKind kind, ulong min, int count, bool contiguous = true);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype Microsoft.ML.Runtime.Data.DataKind kind, unsigned int64 min, int32 count, bool contiguous) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.KeyType.#ctor(Microsoft.ML.Runtime.Data.DataKind,System.UInt64,System.Int32,System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (kind As DataKind, min As ULong, count As Integer, Optional contiguous As Boolean = true)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.KeyType : Microsoft.ML.Runtime.Data.DataKind * uint64 * int * bool -&gt; Microsoft.ML.Runtime.Data.KeyType" Usage="new Microsoft.ML.Runtime.Data.KeyType (kind, min, count, contiguous)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="kind" Type="Microsoft.ML.Runtime.Data.DataKind" />
+        <Parameter Name="min" Type="System.UInt64" />
+        <Parameter Name="count" Type="System.Int32" />
+        <Parameter Name="contiguous" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="kind">To be added.</param>
+        <param name="min">To be added.</param>
+        <param name="count">To be added.</param>
+        <param name="contiguous">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Contiguous">
+      <MemberSignature Language="C#" Value="public bool Contiguous { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Contiguous" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.KeyType.Contiguous" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Contiguous As Boolean" />
+      <MemberSignature Language="F#" Value="member this.Contiguous : bool" Usage="Microsoft.ML.Runtime.Data.KeyType.Contiguous" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Count">
+      <MemberSignature Language="C#" Value="public int Count { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Count" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.KeyType.Count" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Count As Integer" />
+      <MemberSignature Language="F#" Value="member this.Count : int" Usage="Microsoft.ML.Runtime.Data.KeyType.Count" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            If this key type has contiguous values and a known cardinality, Count is that cardinality.
+            Otherwise, this returns zero. Note that such a key type can be converted to a bit vector
+            representation by mapping to a vector of length Count, with "id" mapped to a vector with
+            1 in slot (id - 1) and 0 in all other slots. This is the standard "indicator"
+            representation. Note that an id of 0 is used to represent the notion "none", which is
+            typically mapped to a vector of all zeros (of length Count).
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Equals">
+      <MemberSignature Language="C#" Value="public override bool Equals (Microsoft.ML.Runtime.Data.ColumnType other);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Equals(class Microsoft.ML.Runtime.Data.ColumnType other) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.KeyType.Equals(Microsoft.ML.Runtime.Data.ColumnType)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function Equals (other As ColumnType) As Boolean" />
+      <MemberSignature Language="F#" Value="override this.Equals : Microsoft.ML.Runtime.Data.ColumnType -&gt; bool" Usage="keyType.Equals other" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="other" Type="Microsoft.ML.Runtime.Data.ColumnType" />
+      </Parameters>
+      <Docs>
+        <param name="other">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsValidDataKind">
+      <MemberSignature Language="C#" Value="public static bool IsValidDataKind (Microsoft.ML.Runtime.Data.DataKind kind);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool IsValidDataKind(valuetype Microsoft.ML.Runtime.Data.DataKind kind) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.KeyType.IsValidDataKind(Microsoft.ML.Runtime.Data.DataKind)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function IsValidDataKind (kind As DataKind) As Boolean" />
+      <MemberSignature Language="F#" Value="static member IsValidDataKind : Microsoft.ML.Runtime.Data.DataKind -&gt; bool" Usage="Microsoft.ML.Runtime.Data.KeyType.IsValidDataKind kind" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="kind" Type="Microsoft.ML.Runtime.Data.DataKind" />
+      </Parameters>
+      <Docs>
+        <param name="kind">To be added.</param>
+        <summary>
+            Returns true iff the given DataKind is valid for a KeyType. The valid ones are
+            U1, U2, U4, and U8, that is, the unsigned integer kinds.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Min">
+      <MemberSignature Language="C#" Value="public ulong Min { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int64 Min" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.KeyType.Min" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Min As ULong" />
+      <MemberSignature Language="F#" Value="member this.Min : uint64" Usage="Microsoft.ML.Runtime.Data.KeyType.Min" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt64</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            This is the Min of the key type for display purposes and conversion to/from text. The values
+            actually stored always start at 1 (for the smallest legal value), with zero being reserved
+            for "not there"/"none". Typical Min values are 0 or 1, but can be any value &gt;= 0.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.KeyType.ToString" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function ToString () As String" />
+      <MemberSignature Language="F#" Value="override this.ToString : unit -&gt; string" Usage="keyType.ToString " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
