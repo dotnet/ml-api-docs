@@ -1,0 +1,955 @@
+﻿<Type Name="HostEnvironmentBase&lt;TEnv&gt;" FullName="Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;TEnv&gt;">
+  <TypeSignature Language="C#" Value="public abstract class HostEnvironmentBase&lt;TEnv&gt; : Microsoft.ML.Runtime.Data.ChannelProviderBase, IDisposable, Microsoft.ML.Runtime.Data.IMessageDispatcher where TEnv : HostEnvironmentBase&lt;TEnv&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit HostEnvironmentBase`1&lt;(class Microsoft.ML.Runtime.Data.HostEnvironmentBase`1&lt;!TEnv&gt;) TEnv&gt; extends Microsoft.ML.Runtime.Data.ChannelProviderBase implements class Microsoft.ML.Runtime.Data.IMessageDispatcher, class Microsoft.ML.Runtime.IChannelProvider, class Microsoft.ML.Runtime.IExceptionContext, class Microsoft.ML.Runtime.IHostEnvironment, class Microsoft.ML.Runtime.IProgressChannelProvider, class System.IDisposable" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1" />
+  <TypeSignature Language="VB.NET" Value="Public MustInherit Class HostEnvironmentBase(Of TEnv)&#xA;Inherits ChannelProviderBase&#xA;Implements IDisposable, IMessageDispatcher" />
+  <TypeSignature Language="F#" Value="type HostEnvironmentBase&lt;'Env (requires 'Env :&gt; HostEnvironmentBase&lt;'Env&gt;)&gt; = class&#xA;    inherit ChannelProviderBase&#xA;    interface IHostEnvironment&#xA;    interface IChannelProvider&#xA;    interface IExceptionContext&#xA;    interface IProgressChannelProvider&#xA;    interface IDisposable&#xA;    interface IMessageDispatcher" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Core</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <TypeParameters>
+    <TypeParameter Name="TEnv">
+      <Constraints>
+        <BaseTypeName>Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;TEnv&gt;</BaseTypeName>
+      </Constraints>
+    </TypeParameter>
+  </TypeParameters>
+  <Base>
+    <BaseTypeName>Microsoft.ML.Runtime.Data.ChannelProviderBase</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.Data.IMessageDispatcher</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.IDisposable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <typeparam name="TEnv">To be added.</typeparam>
+    <summary>
+            A basic host environment suited for many environments.
+            This also supports modifying the concurrency factor, provides the ability to subscribe to pipes via the 
+            AddListener/RemoveListener methods, and exposes the <see cref="T:Microsoft.ML.Runtime.Data.ProgressReporting.ProgressTracker" /> to
+            query progress.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected HostEnvironmentBase (Microsoft.ML.Runtime.IRandom rand, bool verbose, int conc, string shortName = null, string parentFullName = null);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IRandom rand, bool verbose, int32 conc, string shortName, string parentFullName) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.#ctor(Microsoft.ML.Runtime.IRandom,System.Boolean,System.Int32,System.String,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Protected Sub New (rand As IRandom, verbose As Boolean, conc As Integer, Optional shortName As String = null, Optional parentFullName As String = null)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt; : Microsoft.ML.Runtime.IRandom * bool * int * string * string -&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt;" Usage="new Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt; (rand, verbose, conc, shortName, parentFullName)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="rand" Type="Microsoft.ML.Runtime.IRandom" />
+        <Parameter Name="verbose" Type="System.Boolean" />
+        <Parameter Name="conc" Type="System.Int32" />
+        <Parameter Name="shortName" Type="System.String" />
+        <Parameter Name="parentFullName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="rand">To be added.</param>
+        <param name="verbose">To be added.</param>
+        <param name="conc">To be added.</param>
+        <param name="shortName">To be added.</param>
+        <param name="parentFullName">To be added.</param>
+        <summary>
+             The main constructor.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected HostEnvironmentBase (Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;TEnv&gt; source, Microsoft.ML.Runtime.IRandom rand, bool verbose, Nullable&lt;int&gt; conc, string shortName = null, string parentFullName = null);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.Data.HostEnvironmentBase`1&lt;!TEnv&gt; source, class Microsoft.ML.Runtime.IRandom rand, bool verbose, valuetype System.Nullable`1&lt;int32&gt; conc, string shortName, string parentFullName) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.#ctor(Microsoft.ML.Runtime.Data.HostEnvironmentBase{`0},Microsoft.ML.Runtime.IRandom,System.Boolean,System.Nullable{System.Int32},System.String,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Protected Sub New (source As HostEnvironmentBase(Of TEnv), rand As IRandom, verbose As Boolean, conc As Nullable(Of Integer), Optional shortName As String = null, Optional parentFullName As String = null)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt; : Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt; * Microsoft.ML.Runtime.IRandom * bool * Nullable&lt;int&gt; * string * string -&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt;" Usage="new Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt; (source, rand, verbose, conc, shortName, parentFullName)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="source" Type="Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;TEnv&gt;" />
+        <Parameter Name="rand" Type="Microsoft.ML.Runtime.IRandom" />
+        <Parameter Name="verbose" Type="System.Boolean" />
+        <Parameter Name="conc" Type="System.Nullable&lt;System.Int32&gt;" />
+        <Parameter Name="shortName" Type="System.String" />
+        <Parameter Name="parentFullName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="source">To be added.</param>
+        <param name="rand">To be added.</param>
+        <param name="verbose">To be added.</param>
+        <param name="conc">To be added.</param>
+        <param name="shortName">To be added.</param>
+        <param name="parentFullName">To be added.</param>
+        <summary>
+            This constructor is for forking.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddListener&lt;TMessage&gt;">
+      <MemberSignature Language="C#" Value="public void AddListener&lt;TMessage&gt; (Action&lt;Microsoft.ML.Runtime.Data.IMessageSource,TMessage&gt; listenerFunc);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AddListener&lt;TMessage&gt;(class System.Action`2&lt;class Microsoft.ML.Runtime.Data.IMessageSource, !!TMessage&gt; listenerFunc) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.AddListener``1(System.Action{Microsoft.ML.Runtime.Data.IMessageSource,``0})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub AddListener(Of TMessage) (listenerFunc As Action(Of IMessageSource, TMessage))" />
+      <MemberSignature Language="F#" Value="abstract member AddListener : Action&lt;Microsoft.ML.Runtime.Data.IMessageSource, 'Message&gt; -&gt; unit&#xA;override this.AddListener : Action&lt;Microsoft.ML.Runtime.Data.IMessageSource, 'Message&gt; -&gt; unit" Usage="hostEnvironmentBase.AddListener listenerFunc" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IMessageDispatcher.AddListener``1(System.Action{Microsoft.ML.Runtime.Data.IMessageSource,``0})</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TMessage" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="listenerFunc" Type="System.Action&lt;Microsoft.ML.Runtime.Data.IMessageSource,TMessage&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TMessage">To be added.</typeparam>
+        <param name="listenerFunc">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConcurrencyFactor">
+      <MemberSignature Language="C#" Value="public int ConcurrencyFactor { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 ConcurrencyFactor" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.ConcurrencyFactor" />
+      <MemberSignature Language="VB.NET" Value="Public Property ConcurrencyFactor As Integer" />
+      <MemberSignature Language="F#" Value="member this.ConcurrencyFactor : int with get, set" Usage="Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt;.ConcurrencyFactor" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            This host environment supports changing this value dynamically.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ContextDescription">
+      <MemberSignature Language="C#" Value="public override string ContextDescription { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string ContextDescription" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.ContextDescription" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property ContextDescription As String" />
+      <MemberSignature Language="F#" Value="member this.ContextDescription : string" Usage="Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt;.ContextDescription" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Runtime.IExceptionContext.ContextDescription</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateAndRegisterTempFile">
+      <MemberSignature Language="C#" Value="protected Microsoft.ML.Runtime.IFileHandle CreateAndRegisterTempFile (Microsoft.ML.Runtime.IHostEnvironment env, string suffix = null, string prefix = null);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance class Microsoft.ML.Runtime.IFileHandle CreateAndRegisterTempFile(class Microsoft.ML.Runtime.IHostEnvironment env, string suffix, string prefix) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.CreateAndRegisterTempFile(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Protected Function CreateAndRegisterTempFile (env As IHostEnvironment, Optional suffix As String = null, Optional prefix As String = null) As IFileHandle" />
+      <MemberSignature Language="F#" Value="member this.CreateAndRegisterTempFile : Microsoft.ML.Runtime.IHostEnvironment * string * string -&gt; Microsoft.ML.Runtime.IFileHandle" Usage="hostEnvironmentBase.CreateAndRegisterTempFile (env, suffix, prefix)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.IFileHandle</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="suffix" Type="System.String" />
+        <Parameter Name="prefix" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="suffix">To be added.</param>
+        <param name="prefix">To be added.</param>
+        <summary>
+            This calls CreateTempFileCore and handles registering the temp file for cleanup when the environment is disposed.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateCommChannel">
+      <MemberSignature Language="C#" Value="protected abstract Microsoft.ML.Runtime.IChannel CreateCommChannel (Microsoft.ML.Runtime.Data.ChannelProviderBase parent, string name);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Microsoft.ML.Runtime.IChannel CreateCommChannel(class Microsoft.ML.Runtime.Data.ChannelProviderBase parent, string name) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.CreateCommChannel(Microsoft.ML.Runtime.Data.ChannelProviderBase,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Protected MustOverride Function CreateCommChannel (parent As ChannelProviderBase, name As String) As IChannel" />
+      <MemberSignature Language="F#" Value="abstract member CreateCommChannel : Microsoft.ML.Runtime.Data.ChannelProviderBase * string -&gt; Microsoft.ML.Runtime.IChannel" Usage="hostEnvironmentBase.CreateCommChannel (parent, name)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.IChannel</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="parent" Type="Microsoft.ML.Runtime.Data.ChannelProviderBase" />
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="parent">To be added.</param>
+        <param name="name">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateOutputFile">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.IFileHandle CreateOutputFile (string path);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.IFileHandle CreateOutputFile(string path) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.CreateOutputFile(System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Function CreateOutputFile (path As String) As IFileHandle" />
+      <MemberSignature Language="F#" Value="abstract member CreateOutputFile : string -&gt; Microsoft.ML.Runtime.IFileHandle&#xA;override this.CreateOutputFile : string -&gt; Microsoft.ML.Runtime.IFileHandle" Usage="hostEnvironmentBase.CreateOutputFile path" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.IHostEnvironment.CreateOutputFile(System.String)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.IFileHandle</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="path" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="path">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateOutputFileCore">
+      <MemberSignature Language="C#" Value="protected virtual Microsoft.ML.Runtime.IFileHandle CreateOutputFileCore (Microsoft.ML.Runtime.IHostEnvironment env, string path);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Microsoft.ML.Runtime.IFileHandle CreateOutputFileCore(class Microsoft.ML.Runtime.IHostEnvironment env, string path) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.CreateOutputFileCore(Microsoft.ML.Runtime.IHostEnvironment,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overridable Function CreateOutputFileCore (env As IHostEnvironment, path As String) As IFileHandle" />
+      <MemberSignature Language="F#" Value="abstract member CreateOutputFileCore : Microsoft.ML.Runtime.IHostEnvironment * string -&gt; Microsoft.ML.Runtime.IFileHandle&#xA;override this.CreateOutputFileCore : Microsoft.ML.Runtime.IHostEnvironment * string -&gt; Microsoft.ML.Runtime.IFileHandle" Usage="hostEnvironmentBase.CreateOutputFileCore (env, path)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.IFileHandle</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="path" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="path">To be added.</param>
+        <summary>
+            This "creates" the output file handle. The default implementation assumes the file resides in the
+            file system and it does not create the physical file until a write stream is opened on the returned
+            file handle.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreatePipe&lt;TMessage&gt;">
+      <MemberSignature Language="C#" Value="protected abstract Microsoft.ML.Runtime.IPipe&lt;TMessage&gt; CreatePipe&lt;TMessage&gt; (Microsoft.ML.Runtime.Data.ChannelProviderBase parent, string name);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Microsoft.ML.Runtime.IPipe`1&lt;!!TMessage&gt; CreatePipe&lt;TMessage&gt;(class Microsoft.ML.Runtime.Data.ChannelProviderBase parent, string name) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.CreatePipe``1(Microsoft.ML.Runtime.Data.ChannelProviderBase,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Protected MustOverride Function CreatePipe(Of TMessage) (parent As ChannelProviderBase, name As String) As IPipe(Of TMessage)" />
+      <MemberSignature Language="F#" Value="abstract member CreatePipe : Microsoft.ML.Runtime.Data.ChannelProviderBase * string -&gt; Microsoft.ML.Runtime.IPipe&lt;'Message&gt;" Usage="hostEnvironmentBase.CreatePipe (parent, name)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.IPipe&lt;TMessage&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TMessage" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="parent" Type="Microsoft.ML.Runtime.Data.ChannelProviderBase" />
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TMessage">To be added.</typeparam>
+        <param name="parent">To be added.</param>
+        <param name="name">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateTempFile">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.IFileHandle CreateTempFile (string suffix = null, string prefix = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.IFileHandle CreateTempFile(string suffix, string prefix) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.CreateTempFile(System.String,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Function CreateTempFile (Optional suffix As String = null, Optional prefix As String = null) As IFileHandle" />
+      <MemberSignature Language="F#" Value="abstract member CreateTempFile : string * string -&gt; Microsoft.ML.Runtime.IFileHandle&#xA;override this.CreateTempFile : string * string -&gt; Microsoft.ML.Runtime.IFileHandle" Usage="hostEnvironmentBase.CreateTempFile (suffix, prefix)" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.IHostEnvironment.CreateTempFile(System.String,System.String)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.IFileHandle</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="suffix" Type="System.String" />
+        <Parameter Name="prefix" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="suffix">To be added.</param>
+        <param name="prefix">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateTempFileCore">
+      <MemberSignature Language="C#" Value="protected virtual Microsoft.ML.Runtime.IFileHandle CreateTempFileCore (Microsoft.ML.Runtime.IHostEnvironment env, string suffix = null, string prefix = null);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Microsoft.ML.Runtime.IFileHandle CreateTempFileCore(class Microsoft.ML.Runtime.IHostEnvironment env, string suffix, string prefix) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.CreateTempFileCore(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overridable Function CreateTempFileCore (env As IHostEnvironment, Optional suffix As String = null, Optional prefix As String = null) As IFileHandle" />
+      <MemberSignature Language="F#" Value="abstract member CreateTempFileCore : Microsoft.ML.Runtime.IHostEnvironment * string * string -&gt; Microsoft.ML.Runtime.IFileHandle&#xA;override this.CreateTempFileCore : Microsoft.ML.Runtime.IHostEnvironment * string * string -&gt; Microsoft.ML.Runtime.IFileHandle" Usage="hostEnvironmentBase.CreateTempFileCore (env, suffix, prefix)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.IFileHandle</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="suffix" Type="System.String" />
+        <Parameter Name="prefix" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="suffix">To be added.</param>
+        <param name="prefix">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Depth">
+      <MemberSignature Language="C#" Value="public override int Depth { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Depth" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.Depth" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property Depth As Integer" />
+      <MemberSignature Language="F#" Value="member this.Depth : int" Usage="Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt;.Depth" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dispose">
+      <MemberSignature Language="C#" Value="public virtual void Dispose ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Dispose() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.Dispose" />
+      <MemberSignature Language="VB.NET" Value="Public Overridable Sub Dispose ()" />
+      <MemberSignature Language="F#" Value="abstract member Dispose : unit -&gt; unit&#xA;override this.Dispose : unit -&gt; unit" Usage="hostEnvironmentBase.Dispose " />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:System.IDisposable.Dispose</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            Dispose the environment. This ensures that all temp file handles are properly disposed,
+            including deleting the physical files.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EnsureDispatcher&lt;TMessage&gt;">
+      <MemberSignature Language="C#" Value="protected Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;TEnv&gt;.Dispatcher&lt;TMessage&gt; EnsureDispatcher&lt;TMessage&gt; ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance class Microsoft.ML.Runtime.Data.HostEnvironmentBase`1/Dispatcher`1&lt;!TEnv, !!TMessage&gt; EnsureDispatcher&lt;TMessage&gt;() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.EnsureDispatcher``1" />
+      <MemberSignature Language="VB.NET" Value="Protected Function EnsureDispatcher(Of TMessage) () As HostEnvironmentBase(Of TEnv).Dispatcher(Of TMessage)" />
+      <MemberSignature Language="F#" Value="member this.EnsureDispatcher : unit -&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt;.Dispatcher&lt;'Message (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt;" Usage="hostEnvironmentBase.EnsureDispatcher " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;TEnv&gt;+Dispatcher&lt;TMessage&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TMessage" />
+      </TypeParameters>
+      <Parameters />
+      <Docs>
+        <typeparam name="TMessage">To be added.</typeparam>
+        <summary>
+            This method is called when a channel is created and when a listener is registered.
+            This method is not invoked on every message.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetDispatchDelegate&lt;TMessage&gt;">
+      <MemberSignature Language="C#" Value="protected Action&lt;Microsoft.ML.Runtime.Data.IMessageSource,TMessage&gt; GetDispatchDelegate&lt;TMessage&gt; ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance class System.Action`2&lt;class Microsoft.ML.Runtime.Data.IMessageSource, !!TMessage&gt; GetDispatchDelegate&lt;TMessage&gt;() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.GetDispatchDelegate``1" />
+      <MemberSignature Language="VB.NET" Value="Protected Function GetDispatchDelegate(Of TMessage) () As Action(Of IMessageSource, TMessage)" />
+      <MemberSignature Language="F#" Value="member this.GetDispatchDelegate : unit -&gt; Action&lt;Microsoft.ML.Runtime.Data.IMessageSource, 'Message&gt;" Usage="hostEnvironmentBase.GetDispatchDelegate " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Action&lt;Microsoft.ML.Runtime.Data.IMessageSource,TMessage&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TMessage" />
+      </TypeParameters>
+      <Parameters />
+      <Docs>
+        <typeparam name="TMessage">To be added.</typeparam>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="HasBadFileCharacters">
+      <MemberSignature Language="C#" Value="protected virtual bool HasBadFileCharacters (string str = null);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool HasBadFileCharacters(string str) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.HasBadFileCharacters(System.String)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overridable Function HasBadFileCharacters (Optional str As String = null) As Boolean" />
+      <MemberSignature Language="F#" Value="abstract member HasBadFileCharacters : string -&gt; bool&#xA;override this.HasBadFileCharacters : string -&gt; bool" Usage="hostEnvironmentBase.HasBadFileCharacters str" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="str" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="str">To be added.</param>
+        <summary>
+            Returns true if the given string is non-null and contains invalid file name characters.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsCancelled">
+      <MemberSignature Language="C#" Value="public bool IsCancelled { get; protected set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsCancelled" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.IsCancelled" />
+      <MemberSignature Language="VB.NET" Value="Public Property IsCancelled As Boolean" />
+      <MemberSignature Language="F#" Value="member this.IsCancelled : bool with get, set" Usage="Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt;.IsCancelled" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsDisposed">
+      <MemberSignature Language="C#" Value="protected bool IsDisposed { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsDisposed" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.IsDisposed" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly Property IsDisposed As Boolean" />
+      <MemberSignature Language="F#" Value="member this.IsDisposed : bool" Usage="Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt;.IsDisposed" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ListenerDict">
+      <MemberSignature Language="C#" Value="protected readonly System.Collections.Concurrent.ConcurrentDictionary&lt;Type,Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;TEnv&gt;.Dispatcher&gt; ListenerDict;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly class System.Collections.Concurrent.ConcurrentDictionary`2&lt;class System.Type, class Microsoft.ML.Runtime.Data.HostEnvironmentBase`1/Dispatcher&lt;!TEnv&gt;&gt; ListenerDict" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.ListenerDict" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly ListenerDict As ConcurrentDictionary(Of Type, HostEnvironmentBase(Of TEnv).Dispatcher) " />
+      <MemberSignature Language="F#" Value="val mutable ListenerDict : System.Collections.Concurrent.ConcurrentDictionary&lt;Type, Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;.Dispatcher&gt;" Usage="Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt;.ListenerDict" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Concurrent.ConcurrentDictionary&lt;System.Type,Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;TEnv&gt;+Dispatcher&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Master">
+      <MemberSignature Language="C#" Value="protected readonly Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;TEnv&gt; Master;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly class Microsoft.ML.Runtime.Data.HostEnvironmentBase`1&lt;!TEnv&gt; Master" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.Master" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly Master As HostEnvironmentBase(Of TEnv) " />
+      <MemberSignature Language="F#" Value="val mutable Master : Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt;" Usage="Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt;.Master" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;TEnv&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OpenInputFile">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.IFileHandle OpenInputFile (string path);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.IFileHandle OpenInputFile(string path) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.OpenInputFile(System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Function OpenInputFile (path As String) As IFileHandle" />
+      <MemberSignature Language="F#" Value="abstract member OpenInputFile : string -&gt; Microsoft.ML.Runtime.IFileHandle&#xA;override this.OpenInputFile : string -&gt; Microsoft.ML.Runtime.IFileHandle" Usage="hostEnvironmentBase.OpenInputFile path" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.IHostEnvironment.OpenInputFile(System.String)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.IFileHandle</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="path" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="path">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OpenInputFileCore">
+      <MemberSignature Language="C#" Value="protected virtual Microsoft.ML.Runtime.IFileHandle OpenInputFileCore (Microsoft.ML.Runtime.IHostEnvironment env, string path);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Microsoft.ML.Runtime.IFileHandle OpenInputFileCore(class Microsoft.ML.Runtime.IHostEnvironment env, string path) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.OpenInputFileCore(Microsoft.ML.Runtime.IHostEnvironment,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overridable Function OpenInputFileCore (env As IHostEnvironment, path As String) As IFileHandle" />
+      <MemberSignature Language="F#" Value="abstract member OpenInputFileCore : Microsoft.ML.Runtime.IHostEnvironment * string -&gt; Microsoft.ML.Runtime.IFileHandle&#xA;override this.OpenInputFileCore : Microsoft.ML.Runtime.IHostEnvironment * string -&gt; Microsoft.ML.Runtime.IFileHandle" Usage="hostEnvironmentBase.OpenInputFileCore (env, path)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.IFileHandle</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="path" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="path">To be added.</param>
+        <summary>
+            This "opens" the input file handle. The default implementation assumes the file resides in the
+            file system and it does not access the physical file until a read stream is opened on the returned
+            file handle.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PrintMessageNormalized">
+      <MemberSignature Language="C#" Value="public virtual void PrintMessageNormalized (System.IO.TextWriter writer, string message, bool removeLastNewLine, string prefix = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void PrintMessageNormalized(class System.IO.TextWriter writer, string message, bool removeLastNewLine, string prefix) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.PrintMessageNormalized(System.IO.TextWriter,System.String,System.Boolean,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Overridable Sub PrintMessageNormalized (writer As TextWriter, message As String, removeLastNewLine As Boolean, Optional prefix As String = null)" />
+      <MemberSignature Language="F#" Value="abstract member PrintMessageNormalized : System.IO.TextWriter * string * bool * string -&gt; unit&#xA;override this.PrintMessageNormalized : System.IO.TextWriter * string * bool * string -&gt; unit" Usage="hostEnvironmentBase.PrintMessageNormalized (writer, message, removeLastNewLine, prefix)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="writer" Type="System.IO.TextWriter" />
+        <Parameter Name="message" Type="System.String" />
+        <Parameter Name="removeLastNewLine" Type="System.Boolean" />
+        <Parameter Name="prefix" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="writer">The text writer to write to.</param>
+        <param name="message">The message, which if it contains newlines will be normalized.</param>
+        <param name="removeLastNewLine">If false, then two newlines will be printed at the end,
+            making messages be bracketed by blank lines. If true then only the single newline at the
+            end of a message is printed.</param>
+        <param name="prefix">A prefix that will be written to every line, except the first line.
+            If <paramref name="message" /> contains no newlines then this prefix will not be
+            written at all. This prefix is not written to the newline written if
+            <paramref name="removeLastNewLine" /> is false.</param>
+        <summary>
+            Line endings in message may not be normalized, this method provides normalized printing.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Process&lt;TException&gt;">
+      <MemberSignature Language="C#" Value="public override TException Process&lt;TException&gt; (TException ex) where TException : Exception;" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance !!TException Process&lt;(class System.Exception) TException&gt;(!!TException ex) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.Process``1(``0)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function Process(Of TException As Exception) (ex As TException) As TException" />
+      <MemberSignature Language="F#" Value="override this.Process : 'Exception -&gt; 'Exception (requires 'Exception :&gt; Exception)" Usage="hostEnvironmentBase.Process ex" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.IExceptionContext.Process``1(``0)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>TException</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TException">
+          <Constraints>
+            <BaseTypeName>System.Exception</BaseTypeName>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="ex" Type="TException" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TException">To be added.</typeparam>
+        <param name="ex">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ProgressTracker">
+      <MemberSignature Language="C#" Value="protected readonly Microsoft.ML.Runtime.Data.ProgressReporting.ProgressTracker ProgressTracker;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly class Microsoft.ML.Runtime.Data.ProgressReporting/ProgressTracker ProgressTracker" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.ProgressTracker" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly ProgressTracker As ProgressReporting.ProgressTracker " />
+      <MemberSignature Language="F#" Value="val mutable ProgressTracker : Microsoft.ML.Runtime.Data.ProgressReporting.ProgressTracker" Usage="Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt;.ProgressTracker" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ProgressReporting+ProgressTracker</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Register">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.IHost Register (string name, Nullable&lt;int&gt; seed = null, Nullable&lt;bool&gt; verbose = null, Nullable&lt;int&gt; conc = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.IHost Register(string name, valuetype System.Nullable`1&lt;int32&gt; seed, valuetype System.Nullable`1&lt;bool&gt; verbose, valuetype System.Nullable`1&lt;int32&gt; conc) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.Register(System.String,System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Int32})" />
+      <MemberSignature Language="VB.NET" Value="Public Function Register (name As String, Optional seed As Nullable(Of Integer) = null, Optional verbose As Nullable(Of Boolean) = null, Optional conc As Nullable(Of Integer) = null) As IHost" />
+      <MemberSignature Language="F#" Value="abstract member Register : string * Nullable&lt;int&gt; * Nullable&lt;bool&gt; * Nullable&lt;int&gt; -&gt; Microsoft.ML.Runtime.IHost&#xA;override this.Register : string * Nullable&lt;int&gt; * Nullable&lt;bool&gt; * Nullable&lt;int&gt; -&gt; Microsoft.ML.Runtime.IHost" Usage="hostEnvironmentBase.Register (name, seed, verbose, conc)" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.IHostEnvironment.Register(System.String,System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Int32})</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.IHost</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="seed" Type="System.Nullable&lt;System.Int32&gt;" />
+        <Parameter Name="verbose" Type="System.Nullable&lt;System.Boolean&gt;" />
+        <Parameter Name="conc" Type="System.Nullable&lt;System.Int32&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="name">To be added.</param>
+        <param name="seed">To be added.</param>
+        <param name="verbose">To be added.</param>
+        <param name="conc">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegisterCore">
+      <MemberSignature Language="C#" Value="protected abstract Microsoft.ML.Runtime.IHost RegisterCore (Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;TEnv&gt; source, string shortName, string parentFullName, Microsoft.ML.Runtime.IRandom rand, bool verbose, Nullable&lt;int&gt; conc);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Microsoft.ML.Runtime.IHost RegisterCore(class Microsoft.ML.Runtime.Data.HostEnvironmentBase`1&lt;!TEnv&gt; source, string shortName, string parentFullName, class Microsoft.ML.Runtime.IRandom rand, bool verbose, valuetype System.Nullable`1&lt;int32&gt; conc) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.RegisterCore(Microsoft.ML.Runtime.Data.HostEnvironmentBase{`0},System.String,System.String,Microsoft.ML.Runtime.IRandom,System.Boolean,System.Nullable{System.Int32})" />
+      <MemberSignature Language="VB.NET" Value="Protected MustOverride Function RegisterCore (source As HostEnvironmentBase(Of TEnv), shortName As String, parentFullName As String, rand As IRandom, verbose As Boolean, conc As Nullable(Of Integer)) As IHost" />
+      <MemberSignature Language="F#" Value="abstract member RegisterCore : Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt; * string * string * Microsoft.ML.Runtime.IRandom * bool * Nullable&lt;int&gt; -&gt; Microsoft.ML.Runtime.IHost" Usage="hostEnvironmentBase.RegisterCore (source, shortName, parentFullName, rand, verbose, conc)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.IHost</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="source" Type="Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;TEnv&gt;" />
+        <Parameter Name="shortName" Type="System.String" />
+        <Parameter Name="parentFullName" Type="System.String" />
+        <Parameter Name="rand" Type="Microsoft.ML.Runtime.IRandom" />
+        <Parameter Name="verbose" Type="System.Boolean" />
+        <Parameter Name="conc" Type="System.Nullable&lt;System.Int32&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="source">To be added.</param>
+        <param name="shortName">To be added.</param>
+        <param name="parentFullName">To be added.</param>
+        <param name="rand">To be added.</param>
+        <param name="verbose">To be added.</param>
+        <param name="conc">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveListener&lt;TMessage&gt;">
+      <MemberSignature Language="C#" Value="public void RemoveListener&lt;TMessage&gt; (Action&lt;Microsoft.ML.Runtime.Data.IMessageSource,TMessage&gt; listenerFunc);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RemoveListener&lt;TMessage&gt;(class System.Action`2&lt;class Microsoft.ML.Runtime.Data.IMessageSource, !!TMessage&gt; listenerFunc) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.RemoveListener``1(System.Action{Microsoft.ML.Runtime.Data.IMessageSource,``0})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub RemoveListener(Of TMessage) (listenerFunc As Action(Of IMessageSource, TMessage))" />
+      <MemberSignature Language="F#" Value="abstract member RemoveListener : Action&lt;Microsoft.ML.Runtime.Data.IMessageSource, 'Message&gt; -&gt; unit&#xA;override this.RemoveListener : Action&lt;Microsoft.ML.Runtime.Data.IMessageSource, 'Message&gt; -&gt; unit" Usage="hostEnvironmentBase.RemoveListener listenerFunc" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IMessageDispatcher.RemoveListener``1(System.Action{Microsoft.ML.Runtime.Data.IMessageSource,``0})</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TMessage" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="listenerFunc" Type="System.Action&lt;Microsoft.ML.Runtime.Data.IMessageSource,TMessage&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TMessage">To be added.</typeparam>
+        <param name="listenerFunc">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Root">
+      <MemberSignature Language="C#" Value="protected readonly TEnv Root;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly !TEnv Root" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.Root" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly Root As TEnv " />
+      <MemberSignature Language="F#" Value="val mutable Root : 'Env" Usage="Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt;.Root" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>TEnv</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Start">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.IChannel Start (string name);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.IChannel Start(string name) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.Start(System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Start (name As String) As IChannel" />
+      <MemberSignature Language="F#" Value="abstract member Start : string -&gt; Microsoft.ML.Runtime.IChannel&#xA;override this.Start : string -&gt; Microsoft.ML.Runtime.IChannel" Usage="hostEnvironmentBase.Start name" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.IChannelProvider.Start(System.String)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.IChannel</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="name">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StartPipe&lt;TMessage&gt;">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.IPipe&lt;TMessage&gt; StartPipe&lt;TMessage&gt; (string name);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.IPipe`1&lt;!!TMessage&gt; StartPipe&lt;TMessage&gt;(string name) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.StartPipe``1(System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Function StartPipe(Of TMessage) (name As String) As IPipe(Of TMessage)" />
+      <MemberSignature Language="F#" Value="abstract member StartPipe : string -&gt; Microsoft.ML.Runtime.IPipe&lt;'Message&gt;&#xA;override this.StartPipe : string -&gt; Microsoft.ML.Runtime.IPipe&lt;'Message&gt;" Usage="hostEnvironmentBase.StartPipe name" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.IChannelProvider.StartPipe``1(System.String)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.IPipe&lt;TMessage&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TMessage" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TMessage">To be added.</typeparam>
+        <param name="name">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StartProgressChannel">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.IProgressChannel StartProgressChannel (string name);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.IProgressChannel StartProgressChannel(string name) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.StartProgressChannel(System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Function StartProgressChannel (name As String) As IProgressChannel" />
+      <MemberSignature Language="F#" Value="abstract member StartProgressChannel : string -&gt; Microsoft.ML.Runtime.IProgressChannel&#xA;override this.StartProgressChannel : string -&gt; Microsoft.ML.Runtime.IProgressChannel" Usage="hostEnvironmentBase.StartProgressChannel name" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.IProgressChannelProvider.StartProgressChannel(System.String)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.IProgressChannel</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="name">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StartProgressChannelCore">
+      <MemberSignature Language="C#" Value="protected virtual Microsoft.ML.Runtime.IProgressChannel StartProgressChannelCore (Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;TEnv&gt;.HostBase host, string name);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Microsoft.ML.Runtime.IProgressChannel StartProgressChannelCore(class Microsoft.ML.Runtime.Data.HostEnvironmentBase`1/HostBase&lt;!TEnv&gt; host, string name) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.StartProgressChannelCore(Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.HostBase{`0},System.String)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overridable Function StartProgressChannelCore (host As HostEnvironmentBase(Of TEnv).HostBase, name As String) As IProgressChannel" />
+      <MemberSignature Language="F#" Value="abstract member StartProgressChannelCore : Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt;.HostBase * string -&gt; Microsoft.ML.Runtime.IProgressChannel&#xA;override this.StartProgressChannelCore : Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt;.HostBase * string -&gt; Microsoft.ML.Runtime.IProgressChannel" Usage="hostEnvironmentBase.StartProgressChannelCore (host, name)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.IProgressChannel</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="host" Type="Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;TEnv&gt;+HostBase" />
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="host">To be added.</param>
+        <param name="name">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

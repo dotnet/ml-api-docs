@@ -1,0 +1,114 @@
+﻿<Type Name="MinWaiter" FullName="Microsoft.ML.Runtime.Internal.Utilities.MinWaiter">
+  <TypeSignature Language="C#" Value="public sealed class MinWaiter" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit MinWaiter extends System.Object" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Internal.Utilities.MinWaiter" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class MinWaiter" />
+  <TypeSignature Language="F#" Value="type MinWaiter = class" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Core</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+            A synchronization primitive meant to address situations where you have a set of
+            entities of known count, where you want to iteratively provide critical sections
+            for each depending on which comes first, but you do not necessarily know what
+            constitutes "first" until all such entities tell you where they stand in line.
+            
+            The anticipated usage is that whatever entity is using the <see cref="T:Microsoft.ML.Runtime.Internal.Utilities.MinWaiter" />
+            to synchronize itself, will register itself using <see cref="M:Microsoft.ML.Runtime.Internal.Utilities.MinWaiter.Register(System.Int64)" />
+            so as to unblock any "lower" waiters as soon as it knows what value it needs to
+            wait on, perform whatever local work it can, and when it needs to, wait on the
+            event it got when it registered itself. It may then repeat the cycle by
+            registering itself for a new event (or, finally, retiring itself through
+            <see cref="M:Microsoft.ML.Runtime.Internal.Utilities.MinWaiter.Retire" />).
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public MinWaiter (int waiters);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32 waiters) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.MinWaiter.#ctor(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (waiters As Integer)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Internal.Utilities.MinWaiter : int -&gt; Microsoft.ML.Runtime.Internal.Utilities.MinWaiter" Usage="new Microsoft.ML.Runtime.Internal.Utilities.MinWaiter waiters" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="waiters" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="waiters">The initial number of waiters</param>
+        <summary>
+            Creates a minimum waiter.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Register">
+      <MemberSignature Language="C#" Value="public System.Threading.ManualResetEventSlim Register (long position);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Threading.ManualResetEventSlim Register(int64 position) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.MinWaiter.Register(System.Int64)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Register (position As Long) As ManualResetEventSlim" />
+      <MemberSignature Language="F#" Value="member this.Register : int64 -&gt; System.Threading.ManualResetEventSlim" Usage="minWaiter.Register position" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.ManualResetEventSlim</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="position" Type="System.Int64" />
+      </Parameters>
+      <Docs>
+        <param name="position">To be added.</param>
+        <summary>
+            Indicates to the waiter that we want to, at some future point, wait at a given
+            position. This object will return a reset event that can be waited on, at the
+            point when we actually want to wait. This method itself has the potential to
+            signal other events, if by registering ourselves the waiter becomes aware of
+            the maximum number of waiters, allowing that waiter to enter its critical state.
+            
+            If multiple events are associated with the minimum value, then only one will
+            be signaled, and the rest will remain unsignaled. Which is chosen is undefined.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Retire">
+      <MemberSignature Language="C#" Value="public int Retire ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 Retire() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.MinWaiter.Retire" />
+      <MemberSignature Language="VB.NET" Value="Public Function Retire () As Integer" />
+      <MemberSignature Language="F#" Value="member this.Retire : unit -&gt; int" Usage="minWaiter.Retire " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            Retires one of the waiters, and return the current maximum number of waiters.
+            If it so happens that by retiring this waiter the number of waiters reaches the
+            maximum, the appropriate waiter will be signaled as described in <see cref="M:Microsoft.ML.Runtime.Internal.Utilities.MinWaiter.Register(System.Int64)" />.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
