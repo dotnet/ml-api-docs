@@ -1,0 +1,269 @@
+﻿<Type Name="MetadataDispatcherBase" FullName="Microsoft.ML.Runtime.Data.MetadataDispatcherBase">
+  <TypeSignature Language="C#" Value="public abstract class MetadataDispatcherBase" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit MetadataDispatcherBase extends System.Object" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.MetadataDispatcherBase" />
+  <TypeSignature Language="VB.NET" Value="Public MustInherit Class MetadataDispatcherBase" />
+  <TypeSignature Language="F#" Value="type MetadataDispatcherBase = class" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Data</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+            Base class for handling the schema metadata API.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected MetadataDispatcherBase (int colCount);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(int32 colCount) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MetadataDispatcherBase.#ctor(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected Sub New (colCount As Integer)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.MetadataDispatcherBase : int -&gt; Microsoft.ML.Runtime.Data.MetadataDispatcherBase" Usage="new Microsoft.ML.Runtime.Data.MetadataDispatcherBase colCount" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="colCount" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="colCount">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ColCount">
+      <MemberSignature Language="C#" Value="protected int ColCount { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 ColCount" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.MetadataDispatcherBase.ColCount" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly Property ColCount As Integer" />
+      <MemberSignature Language="F#" Value="member this.ColCount : int" Usage="Microsoft.ML.Runtime.Data.MetadataDispatcherBase.ColCount" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The number of columns.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateInfo">
+      <MemberSignature Language="C#" Value="protected Microsoft.ML.Runtime.Data.MetadataDispatcherBase.ColInfo CreateInfo (Microsoft.ML.Runtime.Data.ISchema schemaSrc = null, int indexSrc = -1, Func&lt;string,int,bool&gt; filterSrc = null);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance class Microsoft.ML.Runtime.Data.MetadataDispatcherBase/ColInfo CreateInfo(class Microsoft.ML.Runtime.Data.ISchema schemaSrc, int32 indexSrc, class System.Func`3&lt;string, int32, bool&gt; filterSrc) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MetadataDispatcherBase.CreateInfo(Microsoft.ML.Runtime.Data.ISchema,System.Int32,System.Func{System.String,System.Int32,System.Boolean})" />
+      <MemberSignature Language="VB.NET" Value="Protected Function CreateInfo (Optional schemaSrc As ISchema = null, Optional indexSrc As Integer = -1, Optional filterSrc As Func(Of String, Integer, Boolean) = null) As MetadataDispatcherBase.ColInfo" />
+      <MemberSignature Language="F#" Value="member this.CreateInfo : Microsoft.ML.Runtime.Data.ISchema * int * Func&lt;string, int, bool&gt; -&gt; Microsoft.ML.Runtime.Data.MetadataDispatcherBase.ColInfo" Usage="metadataDispatcherBase.CreateInfo (schemaSrc, indexSrc, filterSrc)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.MetadataDispatcherBase+ColInfo</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="schemaSrc" Type="Microsoft.ML.Runtime.Data.ISchema" />
+        <Parameter Name="indexSrc" Type="System.Int32" />
+        <Parameter Name="filterSrc" Type="System.Func&lt;System.String,System.Int32,System.Boolean&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="schemaSrc">To be added.</param>
+        <param name="indexSrc">To be added.</param>
+        <param name="filterSrc">To be added.</param>
+        <summary>
+            Create a ColInfo with the indicated information and no GetterInfos. This doesn't
+            register a column, only creates a ColInfo. Note that multiple columns can share
+            the same ColInfo, if desired. Simply call RegisterColumn multiple times, passing
+            the same ColInfo but different index values. This can only be called before Seal is called.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetColInfoOrNull">
+      <MemberSignature Language="C#" Value="protected Microsoft.ML.Runtime.Data.MetadataDispatcherBase.ColInfo GetColInfoOrNull (int index);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance class Microsoft.ML.Runtime.Data.MetadataDispatcherBase/ColInfo GetColInfoOrNull(int32 index) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MetadataDispatcherBase.GetColInfoOrNull(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected Function GetColInfoOrNull (index As Integer) As MetadataDispatcherBase.ColInfo" />
+      <MemberSignature Language="F#" Value="member this.GetColInfoOrNull : int -&gt; Microsoft.ML.Runtime.Data.MetadataDispatcherBase.ColInfo" Usage="metadataDispatcherBase.GetColInfoOrNull index" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.MetadataDispatcherBase+ColInfo</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="index" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="index">To be added.</param>
+        <summary>
+            Returns the ColInfo registered for the given column index, if there is one. This may be called
+            before or after Seal is called.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetMetadata&lt;TValue&gt;">
+      <MemberSignature Language="C#" Value="public void GetMetadata&lt;TValue&gt; (Microsoft.ML.Runtime.IExceptionContext ectx, string kind, int index, ref TValue value);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetMetadata&lt;TValue&gt;(class Microsoft.ML.Runtime.IExceptionContext ectx, string kind, int32 index, !!TValue&amp; value) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MetadataDispatcherBase.GetMetadata``1(Microsoft.ML.Runtime.IExceptionContext,System.String,System.Int32,``0@)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub GetMetadata(Of TValue) (ectx As IExceptionContext, kind As String, index As Integer, ByRef value As TValue)" />
+      <MemberSignature Language="F#" Value="member this.GetMetadata : Microsoft.ML.Runtime.IExceptionContext * string * int *  -&gt; unit" Usage="metadataDispatcherBase.GetMetadata (ectx, kind, index, value)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TValue" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="ectx" Type="Microsoft.ML.Runtime.IExceptionContext" />
+        <Parameter Name="kind" Type="System.String" />
+        <Parameter Name="index" Type="System.Int32" />
+        <Parameter Name="value" Type="TValue&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TValue">To be added.</typeparam>
+        <param name="ectx">To be added.</param>
+        <param name="kind">To be added.</param>
+        <param name="index">To be added.</param>
+        <param name="value">To be added.</param>
+        <summary>
+            Gets the metadata for the given metadata kind and column index. Throws if there isn't any.
+            This can only be called after Seal is called.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetMetadataTypeOrNull">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.ColumnType GetMetadataTypeOrNull (string kind, int index);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Runtime.Data.ColumnType GetMetadataTypeOrNull(string kind, int32 index) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MetadataDispatcherBase.GetMetadataTypeOrNull(System.String,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetMetadataTypeOrNull (kind As String, index As Integer) As ColumnType" />
+      <MemberSignature Language="F#" Value="member this.GetMetadataTypeOrNull : string * int -&gt; Microsoft.ML.Runtime.Data.ColumnType" Usage="metadataDispatcherBase.GetMetadataTypeOrNull (kind, index)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ColumnType</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="kind" Type="System.String" />
+        <Parameter Name="index" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="kind">To be added.</param>
+        <param name="index">To be added.</param>
+        <summary>
+            Gets the metadata type for the given metadata kind and column index, if there is one.
+            This can only be called after Seal is called.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetMetadataTypes">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.IEnumerable&lt;System.Collections.Generic.KeyValuePair&lt;string,Microsoft.ML.Runtime.Data.ColumnType&gt;&gt; GetMetadataTypes (int index);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.IEnumerable`1&lt;valuetype System.Collections.Generic.KeyValuePair`2&lt;string, class Microsoft.ML.Runtime.Data.ColumnType&gt;&gt; GetMetadataTypes(int32 index) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MetadataDispatcherBase.GetMetadataTypes(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetMetadataTypes (index As Integer) As IEnumerable(Of KeyValuePair(Of String, ColumnType))" />
+      <MemberSignature Language="F#" Value="member this.GetMetadataTypes : int -&gt; seq&lt;System.Collections.Generic.KeyValuePair&lt;string, Microsoft.ML.Runtime.Data.ColumnType&gt;&gt;" Usage="metadataDispatcherBase.GetMetadataTypes index" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;System.Collections.Generic.KeyValuePair&lt;System.String,Microsoft.ML.Runtime.Data.ColumnType&gt;&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="index" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="index">To be added.</param>
+        <summary>
+            Gets the metadata kinds and types for the given column index.
+            This can only be called after Seal is called.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegisterColumn">
+      <MemberSignature Language="C#" Value="protected void RegisterColumn (int index, Microsoft.ML.Runtime.Data.MetadataDispatcherBase.ColInfo info);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void RegisterColumn(int32 index, class Microsoft.ML.Runtime.Data.MetadataDispatcherBase/ColInfo info) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MetadataDispatcherBase.RegisterColumn(System.Int32,Microsoft.ML.Runtime.Data.MetadataDispatcherBase.ColInfo)" />
+      <MemberSignature Language="VB.NET" Value="Protected Sub RegisterColumn (index As Integer, info As MetadataDispatcherBase.ColInfo)" />
+      <MemberSignature Language="F#" Value="member this.RegisterColumn : int * Microsoft.ML.Runtime.Data.MetadataDispatcherBase.ColInfo -&gt; unit" Usage="metadataDispatcherBase.RegisterColumn (index, info)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="index" Type="System.Int32" />
+        <Parameter Name="info" Type="Microsoft.ML.Runtime.Data.MetadataDispatcherBase+ColInfo" />
+      </Parameters>
+      <Docs>
+        <param name="index">To be added.</param>
+        <param name="info">To be added.</param>
+        <summary>
+            Register the given ColInfo as the metadata handling information for the given
+            column index. Throws if the given column index already has a ColInfo registered for it.
+            This can only be called before Seal is called.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Seal">
+      <MemberSignature Language="C#" Value="protected void Seal ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void Seal() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MetadataDispatcherBase.Seal" />
+      <MemberSignature Language="VB.NET" Value="Protected Sub Seal ()" />
+      <MemberSignature Language="F#" Value="member this.Seal : unit -&gt; unit" Usage="metadataDispatcherBase.Seal " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            Seals this dispatcher from further column registrations. This must be called before any
+            metadata methods are called, otherwise an exception is thrown.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
