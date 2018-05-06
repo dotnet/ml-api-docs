@@ -1,0 +1,153 @@
+﻿<Type Name="IReservoirSampler&lt;T&gt;" FullName="Microsoft.ML.Runtime.Internal.Utilities.IReservoirSampler&lt;T&gt;">
+  <TypeSignature Language="C#" Value="public interface IReservoirSampler&lt;T&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IReservoirSampler`1&lt;T&gt;" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Internal.Utilities.IReservoirSampler`1" />
+  <TypeSignature Language="VB.NET" Value="Public Interface IReservoirSampler(Of T)" />
+  <TypeSignature Language="F#" Value="type IReservoirSampler&lt;'T&gt; = interface" />
+  <TypeSignature Language="C++ CLI" Value="generic &lt;typename T&gt;&#xA;public interface class IReservoirSampler" />
+  <TypeSignature Language="C++ CX" Value="public interface class IReservoirSampler" />
+  <TypeSignature Language="C++ WINRT" Value="template &lt;typename T&gt;&#xA;__interface IReservoirSampler" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Core</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <TypeParameters>
+    <TypeParameter Name="T" />
+  </TypeParameters>
+  <Interfaces />
+  <Docs>
+    <typeparam name="T">To be added.</typeparam>
+    <summary>
+            This is an interface for creating samples of a requested size from a stream of data of type <typeparamref name="T" />. 
+            The sample is created in one pass by calling <see cref="M:Microsoft.ML.Runtime.Internal.Utilities.IReservoirSampler`1.Sample" /> for every data point in the stream. Implementations should have 
+            a delegate for getting the next data point, which is invoked if the current data point should go into the reservoir.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="GetSample">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.IEnumerable&lt;T&gt; GetSample ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Collections.Generic.IEnumerable`1&lt;!T&gt; GetSample() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.IReservoirSampler`1.GetSample" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetSample () As IEnumerable(Of T)" />
+      <MemberSignature Language="F#" Value="abstract member GetSample : unit -&gt; seq&lt;'T&gt;" Usage="iReservoirSampler.GetSample " />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; System::Collections::Generic::IEnumerable&lt;T&gt; ^ GetSample();" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            Return the elements in the sample.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Lock">
+      <MemberSignature Language="C#" Value="public void Lock ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Lock() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.IReservoirSampler`1.Lock" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Lock ()" />
+      <MemberSignature Language="F#" Value="abstract member Lock : unit -&gt; unit" Usage="iReservoirSampler.Lock " />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; void Lock();" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA; void Lock();" />
+      <MemberSignature Language="C++ WINRT" Value="void Lock();" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            This must be called before any calls to <see cref="M:Microsoft.ML.Runtime.Internal.Utilities.IReservoirSampler`1.GetSample" />, and no subsequent calls to <see cref="M:Microsoft.ML.Runtime.Internal.Utilities.IReservoirSampler`1.Sample" /> can
+            be made after that.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NumSampled">
+      <MemberSignature Language="C#" Value="public long NumSampled { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int64 NumSampled" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Internal.Utilities.IReservoirSampler`1.NumSampled" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property NumSampled As Long" />
+      <MemberSignature Language="F#" Value="member this.NumSampled : int64" Usage="Microsoft.ML.Runtime.Internal.Utilities.IReservoirSampler&lt;'T&gt;.NumSampled" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; property long NumSampled { long get(); };" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA; property long long NumSampled { long long get(); };" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int64</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Returns the number of elements sampled so far.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Sample">
+      <MemberSignature Language="C#" Value="public void Sample ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Sample() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.IReservoirSampler`1.Sample" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Sample ()" />
+      <MemberSignature Language="F#" Value="abstract member Sample : unit -&gt; unit" Usage="iReservoirSampler.Sample " />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; void Sample();" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA; void Sample();" />
+      <MemberSignature Language="C++ WINRT" Value="void Sample();" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            Sample the next data point from the stream.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Size">
+      <MemberSignature Language="C#" Value="public int Size { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Size" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Internal.Utilities.IReservoirSampler`1.Size" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Size As Integer" />
+      <MemberSignature Language="F#" Value="member this.Size : int" Usage="Microsoft.ML.Runtime.Internal.Utilities.IReservoirSampler&lt;'T&gt;.Size" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; property int Size { int get(); };" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA; property int Size { int get(); };" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            If the number of elements sampled is less than the reservoir size, this should return the number of elements sampled.
+            Otherwise it should return the reservoir size.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

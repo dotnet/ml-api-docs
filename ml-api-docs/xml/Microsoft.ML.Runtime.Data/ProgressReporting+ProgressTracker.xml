@@ -1,0 +1,111 @@
+﻿<Type Name="ProgressReporting+ProgressTracker" FullName="Microsoft.ML.Runtime.Data.ProgressReporting+ProgressTracker">
+  <TypeSignature Language="C#" Value="public sealed class ProgressReporting.ProgressTracker" />
+  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi sealed beforefieldinit ProgressReporting/ProgressTracker extends System.Object" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.ProgressReporting.ProgressTracker" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class ProgressReporting.ProgressTracker" />
+  <TypeSignature Language="F#" Value="type ProgressReporting.ProgressTracker = class" />
+  <TypeSignature Language="C++ CLI" Value="public: ref class ProgressReporting::ProgressTracker sealed" />
+  <TypeSignature Language="C++ WINRT" Value="class ProgressReporting::ProgressTracker sealed" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Core</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+            This class listens to the progress reporting channels, caches all checkpoints and
+            start/stop events and, on demand, requests current progress on all active calculations.
+            
+            The public methods of this class should only be called from one thread.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ProgressTracker (Microsoft.ML.Runtime.IExceptionContext ectx);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IExceptionContext ectx) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ProgressReporting.ProgressTracker.#ctor(Microsoft.ML.Runtime.IExceptionContext)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (ectx As IExceptionContext)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.ProgressReporting.ProgressTracker : Microsoft.ML.Runtime.IExceptionContext -&gt; Microsoft.ML.Runtime.Data.ProgressReporting.ProgressTracker" Usage="new Microsoft.ML.Runtime.Data.ProgressReporting.ProgressTracker ectx" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; ProgressTracker(Microsoft::ML::Runtime::IExceptionContext ^ ectx);" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA; ProgressTracker(Microsoft::ML::Runtime::IExceptionContext ^ ectx);" />
+      <MemberSignature Language="C++ WINRT" Value=" ProgressTracker(Microsoft::ML::Runtime::IExceptionContext const &amp; ectx);" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="ectx" Type="Microsoft.ML.Runtime.IExceptionContext" />
+      </Parameters>
+      <Docs>
+        <param name="ectx">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetAllProgress">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;Microsoft.ML.Runtime.Data.ProgressReporting.ProgressEvent&gt; GetAllProgress ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;class Microsoft.ML.Runtime.Data.ProgressReporting/ProgressEvent&gt; GetAllProgress() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ProgressReporting.ProgressTracker.GetAllProgress" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetAllProgress () As List(Of ProgressReporting.ProgressEvent)" />
+      <MemberSignature Language="F#" Value="member this.GetAllProgress : unit -&gt; System.Collections.Generic.List&lt;Microsoft.ML.Runtime.Data.ProgressReporting.ProgressEvent&gt;" Usage="progressTracker.GetAllProgress " />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; System::Collections::Generic::List&lt;Microsoft::ML::Runtime::Data::ProgressReporting::ProgressEvent ^&gt; ^ GetAllProgress();" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;Microsoft.ML.Runtime.Data.ProgressReporting+ProgressEvent&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            Get progress reports from all current calculations. 
+            For every calculation the following events will be returned:
+            * A start event.
+            * Each checkpoint.
+            * If the calculation is finished, the stop event. 
+            
+            Each of the above events will be returned exactly once.
+            If, for one calculation, there's no events in the above categories, the tracker will
+            request ('pull') the current progress and return this as an event.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Log">
+      <MemberSignature Language="C#" Value="public void Log (Microsoft.ML.Runtime.Data.ProgressReporting.ProgressChannel source, Microsoft.ML.Runtime.Data.ProgressReporting.ProgressEvent.EventKind kind, Microsoft.ML.Runtime.Data.ProgressReporting.ProgressEntry entry);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Log(class Microsoft.ML.Runtime.Data.ProgressReporting/ProgressChannel source, valuetype Microsoft.ML.Runtime.Data.ProgressReporting/ProgressEvent/EventKind kind, class Microsoft.ML.Runtime.Data.ProgressReporting/ProgressEntry entry) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ProgressReporting.ProgressTracker.Log(Microsoft.ML.Runtime.Data.ProgressReporting.ProgressChannel,Microsoft.ML.Runtime.Data.ProgressReporting.ProgressEvent.EventKind,Microsoft.ML.Runtime.Data.ProgressReporting.ProgressEntry)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Log (source As ProgressReporting.ProgressChannel, kind As ProgressReporting.ProgressEvent.EventKind, entry As ProgressReporting.ProgressEntry)" />
+      <MemberSignature Language="F#" Value="member this.Log : Microsoft.ML.Runtime.Data.ProgressReporting.ProgressChannel * Microsoft.ML.Runtime.Data.ProgressReporting.ProgressEvent.EventKind * Microsoft.ML.Runtime.Data.ProgressReporting.ProgressEntry -&gt; unit" Usage="progressTracker.Log (source, kind, entry)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; void Log(Microsoft::ML::Runtime::Data::ProgressReporting::ProgressChannel ^ source, Microsoft::ML::Runtime::Data::ProgressReporting::ProgressEvent::EventKind kind, Microsoft::ML::Runtime::Data::ProgressReporting::ProgressEntry ^ entry);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="source" Type="Microsoft.ML.Runtime.Data.ProgressReporting+ProgressChannel" />
+        <Parameter Name="kind" Type="Microsoft.ML.Runtime.Data.ProgressReporting+ProgressEvent+EventKind" />
+        <Parameter Name="entry" Type="Microsoft.ML.Runtime.Data.ProgressReporting+ProgressEntry" />
+      </Parameters>
+      <Docs>
+        <param name="source">To be added.</param>
+        <param name="kind">To be added.</param>
+        <param name="entry">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
