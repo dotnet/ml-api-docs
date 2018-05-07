@@ -1,0 +1,153 @@
+﻿<Type Name="ScoreUtils" FullName="Microsoft.ML.Runtime.Data.ScoreUtils">
+  <TypeSignature Language="C#" Value="public static class ScoreUtils" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit ScoreUtils extends System.Object" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.ScoreUtils" />
+  <TypeSignature Language="VB.NET" Value="Public Class ScoreUtils" />
+  <TypeSignature Language="F#" Value="type ScoreUtils = class" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Data</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="GetSchemaBindableMapper">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.ISchemaBindableMapper GetSchemaBindableMapper (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.IPredictor predictor, Microsoft.ML.Runtime.CommandLine.SubComponent&lt;Microsoft.ML.Runtime.Data.IDataScorerTransform,Microsoft.ML.Runtime.Data.SignatureDataScorer&gt; scorerSettings);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.ISchemaBindableMapper GetSchemaBindableMapper(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.IPredictor predictor, class Microsoft.ML.Runtime.CommandLine.SubComponent`2&lt;class Microsoft.ML.Runtime.Data.IDataScorerTransform, class Microsoft.ML.Runtime.Data.SignatureDataScorer&gt; scorerSettings) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ScoreUtils.GetSchemaBindableMapper(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.IPredictor,Microsoft.ML.Runtime.CommandLine.SubComponent{Microsoft.ML.Runtime.Data.IDataScorerTransform,Microsoft.ML.Runtime.Data.SignatureDataScorer})" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function GetSchemaBindableMapper (env As IHostEnvironment, predictor As IPredictor, scorerSettings As SubComponent(Of IDataScorerTransform, SignatureDataScorer)) As ISchemaBindableMapper" />
+      <MemberSignature Language="F#" Value="static member GetSchemaBindableMapper : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.IPredictor * Microsoft.ML.Runtime.CommandLine.SubComponent&lt;Microsoft.ML.Runtime.Data.IDataScorerTransform, Microsoft.ML.Runtime.Data.SignatureDataScorer&gt; -&gt; Microsoft.ML.Runtime.Data.ISchemaBindableMapper" Usage="Microsoft.ML.Runtime.Data.ScoreUtils.GetSchemaBindableMapper (env, predictor, scorerSettings)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ISchemaBindableMapper</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="predictor" Type="Microsoft.ML.Runtime.IPredictor" />
+        <Parameter Name="scorerSettings" Type="Microsoft.ML.Runtime.CommandLine.SubComponent&lt;Microsoft.ML.Runtime.Data.IDataScorerTransform,Microsoft.ML.Runtime.Data.SignatureDataScorer&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="predictor">To be added.</param>
+        <param name="scorerSettings">To be added.</param>
+        <summary>
+            Given a predictor and an optional scorer SubComponent, produces a compatible ISchemaBindableMapper.
+            First, it tries to instantiate the bindable mapper using the <paramref name="scorerSettings" />
+            (this will only succeed if there's a registered BindableMapper creation method with load name equal to the one 
+            of the scorer).
+            If the above fails, it checks whether the predictor implements <see cref="T:Microsoft.ML.Runtime.Data.ISchemaBindableMapper" /> 
+            directly.
+            If this also isn't true, it will create a 'matching' standard mapper.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetScorer">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IDataScorerTransform GetScorer (Microsoft.ML.Runtime.IPredictor predictor, Microsoft.ML.Runtime.Data.RoleMappedData data, Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.RoleMappedSchema trainSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IDataScorerTransform GetScorer(class Microsoft.ML.Runtime.IPredictor predictor, class Microsoft.ML.Runtime.Data.RoleMappedData data, class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.RoleMappedSchema trainSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ScoreUtils.GetScorer(Microsoft.ML.Runtime.IPredictor,Microsoft.ML.Runtime.Data.RoleMappedData,Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function GetScorer (predictor As IPredictor, data As RoleMappedData, env As IHostEnvironment, trainSchema As RoleMappedSchema) As IDataScorerTransform" />
+      <MemberSignature Language="F#" Value="static member GetScorer : Microsoft.ML.Runtime.IPredictor * Microsoft.ML.Runtime.Data.RoleMappedData * Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.RoleMappedSchema -&gt; Microsoft.ML.Runtime.Data.IDataScorerTransform" Usage="Microsoft.ML.Runtime.Data.ScoreUtils.GetScorer (predictor, data, env, trainSchema)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataScorerTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="predictor" Type="Microsoft.ML.Runtime.IPredictor" />
+        <Parameter Name="data" Type="Microsoft.ML.Runtime.Data.RoleMappedData" />
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="trainSchema" Type="Microsoft.ML.Runtime.Data.RoleMappedSchema" />
+      </Parameters>
+      <Docs>
+        <param name="predictor">To be added.</param>
+        <param name="data">To be added.</param>
+        <param name="env">To be added.</param>
+        <param name="trainSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetScorer">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IDataScorerTransform GetScorer (Microsoft.ML.Runtime.CommandLine.SubComponent&lt;Microsoft.ML.Runtime.Data.IDataScorerTransform,Microsoft.ML.Runtime.Data.SignatureDataScorer&gt; scorer, Microsoft.ML.Runtime.IPredictor predictor, Microsoft.ML.Runtime.Data.IDataView input, string featureColName, string groupColName, System.Collections.Generic.IEnumerable&lt;System.Collections.Generic.KeyValuePair&lt;Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole,string&gt;&gt; customColumns, Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.RoleMappedSchema trainSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IDataScorerTransform GetScorer(class Microsoft.ML.Runtime.CommandLine.SubComponent`2&lt;class Microsoft.ML.Runtime.Data.IDataScorerTransform, class Microsoft.ML.Runtime.Data.SignatureDataScorer&gt; scorer, class Microsoft.ML.Runtime.IPredictor predictor, class Microsoft.ML.Runtime.Data.IDataView input, string featureColName, string groupColName, class System.Collections.Generic.IEnumerable`1&lt;valuetype System.Collections.Generic.KeyValuePair`2&lt;valuetype Microsoft.ML.Runtime.Data.RoleMappedSchema/ColumnRole, string&gt;&gt; customColumns, class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.RoleMappedSchema trainSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ScoreUtils.GetScorer(Microsoft.ML.Runtime.CommandLine.SubComponent{Microsoft.ML.Runtime.Data.IDataScorerTransform,Microsoft.ML.Runtime.Data.SignatureDataScorer},Microsoft.ML.Runtime.IPredictor,Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole,System.String}},Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function GetScorer (scorer As SubComponent(Of IDataScorerTransform, SignatureDataScorer), predictor As IPredictor, input As IDataView, featureColName As String, groupColName As String, customColumns As IEnumerable(Of KeyValuePair(Of RoleMappedSchema.ColumnRole, String)), env As IHostEnvironment, trainSchema As RoleMappedSchema) As IDataScorerTransform" />
+      <MemberSignature Language="F#" Value="static member GetScorer : Microsoft.ML.Runtime.CommandLine.SubComponent&lt;Microsoft.ML.Runtime.Data.IDataScorerTransform, Microsoft.ML.Runtime.Data.SignatureDataScorer&gt; * Microsoft.ML.Runtime.IPredictor * Microsoft.ML.Runtime.Data.IDataView * string * string * seq&lt;System.Collections.Generic.KeyValuePair&lt;Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole, string&gt;&gt; * Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.RoleMappedSchema -&gt; Microsoft.ML.Runtime.Data.IDataScorerTransform" Usage="Microsoft.ML.Runtime.Data.ScoreUtils.GetScorer (scorer, predictor, input, featureColName, groupColName, customColumns, env, trainSchema)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataScorerTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="scorer" Type="Microsoft.ML.Runtime.CommandLine.SubComponent&lt;Microsoft.ML.Runtime.Data.IDataScorerTransform,Microsoft.ML.Runtime.Data.SignatureDataScorer&gt;" />
+        <Parameter Name="predictor" Type="Microsoft.ML.Runtime.IPredictor" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="featureColName" Type="System.String" />
+        <Parameter Name="groupColName" Type="System.String" />
+        <Parameter Name="customColumns" Type="System.Collections.Generic.IEnumerable&lt;System.Collections.Generic.KeyValuePair&lt;Microsoft.ML.Runtime.Data.RoleMappedSchema+ColumnRole,System.String&gt;&gt;" />
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="trainSchema" Type="Microsoft.ML.Runtime.Data.RoleMappedSchema" />
+      </Parameters>
+      <Docs>
+        <param name="scorer">To be added.</param>
+        <param name="predictor">To be added.</param>
+        <param name="input">To be added.</param>
+        <param name="featureColName">To be added.</param>
+        <param name="groupColName">To be added.</param>
+        <param name="customColumns">To be added.</param>
+        <param name="env">To be added.</param>
+        <param name="trainSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetScorerComponent">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.CommandLine.SubComponent&lt;Microsoft.ML.Runtime.Data.IDataScorerTransform,Microsoft.ML.Runtime.Data.SignatureDataScorer&gt; GetScorerComponent (Microsoft.ML.Runtime.Data.ISchemaBoundMapper mapper);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.CommandLine.SubComponent`2&lt;class Microsoft.ML.Runtime.Data.IDataScorerTransform, class Microsoft.ML.Runtime.Data.SignatureDataScorer&gt; GetScorerComponent(class Microsoft.ML.Runtime.Data.ISchemaBoundMapper mapper) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ScoreUtils.GetScorerComponent(Microsoft.ML.Runtime.Data.ISchemaBoundMapper)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function GetScorerComponent (mapper As ISchemaBoundMapper) As SubComponent(Of IDataScorerTransform, SignatureDataScorer)" />
+      <MemberSignature Language="F#" Value="static member GetScorerComponent : Microsoft.ML.Runtime.Data.ISchemaBoundMapper -&gt; Microsoft.ML.Runtime.CommandLine.SubComponent&lt;Microsoft.ML.Runtime.Data.IDataScorerTransform, Microsoft.ML.Runtime.Data.SignatureDataScorer&gt;" Usage="Microsoft.ML.Runtime.Data.ScoreUtils.GetScorerComponent mapper" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.CommandLine.SubComponent&lt;Microsoft.ML.Runtime.Data.IDataScorerTransform,Microsoft.ML.Runtime.Data.SignatureDataScorer&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="mapper" Type="Microsoft.ML.Runtime.Data.ISchemaBoundMapper" />
+      </Parameters>
+      <Docs>
+        <param name="mapper">To be added.</param>
+        <summary>
+            Determine the default scorer for a schema bound mapper. This looks for text-valued ScoreColumnKind
+            metadata on the first column of the mapper. If that text is found and maps to a scorer loadable class,
+            that component is used. Otherwise, the GenericScorer is used.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
