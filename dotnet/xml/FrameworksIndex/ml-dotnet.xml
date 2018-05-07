@@ -795,7 +795,7 @@
       <Member Id="M:Microsoft.ML.PredictionModel`2.Predict(System.Collections.Generic.IEnumerable{`0})" />
     </Type>
     <Type Name="Microsoft.ML.TextLoader`1" Id="T:Microsoft.ML.TextLoader`1">
-      <Member Id="M:Microsoft.ML.TextLoader`1.#ctor(System.String,System.Boolean,System.String)" />
+      <Member Id="M:Microsoft.ML.TextLoader`1.#ctor(System.String,System.Boolean,System.String,System.Boolean,System.Boolean,System.Boolean)" />
       <Member Id="M:Microsoft.ML.TextLoader`1.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
       <Member Id="M:Microsoft.ML.TextLoader`1.SetInput(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Experiment)" />
     </Type>
@@ -823,6 +823,7 @@
     </Type>
     <Type Name="Microsoft.ML.Models.BinaryClassificationEvaluator" Id="T:Microsoft.ML.Models.BinaryClassificationEvaluator">
       <Member Id="M:Microsoft.ML.Models.BinaryClassificationEvaluator.#ctor" />
+      <Member Id="M:Microsoft.ML.Models.BinaryClassificationEvaluator.Evaluate(Microsoft.ML.PredictionModel,Microsoft.ML.ILearningPipelineLoader)" />
       <Member Id="P:Microsoft.ML.Models.BinaryClassificationEvaluator.Data" />
       <Member Id="P:Microsoft.ML.Models.BinaryClassificationEvaluator.LabelColumn" />
       <Member Id="P:Microsoft.ML.Models.BinaryClassificationEvaluator.MaxAucExamples" />
@@ -842,6 +843,20 @@
       <Member Id="P:Microsoft.ML.Models.BinaryClassificationEvaluator.Output.OverallMetrics" />
       <Member Id="P:Microsoft.ML.Models.BinaryClassificationEvaluator.Output.PerInstanceMetrics" />
       <Member Id="P:Microsoft.ML.Models.BinaryClassificationEvaluator.Output.Warnings" />
+    </Type>
+    <Type Name="Microsoft.ML.Models.BinaryClassificationMetrics" Id="T:Microsoft.ML.Models.BinaryClassificationMetrics">
+      <Member Id="P:Microsoft.ML.Models.BinaryClassificationMetrics.Accuracy" />
+      <Member Id="P:Microsoft.ML.Models.BinaryClassificationMetrics.Auc" />
+      <Member Id="P:Microsoft.ML.Models.BinaryClassificationMetrics.Auprc" />
+      <Member Id="P:Microsoft.ML.Models.BinaryClassificationMetrics.ConfusionMatrix" />
+      <Member Id="P:Microsoft.ML.Models.BinaryClassificationMetrics.Entropy" />
+      <Member Id="P:Microsoft.ML.Models.BinaryClassificationMetrics.F1Score" />
+      <Member Id="P:Microsoft.ML.Models.BinaryClassificationMetrics.LogLoss" />
+      <Member Id="P:Microsoft.ML.Models.BinaryClassificationMetrics.LogLossReduction" />
+      <Member Id="P:Microsoft.ML.Models.BinaryClassificationMetrics.NegativePrecision" />
+      <Member Id="P:Microsoft.ML.Models.BinaryClassificationMetrics.NegativeRecall" />
+      <Member Id="P:Microsoft.ML.Models.BinaryClassificationMetrics.PositivePrecision" />
+      <Member Id="P:Microsoft.ML.Models.BinaryClassificationMetrics.PositiveRecall" />
     </Type>
     <Type Name="Microsoft.ML.Models.BinaryCrossValidator" Id="T:Microsoft.ML.Models.BinaryCrossValidator">
       <Member Id="M:Microsoft.ML.Models.BinaryCrossValidator.#ctor" />
@@ -866,6 +881,36 @@
       <Member Id="F:Microsoft.ML.Models.CachingOptions.Memory" />
       <Member Id="F:Microsoft.ML.Models.CachingOptions.None" />
     </Type>
+    <Type Name="Microsoft.ML.Models.ClassificationEvaluator" Id="T:Microsoft.ML.Models.ClassificationEvaluator">
+      <Member Id="M:Microsoft.ML.Models.ClassificationEvaluator.#ctor" />
+      <Member Id="M:Microsoft.ML.Models.ClassificationEvaluator.Evaluate(Microsoft.ML.PredictionModel,Microsoft.ML.ILearningPipelineLoader)" />
+      <Member Id="P:Microsoft.ML.Models.ClassificationEvaluator.Data" />
+      <Member Id="P:Microsoft.ML.Models.ClassificationEvaluator.LabelColumn" />
+      <Member Id="P:Microsoft.ML.Models.ClassificationEvaluator.NameColumn" />
+      <Member Id="P:Microsoft.ML.Models.ClassificationEvaluator.NumClassesConfusionMatrix" />
+      <Member Id="P:Microsoft.ML.Models.ClassificationEvaluator.NumTopClassesToOutput" />
+      <Member Id="P:Microsoft.ML.Models.ClassificationEvaluator.OutputPerClassStatistics" />
+      <Member Id="P:Microsoft.ML.Models.ClassificationEvaluator.OutputTopKAcc" />
+      <Member Id="P:Microsoft.ML.Models.ClassificationEvaluator.ScoreColumn" />
+      <Member Id="P:Microsoft.ML.Models.ClassificationEvaluator.StratColumn" />
+      <Member Id="P:Microsoft.ML.Models.ClassificationEvaluator.WeightColumn" />
+    </Type>
+    <Type Name="Microsoft.ML.Models.ClassificationEvaluator/Output" Id="T:Microsoft.ML.Models.ClassificationEvaluator.Output">
+      <Member Id="M:Microsoft.ML.Models.ClassificationEvaluator.Output.#ctor" />
+      <Member Id="P:Microsoft.ML.Models.ClassificationEvaluator.Output.ConfusionMatrix" />
+      <Member Id="P:Microsoft.ML.Models.ClassificationEvaluator.Output.OverallMetrics" />
+      <Member Id="P:Microsoft.ML.Models.ClassificationEvaluator.Output.PerInstanceMetrics" />
+      <Member Id="P:Microsoft.ML.Models.ClassificationEvaluator.Output.Warnings" />
+    </Type>
+    <Type Name="Microsoft.ML.Models.ClassificationMetrics" Id="T:Microsoft.ML.Models.ClassificationMetrics">
+      <Member Id="P:Microsoft.ML.Models.ClassificationMetrics.AccuracyMacro" />
+      <Member Id="P:Microsoft.ML.Models.ClassificationMetrics.AccuracyMicro" />
+      <Member Id="P:Microsoft.ML.Models.ClassificationMetrics.ConfusionMatrix" />
+      <Member Id="P:Microsoft.ML.Models.ClassificationMetrics.LogLoss" />
+      <Member Id="P:Microsoft.ML.Models.ClassificationMetrics.LogLossReduction" />
+      <Member Id="P:Microsoft.ML.Models.ClassificationMetrics.PerClassLogLoss" />
+      <Member Id="P:Microsoft.ML.Models.ClassificationMetrics.TopKAccuracy" />
+    </Type>
     <Type Name="Microsoft.ML.Models.ClusterEvaluator" Id="T:Microsoft.ML.Models.ClusterEvaluator">
       <Member Id="M:Microsoft.ML.Models.ClusterEvaluator.#ctor" />
       <Member Id="P:Microsoft.ML.Models.ClusterEvaluator.CalculateDbi" />
@@ -883,6 +928,12 @@
       <Member Id="P:Microsoft.ML.Models.ClusterEvaluator.Output.OverallMetrics" />
       <Member Id="P:Microsoft.ML.Models.ClusterEvaluator.Output.PerInstanceMetrics" />
       <Member Id="P:Microsoft.ML.Models.ClusterEvaluator.Output.Warnings" />
+    </Type>
+    <Type Name="Microsoft.ML.Models.ConfusionMatrix" Id="T:Microsoft.ML.Models.ConfusionMatrix">
+      <Member Id="P:Microsoft.ML.Models.ConfusionMatrix.ClassNames" />
+      <Member Id="P:Microsoft.ML.Models.ConfusionMatrix.Item(System.Int32,System.Int32)" />
+      <Member Id="P:Microsoft.ML.Models.ConfusionMatrix.Item(System.String,System.String)" />
+      <Member Id="P:Microsoft.ML.Models.ConfusionMatrix.Order" />
     </Type>
     <Type Name="Microsoft.ML.Models.CrossValidationBinaryMacroSubGraphInput" Id="T:Microsoft.ML.Models.CrossValidationBinaryMacroSubGraphInput">
       <Member Id="M:Microsoft.ML.Models.CrossValidationBinaryMacroSubGraphInput.#ctor" />
@@ -962,42 +1013,22 @@
       <Member Id="F:Microsoft.ML.Models.MacroUtilsTrainerKinds.SignatureRankerTrainer" />
       <Member Id="F:Microsoft.ML.Models.MacroUtilsTrainerKinds.SignatureRegressorTrainer" />
     </Type>
-    <Type Name="Microsoft.ML.Models.MultiClassClassificationEvaluator" Id="T:Microsoft.ML.Models.MultiClassClassificationEvaluator">
-      <Member Id="M:Microsoft.ML.Models.MultiClassClassificationEvaluator.#ctor" />
-      <Member Id="P:Microsoft.ML.Models.MultiClassClassificationEvaluator.Data" />
-      <Member Id="P:Microsoft.ML.Models.MultiClassClassificationEvaluator.LabelColumn" />
-      <Member Id="P:Microsoft.ML.Models.MultiClassClassificationEvaluator.NameColumn" />
-      <Member Id="P:Microsoft.ML.Models.MultiClassClassificationEvaluator.NumClassesConfusionMatrix" />
-      <Member Id="P:Microsoft.ML.Models.MultiClassClassificationEvaluator.NumTopClassesToOutput" />
-      <Member Id="P:Microsoft.ML.Models.MultiClassClassificationEvaluator.OutputPerClassStatistics" />
-      <Member Id="P:Microsoft.ML.Models.MultiClassClassificationEvaluator.OutputTopKAcc" />
-      <Member Id="P:Microsoft.ML.Models.MultiClassClassificationEvaluator.ScoreColumn" />
-      <Member Id="P:Microsoft.ML.Models.MultiClassClassificationEvaluator.StratColumn" />
-      <Member Id="P:Microsoft.ML.Models.MultiClassClassificationEvaluator.WeightColumn" />
+    <Type Name="Microsoft.ML.Models.MultiOutputRegressionEvaluator" Id="T:Microsoft.ML.Models.MultiOutputRegressionEvaluator">
+      <Member Id="M:Microsoft.ML.Models.MultiOutputRegressionEvaluator.#ctor" />
+      <Member Id="P:Microsoft.ML.Models.MultiOutputRegressionEvaluator.Data" />
+      <Member Id="P:Microsoft.ML.Models.MultiOutputRegressionEvaluator.LabelColumn" />
+      <Member Id="P:Microsoft.ML.Models.MultiOutputRegressionEvaluator.LossFunction" />
+      <Member Id="P:Microsoft.ML.Models.MultiOutputRegressionEvaluator.NameColumn" />
+      <Member Id="P:Microsoft.ML.Models.MultiOutputRegressionEvaluator.ScoreColumn" />
+      <Member Id="P:Microsoft.ML.Models.MultiOutputRegressionEvaluator.StratColumn" />
+      <Member Id="P:Microsoft.ML.Models.MultiOutputRegressionEvaluator.SupressScoresAndLabels" />
+      <Member Id="P:Microsoft.ML.Models.MultiOutputRegressionEvaluator.WeightColumn" />
     </Type>
-    <Type Name="Microsoft.ML.Models.MultiClassClassificationEvaluator/Output" Id="T:Microsoft.ML.Models.MultiClassClassificationEvaluator.Output">
-      <Member Id="M:Microsoft.ML.Models.MultiClassClassificationEvaluator.Output.#ctor" />
-      <Member Id="P:Microsoft.ML.Models.MultiClassClassificationEvaluator.Output.ConfusionMatrix" />
-      <Member Id="P:Microsoft.ML.Models.MultiClassClassificationEvaluator.Output.OverallMetrics" />
-      <Member Id="P:Microsoft.ML.Models.MultiClassClassificationEvaluator.Output.PerInstanceMetrics" />
-      <Member Id="P:Microsoft.ML.Models.MultiClassClassificationEvaluator.Output.Warnings" />
-    </Type>
-    <Type Name="Microsoft.ML.Models.MultiOutputRegressorEvaluator" Id="T:Microsoft.ML.Models.MultiOutputRegressorEvaluator">
-      <Member Id="M:Microsoft.ML.Models.MultiOutputRegressorEvaluator.#ctor" />
-      <Member Id="P:Microsoft.ML.Models.MultiOutputRegressorEvaluator.Data" />
-      <Member Id="P:Microsoft.ML.Models.MultiOutputRegressorEvaluator.LabelColumn" />
-      <Member Id="P:Microsoft.ML.Models.MultiOutputRegressorEvaluator.LossFunction" />
-      <Member Id="P:Microsoft.ML.Models.MultiOutputRegressorEvaluator.NameColumn" />
-      <Member Id="P:Microsoft.ML.Models.MultiOutputRegressorEvaluator.ScoreColumn" />
-      <Member Id="P:Microsoft.ML.Models.MultiOutputRegressorEvaluator.StratColumn" />
-      <Member Id="P:Microsoft.ML.Models.MultiOutputRegressorEvaluator.SupressScoresAndLabels" />
-      <Member Id="P:Microsoft.ML.Models.MultiOutputRegressorEvaluator.WeightColumn" />
-    </Type>
-    <Type Name="Microsoft.ML.Models.MultiOutputRegressorEvaluator/Output" Id="T:Microsoft.ML.Models.MultiOutputRegressorEvaluator.Output">
-      <Member Id="M:Microsoft.ML.Models.MultiOutputRegressorEvaluator.Output.#ctor" />
-      <Member Id="P:Microsoft.ML.Models.MultiOutputRegressorEvaluator.Output.OverallMetrics" />
-      <Member Id="P:Microsoft.ML.Models.MultiOutputRegressorEvaluator.Output.PerInstanceMetrics" />
-      <Member Id="P:Microsoft.ML.Models.MultiOutputRegressorEvaluator.Output.Warnings" />
+    <Type Name="Microsoft.ML.Models.MultiOutputRegressionEvaluator/Output" Id="T:Microsoft.ML.Models.MultiOutputRegressionEvaluator.Output">
+      <Member Id="M:Microsoft.ML.Models.MultiOutputRegressionEvaluator.Output.#ctor" />
+      <Member Id="P:Microsoft.ML.Models.MultiOutputRegressionEvaluator.Output.OverallMetrics" />
+      <Member Id="P:Microsoft.ML.Models.MultiOutputRegressionEvaluator.Output.PerInstanceMetrics" />
+      <Member Id="P:Microsoft.ML.Models.MultiOutputRegressionEvaluator.Output.Warnings" />
     </Type>
     <Type Name="Microsoft.ML.Models.NaiveCalibrator" Id="T:Microsoft.ML.Models.NaiveCalibrator">
       <Member Id="M:Microsoft.ML.Models.NaiveCalibrator.#ctor" />
@@ -1075,22 +1106,22 @@
       <Member Id="M:Microsoft.ML.Models.PlattCalibrator.Output.#ctor" />
       <Member Id="P:Microsoft.ML.Models.PlattCalibrator.Output.PredictorModel" />
     </Type>
-    <Type Name="Microsoft.ML.Models.QuantileRegressorEvaluator" Id="T:Microsoft.ML.Models.QuantileRegressorEvaluator">
-      <Member Id="M:Microsoft.ML.Models.QuantileRegressorEvaluator.#ctor" />
-      <Member Id="P:Microsoft.ML.Models.QuantileRegressorEvaluator.Data" />
-      <Member Id="P:Microsoft.ML.Models.QuantileRegressorEvaluator.Index" />
-      <Member Id="P:Microsoft.ML.Models.QuantileRegressorEvaluator.LabelColumn" />
-      <Member Id="P:Microsoft.ML.Models.QuantileRegressorEvaluator.LossFunction" />
-      <Member Id="P:Microsoft.ML.Models.QuantileRegressorEvaluator.NameColumn" />
-      <Member Id="P:Microsoft.ML.Models.QuantileRegressorEvaluator.ScoreColumn" />
-      <Member Id="P:Microsoft.ML.Models.QuantileRegressorEvaluator.StratColumn" />
-      <Member Id="P:Microsoft.ML.Models.QuantileRegressorEvaluator.WeightColumn" />
+    <Type Name="Microsoft.ML.Models.QuantileRegressionEvaluator" Id="T:Microsoft.ML.Models.QuantileRegressionEvaluator">
+      <Member Id="M:Microsoft.ML.Models.QuantileRegressionEvaluator.#ctor" />
+      <Member Id="P:Microsoft.ML.Models.QuantileRegressionEvaluator.Data" />
+      <Member Id="P:Microsoft.ML.Models.QuantileRegressionEvaluator.Index" />
+      <Member Id="P:Microsoft.ML.Models.QuantileRegressionEvaluator.LabelColumn" />
+      <Member Id="P:Microsoft.ML.Models.QuantileRegressionEvaluator.LossFunction" />
+      <Member Id="P:Microsoft.ML.Models.QuantileRegressionEvaluator.NameColumn" />
+      <Member Id="P:Microsoft.ML.Models.QuantileRegressionEvaluator.ScoreColumn" />
+      <Member Id="P:Microsoft.ML.Models.QuantileRegressionEvaluator.StratColumn" />
+      <Member Id="P:Microsoft.ML.Models.QuantileRegressionEvaluator.WeightColumn" />
     </Type>
-    <Type Name="Microsoft.ML.Models.QuantileRegressorEvaluator/Output" Id="T:Microsoft.ML.Models.QuantileRegressorEvaluator.Output">
-      <Member Id="M:Microsoft.ML.Models.QuantileRegressorEvaluator.Output.#ctor" />
-      <Member Id="P:Microsoft.ML.Models.QuantileRegressorEvaluator.Output.OverallMetrics" />
-      <Member Id="P:Microsoft.ML.Models.QuantileRegressorEvaluator.Output.PerInstanceMetrics" />
-      <Member Id="P:Microsoft.ML.Models.QuantileRegressorEvaluator.Output.Warnings" />
+    <Type Name="Microsoft.ML.Models.QuantileRegressionEvaluator/Output" Id="T:Microsoft.ML.Models.QuantileRegressionEvaluator.Output">
+      <Member Id="M:Microsoft.ML.Models.QuantileRegressionEvaluator.Output.#ctor" />
+      <Member Id="P:Microsoft.ML.Models.QuantileRegressionEvaluator.Output.OverallMetrics" />
+      <Member Id="P:Microsoft.ML.Models.QuantileRegressionEvaluator.Output.PerInstanceMetrics" />
+      <Member Id="P:Microsoft.ML.Models.QuantileRegressionEvaluator.Output.Warnings" />
     </Type>
     <Type Name="Microsoft.ML.Models.RankerEvaluator" Id="T:Microsoft.ML.Models.RankerEvaluator">
       <Member Id="M:Microsoft.ML.Models.RankerEvaluator.#ctor" />
@@ -1110,21 +1141,29 @@
       <Member Id="P:Microsoft.ML.Models.RankerEvaluator.Output.PerInstanceMetrics" />
       <Member Id="P:Microsoft.ML.Models.RankerEvaluator.Output.Warnings" />
     </Type>
-    <Type Name="Microsoft.ML.Models.RegressorEvaluator" Id="T:Microsoft.ML.Models.RegressorEvaluator">
-      <Member Id="M:Microsoft.ML.Models.RegressorEvaluator.#ctor" />
-      <Member Id="P:Microsoft.ML.Models.RegressorEvaluator.Data" />
-      <Member Id="P:Microsoft.ML.Models.RegressorEvaluator.LabelColumn" />
-      <Member Id="P:Microsoft.ML.Models.RegressorEvaluator.LossFunction" />
-      <Member Id="P:Microsoft.ML.Models.RegressorEvaluator.NameColumn" />
-      <Member Id="P:Microsoft.ML.Models.RegressorEvaluator.ScoreColumn" />
-      <Member Id="P:Microsoft.ML.Models.RegressorEvaluator.StratColumn" />
-      <Member Id="P:Microsoft.ML.Models.RegressorEvaluator.WeightColumn" />
+    <Type Name="Microsoft.ML.Models.RegressionEvaluator" Id="T:Microsoft.ML.Models.RegressionEvaluator">
+      <Member Id="M:Microsoft.ML.Models.RegressionEvaluator.#ctor" />
+      <Member Id="M:Microsoft.ML.Models.RegressionEvaluator.Evaluate(Microsoft.ML.PredictionModel,Microsoft.ML.ILearningPipelineLoader)" />
+      <Member Id="P:Microsoft.ML.Models.RegressionEvaluator.Data" />
+      <Member Id="P:Microsoft.ML.Models.RegressionEvaluator.LabelColumn" />
+      <Member Id="P:Microsoft.ML.Models.RegressionEvaluator.LossFunction" />
+      <Member Id="P:Microsoft.ML.Models.RegressionEvaluator.NameColumn" />
+      <Member Id="P:Microsoft.ML.Models.RegressionEvaluator.ScoreColumn" />
+      <Member Id="P:Microsoft.ML.Models.RegressionEvaluator.StratColumn" />
+      <Member Id="P:Microsoft.ML.Models.RegressionEvaluator.WeightColumn" />
     </Type>
-    <Type Name="Microsoft.ML.Models.RegressorEvaluator/Output" Id="T:Microsoft.ML.Models.RegressorEvaluator.Output">
-      <Member Id="M:Microsoft.ML.Models.RegressorEvaluator.Output.#ctor" />
-      <Member Id="P:Microsoft.ML.Models.RegressorEvaluator.Output.OverallMetrics" />
-      <Member Id="P:Microsoft.ML.Models.RegressorEvaluator.Output.PerInstanceMetrics" />
-      <Member Id="P:Microsoft.ML.Models.RegressorEvaluator.Output.Warnings" />
+    <Type Name="Microsoft.ML.Models.RegressionEvaluator/Output" Id="T:Microsoft.ML.Models.RegressionEvaluator.Output">
+      <Member Id="M:Microsoft.ML.Models.RegressionEvaluator.Output.#ctor" />
+      <Member Id="P:Microsoft.ML.Models.RegressionEvaluator.Output.OverallMetrics" />
+      <Member Id="P:Microsoft.ML.Models.RegressionEvaluator.Output.PerInstanceMetrics" />
+      <Member Id="P:Microsoft.ML.Models.RegressionEvaluator.Output.Warnings" />
+    </Type>
+    <Type Name="Microsoft.ML.Models.RegressionMetrics" Id="T:Microsoft.ML.Models.RegressionMetrics">
+      <Member Id="P:Microsoft.ML.Models.RegressionMetrics.L1" />
+      <Member Id="P:Microsoft.ML.Models.RegressionMetrics.L2" />
+      <Member Id="P:Microsoft.ML.Models.RegressionMetrics.LossFn" />
+      <Member Id="P:Microsoft.ML.Models.RegressionMetrics.Rms" />
+      <Member Id="P:Microsoft.ML.Models.RegressionMetrics.RSquared" />
     </Type>
     <Type Name="Microsoft.ML.Models.Summarizer" Id="T:Microsoft.ML.Models.Summarizer">
       <Member Id="M:Microsoft.ML.Models.Summarizer.#ctor" />
@@ -1195,6 +1234,11 @@
   <Namespace Name="Microsoft.ML.Runtime.Api">
     <Type Name="Microsoft.ML.Runtime.Api.BatchPredictionEngine`2" Id="T:Microsoft.ML.Runtime.Api.BatchPredictionEngine`2">
       <Member Id="M:Microsoft.ML.Runtime.Api.BatchPredictionEngine`2.Predict(System.Collections.Generic.IEnumerable{`0},System.Boolean)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.Api.ColumnAttribute" Id="T:Microsoft.ML.Runtime.Api.ColumnAttribute">
+      <Member Id="M:Microsoft.ML.Runtime.Api.ColumnAttribute.#ctor(System.String,System.String)" />
+      <Member Id="P:Microsoft.ML.Runtime.Api.ColumnAttribute.Name" />
+      <Member Id="P:Microsoft.ML.Runtime.Api.ColumnAttribute.Ordinal" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Api.ColumnNameAttribute" Id="T:Microsoft.ML.Runtime.Api.ColumnNameAttribute">
       <Member Id="M:Microsoft.ML.Runtime.Api.ColumnNameAttribute.#ctor(System.String)" />
@@ -1581,6 +1625,8 @@
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.BinaryClassificationEvaluator,Microsoft.ML.Models.BinaryClassificationEvaluator.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.BinaryCrossValidator)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.BinaryCrossValidator,Microsoft.ML.Models.BinaryCrossValidator.Output)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.ClassificationEvaluator)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.ClassificationEvaluator,Microsoft.ML.Models.ClassificationEvaluator.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.ClusterEvaluator)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.ClusterEvaluator,Microsoft.ML.Models.ClusterEvaluator.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.CrossValidator)" />
@@ -1591,10 +1637,8 @@
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.DatasetTransformer,Microsoft.ML.Models.DatasetTransformer.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.FixedPlattCalibrator)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.FixedPlattCalibrator,Microsoft.ML.Models.FixedPlattCalibrator.Output)" />
-      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.MultiClassClassificationEvaluator)" />
-      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.MultiClassClassificationEvaluator,Microsoft.ML.Models.MultiClassClassificationEvaluator.Output)" />
-      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.MultiOutputRegressorEvaluator)" />
-      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.MultiOutputRegressorEvaluator,Microsoft.ML.Models.MultiOutputRegressorEvaluator.Output)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.MultiOutputRegressionEvaluator)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.MultiOutputRegressionEvaluator,Microsoft.ML.Models.MultiOutputRegressionEvaluator.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.NaiveCalibrator)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.NaiveCalibrator,Microsoft.ML.Models.NaiveCalibrator.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.OneVersusAll)" />
@@ -1605,12 +1649,12 @@
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.PAVCalibrator,Microsoft.ML.Models.PAVCalibrator.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.PlattCalibrator)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.PlattCalibrator,Microsoft.ML.Models.PlattCalibrator.Output)" />
-      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.QuantileRegressorEvaluator)" />
-      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.QuantileRegressorEvaluator,Microsoft.ML.Models.QuantileRegressorEvaluator.Output)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.QuantileRegressionEvaluator)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.QuantileRegressionEvaluator,Microsoft.ML.Models.QuantileRegressionEvaluator.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.RankerEvaluator)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.RankerEvaluator,Microsoft.ML.Models.RankerEvaluator.Output)" />
-      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.RegressorEvaluator)" />
-      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.RegressorEvaluator,Microsoft.ML.Models.RegressorEvaluator.Output)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.RegressionEvaluator)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.RegressionEvaluator,Microsoft.ML.Models.RegressionEvaluator.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.Summarizer)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.Summarizer,Microsoft.ML.Models.Summarizer.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.TrainTestBinaryEvaluator)" />
@@ -1690,6 +1734,8 @@
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Transforms.DataCache,Microsoft.ML.Transforms.DataCache.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Transforms.DatasetScorer)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Transforms.DatasetScorer,Microsoft.ML.Transforms.DatasetScorer.Output)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Transforms.DatasetTransformScorer)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Transforms.DatasetTransformScorer,Microsoft.ML.Transforms.DatasetTransformScorer.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Transforms.Dictionarizer)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Transforms.Dictionarizer,Microsoft.ML.Transforms.Dictionarizer.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Transforms.FeatureCombiner)" />
@@ -8353,6 +8399,7 @@
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.ScoreModel.MakeScoringTransform(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.EntryPoints.ScoreModel.ModelInput)" />
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.ScoreModel.RenameBinaryPredictionScoreColumns(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.EntryPoints.ScoreModel.RenameBinaryPredictionScoreColumnsInput)" />
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.ScoreModel.Score(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.EntryPoints.ScoreModel.Input)" />
+      <Member Id="M:Microsoft.ML.Runtime.EntryPoints.ScoreModel.ScoreUsingTransform(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.EntryPoints.ScoreModel.InputTransformScorer)" />
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.ScoreModel.SelectColumns(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.EntryPoints.ScoreModel.ScoreColumnSelectorInput)" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.EntryPoints.ScoreModel/Input" Id="T:Microsoft.ML.Runtime.EntryPoints.ScoreModel.Input">
@@ -8360,6 +8407,11 @@
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.ScoreModel.Input.PredictorModel" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.ScoreModel.Input.Suffix" />
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.ScoreModel.Input.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.EntryPoints.ScoreModel/InputTransformScorer" Id="T:Microsoft.ML.Runtime.EntryPoints.ScoreModel.InputTransformScorer">
+      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.ScoreModel.InputTransformScorer.Data" />
+      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.ScoreModel.InputTransformScorer.TransformModel" />
+      <Member Id="M:Microsoft.ML.Runtime.EntryPoints.ScoreModel.InputTransformScorer.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.EntryPoints.ScoreModel/ModelInput" Id="T:Microsoft.ML.Runtime.EntryPoints.ScoreModel.ModelInput">
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.ScoreModel.ModelInput.PredictorModel" />
@@ -16777,6 +16829,16 @@
       <Member Id="P:Microsoft.ML.Transforms.DatasetScorer.Output.ScoredData" />
       <Member Id="P:Microsoft.ML.Transforms.DatasetScorer.Output.ScoringTransform" />
     </Type>
+    <Type Name="Microsoft.ML.Transforms.DatasetTransformScorer" Id="T:Microsoft.ML.Transforms.DatasetTransformScorer">
+      <Member Id="M:Microsoft.ML.Transforms.DatasetTransformScorer.#ctor" />
+      <Member Id="P:Microsoft.ML.Transforms.DatasetTransformScorer.Data" />
+      <Member Id="P:Microsoft.ML.Transforms.DatasetTransformScorer.TransformModel" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.DatasetTransformScorer/Output" Id="T:Microsoft.ML.Transforms.DatasetTransformScorer.Output">
+      <Member Id="M:Microsoft.ML.Transforms.DatasetTransformScorer.Output.#ctor" />
+      <Member Id="P:Microsoft.ML.Transforms.DatasetTransformScorer.Output.ScoredData" />
+      <Member Id="P:Microsoft.ML.Transforms.DatasetTransformScorer.Output.ScoringTransform" />
+    </Type>
     <Type Name="Microsoft.ML.Transforms.DelimitedTokenizeTransformColumn" Id="T:Microsoft.ML.Transforms.DelimitedTokenizeTransformColumn">
       <Member Id="M:Microsoft.ML.Transforms.DelimitedTokenizeTransformColumn.#ctor" />
       <Member Id="P:Microsoft.ML.Transforms.DelimitedTokenizeTransformColumn.Name" />
@@ -17358,6 +17420,7 @@
     </Type>
     <Type Name="Microsoft.ML.Transforms.Scorer/Output" Id="T:Microsoft.ML.Transforms.Scorer.Output">
       <Member Id="M:Microsoft.ML.Transforms.Scorer.Output.#ctor" />
+      <Member Id="P:Microsoft.ML.Transforms.Scorer.Output.ScoredData" />
       <Member Id="P:Microsoft.ML.Transforms.Scorer.Output.ScoringTransform" />
     </Type>
     <Type Name="Microsoft.ML.Transforms.Segregator" Id="T:Microsoft.ML.Transforms.Segregator">

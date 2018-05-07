@@ -1,9 +1,9 @@
-﻿<Type Name="RegressorEvaluator" FullName="Microsoft.ML.Models.RegressorEvaluator">
-  <TypeSignature Language="C#" Value="public sealed class RegressorEvaluator : Microsoft.ML.Runtime.EntryPoints.CommonInputs.IEvaluatorInput" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit RegressorEvaluator extends System.Object implements class Microsoft.ML.Runtime.EntryPoints.CommonInputs/IEvaluatorInput" />
-  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Models.RegressorEvaluator" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class RegressorEvaluator&#xA;Implements CommonInputs.IEvaluatorInput" />
-  <TypeSignature Language="F#" Value="type RegressorEvaluator = class&#xA;    interface CommonInputs.IEvaluatorInput" />
+﻿<Type Name="RegressionEvaluator" FullName="Microsoft.ML.Models.RegressionEvaluator">
+  <TypeSignature Language="C#" Value="public sealed class RegressionEvaluator : Microsoft.ML.Runtime.EntryPoints.CommonInputs.IEvaluatorInput" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit RegressionEvaluator extends System.Object implements class Microsoft.ML.Runtime.EntryPoints.CommonInputs/IEvaluatorInput" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Models.RegressionEvaluator" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class RegressionEvaluator&#xA;Implements CommonInputs.IEvaluatorInput" />
+  <TypeSignature Language="F#" Value="type RegressionEvaluator = class&#xA;    interface CommonInputs.IEvaluatorInput" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -24,9 +24,9 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public RegressorEvaluator ();" />
+      <MemberSignature Language="C#" Value="public RegressionEvaluator ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Models.RegressorEvaluator.#ctor" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Models.RegressionEvaluator.#ctor" />
       <MemberSignature Language="VB.NET" Value="Public Sub New ()" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
@@ -42,9 +42,9 @@
     <Member MemberName="Data">
       <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt; Data { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.EntryPoints.Var`1&lt;class Microsoft.ML.Runtime.Data.IDataView&gt; Data" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Models.RegressorEvaluator.Data" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Models.RegressionEvaluator.Data" />
       <MemberSignature Language="VB.NET" Value="Public Property Data As Var(Of IDataView)" />
-      <MemberSignature Language="F#" Value="member this.Data : Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt; with get, set" Usage="Microsoft.ML.Models.RegressorEvaluator.Data" />
+      <MemberSignature Language="F#" Value="member this.Data : Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt; with get, set" Usage="Microsoft.ML.Models.RegressionEvaluator.Data" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML</AssemblyName>
@@ -55,18 +55,52 @@
       </ReturnValue>
       <Docs>
         <summary>
-            The data to be used for evaluation
+            The data to be used for evaluation.
             </summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Evaluate">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Models.RegressionMetrics Evaluate (Microsoft.ML.PredictionModel model, Microsoft.ML.ILearningPipelineLoader testData);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Models.RegressionMetrics Evaluate(class Microsoft.ML.PredictionModel model, class Microsoft.ML.ILearningPipelineLoader testData) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Models.RegressionEvaluator.Evaluate(Microsoft.ML.PredictionModel,Microsoft.ML.ILearningPipelineLoader)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Evaluate (model As PredictionModel, testData As ILearningPipelineLoader) As RegressionMetrics" />
+      <MemberSignature Language="F#" Value="member this.Evaluate : Microsoft.ML.PredictionModel * Microsoft.ML.ILearningPipelineLoader -&gt; Microsoft.ML.Models.RegressionMetrics" Usage="regressionEvaluator.Evaluate (model, testData)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Models.RegressionMetrics</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="model" Type="Microsoft.ML.PredictionModel" />
+        <Parameter Name="testData" Type="Microsoft.ML.ILearningPipelineLoader" />
+      </Parameters>
+      <Docs>
+        <param name="model">
+            The trained PredictionModel to be evaluated.
+            </param>
+        <param name="testData">
+            The test data that will be predicted and used to evaulate the model.
+            </param>
+        <summary>
+            Computes the quality metrics for the PredictionModel using the specified data set.
+            </summary>
+        <returns>
+            A RegressionMetrics instance that describes how well the model performed against the test data.
+            </returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="LabelColumn">
       <MemberSignature Language="C#" Value="public string LabelColumn { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string LabelColumn" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Models.RegressorEvaluator.LabelColumn" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Models.RegressionEvaluator.LabelColumn" />
       <MemberSignature Language="VB.NET" Value="Public Property LabelColumn As String" />
-      <MemberSignature Language="F#" Value="member this.LabelColumn : string with get, set" Usage="Microsoft.ML.Models.RegressorEvaluator.LabelColumn" />
+      <MemberSignature Language="F#" Value="member this.LabelColumn : string with get, set" Usage="Microsoft.ML.Models.RegressionEvaluator.LabelColumn" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML</AssemblyName>
@@ -77,7 +111,7 @@
       </ReturnValue>
       <Docs>
         <summary>
-            Column to use for labels
+            Column to use for labels.
             </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
@@ -86,9 +120,9 @@
     <Member MemberName="LossFunction">
       <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.RegressionLossFunction LossFunction { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.RegressionLossFunction LossFunction" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Models.RegressorEvaluator.LossFunction" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Models.RegressionEvaluator.LossFunction" />
       <MemberSignature Language="VB.NET" Value="Public Property LossFunction As RegressionLossFunction" />
-      <MemberSignature Language="F#" Value="member this.LossFunction : Microsoft.ML.Runtime.RegressionLossFunction with get, set" Usage="Microsoft.ML.Models.RegressorEvaluator.LossFunction" />
+      <MemberSignature Language="F#" Value="member this.LossFunction : Microsoft.ML.Runtime.RegressionLossFunction with get, set" Usage="Microsoft.ML.Models.RegressionEvaluator.LossFunction" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML</AssemblyName>
@@ -113,9 +147,9 @@
     <Member MemberName="NameColumn">
       <MemberSignature Language="C#" Value="public string NameColumn { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string NameColumn" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Models.RegressorEvaluator.NameColumn" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Models.RegressionEvaluator.NameColumn" />
       <MemberSignature Language="VB.NET" Value="Public Property NameColumn As String" />
-      <MemberSignature Language="F#" Value="member this.NameColumn : string with get, set" Usage="Microsoft.ML.Models.RegressorEvaluator.NameColumn" />
+      <MemberSignature Language="F#" Value="member this.NameColumn : string with get, set" Usage="Microsoft.ML.Models.RegressionEvaluator.NameColumn" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML</AssemblyName>
@@ -126,7 +160,7 @@
       </ReturnValue>
       <Docs>
         <summary>
-            Name column name
+            Name column name.
             </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
@@ -135,9 +169,9 @@
     <Member MemberName="ScoreColumn">
       <MemberSignature Language="C#" Value="public string ScoreColumn { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string ScoreColumn" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Models.RegressorEvaluator.ScoreColumn" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Models.RegressionEvaluator.ScoreColumn" />
       <MemberSignature Language="VB.NET" Value="Public Property ScoreColumn As String" />
-      <MemberSignature Language="F#" Value="member this.ScoreColumn : string with get, set" Usage="Microsoft.ML.Models.RegressorEvaluator.ScoreColumn" />
+      <MemberSignature Language="F#" Value="member this.ScoreColumn : string with get, set" Usage="Microsoft.ML.Models.RegressionEvaluator.ScoreColumn" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML</AssemblyName>
@@ -148,7 +182,7 @@
       </ReturnValue>
       <Docs>
         <summary>
-            Score column name
+            Score column name.
             </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
@@ -157,9 +191,9 @@
     <Member MemberName="StratColumn">
       <MemberSignature Language="C#" Value="public string[] StratColumn { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string[] StratColumn" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Models.RegressorEvaluator.StratColumn" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Models.RegressionEvaluator.StratColumn" />
       <MemberSignature Language="VB.NET" Value="Public Property StratColumn As String()" />
-      <MemberSignature Language="F#" Value="member this.StratColumn : string[] with get, set" Usage="Microsoft.ML.Models.RegressorEvaluator.StratColumn" />
+      <MemberSignature Language="F#" Value="member this.StratColumn : string[] with get, set" Usage="Microsoft.ML.Models.RegressionEvaluator.StratColumn" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML</AssemblyName>
@@ -170,7 +204,7 @@
       </ReturnValue>
       <Docs>
         <summary>
-            Stratification column name
+            Stratification column name.
             </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
@@ -179,9 +213,9 @@
     <Member MemberName="WeightColumn">
       <MemberSignature Language="C#" Value="public string WeightColumn { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string WeightColumn" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Models.RegressorEvaluator.WeightColumn" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Models.RegressionEvaluator.WeightColumn" />
       <MemberSignature Language="VB.NET" Value="Public Property WeightColumn As String" />
-      <MemberSignature Language="F#" Value="member this.WeightColumn : string with get, set" Usage="Microsoft.ML.Models.RegressorEvaluator.WeightColumn" />
+      <MemberSignature Language="F#" Value="member this.WeightColumn : string with get, set" Usage="Microsoft.ML.Models.RegressionEvaluator.WeightColumn" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML</AssemblyName>
@@ -192,7 +226,7 @@
       </ReturnValue>
       <Docs>
         <summary>
-            Weight column name
+            Weight column name.
             </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
