@@ -1,0 +1,84 @@
+﻿<Type Name="ITransposeDataView" FullName="Microsoft.ML.Runtime.Data.ITransposeDataView">
+  <TypeSignature Language="C#" Value="public interface ITransposeDataView : Microsoft.ML.Runtime.Data.IDataView" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ITransposeDataView implements class Microsoft.ML.Runtime.Data.IDataView, class Microsoft.ML.Runtime.Data.ISchematized" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.ITransposeDataView" />
+  <TypeSignature Language="VB.NET" Value="Public Interface ITransposeDataView&#xA;Implements IDataView" />
+  <TypeSignature Language="F#" Value="type ITransposeDataView = interface&#xA;    interface IDataView&#xA;    interface ISchematized" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Data</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.Data.IDataView</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+            A view of data where columns can optionally be accessed slot by slot, as opposed to row
+            by row in a typical dataview. A slot-accessible column can be accessed with a slot-by-slot
+            cursor via an <see cref="T:Microsoft.ML.Runtime.Data.ISlotCursor" /> (naturally, as opposed to row-by-row through an
+            <see cref="T:Microsoft.ML.Runtime.Data.IRowCursor" />). This interface is intended to be implemented by classes that
+            want to provide an option for an alternate way of accessing the data stored in a
+            <see cref="T:Microsoft.ML.Runtime.Data.IDataView" />.
+            
+            The interface only advertises that columns may be accessible in slot-wise fashion. A column
+            is accessible in this fashion iff <see cref="P:Microsoft.ML.Runtime.Data.ITransposeDataView.TransposeSchema" />'s
+            <see cref="M:Microsoft.ML.Runtime.Data.ITransposeSchema.GetSlotType(System.Int32)" /> returns a non-null value.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="GetSlotCursor">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.ISlotCursor GetSlotCursor (int col);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.ISlotCursor GetSlotCursor(int32 col) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ITransposeDataView.GetSlotCursor(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetSlotCursor (col As Integer) As ISlotCursor" />
+      <MemberSignature Language="F#" Value="abstract member GetSlotCursor : int -&gt; Microsoft.ML.Runtime.Data.ISlotCursor" Usage="iTransposeDataView.GetSlotCursor col" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ISlotCursor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="col" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="col">To be added.</param>
+        <summary>
+            Presents a cursor over the slots of a transposable column, or throws if the column
+            is not transposable.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TransposeSchema">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.ITransposeSchema TransposeSchema { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.Data.ITransposeSchema TransposeSchema" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.ITransposeDataView.TransposeSchema" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property TransposeSchema As ITransposeSchema" />
+      <MemberSignature Language="F#" Value="member this.TransposeSchema : Microsoft.ML.Runtime.Data.ITransposeSchema" Usage="Microsoft.ML.Runtime.Data.ITransposeDataView.TransposeSchema" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ITransposeSchema</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            An enhanced schema, containing information on the transposition properties, if any,
+            of each column. Note that there is no contract or suggestion that this property
+            should be equal to <see cref="P:Microsoft.ML.Runtime.Data.ISchematized.Schema" />.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
