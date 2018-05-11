@@ -1,0 +1,313 @@
+﻿<Type Name="ServerChannel" FullName="Microsoft.ML.Runtime.ServerChannel">
+  <TypeSignature Language="C#" Value="public sealed class ServerChannel : IDisposable, Microsoft.ML.Runtime.ServerChannel.IPendingBundleNotification" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit ServerChannel extends System.Object implements class Microsoft.ML.Runtime.ServerChannel/IPendingBundleNotification, class System.IDisposable" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.ServerChannel" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class ServerChannel&#xA;Implements IDisposable, ServerChannel.IPendingBundleNotification" />
+  <TypeSignature Language="F#" Value="type ServerChannel = class&#xA;    interface ServerChannel.IPendingBundleNotification&#xA;    interface IDisposable" />
+  <TypeSignature Language="C++ CLI" Value="public ref class ServerChannel sealed : IDisposable, Microsoft::ML::Runtime::ServerChannel::IPendingBundleNotification" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Core</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.ServerChannel+IPendingBundleNotification</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.IDisposable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+            Instances of this class are used to set up a bundle of named delegates. These
+            delegates are registered through <see cref="M:Microsoft.ML.Runtime.ServerChannel.Register``1(System.String,System.Func{``0})" /> and its overloads.
+            Once all registrations are done, <see cref="M:Microsoft.ML.Runtime.ServerChannel.Publish" /> is called and a message
+            of type <see cref="T:Microsoft.ML.Runtime.ServerChannel.Bundle" /> is sent through the input channel
+            provider. The intended use case is that any information surfaced through these
+            delegates will be published in some fashion, with the target scenario being
+            that the library will publish some sort of restful API.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Acknowledge">
+      <MemberSignature Language="C#" Value="public void Acknowledge (Action&lt;Microsoft.ML.Runtime.ServerChannel.Bundle&gt; toDo);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Acknowledge(class System.Action`1&lt;class Microsoft.ML.Runtime.ServerChannel/Bundle&gt; toDo) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ServerChannel.Acknowledge(System.Action{Microsoft.ML.Runtime.ServerChannel.Bundle})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Acknowledge (toDo As Action(Of ServerChannel.Bundle))" />
+      <MemberSignature Language="F#" Value="abstract member Acknowledge : Action&lt;Microsoft.ML.Runtime.ServerChannel.Bundle&gt; -&gt; unit&#xA;override this.Acknowledge : Action&lt;Microsoft.ML.Runtime.ServerChannel.Bundle&gt; -&gt; unit" Usage="serverChannel.Acknowledge toDo" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; virtual void Acknowledge(Action&lt;Microsoft::ML::Runtime::ServerChannel::Bundle ^&gt; ^ toDo);" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.ServerChannel.IPendingBundleNotification.Acknowledge(System.Action{Microsoft.ML.Runtime.ServerChannel.Bundle})</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="toDo" Type="System.Action&lt;Microsoft.ML.Runtime.ServerChannel+Bundle&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="toDo">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateDefaultServerFactoryOrNull">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.ServerChannel.IServerFactory CreateDefaultServerFactoryOrNull (Microsoft.ML.Runtime.IExceptionContext ectx);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.ServerChannel/IServerFactory CreateDefaultServerFactoryOrNull(class Microsoft.ML.Runtime.IExceptionContext ectx) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ServerChannel.CreateDefaultServerFactoryOrNull(Microsoft.ML.Runtime.IExceptionContext)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function CreateDefaultServerFactoryOrNull (ectx As IExceptionContext) As ServerChannel.IServerFactory" />
+      <MemberSignature Language="F#" Value="static member CreateDefaultServerFactoryOrNull : Microsoft.ML.Runtime.IExceptionContext -&gt; Microsoft.ML.Runtime.ServerChannel.IServerFactory" Usage="Microsoft.ML.Runtime.ServerChannel.CreateDefaultServerFactoryOrNull ectx" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; static Microsoft::ML::Runtime::ServerChannel::IServerFactory ^ CreateDefaultServerFactoryOrNull(Microsoft::ML::Runtime::IExceptionContext ^ ectx);" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA; static Microsoft::ML::Runtime::ServerChannel::IServerFactory ^ CreateDefaultServerFactoryOrNull(Microsoft::ML::Runtime::IExceptionContext ^ ectx);" />
+      <MemberSignature Language="C++ WINRT" Value=" static Microsoft::ML::Runtime::ServerChannel::IServerFactory CreateDefaultServerFactoryOrNull(Microsoft::ML::Runtime::IExceptionContext const &amp; ectx);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.ServerChannel+IServerFactory</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ectx" Type="Microsoft.ML.Runtime.IExceptionContext" />
+      </Parameters>
+      <Docs>
+        <param name="ectx">To be added.</param>
+        <summary>
+            Creates what might be considered a good "default" server factory, if possible,
+            or <c>null</c> if no good default was possible. A <c>null</c> value could be returned,
+            for example, if a user opted to remove all implementations of <see cref="T:Microsoft.ML.Runtime.ServerChannel.IServer" /> and
+            the associated <see cref="T:Microsoft.ML.Runtime.ServerChannel.IServerFactory" /> for security reasons.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dispose">
+      <MemberSignature Language="C#" Value="public void Dispose ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Dispose() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ServerChannel.Dispose" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Dispose ()" />
+      <MemberSignature Language="F#" Value="abstract member Dispose : unit -&gt; unit&#xA;override this.Dispose : unit -&gt; unit" Usage="serverChannel.Dispose " />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; virtual void Dispose();" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA; void Dispose();" />
+      <MemberSignature Language="C++ WINRT" Value="void Dispose();" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:System.IDisposable.Dispose</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Publish">
+      <MemberSignature Language="C#" Value="public void Publish ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Publish() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ServerChannel.Publish" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Publish ()" />
+      <MemberSignature Language="F#" Value="member this.Publish : unit -&gt; unit" Usage="serverChannel.Publish " />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; void Publish();" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA; void Publish();" />
+      <MemberSignature Language="C++ WINRT" Value="void Publish();" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            Finalizes all registrations of delegates, and pipes the bundle of objects
+            in a <see cref="T:Microsoft.ML.Runtime.ServerChannel.Bundle" /> up through the pipe to be consumed by any
+            listeners.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Register&lt;TRet&gt;">
+      <MemberSignature Language="C#" Value="public void Register&lt;TRet&gt; (string name, Func&lt;TRet&gt; func);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Register&lt;TRet&gt;(string name, class System.Func`1&lt;!!TRet&gt; func) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ServerChannel.Register``1(System.String,System.Func{``0})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Register(Of TRet) (name As String, func As Func(Of TRet))" />
+      <MemberSignature Language="F#" Value="member this.Register : string * Func&lt;'Ret&gt; -&gt; unit" Usage="serverChannel.Register (name, func)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA;generic &lt;typename TRet&gt;&#xA; void Register(System::String ^ name, Func&lt;TRet&gt; ^ func);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TRet" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="func" Type="System.Func&lt;TRet&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TRet">To be added.</typeparam>
+        <param name="name">To be added.</param>
+        <param name="func">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Register&lt;T1,TRet&gt;">
+      <MemberSignature Language="C#" Value="public void Register&lt;T1,TRet&gt; (string name, Func&lt;T1,TRet&gt; func);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Register&lt;T1, TRet&gt;(string name, class System.Func`2&lt;!!T1, !!TRet&gt; func) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ServerChannel.Register``2(System.String,System.Func{``0,``1})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Register(Of T1, TRet) (name As String, func As Func(Of T1, TRet))" />
+      <MemberSignature Language="F#" Value="member this.Register : string * Func&lt;'T1, 'Ret&gt; -&gt; unit" Usage="serverChannel.Register (name, func)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA;generic &lt;typename T1, typename TRet&gt;&#xA; void Register(System::String ^ name, Func&lt;T1, TRet&gt; ^ func);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T1" />
+        <TypeParameter Name="TRet" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="func" Type="System.Func&lt;T1,TRet&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T1">To be added.</typeparam>
+        <typeparam name="TRet">To be added.</typeparam>
+        <param name="name">To be added.</param>
+        <param name="func">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Register&lt;T1,T2,TRet&gt;">
+      <MemberSignature Language="C#" Value="public void Register&lt;T1,T2,TRet&gt; (string name, Func&lt;T1,T2,TRet&gt; func);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Register&lt;T1, T2, TRet&gt;(string name, class System.Func`3&lt;!!T1, !!T2, !!TRet&gt; func) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ServerChannel.Register``3(System.String,System.Func{``0,``1,``2})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Register(Of T1, T2, TRet) (name As String, func As Func(Of T1, T2, TRet))" />
+      <MemberSignature Language="F#" Value="member this.Register : string * Func&lt;'T1, 'T2, 'Ret&gt; -&gt; unit" Usage="serverChannel.Register (name, func)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA;generic &lt;typename T1, typename T2, typename TRet&gt;&#xA; void Register(System::String ^ name, Func&lt;T1, T2, TRet&gt; ^ func);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T1" />
+        <TypeParameter Name="T2" />
+        <TypeParameter Name="TRet" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="func" Type="System.Func&lt;T1,T2,TRet&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T1">To be added.</typeparam>
+        <typeparam name="T2">To be added.</typeparam>
+        <typeparam name="TRet">To be added.</typeparam>
+        <param name="name">To be added.</param>
+        <param name="func">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Register&lt;T1,T2,T3,TRet&gt;">
+      <MemberSignature Language="C#" Value="public void Register&lt;T1,T2,T3,TRet&gt; (string name, Func&lt;T1,T2,T3,TRet&gt; func);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Register&lt;T1, T2, T3, TRet&gt;(string name, class System.Func`4&lt;!!T1, !!T2, !!T3, !!TRet&gt; func) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ServerChannel.Register``4(System.String,System.Func{``0,``1,``2,``3})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Register(Of T1, T2, T3, TRet) (name As String, func As Func(Of T1, T2, T3, TRet))" />
+      <MemberSignature Language="F#" Value="member this.Register : string * Func&lt;'T1, 'T2, 'T3, 'Ret&gt; -&gt; unit" Usage="serverChannel.Register (name, func)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA;generic &lt;typename T1, typename T2, typename T3, typename TRet&gt;&#xA; void Register(System::String ^ name, Func&lt;T1, T2, T3, TRet&gt; ^ func);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T1" />
+        <TypeParameter Name="T2" />
+        <TypeParameter Name="T3" />
+        <TypeParameter Name="TRet" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="func" Type="System.Func&lt;T1,T2,T3,TRet&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T1">To be added.</typeparam>
+        <typeparam name="T2">To be added.</typeparam>
+        <typeparam name="T3">To be added.</typeparam>
+        <typeparam name="TRet">To be added.</typeparam>
+        <param name="name">To be added.</param>
+        <param name="func">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Start">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.ServerChannel Start (Microsoft.ML.Runtime.IChannelProvider provider, string identifier);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.ServerChannel Start(class Microsoft.ML.Runtime.IChannelProvider provider, string identifier) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ServerChannel.Start(Microsoft.ML.Runtime.IChannelProvider,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Start (provider As IChannelProvider, identifier As String) As ServerChannel" />
+      <MemberSignature Language="F#" Value="static member Start : Microsoft.ML.Runtime.IChannelProvider * string -&gt; Microsoft.ML.Runtime.ServerChannel" Usage="Microsoft.ML.Runtime.ServerChannel.Start (provider, identifier)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; static Microsoft::ML::Runtime::ServerChannel ^ Start(Microsoft::ML::Runtime::IChannelProvider ^ provider, System::String ^ identifier);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.ServerChannel</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="provider" Type="Microsoft.ML.Runtime.IChannelProvider" />
+        <Parameter Name="identifier" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="provider">The channel provider, on which to send
+            the notification that a server is being constructed</param>
+        <param name="identifier">A semi-unique identifier for this
+            "bundle" that is being constructed</param>
+        <summary>
+            Starts a new server channel.
+            </summary>
+        <returns>The constructed server channel, or <c>null</c> if there
+            was no listeners for server channels registered on <paramref name="provider" /></returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

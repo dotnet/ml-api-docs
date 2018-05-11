@@ -1,0 +1,197 @@
+﻿<Type Name="InvertHashCollector&lt;T&gt;" FullName="Microsoft.ML.Runtime.Data.InvertHashCollector&lt;T&gt;">
+  <TypeSignature Language="C#" Value="public sealed class InvertHashCollector&lt;T&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit InvertHashCollector`1&lt;T&gt; extends System.Object" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.InvertHashCollector`1" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class InvertHashCollector(Of T)" />
+  <TypeSignature Language="F#" Value="type InvertHashCollector&lt;'T&gt; = class" />
+  <TypeSignature Language="C++ CLI" Value="generic &lt;typename T&gt;&#xA;public ref class InvertHashCollector sealed" />
+  <TypeSignature Language="C++ WINRT" Value="template &lt;typename T&gt;&#xA;class InvertHashCollector sealed" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Data</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <TypeParameters>
+    <TypeParameter Name="T" />
+  </TypeParameters>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <typeparam name="T">To be added.</typeparam>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public InvertHashCollector (int slots, int maxCount, Microsoft.ML.Runtime.Data.ValueMapper&lt;T,System.Text.StringBuilder&gt; mapper, System.Collections.Generic.IEqualityComparer&lt;T&gt; comparer, Microsoft.ML.Runtime.Data.ValueMapper&lt;T,T&gt; copier = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32 slots, int32 maxCount, class Microsoft.ML.Runtime.Data.ValueMapper`2&lt;!T, class System.Text.StringBuilder&gt; mapper, class System.Collections.Generic.IEqualityComparer`1&lt;!T&gt; comparer, class Microsoft.ML.Runtime.Data.ValueMapper`2&lt;!T, !T&gt; copier) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.InvertHashCollector`1.#ctor(System.Int32,System.Int32,Microsoft.ML.Runtime.Data.ValueMapper{`0,System.Text.StringBuilder},System.Collections.Generic.IEqualityComparer{`0},Microsoft.ML.Runtime.Data.ValueMapper{`0,`0})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (slots As Integer, maxCount As Integer, mapper As ValueMapper(Of T, StringBuilder), comparer As IEqualityComparer(Of T), Optional copier As ValueMapper(Of T, T) = null)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.InvertHashCollector&lt;'T&gt; : int * int * Microsoft.ML.Runtime.Data.ValueMapper&lt;'T, System.Text.StringBuilder&gt; * System.Collections.Generic.IEqualityComparer&lt;'T&gt; * Microsoft.ML.Runtime.Data.ValueMapper&lt;'T, 'T&gt; -&gt; Microsoft.ML.Runtime.Data.InvertHashCollector&lt;'T&gt;" Usage="new Microsoft.ML.Runtime.Data.InvertHashCollector&lt;'T&gt; (slots, maxCount, mapper, comparer, copier)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="slots" Type="System.Int32" />
+        <Parameter Name="maxCount" Type="System.Int32" />
+        <Parameter Name="mapper" Type="Microsoft.ML.Runtime.Data.ValueMapper&lt;T,System.Text.StringBuilder&gt;" />
+        <Parameter Name="comparer" Type="System.Collections.Generic.IEqualityComparer&lt;T&gt;" />
+        <Parameter Name="copier" Type="Microsoft.ML.Runtime.Data.ValueMapper&lt;T,T&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="slots">The maximum number of slots</param>
+        <param name="maxCount">The number of distinct keys we can accumulate per slot</param>
+        <param name="mapper">Utilized in composing the final description, once we have done
+            collecting the distinct keys.</param>
+        <param name="comparer">For detecting uniqueness of the keys we're collecting per slot.</param>
+        <param name="copier">For copying input values into a value to actually store. Useful for
+            types of objects where it is possible to do a comparison relatively quickly on some sort
+            of "unsafe" object, but for which when we decide to actually store it we need to provide
+            a "safe" version of the object. Utilized in the ngram hash transform, for example.</param>
+        <summary>
+            Constructs an invert hash collector that collects unique keys per slot, then is able
+            to build a textual description out of that.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Add">
+      <MemberSignature Language="C#" Value="public void Add (int dstSlot, T key);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Add(int32 dstSlot, !T key) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.InvertHashCollector`1.Add(System.Int32,`0)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Add (dstSlot As Integer, key As T)" />
+      <MemberSignature Language="F#" Value="member this.Add : int * 'T -&gt; unit" Usage="invertHashCollector.Add (dstSlot, key)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; void Add(int dstSlot, T key);" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA; void Add(int dstSlot, T key);" />
+      <MemberSignature Language="C++ WINRT" Value="void Add(int dstSlot, T key);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="dstSlot" Type="System.Int32" />
+        <Parameter Name="key" Type="T" />
+      </Parameters>
+      <Docs>
+        <param name="dstSlot">To be added.</param>
+        <param name="key">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Add">
+      <MemberSignature Language="C#" Value="public void Add (uint hash, T key);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Add(unsigned int32 hash, !T key) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.InvertHashCollector`1.Add(System.UInt32,`0)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Add (hash As UInteger, key As T)" />
+      <MemberSignature Language="F#" Value="member this.Add : uint32 * 'T -&gt; unit" Usage="invertHashCollector.Add (hash, key)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; void Add(System::UInt32 hash, T key);" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA; void Add(unsigned int hash, T key);" />
+      <MemberSignature Language="C++ WINRT" Value="void Add(unsigned int hash, T key);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="hash" Type="System.UInt32" />
+        <Parameter Name="key" Type="T" />
+      </Parameters>
+      <Docs>
+        <param name="hash">To be added.</param>
+        <param name="key">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Add">
+      <MemberSignature Language="C#" Value="public void Add (int dstSlot, Microsoft.ML.Runtime.Data.ValueGetter&lt;T&gt; getter, ref T key);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Add(int32 dstSlot, class Microsoft.ML.Runtime.Data.ValueGetter`1&lt;!T&gt; getter, !T&amp; key) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.InvertHashCollector`1.Add(System.Int32,Microsoft.ML.Runtime.Data.ValueGetter{`0},`0@)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Add (dstSlot As Integer, getter As ValueGetter(Of T), ByRef key As T)" />
+      <MemberSignature Language="F#" Value="member this.Add : int * Microsoft.ML.Runtime.Data.ValueGetter&lt;'T&gt; *  -&gt; unit" Usage="invertHashCollector.Add (dstSlot, getter, key)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; void Add(int dstSlot, Microsoft::ML::Runtime::Data::ValueGetter&lt;T&gt; ^ getter, T % key);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="dstSlot" Type="System.Int32" />
+        <Parameter Name="getter" Type="Microsoft.ML.Runtime.Data.ValueGetter&lt;T&gt;" />
+        <Parameter Name="key" Type="T&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="dstSlot">To be added.</param>
+        <param name="getter">To be added.</param>
+        <param name="key">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Add">
+      <MemberSignature Language="C#" Value="public void Add (uint hash, Microsoft.ML.Runtime.Data.ValueGetter&lt;T&gt; getter, ref T key);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Add(unsigned int32 hash, class Microsoft.ML.Runtime.Data.ValueGetter`1&lt;!T&gt; getter, !T&amp; key) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.InvertHashCollector`1.Add(System.UInt32,Microsoft.ML.Runtime.Data.ValueGetter{`0},`0@)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Add (hash As UInteger, getter As ValueGetter(Of T), ByRef key As T)" />
+      <MemberSignature Language="F#" Value="member this.Add : uint32 * Microsoft.ML.Runtime.Data.ValueGetter&lt;'T&gt; *  -&gt; unit" Usage="invertHashCollector.Add (hash, getter, key)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; void Add(System::UInt32 hash, Microsoft::ML::Runtime::Data::ValueGetter&lt;T&gt; ^ getter, T % key);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="hash" Type="System.UInt32" />
+        <Parameter Name="getter" Type="Microsoft.ML.Runtime.Data.ValueGetter&lt;T&gt;" />
+        <Parameter Name="key" Type="T&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="hash">To be added.</param>
+        <param name="getter">To be added.</param>
+        <param name="key">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetMetadata">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.VBuffer&lt;Microsoft.ML.Runtime.Data.DvText&gt; GetMetadata ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Microsoft.ML.Runtime.Data.VBuffer`1&lt;valuetype Microsoft.ML.Runtime.Data.DvText&gt; GetMetadata() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.InvertHashCollector`1.GetMetadata" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetMetadata () As VBuffer(Of DvText)" />
+      <MemberSignature Language="F#" Value="member this.GetMetadata : unit -&gt; Microsoft.ML.Runtime.Data.VBuffer&lt;Microsoft.ML.Runtime.Data.DvText&gt;" Usage="invertHashCollector.GetMetadata " />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; Microsoft::ML::Runtime::Data::VBuffer&lt;Microsoft::ML::Runtime::Data::DvText&gt; GetMetadata();" />
+      <MemberSignature Language="C++ WINRT" Value="Microsoft::ML::Runtime::Data::VBuffer&lt;Microsoft::ML::Runtime::Data::DvText&gt; GetMetadata();" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.VBuffer&lt;Microsoft.ML.Runtime.Data.DvText&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

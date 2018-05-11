@@ -1,0 +1,157 @@
+﻿<Type Name="IColumn" FullName="Microsoft.ML.Runtime.Data.IColumn">
+  <TypeSignature Language="C#" Value="public interface IColumn" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IColumn" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.IColumn" />
+  <TypeSignature Language="VB.NET" Value="Public Interface IColumn" />
+  <TypeSignature Language="F#" Value="type IColumn = interface" />
+  <TypeSignature Language="C++ CLI" Value="public interface class IColumn" />
+  <TypeSignature Language="C++ CX" Value="public interface class IColumn" />
+  <TypeSignature Language="C++ WINRT" Value="__interface IColumn" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Data</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Interfaces />
+  <Docs>
+    <summary>
+            This interface is an analogy to <see cref="T:Microsoft.ML.Runtime.Data.IRow" /> that encapsulates the contents of a single
+            column.
+            
+            Note that in the same sense that <see cref="T:Microsoft.ML.Runtime.Data.IRow" /> is not thread safe, implementors of this interface
+            by similar token must not be considered thread safe by users of the interface, and by the same token
+            implementors should feel free to write their implementations with the expectation that only one thread
+            will be calling it at a time.
+            
+            Similarly, in the same sense that an <see cref="T:Microsoft.ML.Runtime.Data.IRow" /> can have its values "change under it" by having
+            the underlying cursor move, so too might this item have its values change under it, and they will if
+            they were directly instantiated from a row.
+            
+            Generally actual implementors of this interface should not implement this directly, but instead implement
+            <see cref="T:Microsoft.ML.Runtime.Data.IColumn`1" />.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="GetGetter">
+      <MemberSignature Language="C#" Value="public Delegate GetGetter ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Delegate GetGetter() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.IColumn.GetGetter" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetGetter () As Delegate" />
+      <MemberSignature Language="F#" Value="abstract member GetGetter : unit -&gt; Delegate" Usage="iColumn.GetGetter " />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; Delegate ^ GetGetter();" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA; Delegate ^ GetGetter();" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Delegate</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            The value getter, as a <see cref="T:System.Delegate" />. Implementators should just pass through
+            <see cref="M:Microsoft.ML.Runtime.Data.IColumn`1.GetGetter" />.
+            </summary>
+        <returns>The generic getter delegate</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsActive">
+      <MemberSignature Language="C#" Value="public bool IsActive { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsActive" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.IColumn.IsActive" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property IsActive As Boolean" />
+      <MemberSignature Language="F#" Value="member this.IsActive : bool" Usage="Microsoft.ML.Runtime.Data.IColumn.IsActive" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; property bool IsActive { bool get(); };" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA; property bool IsActive { bool get(); };" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Whether the column should be considered active or not.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Metadata">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IRow Metadata { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.Data.IRow Metadata" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.IColumn.Metadata" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Metadata As IRow" />
+      <MemberSignature Language="F#" Value="member this.Metadata : Microsoft.ML.Runtime.Data.IRow" Usage="Microsoft.ML.Runtime.Data.IColumn.Metadata" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; property Microsoft::ML::Runtime::Data::IRow ^ Metadata { Microsoft::ML::Runtime::Data::IRow ^ get(); };" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA; property Microsoft::ML::Runtime::Data::IRow ^ Metadata { Microsoft::ML::Runtime::Data::IRow ^ get(); };" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IRow</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The metadata for a column, or <c>null</c> if this column has no metadata.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Name">
+      <MemberSignature Language="C#" Value="public string Name { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Name" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.IColumn.Name" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Name As String" />
+      <MemberSignature Language="F#" Value="member this.Name : string" Usage="Microsoft.ML.Runtime.Data.IColumn.Name" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; property System::String ^ Name { System::String ^ get(); };" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA; property Platform::String ^ Name { Platform::String ^ get(); };" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The name of a column. This string should always be non-empty.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Type">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.ColumnType Type { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.Data.ColumnType Type" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.IColumn.Type" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Type As ColumnType" />
+      <MemberSignature Language="F#" Value="member this.Type : Microsoft.ML.Runtime.Data.ColumnType" Usage="Microsoft.ML.Runtime.Data.IColumn.Type" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; property Microsoft::ML::Runtime::Data::ColumnType ^ Type { Microsoft::ML::Runtime::Data::ColumnType ^ get(); };" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ColumnType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The type of the column.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,661 @@
+﻿<Type Name="ColumnBindingsBase" FullName="Microsoft.ML.Runtime.Data.ColumnBindingsBase">
+  <TypeSignature Language="C#" Value="public abstract class ColumnBindingsBase : Microsoft.ML.Runtime.Data.ISchema" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit ColumnBindingsBase extends System.Object implements class Microsoft.ML.Runtime.Data.ISchema" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.ColumnBindingsBase" />
+  <TypeSignature Language="VB.NET" Value="Public MustInherit Class ColumnBindingsBase&#xA;Implements ISchema" />
+  <TypeSignature Language="F#" Value="type ColumnBindingsBase = class&#xA;    interface ISchema" />
+  <TypeSignature Language="C++ CLI" Value="public ref class ColumnBindingsBase abstract : Microsoft::ML::Runtime::Data::ISchema" />
+  <TypeSignature Language="C++ CX" Value="[Windows::Foundation::Metadata::WebHostHidden]&#xA;public ref class ColumnBindingsBase abstract : Microsoft::ML::Runtime::Data::ISchema" />
+  <TypeSignature Language="C++ WINRT" Value="[Windows::Foundation::Metadata::WebHostHidden]&#xA;class ColumnBindingsBase abstract : Microsoft::ML::Runtime::Data::ISchema" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Data</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.Data.ISchema</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+            Base class that abstracts passing input columns through (with possibly different indices) and adding
+            InfoCount additional columns. If an added column has the same name as a non-hidden input column, it hides
+            the input column, and is placed immediately after the input column. Otherwise, the added column is placed
+            at the end. By default, newly added columns have no metadata (but this can be overriden).
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected ColumnBindingsBase (Microsoft.ML.Runtime.Data.ISchema input);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.Data.ISchema input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ColumnBindingsBase.#ctor(Microsoft.ML.Runtime.Data.ISchema)" />
+      <MemberSignature Language="VB.NET" Value="Protected Sub New (input As ISchema)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.ColumnBindingsBase : Microsoft.ML.Runtime.Data.ISchema -&gt; Microsoft.ML.Runtime.Data.ColumnBindingsBase" Usage="new Microsoft.ML.Runtime.Data.ColumnBindingsBase input" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; ColumnBindingsBase(Microsoft::ML::Runtime::Data::ISchema ^ input);" />
+      <MemberSignature Language="C++ CX" Value="protected:&#xA; ColumnBindingsBase(Microsoft::ML::Runtime::Data::ISchema ^ input);" />
+      <MemberSignature Language="C++ WINRT" Value=" ColumnBindingsBase(Microsoft::ML::Runtime::Data::ISchema const &amp; input);" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.ISchema" />
+      </Parameters>
+      <Docs>
+        <param name="input"></param>
+        <summary>
+            Constructor that takes an input schema and adds no new columns.
+            This is utilized by lambda transforms if the output happens to have no columns.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected ColumnBindingsBase (Microsoft.ML.Runtime.Data.ISchema input, bool user, params string[] names);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.Data.ISchema input, bool user, string[] names) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ColumnBindingsBase.#ctor(Microsoft.ML.Runtime.Data.ISchema,System.Boolean,System.String[])" />
+      <MemberSignature Language="VB.NET" Value="Protected Sub New (input As ISchema, user As Boolean, ParamArray names As String())" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.ColumnBindingsBase : Microsoft.ML.Runtime.Data.ISchema * bool * string[] -&gt; Microsoft.ML.Runtime.Data.ColumnBindingsBase" Usage="new Microsoft.ML.Runtime.Data.ColumnBindingsBase (input, user, names)" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; ColumnBindingsBase(Microsoft::ML::Runtime::Data::ISchema ^ input, bool user, ... cli::array &lt;System::String ^&gt; ^ names);" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.ISchema" />
+        <Parameter Name="user" Type="System.Boolean" />
+        <Parameter Name="names" Type="System.String[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="input">To be added.</param>
+        <param name="user">To be added.</param>
+        <param name="names">To be added.</param>
+        <summary>
+            Constructor taking the input schema and new column names. Names must be non-empty and
+            each name must be non-white-space. The names must be unique but can match existing names
+            in schemaInput. For error reporting, this assumes that the names come from a user-supplied
+            parameter named "column". This takes ownership of the params array of names.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AnyNewColumnsActive">
+      <MemberSignature Language="C#" Value="public bool AnyNewColumnsActive (Func&lt;int,bool&gt; predicate);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool AnyNewColumnsActive(class System.Func`2&lt;int32, bool&gt; predicate) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ColumnBindingsBase.AnyNewColumnsActive(System.Func{System.Int32,System.Boolean})" />
+      <MemberSignature Language="VB.NET" Value="Public Function AnyNewColumnsActive (predicate As Func(Of Integer, Boolean)) As Boolean" />
+      <MemberSignature Language="F#" Value="member this.AnyNewColumnsActive : Func&lt;int, bool&gt; -&gt; bool" Usage="columnBindingsBase.AnyNewColumnsActive predicate" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; bool AnyNewColumnsActive(Func&lt;int, bool&gt; ^ predicate);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="predicate">To be added.</param>
+        <summary>
+            Determine whether any columns generated by this transform are active.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ColumnCount">
+      <MemberSignature Language="C#" Value="public int ColumnCount { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 ColumnCount" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.ColumnBindingsBase.ColumnCount" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property ColumnCount As Integer" />
+      <MemberSignature Language="F#" Value="member this.ColumnCount : int" Usage="Microsoft.ML.Runtime.Data.ColumnBindingsBase.ColumnCount" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; property int ColumnCount { int get(); };" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA; property int ColumnCount { int get(); };" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Runtime.Data.ISchema.ColumnCount</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetActive">
+      <MemberSignature Language="C#" Value="public bool[] GetActive (Func&lt;int,bool&gt; predicate);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool[] GetActive(class System.Func`2&lt;int32, bool&gt; predicate) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ColumnBindingsBase.GetActive(System.Func{System.Int32,System.Boolean})" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetActive (predicate As Func(Of Integer, Boolean)) As Boolean()" />
+      <MemberSignature Language="F#" Value="member this.GetActive : Func&lt;int, bool&gt; -&gt; bool[]" Usage="columnBindingsBase.GetActive predicate" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; cli::array &lt;bool&gt; ^ GetActive(Func&lt;int, bool&gt; ^ predicate);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="predicate">To be added.</param>
+        <summary>
+            The given predicate maps from output column index to whether the column is active.
+            This builds an array of bools of length ColumnCount containing the results of calling
+            predicate on each column index.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetActiveInput">
+      <MemberSignature Language="C#" Value="public bool[] GetActiveInput (Func&lt;int,bool&gt; predicate);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool[] GetActiveInput(class System.Func`2&lt;int32, bool&gt; predicate) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ColumnBindingsBase.GetActiveInput(System.Func{System.Int32,System.Boolean})" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetActiveInput (predicate As Func(Of Integer, Boolean)) As Boolean()" />
+      <MemberSignature Language="F#" Value="member this.GetActiveInput : Func&lt;int, bool&gt; -&gt; bool[]" Usage="columnBindingsBase.GetActiveInput predicate" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; cli::array &lt;bool&gt; ^ GetActiveInput(Func&lt;int, bool&gt; ^ predicate);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="predicate">To be added.</param>
+        <summary>
+            The given predicate maps from output column index to whether the column is active.
+            This builds an array of bools of length Input.ColumnCount containing the results of calling
+            predicate on the output column index corresponding to each input column index.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetColumnName">
+      <MemberSignature Language="C#" Value="public string GetColumnName (int col);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string GetColumnName(int32 col) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ColumnBindingsBase.GetColumnName(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetColumnName (col As Integer) As String" />
+      <MemberSignature Language="F#" Value="abstract member GetColumnName : int -&gt; string&#xA;override this.GetColumnName : int -&gt; string" Usage="columnBindingsBase.GetColumnName col" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; virtual System::String ^ GetColumnName(int col);" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA; Platform::String ^ GetColumnName(int col);" />
+      <MemberSignature Language="C++ WINRT" Value="std::wstring GetColumnName(int col);" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.ISchema.GetColumnName(System.Int32)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="col" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="col">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetColumnNameCore">
+      <MemberSignature Language="C#" Value="protected string GetColumnNameCore (int iinfo);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance string GetColumnNameCore(int32 iinfo) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ColumnBindingsBase.GetColumnNameCore(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected Function GetColumnNameCore (iinfo As Integer) As String" />
+      <MemberSignature Language="F#" Value="member this.GetColumnNameCore : int -&gt; string" Usage="columnBindingsBase.GetColumnNameCore iinfo" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; System::String ^ GetColumnNameCore(int iinfo);" />
+      <MemberSignature Language="C++ CX" Value="protected:&#xA; Platform::String ^ GetColumnNameCore(int iinfo);" />
+      <MemberSignature Language="C++ WINRT" Value="std::wstring GetColumnNameCore(int iinfo);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="iinfo" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="iinfo">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetColumnType">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.ColumnType GetColumnType (int col);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.ColumnType GetColumnType(int32 col) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ColumnBindingsBase.GetColumnType(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetColumnType (col As Integer) As ColumnType" />
+      <MemberSignature Language="F#" Value="abstract member GetColumnType : int -&gt; Microsoft.ML.Runtime.Data.ColumnType&#xA;override this.GetColumnType : int -&gt; Microsoft.ML.Runtime.Data.ColumnType" Usage="columnBindingsBase.GetColumnType col" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; virtual Microsoft::ML::Runtime::Data::ColumnType ^ GetColumnType(int col);" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.ISchema.GetColumnType(System.Int32)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ColumnType</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="col" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="col">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetColumnTypeCore">
+      <MemberSignature Language="C#" Value="protected abstract Microsoft.ML.Runtime.Data.ColumnType GetColumnTypeCore (int iinfo);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.ColumnType GetColumnTypeCore(int32 iinfo) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ColumnBindingsBase.GetColumnTypeCore(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected MustOverride Function GetColumnTypeCore (iinfo As Integer) As ColumnType" />
+      <MemberSignature Language="F#" Value="abstract member GetColumnTypeCore : int -&gt; Microsoft.ML.Runtime.Data.ColumnType" Usage="columnBindingsBase.GetColumnTypeCore iinfo" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; abstract Microsoft::ML::Runtime::Data::ColumnType ^ GetColumnTypeCore(int iinfo);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ColumnType</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="iinfo" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="iinfo">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetMetadata&lt;TValue&gt;">
+      <MemberSignature Language="C#" Value="public void GetMetadata&lt;TValue&gt; (string kind, int col, ref TValue value);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void GetMetadata&lt;TValue&gt;(string kind, int32 col, !!TValue&amp; value) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ColumnBindingsBase.GetMetadata``1(System.String,System.Int32,``0@)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub GetMetadata(Of TValue) (kind As String, col As Integer, ByRef value As TValue)" />
+      <MemberSignature Language="F#" Value="abstract member GetMetadata : string * int *  -&gt; unit&#xA;override this.GetMetadata : string * int *  -&gt; unit" Usage="columnBindingsBase.GetMetadata (kind, col, value)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA;generic &lt;typename TValue&gt;&#xA; virtual void GetMetadata(System::String ^ kind, int col, TValue % value);" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA;generic &lt;typename TValue&gt;&#xA; void GetMetadata(Platform::String ^ kind, int col, TValue &amp;  value);" />
+      <MemberSignature Language="C++ WINRT" Value="template &lt;typename TValue&gt;&#xA; void GetMetadata(std::wstring const &amp; kind, int col, TValue &amp; value);" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.ISchema.GetMetadata``1(System.String,System.Int32,``0@)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TValue" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="kind" Type="System.String" />
+        <Parameter Name="col" Type="System.Int32" />
+        <Parameter Name="value" Type="TValue&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TValue">To be added.</typeparam>
+        <param name="kind">To be added.</param>
+        <param name="col">To be added.</param>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetMetadataCore&lt;TValue&gt;">
+      <MemberSignature Language="C#" Value="protected virtual void GetMetadataCore&lt;TValue&gt; (string kind, int iinfo, ref TValue value);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void GetMetadataCore&lt;TValue&gt;(string kind, int32 iinfo, !!TValue&amp; value) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ColumnBindingsBase.GetMetadataCore``1(System.String,System.Int32,``0@)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overridable Sub GetMetadataCore(Of TValue) (kind As String, iinfo As Integer, ByRef value As TValue)" />
+      <MemberSignature Language="F#" Value="abstract member GetMetadataCore : string * int *  -&gt; unit&#xA;override this.GetMetadataCore : string * int *  -&gt; unit" Usage="columnBindingsBase.GetMetadataCore (kind, iinfo, value)" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA;generic &lt;typename TValue&gt;&#xA; virtual void GetMetadataCore(System::String ^ kind, int iinfo, TValue % value);" />
+      <MemberSignature Language="C++ CX" Value="protected:&#xA;generic &lt;typename TValue&gt;&#xA; virtual void GetMetadataCore(Platform::String ^ kind, int iinfo, TValue &amp;  value);" />
+      <MemberSignature Language="C++ WINRT" Value="template &lt;typename TValue&gt;&#xA; virtual void GetMetadataCore(std::wstring const &amp; kind, int iinfo, TValue &amp; value);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TValue" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="kind" Type="System.String" />
+        <Parameter Name="iinfo" Type="System.Int32" />
+        <Parameter Name="value" Type="TValue&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TValue">To be added.</typeparam>
+        <param name="kind">To be added.</param>
+        <param name="iinfo">To be added.</param>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetMetadataTypeCore">
+      <MemberSignature Language="C#" Value="protected virtual Microsoft.ML.Runtime.Data.ColumnType GetMetadataTypeCore (string kind, int iinfo);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.ColumnType GetMetadataTypeCore(string kind, int32 iinfo) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ColumnBindingsBase.GetMetadataTypeCore(System.String,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overridable Function GetMetadataTypeCore (kind As String, iinfo As Integer) As ColumnType" />
+      <MemberSignature Language="F#" Value="abstract member GetMetadataTypeCore : string * int -&gt; Microsoft.ML.Runtime.Data.ColumnType&#xA;override this.GetMetadataTypeCore : string * int -&gt; Microsoft.ML.Runtime.Data.ColumnType" Usage="columnBindingsBase.GetMetadataTypeCore (kind, iinfo)" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; virtual Microsoft::ML::Runtime::Data::ColumnType ^ GetMetadataTypeCore(System::String ^ kind, int iinfo);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ColumnType</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="kind" Type="System.String" />
+        <Parameter Name="iinfo" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="kind">To be added.</param>
+        <param name="iinfo">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetMetadataTypeOrNull">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.ColumnType GetMetadataTypeOrNull (string kind, int col);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.ColumnType GetMetadataTypeOrNull(string kind, int32 col) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ColumnBindingsBase.GetMetadataTypeOrNull(System.String,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetMetadataTypeOrNull (kind As String, col As Integer) As ColumnType" />
+      <MemberSignature Language="F#" Value="abstract member GetMetadataTypeOrNull : string * int -&gt; Microsoft.ML.Runtime.Data.ColumnType&#xA;override this.GetMetadataTypeOrNull : string * int -&gt; Microsoft.ML.Runtime.Data.ColumnType" Usage="columnBindingsBase.GetMetadataTypeOrNull (kind, col)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; virtual Microsoft::ML::Runtime::Data::ColumnType ^ GetMetadataTypeOrNull(System::String ^ kind, int col);" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.ISchema.GetMetadataTypeOrNull(System.String,System.Int32)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ColumnType</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="kind" Type="System.String" />
+        <Parameter Name="col" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="kind">To be added.</param>
+        <param name="col">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetMetadataTypes">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.IEnumerable&lt;System.Collections.Generic.KeyValuePair&lt;string,Microsoft.ML.Runtime.Data.ColumnType&gt;&gt; GetMetadataTypes (int col);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Collections.Generic.IEnumerable`1&lt;valuetype System.Collections.Generic.KeyValuePair`2&lt;string, class Microsoft.ML.Runtime.Data.ColumnType&gt;&gt; GetMetadataTypes(int32 col) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ColumnBindingsBase.GetMetadataTypes(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetMetadataTypes (col As Integer) As IEnumerable(Of KeyValuePair(Of String, ColumnType))" />
+      <MemberSignature Language="F#" Value="abstract member GetMetadataTypes : int -&gt; seq&lt;System.Collections.Generic.KeyValuePair&lt;string, Microsoft.ML.Runtime.Data.ColumnType&gt;&gt;&#xA;override this.GetMetadataTypes : int -&gt; seq&lt;System.Collections.Generic.KeyValuePair&lt;string, Microsoft.ML.Runtime.Data.ColumnType&gt;&gt;" Usage="columnBindingsBase.GetMetadataTypes col" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; virtual System::Collections::Generic::IEnumerable&lt;System::Collections::Generic::KeyValuePair&lt;System::String ^, Microsoft::ML::Runtime::Data::ColumnType ^&gt;&gt; ^ GetMetadataTypes(int col);" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.ISchema.GetMetadataTypes(System.Int32)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;System.Collections.Generic.KeyValuePair&lt;System.String,Microsoft.ML.Runtime.Data.ColumnType&gt;&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="col" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="col">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetMetadataTypesCore">
+      <MemberSignature Language="C#" Value="protected virtual System.Collections.Generic.IEnumerable&lt;System.Collections.Generic.KeyValuePair&lt;string,Microsoft.ML.Runtime.Data.ColumnType&gt;&gt; GetMetadataTypesCore (int iinfo);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class System.Collections.Generic.IEnumerable`1&lt;valuetype System.Collections.Generic.KeyValuePair`2&lt;string, class Microsoft.ML.Runtime.Data.ColumnType&gt;&gt; GetMetadataTypesCore(int32 iinfo) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ColumnBindingsBase.GetMetadataTypesCore(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overridable Function GetMetadataTypesCore (iinfo As Integer) As IEnumerable(Of KeyValuePair(Of String, ColumnType))" />
+      <MemberSignature Language="F#" Value="abstract member GetMetadataTypesCore : int -&gt; seq&lt;System.Collections.Generic.KeyValuePair&lt;string, Microsoft.ML.Runtime.Data.ColumnType&gt;&gt;&#xA;override this.GetMetadataTypesCore : int -&gt; seq&lt;System.Collections.Generic.KeyValuePair&lt;string, Microsoft.ML.Runtime.Data.ColumnType&gt;&gt;" Usage="columnBindingsBase.GetMetadataTypesCore iinfo" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; virtual System::Collections::Generic::IEnumerable&lt;System::Collections::Generic::KeyValuePair&lt;System::String ^, Microsoft::ML::Runtime::Data::ColumnType ^&gt;&gt; ^ GetMetadataTypesCore(int iinfo);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;System.Collections.Generic.KeyValuePair&lt;System.String,Microsoft.ML.Runtime.Data.ColumnType&gt;&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="iinfo" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="iinfo">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InfoCount">
+      <MemberSignature Language="C#" Value="public int InfoCount { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 InfoCount" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.ColumnBindingsBase.InfoCount" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property InfoCount As Integer" />
+      <MemberSignature Language="F#" Value="member this.InfoCount : int" Usage="Microsoft.ML.Runtime.Data.ColumnBindingsBase.InfoCount" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; property int InfoCount { int get(); };" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA; property int InfoCount { int get(); };" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The number of added columns.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Input">
+      <MemberSignature Language="C#" Value="public readonly Microsoft.ML.Runtime.Data.ISchema Input;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly class Microsoft.ML.Runtime.Data.ISchema Input" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Data.ColumnBindingsBase.Input" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Input As ISchema " />
+      <MemberSignature Language="F#" Value="val mutable Input : Microsoft.ML.Runtime.Data.ISchema" Usage="Microsoft.ML.Runtime.Data.ColumnBindingsBase.Input" />
+      <MemberSignature Language="C++ CLI" Value="public: initonly Microsoft::ML::Runtime::Data::ISchema ^ Input;" />
+      <MemberSignature Language="C++ WINRT" Value="initonly Microsoft::ML::Runtime::Data::ISchema Input;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ISchema</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MapColumnIndex">
+      <MemberSignature Language="C#" Value="public int MapColumnIndex (out bool isSrcColumn, int col);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 MapColumnIndex([out] bool&amp; isSrcColumn, int32 col) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ColumnBindingsBase.MapColumnIndex(System.Boolean@,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Function MapColumnIndex (ByRef isSrcColumn As Boolean, col As Integer) As Integer" />
+      <MemberSignature Language="F#" Value="member this.MapColumnIndex :  * int -&gt; int" Usage="columnBindingsBase.MapColumnIndex (isSrcColumn, col)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; int MapColumnIndex([Runtime::InteropServices::Out] bool % isSrcColumn, int col);" />
+      <MemberSignature Language="C++ WINRT" Value="int MapColumnIndex([Runtime::InteropServices::Out] bool &amp; isSrcColumn, int col);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="isSrcColumn" Type="System.Boolean&amp;" RefType="out" />
+        <Parameter Name="col" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="isSrcColumn">Whether the return index is for a source column</param>
+        <param name="col">The column index for this schema</param>
+        <summary>
+            This maps a column index for this schema to either a source column index (when
+            <paramref name="isSrcColumn" /> is true), or to an "iinfo" index of an added column
+            (when <paramref name="isSrcColumn" /> is false).
+            </summary>
+        <returns>The index (either source index or iinfo index)</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MapIinfoToCol">
+      <MemberSignature Language="C#" Value="public int MapIinfoToCol (int iinfo);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 MapIinfoToCol(int32 iinfo) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ColumnBindingsBase.MapIinfoToCol(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Function MapIinfoToCol (iinfo As Integer) As Integer" />
+      <MemberSignature Language="F#" Value="member this.MapIinfoToCol : int -&gt; int" Usage="columnBindingsBase.MapIinfoToCol iinfo" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; int MapIinfoToCol(int iinfo);" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA; int MapIinfoToCol(int iinfo);" />
+      <MemberSignature Language="C++ WINRT" Value="int MapIinfoToCol(int iinfo);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="iinfo" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="iinfo">To be added.</param>
+        <summary>
+            This maps from an index to an added column "info" to a column index.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TryGetColumnIndex">
+      <MemberSignature Language="C#" Value="public bool TryGetColumnIndex (string name, out int col);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool TryGetColumnIndex(string name, [out] int32&amp; col) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ColumnBindingsBase.TryGetColumnIndex(System.String,System.Int32@)" />
+      <MemberSignature Language="VB.NET" Value="Public Function TryGetColumnIndex (name As String, ByRef col As Integer) As Boolean" />
+      <MemberSignature Language="F#" Value="abstract member TryGetColumnIndex : string *  -&gt; bool&#xA;override this.TryGetColumnIndex : string *  -&gt; bool" Usage="columnBindingsBase.TryGetColumnIndex (name, col)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; virtual bool TryGetColumnIndex(System::String ^ name, [Runtime::InteropServices::Out] int % col);" />
+      <MemberSignature Language="C++ WINRT" Value="bool TryGetColumnIndex(std::wstring const &amp; name, [Runtime::InteropServices::Out] int &amp; col);" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.ISchema.TryGetColumnIndex(System.String,System.Int32@)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="col" Type="System.Int32&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="name">To be added.</param>
+        <param name="col">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TryGetColumnIndexCore">
+      <MemberSignature Language="C#" Value="protected bool TryGetColumnIndexCore (string name, out int iinfo);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance bool TryGetColumnIndexCore(string name, [out] int32&amp; iinfo) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ColumnBindingsBase.TryGetColumnIndexCore(System.String,System.Int32@)" />
+      <MemberSignature Language="VB.NET" Value="Protected Function TryGetColumnIndexCore (name As String, ByRef iinfo As Integer) As Boolean" />
+      <MemberSignature Language="F#" Value="member this.TryGetColumnIndexCore : string *  -&gt; bool" Usage="columnBindingsBase.TryGetColumnIndexCore (name, iinfo)" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; bool TryGetColumnIndexCore(System::String ^ name, [Runtime::InteropServices::Out] int % iinfo);" />
+      <MemberSignature Language="C++ WINRT" Value="bool TryGetColumnIndexCore(std::wstring const &amp; name, [Runtime::InteropServices::Out] int &amp; iinfo);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="iinfo" Type="System.Int32&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="name">To be added.</param>
+        <param name="iinfo">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
