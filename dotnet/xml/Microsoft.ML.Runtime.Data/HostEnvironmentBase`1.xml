@@ -4,6 +4,7 @@
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1" />
   <TypeSignature Language="VB.NET" Value="Public MustInherit Class HostEnvironmentBase(Of TEnv)&#xA;Inherits ChannelProviderBase&#xA;Implements IDisposable, IMessageDispatcher" />
   <TypeSignature Language="F#" Value="type HostEnvironmentBase&lt;'Env (requires 'Env :&gt; HostEnvironmentBase&lt;'Env&gt;)&gt; = class&#xA;    inherit ChannelProviderBase&#xA;    interface IHostEnvironment&#xA;    interface IChannelProvider&#xA;    interface IExceptionContext&#xA;    interface IProgressChannelProvider&#xA;    interface IDisposable&#xA;    interface IMessageDispatcher" />
+  <TypeSignature Language="C++ CLI" Value="generic &lt;typename TEnv&gt;&#xA; where TEnv : HostEnvironmentBase&lt;TEnv&gt;public ref class HostEnvironmentBase abstract : Microsoft::ML::Runtime::Data::ChannelProviderBase, IDisposable, Microsoft::ML::Runtime::Data::IMessageDispatcher" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.Core</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -43,6 +44,7 @@
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.#ctor(Microsoft.ML.Runtime.IRandom,System.Boolean,System.Int32,System.String,System.String)" />
       <MemberSignature Language="VB.NET" Value="Protected Sub New (rand As IRandom, verbose As Boolean, conc As Integer, Optional shortName As String = null, Optional parentFullName As String = null)" />
       <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt; : Microsoft.ML.Runtime.IRandom * bool * int * string * string -&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt;" Usage="new Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt; (rand, verbose, conc, shortName, parentFullName)" />
+      <MemberSignature Language="C++ WINRT" Value=" HostEnvironmentBase(Microsoft::ML::Runtime::IRandom const &amp; rand, bool verbose, int conc, std::wstring const &amp; shortName = null, std::wstring const &amp; parentFullName = null);" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
@@ -105,6 +107,7 @@
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.AddListener``1(System.Action{Microsoft.ML.Runtime.Data.IMessageSource,``0})" />
       <MemberSignature Language="VB.NET" Value="Public Sub AddListener(Of TMessage) (listenerFunc As Action(Of IMessageSource, TMessage))" />
       <MemberSignature Language="F#" Value="abstract member AddListener : Action&lt;Microsoft.ML.Runtime.Data.IMessageSource, 'Message&gt; -&gt; unit&#xA;override this.AddListener : Action&lt;Microsoft.ML.Runtime.Data.IMessageSource, 'Message&gt; -&gt; unit" Usage="hostEnvironmentBase.AddListener listenerFunc" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA;generic &lt;typename TMessage&gt;&#xA; virtual void AddListener(Action&lt;Microsoft::ML::Runtime::Data::IMessageSource ^, TMessage&gt; ^ listenerFunc);" />
       <MemberType>Method</MemberType>
       <Implements>
         <InterfaceMember>M:Microsoft.ML.Runtime.Data.IMessageDispatcher.AddListener``1(System.Action{Microsoft.ML.Runtime.Data.IMessageSource,``0})</InterfaceMember>
@@ -135,6 +138,8 @@
       <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.ConcurrencyFactor" />
       <MemberSignature Language="VB.NET" Value="Public Property ConcurrencyFactor As Integer" />
       <MemberSignature Language="F#" Value="member this.ConcurrencyFactor : int with get, set" Usage="Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt;.ConcurrencyFactor" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; property int ConcurrencyFactor { int get(); void set(int value); };" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA; property int ConcurrencyFactor { int get(); void set(int value); };" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
@@ -157,6 +162,8 @@
       <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.ContextDescription" />
       <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property ContextDescription As String" />
       <MemberSignature Language="F#" Value="member this.ContextDescription : string" Usage="Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt;.ContextDescription" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; virtual property System::String ^ ContextDescription { System::String ^ get(); };" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA; virtual property Platform::String ^ ContextDescription { Platform::String ^ get(); };" />
       <MemberType>Property</MemberType>
       <Implements>
         <InterfaceMember>P:Microsoft.ML.Runtime.IExceptionContext.ContextDescription</InterfaceMember>
@@ -210,6 +217,7 @@
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.CreateCommChannel(Microsoft.ML.Runtime.Data.ChannelProviderBase,System.String)" />
       <MemberSignature Language="VB.NET" Value="Protected MustOverride Function CreateCommChannel (parent As ChannelProviderBase, name As String) As IChannel" />
       <MemberSignature Language="F#" Value="abstract member CreateCommChannel : Microsoft.ML.Runtime.Data.ChannelProviderBase * string -&gt; Microsoft.ML.Runtime.IChannel" Usage="hostEnvironmentBase.CreateCommChannel (parent, name)" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; abstract Microsoft::ML::Runtime::IChannel ^ CreateCommChannel(Microsoft::ML::Runtime::Data::ChannelProviderBase ^ parent, System::String ^ name);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
@@ -236,6 +244,7 @@
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.CreateOutputFile(System.String)" />
       <MemberSignature Language="VB.NET" Value="Public Function CreateOutputFile (path As String) As IFileHandle" />
       <MemberSignature Language="F#" Value="abstract member CreateOutputFile : string -&gt; Microsoft.ML.Runtime.IFileHandle&#xA;override this.CreateOutputFile : string -&gt; Microsoft.ML.Runtime.IFileHandle" Usage="hostEnvironmentBase.CreateOutputFile path" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; virtual Microsoft::ML::Runtime::IFileHandle ^ CreateOutputFile(System::String ^ path);" />
       <MemberType>Method</MemberType>
       <Implements>
         <InterfaceMember>M:Microsoft.ML.Runtime.IHostEnvironment.CreateOutputFile(System.String)</InterfaceMember>
@@ -263,6 +272,7 @@
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.CreateOutputFileCore(Microsoft.ML.Runtime.IHostEnvironment,System.String)" />
       <MemberSignature Language="VB.NET" Value="Protected Overridable Function CreateOutputFileCore (env As IHostEnvironment, path As String) As IFileHandle" />
       <MemberSignature Language="F#" Value="abstract member CreateOutputFileCore : Microsoft.ML.Runtime.IHostEnvironment * string -&gt; Microsoft.ML.Runtime.IFileHandle&#xA;override this.CreateOutputFileCore : Microsoft.ML.Runtime.IHostEnvironment * string -&gt; Microsoft.ML.Runtime.IFileHandle" Usage="hostEnvironmentBase.CreateOutputFileCore (env, path)" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; virtual Microsoft::ML::Runtime::IFileHandle ^ CreateOutputFileCore(Microsoft::ML::Runtime::IHostEnvironment ^ env, System::String ^ path);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
@@ -293,6 +303,7 @@
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.CreatePipe``1(Microsoft.ML.Runtime.Data.ChannelProviderBase,System.String)" />
       <MemberSignature Language="VB.NET" Value="Protected MustOverride Function CreatePipe(Of TMessage) (parent As ChannelProviderBase, name As String) As IPipe(Of TMessage)" />
       <MemberSignature Language="F#" Value="abstract member CreatePipe : Microsoft.ML.Runtime.Data.ChannelProviderBase * string -&gt; Microsoft.ML.Runtime.IPipe&lt;'Message&gt;" Usage="hostEnvironmentBase.CreatePipe (parent, name)" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA;generic &lt;typename TMessage&gt;&#xA; abstract Microsoft::ML::Runtime::IPipe&lt;TMessage&gt; ^ CreatePipe(Microsoft::ML::Runtime::Data::ChannelProviderBase ^ parent, System::String ^ name);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
@@ -380,6 +391,8 @@
       <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.Depth" />
       <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property Depth As Integer" />
       <MemberSignature Language="F#" Value="member this.Depth : int" Usage="Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt;.Depth" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; virtual property int Depth { int get(); };" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA; virtual property int Depth { int get(); };" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
@@ -400,6 +413,9 @@
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.Dispose" />
       <MemberSignature Language="VB.NET" Value="Public Overridable Sub Dispose ()" />
       <MemberSignature Language="F#" Value="abstract member Dispose : unit -&gt; unit&#xA;override this.Dispose : unit -&gt; unit" Usage="hostEnvironmentBase.Dispose " />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; virtual void Dispose();" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA; virtual void Dispose();" />
+      <MemberSignature Language="C++ WINRT" Value=" virtual void Dispose();" />
       <MemberType>Method</MemberType>
       <Implements>
         <InterfaceMember>M:System.IDisposable.Dispose</InterfaceMember>
@@ -454,6 +470,7 @@
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.GetDispatchDelegate``1" />
       <MemberSignature Language="VB.NET" Value="Protected Function GetDispatchDelegate(Of TMessage) () As Action(Of IMessageSource, TMessage)" />
       <MemberSignature Language="F#" Value="member this.GetDispatchDelegate : unit -&gt; Action&lt;Microsoft.ML.Runtime.Data.IMessageSource, 'Message&gt;" Usage="hostEnvironmentBase.GetDispatchDelegate " />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA;generic &lt;typename TMessage&gt;&#xA; Action&lt;Microsoft::ML::Runtime::Data::IMessageSource ^, TMessage&gt; ^ GetDispatchDelegate();" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
@@ -479,6 +496,7 @@
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.HasBadFileCharacters(System.String)" />
       <MemberSignature Language="VB.NET" Value="Protected Overridable Function HasBadFileCharacters (Optional str As String = null) As Boolean" />
       <MemberSignature Language="F#" Value="abstract member HasBadFileCharacters : string -&gt; bool&#xA;override this.HasBadFileCharacters : string -&gt; bool" Usage="hostEnvironmentBase.HasBadFileCharacters str" />
+      <MemberSignature Language="C++ WINRT" Value=" virtual bool HasBadFileCharacters(std::wstring const &amp; str = null);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
@@ -505,6 +523,8 @@
       <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.IsCancelled" />
       <MemberSignature Language="VB.NET" Value="Public Property IsCancelled As Boolean" />
       <MemberSignature Language="F#" Value="member this.IsCancelled : bool with get, set" Usage="Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt;.IsCancelled" />
+      <MemberSignature Language="C++ CLI" Value="public:  property bool IsCancelled {  public:&#xA;bool get(); protected:&#xA; void set(bool value); };" />
+      <MemberSignature Language="C++ CX" Value="public:  property bool IsCancelled {  public:&#xA;bool get(); protected:&#xA; void set(bool value); };" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
@@ -525,6 +545,8 @@
       <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.IsDisposed" />
       <MemberSignature Language="VB.NET" Value="Protected ReadOnly Property IsDisposed As Boolean" />
       <MemberSignature Language="F#" Value="member this.IsDisposed : bool" Usage="Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt;.IsDisposed" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; property bool IsDisposed { bool get(); };" />
+      <MemberSignature Language="C++ CX" Value="protected:&#xA; property bool IsDisposed { bool get(); };" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
@@ -545,6 +567,7 @@
       <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.ListenerDict" />
       <MemberSignature Language="VB.NET" Value="Protected ReadOnly ListenerDict As ConcurrentDictionary(Of Type, HostEnvironmentBase(Of TEnv).Dispatcher) " />
       <MemberSignature Language="F#" Value="val mutable ListenerDict : System.Collections.Concurrent.ConcurrentDictionary&lt;Type, Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;.Dispatcher&gt;" Usage="Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt;.ListenerDict" />
+      <MemberSignature Language="C++ CLI" Value="protected: initonly System::Collections::Concurrent::ConcurrentDictionary&lt;Type ^, Microsoft::ML::Runtime::Data::HostEnvironmentBase&lt;TEnv&gt;::Dispatcher ^&gt; ^ ListenerDict;" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
@@ -564,6 +587,7 @@
       <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.Master" />
       <MemberSignature Language="VB.NET" Value="Protected ReadOnly Master As HostEnvironmentBase(Of TEnv) " />
       <MemberSignature Language="F#" Value="val mutable Master : Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt;" Usage="Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt;.Master" />
+      <MemberSignature Language="C++ CLI" Value="protected: initonly Microsoft::ML::Runtime::Data::HostEnvironmentBase&lt;TEnv&gt; ^ Master;" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
@@ -583,6 +607,7 @@
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.OpenInputFile(System.String)" />
       <MemberSignature Language="VB.NET" Value="Public Function OpenInputFile (path As String) As IFileHandle" />
       <MemberSignature Language="F#" Value="abstract member OpenInputFile : string -&gt; Microsoft.ML.Runtime.IFileHandle&#xA;override this.OpenInputFile : string -&gt; Microsoft.ML.Runtime.IFileHandle" Usage="hostEnvironmentBase.OpenInputFile path" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; virtual Microsoft::ML::Runtime::IFileHandle ^ OpenInputFile(System::String ^ path);" />
       <MemberType>Method</MemberType>
       <Implements>
         <InterfaceMember>M:Microsoft.ML.Runtime.IHostEnvironment.OpenInputFile(System.String)</InterfaceMember>
@@ -610,6 +635,7 @@
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.OpenInputFileCore(Microsoft.ML.Runtime.IHostEnvironment,System.String)" />
       <MemberSignature Language="VB.NET" Value="Protected Overridable Function OpenInputFileCore (env As IHostEnvironment, path As String) As IFileHandle" />
       <MemberSignature Language="F#" Value="abstract member OpenInputFileCore : Microsoft.ML.Runtime.IHostEnvironment * string -&gt; Microsoft.ML.Runtime.IFileHandle&#xA;override this.OpenInputFileCore : Microsoft.ML.Runtime.IHostEnvironment * string -&gt; Microsoft.ML.Runtime.IFileHandle" Usage="hostEnvironmentBase.OpenInputFileCore (env, path)" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; virtual Microsoft::ML::Runtime::IFileHandle ^ OpenInputFileCore(Microsoft::ML::Runtime::IHostEnvironment ^ env, System::String ^ path);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
@@ -676,6 +702,9 @@
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.Process``1(``0)" />
       <MemberSignature Language="VB.NET" Value="Public Overrides Function Process(Of TException As Exception) (ex As TException) As TException" />
       <MemberSignature Language="F#" Value="override this.Process : 'Exception -&gt; 'Exception (requires 'Exception :&gt; Exception)" Usage="hostEnvironmentBase.Process ex" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA;generic &lt;typename TException&gt;&#xA; where TException : Exception override TException Process(TException ex);" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA;generic &lt;typename TException&gt;&#xA; where TException : Exception override TException Process(TException ex);" />
+      <MemberSignature Language="C++ WINRT" Value="template &lt;typename TException&gt;&#xA; where TException : Exception override TException Process(TException ex);" />
       <MemberType>Method</MemberType>
       <Implements>
         <InterfaceMember>M:Microsoft.ML.Runtime.IExceptionContext.Process``1(``0)</InterfaceMember>
@@ -711,6 +740,8 @@
       <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.ProgressTracker" />
       <MemberSignature Language="VB.NET" Value="Protected ReadOnly ProgressTracker As ProgressReporting.ProgressTracker " />
       <MemberSignature Language="F#" Value="val mutable ProgressTracker : Microsoft.ML.Runtime.Data.ProgressReporting.ProgressTracker" Usage="Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt;.ProgressTracker" />
+      <MemberSignature Language="C++ CLI" Value="protected: initonly Microsoft::ML::Runtime::Data::ProgressReporting::ProgressTracker ^ ProgressTracker;" />
+      <MemberSignature Language="C++ WINRT" Value="initonly Microsoft::ML::Runtime::Data::ProgressReporting::ProgressTracker ProgressTracker;" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
@@ -763,6 +794,7 @@
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.RegisterCore(Microsoft.ML.Runtime.Data.HostEnvironmentBase{`0},System.String,System.String,Microsoft.ML.Runtime.IRandom,System.Boolean,System.Nullable{System.Int32})" />
       <MemberSignature Language="VB.NET" Value="Protected MustOverride Function RegisterCore (source As HostEnvironmentBase(Of TEnv), shortName As String, parentFullName As String, rand As IRandom, verbose As Boolean, conc As Nullable(Of Integer)) As IHost" />
       <MemberSignature Language="F#" Value="abstract member RegisterCore : Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt; * string * string * Microsoft.ML.Runtime.IRandom * bool * Nullable&lt;int&gt; -&gt; Microsoft.ML.Runtime.IHost" Usage="hostEnvironmentBase.RegisterCore (source, shortName, parentFullName, rand, verbose, conc)" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; abstract Microsoft::ML::Runtime::IHost ^ RegisterCore(Microsoft::ML::Runtime::Data::HostEnvironmentBase&lt;TEnv&gt; ^ source, System::String ^ shortName, System::String ^ parentFullName, Microsoft::ML::Runtime::IRandom ^ rand, bool verbose, Nullable&lt;int&gt; conc);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
@@ -797,6 +829,7 @@
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.RemoveListener``1(System.Action{Microsoft.ML.Runtime.Data.IMessageSource,``0})" />
       <MemberSignature Language="VB.NET" Value="Public Sub RemoveListener(Of TMessage) (listenerFunc As Action(Of IMessageSource, TMessage))" />
       <MemberSignature Language="F#" Value="abstract member RemoveListener : Action&lt;Microsoft.ML.Runtime.Data.IMessageSource, 'Message&gt; -&gt; unit&#xA;override this.RemoveListener : Action&lt;Microsoft.ML.Runtime.Data.IMessageSource, 'Message&gt; -&gt; unit" Usage="hostEnvironmentBase.RemoveListener listenerFunc" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA;generic &lt;typename TMessage&gt;&#xA; virtual void RemoveListener(Action&lt;Microsoft::ML::Runtime::Data::IMessageSource ^, TMessage&gt; ^ listenerFunc);" />
       <MemberType>Method</MemberType>
       <Implements>
         <InterfaceMember>M:Microsoft.ML.Runtime.Data.IMessageDispatcher.RemoveListener``1(System.Action{Microsoft.ML.Runtime.Data.IMessageSource,``0})</InterfaceMember>
@@ -827,6 +860,9 @@
       <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.Root" />
       <MemberSignature Language="VB.NET" Value="Protected ReadOnly Root As TEnv " />
       <MemberSignature Language="F#" Value="val mutable Root : 'Env" Usage="Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt;.Root" />
+      <MemberSignature Language="C++ CLI" Value="protected: initonly TEnv Root;" />
+      <MemberSignature Language="C++ CX" Value="protected: initonly TEnv Root;" />
+      <MemberSignature Language="C++ WINRT" Value="initonly TEnv Root;" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
@@ -846,6 +882,7 @@
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.Start(System.String)" />
       <MemberSignature Language="VB.NET" Value="Public Function Start (name As String) As IChannel" />
       <MemberSignature Language="F#" Value="abstract member Start : string -&gt; Microsoft.ML.Runtime.IChannel&#xA;override this.Start : string -&gt; Microsoft.ML.Runtime.IChannel" Usage="hostEnvironmentBase.Start name" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; virtual Microsoft::ML::Runtime::IChannel ^ Start(System::String ^ name);" />
       <MemberType>Method</MemberType>
       <Implements>
         <InterfaceMember>M:Microsoft.ML.Runtime.IChannelProvider.Start(System.String)</InterfaceMember>
@@ -873,6 +910,7 @@
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.StartPipe``1(System.String)" />
       <MemberSignature Language="VB.NET" Value="Public Function StartPipe(Of TMessage) (name As String) As IPipe(Of TMessage)" />
       <MemberSignature Language="F#" Value="abstract member StartPipe : string -&gt; Microsoft.ML.Runtime.IPipe&lt;'Message&gt;&#xA;override this.StartPipe : string -&gt; Microsoft.ML.Runtime.IPipe&lt;'Message&gt;" Usage="hostEnvironmentBase.StartPipe name" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA;generic &lt;typename TMessage&gt;&#xA; virtual Microsoft::ML::Runtime::IPipe&lt;TMessage&gt; ^ StartPipe(System::String ^ name);" />
       <MemberType>Method</MemberType>
       <Implements>
         <InterfaceMember>M:Microsoft.ML.Runtime.IChannelProvider.StartPipe``1(System.String)</InterfaceMember>
@@ -904,6 +942,7 @@
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.StartProgressChannel(System.String)" />
       <MemberSignature Language="VB.NET" Value="Public Function StartProgressChannel (name As String) As IProgressChannel" />
       <MemberSignature Language="F#" Value="abstract member StartProgressChannel : string -&gt; Microsoft.ML.Runtime.IProgressChannel&#xA;override this.StartProgressChannel : string -&gt; Microsoft.ML.Runtime.IProgressChannel" Usage="hostEnvironmentBase.StartProgressChannel name" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; virtual Microsoft::ML::Runtime::IProgressChannel ^ StartProgressChannel(System::String ^ name);" />
       <MemberType>Method</MemberType>
       <Implements>
         <InterfaceMember>M:Microsoft.ML.Runtime.IProgressChannelProvider.StartProgressChannel(System.String)</InterfaceMember>
@@ -931,6 +970,7 @@
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.StartProgressChannelCore(Microsoft.ML.Runtime.Data.HostEnvironmentBase`1.HostBase{`0},System.String)" />
       <MemberSignature Language="VB.NET" Value="Protected Overridable Function StartProgressChannelCore (host As HostEnvironmentBase(Of TEnv).HostBase, name As String) As IProgressChannel" />
       <MemberSignature Language="F#" Value="abstract member StartProgressChannelCore : Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt;.HostBase * string -&gt; Microsoft.ML.Runtime.IProgressChannel&#xA;override this.StartProgressChannelCore : Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env (requires 'Env :&gt; Microsoft.ML.Runtime.Data.HostEnvironmentBase&lt;'Env&gt;)&gt;.HostBase * string -&gt; Microsoft.ML.Runtime.IProgressChannel" Usage="hostEnvironmentBase.StartProgressChannelCore (host, name)" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; virtual Microsoft::ML::Runtime::IProgressChannel ^ StartProgressChannelCore(Microsoft::ML::Runtime::Data::HostEnvironmentBase&lt;TEnv&gt;::HostBase ^ host, System::String ^ name);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>

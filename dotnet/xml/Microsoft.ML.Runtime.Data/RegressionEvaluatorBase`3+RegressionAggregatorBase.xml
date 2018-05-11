@@ -4,6 +4,7 @@
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.RegressionEvaluatorBase`3.RegressionAggregatorBase" />
   <TypeSignature Language="VB.NET" Value="Public MustInherit Class RegressionEvaluatorBase(Of TAgg, TScore, TMetrics).RegressionAggregatorBase&#xA;Inherits EvaluatorBase(Of TAgg).AggregatorBase" />
   <TypeSignature Language="F#" Value="type RegressionEvaluatorBase&lt;'Agg, 'Score, 'Metrics (requires 'Agg :&gt; RegressionEvaluatorBase&lt;'Agg, 'Score, 'Metrics&gt;.RegressionAggregatorBase)&gt;.RegressionAggregatorBase = class&#xA;    inherit EvaluatorBase&lt;'Agg (requires 'Agg :&gt; RegressionEvaluatorBase&lt;'Agg, 'Score, 'Metrics&gt;.RegressionAggregatorBase)&gt;.AggregatorBase" />
+  <TypeSignature Language="C++ CLI" Value="public:  where TAgg : RegressionEvaluatorBase&lt;TAgg, TScore, TMetrics&gt;::RegressionAggregatorBaseref class RegressionEvaluatorBase&lt;TAgg, TScore, TMetrics&gt;::RegressionAggregatorBase abstract : Microsoft::ML::Runtime::Data::EvaluatorBase&lt;TAgg&gt;::AggregatorBase" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.Data</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -35,6 +36,9 @@
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.RegressionEvaluatorBase`3.RegressionAggregatorBase.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.IRegressionLoss,System.Boolean,System.String)" />
       <MemberSignature Language="VB.NET" Value="Protected Sub New (env As IHostEnvironment, lossFunction As IRegressionLoss, weighted As Boolean, stratName As String)" />
       <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.RegressionEvaluatorBase&lt;'Agg, 'Score, 'Metrics (requires 'Agg :&gt; Microsoft.ML.Runtime.Data.RegressionEvaluatorBase&lt;'Agg, 'Score, 'Metrics&gt;.RegressionAggregatorBase)&gt;.RegressionAggregatorBase : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.IRegressionLoss * bool * string -&gt; Microsoft.ML.Runtime.Data.RegressionEvaluatorBase&lt;'Agg, 'Score, 'Metrics (requires 'Agg :&gt; Microsoft.ML.Runtime.Data.RegressionEvaluatorBase&lt;'Agg, 'Score, 'Metrics&gt;.RegressionAggregatorBase)&gt;.RegressionAggregatorBase" Usage="new Microsoft.ML.Runtime.Data.RegressionEvaluatorBase&lt;'Agg, 'Score, 'Metrics (requires 'Agg :&gt; Microsoft.ML.Runtime.Data.RegressionEvaluatorBase&lt;'Agg, 'Score, 'Metrics&gt;.RegressionAggregatorBase)&gt;.RegressionAggregatorBase (env, lossFunction, weighted, stratName)" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; RegressionAggregatorBase(Microsoft::ML::Runtime::IHostEnvironment ^ env, Microsoft::ML::Runtime::IRegressionLoss ^ lossFunction, bool weighted, System::String ^ stratName);" />
+      <MemberSignature Language="C++ CX" Value="protected:&#xA; RegressionAggregatorBase(Microsoft::ML::Runtime::IHostEnvironment ^ env, Microsoft::ML::Runtime::IRegressionLoss ^ lossFunction, bool weighted, Platform::String ^ stratName);" />
+      <MemberSignature Language="C++ WINRT" Value=" RegressionAggregatorBase(Microsoft::ML::Runtime::IHostEnvironment const &amp; env, Microsoft::ML::Runtime::IRegressionLoss const &amp; lossFunction, bool weighted, std::wstring const &amp; stratName);" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -61,6 +65,7 @@
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.RegressionEvaluatorBase`3.RegressionAggregatorBase.AddColumn(Microsoft.ML.Runtime.Data.ArrayDataViewBuilder,System.String,`2[])" />
       <MemberSignature Language="VB.NET" Value="Public MustOverride Sub AddColumn (dvBldr As ArrayDataViewBuilder, metricName As String, ParamArray metric As TMetrics())" />
       <MemberSignature Language="F#" Value="abstract member AddColumn : Microsoft.ML.Runtime.Data.ArrayDataViewBuilder * string * 'Metrics[] -&gt; unit" Usage="regressionAggregatorBase.AddColumn (dvBldr, metricName, metric)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; abstract void AddColumn(Microsoft::ML::Runtime::Data::ArrayDataViewBuilder ^ dvBldr, System::String ^ metricName, ... cli::array &lt;TMetrics&gt; ^ metric);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -94,6 +99,9 @@
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.RegressionEvaluatorBase`3.RegressionAggregatorBase.ApplyLossFunction(`1@,System.Single,`2@)" />
       <MemberSignature Language="VB.NET" Value="Protected MustOverride Sub ApplyLossFunction (ByRef score As TScore, label As Single, ByRef loss As TMetrics)" />
       <MemberSignature Language="F#" Value="abstract member ApplyLossFunction :  * single *  -&gt; unit" Usage="regressionAggregatorBase.ApplyLossFunction (score, label, loss)" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; abstract void ApplyLossFunction(TScore % score, float label, TMetrics % loss);" />
+      <MemberSignature Language="C++ CX" Value="protected:&#xA; abstract void ApplyLossFunction(TScore &amp;  score, float label, TMetrics &amp;  loss);" />
+      <MemberSignature Language="C++ WINRT" Value=" abstract void ApplyLossFunction(TScore &amp; score, float label, TMetrics &amp; loss);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -121,6 +129,9 @@
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.RegressionEvaluatorBase`3.RegressionAggregatorBase.InitializeNextPass(Microsoft.ML.Runtime.Data.IRow,Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
       <MemberSignature Language="VB.NET" Value="Public Overrides Sub InitializeNextPass (row As IRow, schema As RoleMappedSchema)" />
       <MemberSignature Language="F#" Value="override this.InitializeNextPass : Microsoft.ML.Runtime.Data.IRow * Microsoft.ML.Runtime.Data.RoleMappedSchema -&gt; unit" Usage="regressionAggregatorBase.InitializeNextPass (row, schema)" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; override void InitializeNextPass(Microsoft::ML::Runtime::Data::IRow ^ row, Microsoft::ML::Runtime::Data::RoleMappedSchema ^ schema);" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA; override void InitializeNextPass(Microsoft::ML::Runtime::Data::IRow ^ row, Microsoft::ML::Runtime::Data::RoleMappedSchema ^ schema);" />
+      <MemberSignature Language="C++ WINRT" Value=" override void InitializeNextPass(Microsoft::ML::Runtime::Data::IRow const &amp; row, Microsoft::ML::Runtime::Data::RoleMappedSchema const &amp; schema);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -146,6 +157,9 @@
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.RegressionEvaluatorBase`3.RegressionAggregatorBase.IsNaN(`1@)" />
       <MemberSignature Language="VB.NET" Value="Protected MustOverride Function IsNaN (ByRef score As TScore) As Boolean" />
       <MemberSignature Language="F#" Value="abstract member IsNaN :  -&gt; bool" Usage="regressionAggregatorBase.IsNaN score" />
+      <MemberSignature Language="C++ CLI" Value="protected:&#xA; abstract bool IsNaN(TScore % score);" />
+      <MemberSignature Language="C++ CX" Value="protected:&#xA; abstract bool IsNaN(TScore &amp;  score);" />
+      <MemberSignature Language="C++ WINRT" Value=" abstract bool IsNaN(TScore &amp; score);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -170,6 +184,9 @@
       <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Data.RegressionEvaluatorBase`3.RegressionAggregatorBase.Loss" />
       <MemberSignature Language="VB.NET" Value="Protected Loss As TMetrics " />
       <MemberSignature Language="F#" Value="val mutable Loss : 'Metrics" Usage="Microsoft.ML.Runtime.Data.RegressionEvaluatorBase&lt;'Agg, 'Score, 'Metrics (requires 'Agg :&gt; Microsoft.ML.Runtime.Data.RegressionEvaluatorBase&lt;'Agg, 'Score, 'Metrics&gt;.RegressionAggregatorBase)&gt;.RegressionAggregatorBase.Loss" />
+      <MemberSignature Language="C++ CLI" Value="protected: TMetrics Loss;" />
+      <MemberSignature Language="C++ CX" Value="protected: TMetrics Loss;" />
+      <MemberSignature Language="C++ WINRT" Value="TMetrics Loss;" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -189,6 +206,9 @@
       <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Data.RegressionEvaluatorBase`3.RegressionAggregatorBase.LossFunction" />
       <MemberSignature Language="VB.NET" Value="Protected ReadOnly LossFunction As IRegressionLoss " />
       <MemberSignature Language="F#" Value="val mutable LossFunction : Microsoft.ML.Runtime.IRegressionLoss" Usage="Microsoft.ML.Runtime.Data.RegressionEvaluatorBase&lt;'Agg, 'Score, 'Metrics (requires 'Agg :&gt; Microsoft.ML.Runtime.Data.RegressionEvaluatorBase&lt;'Agg, 'Score, 'Metrics&gt;.RegressionAggregatorBase)&gt;.RegressionAggregatorBase.LossFunction" />
+      <MemberSignature Language="C++ CLI" Value="protected: initonly Microsoft::ML::Runtime::IRegressionLoss ^ LossFunction;" />
+      <MemberSignature Language="C++ CX" Value="protected: initonly Microsoft::ML::Runtime::IRegressionLoss ^ LossFunction;" />
+      <MemberSignature Language="C++ WINRT" Value="initonly Microsoft::ML::Runtime::IRegressionLoss LossFunction;" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -208,6 +228,9 @@
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.RegressionEvaluatorBase`3.RegressionAggregatorBase.ProcessRow" />
       <MemberSignature Language="VB.NET" Value="Public Overrides Sub ProcessRow ()" />
       <MemberSignature Language="F#" Value="override this.ProcessRow : unit -&gt; unit" Usage="regressionAggregatorBase.ProcessRow " />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; override void ProcessRow();" />
+      <MemberSignature Language="C++ CX" Value="public:&#xA; override void ProcessRow();" />
+      <MemberSignature Language="C++ WINRT" Value=" override void ProcessRow();" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -228,6 +251,9 @@
       <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Data.RegressionEvaluatorBase`3.RegressionAggregatorBase.Score" />
       <MemberSignature Language="VB.NET" Value="Protected Score As TScore " />
       <MemberSignature Language="F#" Value="val mutable Score : 'Score" Usage="Microsoft.ML.Runtime.Data.RegressionEvaluatorBase&lt;'Agg, 'Score, 'Metrics (requires 'Agg :&gt; Microsoft.ML.Runtime.Data.RegressionEvaluatorBase&lt;'Agg, 'Score, 'Metrics&gt;.RegressionAggregatorBase)&gt;.RegressionAggregatorBase.Score" />
+      <MemberSignature Language="C++ CLI" Value="protected: TScore Score;" />
+      <MemberSignature Language="C++ CX" Value="protected: TScore Score;" />
+      <MemberSignature Language="C++ WINRT" Value="TScore Score;" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -247,6 +273,7 @@
       <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.RegressionEvaluatorBase`3.RegressionAggregatorBase.UnweightedCounters" />
       <MemberSignature Language="VB.NET" Value="Public MustOverride ReadOnly Property UnweightedCounters As RegressionEvaluatorBase(Of TAgg, TScore, TMetrics).RegressionAggregatorBase.CountersBase" />
       <MemberSignature Language="F#" Value="member this.UnweightedCounters : Microsoft.ML.Runtime.Data.RegressionEvaluatorBase&lt;'Agg, 'Score, 'Metrics (requires 'Agg :&gt; Microsoft.ML.Runtime.Data.RegressionEvaluatorBase&lt;'Agg, 'Score, 'Metrics&gt;.RegressionAggregatorBase)&gt;.RegressionAggregatorBase.CountersBase" Usage="Microsoft.ML.Runtime.Data.RegressionEvaluatorBase&lt;'Agg, 'Score, 'Metrics (requires 'Agg :&gt; Microsoft.ML.Runtime.Data.RegressionEvaluatorBase&lt;'Agg, 'Score, 'Metrics&gt;.RegressionAggregatorBase)&gt;.RegressionAggregatorBase.UnweightedCounters" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; abstract property Microsoft::ML::Runtime::Data::RegressionEvaluatorBase&lt;TAgg, TScore, TMetrics&gt;::RegressionAggregatorBase::CountersBase ^ UnweightedCounters { Microsoft::ML::Runtime::Data::RegressionEvaluatorBase&lt;TAgg, TScore, TMetrics&gt;::RegressionAggregatorBase::CountersBase ^ get(); };" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -267,6 +294,8 @@
       <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Data.RegressionEvaluatorBase`3.RegressionAggregatorBase.Weighted" />
       <MemberSignature Language="VB.NET" Value="Public ReadOnly Weighted As Boolean " />
       <MemberSignature Language="F#" Value="val mutable Weighted : bool" Usage="Microsoft.ML.Runtime.Data.RegressionEvaluatorBase&lt;'Agg, 'Score, 'Metrics (requires 'Agg :&gt; Microsoft.ML.Runtime.Data.RegressionEvaluatorBase&lt;'Agg, 'Score, 'Metrics&gt;.RegressionAggregatorBase)&gt;.RegressionAggregatorBase.Weighted" />
+      <MemberSignature Language="C++ CLI" Value="public: initonly bool Weighted;" />
+      <MemberSignature Language="C++ WINRT" Value="initonly bool Weighted;" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -286,6 +315,7 @@
       <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.RegressionEvaluatorBase`3.RegressionAggregatorBase.WeightedCounters" />
       <MemberSignature Language="VB.NET" Value="Public MustOverride ReadOnly Property WeightedCounters As RegressionEvaluatorBase(Of TAgg, TScore, TMetrics).RegressionAggregatorBase.CountersBase" />
       <MemberSignature Language="F#" Value="member this.WeightedCounters : Microsoft.ML.Runtime.Data.RegressionEvaluatorBase&lt;'Agg, 'Score, 'Metrics (requires 'Agg :&gt; Microsoft.ML.Runtime.Data.RegressionEvaluatorBase&lt;'Agg, 'Score, 'Metrics&gt;.RegressionAggregatorBase)&gt;.RegressionAggregatorBase.CountersBase" Usage="Microsoft.ML.Runtime.Data.RegressionEvaluatorBase&lt;'Agg, 'Score, 'Metrics (requires 'Agg :&gt; Microsoft.ML.Runtime.Data.RegressionEvaluatorBase&lt;'Agg, 'Score, 'Metrics&gt;.RegressionAggregatorBase)&gt;.RegressionAggregatorBase.WeightedCounters" />
+      <MemberSignature Language="C++ CLI" Value="public:&#xA; abstract property Microsoft::ML::Runtime::Data::RegressionEvaluatorBase&lt;TAgg, TScore, TMetrics&gt;::RegressionAggregatorBase::CountersBase ^ WeightedCounters { Microsoft::ML::Runtime::Data::RegressionEvaluatorBase&lt;TAgg, TScore, TMetrics&gt;::RegressionAggregatorBase::CountersBase ^ get(); };" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
