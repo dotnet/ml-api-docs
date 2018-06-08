@@ -727,6 +727,27 @@
     </Type>
   </Namespace>
   <Namespace Name="Microsoft.ML.Data">
+    <Type Name="Microsoft.ML.Data.CollectionDataSource" Id="T:Microsoft.ML.Data.CollectionDataSource">
+      <Member Id="M:Microsoft.ML.Data.CollectionDataSource.Create``1(System.Collections.Generic.IEnumerable{``0})" />
+      <Member Id="M:Microsoft.ML.Data.CollectionDataSource.Create``1(System.Collections.Generic.IList{``0})" />
+    </Type>
+    <Type Name="Microsoft.ML.Data.CustomTextLoader" Id="T:Microsoft.ML.Data.CustomTextLoader">
+      <Member Id="M:Microsoft.ML.Data.CustomTextLoader.#ctor" />
+      <Member Id="P:Microsoft.ML.Data.CustomTextLoader.CustomSchema" />
+      <Member Id="P:Microsoft.ML.Data.CustomTextLoader.InputFile" />
+    </Type>
+    <Type Name="Microsoft.ML.Data.CustomTextLoader/Output" Id="T:Microsoft.ML.Data.CustomTextLoader.Output">
+      <Member Id="M:Microsoft.ML.Data.CustomTextLoader.Output.#ctor" />
+      <Member Id="P:Microsoft.ML.Data.CustomTextLoader.Output.Data" />
+    </Type>
+    <Type Name="Microsoft.ML.Data.DataViewReference" Id="T:Microsoft.ML.Data.DataViewReference">
+      <Member Id="M:Microsoft.ML.Data.DataViewReference.#ctor" />
+      <Member Id="P:Microsoft.ML.Data.DataViewReference.Data" />
+    </Type>
+    <Type Name="Microsoft.ML.Data.DataViewReference/Output" Id="T:Microsoft.ML.Data.DataViewReference.Output">
+      <Member Id="M:Microsoft.ML.Data.DataViewReference.Output.#ctor" />
+      <Member Id="P:Microsoft.ML.Data.DataViewReference.Output.Data" />
+    </Type>
     <Type Name="Microsoft.ML.Data.IDataViewArrayConverter" Id="T:Microsoft.ML.Data.IDataViewArrayConverter">
       <Member Id="M:Microsoft.ML.Data.IDataViewArrayConverter.#ctor" />
       <Member Id="P:Microsoft.ML.Data.IDataViewArrayConverter.Data" />
@@ -734,6 +755,12 @@
     <Type Name="Microsoft.ML.Data.IDataViewArrayConverter/Output" Id="T:Microsoft.ML.Data.IDataViewArrayConverter.Output">
       <Member Id="M:Microsoft.ML.Data.IDataViewArrayConverter.Output.#ctor" />
       <Member Id="P:Microsoft.ML.Data.IDataViewArrayConverter.Output.OutputData" />
+    </Type>
+    <Type Name="Microsoft.ML.Data.KeyRange" Id="T:Microsoft.ML.Data.KeyRange">
+      <Member Id="M:Microsoft.ML.Data.KeyRange.#ctor" />
+      <Member Id="P:Microsoft.ML.Data.KeyRange.Contiguous" />
+      <Member Id="P:Microsoft.ML.Data.KeyRange.Max" />
+      <Member Id="P:Microsoft.ML.Data.KeyRange.Min" />
     </Type>
     <Type Name="Microsoft.ML.Data.PredictorModelArrayConverter" Id="T:Microsoft.ML.Data.PredictorModelArrayConverter">
       <Member Id="M:Microsoft.ML.Data.PredictorModelArrayConverter.#ctor" />
@@ -744,13 +771,56 @@
       <Member Id="P:Microsoft.ML.Data.PredictorModelArrayConverter.Output.OutputModel" />
     </Type>
     <Type Name="Microsoft.ML.Data.TextLoader" Id="T:Microsoft.ML.Data.TextLoader">
-      <Member Id="M:Microsoft.ML.Data.TextLoader.#ctor" />
-      <Member Id="P:Microsoft.ML.Data.TextLoader.CustomSchema" />
+      <Member Id="M:Microsoft.ML.Data.TextLoader.#ctor(System.String)" />
+      <Member Id="M:Microsoft.ML.Data.TextLoader.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Data.TextLoader.CreateFrom``1(System.Boolean,System.Char,System.Boolean,System.Boolean,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.Data.TextLoader.GetInputData" />
+      <Member Id="M:Microsoft.ML.Data.TextLoader.SetInput(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="P:Microsoft.ML.Data.TextLoader.Arguments" />
       <Member Id="P:Microsoft.ML.Data.TextLoader.InputFile" />
     </Type>
     <Type Name="Microsoft.ML.Data.TextLoader/Output" Id="T:Microsoft.ML.Data.TextLoader.Output">
       <Member Id="M:Microsoft.ML.Data.TextLoader.Output.#ctor" />
       <Member Id="P:Microsoft.ML.Data.TextLoader.Output.Data" />
+    </Type>
+    <Type Name="Microsoft.ML.Data.TextLoaderArguments" Id="T:Microsoft.ML.Data.TextLoaderArguments">
+      <Member Id="M:Microsoft.ML.Data.TextLoaderArguments.#ctor" />
+      <Member Id="P:Microsoft.ML.Data.TextLoaderArguments.AllowQuoting" />
+      <Member Id="P:Microsoft.ML.Data.TextLoaderArguments.AllowSparse" />
+      <Member Id="P:Microsoft.ML.Data.TextLoaderArguments.Column" />
+      <Member Id="P:Microsoft.ML.Data.TextLoaderArguments.HasHeader" />
+      <Member Id="P:Microsoft.ML.Data.TextLoaderArguments.HeaderFile" />
+      <Member Id="P:Microsoft.ML.Data.TextLoaderArguments.InputSize" />
+      <Member Id="P:Microsoft.ML.Data.TextLoaderArguments.MaxRows" />
+      <Member Id="P:Microsoft.ML.Data.TextLoaderArguments.Separator" />
+      <Member Id="P:Microsoft.ML.Data.TextLoaderArguments.TrimWhitespace" />
+      <Member Id="P:Microsoft.ML.Data.TextLoaderArguments.UseThreads" />
+    </Type>
+    <Type Name="Microsoft.ML.Data.TextLoaderColumn" Id="T:Microsoft.ML.Data.TextLoaderColumn">
+      <Member Id="M:Microsoft.ML.Data.TextLoaderColumn.#ctor" />
+      <Member Id="P:Microsoft.ML.Data.TextLoaderColumn.KeyRange" />
+      <Member Id="P:Microsoft.ML.Data.TextLoaderColumn.Name" />
+      <Member Id="P:Microsoft.ML.Data.TextLoaderColumn.Source" />
+      <Member Id="P:Microsoft.ML.Data.TextLoaderColumn.Type" />
+    </Type>
+    <Type Name="Microsoft.ML.Data.TextLoaderRange" Id="T:Microsoft.ML.Data.TextLoaderRange">
+      <Member Id="M:Microsoft.ML.Data.TextLoaderRange.#ctor" />
+      <Member Id="M:Microsoft.ML.Data.TextLoaderRange.#ctor(System.Int32)" />
+      <Member Id="M:Microsoft.ML.Data.TextLoaderRange.#ctor(System.Int32,System.Int32)" />
+      <Member Id="P:Microsoft.ML.Data.TextLoaderRange.AllOther" />
+      <Member Id="P:Microsoft.ML.Data.TextLoaderRange.AutoEnd" />
+      <Member Id="P:Microsoft.ML.Data.TextLoaderRange.ForceVector" />
+      <Member Id="P:Microsoft.ML.Data.TextLoaderRange.Max" />
+      <Member Id="P:Microsoft.ML.Data.TextLoaderRange.Min" />
+      <Member Id="P:Microsoft.ML.Data.TextLoaderRange.VariableEnd" />
+    </Type>
+    <Type Name="Microsoft.ML.Data.TransformModelArrayConverter" Id="T:Microsoft.ML.Data.TransformModelArrayConverter">
+      <Member Id="M:Microsoft.ML.Data.TransformModelArrayConverter.#ctor" />
+      <Member Id="P:Microsoft.ML.Data.TransformModelArrayConverter.TransformModel" />
+    </Type>
+    <Type Name="Microsoft.ML.Data.TransformModelArrayConverter/Output" Id="T:Microsoft.ML.Data.TransformModelArrayConverter.Output">
+      <Member Id="M:Microsoft.ML.Data.TransformModelArrayConverter.Output.#ctor" />
+      <Member Id="P:Microsoft.ML.Data.TransformModelArrayConverter.Output.OutputModel" />
     </Type>
   </Namespace>
   <Namespace Name="Microsoft.ML">
@@ -760,6 +830,7 @@
     </Type>
     <Type Name="Microsoft.ML.ILearningPipelineItem" Id="T:Microsoft.ML.ILearningPipelineItem">
       <Member Id="M:Microsoft.ML.ILearningPipelineItem.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.ILearningPipelineItem.GetInputData" />
     </Type>
     <Type Name="Microsoft.ML.ILearningPipelineLoader" Id="T:Microsoft.ML.ILearningPipelineLoader">
       <Member Id="M:Microsoft.ML.ILearningPipelineLoader.SetInput(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Experiment)" />
@@ -787,17 +858,13 @@
       <Member Id="M:Microsoft.ML.PredictionModel.ReadAsync(System.String)" />
       <Member Id="M:Microsoft.ML.PredictionModel.ReadAsync``2(System.IO.Stream)" />
       <Member Id="M:Microsoft.ML.PredictionModel.ReadAsync``2(System.String)" />
+      <Member Id="M:Microsoft.ML.PredictionModel.TryGetScoreLabelNames(System.String[]@,System.String)" />
       <Member Id="M:Microsoft.ML.PredictionModel.WriteAsync(System.IO.Stream)" />
       <Member Id="M:Microsoft.ML.PredictionModel.WriteAsync(System.String)" />
     </Type>
     <Type Name="Microsoft.ML.PredictionModel`2" Id="T:Microsoft.ML.PredictionModel`2">
       <Member Id="M:Microsoft.ML.PredictionModel`2.Predict(`0)" />
       <Member Id="M:Microsoft.ML.PredictionModel`2.Predict(System.Collections.Generic.IEnumerable{`0})" />
-    </Type>
-    <Type Name="Microsoft.ML.TextLoader`1" Id="T:Microsoft.ML.TextLoader`1">
-      <Member Id="M:Microsoft.ML.TextLoader`1.#ctor(System.String,System.Boolean,System.String,System.Boolean,System.Boolean,System.Boolean)" />
-      <Member Id="M:Microsoft.ML.TextLoader`1.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
-      <Member Id="M:Microsoft.ML.TextLoader`1.SetInput(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Experiment)" />
     </Type>
   </Namespace>
   <Namespace Name="Microsoft.ML.Models">
@@ -949,10 +1016,35 @@
     </Type>
     <Type Name="Microsoft.ML.Models.CrossValidationMacroSubGraphOutput" Id="T:Microsoft.ML.Models.CrossValidationMacroSubGraphOutput">
       <Member Id="M:Microsoft.ML.Models.CrossValidationMacroSubGraphOutput.#ctor" />
-      <Member Id="P:Microsoft.ML.Models.CrossValidationMacroSubGraphOutput.Model" />
+      <Member Id="P:Microsoft.ML.Models.CrossValidationMacroSubGraphOutput.PredictorModel" />
+      <Member Id="P:Microsoft.ML.Models.CrossValidationMacroSubGraphOutput.TransformModel" />
+    </Type>
+    <Type Name="Microsoft.ML.Models.CrossValidationOutput`2" Id="T:Microsoft.ML.Models.CrossValidationOutput`2">
+      <Member Id="F:Microsoft.ML.Models.CrossValidationOutput`2.BinaryClassificationMetrics" />
+      <Member Id="F:Microsoft.ML.Models.CrossValidationOutput`2.ClassificationMetrics" />
+      <Member Id="F:Microsoft.ML.Models.CrossValidationOutput`2.PredictorModels" />
+      <Member Id="F:Microsoft.ML.Models.CrossValidationOutput`2.RegressionMetrics" />
+      <Member Id="M:Microsoft.ML.Models.CrossValidationOutput`2.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Models.CrossValidationResultsCombiner" Id="T:Microsoft.ML.Models.CrossValidationResultsCombiner">
+      <Member Id="M:Microsoft.ML.Models.CrossValidationResultsCombiner.#ctor" />
+      <Member Id="P:Microsoft.ML.Models.CrossValidationResultsCombiner.ConfusionMatrix" />
+      <Member Id="P:Microsoft.ML.Models.CrossValidationResultsCombiner.Kind" />
+      <Member Id="P:Microsoft.ML.Models.CrossValidationResultsCombiner.LabelColumn" />
+      <Member Id="P:Microsoft.ML.Models.CrossValidationResultsCombiner.OverallMetrics" />
+      <Member Id="P:Microsoft.ML.Models.CrossValidationResultsCombiner.PerInstanceMetrics" />
+      <Member Id="P:Microsoft.ML.Models.CrossValidationResultsCombiner.Warnings" />
+    </Type>
+    <Type Name="Microsoft.ML.Models.CrossValidationResultsCombiner/Output" Id="T:Microsoft.ML.Models.CrossValidationResultsCombiner.Output">
+      <Member Id="M:Microsoft.ML.Models.CrossValidationResultsCombiner.Output.#ctor" />
+      <Member Id="P:Microsoft.ML.Models.CrossValidationResultsCombiner.Output.ConfusionMatrix" />
+      <Member Id="P:Microsoft.ML.Models.CrossValidationResultsCombiner.Output.OverallMetrics" />
+      <Member Id="P:Microsoft.ML.Models.CrossValidationResultsCombiner.Output.PerInstanceMetrics" />
+      <Member Id="P:Microsoft.ML.Models.CrossValidationResultsCombiner.Output.Warnings" />
     </Type>
     <Type Name="Microsoft.ML.Models.CrossValidator" Id="T:Microsoft.ML.Models.CrossValidator">
       <Member Id="M:Microsoft.ML.Models.CrossValidator.#ctor" />
+      <Member Id="M:Microsoft.ML.Models.CrossValidator.CrossValidate``2(Microsoft.ML.LearningPipeline)" />
       <Member Id="P:Microsoft.ML.Models.CrossValidator.Data" />
       <Member Id="P:Microsoft.ML.Models.CrossValidator.Inputs" />
       <Member Id="P:Microsoft.ML.Models.CrossValidator.Kind" />
@@ -968,6 +1060,7 @@
       <Member Id="P:Microsoft.ML.Models.CrossValidator.Output.OverallMetrics" />
       <Member Id="P:Microsoft.ML.Models.CrossValidator.Output.PerInstanceMetrics" />
       <Member Id="P:Microsoft.ML.Models.CrossValidator.Output.PredictorModel" />
+      <Member Id="P:Microsoft.ML.Models.CrossValidator.Output.TransformModel" />
       <Member Id="P:Microsoft.ML.Models.CrossValidator.Output.Warnings" />
     </Type>
     <Type Name="Microsoft.ML.Models.CrossValidatorDatasetSplitter" Id="T:Microsoft.ML.Models.CrossValidatorDatasetSplitter">
@@ -984,6 +1077,7 @@
     <Type Name="Microsoft.ML.Models.DatasetTransformer" Id="T:Microsoft.ML.Models.DatasetTransformer">
       <Member Id="M:Microsoft.ML.Models.DatasetTransformer.#ctor" />
       <Member Id="M:Microsoft.ML.Models.DatasetTransformer.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Models.DatasetTransformer.GetInputData" />
       <Member Id="P:Microsoft.ML.Models.DatasetTransformer.Data" />
       <Member Id="P:Microsoft.ML.Models.DatasetTransformer.TransformModel" />
     </Type>
@@ -994,6 +1088,7 @@
     <Type Name="Microsoft.ML.Models.FixedPlattCalibrator" Id="T:Microsoft.ML.Models.FixedPlattCalibrator">
       <Member Id="M:Microsoft.ML.Models.FixedPlattCalibrator.#ctor" />
       <Member Id="M:Microsoft.ML.Models.FixedPlattCalibrator.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Models.FixedPlattCalibrator.GetInputData" />
       <Member Id="P:Microsoft.ML.Models.FixedPlattCalibrator.Data" />
       <Member Id="P:Microsoft.ML.Models.FixedPlattCalibrator.MaxRows" />
       <Member Id="P:Microsoft.ML.Models.FixedPlattCalibrator.Offset" />
@@ -1033,6 +1128,7 @@
     <Type Name="Microsoft.ML.Models.NaiveCalibrator" Id="T:Microsoft.ML.Models.NaiveCalibrator">
       <Member Id="M:Microsoft.ML.Models.NaiveCalibrator.#ctor" />
       <Member Id="M:Microsoft.ML.Models.NaiveCalibrator.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Models.NaiveCalibrator.GetInputData" />
       <Member Id="P:Microsoft.ML.Models.NaiveCalibrator.Data" />
       <Member Id="P:Microsoft.ML.Models.NaiveCalibrator.MaxRows" />
       <Member Id="P:Microsoft.ML.Models.NaiveCalibrator.UncalibratedPredictorModel" />
@@ -1050,6 +1146,7 @@
     <Type Name="Microsoft.ML.Models.OneVersusAll" Id="T:Microsoft.ML.Models.OneVersusAll">
       <Member Id="M:Microsoft.ML.Models.OneVersusAll.#ctor" />
       <Member Id="M:Microsoft.ML.Models.OneVersusAll.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Models.OneVersusAll.GetInputData" />
       <Member Id="P:Microsoft.ML.Models.OneVersusAll.Caching" />
       <Member Id="P:Microsoft.ML.Models.OneVersusAll.FeatureColumn" />
       <Member Id="P:Microsoft.ML.Models.OneVersusAll.LabelColumn" />
@@ -1071,6 +1168,7 @@
     <Type Name="Microsoft.ML.Models.OvaModelCombiner" Id="T:Microsoft.ML.Models.OvaModelCombiner">
       <Member Id="M:Microsoft.ML.Models.OvaModelCombiner.#ctor" />
       <Member Id="M:Microsoft.ML.Models.OvaModelCombiner.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Models.OvaModelCombiner.GetInputData" />
       <Member Id="P:Microsoft.ML.Models.OvaModelCombiner.Caching" />
       <Member Id="P:Microsoft.ML.Models.OvaModelCombiner.FeatureColumn" />
       <Member Id="P:Microsoft.ML.Models.OvaModelCombiner.LabelColumn" />
@@ -1087,6 +1185,7 @@
     <Type Name="Microsoft.ML.Models.PAVCalibrator" Id="T:Microsoft.ML.Models.PAVCalibrator">
       <Member Id="M:Microsoft.ML.Models.PAVCalibrator.#ctor" />
       <Member Id="M:Microsoft.ML.Models.PAVCalibrator.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Models.PAVCalibrator.GetInputData" />
       <Member Id="P:Microsoft.ML.Models.PAVCalibrator.Data" />
       <Member Id="P:Microsoft.ML.Models.PAVCalibrator.MaxRows" />
       <Member Id="P:Microsoft.ML.Models.PAVCalibrator.UncalibratedPredictorModel" />
@@ -1095,9 +1194,24 @@
       <Member Id="M:Microsoft.ML.Models.PAVCalibrator.Output.#ctor" />
       <Member Id="P:Microsoft.ML.Models.PAVCalibrator.Output.PredictorModel" />
     </Type>
+    <Type Name="Microsoft.ML.Models.PipelineSweeper" Id="T:Microsoft.ML.Models.PipelineSweeper">
+      <Member Id="M:Microsoft.ML.Models.PipelineSweeper.#ctor" />
+      <Member Id="P:Microsoft.ML.Models.PipelineSweeper.BatchSize" />
+      <Member Id="P:Microsoft.ML.Models.PipelineSweeper.CandidateOutputs" />
+      <Member Id="P:Microsoft.ML.Models.PipelineSweeper.State" />
+      <Member Id="P:Microsoft.ML.Models.PipelineSweeper.StateArguments" />
+      <Member Id="P:Microsoft.ML.Models.PipelineSweeper.TestingData" />
+      <Member Id="P:Microsoft.ML.Models.PipelineSweeper.TrainingData" />
+    </Type>
+    <Type Name="Microsoft.ML.Models.PipelineSweeper/Output" Id="T:Microsoft.ML.Models.PipelineSweeper.Output">
+      <Member Id="M:Microsoft.ML.Models.PipelineSweeper.Output.#ctor" />
+      <Member Id="P:Microsoft.ML.Models.PipelineSweeper.Output.Results" />
+      <Member Id="P:Microsoft.ML.Models.PipelineSweeper.Output.State" />
+    </Type>
     <Type Name="Microsoft.ML.Models.PlattCalibrator" Id="T:Microsoft.ML.Models.PlattCalibrator">
       <Member Id="M:Microsoft.ML.Models.PlattCalibrator.#ctor" />
       <Member Id="M:Microsoft.ML.Models.PlattCalibrator.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Models.PlattCalibrator.GetInputData" />
       <Member Id="P:Microsoft.ML.Models.PlattCalibrator.Data" />
       <Member Id="P:Microsoft.ML.Models.PlattCalibrator.MaxRows" />
       <Member Id="P:Microsoft.ML.Models.PlattCalibrator.UncalibratedPredictorModel" />
@@ -1174,6 +1288,15 @@
       <Member Id="P:Microsoft.ML.Models.Summarizer.Output.Stats" />
       <Member Id="P:Microsoft.ML.Models.Summarizer.Output.Summary" />
     </Type>
+    <Type Name="Microsoft.ML.Models.SweepResultExtractor" Id="T:Microsoft.ML.Models.SweepResultExtractor">
+      <Member Id="M:Microsoft.ML.Models.SweepResultExtractor.#ctor" />
+      <Member Id="P:Microsoft.ML.Models.SweepResultExtractor.State" />
+    </Type>
+    <Type Name="Microsoft.ML.Models.SweepResultExtractor/Output" Id="T:Microsoft.ML.Models.SweepResultExtractor.Output">
+      <Member Id="M:Microsoft.ML.Models.SweepResultExtractor.Output.#ctor" />
+      <Member Id="P:Microsoft.ML.Models.SweepResultExtractor.Output.Results" />
+      <Member Id="P:Microsoft.ML.Models.SweepResultExtractor.Output.State" />
+    </Type>
     <Type Name="Microsoft.ML.Models.TrainTestBinaryEvaluator" Id="T:Microsoft.ML.Models.TrainTestBinaryEvaluator">
       <Member Id="M:Microsoft.ML.Models.TrainTestBinaryEvaluator.#ctor" />
       <Member Id="P:Microsoft.ML.Models.TrainTestBinaryEvaluator.Inputs" />
@@ -1200,6 +1323,7 @@
     </Type>
     <Type Name="Microsoft.ML.Models.TrainTestEvaluator" Id="T:Microsoft.ML.Models.TrainTestEvaluator">
       <Member Id="M:Microsoft.ML.Models.TrainTestEvaluator.#ctor" />
+      <Member Id="M:Microsoft.ML.Models.TrainTestEvaluator.TrainTestEvaluate``2(Microsoft.ML.LearningPipeline,Microsoft.ML.ILearningPipelineLoader)" />
       <Member Id="P:Microsoft.ML.Models.TrainTestEvaluator.IncludeTrainingMetrics" />
       <Member Id="P:Microsoft.ML.Models.TrainTestEvaluator.Inputs" />
       <Member Id="P:Microsoft.ML.Models.TrainTestEvaluator.Kind" />
@@ -1220,7 +1344,15 @@
       <Member Id="P:Microsoft.ML.Models.TrainTestEvaluator.Output.TrainingOverallMetrics" />
       <Member Id="P:Microsoft.ML.Models.TrainTestEvaluator.Output.TrainingPerInstanceMetrics" />
       <Member Id="P:Microsoft.ML.Models.TrainTestEvaluator.Output.TrainingWarnings" />
+      <Member Id="P:Microsoft.ML.Models.TrainTestEvaluator.Output.TransformModel" />
       <Member Id="P:Microsoft.ML.Models.TrainTestEvaluator.Output.Warnings" />
+    </Type>
+    <Type Name="Microsoft.ML.Models.TrainTestEvaluatorOutput`2" Id="T:Microsoft.ML.Models.TrainTestEvaluatorOutput`2">
+      <Member Id="F:Microsoft.ML.Models.TrainTestEvaluatorOutput`2.BinaryClassificationMetrics" />
+      <Member Id="F:Microsoft.ML.Models.TrainTestEvaluatorOutput`2.ClassificationMetrics" />
+      <Member Id="F:Microsoft.ML.Models.TrainTestEvaluatorOutput`2.PredictorModels" />
+      <Member Id="F:Microsoft.ML.Models.TrainTestEvaluatorOutput`2.RegressionMetrics" />
+      <Member Id="M:Microsoft.ML.Models.TrainTestEvaluatorOutput`2.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Models.TrainTestMacroSubGraphInput" Id="T:Microsoft.ML.Models.TrainTestMacroSubGraphInput">
       <Member Id="M:Microsoft.ML.Models.TrainTestMacroSubGraphInput.#ctor" />
@@ -1228,7 +1360,8 @@
     </Type>
     <Type Name="Microsoft.ML.Models.TrainTestMacroSubGraphOutput" Id="T:Microsoft.ML.Models.TrainTestMacroSubGraphOutput">
       <Member Id="M:Microsoft.ML.Models.TrainTestMacroSubGraphOutput.#ctor" />
-      <Member Id="P:Microsoft.ML.Models.TrainTestMacroSubGraphOutput.Model" />
+      <Member Id="P:Microsoft.ML.Models.TrainTestMacroSubGraphOutput.PredictorModel" />
+      <Member Id="P:Microsoft.ML.Models.TrainTestMacroSubGraphOutput.TransformModel" />
     </Type>
   </Namespace>
   <Namespace Name="Microsoft.ML.Runtime.Api">
@@ -1367,6 +1500,50 @@
     </Type>
   </Namespace>
   <Namespace Name="Microsoft.ML.Runtime">
+    <Type Name="Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics" Id="T:Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics">
+      <Member Id="F:Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics.AccuracyMacro" />
+      <Member Id="F:Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics.AccuracyMicro" />
+      <Member Id="F:Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics.Auc" />
+      <Member Id="F:Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics.AuPrc" />
+      <Member Id="F:Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics.AvgMinScore" />
+      <Member Id="F:Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics.Dbi" />
+      <Member Id="F:Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics.Dcg" />
+      <Member Id="F:Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics.DrAtK" />
+      <Member Id="F:Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics.DrAtNumPos" />
+      <Member Id="F:Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics.DrAtPFpr" />
+      <Member Id="F:Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics.F1" />
+      <Member Id="F:Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics.L2" />
+      <Member Id="F:Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics.LogLoss" />
+      <Member Id="F:Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics.LogLossReduction" />
+      <Member Id="F:Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics.LossFn" />
+      <Member Id="F:Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics.Ndcg" />
+      <Member Id="F:Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics.NegativePrecision" />
+      <Member Id="F:Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics.NegativeRecall" />
+      <Member Id="F:Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics.Nmi" />
+      <Member Id="F:Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics.NumAnomalies" />
+      <Member Id="F:Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics.PositivePrecision" />
+      <Member Id="F:Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics.PositiveRecall" />
+      <Member Id="F:Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics.Rms" />
+      <Member Id="F:Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics.RSquared" />
+      <Member Id="F:Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics.ThreshAtK" />
+      <Member Id="F:Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics.ThreshAtNumPos" />
+      <Member Id="F:Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics.ThreshAtP" />
+      <Member Id="F:Microsoft.ML.Runtime.AutoInferenceAutoMlMlStateArgumentsMetrics.TopKAccuracy" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.AutoMlEngine" Id="T:Microsoft.ML.Runtime.AutoMlEngine">
+      <Member Id="M:Microsoft.ML.Runtime.AutoMlEngine.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.AutoMlStateAutoMlStateBase" Id="T:Microsoft.ML.Runtime.AutoMlStateAutoMlStateBase">
+      <Member Id="M:Microsoft.ML.Runtime.AutoMlStateAutoMlStateBase.#ctor" />
+      <Member Id="P:Microsoft.ML.Runtime.AutoMlStateAutoMlStateBase.Engine" />
+      <Member Id="P:Microsoft.ML.Runtime.AutoMlStateAutoMlStateBase.Metric" />
+      <Member Id="P:Microsoft.ML.Runtime.AutoMlStateAutoMlStateBase.RequestedLearners" />
+      <Member Id="P:Microsoft.ML.Runtime.AutoMlStateAutoMlStateBase.TerminatorArgs" />
+      <Member Id="P:Microsoft.ML.Runtime.AutoMlStateAutoMlStateBase.TrainerKind" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.AutoMlStateBase" Id="T:Microsoft.ML.Runtime.AutoMlStateBase">
+      <Member Id="M:Microsoft.ML.Runtime.AutoMlStateBase.#ctor" />
+    </Type>
     <Type Name="Microsoft.ML.Runtime.CalibratorTrainer" Id="T:Microsoft.ML.Runtime.CalibratorTrainer">
       <Member Id="M:Microsoft.ML.Runtime.CalibratorTrainer.#ctor" />
     </Type>
@@ -1599,6 +1776,9 @@
       <Member Id="M:Microsoft.ML.Runtime.CustomStopWordsRemover.#ctor" />
       <Member Id="P:Microsoft.ML.Runtime.CustomStopWordsRemover.Stopword" />
     </Type>
+    <Type Name="Microsoft.ML.Runtime.DefaultsAutoMlEngine" Id="T:Microsoft.ML.Runtime.DefaultsAutoMlEngine">
+      <Member Id="M:Microsoft.ML.Runtime.DefaultsAutoMlEngine.#ctor" />
+    </Type>
     <Type Name="Microsoft.ML.Runtime.EarlyStoppingCriterion" Id="T:Microsoft.ML.Runtime.EarlyStoppingCriterion">
       <Member Id="M:Microsoft.ML.Runtime.EarlyStoppingCriterion.#ctor" />
     </Type>
@@ -1613,12 +1793,18 @@
     </Type>
     <Type Name="Microsoft.ML.Runtime.Experiment" Id="T:Microsoft.ML.Runtime.Experiment">
       <Member Id="M:Microsoft.ML.Runtime.Experiment.#ctor(Microsoft.ML.Runtime.IHostEnvironment)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Data.CustomTextLoader)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Data.CustomTextLoader,Microsoft.ML.Data.CustomTextLoader.Output)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Data.DataViewReference)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Data.DataViewReference,Microsoft.ML.Data.DataViewReference.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Data.IDataViewArrayConverter)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Data.IDataViewArrayConverter,Microsoft.ML.Data.IDataViewArrayConverter.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Data.PredictorModelArrayConverter)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Data.PredictorModelArrayConverter,Microsoft.ML.Data.PredictorModelArrayConverter.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Data.TextLoader)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Data.TextLoader,Microsoft.ML.Data.TextLoader.Output)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Data.TransformModelArrayConverter)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Data.TransformModelArrayConverter,Microsoft.ML.Data.TransformModelArrayConverter.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.AnomalyDetectionEvaluator)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.AnomalyDetectionEvaluator,Microsoft.ML.Models.AnomalyDetectionEvaluator.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.BinaryClassificationEvaluator)" />
@@ -1629,6 +1815,8 @@
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.ClassificationEvaluator,Microsoft.ML.Models.ClassificationEvaluator.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.ClusterEvaluator)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.ClusterEvaluator,Microsoft.ML.Models.ClusterEvaluator.Output)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.CrossValidationResultsCombiner)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.CrossValidationResultsCombiner,Microsoft.ML.Models.CrossValidationResultsCombiner.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.CrossValidator)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.CrossValidator,Microsoft.ML.Models.CrossValidator.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.CrossValidatorDatasetSplitter)" />
@@ -1647,6 +1835,8 @@
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.OvaModelCombiner,Microsoft.ML.Models.OvaModelCombiner.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.PAVCalibrator)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.PAVCalibrator,Microsoft.ML.Models.PAVCalibrator.Output)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.PipelineSweeper)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.PipelineSweeper,Microsoft.ML.Models.PipelineSweeper.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.PlattCalibrator)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.PlattCalibrator,Microsoft.ML.Models.PlattCalibrator.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.QuantileRegressionEvaluator)" />
@@ -1657,6 +1847,8 @@
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.RegressionEvaluator,Microsoft.ML.Models.RegressionEvaluator.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.Summarizer)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.Summarizer,Microsoft.ML.Models.Summarizer.Output)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.SweepResultExtractor)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.SweepResultExtractor,Microsoft.ML.Models.SweepResultExtractor.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.TrainTestBinaryEvaluator)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.TrainTestBinaryEvaluator,Microsoft.ML.Models.TrainTestBinaryEvaluator.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Models.TrainTestEvaluator)" />
@@ -1666,8 +1858,6 @@
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Runtime.EntryPoints.CommonInputs.ITransformInput)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.AveragedPerceptronBinaryClassifier)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.AveragedPerceptronBinaryClassifier,Microsoft.ML.Trainers.AveragedPerceptronBinaryClassifier.Output)" />
-      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.BinaryLogisticRegressor)" />
-      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.BinaryLogisticRegressor,Microsoft.ML.Trainers.BinaryLogisticRegressor.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.FastForestBinaryClassifier)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.FastForestBinaryClassifier,Microsoft.ML.Trainers.FastForestBinaryClassifier.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.FastForestRegressor)" />
@@ -1684,16 +1874,22 @@
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.GeneralizedAdditiveModelBinaryClassifier,Microsoft.ML.Trainers.GeneralizedAdditiveModelBinaryClassifier.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.GeneralizedAdditiveModelRegressor)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.GeneralizedAdditiveModelRegressor,Microsoft.ML.Trainers.GeneralizedAdditiveModelRegressor.Output)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.KMeansPlusPlusClusterer)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.KMeansPlusPlusClusterer,Microsoft.ML.Trainers.KMeansPlusPlusClusterer.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.LinearSvmBinaryClassifier)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.LinearSvmBinaryClassifier,Microsoft.ML.Trainers.LinearSvmBinaryClassifier.Output)" />
-      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.LogisticRegressor)" />
-      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.LogisticRegressor,Microsoft.ML.Trainers.LogisticRegressor.Output)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier,Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier.Output)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.LogisticRegressionClassifier)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.LogisticRegressionClassifier,Microsoft.ML.Trainers.LogisticRegressionClassifier.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.NaiveBayesClassifier)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.NaiveBayesClassifier,Microsoft.ML.Trainers.NaiveBayesClassifier.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.OnlineGradientDescentRegressor)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.OnlineGradientDescentRegressor,Microsoft.ML.Trainers.OnlineGradientDescentRegressor.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.OrdinaryLeastSquaresRegressor)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.OrdinaryLeastSquaresRegressor,Microsoft.ML.Trainers.OrdinaryLeastSquaresRegressor.Output)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.PcaAnomalyDetector)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.PcaAnomalyDetector,Microsoft.ML.Trainers.PcaAnomalyDetector.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.PoissonRegressor)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.PoissonRegressor,Microsoft.ML.Trainers.PoissonRegressor.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Trainers.StochasticDualCoordinateAscentBinaryClassifier)" />
@@ -1784,6 +1980,8 @@
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Transforms.NoOperation,Microsoft.ML.Transforms.NoOperation.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Transforms.OptionalColumnCreator)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Transforms.OptionalColumnCreator,Microsoft.ML.Transforms.OptionalColumnCreator.Output)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Transforms.PcaCalculator)" />
+      <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Transforms.PcaCalculator,Microsoft.ML.Transforms.PcaCalculator.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Transforms.PredictedLabelColumnOriginalValueConverter)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Transforms.PredictedLabelColumnOriginalValueConverter,Microsoft.ML.Transforms.PredictedLabelColumnOriginalValueConverter.Output)" />
       <Member Id="M:Microsoft.ML.Runtime.Experiment.Add(Microsoft.ML.Transforms.RandomNumberGenerator)" />
@@ -2314,6 +2512,10 @@
     <Type Name="Microsoft.ML.Runtime.ISweepResultEvaluator`1" Id="T:Microsoft.ML.Runtime.ISweepResultEvaluator`1">
       <Member Id="M:Microsoft.ML.Runtime.ISweepResultEvaluator`1.GetRunResult(Microsoft.ML.Runtime.ParameterSet,`0)" />
     </Type>
+    <Type Name="Microsoft.ML.Runtime.IterationLimitedSearchTerminator" Id="T:Microsoft.ML.Runtime.IterationLimitedSearchTerminator">
+      <Member Id="M:Microsoft.ML.Runtime.IterationLimitedSearchTerminator.#ctor" />
+      <Member Id="P:Microsoft.ML.Runtime.IterationLimitedSearchTerminator.FinalHistoryLength" />
+    </Type>
     <Type Name="Microsoft.ML.Runtime.ITrainer" Id="T:Microsoft.ML.Runtime.ITrainer">
       <Member Id="M:Microsoft.ML.Runtime.ITrainer.CreatePredictor" />
       <Member Id="P:Microsoft.ML.Runtime.ITrainer.PredictionKind" />
@@ -2499,11 +2701,16 @@
       <Member Id="M:Microsoft.ML.Runtime.RandomUtils.Create(System.Nullable{System.Int32})" />
       <Member Id="M:Microsoft.ML.Runtime.RandomUtils.Create(System.Nullable{System.UInt32})" />
       <Member Id="M:Microsoft.ML.Runtime.RandomUtils.Create(System.UInt32)" />
-      <Member Id="M:Microsoft.ML.Runtime.RandomUtils.NextFloat(Microsoft.ML.Runtime.IRandom)" />
-      <Member Id="M:Microsoft.ML.Runtime.RandomUtils.NextFloat(System.Random)" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.RegressionLossFunction" Id="T:Microsoft.ML.Runtime.RegressionLossFunction">
       <Member Id="M:Microsoft.ML.Runtime.RegressionLossFunction.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.RocketAutoMlEngine" Id="T:Microsoft.ML.Runtime.RocketAutoMlEngine">
+      <Member Id="M:Microsoft.ML.Runtime.RocketAutoMlEngine.#ctor" />
+      <Member Id="P:Microsoft.ML.Runtime.RocketAutoMlEngine.NumInitializationPipelines" />
+      <Member Id="P:Microsoft.ML.Runtime.RocketAutoMlEngine.RandomInitialization" />
+      <Member Id="P:Microsoft.ML.Runtime.RocketAutoMlEngine.SecondRoundTrialsPerLearner" />
+      <Member Id="P:Microsoft.ML.Runtime.RocketAutoMlEngine.TopKLearners" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.RunMetric" Id="T:Microsoft.ML.Runtime.RunMetric">
       <Member Id="M:Microsoft.ML.Runtime.RunMetric.#ctor(System.Single,System.Collections.Generic.IEnumerable{System.Single})" />
@@ -2525,6 +2732,9 @@
     </Type>
     <Type Name="Microsoft.ML.Runtime.SDCARegressionLossFunction" Id="T:Microsoft.ML.Runtime.SDCARegressionLossFunction">
       <Member Id="M:Microsoft.ML.Runtime.SDCARegressionLossFunction.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.SearchTerminator" Id="T:Microsoft.ML.Runtime.SearchTerminator">
+      <Member Id="M:Microsoft.ML.Runtime.SearchTerminator.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.ServerChannel" Id="T:Microsoft.ML.Runtime.ServerChannel">
       <Member Id="M:Microsoft.ML.Runtime.ServerChannel.Acknowledge(System.Action{Microsoft.ML.Runtime.ServerChannel.Bundle})" />
@@ -2696,6 +2906,9 @@
     <Type Name="Microsoft.ML.Runtime.TweedieLossRegressionLossFunction" Id="T:Microsoft.ML.Runtime.TweedieLossRegressionLossFunction">
       <Member Id="M:Microsoft.ML.Runtime.TweedieLossRegressionLossFunction.#ctor" />
       <Member Id="P:Microsoft.ML.Runtime.TweedieLossRegressionLossFunction.Index" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.UniformRandomAutoMlEngine" Id="T:Microsoft.ML.Runtime.UniformRandomAutoMlEngine">
+      <Member Id="M:Microsoft.ML.Runtime.UniformRandomAutoMlEngine.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.UPEarlyStoppingCriterion" Id="T:Microsoft.ML.Runtime.UPEarlyStoppingCriterion">
       <Member Id="M:Microsoft.ML.Runtime.UPEarlyStoppingCriterion.#ctor" />
@@ -2935,9 +3148,9 @@
     <Type Name="Microsoft.ML.Runtime.Data.AnomalyDetectionMamlEvaluator" Id="T:Microsoft.ML.Runtime.Data.AnomalyDetectionMamlEvaluator">
       <Member Id="M:Microsoft.ML.Runtime.Data.AnomalyDetectionMamlEvaluator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.AnomalyDetectionMamlEvaluator.Arguments)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.AnomalyDetectionMamlEvaluator.GetOverallMetricColumns" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.AnomalyDetectionMamlEvaluator.GetOverallResultsCore(Microsoft.ML.Runtime.Data.IDataView)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.AnomalyDetectionMamlEvaluator.GetPerInstanceColumnsToSave(Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.AnomalyDetectionMamlEvaluator.PrintFoldResultsCore(Microsoft.ML.Runtime.IChannel,System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView})" />
-      <Member Id="M:Microsoft.ML.Runtime.Data.AnomalyDetectionMamlEvaluator.PrintOverallResultsCore(Microsoft.ML.Runtime.IChannel,System.String,System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView}[])" />
       <Member Id="P:Microsoft.ML.Runtime.Data.AnomalyDetectionMamlEvaluator.Evaluator" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.AnomalyDetectionMamlEvaluator/Arguments" Id="T:Microsoft.ML.Runtime.Data.AnomalyDetectionMamlEvaluator.Arguments">
@@ -3064,9 +3277,10 @@
       <Member Id="M:Microsoft.ML.Runtime.Data.BinaryClassifierMamlEvaluator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.BinaryClassifierMamlEvaluator.Arguments)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.BinaryClassifierMamlEvaluator.GetInputColumnRolesCore(Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.BinaryClassifierMamlEvaluator.GetOverallMetricColumns" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.BinaryClassifierMamlEvaluator.GetOverallResultsCore(Microsoft.ML.Runtime.Data.IDataView)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.BinaryClassifierMamlEvaluator.GetPerInstanceColumnsToSave(Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.BinaryClassifierMamlEvaluator.PrintAdditionalMetricsCore(Microsoft.ML.Runtime.IChannel,System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView}[])" />
       <Member Id="M:Microsoft.ML.Runtime.Data.BinaryClassifierMamlEvaluator.PrintFoldResultsCore(Microsoft.ML.Runtime.IChannel,System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView})" />
-      <Member Id="M:Microsoft.ML.Runtime.Data.BinaryClassifierMamlEvaluator.PrintOverallResultsCore(Microsoft.ML.Runtime.IChannel,System.String,System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView}[])" />
       <Member Id="P:Microsoft.ML.Runtime.Data.BinaryClassifierMamlEvaluator.Evaluator" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.BinaryClassifierMamlEvaluator/Arguments" Id="T:Microsoft.ML.Runtime.Data.BinaryClassifierMamlEvaluator.Arguments">
@@ -4127,18 +4341,25 @@
       <Member Id="M:Microsoft.ML.Runtime.Data.EvaluateTransform.Arguments.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.EvaluateUtils" Id="T:Microsoft.ML.Runtime.Data.EvaluateUtils">
-      <Member Id="M:Microsoft.ML.Runtime.Data.EvaluateUtils.AddKeyColumn``1(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,Microsoft.ML.Runtime.Data.ColumnType,System.Int32,System.Int32,System.String,Microsoft.ML.Runtime.Data.ValueGetter{Microsoft.ML.Runtime.Data.VBuffer{Microsoft.ML.Runtime.Data.DvText}})" />
-      <Member Id="M:Microsoft.ML.Runtime.Data.EvaluateUtils.AddTextColumn``1(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,Microsoft.ML.Runtime.Data.ColumnType,System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.EvaluateUtils.AddFoldIndex(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.Int32)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.EvaluateUtils.AddFoldIndex(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.Int32,System.Int32)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.EvaluateUtils.CheckWeightType(Microsoft.ML.Runtime.IExceptionContext,Microsoft.ML.Runtime.Data.ColumnType)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.EvaluateUtils.CombineFoldMetricsDataViews(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.Int32)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.EvaluateUtils.ConcatenateOverallMetrics(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView[])" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.EvaluateUtils.ConcatenatePerInstanceDataViews(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IMamlEvaluator,System.Boolean,System.Boolean,Microsoft.ML.Runtime.Data.RoleMappedData[],System.String[]@)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.EvaluateUtils.GetColName(System.String,Microsoft.ML.Runtime.Data.ColumnInfo,System.String)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.EvaluateUtils.GetEvaluatorType(Microsoft.ML.Runtime.IExceptionContext,Microsoft.ML.Runtime.Data.ISchema)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.EvaluateUtils.GetMetrics(Microsoft.ML.Runtime.Data.IDataView,System.Boolean)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.EvaluateUtils.GetOptAuxScoreColumnInfo(Microsoft.ML.Runtime.IExceptionContext,Microsoft.ML.Runtime.Data.ISchema,System.String,System.String,System.Int32,System.String,System.Func{Microsoft.ML.Runtime.Data.ColumnType,System.Boolean})" />
       <Member Id="M:Microsoft.ML.Runtime.Data.EvaluateUtils.GetScoreColumnInfo(Microsoft.ML.Runtime.IExceptionContext,Microsoft.ML.Runtime.Data.ISchema,System.String,System.String,System.String,System.String,System.String)" />
-      <Member Id="M:Microsoft.ML.Runtime.Data.EvaluateUtils.IsScoreColumnKind(Microsoft.ML.Runtime.IExceptionContext,Microsoft.ML.Runtime.Data.ISchema,System.Int32,System.String)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.EvaluateUtils.ReconcileKeyValues(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView[],System.String)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.EvaluateUtils.ReconcileSlotNames``1(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView[],System.String,Microsoft.ML.Runtime.Data.PrimitiveType,``0)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.EvaluateUtils.ReconcileVectorKeyValues(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView[],System.String)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.Data.EvaluateUtils/AggregatedMetric" Id="T:Microsoft.ML.Runtime.Data.EvaluateUtils.AggregatedMetric">
+      <Member Id="F:Microsoft.ML.Runtime.Data.EvaluateUtils.AggregatedMetric.Name" />
+      <Member Id="F:Microsoft.ML.Runtime.Data.EvaluateUtils.AggregatedMetric.Sum" />
+      <Member Id="F:Microsoft.ML.Runtime.Data.EvaluateUtils.AggregatedMetric.SumSq" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.EvaluatorBase`1" Id="T:Microsoft.ML.Runtime.Data.EvaluatorBase`1">
       <Member Id="F:Microsoft.ML.Runtime.Data.EvaluatorBase`1.Host" />
@@ -4576,9 +4797,10 @@
       <Member Id="M:Microsoft.ML.Runtime.Data.IFourierDistributionSampler.Next(Microsoft.ML.Runtime.IRandom)" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.IMamlEvaluator" Id="T:Microsoft.ML.Runtime.Data.IMamlEvaluator">
+      <Member Id="M:Microsoft.ML.Runtime.Data.IMamlEvaluator.GetOverallResults(Microsoft.ML.Runtime.Data.IDataView[])" />
       <Member Id="M:Microsoft.ML.Runtime.Data.IMamlEvaluator.GetPerInstanceDataViewToSave(Microsoft.ML.Runtime.Data.RoleMappedData)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.IMamlEvaluator.PrintAdditionalMetrics(Microsoft.ML.Runtime.IChannel,System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView}[])" />
       <Member Id="M:Microsoft.ML.Runtime.Data.IMamlEvaluator.PrintFoldResults(Microsoft.ML.Runtime.IChannel,System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView})" />
-      <Member Id="M:Microsoft.ML.Runtime.Data.IMamlEvaluator.PrintOverallResults(Microsoft.ML.Runtime.IChannel,System.String,System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView}[])" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.IManyToOneColumn" Id="T:Microsoft.ML.Runtime.Data.IManyToOneColumn">
       <Member Id="P:Microsoft.ML.Runtime.Data.IManyToOneColumn.Name" />
@@ -4937,19 +5159,21 @@
       <Member Id="F:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.StratCols" />
       <Member Id="F:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.WeightCol" />
       <Member Id="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.#ctor(Microsoft.ML.Runtime.Data.MamlEvaluatorBase.ArgumentsBase,Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.CombineOverallMetricsCore(Microsoft.ML.Runtime.Data.IDataView[])" />
       <Member Id="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.Evaluate(Microsoft.ML.Runtime.Data.RoleMappedData)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.GetInputColumnRoles(Microsoft.ML.Runtime.Data.RoleMappedSchema,System.Boolean,System.Boolean)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.GetInputColumnRolesCore(Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.GetOverallMetricColumns" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.GetOverallResults(Microsoft.ML.Runtime.Data.IDataView[])" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.GetOverallResultsCore(Microsoft.ML.Runtime.Data.IDataView)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.GetPerInstanceColumnsToSave(Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.GetPerInstanceDataViewToSave(Microsoft.ML.Runtime.Data.RoleMappedData)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.GetPerInstanceMetrics(Microsoft.ML.Runtime.Data.RoleMappedData)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.GetPerInstanceMetricsCore(Microsoft.ML.Runtime.Data.IDataView,Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.PrintAdditionalMetrics(Microsoft.ML.Runtime.IChannel,System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView}[])" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.PrintAdditionalMetricsCore(Microsoft.ML.Runtime.IChannel,System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView}[])" />
       <Member Id="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.PrintFoldResults(Microsoft.ML.Runtime.IChannel,System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView})" />
       <Member Id="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.PrintFoldResultsCore(Microsoft.ML.Runtime.IChannel,System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView})" />
-      <Member Id="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.PrintOverallResults(Microsoft.ML.Runtime.IChannel,System.String,System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView}[])" />
-      <Member Id="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.PrintOverallResultsCore(Microsoft.ML.Runtime.IChannel,System.String,System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView}[])" />
-      <Member Id="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.TryGetOverallMetrics(System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView}[],Microsoft.ML.Runtime.Data.IDataView@)" />
       <Member Id="P:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.Evaluator" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.MamlEvaluatorBase/ArgumentsBase" Id="T:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.ArgumentsBase">
@@ -5269,11 +5493,12 @@
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.MultiClassMamlEvaluator" Id="T:Microsoft.ML.Runtime.Data.MultiClassMamlEvaluator">
       <Member Id="M:Microsoft.ML.Runtime.Data.MultiClassMamlEvaluator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.MultiClassMamlEvaluator.Arguments)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.MultiClassMamlEvaluator.CombineOverallMetricsCore(Microsoft.ML.Runtime.Data.IDataView[])" />
       <Member Id="M:Microsoft.ML.Runtime.Data.MultiClassMamlEvaluator.GetOverallMetricColumns" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.MultiClassMamlEvaluator.GetOverallResultsCore(Microsoft.ML.Runtime.Data.IDataView)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.MultiClassMamlEvaluator.GetPerInstanceColumnsToSave(Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.MultiClassMamlEvaluator.GetPerInstanceMetricsCore(Microsoft.ML.Runtime.Data.IDataView,Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.MultiClassMamlEvaluator.PrintFoldResultsCore(Microsoft.ML.Runtime.IChannel,System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView})" />
-      <Member Id="M:Microsoft.ML.Runtime.Data.MultiClassMamlEvaluator.PrintOverallResultsCore(Microsoft.ML.Runtime.IChannel,System.String,System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView}[])" />
       <Member Id="P:Microsoft.ML.Runtime.Data.MultiClassMamlEvaluator.Evaluator" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.MultiClassMamlEvaluator/Arguments" Id="T:Microsoft.ML.Runtime.Data.MultiClassMamlEvaluator.Arguments">
@@ -6096,9 +6321,9 @@
     <Type Name="Microsoft.ML.Runtime.Data.QuantileRegressionMamlEvaluator" Id="T:Microsoft.ML.Runtime.Data.QuantileRegressionMamlEvaluator">
       <Member Id="M:Microsoft.ML.Runtime.Data.QuantileRegressionMamlEvaluator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.QuantileRegressionMamlEvaluator.Arguments)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.QuantileRegressionMamlEvaluator.GetOverallMetricColumns" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.QuantileRegressionMamlEvaluator.GetOverallResultsCore(Microsoft.ML.Runtime.Data.IDataView)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.QuantileRegressionMamlEvaluator.GetPerInstanceColumnsToSave(Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.QuantileRegressionMamlEvaluator.PrintFoldResultsCore(Microsoft.ML.Runtime.IChannel,System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView})" />
-      <Member Id="M:Microsoft.ML.Runtime.Data.QuantileRegressionMamlEvaluator.PrintOverallResultsCore(Microsoft.ML.Runtime.IChannel,System.String,System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView}[])" />
       <Member Id="P:Microsoft.ML.Runtime.Data.QuantileRegressionMamlEvaluator.Evaluator" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.QuantileRegressionMamlEvaluator/Arguments" Id="T:Microsoft.ML.Runtime.Data.QuantileRegressionMamlEvaluator.Arguments">
@@ -6206,7 +6431,7 @@
       <Member Id="M:Microsoft.ML.Runtime.Data.RankerMamlEvaluator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.RankerMamlEvaluator.Arguments)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.RankerMamlEvaluator.GetInputColumnRolesCore(Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.RankerMamlEvaluator.GetPerInstanceColumnsToSave(Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
-      <Member Id="M:Microsoft.ML.Runtime.Data.RankerMamlEvaluator.PrintOverallResultsCore(Microsoft.ML.Runtime.IChannel,System.String,System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView}[])" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.RankerMamlEvaluator.PrintAdditionalMetricsCore(Microsoft.ML.Runtime.IChannel,System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView}[])" />
       <Member Id="P:Microsoft.ML.Runtime.Data.RankerMamlEvaluator.Evaluator" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.RankerMamlEvaluator/Arguments" Id="T:Microsoft.ML.Runtime.Data.RankerMamlEvaluator.Arguments">
@@ -6915,6 +7140,7 @@
       <Member Id="F:Microsoft.ML.Runtime.Data.TextLoader.ArgumentsCore.HasHeader" />
       <Member Id="F:Microsoft.ML.Runtime.Data.TextLoader.ArgumentsCore.InputSize" />
       <Member Id="F:Microsoft.ML.Runtime.Data.TextLoader.ArgumentsCore.Separator" />
+      <Member Id="F:Microsoft.ML.Runtime.Data.TextLoader.ArgumentsCore.SeparatorChars" />
       <Member Id="F:Microsoft.ML.Runtime.Data.TextLoader.ArgumentsCore.TrimWhitespace" />
       <Member Id="M:Microsoft.ML.Runtime.Data.TextLoader.ArgumentsCore.#ctor" />
       <Member Id="M:Microsoft.ML.Runtime.Data.TextLoader.ArgumentsCore.IsValid" />
@@ -6927,6 +7153,7 @@
       <Member Id="M:Microsoft.ML.Runtime.Data.TextLoader.Column.#ctor" />
       <Member Id="M:Microsoft.ML.Runtime.Data.TextLoader.Column.IsValid" />
       <Member Id="M:Microsoft.ML.Runtime.Data.TextLoader.Column.Parse(System.String)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.TextLoader.Column.TryParseSourceEx(System.String,Microsoft.ML.Runtime.Data.TextLoader.Range[]@)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.TextLoader.Column.TryUnparse(System.Text.StringBuilder)" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.TextLoader/Range" Id="T:Microsoft.ML.Runtime.Data.TextLoader.Range">
@@ -7844,6 +8071,9 @@
     <Type Name="Microsoft.ML.Runtime.EntryPoints.CommonInputs/ITransformInput" Id="T:Microsoft.ML.Runtime.EntryPoints.CommonInputs.ITransformInput">
       <Member Id="P:Microsoft.ML.Runtime.EntryPoints.CommonInputs.ITransformInput.Data" />
     </Type>
+    <Type Name="Microsoft.ML.Runtime.EntryPoints.CommonInputs/IUnsupervisedTrainerWithWeight" Id="T:Microsoft.ML.Runtime.EntryPoints.CommonInputs.IUnsupervisedTrainerWithWeight">
+      <Member Id="P:Microsoft.ML.Runtime.EntryPoints.CommonInputs.IUnsupervisedTrainerWithWeight.WeightColumn" />
+    </Type>
     <Type Name="Microsoft.ML.Runtime.EntryPoints.CommonOutputs" Id="T:Microsoft.ML.Runtime.EntryPoints.CommonOutputs" />
     <Type Name="Microsoft.ML.Runtime.EntryPoints.CommonOutputs/AnomalyDetectionOutput" Id="T:Microsoft.ML.Runtime.EntryPoints.CommonOutputs.AnomalyDetectionOutput">
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.CommonOutputs.AnomalyDetectionOutput.#ctor" />
@@ -7934,6 +8164,7 @@
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.CrossValidationBinaryMacro.CrossValidateBinary(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.EntryPoints.CrossValidationBinaryMacro.Arguments,Microsoft.ML.Runtime.EntryPoints.EntryPointNode)" />
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.CrossValidationBinaryMacro.MakeArray(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.EntryPoints.CrossValidationBinaryMacro.ArrayIDataViewInput)" />
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.CrossValidationBinaryMacro.MakeArray(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.EntryPoints.CrossValidationBinaryMacro.ArrayIPredictorModelInput)" />
+      <Member Id="M:Microsoft.ML.Runtime.EntryPoints.CrossValidationBinaryMacro.MakeArray(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.EntryPoints.CrossValidationBinaryMacro.ArrayITransformModelInput)" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.EntryPoints.CrossValidationBinaryMacro/Arguments" Id="T:Microsoft.ML.Runtime.EntryPoints.CrossValidationBinaryMacro.Arguments">
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationBinaryMacro.Arguments.Data" />
@@ -7960,6 +8191,14 @@
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationBinaryMacro.ArrayIPredictorModelOutput.OutputModel" />
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.CrossValidationBinaryMacro.ArrayIPredictorModelOutput.#ctor" />
     </Type>
+    <Type Name="Microsoft.ML.Runtime.EntryPoints.CrossValidationBinaryMacro/ArrayITransformModelInput" Id="T:Microsoft.ML.Runtime.EntryPoints.CrossValidationBinaryMacro.ArrayITransformModelInput">
+      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationBinaryMacro.ArrayITransformModelInput.TransformModel" />
+      <Member Id="M:Microsoft.ML.Runtime.EntryPoints.CrossValidationBinaryMacro.ArrayITransformModelInput.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.EntryPoints.CrossValidationBinaryMacro/ArrayITransformModelOutput" Id="T:Microsoft.ML.Runtime.EntryPoints.CrossValidationBinaryMacro.ArrayITransformModelOutput">
+      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationBinaryMacro.ArrayITransformModelOutput.OutputModel" />
+      <Member Id="M:Microsoft.ML.Runtime.EntryPoints.CrossValidationBinaryMacro.ArrayITransformModelOutput.#ctor" />
+    </Type>
     <Type Name="Microsoft.ML.Runtime.EntryPoints.CrossValidationBinaryMacro/Output" Id="T:Microsoft.ML.Runtime.EntryPoints.CrossValidationBinaryMacro.Output">
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationBinaryMacro.Output.ConfusionMatrix" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationBinaryMacro.Output.OverallMetrics" />
@@ -7977,6 +8216,7 @@
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.CrossValidationBinaryMacro.SubGraphOutput.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro" Id="T:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro">
+      <Member Id="M:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.CombineMetrics(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.CombineMetricsInput)" />
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.CrossValidate(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.Arguments,Microsoft.ML.Runtime.EntryPoints.EntryPointNode)" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro/Arguments" Id="T:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.Arguments">
@@ -7990,11 +8230,28 @@
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.Arguments.TransformModel" />
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.Arguments.#ctor" />
     </Type>
+    <Type Name="Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro/CombinedOutput" Id="T:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.CombinedOutput">
+      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.CombinedOutput.ConfusionMatrix" />
+      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.CombinedOutput.OverallMetrics" />
+      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.CombinedOutput.PerInstanceMetrics" />
+      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.CombinedOutput.Warnings" />
+      <Member Id="M:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.CombinedOutput.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro/CombineMetricsInput" Id="T:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.CombineMetricsInput">
+      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.CombineMetricsInput.ConfusionMatrix" />
+      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.CombineMetricsInput.Kind" />
+      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.CombineMetricsInput.LabelColumn" />
+      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.CombineMetricsInput.OverallMetrics" />
+      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.CombineMetricsInput.PerInstanceMetrics" />
+      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.CombineMetricsInput.Warnings" />
+      <Member Id="M:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.CombineMetricsInput.#ctor" />
+    </Type>
     <Type Name="Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro/Output" Id="T:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.Output">
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.Output.ConfusionMatrix" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.Output.OverallMetrics" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.Output.PerInstanceMetrics" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.Output.PredictorModel" />
+      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.Output.TransformModel" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.Output.Warnings" />
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.Output.#ctor" />
     </Type>
@@ -8003,7 +8260,8 @@
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.SubGraphInput.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro/SubGraphOutput" Id="T:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.SubGraphOutput">
-      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.SubGraphOutput.Model" />
+      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.SubGraphOutput.PredictorModel" />
+      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.SubGraphOutput.TransformModel" />
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.SubGraphOutput.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.EntryPoints.CVSplit" Id="T:Microsoft.ML.Runtime.EntryPoints.CVSplit">
@@ -8021,6 +8279,18 @@
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CVSplit.Output.TestData" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CVSplit.Output.TrainData" />
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.CVSplit.Output.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.EntryPoints.DataViewReference" Id="T:Microsoft.ML.Runtime.EntryPoints.DataViewReference">
+      <Member Id="M:Microsoft.ML.Runtime.EntryPoints.DataViewReference.#ctor" />
+      <Member Id="M:Microsoft.ML.Runtime.EntryPoints.DataViewReference.ImportData(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.EntryPoints.DataViewReference.Input)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.EntryPoints.DataViewReference/Input" Id="T:Microsoft.ML.Runtime.EntryPoints.DataViewReference.Input">
+      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.DataViewReference.Input.Data" />
+      <Member Id="M:Microsoft.ML.Runtime.EntryPoints.DataViewReference.Input.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.EntryPoints.DataViewReference/Output" Id="T:Microsoft.ML.Runtime.EntryPoints.DataViewReference.Output">
+      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.DataViewReference.Output.Data" />
+      <Member Id="M:Microsoft.ML.Runtime.EntryPoints.DataViewReference.Output.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.EntryPoints.DictionaryKeyParameterBinding" Id="T:Microsoft.ML.Runtime.EntryPoints.DictionaryKeyParameterBinding">
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.DictionaryKeyParameterBinding.Key" />
@@ -8150,11 +8420,17 @@
     <Type Name="Microsoft.ML.Runtime.EntryPoints.IMlState" Id="T:Microsoft.ML.Runtime.EntryPoints.IMlState" />
     <Type Name="Microsoft.ML.Runtime.EntryPoints.ImportTextData" Id="T:Microsoft.ML.Runtime.EntryPoints.ImportTextData">
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.ImportTextData.ImportText(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.EntryPoints.ImportTextData.Input)" />
+      <Member Id="M:Microsoft.ML.Runtime.EntryPoints.ImportTextData.TextLoader(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.EntryPoints.ImportTextData.LoaderInput)" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.EntryPoints.ImportTextData/Input" Id="T:Microsoft.ML.Runtime.EntryPoints.ImportTextData.Input">
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.ImportTextData.Input.CustomSchema" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.ImportTextData.Input.InputFile" />
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.ImportTextData.Input.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.EntryPoints.ImportTextData/LoaderInput" Id="T:Microsoft.ML.Runtime.EntryPoints.ImportTextData.LoaderInput">
+      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.ImportTextData.LoaderInput.Arguments" />
+      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.ImportTextData.LoaderInput.InputFile" />
+      <Member Id="M:Microsoft.ML.Runtime.EntryPoints.ImportTextData.LoaderInput.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.EntryPoints.ImportTextData/Output" Id="T:Microsoft.ML.Runtime.EntryPoints.ImportTextData.Output">
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.ImportTextData.Output.Data" />
@@ -8175,6 +8451,7 @@
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.ITransformModel.AsRowToRowMapper(Microsoft.ML.Runtime.IExceptionContext)" />
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.ITransformModel.Save(Microsoft.ML.Runtime.IHostEnvironment,System.IO.Stream)" />
       <Member Id="P:Microsoft.ML.Runtime.EntryPoints.ITransformModel.InputSchema" />
+      <Member Id="P:Microsoft.ML.Runtime.EntryPoints.ITransformModel.OutputSchema" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.EntryPoints.LearnerEntryPointsUtils" Id="T:Microsoft.ML.Runtime.EntryPoints.LearnerEntryPointsUtils">
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.LearnerEntryPointsUtils.FindColumn(Microsoft.ML.Runtime.IExceptionContext,Microsoft.ML.Runtime.Data.ISchema,Microsoft.ML.Runtime.EntryPoints.Optional{System.String})" />
@@ -8202,7 +8479,7 @@
     <Type Name="Microsoft.ML.Runtime.EntryPoints.MacroUtils" Id="T:Microsoft.ML.Runtime.EntryPoints.MacroUtils">
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.MacroUtils.PredictorTypes" />
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.MacroUtils.GetEvaluatorInputOutput(Microsoft.ML.Runtime.EntryPoints.MacroUtils.TrainerKinds,Microsoft.ML.Runtime.EntryPoints.MacroUtils.EvaluatorSettings)" />
-      <Member Id="M:Microsoft.ML.Runtime.EntryPoints.MacroUtils.GetTrainerName(Microsoft.ML.Runtime.EntryPoints.MacroUtils.TrainerKinds)" />
+      <Member Id="M:Microsoft.ML.Runtime.EntryPoints.MacroUtils.IsTrainerOfKind(System.Type,Microsoft.ML.Runtime.EntryPoints.MacroUtils.TrainerKinds)" />
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.MacroUtils.SignatureTypesToTrainerKinds(System.Collections.Generic.IEnumerable{System.Type})" />
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.MacroUtils.SignatureTypeToTrainerKind(System.Type)" />
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.MacroUtils.TrainerKindApiValue``1(Microsoft.ML.Runtime.EntryPoints.MacroUtils.TrainerKinds)" />
@@ -8302,6 +8579,7 @@
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.ModuleCatalog.EntryPointInfo.InputType" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.ModuleCatalog.EntryPointInfo.Method" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.ModuleCatalog.EntryPointInfo.Name" />
+      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.ModuleCatalog.EntryPointInfo.ObsoleteAttribute" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.ModuleCatalog.EntryPointInfo.OutputKinds" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.ModuleCatalog.EntryPointInfo.OutputType" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.ModuleCatalog.EntryPointInfo.ShortName" />
@@ -8629,6 +8907,7 @@
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.TrainTestMacro.Output.TrainingOverallMetrics" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.TrainTestMacro.Output.TrainingPerInstanceMetrics" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.TrainTestMacro.Output.TrainingWarnings" />
+      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.TrainTestMacro.Output.TransformModel" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.TrainTestMacro.Output.Warnings" />
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.TrainTestMacro.Output.#ctor" />
     </Type>
@@ -8637,7 +8916,8 @@
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.TrainTestMacro.SubGraphInput.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.EntryPoints.TrainTestMacro/SubGraphOutput" Id="T:Microsoft.ML.Runtime.EntryPoints.TrainTestMacro.SubGraphOutput">
-      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.TrainTestMacro.SubGraphOutput.Model" />
+      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.TrainTestMacro.SubGraphOutput.PredictorModel" />
+      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.TrainTestMacro.SubGraphOutput.TransformModel" />
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.TrainTestMacro.SubGraphOutput.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.EntryPoints.TrainTestSplit" Id="T:Microsoft.ML.Runtime.EntryPoints.TrainTestSplit">
@@ -8669,6 +8949,11 @@
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.TransformModel.AsRowToRowMapper(Microsoft.ML.Runtime.IExceptionContext)" />
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.TransformModel.Save(Microsoft.ML.Runtime.IHostEnvironment,System.IO.Stream)" />
       <Member Id="P:Microsoft.ML.Runtime.EntryPoints.TransformModel.InputSchema" />
+      <Member Id="P:Microsoft.ML.Runtime.EntryPoints.TransformModel.OutputSchema" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.EntryPoints.UnsupervisedLearnerInputBaseWithWeight" Id="T:Microsoft.ML.Runtime.EntryPoints.UnsupervisedLearnerInputBaseWithWeight">
+      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.UnsupervisedLearnerInputBaseWithWeight.WeightColumn" />
+      <Member Id="M:Microsoft.ML.Runtime.EntryPoints.UnsupervisedLearnerInputBaseWithWeight.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.EntryPoints.Var`1" Id="T:Microsoft.ML.Runtime.EntryPoints.Var`1">
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.Var`1.#ctor" />
@@ -12207,6 +12492,7 @@
       <Member Id="M:Microsoft.ML.Runtime.Internal.Utilities.MathUtils.Cos(System.Double)" />
       <Member Id="M:Microsoft.ML.Runtime.Internal.Utilities.MathUtils.CosineSimilarity(System.Single[],System.Single[],System.Int32,System.Int32,System.Int32)" />
       <Member Id="M:Microsoft.ML.Runtime.Internal.Utilities.MathUtils.CrossEntropy(System.Double,System.Double,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.Runtime.Internal.Utilities.MathUtils.DivisionCeiling(System.Int64,System.Int64)" />
       <Member Id="M:Microsoft.ML.Runtime.Internal.Utilities.MathUtils.Entropy(System.Double,System.Boolean)" />
       <Member Id="M:Microsoft.ML.Runtime.Internal.Utilities.MathUtils.ExpFast(System.Single)" />
       <Member Id="M:Microsoft.ML.Runtime.Internal.Utilities.MathUtils.ExpSlow(System.Single)" />
@@ -14030,10 +14316,11 @@
       <Member Id="M:Microsoft.ML.Runtime.PipelineInference.AutoInference.LevelDependencyMap.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.PipelineInference.AutoInference/RunSummary" Id="T:Microsoft.ML.Runtime.PipelineInference.AutoInference.RunSummary">
-      <Member Id="M:Microsoft.ML.Runtime.PipelineInference.AutoInference.RunSummary.#ctor(System.Double,System.Int32,System.Int64)" />
+      <Member Id="M:Microsoft.ML.Runtime.PipelineInference.AutoInference.RunSummary.#ctor(System.Double,System.Int32,System.Int64,System.Double)" />
       <Member Id="P:Microsoft.ML.Runtime.PipelineInference.AutoInference.RunSummary.MetricValue" />
       <Member Id="P:Microsoft.ML.Runtime.PipelineInference.AutoInference.RunSummary.NumRowsInTraining" />
       <Member Id="P:Microsoft.ML.Runtime.PipelineInference.AutoInference.RunSummary.RunTimeMilliseconds" />
+      <Member Id="P:Microsoft.ML.Runtime.PipelineInference.AutoInference.RunSummary.TrainingMetricValue" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.PipelineInference.AutoInference/SupportedMetric" Id="T:Microsoft.ML.Runtime.PipelineInference.AutoInference.SupportedMetric">
       <Member Id="F:Microsoft.ML.Runtime.PipelineInference.AutoInference.SupportedMetric.AccuracyMacro" />
@@ -14081,7 +14368,9 @@
       <Member Id="M:Microsoft.ML.Runtime.PipelineInference.AutoMlUtils.ConvertToRunResult(Microsoft.ML.Runtime.PipelineInference.RecipeInference.SuggestedRecipe.SuggestedLearner,Microsoft.ML.Runtime.PipelineInference.AutoInference.RunSummary,System.Boolean)" />
       <Member Id="M:Microsoft.ML.Runtime.PipelineInference.AutoMlUtils.ConvertToRunResults(Microsoft.ML.Runtime.PipelineInference.PipelinePattern[],System.Boolean)" />
       <Member Id="M:Microsoft.ML.Runtime.PipelineInference.AutoMlUtils.ConvertToSweepArgumentStrings(Microsoft.ML.Runtime.EntryPoints.TlcModule.SweepableParamAttribute[])" />
-      <Member Id="M:Microsoft.ML.Runtime.PipelineInference.AutoMlUtils.ExtractRunSummary(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String)" />
+      <Member Id="M:Microsoft.ML.Runtime.PipelineInference.AutoMlUtils.ExtractRunSummary(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.PipelineInference.AutoMlUtils.ExtractValueFromIDV(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String)" />
+      <Member Id="M:Microsoft.ML.Runtime.PipelineInference.AutoMlUtils.GenerateOverallTrainingMetricVarName(System.Guid)" />
       <Member Id="M:Microsoft.ML.Runtime.PipelineInference.AutoMlUtils.GetFinalFeatureConcat(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,Microsoft.ML.Runtime.PipelineInference.AutoInference.DependencyMap,Microsoft.ML.Runtime.PipelineInference.TransformInference.SuggestedTransform[],Microsoft.ML.Runtime.PipelineInference.TransformInference.SuggestedTransform[])" />
       <Member Id="M:Microsoft.ML.Runtime.PipelineInference.AutoMlUtils.GetMandatoryTransforms(Microsoft.ML.Runtime.PipelineInference.TransformInference.SuggestedTransform[])" />
       <Member Id="M:Microsoft.ML.Runtime.PipelineInference.AutoMlUtils.GetSweepRanges(System.Type)" />
@@ -14347,11 +14636,11 @@
       <Member Id="F:Microsoft.ML.Runtime.PipelineInference.PipelinePattern.Learner" />
       <Member Id="F:Microsoft.ML.Runtime.PipelineInference.PipelinePattern.Transforms" />
       <Member Id="M:Microsoft.ML.Runtime.PipelineInference.PipelinePattern.#ctor(Microsoft.ML.Runtime.PipelineInference.TransformInference.SuggestedTransform[],Microsoft.ML.Runtime.PipelineInference.RecipeInference.SuggestedRecipe.SuggestedLearner,System.String,Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.PipelineInference.AutoInference.RunSummary)" />
-      <Member Id="M:Microsoft.ML.Runtime.PipelineInference.PipelinePattern.AddAsTrainTest(Microsoft.ML.Runtime.EntryPoints.Var{Microsoft.ML.Runtime.Data.IDataView},Microsoft.ML.Runtime.EntryPoints.Var{Microsoft.ML.Runtime.Data.IDataView},Microsoft.ML.Runtime.EntryPoints.MacroUtils.TrainerKinds,Microsoft.ML.Runtime.Experiment)" />
-      <Member Id="M:Microsoft.ML.Runtime.PipelineInference.PipelinePattern.CreateTrainTestExperiment(Microsoft.ML.Runtime.Data.IDataView,Microsoft.ML.Runtime.Data.IDataView,Microsoft.ML.Runtime.EntryPoints.MacroUtils.TrainerKinds,Microsoft.ML.Models.TrainTestEvaluator.Output@)" />
+      <Member Id="M:Microsoft.ML.Runtime.PipelineInference.PipelinePattern.AddAsTrainTest(Microsoft.ML.Runtime.EntryPoints.Var{Microsoft.ML.Runtime.Data.IDataView},Microsoft.ML.Runtime.EntryPoints.Var{Microsoft.ML.Runtime.Data.IDataView},Microsoft.ML.Runtime.EntryPoints.MacroUtils.TrainerKinds,Microsoft.ML.Runtime.Experiment,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.Runtime.PipelineInference.PipelinePattern.CreateTrainTestExperiment(Microsoft.ML.Runtime.Data.IDataView,Microsoft.ML.Runtime.Data.IDataView,Microsoft.ML.Runtime.EntryPoints.MacroUtils.TrainerKinds,System.Boolean,Microsoft.ML.Models.TrainTestEvaluator.Output@)" />
       <Member Id="M:Microsoft.ML.Runtime.PipelineInference.PipelinePattern.Equals(Microsoft.ML.Runtime.PipelineInference.PipelinePattern)" />
-      <Member Id="M:Microsoft.ML.Runtime.PipelineInference.PipelinePattern.ExtractResults(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,System.String)" />
-      <Member Id="M:Microsoft.ML.Runtime.PipelineInference.PipelinePattern.RunTrainTestExperiment(Microsoft.ML.Runtime.Data.IDataView,Microsoft.ML.Runtime.Data.IDataView,Microsoft.ML.Runtime.PipelineInference.AutoInference.SupportedMetric,Microsoft.ML.Runtime.EntryPoints.MacroUtils.TrainerKinds)" />
+      <Member Id="M:Microsoft.ML.Runtime.PipelineInference.PipelinePattern.ExtractResults(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,System.String,System.String,System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.Runtime.PipelineInference.PipelinePattern.RunTrainTestExperiment(Microsoft.ML.Runtime.Data.IDataView,Microsoft.ML.Runtime.Data.IDataView,Microsoft.ML.Runtime.PipelineInference.AutoInference.SupportedMetric,Microsoft.ML.Runtime.EntryPoints.MacroUtils.TrainerKinds,System.Double@,System.Double@)" />
       <Member Id="M:Microsoft.ML.Runtime.PipelineInference.PipelinePattern.ToEntryPointGraph(Microsoft.ML.Runtime.Experiment)" />
       <Member Id="M:Microsoft.ML.Runtime.PipelineInference.PipelinePattern.ToResultRow" />
       <Member Id="M:Microsoft.ML.Runtime.PipelineInference.PipelinePattern.ToString" />
@@ -14361,10 +14650,13 @@
     </Type>
     <Type Name="Microsoft.ML.Runtime.PipelineInference.PipelinePattern/PipelineResultRow" Id="T:Microsoft.ML.Runtime.PipelineInference.PipelinePattern.PipelineResultRow">
       <Member Id="M:Microsoft.ML.Runtime.PipelineInference.PipelinePattern.PipelineResultRow.#ctor" />
-      <Member Id="M:Microsoft.ML.Runtime.PipelineInference.PipelinePattern.PipelineResultRow.#ctor(System.String,System.Double,System.String)" />
+      <Member Id="M:Microsoft.ML.Runtime.PipelineInference.PipelinePattern.PipelineResultRow.#ctor(System.String,System.Double,System.String,System.Double,System.String,System.String)" />
+      <Member Id="P:Microsoft.ML.Runtime.PipelineInference.PipelinePattern.PipelineResultRow.FirstInput" />
       <Member Id="P:Microsoft.ML.Runtime.PipelineInference.PipelinePattern.PipelineResultRow.GraphJson" />
       <Member Id="P:Microsoft.ML.Runtime.PipelineInference.PipelinePattern.PipelineResultRow.MetricValue" />
       <Member Id="P:Microsoft.ML.Runtime.PipelineInference.PipelinePattern.PipelineResultRow.PipelineId" />
+      <Member Id="P:Microsoft.ML.Runtime.PipelineInference.PipelinePattern.PipelineResultRow.PredictorModel" />
+      <Member Id="P:Microsoft.ML.Runtime.PipelineInference.PipelinePattern.PipelineResultRow.TrainingMetricValue" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.PipelineInference.PredictorCategory" Id="T:Microsoft.ML.Runtime.PipelineInference.PredictorCategory">
       <Member Id="F:Microsoft.ML.Runtime.PipelineInference.PredictorCategory.Name" />
@@ -15770,6 +16062,7 @@
     <Type Name="Microsoft.ML.Trainers.AveragedPerceptronBinaryClassifier" Id="T:Microsoft.ML.Trainers.AveragedPerceptronBinaryClassifier">
       <Member Id="M:Microsoft.ML.Trainers.AveragedPerceptronBinaryClassifier.#ctor" />
       <Member Id="M:Microsoft.ML.Trainers.AveragedPerceptronBinaryClassifier.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Trainers.AveragedPerceptronBinaryClassifier.GetInputData" />
       <Member Id="P:Microsoft.ML.Trainers.AveragedPerceptronBinaryClassifier.Averaged" />
       <Member Id="P:Microsoft.ML.Trainers.AveragedPerceptronBinaryClassifier.AveragedTolerance" />
       <Member Id="P:Microsoft.ML.Trainers.AveragedPerceptronBinaryClassifier.Caching" />
@@ -15797,33 +16090,6 @@
       <Member Id="M:Microsoft.ML.Trainers.AveragedPerceptronBinaryClassifier.Output.#ctor" />
       <Member Id="P:Microsoft.ML.Trainers.AveragedPerceptronBinaryClassifier.Output.PredictorModel" />
     </Type>
-    <Type Name="Microsoft.ML.Trainers.BinaryLogisticRegressor" Id="T:Microsoft.ML.Trainers.BinaryLogisticRegressor">
-      <Member Id="M:Microsoft.ML.Trainers.BinaryLogisticRegressor.#ctor" />
-      <Member Id="M:Microsoft.ML.Trainers.BinaryLogisticRegressor.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
-      <Member Id="P:Microsoft.ML.Trainers.BinaryLogisticRegressor.Caching" />
-      <Member Id="P:Microsoft.ML.Trainers.BinaryLogisticRegressor.DenseOptimizer" />
-      <Member Id="P:Microsoft.ML.Trainers.BinaryLogisticRegressor.EnforceNonNegativity" />
-      <Member Id="P:Microsoft.ML.Trainers.BinaryLogisticRegressor.FeatureColumn" />
-      <Member Id="P:Microsoft.ML.Trainers.BinaryLogisticRegressor.InitWtsDiameter" />
-      <Member Id="P:Microsoft.ML.Trainers.BinaryLogisticRegressor.L1Weight" />
-      <Member Id="P:Microsoft.ML.Trainers.BinaryLogisticRegressor.L2Weight" />
-      <Member Id="P:Microsoft.ML.Trainers.BinaryLogisticRegressor.LabelColumn" />
-      <Member Id="P:Microsoft.ML.Trainers.BinaryLogisticRegressor.MaxIterations" />
-      <Member Id="P:Microsoft.ML.Trainers.BinaryLogisticRegressor.MemorySize" />
-      <Member Id="P:Microsoft.ML.Trainers.BinaryLogisticRegressor.NormalizeFeatures" />
-      <Member Id="P:Microsoft.ML.Trainers.BinaryLogisticRegressor.NumThreads" />
-      <Member Id="P:Microsoft.ML.Trainers.BinaryLogisticRegressor.OptTol" />
-      <Member Id="P:Microsoft.ML.Trainers.BinaryLogisticRegressor.Quiet" />
-      <Member Id="P:Microsoft.ML.Trainers.BinaryLogisticRegressor.SgdInitializationTolerance" />
-      <Member Id="P:Microsoft.ML.Trainers.BinaryLogisticRegressor.ShowTrainingStats" />
-      <Member Id="P:Microsoft.ML.Trainers.BinaryLogisticRegressor.TrainingData" />
-      <Member Id="P:Microsoft.ML.Trainers.BinaryLogisticRegressor.UseThreads" />
-      <Member Id="P:Microsoft.ML.Trainers.BinaryLogisticRegressor.WeightColumn" />
-    </Type>
-    <Type Name="Microsoft.ML.Trainers.BinaryLogisticRegressor/Output" Id="T:Microsoft.ML.Trainers.BinaryLogisticRegressor.Output">
-      <Member Id="M:Microsoft.ML.Trainers.BinaryLogisticRegressor.Output.#ctor" />
-      <Member Id="P:Microsoft.ML.Trainers.BinaryLogisticRegressor.Output.PredictorModel" />
-    </Type>
     <Type Name="Microsoft.ML.Trainers.BoostedTreeArgsOptimizationAlgorithmType" Id="T:Microsoft.ML.Trainers.BoostedTreeArgsOptimizationAlgorithmType">
       <Member Id="F:Microsoft.ML.Trainers.BoostedTreeArgsOptimizationAlgorithmType.AcceleratedGradientDescent" />
       <Member Id="F:Microsoft.ML.Trainers.BoostedTreeArgsOptimizationAlgorithmType.ConjugateGradientDescent" />
@@ -15837,6 +16103,7 @@
     <Type Name="Microsoft.ML.Trainers.FastForestBinaryClassifier" Id="T:Microsoft.ML.Trainers.FastForestBinaryClassifier">
       <Member Id="M:Microsoft.ML.Trainers.FastForestBinaryClassifier.#ctor" />
       <Member Id="M:Microsoft.ML.Trainers.FastForestBinaryClassifier.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Trainers.FastForestBinaryClassifier.GetInputData" />
       <Member Id="P:Microsoft.ML.Trainers.FastForestBinaryClassifier.AllowEmptyTrees" />
       <Member Id="P:Microsoft.ML.Trainers.FastForestBinaryClassifier.BaggingSize" />
       <Member Id="P:Microsoft.ML.Trainers.FastForestBinaryClassifier.BaggingTrainFraction" />
@@ -15893,6 +16160,7 @@
     <Type Name="Microsoft.ML.Trainers.FastForestRegressor" Id="T:Microsoft.ML.Trainers.FastForestRegressor">
       <Member Id="M:Microsoft.ML.Trainers.FastForestRegressor.#ctor" />
       <Member Id="M:Microsoft.ML.Trainers.FastForestRegressor.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Trainers.FastForestRegressor.GetInputData" />
       <Member Id="P:Microsoft.ML.Trainers.FastForestRegressor.AllowEmptyTrees" />
       <Member Id="P:Microsoft.ML.Trainers.FastForestRegressor.BaggingSize" />
       <Member Id="P:Microsoft.ML.Trainers.FastForestRegressor.BaggingTrainFraction" />
@@ -15947,6 +16215,7 @@
     <Type Name="Microsoft.ML.Trainers.FastTreeBinaryClassifier" Id="T:Microsoft.ML.Trainers.FastTreeBinaryClassifier">
       <Member Id="M:Microsoft.ML.Trainers.FastTreeBinaryClassifier.#ctor" />
       <Member Id="M:Microsoft.ML.Trainers.FastTreeBinaryClassifier.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Trainers.FastTreeBinaryClassifier.GetInputData" />
       <Member Id="P:Microsoft.ML.Trainers.FastTreeBinaryClassifier.AllowEmptyTrees" />
       <Member Id="P:Microsoft.ML.Trainers.FastTreeBinaryClassifier.BaggingSize" />
       <Member Id="P:Microsoft.ML.Trainers.FastTreeBinaryClassifier.BaggingTrainFraction" />
@@ -16022,6 +16291,7 @@
     <Type Name="Microsoft.ML.Trainers.FastTreeRanker" Id="T:Microsoft.ML.Trainers.FastTreeRanker">
       <Member Id="M:Microsoft.ML.Trainers.FastTreeRanker.#ctor" />
       <Member Id="M:Microsoft.ML.Trainers.FastTreeRanker.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Trainers.FastTreeRanker.GetInputData" />
       <Member Id="P:Microsoft.ML.Trainers.FastTreeRanker.AllowEmptyTrees" />
       <Member Id="P:Microsoft.ML.Trainers.FastTreeRanker.BaggingSize" />
       <Member Id="P:Microsoft.ML.Trainers.FastTreeRanker.BaggingTrainFraction" />
@@ -16104,6 +16374,7 @@
     <Type Name="Microsoft.ML.Trainers.FastTreeRegressor" Id="T:Microsoft.ML.Trainers.FastTreeRegressor">
       <Member Id="M:Microsoft.ML.Trainers.FastTreeRegressor.#ctor" />
       <Member Id="M:Microsoft.ML.Trainers.FastTreeRegressor.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Trainers.FastTreeRegressor.GetInputData" />
       <Member Id="P:Microsoft.ML.Trainers.FastTreeRegressor.AllowEmptyTrees" />
       <Member Id="P:Microsoft.ML.Trainers.FastTreeRegressor.BaggingSize" />
       <Member Id="P:Microsoft.ML.Trainers.FastTreeRegressor.BaggingTrainFraction" />
@@ -16178,6 +16449,7 @@
     <Type Name="Microsoft.ML.Trainers.FastTreeTweedieRegressor" Id="T:Microsoft.ML.Trainers.FastTreeTweedieRegressor">
       <Member Id="M:Microsoft.ML.Trainers.FastTreeTweedieRegressor.#ctor" />
       <Member Id="M:Microsoft.ML.Trainers.FastTreeTweedieRegressor.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Trainers.FastTreeTweedieRegressor.GetInputData" />
       <Member Id="P:Microsoft.ML.Trainers.FastTreeTweedieRegressor.AllowEmptyTrees" />
       <Member Id="P:Microsoft.ML.Trainers.FastTreeTweedieRegressor.BaggingSize" />
       <Member Id="P:Microsoft.ML.Trainers.FastTreeTweedieRegressor.BaggingTrainFraction" />
@@ -16253,6 +16525,7 @@
     <Type Name="Microsoft.ML.Trainers.GeneralizedAdditiveModelBinaryClassifier" Id="T:Microsoft.ML.Trainers.GeneralizedAdditiveModelBinaryClassifier">
       <Member Id="M:Microsoft.ML.Trainers.GeneralizedAdditiveModelBinaryClassifier.#ctor" />
       <Member Id="M:Microsoft.ML.Trainers.GeneralizedAdditiveModelBinaryClassifier.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Trainers.GeneralizedAdditiveModelBinaryClassifier.GetInputData" />
       <Member Id="P:Microsoft.ML.Trainers.GeneralizedAdditiveModelBinaryClassifier.Caching" />
       <Member Id="P:Microsoft.ML.Trainers.GeneralizedAdditiveModelBinaryClassifier.Calibrator" />
       <Member Id="P:Microsoft.ML.Trainers.GeneralizedAdditiveModelBinaryClassifier.DiskTranspose" />
@@ -16282,6 +16555,7 @@
     <Type Name="Microsoft.ML.Trainers.GeneralizedAdditiveModelRegressor" Id="T:Microsoft.ML.Trainers.GeneralizedAdditiveModelRegressor">
       <Member Id="M:Microsoft.ML.Trainers.GeneralizedAdditiveModelRegressor.#ctor" />
       <Member Id="M:Microsoft.ML.Trainers.GeneralizedAdditiveModelRegressor.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Trainers.GeneralizedAdditiveModelRegressor.GetInputData" />
       <Member Id="P:Microsoft.ML.Trainers.GeneralizedAdditiveModelRegressor.Caching" />
       <Member Id="P:Microsoft.ML.Trainers.GeneralizedAdditiveModelRegressor.DiskTranspose" />
       <Member Id="P:Microsoft.ML.Trainers.GeneralizedAdditiveModelRegressor.EntropyCoefficient" />
@@ -16305,9 +16579,34 @@
       <Member Id="M:Microsoft.ML.Trainers.GeneralizedAdditiveModelRegressor.Output.#ctor" />
       <Member Id="P:Microsoft.ML.Trainers.GeneralizedAdditiveModelRegressor.Output.PredictorModel" />
     </Type>
+    <Type Name="Microsoft.ML.Trainers.KMeansPlusPlusClusterer" Id="T:Microsoft.ML.Trainers.KMeansPlusPlusClusterer">
+      <Member Id="M:Microsoft.ML.Trainers.KMeansPlusPlusClusterer.#ctor" />
+      <Member Id="M:Microsoft.ML.Trainers.KMeansPlusPlusClusterer.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Trainers.KMeansPlusPlusClusterer.GetInputData" />
+      <Member Id="P:Microsoft.ML.Trainers.KMeansPlusPlusClusterer.AccelMemBudgetMb" />
+      <Member Id="P:Microsoft.ML.Trainers.KMeansPlusPlusClusterer.Caching" />
+      <Member Id="P:Microsoft.ML.Trainers.KMeansPlusPlusClusterer.FeatureColumn" />
+      <Member Id="P:Microsoft.ML.Trainers.KMeansPlusPlusClusterer.InitAlgorithm" />
+      <Member Id="P:Microsoft.ML.Trainers.KMeansPlusPlusClusterer.K" />
+      <Member Id="P:Microsoft.ML.Trainers.KMeansPlusPlusClusterer.MaxIterations" />
+      <Member Id="P:Microsoft.ML.Trainers.KMeansPlusPlusClusterer.NormalizeFeatures" />
+      <Member Id="P:Microsoft.ML.Trainers.KMeansPlusPlusClusterer.NumThreads" />
+      <Member Id="P:Microsoft.ML.Trainers.KMeansPlusPlusClusterer.OptTol" />
+      <Member Id="P:Microsoft.ML.Trainers.KMeansPlusPlusClusterer.TrainingData" />
+    </Type>
+    <Type Name="Microsoft.ML.Trainers.KMeansPlusPlusClusterer/Output" Id="T:Microsoft.ML.Trainers.KMeansPlusPlusClusterer.Output">
+      <Member Id="M:Microsoft.ML.Trainers.KMeansPlusPlusClusterer.Output.#ctor" />
+      <Member Id="P:Microsoft.ML.Trainers.KMeansPlusPlusClusterer.Output.PredictorModel" />
+    </Type>
+    <Type Name="Microsoft.ML.Trainers.KMeansPlusPlusTrainerInitAlgorithm" Id="T:Microsoft.ML.Trainers.KMeansPlusPlusTrainerInitAlgorithm">
+      <Member Id="F:Microsoft.ML.Trainers.KMeansPlusPlusTrainerInitAlgorithm.KMeansParallel" />
+      <Member Id="F:Microsoft.ML.Trainers.KMeansPlusPlusTrainerInitAlgorithm.KMeansPlusPlus" />
+      <Member Id="F:Microsoft.ML.Trainers.KMeansPlusPlusTrainerInitAlgorithm.Random" />
+    </Type>
     <Type Name="Microsoft.ML.Trainers.LinearSvmBinaryClassifier" Id="T:Microsoft.ML.Trainers.LinearSvmBinaryClassifier">
       <Member Id="M:Microsoft.ML.Trainers.LinearSvmBinaryClassifier.#ctor" />
       <Member Id="M:Microsoft.ML.Trainers.LinearSvmBinaryClassifier.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Trainers.LinearSvmBinaryClassifier.GetInputData" />
       <Member Id="P:Microsoft.ML.Trainers.LinearSvmBinaryClassifier.BatchSize" />
       <Member Id="P:Microsoft.ML.Trainers.LinearSvmBinaryClassifier.Caching" />
       <Member Id="P:Microsoft.ML.Trainers.LinearSvmBinaryClassifier.Calibrator" />
@@ -16329,36 +16628,66 @@
       <Member Id="M:Microsoft.ML.Trainers.LinearSvmBinaryClassifier.Output.#ctor" />
       <Member Id="P:Microsoft.ML.Trainers.LinearSvmBinaryClassifier.Output.PredictorModel" />
     </Type>
-    <Type Name="Microsoft.ML.Trainers.LogisticRegressor" Id="T:Microsoft.ML.Trainers.LogisticRegressor">
-      <Member Id="M:Microsoft.ML.Trainers.LogisticRegressor.#ctor" />
-      <Member Id="M:Microsoft.ML.Trainers.LogisticRegressor.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
-      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressor.Caching" />
-      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressor.DenseOptimizer" />
-      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressor.EnforceNonNegativity" />
-      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressor.FeatureColumn" />
-      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressor.InitWtsDiameter" />
-      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressor.L1Weight" />
-      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressor.L2Weight" />
-      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressor.LabelColumn" />
-      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressor.MaxIterations" />
-      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressor.MemorySize" />
-      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressor.NormalizeFeatures" />
-      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressor.NumThreads" />
-      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressor.OptTol" />
-      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressor.Quiet" />
-      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressor.SgdInitializationTolerance" />
-      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressor.ShowTrainingStats" />
-      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressor.TrainingData" />
-      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressor.UseThreads" />
-      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressor.WeightColumn" />
+    <Type Name="Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier" Id="T:Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier">
+      <Member Id="M:Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier.#ctor" />
+      <Member Id="M:Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier.GetInputData" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier.Caching" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier.DenseOptimizer" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier.EnforceNonNegativity" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier.FeatureColumn" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier.InitWtsDiameter" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier.L1Weight" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier.L2Weight" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier.LabelColumn" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier.MaxIterations" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier.MemorySize" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier.NormalizeFeatures" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier.NumThreads" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier.OptTol" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier.Quiet" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier.SgdInitializationTolerance" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier.ShowTrainingStats" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier.TrainingData" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier.UseThreads" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier.WeightColumn" />
     </Type>
-    <Type Name="Microsoft.ML.Trainers.LogisticRegressor/Output" Id="T:Microsoft.ML.Trainers.LogisticRegressor.Output">
-      <Member Id="M:Microsoft.ML.Trainers.LogisticRegressor.Output.#ctor" />
-      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressor.Output.PredictorModel" />
+    <Type Name="Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier/Output" Id="T:Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier.Output">
+      <Member Id="M:Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier.Output.#ctor" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionBinaryClassifier.Output.PredictorModel" />
+    </Type>
+    <Type Name="Microsoft.ML.Trainers.LogisticRegressionClassifier" Id="T:Microsoft.ML.Trainers.LogisticRegressionClassifier">
+      <Member Id="M:Microsoft.ML.Trainers.LogisticRegressionClassifier.#ctor" />
+      <Member Id="M:Microsoft.ML.Trainers.LogisticRegressionClassifier.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Trainers.LogisticRegressionClassifier.GetInputData" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionClassifier.Caching" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionClassifier.DenseOptimizer" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionClassifier.EnforceNonNegativity" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionClassifier.FeatureColumn" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionClassifier.InitWtsDiameter" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionClassifier.L1Weight" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionClassifier.L2Weight" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionClassifier.LabelColumn" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionClassifier.MaxIterations" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionClassifier.MemorySize" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionClassifier.NormalizeFeatures" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionClassifier.NumThreads" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionClassifier.OptTol" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionClassifier.Quiet" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionClassifier.SgdInitializationTolerance" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionClassifier.ShowTrainingStats" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionClassifier.TrainingData" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionClassifier.UseThreads" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionClassifier.WeightColumn" />
+    </Type>
+    <Type Name="Microsoft.ML.Trainers.LogisticRegressionClassifier/Output" Id="T:Microsoft.ML.Trainers.LogisticRegressionClassifier.Output">
+      <Member Id="M:Microsoft.ML.Trainers.LogisticRegressionClassifier.Output.#ctor" />
+      <Member Id="P:Microsoft.ML.Trainers.LogisticRegressionClassifier.Output.PredictorModel" />
     </Type>
     <Type Name="Microsoft.ML.Trainers.NaiveBayesClassifier" Id="T:Microsoft.ML.Trainers.NaiveBayesClassifier">
       <Member Id="M:Microsoft.ML.Trainers.NaiveBayesClassifier.#ctor" />
       <Member Id="M:Microsoft.ML.Trainers.NaiveBayesClassifier.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Trainers.NaiveBayesClassifier.GetInputData" />
       <Member Id="P:Microsoft.ML.Trainers.NaiveBayesClassifier.Caching" />
       <Member Id="P:Microsoft.ML.Trainers.NaiveBayesClassifier.FeatureColumn" />
       <Member Id="P:Microsoft.ML.Trainers.NaiveBayesClassifier.LabelColumn" />
@@ -16372,6 +16701,7 @@
     <Type Name="Microsoft.ML.Trainers.OnlineGradientDescentRegressor" Id="T:Microsoft.ML.Trainers.OnlineGradientDescentRegressor">
       <Member Id="M:Microsoft.ML.Trainers.OnlineGradientDescentRegressor.#ctor" />
       <Member Id="M:Microsoft.ML.Trainers.OnlineGradientDescentRegressor.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Trainers.OnlineGradientDescentRegressor.GetInputData" />
       <Member Id="P:Microsoft.ML.Trainers.OnlineGradientDescentRegressor.Averaged" />
       <Member Id="P:Microsoft.ML.Trainers.OnlineGradientDescentRegressor.AveragedTolerance" />
       <Member Id="P:Microsoft.ML.Trainers.OnlineGradientDescentRegressor.Caching" />
@@ -16400,6 +16730,7 @@
     <Type Name="Microsoft.ML.Trainers.OrdinaryLeastSquaresRegressor" Id="T:Microsoft.ML.Trainers.OrdinaryLeastSquaresRegressor">
       <Member Id="M:Microsoft.ML.Trainers.OrdinaryLeastSquaresRegressor.#ctor" />
       <Member Id="M:Microsoft.ML.Trainers.OrdinaryLeastSquaresRegressor.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Trainers.OrdinaryLeastSquaresRegressor.GetInputData" />
       <Member Id="P:Microsoft.ML.Trainers.OrdinaryLeastSquaresRegressor.Caching" />
       <Member Id="P:Microsoft.ML.Trainers.OrdinaryLeastSquaresRegressor.FeatureColumn" />
       <Member Id="P:Microsoft.ML.Trainers.OrdinaryLeastSquaresRegressor.L2Weight" />
@@ -16413,9 +16744,28 @@
       <Member Id="M:Microsoft.ML.Trainers.OrdinaryLeastSquaresRegressor.Output.#ctor" />
       <Member Id="P:Microsoft.ML.Trainers.OrdinaryLeastSquaresRegressor.Output.PredictorModel" />
     </Type>
+    <Type Name="Microsoft.ML.Trainers.PcaAnomalyDetector" Id="T:Microsoft.ML.Trainers.PcaAnomalyDetector">
+      <Member Id="M:Microsoft.ML.Trainers.PcaAnomalyDetector.#ctor" />
+      <Member Id="M:Microsoft.ML.Trainers.PcaAnomalyDetector.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Trainers.PcaAnomalyDetector.GetInputData" />
+      <Member Id="P:Microsoft.ML.Trainers.PcaAnomalyDetector.Caching" />
+      <Member Id="P:Microsoft.ML.Trainers.PcaAnomalyDetector.Center" />
+      <Member Id="P:Microsoft.ML.Trainers.PcaAnomalyDetector.FeatureColumn" />
+      <Member Id="P:Microsoft.ML.Trainers.PcaAnomalyDetector.NormalizeFeatures" />
+      <Member Id="P:Microsoft.ML.Trainers.PcaAnomalyDetector.Oversampling" />
+      <Member Id="P:Microsoft.ML.Trainers.PcaAnomalyDetector.Rank" />
+      <Member Id="P:Microsoft.ML.Trainers.PcaAnomalyDetector.Seed" />
+      <Member Id="P:Microsoft.ML.Trainers.PcaAnomalyDetector.TrainingData" />
+      <Member Id="P:Microsoft.ML.Trainers.PcaAnomalyDetector.WeightColumn" />
+    </Type>
+    <Type Name="Microsoft.ML.Trainers.PcaAnomalyDetector/Output" Id="T:Microsoft.ML.Trainers.PcaAnomalyDetector.Output">
+      <Member Id="M:Microsoft.ML.Trainers.PcaAnomalyDetector.Output.#ctor" />
+      <Member Id="P:Microsoft.ML.Trainers.PcaAnomalyDetector.Output.PredictorModel" />
+    </Type>
     <Type Name="Microsoft.ML.Trainers.PoissonRegressor" Id="T:Microsoft.ML.Trainers.PoissonRegressor">
       <Member Id="M:Microsoft.ML.Trainers.PoissonRegressor.#ctor" />
       <Member Id="M:Microsoft.ML.Trainers.PoissonRegressor.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Trainers.PoissonRegressor.GetInputData" />
       <Member Id="P:Microsoft.ML.Trainers.PoissonRegressor.Caching" />
       <Member Id="P:Microsoft.ML.Trainers.PoissonRegressor.DenseOptimizer" />
       <Member Id="P:Microsoft.ML.Trainers.PoissonRegressor.EnforceNonNegativity" />
@@ -16442,6 +16792,7 @@
     <Type Name="Microsoft.ML.Trainers.StochasticDualCoordinateAscentBinaryClassifier" Id="T:Microsoft.ML.Trainers.StochasticDualCoordinateAscentBinaryClassifier">
       <Member Id="M:Microsoft.ML.Trainers.StochasticDualCoordinateAscentBinaryClassifier.#ctor" />
       <Member Id="M:Microsoft.ML.Trainers.StochasticDualCoordinateAscentBinaryClassifier.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Trainers.StochasticDualCoordinateAscentBinaryClassifier.GetInputData" />
       <Member Id="P:Microsoft.ML.Trainers.StochasticDualCoordinateAscentBinaryClassifier.BiasLearningRate" />
       <Member Id="P:Microsoft.ML.Trainers.StochasticDualCoordinateAscentBinaryClassifier.Caching" />
       <Member Id="P:Microsoft.ML.Trainers.StochasticDualCoordinateAscentBinaryClassifier.Calibrator" />
@@ -16467,6 +16818,7 @@
     <Type Name="Microsoft.ML.Trainers.StochasticDualCoordinateAscentClassifier" Id="T:Microsoft.ML.Trainers.StochasticDualCoordinateAscentClassifier">
       <Member Id="M:Microsoft.ML.Trainers.StochasticDualCoordinateAscentClassifier.#ctor" />
       <Member Id="M:Microsoft.ML.Trainers.StochasticDualCoordinateAscentClassifier.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Trainers.StochasticDualCoordinateAscentClassifier.GetInputData" />
       <Member Id="P:Microsoft.ML.Trainers.StochasticDualCoordinateAscentClassifier.BiasLearningRate" />
       <Member Id="P:Microsoft.ML.Trainers.StochasticDualCoordinateAscentClassifier.Caching" />
       <Member Id="P:Microsoft.ML.Trainers.StochasticDualCoordinateAscentClassifier.CheckFrequency" />
@@ -16489,6 +16841,7 @@
     <Type Name="Microsoft.ML.Trainers.StochasticDualCoordinateAscentRegressor" Id="T:Microsoft.ML.Trainers.StochasticDualCoordinateAscentRegressor">
       <Member Id="M:Microsoft.ML.Trainers.StochasticDualCoordinateAscentRegressor.#ctor" />
       <Member Id="M:Microsoft.ML.Trainers.StochasticDualCoordinateAscentRegressor.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Trainers.StochasticDualCoordinateAscentRegressor.GetInputData" />
       <Member Id="P:Microsoft.ML.Trainers.StochasticDualCoordinateAscentRegressor.BiasLearningRate" />
       <Member Id="P:Microsoft.ML.Trainers.StochasticDualCoordinateAscentRegressor.Caching" />
       <Member Id="P:Microsoft.ML.Trainers.StochasticDualCoordinateAscentRegressor.CheckFrequency" />
@@ -16511,6 +16864,7 @@
     <Type Name="Microsoft.ML.Trainers.StochasticGradientDescentBinaryClassifier" Id="T:Microsoft.ML.Trainers.StochasticGradientDescentBinaryClassifier">
       <Member Id="M:Microsoft.ML.Trainers.StochasticGradientDescentBinaryClassifier.#ctor" />
       <Member Id="M:Microsoft.ML.Trainers.StochasticGradientDescentBinaryClassifier.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Trainers.StochasticGradientDescentBinaryClassifier.GetInputData" />
       <Member Id="P:Microsoft.ML.Trainers.StochasticGradientDescentBinaryClassifier.Caching" />
       <Member Id="P:Microsoft.ML.Trainers.StochasticGradientDescentBinaryClassifier.Calibrator" />
       <Member Id="P:Microsoft.ML.Trainers.StochasticGradientDescentBinaryClassifier.CheckFrequency" />
@@ -16538,6 +16892,7 @@
     <Type Name="Microsoft.ML.Transforms.ApproximateBootstrapSampler" Id="T:Microsoft.ML.Transforms.ApproximateBootstrapSampler">
       <Member Id="M:Microsoft.ML.Transforms.ApproximateBootstrapSampler.#ctor" />
       <Member Id="M:Microsoft.ML.Transforms.ApproximateBootstrapSampler.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.ApproximateBootstrapSampler.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.ApproximateBootstrapSampler.Complement" />
       <Member Id="P:Microsoft.ML.Transforms.ApproximateBootstrapSampler.Data" />
       <Member Id="P:Microsoft.ML.Transforms.ApproximateBootstrapSampler.PoolSize" />
@@ -16552,6 +16907,7 @@
     <Type Name="Microsoft.ML.Transforms.BinaryPredictionScoreColumnsRenamer" Id="T:Microsoft.ML.Transforms.BinaryPredictionScoreColumnsRenamer">
       <Member Id="M:Microsoft.ML.Transforms.BinaryPredictionScoreColumnsRenamer.#ctor" />
       <Member Id="M:Microsoft.ML.Transforms.BinaryPredictionScoreColumnsRenamer.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.BinaryPredictionScoreColumnsRenamer.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.BinaryPredictionScoreColumnsRenamer.Data" />
       <Member Id="P:Microsoft.ML.Transforms.BinaryPredictionScoreColumnsRenamer.PredictorModel" />
     </Type>
@@ -16567,6 +16923,7 @@
       <Member Id="M:Microsoft.ML.Transforms.BinNormalizer.AddColumn(System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.BinNormalizer.AddColumn(System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.BinNormalizer.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.BinNormalizer.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.BinNormalizer.Column" />
       <Member Id="P:Microsoft.ML.Transforms.BinNormalizer.Data" />
       <Member Id="P:Microsoft.ML.Transforms.BinNormalizer.FixZero" />
@@ -16589,6 +16946,7 @@
       <Member Id="M:Microsoft.ML.Transforms.CategoricalHashOneHotVectorizer.AddColumn(System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.CategoricalHashOneHotVectorizer.AddColumn(System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.CategoricalHashOneHotVectorizer.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.CategoricalHashOneHotVectorizer.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.CategoricalHashOneHotVectorizer.Column" />
       <Member Id="P:Microsoft.ML.Transforms.CategoricalHashOneHotVectorizer.Data" />
       <Member Id="P:Microsoft.ML.Transforms.CategoricalHashOneHotVectorizer.HashBits" />
@@ -16619,6 +16977,7 @@
       <Member Id="M:Microsoft.ML.Transforms.CategoricalOneHotVectorizer.AddColumn(System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.CategoricalOneHotVectorizer.AddColumn(System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.CategoricalOneHotVectorizer.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.CategoricalOneHotVectorizer.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.CategoricalOneHotVectorizer.Column" />
       <Member Id="P:Microsoft.ML.Transforms.CategoricalOneHotVectorizer.Data" />
       <Member Id="P:Microsoft.ML.Transforms.CategoricalOneHotVectorizer.MaxNumTerms" />
@@ -16655,6 +17014,7 @@
       <Member Id="M:Microsoft.ML.Transforms.CharacterTokenizer.AddColumn(System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.CharacterTokenizer.AddColumn(System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.CharacterTokenizer.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.CharacterTokenizer.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.CharacterTokenizer.Column" />
       <Member Id="P:Microsoft.ML.Transforms.CharacterTokenizer.Data" />
       <Member Id="P:Microsoft.ML.Transforms.CharacterTokenizer.UseMarkerChars" />
@@ -16674,6 +17034,7 @@
       <Member Id="M:Microsoft.ML.Transforms.ColumnConcatenator.#ctor(System.String,System.String[])" />
       <Member Id="M:Microsoft.ML.Transforms.ColumnConcatenator.AddColumn(System.String,System.String[])" />
       <Member Id="M:Microsoft.ML.Transforms.ColumnConcatenator.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.ColumnConcatenator.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.ColumnConcatenator.Column" />
       <Member Id="P:Microsoft.ML.Transforms.ColumnConcatenator.Data" />
     </Type>
@@ -16689,6 +17050,7 @@
       <Member Id="M:Microsoft.ML.Transforms.ColumnCopier.AddColumn(System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.ColumnCopier.AddColumn(System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.ColumnCopier.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.ColumnCopier.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.ColumnCopier.Column" />
       <Member Id="P:Microsoft.ML.Transforms.ColumnCopier.Data" />
     </Type>
@@ -16700,6 +17062,7 @@
     <Type Name="Microsoft.ML.Transforms.ColumnDropper" Id="T:Microsoft.ML.Transforms.ColumnDropper">
       <Member Id="M:Microsoft.ML.Transforms.ColumnDropper.#ctor" />
       <Member Id="M:Microsoft.ML.Transforms.ColumnDropper.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.ColumnDropper.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.ColumnDropper.Column" />
       <Member Id="P:Microsoft.ML.Transforms.ColumnDropper.Data" />
     </Type>
@@ -16711,6 +17074,7 @@
     <Type Name="Microsoft.ML.Transforms.ColumnSelector" Id="T:Microsoft.ML.Transforms.ColumnSelector">
       <Member Id="M:Microsoft.ML.Transforms.ColumnSelector.#ctor" />
       <Member Id="M:Microsoft.ML.Transforms.ColumnSelector.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.ColumnSelector.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.ColumnSelector.Column" />
       <Member Id="P:Microsoft.ML.Transforms.ColumnSelector.Data" />
     </Type>
@@ -16726,6 +17090,7 @@
       <Member Id="M:Microsoft.ML.Transforms.ColumnTypeConverter.AddColumn(System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.ColumnTypeConverter.AddColumn(System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.ColumnTypeConverter.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.ColumnTypeConverter.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.ColumnTypeConverter.Column" />
       <Member Id="P:Microsoft.ML.Transforms.ColumnTypeConverter.Data" />
       <Member Id="P:Microsoft.ML.Transforms.ColumnTypeConverter.Range" />
@@ -16739,6 +17104,7 @@
     <Type Name="Microsoft.ML.Transforms.CombinerByContiguousGroupId" Id="T:Microsoft.ML.Transforms.CombinerByContiguousGroupId">
       <Member Id="M:Microsoft.ML.Transforms.CombinerByContiguousGroupId.#ctor" />
       <Member Id="M:Microsoft.ML.Transforms.CombinerByContiguousGroupId.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.CombinerByContiguousGroupId.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.CombinerByContiguousGroupId.Column" />
       <Member Id="P:Microsoft.ML.Transforms.CombinerByContiguousGroupId.Data" />
       <Member Id="P:Microsoft.ML.Transforms.CombinerByContiguousGroupId.GroupKey" />
@@ -16760,6 +17126,7 @@
       <Member Id="M:Microsoft.ML.Transforms.ConditionalNormalizer.AddColumn(System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.ConditionalNormalizer.AddColumn(System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.ConditionalNormalizer.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.ConditionalNormalizer.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.ConditionalNormalizer.Column" />
       <Member Id="P:Microsoft.ML.Transforms.ConditionalNormalizer.Data" />
       <Member Id="P:Microsoft.ML.Transforms.ConditionalNormalizer.FixZero" />
@@ -16785,6 +17152,7 @@
     <Type Name="Microsoft.ML.Transforms.DataCache" Id="T:Microsoft.ML.Transforms.DataCache">
       <Member Id="M:Microsoft.ML.Transforms.DataCache.#ctor" />
       <Member Id="M:Microsoft.ML.Transforms.DataCache.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.DataCache.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.DataCache.Caching" />
       <Member Id="P:Microsoft.ML.Transforms.DataCache.Data" />
     </Type>
@@ -16852,6 +17220,7 @@
       <Member Id="M:Microsoft.ML.Transforms.Dictionarizer.AddColumn(System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.Dictionarizer.AddColumn(System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.Dictionarizer.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.Dictionarizer.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.Dictionarizer.Column" />
       <Member Id="P:Microsoft.ML.Transforms.Dictionarizer.Data" />
       <Member Id="P:Microsoft.ML.Transforms.Dictionarizer.MaxNumTerms" />
@@ -16867,6 +17236,7 @@
     <Type Name="Microsoft.ML.Transforms.FeatureCombiner" Id="T:Microsoft.ML.Transforms.FeatureCombiner">
       <Member Id="M:Microsoft.ML.Transforms.FeatureCombiner.#ctor" />
       <Member Id="M:Microsoft.ML.Transforms.FeatureCombiner.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.FeatureCombiner.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.FeatureCombiner.Data" />
       <Member Id="P:Microsoft.ML.Transforms.FeatureCombiner.Features" />
     </Type>
@@ -16878,6 +17248,7 @@
     <Type Name="Microsoft.ML.Transforms.FeatureSelectorByCount" Id="T:Microsoft.ML.Transforms.FeatureSelectorByCount">
       <Member Id="M:Microsoft.ML.Transforms.FeatureSelectorByCount.#ctor" />
       <Member Id="M:Microsoft.ML.Transforms.FeatureSelectorByCount.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.FeatureSelectorByCount.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.FeatureSelectorByCount.Column" />
       <Member Id="P:Microsoft.ML.Transforms.FeatureSelectorByCount.Count" />
       <Member Id="P:Microsoft.ML.Transforms.FeatureSelectorByCount.Data" />
@@ -16890,6 +17261,7 @@
     <Type Name="Microsoft.ML.Transforms.FeatureSelectorByMutualInformation" Id="T:Microsoft.ML.Transforms.FeatureSelectorByMutualInformation">
       <Member Id="M:Microsoft.ML.Transforms.FeatureSelectorByMutualInformation.#ctor" />
       <Member Id="M:Microsoft.ML.Transforms.FeatureSelectorByMutualInformation.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.FeatureSelectorByMutualInformation.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.FeatureSelectorByMutualInformation.Column" />
       <Member Id="P:Microsoft.ML.Transforms.FeatureSelectorByMutualInformation.Data" />
       <Member Id="P:Microsoft.ML.Transforms.FeatureSelectorByMutualInformation.LabelColumn" />
@@ -16914,6 +17286,7 @@
       <Member Id="M:Microsoft.ML.Transforms.GlobalContrastNormalizer.AddColumn(System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.GlobalContrastNormalizer.AddColumn(System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.GlobalContrastNormalizer.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.GlobalContrastNormalizer.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.GlobalContrastNormalizer.Column" />
       <Member Id="P:Microsoft.ML.Transforms.GlobalContrastNormalizer.Data" />
       <Member Id="P:Microsoft.ML.Transforms.GlobalContrastNormalizer.Scale" />
@@ -16932,6 +17305,7 @@
       <Member Id="M:Microsoft.ML.Transforms.HashConverter.AddColumn(System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.HashConverter.AddColumn(System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.HashConverter.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.HashConverter.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.HashConverter.Column" />
       <Member Id="P:Microsoft.ML.Transforms.HashConverter.Data" />
       <Member Id="P:Microsoft.ML.Transforms.HashConverter.HashBits" />
@@ -16961,6 +17335,7 @@
       <Member Id="M:Microsoft.ML.Transforms.KeyToTextConverter.AddColumn(System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.KeyToTextConverter.AddColumn(System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.KeyToTextConverter.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.KeyToTextConverter.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.KeyToTextConverter.Column" />
       <Member Id="P:Microsoft.ML.Transforms.KeyToTextConverter.Data" />
     </Type>
@@ -16977,6 +17352,7 @@
     <Type Name="Microsoft.ML.Transforms.LabelColumnKeyBooleanConverter" Id="T:Microsoft.ML.Transforms.LabelColumnKeyBooleanConverter">
       <Member Id="M:Microsoft.ML.Transforms.LabelColumnKeyBooleanConverter.#ctor" />
       <Member Id="M:Microsoft.ML.Transforms.LabelColumnKeyBooleanConverter.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.LabelColumnKeyBooleanConverter.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.LabelColumnKeyBooleanConverter.Data" />
       <Member Id="P:Microsoft.ML.Transforms.LabelColumnKeyBooleanConverter.LabelColumn" />
       <Member Id="P:Microsoft.ML.Transforms.LabelColumnKeyBooleanConverter.TextKeyValues" />
@@ -16993,6 +17369,7 @@
       <Member Id="M:Microsoft.ML.Transforms.LabelIndicator.AddColumn(System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.LabelIndicator.AddColumn(System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.LabelIndicator.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.LabelIndicator.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.LabelIndicator.ClassIndex" />
       <Member Id="P:Microsoft.ML.Transforms.LabelIndicator.Column" />
       <Member Id="P:Microsoft.ML.Transforms.LabelIndicator.Data" />
@@ -17011,6 +17388,7 @@
     <Type Name="Microsoft.ML.Transforms.LabelToFloatConverter" Id="T:Microsoft.ML.Transforms.LabelToFloatConverter">
       <Member Id="M:Microsoft.ML.Transforms.LabelToFloatConverter.#ctor" />
       <Member Id="M:Microsoft.ML.Transforms.LabelToFloatConverter.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.LabelToFloatConverter.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.LabelToFloatConverter.Data" />
       <Member Id="P:Microsoft.ML.Transforms.LabelToFloatConverter.LabelColumn" />
     </Type>
@@ -17026,6 +17404,7 @@
       <Member Id="M:Microsoft.ML.Transforms.LogMeanVarianceNormalizer.AddColumn(System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.LogMeanVarianceNormalizer.AddColumn(System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.LogMeanVarianceNormalizer.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.LogMeanVarianceNormalizer.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.LogMeanVarianceNormalizer.Column" />
       <Member Id="P:Microsoft.ML.Transforms.LogMeanVarianceNormalizer.Data" />
       <Member Id="P:Microsoft.ML.Transforms.LogMeanVarianceNormalizer.MaxTrainingExamples" />
@@ -17043,6 +17422,7 @@
       <Member Id="M:Microsoft.ML.Transforms.LpNormalizer.AddColumn(System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.LpNormalizer.AddColumn(System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.LpNormalizer.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.LpNormalizer.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.LpNormalizer.Column" />
       <Member Id="P:Microsoft.ML.Transforms.LpNormalizer.Data" />
       <Member Id="P:Microsoft.ML.Transforms.LpNormalizer.NormKind" />
@@ -17090,6 +17470,7 @@
       <Member Id="M:Microsoft.ML.Transforms.MeanVarianceNormalizer.AddColumn(System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.MeanVarianceNormalizer.AddColumn(System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.MeanVarianceNormalizer.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.MeanVarianceNormalizer.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.MeanVarianceNormalizer.Column" />
       <Member Id="P:Microsoft.ML.Transforms.MeanVarianceNormalizer.Data" />
       <Member Id="P:Microsoft.ML.Transforms.MeanVarianceNormalizer.FixZero" />
@@ -17108,6 +17489,7 @@
       <Member Id="M:Microsoft.ML.Transforms.MinMaxNormalizer.AddColumn(System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.MinMaxNormalizer.AddColumn(System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.MinMaxNormalizer.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.MinMaxNormalizer.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.MinMaxNormalizer.Column" />
       <Member Id="P:Microsoft.ML.Transforms.MinMaxNormalizer.Data" />
       <Member Id="P:Microsoft.ML.Transforms.MinMaxNormalizer.FixZero" />
@@ -17125,6 +17507,7 @@
       <Member Id="M:Microsoft.ML.Transforms.MissingValueHandler.AddColumn(System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.MissingValueHandler.AddColumn(System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.MissingValueHandler.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.MissingValueHandler.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.MissingValueHandler.Column" />
       <Member Id="P:Microsoft.ML.Transforms.MissingValueHandler.Concat" />
       <Member Id="P:Microsoft.ML.Transforms.MissingValueHandler.Data" />
@@ -17143,6 +17526,7 @@
       <Member Id="M:Microsoft.ML.Transforms.MissingValueIndicator.AddColumn(System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.MissingValueIndicator.AddColumn(System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.MissingValueIndicator.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.MissingValueIndicator.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.MissingValueIndicator.Column" />
       <Member Id="P:Microsoft.ML.Transforms.MissingValueIndicator.Data" />
     </Type>
@@ -17158,6 +17542,7 @@
       <Member Id="M:Microsoft.ML.Transforms.MissingValuesDropper.AddColumn(System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.MissingValuesDropper.AddColumn(System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.MissingValuesDropper.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.MissingValuesDropper.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.MissingValuesDropper.Column" />
       <Member Id="P:Microsoft.ML.Transforms.MissingValuesDropper.Data" />
     </Type>
@@ -17169,6 +17554,7 @@
     <Type Name="Microsoft.ML.Transforms.MissingValuesRowDropper" Id="T:Microsoft.ML.Transforms.MissingValuesRowDropper">
       <Member Id="M:Microsoft.ML.Transforms.MissingValuesRowDropper.#ctor" />
       <Member Id="M:Microsoft.ML.Transforms.MissingValuesRowDropper.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.MissingValuesRowDropper.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.MissingValuesRowDropper.Column" />
       <Member Id="P:Microsoft.ML.Transforms.MissingValuesRowDropper.Complement" />
       <Member Id="P:Microsoft.ML.Transforms.MissingValuesRowDropper.Data" />
@@ -17185,6 +17571,7 @@
       <Member Id="M:Microsoft.ML.Transforms.MissingValueSubstitutor.AddColumn(System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.MissingValueSubstitutor.AddColumn(System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.MissingValueSubstitutor.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.MissingValueSubstitutor.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.MissingValueSubstitutor.Column" />
       <Member Id="P:Microsoft.ML.Transforms.MissingValueSubstitutor.Data" />
       <Member Id="P:Microsoft.ML.Transforms.MissingValueSubstitutor.ImputeBySlot" />
@@ -17274,6 +17661,7 @@
       <Member Id="M:Microsoft.ML.Transforms.NGramTranslator.AddColumn(System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.NGramTranslator.AddColumn(System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.NGramTranslator.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.NGramTranslator.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.NGramTranslator.AllLengths" />
       <Member Id="P:Microsoft.ML.Transforms.NGramTranslator.Column" />
       <Member Id="P:Microsoft.ML.Transforms.NGramTranslator.Data" />
@@ -17290,6 +17678,7 @@
     <Type Name="Microsoft.ML.Transforms.NoOperation" Id="T:Microsoft.ML.Transforms.NoOperation">
       <Member Id="M:Microsoft.ML.Transforms.NoOperation.#ctor" />
       <Member Id="M:Microsoft.ML.Transforms.NoOperation.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.NoOperation.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.NoOperation.Data" />
     </Type>
     <Type Name="Microsoft.ML.Transforms.NoOperation/Output" Id="T:Microsoft.ML.Transforms.NoOperation.Output">
@@ -17321,6 +17710,7 @@
     <Type Name="Microsoft.ML.Transforms.OptionalColumnCreator" Id="T:Microsoft.ML.Transforms.OptionalColumnCreator">
       <Member Id="M:Microsoft.ML.Transforms.OptionalColumnCreator.#ctor" />
       <Member Id="M:Microsoft.ML.Transforms.OptionalColumnCreator.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.OptionalColumnCreator.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.OptionalColumnCreator.Column" />
       <Member Id="P:Microsoft.ML.Transforms.OptionalColumnCreator.Data" />
     </Type>
@@ -17329,9 +17719,41 @@
       <Member Id="P:Microsoft.ML.Transforms.OptionalColumnCreator.Output.Model" />
       <Member Id="P:Microsoft.ML.Transforms.OptionalColumnCreator.Output.OutputData" />
     </Type>
+    <Type Name="Microsoft.ML.Transforms.PcaCalculator" Id="T:Microsoft.ML.Transforms.PcaCalculator">
+      <Member Id="M:Microsoft.ML.Transforms.PcaCalculator.#ctor" />
+      <Member Id="M:Microsoft.ML.Transforms.PcaCalculator.#ctor(System.String[])" />
+      <Member Id="M:Microsoft.ML.Transforms.PcaCalculator.#ctor(System.ValueTuple{System.String,System.String}[])" />
+      <Member Id="M:Microsoft.ML.Transforms.PcaCalculator.AddColumn(System.String)" />
+      <Member Id="M:Microsoft.ML.Transforms.PcaCalculator.AddColumn(System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.Transforms.PcaCalculator.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.PcaCalculator.GetInputData" />
+      <Member Id="P:Microsoft.ML.Transforms.PcaCalculator.Center" />
+      <Member Id="P:Microsoft.ML.Transforms.PcaCalculator.Column" />
+      <Member Id="P:Microsoft.ML.Transforms.PcaCalculator.Data" />
+      <Member Id="P:Microsoft.ML.Transforms.PcaCalculator.Oversampling" />
+      <Member Id="P:Microsoft.ML.Transforms.PcaCalculator.Rank" />
+      <Member Id="P:Microsoft.ML.Transforms.PcaCalculator.Seed" />
+      <Member Id="P:Microsoft.ML.Transforms.PcaCalculator.WeightColumn" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.PcaCalculator/Output" Id="T:Microsoft.ML.Transforms.PcaCalculator.Output">
+      <Member Id="M:Microsoft.ML.Transforms.PcaCalculator.Output.#ctor" />
+      <Member Id="P:Microsoft.ML.Transforms.PcaCalculator.Output.Model" />
+      <Member Id="P:Microsoft.ML.Transforms.PcaCalculator.Output.OutputData" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.PcaTransformColumn" Id="T:Microsoft.ML.Transforms.PcaTransformColumn">
+      <Member Id="M:Microsoft.ML.Transforms.PcaTransformColumn.#ctor" />
+      <Member Id="P:Microsoft.ML.Transforms.PcaTransformColumn.Center" />
+      <Member Id="P:Microsoft.ML.Transforms.PcaTransformColumn.Name" />
+      <Member Id="P:Microsoft.ML.Transforms.PcaTransformColumn.Oversampling" />
+      <Member Id="P:Microsoft.ML.Transforms.PcaTransformColumn.Rank" />
+      <Member Id="P:Microsoft.ML.Transforms.PcaTransformColumn.Seed" />
+      <Member Id="P:Microsoft.ML.Transforms.PcaTransformColumn.Source" />
+      <Member Id="P:Microsoft.ML.Transforms.PcaTransformColumn.WeightColumn" />
+    </Type>
     <Type Name="Microsoft.ML.Transforms.PredictedLabelColumnOriginalValueConverter" Id="T:Microsoft.ML.Transforms.PredictedLabelColumnOriginalValueConverter">
       <Member Id="M:Microsoft.ML.Transforms.PredictedLabelColumnOriginalValueConverter.#ctor" />
       <Member Id="M:Microsoft.ML.Transforms.PredictedLabelColumnOriginalValueConverter.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.PredictedLabelColumnOriginalValueConverter.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.PredictedLabelColumnOriginalValueConverter.Data" />
       <Member Id="P:Microsoft.ML.Transforms.PredictedLabelColumnOriginalValueConverter.PredictedLabelColumn" />
     </Type>
@@ -17343,6 +17765,7 @@
     <Type Name="Microsoft.ML.Transforms.RandomNumberGenerator" Id="T:Microsoft.ML.Transforms.RandomNumberGenerator">
       <Member Id="M:Microsoft.ML.Transforms.RandomNumberGenerator.#ctor" />
       <Member Id="M:Microsoft.ML.Transforms.RandomNumberGenerator.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.RandomNumberGenerator.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.RandomNumberGenerator.Column" />
       <Member Id="P:Microsoft.ML.Transforms.RandomNumberGenerator.Data" />
       <Member Id="P:Microsoft.ML.Transforms.RandomNumberGenerator.Seed" />
@@ -17356,6 +17779,7 @@
     <Type Name="Microsoft.ML.Transforms.RowRangeFilter" Id="T:Microsoft.ML.Transforms.RowRangeFilter">
       <Member Id="M:Microsoft.ML.Transforms.RowRangeFilter.#ctor" />
       <Member Id="M:Microsoft.ML.Transforms.RowRangeFilter.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.RowRangeFilter.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.RowRangeFilter.Column" />
       <Member Id="P:Microsoft.ML.Transforms.RowRangeFilter.Complement" />
       <Member Id="P:Microsoft.ML.Transforms.RowRangeFilter.Data" />
@@ -17372,6 +17796,7 @@
     <Type Name="Microsoft.ML.Transforms.RowSkipAndTakeFilter" Id="T:Microsoft.ML.Transforms.RowSkipAndTakeFilter">
       <Member Id="M:Microsoft.ML.Transforms.RowSkipAndTakeFilter.#ctor" />
       <Member Id="M:Microsoft.ML.Transforms.RowSkipAndTakeFilter.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.RowSkipAndTakeFilter.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.RowSkipAndTakeFilter.Data" />
       <Member Id="P:Microsoft.ML.Transforms.RowSkipAndTakeFilter.Skip" />
       <Member Id="P:Microsoft.ML.Transforms.RowSkipAndTakeFilter.Take" />
@@ -17384,6 +17809,7 @@
     <Type Name="Microsoft.ML.Transforms.RowSkipFilter" Id="T:Microsoft.ML.Transforms.RowSkipFilter">
       <Member Id="M:Microsoft.ML.Transforms.RowSkipFilter.#ctor" />
       <Member Id="M:Microsoft.ML.Transforms.RowSkipFilter.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.RowSkipFilter.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.RowSkipFilter.Count" />
       <Member Id="P:Microsoft.ML.Transforms.RowSkipFilter.Data" />
     </Type>
@@ -17395,6 +17821,7 @@
     <Type Name="Microsoft.ML.Transforms.RowTakeFilter" Id="T:Microsoft.ML.Transforms.RowTakeFilter">
       <Member Id="M:Microsoft.ML.Transforms.RowTakeFilter.#ctor" />
       <Member Id="M:Microsoft.ML.Transforms.RowTakeFilter.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.RowTakeFilter.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.RowTakeFilter.Count" />
       <Member Id="P:Microsoft.ML.Transforms.RowTakeFilter.Data" />
     </Type>
@@ -17406,6 +17833,7 @@
     <Type Name="Microsoft.ML.Transforms.ScoreColumnSelector" Id="T:Microsoft.ML.Transforms.ScoreColumnSelector">
       <Member Id="M:Microsoft.ML.Transforms.ScoreColumnSelector.#ctor" />
       <Member Id="M:Microsoft.ML.Transforms.ScoreColumnSelector.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.ScoreColumnSelector.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.ScoreColumnSelector.Data" />
       <Member Id="P:Microsoft.ML.Transforms.ScoreColumnSelector.ExtraColumns" />
     </Type>
@@ -17426,6 +17854,7 @@
     <Type Name="Microsoft.ML.Transforms.Segregator" Id="T:Microsoft.ML.Transforms.Segregator">
       <Member Id="M:Microsoft.ML.Transforms.Segregator.#ctor" />
       <Member Id="M:Microsoft.ML.Transforms.Segregator.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.Segregator.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.Segregator.Column" />
       <Member Id="P:Microsoft.ML.Transforms.Segregator.Data" />
       <Member Id="P:Microsoft.ML.Transforms.Segregator.Mode" />
@@ -17438,6 +17867,7 @@
     <Type Name="Microsoft.ML.Transforms.SentimentAnalyzer" Id="T:Microsoft.ML.Transforms.SentimentAnalyzer">
       <Member Id="M:Microsoft.ML.Transforms.SentimentAnalyzer.#ctor" />
       <Member Id="M:Microsoft.ML.Transforms.SentimentAnalyzer.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.SentimentAnalyzer.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.SentimentAnalyzer.Data" />
       <Member Id="P:Microsoft.ML.Transforms.SentimentAnalyzer.Name" />
       <Member Id="P:Microsoft.ML.Transforms.SentimentAnalyzer.Source" />
@@ -17454,6 +17884,7 @@
       <Member Id="M:Microsoft.ML.Transforms.SupervisedBinNormalizer.AddColumn(System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.SupervisedBinNormalizer.AddColumn(System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.SupervisedBinNormalizer.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.SupervisedBinNormalizer.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.SupervisedBinNormalizer.Column" />
       <Member Id="P:Microsoft.ML.Transforms.SupervisedBinNormalizer.Data" />
       <Member Id="P:Microsoft.ML.Transforms.SupervisedBinNormalizer.FixZero" />
@@ -17491,6 +17922,7 @@
       <Member Id="M:Microsoft.ML.Transforms.TextFeaturizer.#ctor(System.String,System.String[])" />
       <Member Id="M:Microsoft.ML.Transforms.TextFeaturizer.AddColumn(System.String,System.String[])" />
       <Member Id="M:Microsoft.ML.Transforms.TextFeaturizer.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.TextFeaturizer.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.TextFeaturizer.CharFeatureExtractor" />
       <Member Id="P:Microsoft.ML.Transforms.TextFeaturizer.Column" />
       <Member Id="P:Microsoft.ML.Transforms.TextFeaturizer.Data" />
@@ -17522,6 +17954,7 @@
       <Member Id="M:Microsoft.ML.Transforms.TextToKeyConverter.AddColumn(System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.TextToKeyConverter.AddColumn(System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.TextToKeyConverter.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.TextToKeyConverter.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.TextToKeyConverter.Column" />
       <Member Id="P:Microsoft.ML.Transforms.TextToKeyConverter.Data" />
       <Member Id="P:Microsoft.ML.Transforms.TextToKeyConverter.MaxNumTerms" />
@@ -17568,6 +18001,7 @@
     <Type Name="Microsoft.ML.Transforms.TreeLeafFeaturizer" Id="T:Microsoft.ML.Transforms.TreeLeafFeaturizer">
       <Member Id="M:Microsoft.ML.Transforms.TreeLeafFeaturizer.#ctor" />
       <Member Id="M:Microsoft.ML.Transforms.TreeLeafFeaturizer.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.TreeLeafFeaturizer.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.TreeLeafFeaturizer.Data" />
       <Member Id="P:Microsoft.ML.Transforms.TreeLeafFeaturizer.LabelPermutationSeed" />
       <Member Id="P:Microsoft.ML.Transforms.TreeLeafFeaturizer.PredictorModel" />
@@ -17599,6 +18033,7 @@
       <Member Id="M:Microsoft.ML.Transforms.WordTokenizer.AddColumn(System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.WordTokenizer.AddColumn(System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.WordTokenizer.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <Member Id="M:Microsoft.ML.Transforms.WordTokenizer.GetInputData" />
       <Member Id="P:Microsoft.ML.Transforms.WordTokenizer.Column" />
       <Member Id="P:Microsoft.ML.Transforms.WordTokenizer.Data" />
       <Member Id="P:Microsoft.ML.Transforms.WordTokenizer.TermSeparators" />

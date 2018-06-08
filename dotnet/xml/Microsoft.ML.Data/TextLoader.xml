@@ -1,9 +1,9 @@
 ﻿<Type Name="TextLoader" FullName="Microsoft.ML.Data.TextLoader">
-  <TypeSignature Language="C#" Value="public sealed class TextLoader" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit TextLoader extends System.Object" />
+  <TypeSignature Language="C#" Value="public sealed class TextLoader : Microsoft.ML.ILearningPipelineLoader" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit TextLoader extends System.Object implements class Microsoft.ML.ILearningPipelineItem, class Microsoft.ML.ILearningPipelineLoader" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Data.TextLoader" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class TextLoader" />
-  <TypeSignature Language="F#" Value="type TextLoader = class" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class TextLoader&#xA;Implements ILearningPipelineLoader" />
+  <TypeSignature Language="F#" Value="type TextLoader = class&#xA;    interface ILearningPipelineLoader&#xA;    interface ILearningPipelineItem" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -11,7 +11,11 @@
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
-  <Interfaces />
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.ILearningPipelineLoader</InterfaceName>
+    </Interface>
+  </Interfaces>
   <Docs>
     <summary>
             Import a dataset from a text file
@@ -20,40 +24,139 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public TextLoader ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.TextLoader.#ctor" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New ()" />
+      <MemberSignature Language="C#" Value="public TextLoader (string filePath);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string filePath) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.TextLoader.#ctor(System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (filePath As String)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Data.TextLoader : string -&gt; Microsoft.ML.Data.TextLoader" Usage="new Microsoft.ML.Data.TextLoader filePath" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Parameters />
+      <Parameters>
+        <Parameter Name="filePath" Type="System.String" />
+      </Parameters>
       <Docs>
+        <param name="filePath">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="CustomSchema">
-      <MemberSignature Language="C#" Value="public string CustomSchema { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string CustomSchema" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Data.TextLoader.CustomSchema" />
-      <MemberSignature Language="VB.NET" Value="Public Property CustomSchema As String" />
-      <MemberSignature Language="F#" Value="member this.CustomSchema : string with get, set" Usage="Microsoft.ML.Data.TextLoader.CustomSchema" />
+    <Member MemberName="ApplyStep">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.ILearningPipelineStep ApplyStep (Microsoft.ML.ILearningPipelineStep previousStep, Microsoft.ML.Runtime.Experiment experiment);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.ILearningPipelineStep ApplyStep(class Microsoft.ML.ILearningPipelineStep previousStep, class Microsoft.ML.Runtime.Experiment experiment) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.TextLoader.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <MemberSignature Language="F#" Value="abstract member ApplyStep : Microsoft.ML.ILearningPipelineStep * Microsoft.ML.Runtime.Experiment -&gt; Microsoft.ML.ILearningPipelineStep&#xA;override this.ApplyStep : Microsoft.ML.ILearningPipelineStep * Microsoft.ML.Runtime.Experiment -&gt; Microsoft.ML.ILearningPipelineStep" Usage="textLoader.ApplyStep (previousStep, experiment)" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.ILearningPipelineItem.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.ILearningPipelineStep</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="previousStep" Type="Microsoft.ML.ILearningPipelineStep" />
+        <Parameter Name="experiment" Type="Microsoft.ML.Runtime.Experiment" />
+      </Parameters>
+      <Docs>
+        <param name="previousStep">To be added.</param>
+        <param name="experiment">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Arguments">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.TextLoaderArguments Arguments { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Data.TextLoaderArguments Arguments" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Data.TextLoader.Arguments" />
+      <MemberSignature Language="VB.NET" Value="Public Property Arguments As TextLoaderArguments" />
+      <MemberSignature Language="F#" Value="member this.Arguments : Microsoft.ML.Data.TextLoaderArguments with get, set" Usage="Microsoft.ML.Data.TextLoader.Arguments" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.String</ReturnType>
+        <ReturnType>Microsoft.ML.Data.TextLoaderArguments</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
-            Custom schema to use for parsing
+            Arguments
             </summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateFrom&lt;TInput&gt;">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.TextLoader CreateFrom&lt;TInput&gt; (bool useHeader = false, char separator = '\t', bool allowQuotedStrings = true, bool supportSparse = true, bool trimWhitespace = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Data.TextLoader CreateFrom&lt;TInput&gt;(bool useHeader, char separator, bool allowQuotedStrings, bool supportSparse, bool trimWhitespace) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.TextLoader.CreateFrom``1(System.Boolean,System.Char,System.Boolean,System.Boolean,System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public Function CreateFrom(Of TInput) (Optional useHeader As Boolean = false, Optional separator As Char = '\t', Optional allowQuotedStrings As Boolean = true, Optional supportSparse As Boolean = true, Optional trimWhitespace As Boolean = false) As TextLoader" />
+      <MemberSignature Language="F#" Value="member this.CreateFrom : bool * char * bool * bool * bool -&gt; Microsoft.ML.Data.TextLoader" Usage="textLoader.CreateFrom (useHeader, separator, allowQuotedStrings, supportSparse, trimWhitespace)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.TextLoader</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TInput" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="useHeader" Type="System.Boolean" />
+        <Parameter Name="separator" Type="System.Char" />
+        <Parameter Name="allowQuotedStrings" Type="System.Boolean" />
+        <Parameter Name="supportSparse" Type="System.Boolean" />
+        <Parameter Name="trimWhitespace" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TInput">To be added.</typeparam>
+        <param name="useHeader">Does the file contains header?</param>
+        <param name="separator">Column separator character. Default is '\t'</param>
+        <param name="allowQuotedStrings">Whether the input may include quoted values, 
+            which can contain separator characters, colons,
+            and distinguish empty values from missing values. When true, consecutive separators 
+            denote a missing value and an empty value is denoted by \"\". 
+            When false, consecutive separators denote an empty value.</param>
+        <param name="supportSparse">Whether the input may include sparse representations e.g. 
+            if one of the row contains "5 2:6 4:3" that's mean there are 5 columns all zero 
+            except for 3rd and 5th columns which have values 6 and 3</param>
+        <param name="trimWhitespace">Remove trailing whitespace from lines</param>
+        <summary>
+            Construct a TextLoader object by inferencing the dataset schema from a type.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetInputData">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt; GetInputData ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.EntryPoints.Var`1&lt;class Microsoft.ML.Runtime.Data.IDataView&gt; GetInputData() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.TextLoader.GetInputData" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetInputData () As Var(Of IDataView)" />
+      <MemberSignature Language="F#" Value="abstract member GetInputData : unit -&gt; Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;&#xA;override this.GetInputData : unit -&gt; Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;" Usage="textLoader.GetInputData " />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.ILearningPipelineItem.GetInputData</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -76,6 +179,33 @@
             Location of the input file
             </summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetInput">
+      <MemberSignature Language="C#" Value="public void SetInput (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Experiment experiment);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetInput(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Experiment experiment) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.TextLoader.SetInput(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Experiment)" />
+      <MemberSignature Language="F#" Value="abstract member SetInput : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Experiment -&gt; unit&#xA;override this.SetInput : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Experiment -&gt; unit" Usage="textLoader.SetInput (env, experiment)" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.ILearningPipelineLoader.SetInput(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Experiment)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="experiment" Type="Microsoft.ML.Runtime.Experiment" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="experiment">To be added.</param>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
