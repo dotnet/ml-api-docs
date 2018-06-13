@@ -1,4 +1,4 @@
-# ML.NET API Reference Docs
+# ML.NET API reference documentation
 
 This repo contains documentation for the ML.NET API Reference. The ML.NET API Reference is auto-generated from the source code /// comments, so documentation changes should be made at the [dotnet/machinelearning](https://github.com/dotnet/machinelearning) repo.
 
