@@ -1,9 +1,9 @@
 ﻿<Type Name="KMeansPlusPlusClusterer" FullName="Microsoft.ML.Trainers.KMeansPlusPlusClusterer">
-  <TypeSignature Language="C#" Value="public sealed class KMeansPlusPlusClusterer : Microsoft.ML.ILearningPipelineItem, Microsoft.ML.Runtime.EntryPoints.CommonInputs.ITrainerInput" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit KMeansPlusPlusClusterer extends System.Object implements class Microsoft.ML.ILearningPipelineItem, class Microsoft.ML.Runtime.EntryPoints.CommonInputs/ITrainerInput" />
+  <TypeSignature Language="C#" Value="public sealed class KMeansPlusPlusClusterer : Microsoft.ML.ILearningPipelineItem, Microsoft.ML.Runtime.EntryPoints.CommonInputs.IUnsupervisedTrainerWithWeight" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit KMeansPlusPlusClusterer extends System.Object implements class Microsoft.ML.ILearningPipelineItem, class Microsoft.ML.Runtime.EntryPoints.CommonInputs/ITrainerInput, class Microsoft.ML.Runtime.EntryPoints.CommonInputs/IUnsupervisedTrainerWithWeight" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Trainers.KMeansPlusPlusClusterer" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class KMeansPlusPlusClusterer&#xA;Implements CommonInputs.ITrainerInput, ILearningPipelineItem" />
-  <TypeSignature Language="F#" Value="type KMeansPlusPlusClusterer = class&#xA;    interface CommonInputs.ITrainerInput&#xA;    interface ILearningPipelineItem" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class KMeansPlusPlusClusterer&#xA;Implements CommonInputs.IUnsupervisedTrainerWithWeight, ILearningPipelineItem" />
+  <TypeSignature Language="F#" Value="type KMeansPlusPlusClusterer = class&#xA;    interface CommonInputs.IUnsupervisedTrainerWithWeight&#xA;    interface CommonInputs.ITrainerInput&#xA;    interface ILearningPipelineItem" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -16,14 +16,20 @@
       <InterfaceName>Microsoft.ML.ILearningPipelineItem</InterfaceName>
     </Interface>
     <Interface>
-      <InterfaceName>Microsoft.ML.Runtime.EntryPoints.CommonInputs+ITrainerInput</InterfaceName>
+      <InterfaceName>Microsoft.ML.Runtime.EntryPoints.CommonInputs+IUnsupervisedTrainerWithWeight</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
     <summary>
             K-means is a popular clustering algorithm. With K-means, the data is clustered into a specified number of clusters in order to minimize the within-cluster sum of squares. K-means++ improves upon K-means by using a better method for choosing the initial cluster centers.
             </summary>
-    <remarks>To be added.</remarks>
+    <remarks>
+            K-means++ improves upon K-means by using the <a href="http://research.microsoft.com/apps/pubs/default.aspx?id=252149">Yinyang K-Means</a> method for choosing the initial cluster centers.
+            YYK-Means accelerates K-Means up to an order of magnitude while producing exactly the same clustering results (modulo floating point precision issues).   
+            YYK-Means observes that there is a lot of redundancy across iterations in the KMeans algorithms and most points do not change their clusters during an iteration. 
+            It uses various bounding techniques to identify this redundancy and eliminate many distance computations and optimize centroid computations. 
+            <a href="https://en.wikipedia.org/wiki/K-means_clustering">K-means</a>.
+            <a href="https://en.wikipedia.org/wiki/K-means%2b%2b">K-means++</a></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -317,6 +323,28 @@
       <Docs>
         <summary>
             The data to be used for training
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WeightColumn">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.EntryPoints.Optional&lt;string&gt; WeightColumn { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.EntryPoints.Optional`1&lt;string&gt; WeightColumn" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.KMeansPlusPlusClusterer.WeightColumn" />
+      <MemberSignature Language="VB.NET" Value="Public Property WeightColumn As Optional(Of String)" />
+      <MemberSignature Language="F#" Value="member this.WeightColumn : Microsoft.ML.Runtime.EntryPoints.Optional&lt;string&gt; with get, set" Usage="Microsoft.ML.Trainers.KMeansPlusPlusClusterer.WeightColumn" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.EntryPoints.Optional&lt;System.String&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Column to use for example weight
             </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>

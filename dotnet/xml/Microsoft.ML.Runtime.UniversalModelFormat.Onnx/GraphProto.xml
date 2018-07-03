@@ -24,10 +24,13 @@
   </Interfaces>
   <Docs>
     <summary>
-            GraphProto defines a parameterized series of nodes to form a directed acyclic graph.
-            This is the equivalent of the "network" and "graph" in many deep learning
-            frameworks.
-            </summary>
+             Graphs
+            
+             A graph defines the computational logic of a model and is comprised of a parameterized 
+             list of nodes that form a directed acyclic graph based on their inputs and outputs.
+             This is the equivalent of the "network" or "graph" in many deep learning
+             frameworks.
+             </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -297,6 +300,34 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Google.Protobuf.IMessage.Descriptor">
+      <MemberSignature Language="C#" Value="Google.Protobuf.Reflection.MessageDescriptor Google.Protobuf.IMessage.Descriptor { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Google.Protobuf.Reflection.MessageDescriptor pb::Google.Protobuf.IMessage.Descriptor" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.pb::Google#Protobuf#IMessage#Descriptor" />
+      <MemberSignature Language="VB.NET" Value=" ReadOnly Property Descriptor As MessageDescriptor Implements IMessage.Descriptor" />
+      <MemberSignature Language="F#" Usage="Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.pb::Google.Protobuf.IMessage.Descriptor" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Google.Protobuf.IMessage.Descriptor</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.UniversalModelFormat</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Diagnostics.DebuggerNonUserCode</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Google.Protobuf.Reflection.MessageDescriptor</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Initializer">
       <MemberSignature Language="C#" Value="public Google.Protobuf.Collections.RepeatedField&lt;Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto&gt; Initializer { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Google.Protobuf.Collections.RepeatedField`1&lt;class Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto&gt; Initializer" />
@@ -318,13 +349,9 @@
       </ReturnValue>
       <Docs>
         <summary>
-            A list of named tensor values (constants), used to specify default
-            values for some of the inputs of the graph.
+            A list of named tensor values, used to specify constant inputs of the graph.
             Each TensorProto entry must have a distinct name (within the list) that
             also appears in the input list.
-            In an evaluation, the default value specified here is used if and only if
-            user specifies no value for the corresponding input parameter.
-            May be used to pass serialized parameters for networks.
             </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
@@ -527,7 +554,7 @@
       </ReturnValue>
       <Docs>
         <summary>
-            The nodes in the graph.
+            The nodes in the graph, sorted topologically.
             </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
