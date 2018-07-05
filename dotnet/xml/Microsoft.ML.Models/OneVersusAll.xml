@@ -295,5 +295,48 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="With">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.ILearningPipelineItem With (Microsoft.ML.Runtime.EntryPoints.CommonInputs.ITrainerInputWithLabel trainer, bool useProbabilities = true);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.ILearningPipelineItem With(class Microsoft.ML.Runtime.EntryPoints.CommonInputs/ITrainerInputWithLabel trainer, bool useProbabilities) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Models.OneVersusAll.With(Microsoft.ML.Runtime.EntryPoints.CommonInputs.ITrainerInputWithLabel,System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function With (trainer As CommonInputs.ITrainerInputWithLabel, Optional useProbabilities As Boolean = true) As ILearningPipelineItem" />
+      <MemberSignature Language="F#" Value="static member With : Microsoft.ML.Runtime.EntryPoints.CommonInputs.ITrainerInputWithLabel * bool -&gt; Microsoft.ML.ILearningPipelineItem" Usage="Microsoft.ML.Models.OneVersusAll.With (trainer, useProbabilities)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.ILearningPipelineItem</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="trainer" Type="Microsoft.ML.Runtime.EntryPoints.CommonInputs+ITrainerInputWithLabel" />
+        <Parameter Name="useProbabilities" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="trainer">Underlying binary trainer</param>
+        <param name="useProbabilities">"Use probabilities (vs. raw outputs) to identify top-score category.
+             By specifying it to false, you can tell One-versus-all to not use the probabilities but instead
+             the raw uncalibrated scores from each predictor. This is generally not recommended, since these quantities
+             are not meant to be comparable from one predictor to another, unlike calibrated probabilities.</param>
+        <summary>
+             One-versus-all, OvA, learner (also known as One-vs.-rest, "OvR") is a multi-class learner 
+             with the strategy to fit one binary classifier per class in the dataset.
+             It trains the provided binary classifier for each class against the other classes, where the current 
+             class is treated as the positive labels and examples in other classes are treated as the negative classes.
+             See <a href="https://en.wikipedia.org/wiki/Multiclass_classification#One-vs.-rest">wikipedia</a> page.
+             </summary>
+        <returns>To be added.</returns>
+        <remarks>
+             The base trainer must be a binary classifier. To check the available binary classifiers, type BinaryClassifiers,
+             and look at the available binary learners as suggested by IntelliSense.
+             </remarks>
+        <example>
+             In order to use it all you need to do is add it to pipeline as regular learner:
+             
+             pipeline.Add(OneVersusAll.With(new StochasticDualCoordinateAscentBinaryClassifier()));
+             </example>
+      </Docs>
+    </Member>
   </Members>
 </Type>

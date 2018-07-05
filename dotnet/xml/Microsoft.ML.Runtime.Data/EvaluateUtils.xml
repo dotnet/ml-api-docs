@@ -11,7 +11,6 @@
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
-  <Interfaces />
   <Docs>
     <summary>To be added.</summary>
     <remarks>To be added.</remarks>
@@ -199,7 +198,6 @@
             This method gets the per-instance metrics from multiple scored data views and either returns them as an
             array or combines them into a single data view, based on user specifications.
             </summary>
-        <returns />
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -374,11 +372,11 @@
       </Docs>
     </Member>
     <Member MemberName="ReconcileKeyValues">
-      <MemberSignature Language="C#" Value="public static void ReconcileKeyValues (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.IDataView[] views, string columnName);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void ReconcileKeyValues(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.IDataView[] views, string columnName) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.EvaluateUtils.ReconcileKeyValues(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView[],System.String)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub ReconcileKeyValues (env As IHostEnvironment, views As IDataView(), columnName As String)" />
-      <MemberSignature Language="F#" Value="static member ReconcileKeyValues : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.IDataView[] * string -&gt; unit" Usage="Microsoft.ML.Runtime.Data.EvaluateUtils.ReconcileKeyValues (env, views, columnName)" />
+      <MemberSignature Language="C#" Value="public static void ReconcileKeyValues (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.IDataView[] views, string columnName, Microsoft.ML.Runtime.Data.ColumnType keyValueType);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void ReconcileKeyValues(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.IDataView[] views, string columnName, class Microsoft.ML.Runtime.Data.ColumnType keyValueType) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.EvaluateUtils.ReconcileKeyValues(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView[],System.String,Microsoft.ML.Runtime.Data.ColumnType)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub ReconcileKeyValues (env As IHostEnvironment, views As IDataView(), columnName As String, keyValueType As ColumnType)" />
+      <MemberSignature Language="F#" Value="static member ReconcileKeyValues : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.IDataView[] * string * Microsoft.ML.Runtime.Data.ColumnType -&gt; unit" Usage="Microsoft.ML.Runtime.Data.EvaluateUtils.ReconcileKeyValues (env, views, columnName, keyValueType)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -391,11 +389,47 @@
         <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
         <Parameter Name="views" Type="Microsoft.ML.Runtime.Data.IDataView[]" />
         <Parameter Name="columnName" Type="System.String" />
+        <Parameter Name="keyValueType" Type="Microsoft.ML.Runtime.Data.ColumnType" />
       </Parameters>
       <Docs>
         <param name="env">To be added.</param>
         <param name="views">To be added.</param>
         <param name="columnName">To be added.</param>
+        <param name="keyValueType">To be added.</param>
+        <summary>
+            This method takes an array of data views and a specified input key column, and adds a new output column to each of the data views.
+            First, we find the union set of the key values in the different data views. Next we define a new key column for each 
+            data view, with the union of the key values as the new key values. For each data view, the value in the output column is the value
+            corresponding to the key value in the original column.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReconcileKeyValuesWithNoNames">
+      <MemberSignature Language="C#" Value="public static void ReconcileKeyValuesWithNoNames (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.IDataView[] views, string columnName, int keyCount);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void ReconcileKeyValuesWithNoNames(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.IDataView[] views, string columnName, int32 keyCount) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.EvaluateUtils.ReconcileKeyValuesWithNoNames(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView[],System.String,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub ReconcileKeyValuesWithNoNames (env As IHostEnvironment, views As IDataView(), columnName As String, keyCount As Integer)" />
+      <MemberSignature Language="F#" Value="static member ReconcileKeyValuesWithNoNames : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.IDataView[] * string * int -&gt; unit" Usage="Microsoft.ML.Runtime.Data.EvaluateUtils.ReconcileKeyValuesWithNoNames (env, views, columnName, keyCount)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="views" Type="Microsoft.ML.Runtime.Data.IDataView[]" />
+        <Parameter Name="columnName" Type="System.String" />
+        <Parameter Name="keyCount" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="views">To be added.</param>
+        <param name="columnName">To be added.</param>
+        <param name="keyCount">To be added.</param>
         <summary>
             This method takes an array of data views and a specified input key column, and adds a new output column to each of the data views.
             First, we find the union set of the key values in the different data views. Next we define a new key column for each 
@@ -447,11 +481,11 @@
       </Docs>
     </Member>
     <Member MemberName="ReconcileVectorKeyValues">
-      <MemberSignature Language="C#" Value="public static void ReconcileVectorKeyValues (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.IDataView[] views, string columnName);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void ReconcileVectorKeyValues(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.IDataView[] views, string columnName) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.EvaluateUtils.ReconcileVectorKeyValues(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView[],System.String)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub ReconcileVectorKeyValues (env As IHostEnvironment, views As IDataView(), columnName As String)" />
-      <MemberSignature Language="F#" Value="static member ReconcileVectorKeyValues : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.IDataView[] * string -&gt; unit" Usage="Microsoft.ML.Runtime.Data.EvaluateUtils.ReconcileVectorKeyValues (env, views, columnName)" />
+      <MemberSignature Language="C#" Value="public static void ReconcileVectorKeyValues (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.IDataView[] views, string columnName, Microsoft.ML.Runtime.Data.ColumnType keyValueType);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void ReconcileVectorKeyValues(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.IDataView[] views, string columnName, class Microsoft.ML.Runtime.Data.ColumnType keyValueType) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.EvaluateUtils.ReconcileVectorKeyValues(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView[],System.String,Microsoft.ML.Runtime.Data.ColumnType)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub ReconcileVectorKeyValues (env As IHostEnvironment, views As IDataView(), columnName As String, keyValueType As ColumnType)" />
+      <MemberSignature Language="F#" Value="static member ReconcileVectorKeyValues : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.IDataView[] * string * Microsoft.ML.Runtime.Data.ColumnType -&gt; unit" Usage="Microsoft.ML.Runtime.Data.EvaluateUtils.ReconcileVectorKeyValues (env, views, columnName, keyValueType)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -464,13 +498,15 @@
         <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
         <Parameter Name="views" Type="Microsoft.ML.Runtime.Data.IDataView[]" />
         <Parameter Name="columnName" Type="System.String" />
+        <Parameter Name="keyValueType" Type="Microsoft.ML.Runtime.Data.ColumnType" />
       </Parameters>
       <Docs>
         <param name="env">To be added.</param>
         <param name="views">To be added.</param>
         <param name="columnName">To be added.</param>
+        <param name="keyValueType">To be added.</param>
         <summary>
-            This method is similar to <see cref="M:Microsoft.ML.Runtime.Data.EvaluateUtils.ReconcileKeyValues(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView[],System.String)" />, but it reconciles the key values over vector
+            This method is similar to <see cref="M:Microsoft.ML.Runtime.Data.EvaluateUtils.ReconcileKeyValues(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView[],System.String,Microsoft.ML.Runtime.Data.ColumnType)" />, but it reconciles the key values over vector
             input columns.
             </summary>
         <remarks>To be added.</remarks>
