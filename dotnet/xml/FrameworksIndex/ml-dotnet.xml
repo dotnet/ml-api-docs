@@ -368,6 +368,7 @@
       <Member Id="P:Microsoft.ML.Models.CrossValidationResultsCombiner.GroupColumn" />
       <Member Id="P:Microsoft.ML.Models.CrossValidationResultsCombiner.Kind" />
       <Member Id="P:Microsoft.ML.Models.CrossValidationResultsCombiner.LabelColumn" />
+      <Member Id="P:Microsoft.ML.Models.CrossValidationResultsCombiner.NameColumn" />
       <Member Id="P:Microsoft.ML.Models.CrossValidationResultsCombiner.OverallMetrics" />
       <Member Id="P:Microsoft.ML.Models.CrossValidationResultsCombiner.PerInstanceMetrics" />
       <Member Id="P:Microsoft.ML.Models.CrossValidationResultsCombiner.Warnings" />
@@ -388,6 +389,7 @@
       <Member Id="P:Microsoft.ML.Models.CrossValidator.Inputs" />
       <Member Id="P:Microsoft.ML.Models.CrossValidator.Kind" />
       <Member Id="P:Microsoft.ML.Models.CrossValidator.LabelColumn" />
+      <Member Id="P:Microsoft.ML.Models.CrossValidator.NameColumn" />
       <Member Id="P:Microsoft.ML.Models.CrossValidator.Nodes" />
       <Member Id="P:Microsoft.ML.Models.CrossValidator.NumFolds" />
       <Member Id="P:Microsoft.ML.Models.CrossValidator.Outputs" />
@@ -732,6 +734,7 @@
       <Member Id="P:Microsoft.ML.Models.TrainTestEvaluator.Inputs" />
       <Member Id="P:Microsoft.ML.Models.TrainTestEvaluator.Kind" />
       <Member Id="P:Microsoft.ML.Models.TrainTestEvaluator.LabelColumn" />
+      <Member Id="P:Microsoft.ML.Models.TrainTestEvaluator.NameColumn" />
       <Member Id="P:Microsoft.ML.Models.TrainTestEvaluator.Nodes" />
       <Member Id="P:Microsoft.ML.Models.TrainTestEvaluator.Outputs" />
       <Member Id="P:Microsoft.ML.Models.TrainTestEvaluator.PipelineId" />
@@ -1146,11 +1149,14 @@
     <Type Name="Microsoft.ML.Runtime.DefaultsAutoMlEngine" Id="T:Microsoft.ML.Runtime.DefaultsAutoMlEngine">
       <Member Id="M:Microsoft.ML.Runtime.DefaultsAutoMlEngine.#ctor" />
     </Type>
-    <Type Name="Microsoft.ML.Runtime.DisagreementDiversityMeasureEnsembleDiversityMeasure" Id="T:Microsoft.ML.Runtime.DisagreementDiversityMeasureEnsembleDiversityMeasure">
-      <Member Id="M:Microsoft.ML.Runtime.DisagreementDiversityMeasureEnsembleDiversityMeasure.#ctor" />
+    <Type Name="Microsoft.ML.Runtime.DisagreementDiversityMeasureEnsembleBinaryDiversityMeasure" Id="T:Microsoft.ML.Runtime.DisagreementDiversityMeasureEnsembleBinaryDiversityMeasure">
+      <Member Id="M:Microsoft.ML.Runtime.DisagreementDiversityMeasureEnsembleBinaryDiversityMeasure.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.EarlyStoppingCriterion" Id="T:Microsoft.ML.Runtime.EarlyStoppingCriterion">
       <Member Id="M:Microsoft.ML.Runtime.EarlyStoppingCriterion.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.EnsembleBinaryDiversityMeasure" Id="T:Microsoft.ML.Runtime.EnsembleBinaryDiversityMeasure">
+      <Member Id="M:Microsoft.ML.Runtime.EnsembleBinaryDiversityMeasure.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.EnsembleBinaryOutputCombiner" Id="T:Microsoft.ML.Runtime.EnsembleBinaryOutputCombiner">
       <Member Id="M:Microsoft.ML.Runtime.EnsembleBinaryOutputCombiner.#ctor" />
@@ -1158,17 +1164,20 @@
     <Type Name="Microsoft.ML.Runtime.EnsembleBinarySubModelSelector" Id="T:Microsoft.ML.Runtime.EnsembleBinarySubModelSelector">
       <Member Id="M:Microsoft.ML.Runtime.EnsembleBinarySubModelSelector.#ctor" />
     </Type>
-    <Type Name="Microsoft.ML.Runtime.EnsembleDiversityMeasure" Id="T:Microsoft.ML.Runtime.EnsembleDiversityMeasure">
-      <Member Id="M:Microsoft.ML.Runtime.EnsembleDiversityMeasure.#ctor" />
-    </Type>
     <Type Name="Microsoft.ML.Runtime.EnsembleFeatureSelector" Id="T:Microsoft.ML.Runtime.EnsembleFeatureSelector">
       <Member Id="M:Microsoft.ML.Runtime.EnsembleFeatureSelector.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.EnsembleMulticlassDiversityMeasure" Id="T:Microsoft.ML.Runtime.EnsembleMulticlassDiversityMeasure">
+      <Member Id="M:Microsoft.ML.Runtime.EnsembleMulticlassDiversityMeasure.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.EnsembleMulticlassOutputCombiner" Id="T:Microsoft.ML.Runtime.EnsembleMulticlassOutputCombiner">
       <Member Id="M:Microsoft.ML.Runtime.EnsembleMulticlassOutputCombiner.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.EnsembleMulticlassSubModelSelector" Id="T:Microsoft.ML.Runtime.EnsembleMulticlassSubModelSelector">
       <Member Id="M:Microsoft.ML.Runtime.EnsembleMulticlassSubModelSelector.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.EnsembleRegressionDiversityMeasure" Id="T:Microsoft.ML.Runtime.EnsembleRegressionDiversityMeasure">
+      <Member Id="M:Microsoft.ML.Runtime.EnsembleRegressionDiversityMeasure.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.EnsembleRegressionOutputCombiner" Id="T:Microsoft.ML.Runtime.EnsembleRegressionOutputCombiner">
       <Member Id="M:Microsoft.ML.Runtime.EnsembleRegressionOutputCombiner.#ctor" />
@@ -2074,8 +2083,8 @@
       <Member Id="F:Microsoft.ML.Runtime.MultiClassClassifierEvaluatorMetrics.LogLoss" />
       <Member Id="F:Microsoft.ML.Runtime.MultiClassClassifierEvaluatorMetrics.LogLossReduction" />
     </Type>
-    <Type Name="Microsoft.ML.Runtime.MultiDisagreementDiversityMeasureEnsembleDiversityMeasure" Id="T:Microsoft.ML.Runtime.MultiDisagreementDiversityMeasureEnsembleDiversityMeasure">
-      <Member Id="M:Microsoft.ML.Runtime.MultiDisagreementDiversityMeasureEnsembleDiversityMeasure.#ctor" />
+    <Type Name="Microsoft.ML.Runtime.MultiDisagreementDiversityMeasureEnsembleMulticlassDiversityMeasure" Id="T:Microsoft.ML.Runtime.MultiDisagreementDiversityMeasureEnsembleMulticlassDiversityMeasure">
+      <Member Id="M:Microsoft.ML.Runtime.MultiDisagreementDiversityMeasureEnsembleMulticlassDiversityMeasure.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.MultiMedianEnsembleMulticlassOutputCombiner" Id="T:Microsoft.ML.Runtime.MultiMedianEnsembleMulticlassOutputCombiner">
       <Member Id="M:Microsoft.ML.Runtime.MultiMedianEnsembleMulticlassOutputCombiner.#ctor" />
@@ -2087,7 +2096,6 @@
     </Type>
     <Type Name="Microsoft.ML.Runtime.MultiVotingEnsembleMulticlassOutputCombiner" Id="T:Microsoft.ML.Runtime.MultiVotingEnsembleMulticlassOutputCombiner">
       <Member Id="M:Microsoft.ML.Runtime.MultiVotingEnsembleMulticlassOutputCombiner.#ctor" />
-      <Member Id="P:Microsoft.ML.Runtime.MultiVotingEnsembleMulticlassOutputCombiner.Normalize" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.MultiWeightageKind" Id="T:Microsoft.ML.Runtime.MultiWeightageKind">
       <Member Id="F:Microsoft.ML.Runtime.MultiWeightageKind.AccuracyMacroAvg" />
@@ -2223,8 +2231,8 @@
       <Member Id="M:Microsoft.ML.Runtime.RandomUtils.Create(System.Nullable{System.UInt32})" />
       <Member Id="M:Microsoft.ML.Runtime.RandomUtils.Create(System.UInt32)" />
     </Type>
-    <Type Name="Microsoft.ML.Runtime.RegressionDisagreementDiversityMeasureEnsembleDiversityMeasure" Id="T:Microsoft.ML.Runtime.RegressionDisagreementDiversityMeasureEnsembleDiversityMeasure">
-      <Member Id="M:Microsoft.ML.Runtime.RegressionDisagreementDiversityMeasureEnsembleDiversityMeasure.#ctor" />
+    <Type Name="Microsoft.ML.Runtime.RegressionDisagreementDiversityMeasureEnsembleRegressionDiversityMeasure" Id="T:Microsoft.ML.Runtime.RegressionDisagreementDiversityMeasureEnsembleRegressionDiversityMeasure">
+      <Member Id="M:Microsoft.ML.Runtime.RegressionDisagreementDiversityMeasureEnsembleRegressionDiversityMeasure.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.RegressionEvaluatorMetrics" Id="T:Microsoft.ML.Runtime.RegressionEvaluatorMetrics">
       <Member Id="F:Microsoft.ML.Runtime.RegressionEvaluatorMetrics.L1" />
@@ -3050,6 +3058,7 @@
     <Type Name="Microsoft.ML.Runtime.Data.BootstrapSampleTransform" Id="T:Microsoft.ML.Runtime.Data.BootstrapSampleTransform">
       <Member Id="F:Microsoft.ML.Runtime.Data.BootstrapSampleTransform.LoaderSignature" />
       <Member Id="M:Microsoft.ML.Runtime.Data.BootstrapSampleTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.BootstrapSampleTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.BootstrapSampleTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.Boolean,System.Nullable{System.UInt32},System.Boolean,System.Int32)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.BootstrapSampleTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.BootstrapSampleTransform.GetRowCursorCore(System.Func{System.Int32,System.Boolean},Microsoft.ML.Runtime.IRandom)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.BootstrapSampleTransform.GetRowCursorSet(Microsoft.ML.Runtime.Data.IRowCursorConsolidator@,System.Func{System.Int32,System.Boolean},System.Int32,Microsoft.ML.Runtime.IRandom)" />
@@ -3095,6 +3104,7 @@
       <Member Id="F:Microsoft.ML.Runtime.Data.CategoricalHashTransform.NumBitsLim" />
       <Member Id="F:Microsoft.ML.Runtime.Data.CategoricalHashTransform.UserName" />
       <Member Id="M:Microsoft.ML.Runtime.Data.CategoricalHashTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.CategoricalHashTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.CategoricalHashTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,System.Int32,System.Int32,Microsoft.ML.Runtime.Data.CategoricalTransform.OutputKind)" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.CategoricalHashTransform/Arguments" Id="T:Microsoft.ML.Runtime.Data.CategoricalHashTransform.Arguments">
       <Member Id="F:Microsoft.ML.Runtime.Data.CategoricalHashTransform.Arguments.Column" />
@@ -3119,6 +3129,7 @@
     <Type Name="Microsoft.ML.Runtime.Data.CategoricalTransform" Id="T:Microsoft.ML.Runtime.Data.CategoricalTransform">
       <Member Id="F:Microsoft.ML.Runtime.Data.CategoricalTransform.UserName" />
       <Member Id="M:Microsoft.ML.Runtime.Data.CategoricalTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.CategoricalTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.CategoricalTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,Microsoft.ML.Runtime.Data.CategoricalTransform.OutputKind)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.CategoricalTransform.CreateTransformCore(Microsoft.ML.Runtime.Data.CategoricalTransform.OutputKind,Microsoft.ML.Runtime.Data.OneToOneColumn[],System.Collections.Generic.List{System.Nullable{Microsoft.ML.Runtime.Data.CategoricalTransform.OutputKind}},Microsoft.ML.Runtime.Data.IDataTransform,Microsoft.ML.Runtime.IHost,Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.CategoricalHashTransform.Arguments)" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.CategoricalTransform/Arguments" Id="T:Microsoft.ML.Runtime.Data.CategoricalTransform.Arguments">
@@ -3367,6 +3378,7 @@
       <Member Id="P:Microsoft.ML.Runtime.Data.CompositeDataLoader.CanShuffle" />
       <Member Id="P:Microsoft.ML.Runtime.Data.CompositeDataLoader.Schema" />
       <Member Id="P:Microsoft.ML.Runtime.Data.CompositeDataLoader.TransposeSchema" />
+      <Member Id="P:Microsoft.ML.Runtime.Data.CompositeDataLoader.View" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.CompositeDataLoader/Arguments" Id="T:Microsoft.ML.Runtime.Data.CompositeDataLoader.Arguments">
       <Member Id="F:Microsoft.ML.Runtime.Data.CompositeDataLoader.Arguments.Loader" />
@@ -3383,6 +3395,7 @@
       <Member Id="F:Microsoft.ML.Runtime.Data.ConcatTransform.UserName" />
       <Member Id="M:Microsoft.ML.Runtime.Data.ConcatTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.ConcatTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.ConcatTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.ConcatTransform.TaggedArguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.ConcatTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,System.String[])" />
       <Member Id="M:Microsoft.ML.Runtime.Data.ConcatTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.ConcatTransform.CreateGetters(Microsoft.ML.Runtime.Data.IRow,System.Func{System.Int32,System.Boolean},System.Action@)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.ConcatTransform.GetDependenciesCore(System.Func{System.Int32,System.Boolean})" />
@@ -3400,6 +3413,7 @@
     <Type Name="Microsoft.ML.Runtime.Data.ConcatTransform/Arguments" Id="T:Microsoft.ML.Runtime.Data.ConcatTransform.Arguments">
       <Member Id="F:Microsoft.ML.Runtime.Data.ConcatTransform.Arguments.Column" />
       <Member Id="M:Microsoft.ML.Runtime.Data.ConcatTransform.Arguments.#ctor" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.ConcatTransform.Arguments.#ctor(System.String,System.String[])" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.ConcatTransform/Column" Id="T:Microsoft.ML.Runtime.Data.ConcatTransform.Column">
       <Member Id="M:Microsoft.ML.Runtime.Data.ConcatTransform.Column.#ctor" />
@@ -3458,6 +3472,7 @@
       <Member Id="F:Microsoft.ML.Runtime.Data.CopyColumnsTransform.Summary" />
       <Member Id="F:Microsoft.ML.Runtime.Data.CopyColumnsTransform.UserName" />
       <Member Id="M:Microsoft.ML.Runtime.Data.CopyColumnsTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.CopyColumnsTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.CopyColumnsTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.CopyColumnsTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.CopyColumnsTransform.GetColumnTypeCore(System.Int32)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.CopyColumnsTransform.GetGetterCore(Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Data.IRow,System.Int32,System.Action@)" />
@@ -3477,6 +3492,7 @@
       <Member Id="F:Microsoft.ML.Runtime.Data.CountFeatureSelectionTransform.Summary" />
       <Member Id="F:Microsoft.ML.Runtime.Data.CountFeatureSelectionTransform.UserName" />
       <Member Id="M:Microsoft.ML.Runtime.Data.CountFeatureSelectionTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.CountFeatureSelectionTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.CountFeatureSelectionTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.Int64,System.String[])" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.CountFeatureSelectionTransform/Arguments" Id="T:Microsoft.ML.Runtime.Data.CountFeatureSelectionTransform.Arguments">
       <Member Id="F:Microsoft.ML.Runtime.Data.CountFeatureSelectionTransform.Arguments.Column" />
@@ -3677,6 +3693,7 @@
       <Member Id="F:Microsoft.ML.Runtime.Data.DropColumnsTransform.LoaderSignature" />
       <Member Id="M:Microsoft.ML.Runtime.Data.DropColumnsTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.DropColumnsTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.DropColumnsTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.DropColumnsTransform.KeepArguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.DropColumnsTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String[])" />
       <Member Id="M:Microsoft.ML.Runtime.Data.DropColumnsTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.DropColumnsTransform.CreateGetters(Microsoft.ML.Runtime.Data.IRow,System.Func{System.Int32,System.Boolean},System.Action@)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.DropColumnsTransform.GetDependenciesCore(System.Func{System.Int32,System.Boolean})" />
@@ -4457,8 +4474,9 @@
     <Type Name="Microsoft.ML.Runtime.Data.IColumnFunction" Id="T:Microsoft.ML.Runtime.Data.IColumnFunction">
       <Member Id="M:Microsoft.ML.Runtime.Data.IColumnFunction.AttachMetadata(Microsoft.ML.Runtime.Data.MetadataDispatcher.Builder,Microsoft.ML.Runtime.Data.ColumnType)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.IColumnFunction.GetGetter(Microsoft.ML.Runtime.Data.IRow,System.Int32)" />
-      <Member Id="M:Microsoft.ML.Runtime.Data.IColumnFunction.OnnxInfo(Microsoft.ML.Runtime.Model.Onnx.OnnxContext,Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.NodeProtoWrapper,System.Int32)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.IColumnFunction.OnnxInfo(Microsoft.ML.Runtime.Model.Onnx.OnnxContext,Microsoft.ML.Runtime.Model.Onnx.OnnxNode,System.Int32)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.IColumnFunction.PfaInfo(Microsoft.ML.Runtime.Model.Pfa.BoundPfaContext,Newtonsoft.Json.Linq.JToken)" />
+      <Member Id="P:Microsoft.ML.Runtime.Data.IColumnFunction.CanSaveOnnx" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.IColumnFunctionBuilder" Id="T:Microsoft.ML.Runtime.Data.IColumnFunctionBuilder">
       <Member Id="M:Microsoft.ML.Runtime.Data.IColumnFunctionBuilder.CreateColumnFunction" />
@@ -4623,6 +4641,10 @@
     <Type Name="Microsoft.ML.Runtime.Data.IValueMapperDist" Id="T:Microsoft.ML.Runtime.Data.IValueMapperDist">
       <Member Id="M:Microsoft.ML.Runtime.Data.IValueMapperDist.GetMapper``3" />
       <Member Id="P:Microsoft.ML.Runtime.Data.IValueMapperDist.DistType" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.Data.KeepColumnsTransform" Id="T:Microsoft.ML.Runtime.Data.KeepColumnsTransform">
+      <Member Id="M:Microsoft.ML.Runtime.Data.KeepColumnsTransform.#ctor" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.KeepColumnsTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String[])" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.KeyRange" Id="T:Microsoft.ML.Runtime.Data.KeyRange">
       <Member Id="F:Microsoft.ML.Runtime.Data.KeyRange.Contiguous" />
@@ -4819,6 +4841,8 @@
       <Member Id="M:Microsoft.ML.Runtime.Data.LpNormNormalizerTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.LpNormNormalizerTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.LpNormNormalizerTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.LpNormNormalizerTransform.GcnArguments,Microsoft.ML.Runtime.Data.IDataView)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.LpNormNormalizerTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.LpNormNormalizerTransform.CreateGlobalContrastNormalizer(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,System.Boolean,System.Boolean,System.Single)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.LpNormNormalizerTransform.CreateLpNormNormalizer(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,Microsoft.ML.Runtime.Data.LpNormNormalizerTransform.NormalizerKind,System.Boolean)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.LpNormNormalizerTransform.GetColumnTypeCore(System.Int32)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.LpNormNormalizerTransform.GetGetterCore(Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Data.IRow,System.Int32,System.Action@)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.LpNormNormalizerTransform.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
@@ -5015,6 +5039,7 @@
       <Member Id="M:Microsoft.ML.Runtime.Data.MetadataUtils.HasKeyNames(Microsoft.ML.Runtime.Data.ISchema,System.Int32,System.Int32)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.MetadataUtils.HasSlotNames(Microsoft.ML.Runtime.Data.ISchema,System.Int32,System.Int32)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.MetadataUtils.IsHidden(Microsoft.ML.Runtime.Data.ISchema,System.Int32)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.MetadataUtils.IsNormalized(Microsoft.ML.Runtime.Data.ISchema,System.Int32)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.MetadataUtils.Marshal``2(Microsoft.ML.Runtime.Data.MetadataUtils.MetadataGetter{``0},System.Int32,``1@)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.MetadataUtils.Prepend``1(System.Collections.Generic.IEnumerable{``0},``0[])" />
       <Member Id="M:Microsoft.ML.Runtime.Data.MetadataUtils.TryGetCategoricalFeatureIndices(Microsoft.ML.Runtime.Data.ISchema,System.Int32,System.Int32[]@)" />
@@ -5332,6 +5357,7 @@
       <Member Id="F:Microsoft.ML.Runtime.Data.NAFilter.ShortName" />
       <Member Id="F:Microsoft.ML.Runtime.Data.NAFilter.Summary" />
       <Member Id="M:Microsoft.ML.Runtime.Data.NAFilter.#ctor(Microsoft.ML.Runtime.IHost,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.NAFilter.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.Boolean,System.String[])" />
       <Member Id="M:Microsoft.ML.Runtime.Data.NAFilter.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.NAFilter.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.NAFilter.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.NAFilter.GetRowCursorCore(System.Func{System.Int32,System.Boolean},Microsoft.ML.Runtime.IRandom)" />
@@ -5637,6 +5663,12 @@
       <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.NormalizeTransform.MinMaxArguments,Microsoft.ML.Runtime.Data.IDataView)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.NormalizeTransform.SupervisedBinArguments,Microsoft.ML.Runtime.Data.IDataView)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.CreateBinningNormalizer(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,System.Int32)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.CreateIfNeeded(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.RoleMappedData@,Microsoft.ML.Runtime.ITrainer)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.CreateLogMeanVarNormalizer(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.CreateMeanVarNormalizer(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.CreateMinMaxNormalizer(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.CreateSupervisedBinningNormalizer(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,System.String,System.Int32,System.Int32)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.GetColumnTypeCore(System.Int32)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.GetGetterCore(Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Data.IRow,System.Int32,System.Action@)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
@@ -5664,9 +5696,10 @@
       <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.AffineColumnFunction.Create(Microsoft.ML.Runtime.IHost,System.Single[],System.Single[],System.Int32[])" />
       <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.AffineColumnFunction.Create(Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.IHost,Microsoft.ML.Runtime.Data.ColumnType)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.AffineColumnFunction.GetGetter(Microsoft.ML.Runtime.Data.IRow,System.Int32)" />
-      <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.AffineColumnFunction.OnnxInfo(Microsoft.ML.Runtime.Model.Onnx.OnnxContext,Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.NodeProtoWrapper,System.Int32)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.AffineColumnFunction.OnnxInfo(Microsoft.ML.Runtime.Model.Onnx.OnnxContext,Microsoft.ML.Runtime.Model.Onnx.OnnxNode,System.Int32)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.AffineColumnFunction.PfaInfo(Microsoft.ML.Runtime.Model.Pfa.BoundPfaContext,Newtonsoft.Json.Linq.JToken)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.AffineColumnFunction.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+      <Member Id="P:Microsoft.ML.Runtime.Data.NormalizeTransform.AffineColumnFunction.CanSaveOnnx" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.NormalizeTransform/ArgumentsBase" Id="T:Microsoft.ML.Runtime.Data.NormalizeTransform.ArgumentsBase">
       <Member Id="F:Microsoft.ML.Runtime.Data.NormalizeTransform.ArgumentsBase.MaxTrainingExamples" />
@@ -5701,9 +5734,10 @@
       <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.BinColumnFunction.Create(Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.IHost,Microsoft.ML.Runtime.Data.ColumnType)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.BinColumnFunction.GetGetter(Microsoft.ML.Runtime.Data.IRow,System.Int32)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.BinColumnFunction.GetVersionInfo" />
-      <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.BinColumnFunction.OnnxInfo(Microsoft.ML.Runtime.Model.Onnx.OnnxContext,Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.NodeProtoWrapper,System.Int32)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.BinColumnFunction.OnnxInfo(Microsoft.ML.Runtime.Model.Onnx.OnnxContext,Microsoft.ML.Runtime.Model.Onnx.OnnxNode,System.Int32)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.BinColumnFunction.PfaInfo(Microsoft.ML.Runtime.Model.Pfa.BoundPfaContext,Newtonsoft.Json.Linq.JToken)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.BinColumnFunction.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+      <Member Id="P:Microsoft.ML.Runtime.Data.NormalizeTransform.BinColumnFunction.CanSaveOnnx" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.NormalizeTransform/CdfColumnFunction" Id="T:Microsoft.ML.Runtime.Data.NormalizeTransform.CdfColumnFunction">
       <Member Id="F:Microsoft.ML.Runtime.Data.NormalizeTransform.CdfColumnFunction.Host" />
@@ -5716,9 +5750,10 @@
       <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.CdfColumnFunction.Create(Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.IHost,Microsoft.ML.Runtime.Data.ColumnType)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.CdfColumnFunction.GetGetter(Microsoft.ML.Runtime.Data.IRow,System.Int32)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.CdfColumnFunction.GetVersionInfo" />
-      <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.CdfColumnFunction.OnnxInfo(Microsoft.ML.Runtime.Model.Onnx.OnnxContext,Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.NodeProtoWrapper,System.Int32)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.CdfColumnFunction.OnnxInfo(Microsoft.ML.Runtime.Model.Onnx.OnnxContext,Microsoft.ML.Runtime.Model.Onnx.OnnxNode,System.Int32)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.CdfColumnFunction.PfaInfo(Microsoft.ML.Runtime.Model.Pfa.BoundPfaContext,Newtonsoft.Json.Linq.JToken)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.CdfColumnFunction.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+      <Member Id="P:Microsoft.ML.Runtime.Data.NormalizeTransform.CdfColumnFunction.CanSaveOnnx" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.NormalizeTransform/ColumnBase" Id="T:Microsoft.ML.Runtime.Data.NormalizeTransform.ColumnBase">
       <Member Id="F:Microsoft.ML.Runtime.Data.NormalizeTransform.ColumnBase.MaxTrainingExamples" />
@@ -5756,6 +5791,10 @@
       <Member Id="F:Microsoft.ML.Runtime.Data.NormalizeTransform.SupervisedBinArguments.LabelColumn" />
       <Member Id="F:Microsoft.ML.Runtime.Data.NormalizeTransform.SupervisedBinArguments.MinBinSize" />
       <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeTransform.SupervisedBinArguments.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.Data.NormalizeUtils" Id="T:Microsoft.ML.Runtime.Data.NormalizeUtils">
+      <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeUtils.FeaturesAreNormalized(Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.NormalizeUtils.NeedNormalization(Microsoft.ML.Runtime.ITrainer)" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.NumberType" Id="T:Microsoft.ML.Runtime.Data.NumberType">
       <Member Id="M:Microsoft.ML.Runtime.Data.NumberType.Equals(Microsoft.ML.Runtime.Data.ColumnType)" />
@@ -6334,25 +6373,16 @@
       <Member Id="M:Microsoft.ML.Runtime.Data.RffTransform.Column.TryUnparse(System.Text.StringBuilder)" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.RoleMappedData" Id="T:Microsoft.ML.Runtime.Data.RoleMappedData">
-      <Member Id="F:Microsoft.ML.Runtime.Data.RoleMappedData.Data" />
-      <Member Id="F:Microsoft.ML.Runtime.Data.RoleMappedData.Schema" />
-      <Member Id="M:Microsoft.ML.Runtime.Data.RoleMappedData.Create(Microsoft.ML.Runtime.Data.IDataView)" />
-      <Member Id="M:Microsoft.ML.Runtime.Data.RoleMappedData.Create(Microsoft.ML.Runtime.Data.IDataView,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole,System.String}})" />
-      <Member Id="M:Microsoft.ML.Runtime.Data.RoleMappedData.Create(Microsoft.ML.Runtime.Data.IDataView,System.Collections.Generic.KeyValuePair{Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole,System.String}[])" />
-      <Member Id="M:Microsoft.ML.Runtime.Data.RoleMappedData.CreateOpt(Microsoft.ML.Runtime.Data.IDataView,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole,System.String}})" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.RoleMappedData.#ctor(Microsoft.ML.Runtime.Data.IDataView,System.Boolean,System.Collections.Generic.KeyValuePair{Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole,System.String}[])" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.RoleMappedData.#ctor(Microsoft.ML.Runtime.Data.IDataView,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole,System.String}},System.Boolean)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.RoleMappedData.#ctor(Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,System.String,System.String,System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole,System.String}},System.Boolean)" />
+      <Member Id="P:Microsoft.ML.Runtime.Data.RoleMappedData.Data" />
+      <Member Id="P:Microsoft.ML.Runtime.Data.RoleMappedData.Schema" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.RoleMappedSchema" Id="T:Microsoft.ML.Runtime.Data.RoleMappedSchema">
-      <Member Id="F:Microsoft.ML.Runtime.Data.RoleMappedSchema.Feature" />
-      <Member Id="F:Microsoft.ML.Runtime.Data.RoleMappedSchema.Group" />
-      <Member Id="F:Microsoft.ML.Runtime.Data.RoleMappedSchema.Id" />
-      <Member Id="F:Microsoft.ML.Runtime.Data.RoleMappedSchema.Label" />
-      <Member Id="F:Microsoft.ML.Runtime.Data.RoleMappedSchema.Name" />
-      <Member Id="F:Microsoft.ML.Runtime.Data.RoleMappedSchema.Schema" />
-      <Member Id="F:Microsoft.ML.Runtime.Data.RoleMappedSchema.Weight" />
-      <Member Id="M:Microsoft.ML.Runtime.Data.RoleMappedSchema.Create(Microsoft.ML.Runtime.Data.ISchema)" />
-      <Member Id="M:Microsoft.ML.Runtime.Data.RoleMappedSchema.Create(Microsoft.ML.Runtime.Data.ISchema,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole,System.String}})" />
-      <Member Id="M:Microsoft.ML.Runtime.Data.RoleMappedSchema.Create(Microsoft.ML.Runtime.Data.ISchema,System.Collections.Generic.KeyValuePair{Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole,System.String}[])" />
-      <Member Id="M:Microsoft.ML.Runtime.Data.RoleMappedSchema.CreateOpt(Microsoft.ML.Runtime.Data.ISchema,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole,System.String}})" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.RoleMappedSchema.#ctor(Microsoft.ML.Runtime.Data.ISchema,System.Boolean,System.Collections.Generic.KeyValuePair{Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole,System.String}[])" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.RoleMappedSchema.#ctor(Microsoft.ML.Runtime.Data.ISchema,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole,System.String}},System.Boolean)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.RoleMappedSchema.#ctor(Microsoft.ML.Runtime.Data.ISchema,System.String,System.String,System.String,System.String,System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole,System.String}},System.Boolean)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.RoleMappedSchema.CreatePair(Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole,System.String)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.RoleMappedSchema.GetColumnRoleNames" />
       <Member Id="M:Microsoft.ML.Runtime.Data.RoleMappedSchema.GetColumnRoleNames(Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole)" />
@@ -6362,6 +6392,12 @@
       <Member Id="M:Microsoft.ML.Runtime.Data.RoleMappedSchema.Has(Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.RoleMappedSchema.HasMultiple(Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.RoleMappedSchema.HasUnique(Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole)" />
+      <Member Id="P:Microsoft.ML.Runtime.Data.RoleMappedSchema.Feature" />
+      <Member Id="P:Microsoft.ML.Runtime.Data.RoleMappedSchema.Group" />
+      <Member Id="P:Microsoft.ML.Runtime.Data.RoleMappedSchema.Label" />
+      <Member Id="P:Microsoft.ML.Runtime.Data.RoleMappedSchema.Name" />
+      <Member Id="P:Microsoft.ML.Runtime.Data.RoleMappedSchema.Schema" />
+      <Member Id="P:Microsoft.ML.Runtime.Data.RoleMappedSchema.Weight" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.RoleMappedSchema/ColumnRole" Id="T:Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole">
       <Member Id="F:Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole.Value" />
@@ -6371,7 +6407,6 @@
       <Member Id="P:Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole.Feature" />
       <Member Id="P:Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole.FeatureContributions" />
       <Member Id="P:Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole.Group" />
-      <Member Id="P:Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole.Id" />
       <Member Id="P:Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole.Label" />
       <Member Id="P:Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole.Name" />
       <Member Id="P:Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole.Weight" />
@@ -7078,9 +7113,6 @@
       <Member Id="M:Microsoft.ML.Runtime.Data.TrainUtils.CanUseValidationData(Microsoft.ML.Runtime.ITrainer)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.TrainUtils.CheckAndGenerateCustomColumns(Microsoft.ML.Runtime.IExceptionContext,System.Collections.Generic.KeyValuePair{System.String,System.String}[])" />
       <Member Id="M:Microsoft.ML.Runtime.Data.TrainUtils.CheckTrainer``1(Microsoft.ML.Runtime.IExceptionContext,Microsoft.ML.Runtime.CommandLine.SubComponent{Microsoft.ML.Runtime.ITrainer,``0},System.String)" />
-      <Member Id="M:Microsoft.ML.Runtime.Data.TrainUtils.CreateExamples(Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,System.String,System.String,System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole,System.String}})" />
-      <Member Id="M:Microsoft.ML.Runtime.Data.TrainUtils.CreateExamplesOpt(Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,System.String,System.String,System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole,System.String}})" />
-      <Member Id="M:Microsoft.ML.Runtime.Data.TrainUtils.CreateRoleMappedSchemaOpt(Microsoft.ML.Runtime.Data.ISchema,System.String,System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole,System.String}})" />
       <Member Id="M:Microsoft.ML.Runtime.Data.TrainUtils.MatchNameOrDefaultOrNull(Microsoft.ML.Runtime.IExceptionContext,Microsoft.ML.Runtime.Data.ISchema,System.String,System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.TrainUtils.SaveDataPipe(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.RepositoryWriter,Microsoft.ML.Runtime.Data.IDataView,System.Boolean)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.TrainUtils.SaveModel(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.IFileHandle,Microsoft.ML.Runtime.IPredictor,Microsoft.ML.Runtime.Data.RoleMappedData,System.String)" />
@@ -7996,6 +8028,7 @@
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.Arguments.Inputs" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.Arguments.Kind" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.Arguments.LabelColumn" />
+      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.Arguments.NameColumn" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.Arguments.Nodes" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.Arguments.NumFolds" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.Arguments.Outputs" />
@@ -8016,6 +8049,7 @@
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.CombineMetricsInput.GroupColumn" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.CombineMetricsInput.Kind" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.CombineMetricsInput.LabelColumn" />
+      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.CombineMetricsInput.NameColumn" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.CombineMetricsInput.OverallMetrics" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.CombineMetricsInput.PerInstanceMetrics" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.CrossValidationMacro.CombineMetricsInput.Warnings" />
@@ -8116,7 +8150,7 @@
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.EntryPointNode.SetContext(Microsoft.ML.Runtime.EntryPoints.RunContext)" />
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.EntryPointNode.ToJson" />
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.EntryPointNode.ToString" />
-      <Member Id="M:Microsoft.ML.Runtime.EntryPoints.EntryPointNode.ValidateNodes(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.EntryPoints.RunContext,Newtonsoft.Json.Linq.JArray,Microsoft.ML.Runtime.EntryPoints.ModuleCatalog,System.String,System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.Runtime.EntryPoints.EntryPointNode.ValidateNodes(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.EntryPoints.RunContext,Newtonsoft.Json.Linq.JArray,Microsoft.ML.Runtime.EntryPoints.ModuleCatalog,System.String,System.String,System.String,System.String)" />
       <Member Id="P:Microsoft.ML.Runtime.EntryPoints.EntryPointNode.Catalog" />
       <Member Id="P:Microsoft.ML.Runtime.EntryPoints.EntryPointNode.Checkpoint" />
       <Member Id="P:Microsoft.ML.Runtime.EntryPoints.EntryPointNode.Context" />
@@ -8168,7 +8202,6 @@
     <Type Name="Microsoft.ML.Runtime.EntryPoints.FeatureCombiner/FeatureCombinerInput" Id="T:Microsoft.ML.Runtime.EntryPoints.FeatureCombiner.FeatureCombinerInput">
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.FeatureCombiner.FeatureCombinerInput.Features" />
       <Member Id="M:Microsoft.ML.Runtime.EntryPoints.FeatureCombiner.FeatureCombinerInput.#ctor" />
-      <Member Id="M:Microsoft.ML.Runtime.EntryPoints.FeatureCombiner.FeatureCombinerInput.GetRoles" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.EntryPoints.FeatureCombiner/LabelInputBase" Id="T:Microsoft.ML.Runtime.EntryPoints.FeatureCombiner.LabelInputBase">
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.FeatureCombiner.LabelInputBase.LabelColumn" />
@@ -8668,6 +8701,7 @@
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.TrainTestMacro.Arguments.Inputs" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.TrainTestMacro.Arguments.Kind" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.TrainTestMacro.Arguments.LabelColumn" />
+      <Member Id="F:Microsoft.ML.Runtime.EntryPoints.TrainTestMacro.Arguments.NameColumn" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.TrainTestMacro.Arguments.Nodes" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.TrainTestMacro.Arguments.Outputs" />
       <Member Id="F:Microsoft.ML.Runtime.EntryPoints.TrainTestMacro.Arguments.PipelineId" />
@@ -13647,73 +13681,30 @@
       <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.ITransformCanSaveOnnx.SaveAsOnnx(Microsoft.ML.Runtime.Model.Onnx.OnnxContext)" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Model.Onnx.OnnxContext" Id="T:Microsoft.ML.Runtime.Model.Onnx.OnnxContext">
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String,System.Int64,System.String)" />
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.AddInputVariable(Microsoft.ML.Runtime.Data.ColumnType,System.String)" />
+      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.#ctor" />
       <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.AddIntermediateVariable(Microsoft.ML.Runtime.Data.ColumnType,System.String,System.Boolean)" />
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.AddNode(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.AddOutputVariable(Microsoft.ML.Runtime.Data.ColumnType,System.String,System.Collections.Generic.List{System.Int64})" />
       <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.ContainsColumn(System.String)" />
+      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.CreateNode(System.String,System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.CreateNode(System.String,System.String,System.String,System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.GetNodeName(System.String)" />
       <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.GetVariableName(System.String)" />
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.MakeModel" />
       <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.RemoveColumn(System.String,System.Boolean)" />
       <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.RemoveVariable(System.String,System.Boolean)" />
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.TryGetVariableName(System.String)" />
     </Type>
-    <Type Name="Microsoft.ML.Runtime.Model.Onnx.OnnxUtils" Id="T:Microsoft.ML.Runtime.Model.Onnx.OnnxUtils">
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.#ctor" />
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.GetModelArgs(Microsoft.ML.Runtime.Data.ColumnType,System.String,System.Collections.Generic.List{System.Int64},System.Collections.Generic.List{System.Boolean})" />
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.MakeModel(System.Collections.Generic.List{Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto},System.String,System.String,System.String,System.String,System.Int64,System.Collections.Generic.List{Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.ModelArgs},System.Collections.Generic.List{Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.ModelArgs},System.Collections.Generic.List{Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.ModelArgs})" />
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.MakeNode(System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String},System.String,System.String)" />
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.MakeNode(System.String,System.String,System.String,System.String)" />
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.NodeAddAttributes(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto,System.String,Microsoft.ML.Runtime.Data.DvText)" />
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.NodeAddAttributes(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto,System.String,Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.NodeAddAttributes(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto,System.String,System.Boolean)" />
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.NodeAddAttributes(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto,System.String,System.Collections.Generic.IEnumerable{Microsoft.ML.Runtime.Data.DvText})" />
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.NodeAddAttributes(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto,System.String,System.Collections.Generic.IEnumerable{Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto})" />
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.NodeAddAttributes(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto,System.String,System.Collections.Generic.IEnumerable{System.Boolean})" />
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.NodeAddAttributes(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto,System.String,System.Collections.Generic.IEnumerable{System.Double})" />
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.NodeAddAttributes(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto,System.String,System.Collections.Generic.IEnumerable{System.Int64})" />
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.NodeAddAttributes(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto,System.String,System.Collections.Generic.IEnumerable{System.Single})" />
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.NodeAddAttributes(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto,System.String,System.Collections.Generic.IEnumerable{System.String})" />
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.NodeAddAttributes(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto,System.String,System.Double)" />
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.NodeAddAttributes(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto,System.String,System.Int64)" />
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.NodeAddAttributes(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto,System.String,System.String)" />
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.NodeAddAttributes(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto,System.String,System.String[])" />
-    </Type>
-    <Type Name="Microsoft.ML.Runtime.Model.Onnx.OnnxUtils/ModelArgs" Id="T:Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.ModelArgs">
-      <Member Id="F:Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.ModelArgs.DataType" />
-      <Member Id="F:Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.ModelArgs.DimParams" />
-      <Member Id="F:Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.ModelArgs.Dims" />
-      <Member Id="F:Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.ModelArgs.Name" />
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.ModelArgs.#ctor(System.String,Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.DataType,System.Collections.Generic.List{System.Int64},System.Collections.Generic.List{System.Boolean})" />
-    </Type>
-    <Type Name="Microsoft.ML.Runtime.Model.Onnx.OnnxUtils/NodeProtoWrapper" Id="T:Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.NodeProtoWrapper">
-      <Member Id="F:Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.NodeProtoWrapper.Node" />
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxUtils.NodeProtoWrapper.#ctor(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto)" />
-    </Type>
-    <Type Name="Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand" Id="T:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand">
-      <Member Id="F:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.LoadName" />
-      <Member Id="F:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.Summary" />
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.Arguments)" />
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.Apply(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.Arguments)" />
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.Run" />
-    </Type>
-    <Type Name="Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand/Arguments" Id="T:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.Arguments">
-      <Member Id="F:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.Arguments.Domain" />
-      <Member Id="F:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.Arguments.InputsToDrop" />
-      <Member Id="F:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.Arguments.InputsToDropArray" />
-      <Member Id="F:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.Arguments.Json" />
-      <Member Id="F:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.Arguments.LoadPredictor" />
-      <Member Id="F:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.Arguments.Model" />
-      <Member Id="F:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.Arguments.Name" />
-      <Member Id="F:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.Arguments.Onnx" />
-      <Member Id="F:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.Arguments.OutputsToDrop" />
-      <Member Id="F:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.Arguments.OutputsToDropArray" />
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.Arguments.#ctor" />
-    </Type>
-    <Type Name="Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand/Output" Id="T:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.Output">
-      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.Output.#ctor" />
+    <Type Name="Microsoft.ML.Runtime.Model.Onnx.OnnxNode" Id="T:Microsoft.ML.Runtime.Model.Onnx.OnnxNode">
+      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxNode.#ctor" />
+      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxNode.AddAttribute(System.String,Microsoft.ML.Runtime.Data.DvText)" />
+      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxNode.AddAttribute(System.String,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxNode.AddAttribute(System.String,System.Collections.Generic.IEnumerable{Microsoft.ML.Runtime.Data.DvText})" />
+      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxNode.AddAttribute(System.String,System.Collections.Generic.IEnumerable{System.Boolean})" />
+      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxNode.AddAttribute(System.String,System.Collections.Generic.IEnumerable{System.Double})" />
+      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxNode.AddAttribute(System.String,System.Collections.Generic.IEnumerable{System.Int64})" />
+      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxNode.AddAttribute(System.String,System.Collections.Generic.IEnumerable{System.Single})" />
+      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxNode.AddAttribute(System.String,System.Collections.Generic.IEnumerable{System.String})" />
+      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxNode.AddAttribute(System.String,System.Double)" />
+      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxNode.AddAttribute(System.String,System.Int64)" />
+      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxNode.AddAttribute(System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxNode.AddAttribute(System.String,System.String[])" />
     </Type>
   </Namespace>
   <Namespace Name="Microsoft.ML.Runtime.Model.Pfa">
@@ -15490,449 +15481,6 @@
       <Member Id="F:Microsoft.ML.Runtime.TreePredictor.NodeKeys.SplitGain" />
       <Member Id="F:Microsoft.ML.Runtime.TreePredictor.NodeKeys.SplitName" />
       <Member Id="F:Microsoft.ML.Runtime.TreePredictor.NodeKeys.Threshold" />
-    </Type>
-  </Namespace>
-  <Namespace Name="Microsoft.ML.Runtime.UniversalModelFormat.Onnx">
-    <Type Name="Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto" Id="T:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto">
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.DocStringFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.FFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.FloatsFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.GFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.GraphsFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.IFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.IntsFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.NameFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.RefAttrNameFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.SFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.StringsFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.TensorsFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.TFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.TypeFieldNumber" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.#ctor" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.#ctor(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.CalculateSize" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.Clone" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.Equals(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.Equals(System.Object)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.GetHashCode" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.MergeFrom(Google.Protobuf.CodedInputStream)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.MergeFrom(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.ToString" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.WriteTo(Google.Protobuf.CodedOutputStream)" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.Descriptor" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.DocString" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.F" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.Floats" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.G" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.Graphs" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.I" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.Ints" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.Name" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.Parser" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.pb::Google#Protobuf#IMessage#Descriptor" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.RefAttrName" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.S" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.Strings" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.T" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.Tensors" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.Type" />
-    </Type>
-    <Type Name="Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto/Types" Id="T:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.Types" />
-    <Type Name="Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto/Types/AttributeType" Id="T:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.Types.AttributeType">
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.Types.AttributeType.Float" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.Types.AttributeType.Floats" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.Types.AttributeType.Graph" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.Types.AttributeType.Graphs" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.Types.AttributeType.Int" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.Types.AttributeType.Ints" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.Types.AttributeType.String" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.Types.AttributeType.Strings" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.Types.AttributeType.Tensor" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.Types.AttributeType.Tensors" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.AttributeProto.Types.AttributeType.Undefined" />
-    </Type>
-    <Type Name="Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto" Id="T:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto">
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.DocStringFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.InitializerFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.InputFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.NameFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.NodeFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.OutputFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.ValueInfoFieldNumber" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.#ctor" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.#ctor(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.CalculateSize" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.Clone" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.Equals(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.Equals(System.Object)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.GetHashCode" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.MergeFrom(Google.Protobuf.CodedInputStream)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.MergeFrom(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.ToString" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.WriteTo(Google.Protobuf.CodedOutputStream)" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.Descriptor" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.DocString" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.Initializer" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.Input" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.Name" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.Node" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.Output" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.Parser" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.pb::Google#Protobuf#IMessage#Descriptor" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.GraphProto.ValueInfo" />
-    </Type>
-    <Type Name="Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto" Id="T:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto">
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.DocStringFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.DomainFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.GraphFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.IrVersionFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.MetadataPropsFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.ModelVersionFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.OpsetImportFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.ProducerNameFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.ProducerVersionFieldNumber" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.#ctor" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.#ctor(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.CalculateSize" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.Clone" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.Equals(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.Equals(System.Object)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.GetHashCode" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.MergeFrom(Google.Protobuf.CodedInputStream)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.MergeFrom(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.ToString" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.WriteTo(Google.Protobuf.CodedOutputStream)" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.Descriptor" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.DocString" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.Domain" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.Graph" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.IrVersion" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.MetadataProps" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.ModelVersion" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.OpsetImport" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.Parser" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.pb::Google#Protobuf#IMessage#Descriptor" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.ProducerName" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ModelProto.ProducerVersion" />
-    </Type>
-    <Type Name="Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto" Id="T:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto">
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto.AttributeFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto.DocStringFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto.DomainFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto.InputFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto.NameFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto.OpTypeFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto.OutputFieldNumber" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto.#ctor" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto.#ctor(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto.CalculateSize" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto.Clone" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto.Equals(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto.Equals(System.Object)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto.GetHashCode" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto.MergeFrom(Google.Protobuf.CodedInputStream)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto.MergeFrom(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto.ToString" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto.WriteTo(Google.Protobuf.CodedOutputStream)" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto.Attribute" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto.Descriptor" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto.DocString" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto.Domain" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto.Input" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto.Name" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto.OpType" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto.Output" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto.Parser" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.NodeProto.pb::Google#Protobuf#IMessage#Descriptor" />
-    </Type>
-    <Type Name="Microsoft.ML.Runtime.UniversalModelFormat.Onnx.OnnxMlReflection" Id="T:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.OnnxMlReflection">
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.OnnxMlReflection.Descriptor" />
-    </Type>
-    <Type Name="Microsoft.ML.Runtime.UniversalModelFormat.Onnx.OperatorSetIdProto" Id="T:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.OperatorSetIdProto">
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.OperatorSetIdProto.DomainFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.OperatorSetIdProto.VersionFieldNumber" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.OperatorSetIdProto.#ctor" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.OperatorSetIdProto.#ctor(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.OperatorSetIdProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.OperatorSetIdProto.CalculateSize" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.OperatorSetIdProto.Clone" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.OperatorSetIdProto.Equals(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.OperatorSetIdProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.OperatorSetIdProto.Equals(System.Object)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.OperatorSetIdProto.GetHashCode" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.OperatorSetIdProto.MergeFrom(Google.Protobuf.CodedInputStream)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.OperatorSetIdProto.MergeFrom(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.OperatorSetIdProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.OperatorSetIdProto.ToString" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.OperatorSetIdProto.WriteTo(Google.Protobuf.CodedOutputStream)" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.OperatorSetIdProto.Descriptor" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.OperatorSetIdProto.Domain" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.OperatorSetIdProto.Parser" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.OperatorSetIdProto.pb::Google#Protobuf#IMessage#Descriptor" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.OperatorSetIdProto.Version" />
-    </Type>
-    <Type Name="Microsoft.ML.Runtime.UniversalModelFormat.Onnx.StringStringEntryProto" Id="T:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.StringStringEntryProto">
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.StringStringEntryProto.KeyFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.StringStringEntryProto.ValueFieldNumber" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.StringStringEntryProto.#ctor" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.StringStringEntryProto.#ctor(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.StringStringEntryProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.StringStringEntryProto.CalculateSize" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.StringStringEntryProto.Clone" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.StringStringEntryProto.Equals(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.StringStringEntryProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.StringStringEntryProto.Equals(System.Object)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.StringStringEntryProto.GetHashCode" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.StringStringEntryProto.MergeFrom(Google.Protobuf.CodedInputStream)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.StringStringEntryProto.MergeFrom(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.StringStringEntryProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.StringStringEntryProto.ToString" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.StringStringEntryProto.WriteTo(Google.Protobuf.CodedOutputStream)" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.StringStringEntryProto.Descriptor" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.StringStringEntryProto.Key" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.StringStringEntryProto.Parser" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.StringStringEntryProto.pb::Google#Protobuf#IMessage#Descriptor" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.StringStringEntryProto.Value" />
-    </Type>
-    <Type Name="Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto" Id="T:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto">
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.DataTypeFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.DimsFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.DocStringFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.DoubleDataFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.FloatDataFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Int32DataFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Int64DataFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.NameFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.RawDataFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.SegmentFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.StringDataFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Uint64DataFieldNumber" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.#ctor" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.#ctor(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.CalculateSize" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Clone" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Equals(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Equals(System.Object)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.GetHashCode" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.MergeFrom(Google.Protobuf.CodedInputStream)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.MergeFrom(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.ToString" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.WriteTo(Google.Protobuf.CodedOutputStream)" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.DataType" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Descriptor" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Dims" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.DocString" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.DoubleData" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.FloatData" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Int32Data" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Int64Data" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Name" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Parser" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.pb::Google#Protobuf#IMessage#Descriptor" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.RawData" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Segment" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.StringData" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Uint64Data" />
-    </Type>
-    <Type Name="Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto/Types" Id="T:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types" />
-    <Type Name="Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto/Types/DataType" Id="T:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.DataType">
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.DataType.Bool" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.DataType.Complex128" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.DataType.Complex64" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.DataType.Double" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.DataType.Float" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.DataType.Float16" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.DataType.Int16" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.DataType.Int32" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.DataType.Int64" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.DataType.Int8" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.DataType.String" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.DataType.Uint16" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.DataType.Uint32" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.DataType.Uint64" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.DataType.Uint8" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.DataType.Undefined" />
-    </Type>
-    <Type Name="Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto/Types/Segment" Id="T:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.Segment">
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.Segment.BeginFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.Segment.EndFieldNumber" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.Segment.#ctor" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.Segment.#ctor(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.Segment)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.Segment.CalculateSize" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.Segment.Clone" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.Segment.Equals(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.Segment)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.Segment.Equals(System.Object)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.Segment.GetHashCode" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.Segment.MergeFrom(Google.Protobuf.CodedInputStream)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.Segment.MergeFrom(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.Segment)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.Segment.ToString" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.Segment.WriteTo(Google.Protobuf.CodedOutputStream)" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.Segment.Begin" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.Segment.Descriptor" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.Segment.End" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.Segment.Parser" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorProto.Types.Segment.pb::Google#Protobuf#IMessage#Descriptor" />
-    </Type>
-    <Type Name="Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto" Id="T:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto">
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.DimFieldNumber" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.#ctor" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.#ctor(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.CalculateSize" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Clone" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Equals(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Equals(System.Object)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.GetHashCode" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.MergeFrom(Google.Protobuf.CodedInputStream)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.MergeFrom(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.ToString" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.WriteTo(Google.Protobuf.CodedOutputStream)" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Descriptor" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Dim" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Parser" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.pb::Google#Protobuf#IMessage#Descriptor" />
-    </Type>
-    <Type Name="Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto/Types" Id="T:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types" />
-    <Type Name="Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto/Types/Dimension" Id="T:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension">
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension.DenotationFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension.DimParamFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension.DimValueFieldNumber" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension.#ctor" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension.#ctor(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension.CalculateSize" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension.ClearValue" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension.Clone" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension.Equals(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension.Equals(System.Object)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension.GetHashCode" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension.MergeFrom(Google.Protobuf.CodedInputStream)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension.MergeFrom(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension.ToString" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension.WriteTo(Google.Protobuf.CodedOutputStream)" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension.Denotation" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension.Descriptor" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension.DimParam" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension.DimValue" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension.Parser" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension.pb::Google#Protobuf#IMessage#Descriptor" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension.ValueCase" />
-    </Type>
-    <Type Name="Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto/Types/Dimension/ValueOneofCase" Id="T:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension.ValueOneofCase">
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension.ValueOneofCase.DimParam" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension.ValueOneofCase.DimValue" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TensorShapeProto.Types.Dimension.ValueOneofCase.None" />
-    </Type>
-    <Type Name="Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto" Id="T:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto">
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.DenotationFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.MapTypeFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.SequenceTypeFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.TensorTypeFieldNumber" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.#ctor" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.#ctor(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.CalculateSize" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.ClearValue" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Clone" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Equals(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Equals(System.Object)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.GetHashCode" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.MergeFrom(Google.Protobuf.CodedInputStream)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.MergeFrom(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.ToString" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.WriteTo(Google.Protobuf.CodedOutputStream)" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Denotation" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Descriptor" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.MapType" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Parser" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.pb::Google#Protobuf#IMessage#Descriptor" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.SequenceType" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.TensorType" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.ValueCase" />
-    </Type>
-    <Type Name="Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto/Types" Id="T:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types" />
-    <Type Name="Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto/Types/Map" Id="T:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Map">
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Map.KeyTypeFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Map.ValueTypeFieldNumber" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Map.#ctor" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Map.#ctor(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Map)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Map.CalculateSize" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Map.Clone" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Map.Equals(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Map)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Map.Equals(System.Object)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Map.GetHashCode" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Map.MergeFrom(Google.Protobuf.CodedInputStream)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Map.MergeFrom(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Map)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Map.ToString" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Map.WriteTo(Google.Protobuf.CodedOutputStream)" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Map.Descriptor" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Map.KeyType" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Map.Parser" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Map.pb::Google#Protobuf#IMessage#Descriptor" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Map.ValueType" />
-    </Type>
-    <Type Name="Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto/Types/Sequence" Id="T:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Sequence">
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Sequence.ElemTypeFieldNumber" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Sequence.#ctor" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Sequence.#ctor(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Sequence)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Sequence.CalculateSize" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Sequence.Clone" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Sequence.Equals(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Sequence)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Sequence.Equals(System.Object)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Sequence.GetHashCode" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Sequence.MergeFrom(Google.Protobuf.CodedInputStream)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Sequence.MergeFrom(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Sequence)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Sequence.ToString" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Sequence.WriteTo(Google.Protobuf.CodedOutputStream)" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Sequence.Descriptor" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Sequence.ElemType" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Sequence.Parser" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Sequence.pb::Google#Protobuf#IMessage#Descriptor" />
-    </Type>
-    <Type Name="Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto/Types/Tensor" Id="T:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Tensor">
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Tensor.ElemTypeFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Tensor.ShapeFieldNumber" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Tensor.#ctor" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Tensor.#ctor(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Tensor)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Tensor.CalculateSize" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Tensor.Clone" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Tensor.Equals(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Tensor)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Tensor.Equals(System.Object)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Tensor.GetHashCode" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Tensor.MergeFrom(Google.Protobuf.CodedInputStream)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Tensor.MergeFrom(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Tensor)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Tensor.ToString" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Tensor.WriteTo(Google.Protobuf.CodedOutputStream)" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Tensor.Descriptor" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Tensor.ElemType" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Tensor.Parser" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Tensor.pb::Google#Protobuf#IMessage#Descriptor" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.Types.Tensor.Shape" />
-    </Type>
-    <Type Name="Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto/ValueOneofCase" Id="T:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.ValueOneofCase">
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.ValueOneofCase.MapType" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.ValueOneofCase.None" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.ValueOneofCase.SequenceType" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.TypeProto.ValueOneofCase.TensorType" />
-    </Type>
-    <Type Name="Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ValueInfoProto" Id="T:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ValueInfoProto">
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ValueInfoProto.DocStringFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ValueInfoProto.NameFieldNumber" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ValueInfoProto.TypeFieldNumber" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ValueInfoProto.#ctor" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ValueInfoProto.#ctor(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ValueInfoProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ValueInfoProto.CalculateSize" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ValueInfoProto.Clone" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ValueInfoProto.Equals(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ValueInfoProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ValueInfoProto.Equals(System.Object)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ValueInfoProto.GetHashCode" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ValueInfoProto.MergeFrom(Google.Protobuf.CodedInputStream)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ValueInfoProto.MergeFrom(Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ValueInfoProto)" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ValueInfoProto.ToString" />
-      <Member Id="M:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ValueInfoProto.WriteTo(Google.Protobuf.CodedOutputStream)" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ValueInfoProto.Descriptor" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ValueInfoProto.DocString" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ValueInfoProto.Name" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ValueInfoProto.Parser" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ValueInfoProto.pb::Google#Protobuf#IMessage#Descriptor" />
-      <Member Id="P:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.ValueInfoProto.Type" />
-    </Type>
-    <Type Name="Microsoft.ML.Runtime.UniversalModelFormat.Onnx.Version" Id="T:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.Version">
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.Version.IrVersion" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.Version.IrVersion20171010" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.Version.IrVersion20171030" />
-      <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.Version.StartVersion" />
     </Type>
   </Namespace>
   <Namespace Name="Microsoft.ML.Trainers">
