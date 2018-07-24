@@ -21,9 +21,24 @@
   </Interfaces>
   <Docs>
     <summary>
-            Create an output column of the same type and size of the input column, where missing values are replaced with either the default value or the mean/min/max value (for non-text columns only).
-            </summary>
-    <remarks>To be added.</remarks>
+        Create an output column of the same type and size of the input column, 
+        where missing values are replaced with either the default value or the mean/min/max value (for non-text columns only). 
+      </summary>
+    <remarks>
+        This transform can transform either scalars or vectors (both fixed and variable size),
+        creating output columns that are identical to the input columns except for replacing NA values
+        with either the default value, user input, or imputed values (min/max/mean are currently supported).
+        Imputation modes are supported for vectors both by slot and across all slots.
+      </remarks>
+    <altmember cref="F:Microsoft.ML.Runtime.Data.MetadataUtils.Kinds.HasMissingValues" />
+    <example>
+      <code language="csharp">
+          pipeline.Add(new MissingValueSubstitutor("FeatureCol")
+          { 
+            ReplacementKind = NAReplaceTransformReplacementKind.Mean 
+          });
+        </code>
+    </example>
   </Docs>
   <Members>
     <Member MemberName=".ctor">

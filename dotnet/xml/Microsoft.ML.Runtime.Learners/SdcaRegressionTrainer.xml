@@ -1,36 +1,27 @@
 ﻿<Type Name="SdcaRegressionTrainer" FullName="Microsoft.ML.Runtime.Learners.SdcaRegressionTrainer">
-  <TypeSignature Language="C#" Value="public sealed class SdcaRegressionTrainer : Microsoft.ML.Runtime.Learners.SdcaTrainerBase&lt;Microsoft.ML.Runtime.IPredictor&gt;, Microsoft.ML.Runtime.ITrainer&lt;Microsoft.ML.Runtime.Data.RoleMappedData,Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt;&gt;, Microsoft.ML.Runtime.ITrainer&lt;Microsoft.ML.Runtime.Data.RoleMappedData&gt;, Microsoft.ML.Runtime.ITrainerEx" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit SdcaRegressionTrainer extends Microsoft.ML.Runtime.Learners.SdcaTrainerBase`1&lt;class Microsoft.ML.Runtime.IPredictor&gt; implements class Microsoft.ML.Runtime.ITrainer, class Microsoft.ML.Runtime.ITrainer`1&lt;class Microsoft.ML.Runtime.Data.RoleMappedData&gt;, class Microsoft.ML.Runtime.ITrainer`2&lt;class Microsoft.ML.Runtime.Data.RoleMappedData, class Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt;&gt;, class Microsoft.ML.Runtime.ITrainerEx" />
+  <TypeSignature Language="C#" Value="public sealed class SdcaRegressionTrainer : Microsoft.ML.Runtime.Learners.SdcaTrainerBase&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt;&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit SdcaRegressionTrainer extends Microsoft.ML.Runtime.Learners.SdcaTrainerBase`1&lt;class Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt;&gt;" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Learners.SdcaRegressionTrainer" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class SdcaRegressionTrainer&#xA;Inherits SdcaTrainerBase(Of IPredictor)&#xA;Implements ITrainer(Of RoleMappedData), ITrainer(Of RoleMappedData, IPredictorWithFeatureWeights(Of Single)), ITrainerEx" />
-  <TypeSignature Language="F#" Value="type SdcaRegressionTrainer = class&#xA;    inherit SdcaTrainerBase&lt;IPredictor&gt;&#xA;    interface ITrainer&lt;RoleMappedData, IPredictorWithFeatureWeights&lt;single&gt;&gt;&#xA;    interface ITrainer&lt;RoleMappedData&gt;&#xA;    interface ITrainer&#xA;    interface ITrainerEx" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class SdcaRegressionTrainer&#xA;Inherits SdcaTrainerBase(Of IPredictorWithFeatureWeights(Of Single))" />
+  <TypeSignature Language="F#" Value="type SdcaRegressionTrainer = class&#xA;    inherit SdcaTrainerBase&lt;IPredictorWithFeatureWeights&lt;single&gt;&gt;" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>Microsoft.ML.Runtime.Learners.SdcaTrainerBase&lt;Microsoft.ML.Runtime.IPredictor&gt;</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Runtime.Learners.SdcaTrainerBase&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;</BaseTypeName>
     <BaseTypeArguments>
-      <BaseTypeArgument TypeParamName="TPredictor">Microsoft.ML.Runtime.IPredictor</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TPredictor">Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
-  <Interfaces>
-    <Interface>
-      <InterfaceName>Microsoft.ML.Runtime.ITrainer&lt;Microsoft.ML.Runtime.Data.RoleMappedData,Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;</InterfaceName>
-    </Interface>
-    <Interface>
-      <InterfaceName>Microsoft.ML.Runtime.ITrainer&lt;Microsoft.ML.Runtime.Data.RoleMappedData&gt;</InterfaceName>
-    </Interface>
-    <Interface>
-      <InterfaceName>Microsoft.ML.Runtime.ITrainerEx</InterfaceName>
-    </Interface>
-  </Interfaces>
+  <Interfaces></Interfaces>
   <Docs>
     <summary>
         Train an SDCA linear model.
       </summary>
     <remarks>
-        This classifier is a trainer based on the Stochastic DualCoordinate Ascent(SDCA) method, a state-of-the-art optimization technique for convex objective functions.
+        This classifier is a trainer based on the Stochastic Dual Coordinate Ascent(SDCA) method, a state-of-the-art optimization technique for convex objective functions.
         The algorithm can be scaled for use on large out-of-memory data sets due to a semi-asynchronized implementation that supports multi-threading.
         <para>
           Convergence is underwritten by periodically enforcing synchronization between primal and dual updates in a separate thread.
@@ -42,9 +33,9 @@
           False and 'NumThreads' to 1.
           Elastic net regularization can be specified by the 'L2Const' and 'L1Threshold' parameters. Note that the 'L2Const' has an effect on the rate of convergence.
           In general, the larger the 'L2Const', the faster SDCA converges.
-        </para><a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/06/main-3.pdf">Scaling Up Stochastic Dual Coordinate Ascent</a>.
-        <a href="http://www.jmlr.org/papers/volume14/shalev-shwartz13a/shalev-shwartz13a.pdf">Stochastic Dual Coordinate Ascent Methods for Regularized Loss Minimization</a>.
-      </remarks>
+        </para><para>For more information, see also:</para><list><item><description><a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/06/main-3.pdf">Scaling Up Stochastic Dual Coordinate Ascent</a>.
+          </description></item><item><description><a href="http://www.jmlr.org/papers/volume14/shalev-shwartz13a/shalev-shwartz13a.pdf">Stochastic Dual Coordinate Ascent Methods for Regularized Loss Minimization</a>.
+          </description></item></list></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -70,11 +61,11 @@
       </Docs>
     </Member>
     <Member MemberName="CheckLabel">
-      <MemberSignature Language="C#" Value="protected override void CheckLabel (Microsoft.ML.Runtime.Data.RoleMappedData examples);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void CheckLabel(class Microsoft.ML.Runtime.Data.RoleMappedData examples) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.SdcaRegressionTrainer.CheckLabel(Microsoft.ML.Runtime.Data.RoleMappedData)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Sub CheckLabel (examples As RoleMappedData)" />
-      <MemberSignature Language="F#" Value="override this.CheckLabel : Microsoft.ML.Runtime.Data.RoleMappedData -&gt; unit" Usage="sdcaRegressionTrainer.CheckLabel examples" />
+      <MemberSignature Language="C#" Value="protected override void CheckLabel (Microsoft.ML.Runtime.Data.RoleMappedData examples, out int weightSetCount);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void CheckLabel(class Microsoft.ML.Runtime.Data.RoleMappedData examples, [out] int32&amp; weightSetCount) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.SdcaRegressionTrainer.CheckLabel(Microsoft.ML.Runtime.Data.RoleMappedData,System.Int32@)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Sub CheckLabel (examples As RoleMappedData, ByRef weightSetCount As Integer)" />
+      <MemberSignature Language="F#" Value="override this.CheckLabel : Microsoft.ML.Runtime.Data.RoleMappedData *  -&gt; unit" Usage="sdcaRegressionTrainer.CheckLabel (examples, weightSetCount)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
@@ -85,9 +76,11 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="examples" Type="Microsoft.ML.Runtime.Data.RoleMappedData" />
+        <Parameter Name="weightSetCount" Type="System.Int32" RefType="out" />
       </Parameters>
       <Docs>
         <param name="examples">To be added.</param>
+        <param name="weightSetCount">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -117,24 +110,26 @@
       </Docs>
     </Member>
     <Member MemberName="CreatePredictor">
-      <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.IPredictor CreatePredictor ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Microsoft.ML.Runtime.IPredictor CreatePredictor() cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.SdcaRegressionTrainer.CreatePredictor" />
-      <MemberSignature Language="VB.NET" Value="Public Overrides Function CreatePredictor () As IPredictor" />
-      <MemberSignature Language="F#" Value="override this.CreatePredictor : unit -&gt; Microsoft.ML.Runtime.IPredictor" Usage="sdcaRegressionTrainer.CreatePredictor " />
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt; CreatePredictor (Microsoft.ML.Runtime.Data.VBuffer&lt;float&gt;[] weights, float[] bias);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt; CreatePredictor(valuetype Microsoft.ML.Runtime.Data.VBuffer`1&lt;float32&gt;[] weights, float32[] bias) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.SdcaRegressionTrainer.CreatePredictor(Microsoft.ML.Runtime.Data.VBuffer{System.Single}[],System.Single[])" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function CreatePredictor (weights As VBuffer(Of Single)(), bias As Single()) As IPredictorWithFeatureWeights(Of Single)" />
+      <MemberSignature Language="F#" Value="override this.CreatePredictor : Microsoft.ML.Runtime.Data.VBuffer&lt;single&gt;[] * single[] -&gt; Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;single&gt;" Usage="sdcaRegressionTrainer.CreatePredictor (weights, bias)" />
       <MemberType>Method</MemberType>
-      <Implements>
-        <InterfaceMember>M:Microsoft.ML.Runtime.ITrainer.CreatePredictor</InterfaceMember>
-      </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.IPredictor</ReturnType>
+        <ReturnType>Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;</ReturnType>
       </ReturnValue>
-      <Parameters />
+      <Parameters>
+        <Parameter Name="weights" Type="Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;[]" />
+        <Parameter Name="bias" Type="System.Single[]" />
+      </Parameters>
       <Docs>
+        <param name="weights">To be added.</param>
+        <param name="bias">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -183,52 +178,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Microsoft.ML.Runtime.ITrainer&lt;Microsoft.ML.Runtime.Data.RoleMappedData,Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;.CreatePredictor">
-      <MemberSignature Language="C#" Value="Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt; ITrainer&lt;RoleMappedData,IPredictorWithFeatureWeights&lt;float&gt;&gt;.CreatePredictor ();" />
-      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt; Microsoft.ML.Runtime.ITrainer&lt;Microsoft.ML.Runtime.Data.RoleMappedData,Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;.CreatePredictor() cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.SdcaRegressionTrainer.Microsoft#ML#Runtime#ITrainer&lt;Microsoft#ML#Runtime#Data#RoleMappedData,Microsoft#ML#Runtime#Internal#Internallearn#IPredictorWithFeatureWeights&lt;System#Single&gt;&gt;#CreatePredictor" />
-      <MemberSignature Language="VB.NET" Value="Function CreatePredictor () As IPredictorWithFeatureWeights(Of Single) Implements ITrainer(Of RoleMappedData, IPredictorWithFeatureWeights(Of Single)).CreatePredictor" />
-      <MemberType>Method</MemberType>
-      <Implements>
-        <InterfaceMember>M:Microsoft.ML.Runtime.ITrainer`2.CreatePredictor</InterfaceMember>
-      </Implements>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="NeedCalibration">
-      <MemberSignature Language="C#" Value="public override bool NeedCalibration { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool NeedCalibration" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Learners.SdcaRegressionTrainer.NeedCalibration" />
-      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property NeedCalibration As Boolean" />
-      <MemberSignature Language="F#" Value="member this.NeedCalibration : bool" Usage="Microsoft.ML.Runtime.Learners.SdcaRegressionTrainer.NeedCalibration" />
-      <MemberType>Property</MemberType>
-      <Implements>
-        <InterfaceMember>P:Microsoft.ML.Runtime.ITrainerEx.NeedCalibration</InterfaceMember>
-      </Implements>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="PredictionKind">
       <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.PredictionKind PredictionKind { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.ML.Runtime.PredictionKind PredictionKind" />
@@ -236,9 +185,6 @@
       <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property PredictionKind As PredictionKind" />
       <MemberSignature Language="F#" Value="member this.PredictionKind : Microsoft.ML.Runtime.PredictionKind" Usage="Microsoft.ML.Runtime.Learners.SdcaRegressionTrainer.PredictionKind" />
       <MemberType>Property</MemberType>
-      <Implements>
-        <InterfaceMember>P:Microsoft.ML.Runtime.ITrainer.PredictionKind</InterfaceMember>
-      </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -317,26 +263,6 @@
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="WeightArraySize">
-      <MemberSignature Language="C#" Value="protected override int WeightArraySize { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 WeightArraySize" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Learners.SdcaRegressionTrainer.WeightArraySize" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides ReadOnly Property WeightArraySize As Integer" />
-      <MemberSignature Language="F#" Value="member this.WeightArraySize : int" Usage="Microsoft.ML.Runtime.Learners.SdcaRegressionTrainer.WeightArraySize" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

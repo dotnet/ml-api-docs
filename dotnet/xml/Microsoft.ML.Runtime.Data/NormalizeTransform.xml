@@ -388,15 +388,14 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
-        <Parameter Name="data" Type="Microsoft.ML.Runtime.Data.RoleMappedData&amp;" RefType="ref" />
+        <Parameter Name="data" Type="Microsoft.ML.Runtime.Data.RoleMappedData" RefType="ref" />
         <Parameter Name="trainer" Type="Microsoft.ML.Runtime.ITrainer" />
       </Parameters>
       <Docs>
         <param name="env">The host environment to use to potentially instantiate the transform</param>
         <param name="data">The role-mapped data that is potentially going to be modified by this method.</param>
-        <param name="trainer">The trainer to query with <see cref="M:Microsoft.ML.Runtime.Data.NormalizeUtils.NeedNormalization(Microsoft.ML.Runtime.ITrainer)" />.
-            This method will not modify <paramref name="data" /> if the return from that is <c>null</c> or
-            <c>false</c>.</param>
+        <param name="trainer">The trainer to query as to whether it wants normalization. If the
+            <see cref="P:Microsoft.ML.Runtime.ITrainer.Info" />'s <see cref="P:Microsoft.ML.Runtime.TrainerInfo.NeedNormalization" /> is <c>true</c></param>
         <summary>
             Potentially apply a min-max normalizer to the data's feature column, keeping all existing role
             mappings except for the feature role mapping.
@@ -577,10 +576,6 @@
       <MemberSignature Language="F#" Value="override this.GetGetterCore : Microsoft.ML.Runtime.IChannel * Microsoft.ML.Runtime.Data.IRow * int *  -&gt; Delegate" Usage="normalizeTransform.GetGetterCore (ch, input, iinfo, disposer)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
@@ -591,7 +586,7 @@
         <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
         <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IRow" />
         <Parameter Name="iinfo" Type="System.Int32" />
-        <Parameter Name="disposer" Type="System.Action&amp;" RefType="out" />
+        <Parameter Name="disposer" Type="System.Action" RefType="out" />
       </Parameters>
       <Docs>
         <param name="ch">To be added.</param>

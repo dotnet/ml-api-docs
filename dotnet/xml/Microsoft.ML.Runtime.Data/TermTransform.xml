@@ -21,14 +21,20 @@
   </Interfaces>
   <Docs>
     <summary>
-            TermTransform builds up term vocabularies (dictionaries).
-            Notes:
-            * Each column builds/uses exactly one "vocabulary" (dictionary).
-            * Output columns are KeyType-valued.
-            * The Key value is the one-based index of the item in the dictionary.
-            * Not found is assigned the value zero.
-            </summary>
-    <remarks>To be added.</remarks>
+        Converts input values (words, numbers, etc.) to index in a dictionary.
+      </summary>
+    <remarks>
+        The TextToKeyConverter transform builds up term vocabularies (dictionaries).
+        The TextToKey Converter and the <see cref="T:Microsoft.ML.Transforms.HashConverter" /> are the two one primary mechanisms by which raw input is transformed into keys.
+        If multiple columns are used, each column builds/uses exactly one vocabulary.
+        The output columns are KeyType-valued.
+        The Key value is the one-based index of the item in the dictionary.
+        If the key is not found in the dictionary, it is assigned the missing value indicator.
+        This dictionary mapping values to keys is most commonly learnt from the unique values in input data,
+        but can be defined through other means: either with the mapping defined directly on the command line, or as loaded from an external file.
+      </remarks>
+    <altmember cref="T:Microsoft.ML.Transforms.HashConverter" />
+    <altmember cref="T:Microsoft.ML.Transforms.KeyToTextConverter" />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -257,7 +263,7 @@
         <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
         <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IRow" />
         <Parameter Name="iinfo" Type="System.Int32" />
-        <Parameter Name="disposer" Type="System.Action&amp;" RefType="out" />
+        <Parameter Name="disposer" Type="System.Action" RefType="out" />
       </Parameters>
       <Docs>
         <param name="ch">To be added.</param>

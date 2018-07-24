@@ -27,6 +27,23 @@
         Light GBM is an open source implementation of boosted trees.
         <a href="https://github.com/Microsoft/LightGBM/wiki">GitHub: LightGBM</a></remarks>
     <example>
+      <code language="csharp">
+          new LightGbmRanker
+          {
+            NumBoostRound = 100,
+            LearningRate = 0.5f,
+            NumLeaves = 32,
+            MinDataPerLeaf = 20,
+            Booster = new GbdtBoosterParameterFunction
+            {
+              MinSplitGain = 3,
+              MaxDepth = 200,
+              Subsample = 0.5
+            }
+          }
+        </code>
+    </example>
+    <example>
       <code>
             pipeline.Add(new LightGbmRanker() { NumLeaves = 5, NumBoostRound = 5, MinDataPerLeaf = 2 })
             </code>

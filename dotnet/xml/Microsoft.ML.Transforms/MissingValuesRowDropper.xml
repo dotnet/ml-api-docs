@@ -21,9 +21,21 @@
   </Interfaces>
   <Docs>
     <summary>
-            Filters out rows that contain missing values.
-            </summary>
-    <remarks>To be added.</remarks>
+        Removes missing values from vector type columns.
+      </summary>
+    <remarks>
+        This transform removes the entire row if any of the input columns have a missing value in that row.
+        This preprocessing is required for many ML algorithms that cannot work with missing values.
+        Useful if any missing entry invalidates the entire row.
+        If the <see cref="!:Microsoft.ML.Runtime.Data.NAFilter.Defaults.Complement" /> is set to true, this transform would do the exact opposite,
+        it will keep only the rows that have missing values.
+      </remarks>
+    <altmember cref="F:Microsoft.ML.Runtime.Data.MetadataUtils.Kinds.HasMissingValues" />
+    <example>
+      <code language="csharp">
+          pipeline.Add(new MissingValuesRowDropper("Column1"));
+        </code>
+    </example>
   </Docs>
   <Members>
     <Member MemberName=".ctor">

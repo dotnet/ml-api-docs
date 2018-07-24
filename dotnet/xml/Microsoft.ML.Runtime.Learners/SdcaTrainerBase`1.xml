@@ -21,7 +21,6 @@
       <BaseTypeArgument TypeParamName="TPredictor">TPredictor</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
-  <Interfaces />
   <Docs>
     <typeparam name="TPredictor">To be added.</typeparam>
     <summary>To be added.</summary>
@@ -80,8 +79,8 @@
         <Parameter Name="bestBiasReg" Type="System.Single[]" />
         <Parameter Name="count" Type="System.Int64" />
         <Parameter Name="metrics" Type="System.Double[]" />
-        <Parameter Name="bestPrimalLoss" Type="System.Double&amp;" RefType="ref" />
-        <Parameter Name="bestIter" Type="System.Int32&amp;" RefType="ref" />
+        <Parameter Name="bestPrimalLoss" Type="System.Double" RefType="ref" />
+        <Parameter Name="bestIter" Type="System.Int32" RefType="ref" />
       </Parameters>
       <Docs>
         <param name="pch">The progress reporting channel.</param>
@@ -139,12 +138,38 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="CreatePredictor">
+      <MemberSignature Language="C#" Value="protected abstract TPredictor CreatePredictor (Microsoft.ML.Runtime.Data.VBuffer&lt;float&gt;[] weights, float[] bias);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance !TPredictor CreatePredictor(valuetype Microsoft.ML.Runtime.Data.VBuffer`1&lt;float32&gt;[] weights, float32[] bias) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`1.CreatePredictor(Microsoft.ML.Runtime.Data.VBuffer{System.Single}[],System.Single[])" />
+      <MemberSignature Language="VB.NET" Value="Protected MustOverride Function CreatePredictor (weights As VBuffer(Of Single)(), bias As Single()) As TPredictor" />
+      <MemberSignature Language="F#" Value="abstract member CreatePredictor : Microsoft.ML.Runtime.Data.VBuffer&lt;single&gt;[] * single[] -&gt; 'Predictor" Usage="sdcaTrainerBase.CreatePredictor (weights, bias)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>TPredictor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="weights" Type="Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;[]" />
+        <Parameter Name="bias" Type="System.Single[]" />
+      </Parameters>
+      <Docs>
+        <param name="weights">To be added.</param>
+        <param name="bias">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="GetIndexFromIdAndRowGetter">
-      <MemberSignature Language="C#" Value="protected Func&lt;Microsoft.ML.Runtime.Data.UInt128,long,long&gt; GetIndexFromIdAndRowGetter (Microsoft.ML.Runtime.Learners.SdcaTrainerBase&lt;TPredictor&gt;.IdToIdxLookup idToIdx);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance class System.Func`3&lt;valuetype Microsoft.ML.Runtime.Data.UInt128, int64, int64&gt; GetIndexFromIdAndRowGetter(class Microsoft.ML.Runtime.Learners.SdcaTrainerBase`1/IdToIdxLookup&lt;!TPredictor&gt; idToIdx) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`1.GetIndexFromIdAndRowGetter(Microsoft.ML.Runtime.Learners.SdcaTrainerBase`1.IdToIdxLookup{`0})" />
-      <MemberSignature Language="VB.NET" Value="Protected Function GetIndexFromIdAndRowGetter (idToIdx As SdcaTrainerBase(Of TPredictor).IdToIdxLookup) As Func(Of UInt128, Long, Long)" />
-      <MemberSignature Language="F#" Value="member this.GetIndexFromIdAndRowGetter : Microsoft.ML.Runtime.Learners.SdcaTrainerBase&lt;'Predictor (requires 'Predictor :&gt; Microsoft.ML.Runtime.IPredictor)&gt;.IdToIdxLookup -&gt; Func&lt;Microsoft.ML.Runtime.Data.UInt128, int64, int64&gt;" Usage="sdcaTrainerBase.GetIndexFromIdAndRowGetter idToIdx" />
+      <MemberSignature Language="C#" Value="protected Func&lt;Microsoft.ML.Runtime.Data.UInt128,long,long&gt; GetIndexFromIdAndRowGetter (Microsoft.ML.Runtime.Learners.SdcaTrainerBase&lt;TPredictor&gt;.IdToIdxLookup idToIdx, int biasLength);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance class System.Func`3&lt;valuetype Microsoft.ML.Runtime.Data.UInt128, int64, int64&gt; GetIndexFromIdAndRowGetter(class Microsoft.ML.Runtime.Learners.SdcaTrainerBase`1/IdToIdxLookup&lt;!TPredictor&gt; idToIdx, int32 biasLength) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`1.GetIndexFromIdAndRowGetter(Microsoft.ML.Runtime.Learners.SdcaTrainerBase`1.IdToIdxLookup{`0},System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected Function GetIndexFromIdAndRowGetter (idToIdx As SdcaTrainerBase(Of TPredictor).IdToIdxLookup, biasLength As Integer) As Func(Of UInt128, Long, Long)" />
+      <MemberSignature Language="F#" Value="member this.GetIndexFromIdAndRowGetter : Microsoft.ML.Runtime.Learners.SdcaTrainerBase&lt;'Predictor (requires 'Predictor :&gt; Microsoft.ML.Runtime.IPredictor)&gt;.IdToIdxLookup * int -&gt; Func&lt;Microsoft.ML.Runtime.Data.UInt128, int64, int64&gt;" Usage="sdcaTrainerBase.GetIndexFromIdAndRowGetter (idToIdx, biasLength)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
@@ -155,9 +180,11 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="idToIdx" Type="Microsoft.ML.Runtime.Learners.SdcaTrainerBase&lt;TPredictor&gt;+IdToIdxLookup" />
+        <Parameter Name="biasLength" Type="System.Int32" />
       </Parameters>
       <Docs>
         <param name="idToIdx">To be added.</param>
+        <param name="biasLength">To be added.</param>
         <summary>
             Returns a function delegate to retrieve index from id and row.
             Only works if the cursor is not shuffled.
@@ -168,11 +195,11 @@
       </Docs>
     </Member>
     <Member MemberName="GetIndexFromIdGetter">
-      <MemberSignature Language="C#" Value="protected Func&lt;Microsoft.ML.Runtime.Data.UInt128,long&gt; GetIndexFromIdGetter (Microsoft.ML.Runtime.Learners.SdcaTrainerBase&lt;TPredictor&gt;.IdToIdxLookup idToIdx);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance class System.Func`2&lt;valuetype Microsoft.ML.Runtime.Data.UInt128, int64&gt; GetIndexFromIdGetter(class Microsoft.ML.Runtime.Learners.SdcaTrainerBase`1/IdToIdxLookup&lt;!TPredictor&gt; idToIdx) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`1.GetIndexFromIdGetter(Microsoft.ML.Runtime.Learners.SdcaTrainerBase`1.IdToIdxLookup{`0})" />
-      <MemberSignature Language="VB.NET" Value="Protected Function GetIndexFromIdGetter (idToIdx As SdcaTrainerBase(Of TPredictor).IdToIdxLookup) As Func(Of UInt128, Long)" />
-      <MemberSignature Language="F#" Value="member this.GetIndexFromIdGetter : Microsoft.ML.Runtime.Learners.SdcaTrainerBase&lt;'Predictor (requires 'Predictor :&gt; Microsoft.ML.Runtime.IPredictor)&gt;.IdToIdxLookup -&gt; Func&lt;Microsoft.ML.Runtime.Data.UInt128, int64&gt;" Usage="sdcaTrainerBase.GetIndexFromIdGetter idToIdx" />
+      <MemberSignature Language="C#" Value="protected Func&lt;Microsoft.ML.Runtime.Data.UInt128,long&gt; GetIndexFromIdGetter (Microsoft.ML.Runtime.Learners.SdcaTrainerBase&lt;TPredictor&gt;.IdToIdxLookup idToIdx, int biasLength);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance class System.Func`2&lt;valuetype Microsoft.ML.Runtime.Data.UInt128, int64&gt; GetIndexFromIdGetter(class Microsoft.ML.Runtime.Learners.SdcaTrainerBase`1/IdToIdxLookup&lt;!TPredictor&gt; idToIdx, int32 biasLength) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`1.GetIndexFromIdGetter(Microsoft.ML.Runtime.Learners.SdcaTrainerBase`1.IdToIdxLookup{`0},System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected Function GetIndexFromIdGetter (idToIdx As SdcaTrainerBase(Of TPredictor).IdToIdxLookup, biasLength As Integer) As Func(Of UInt128, Long)" />
+      <MemberSignature Language="F#" Value="member this.GetIndexFromIdGetter : Microsoft.ML.Runtime.Learners.SdcaTrainerBase&lt;'Predictor (requires 'Predictor :&gt; Microsoft.ML.Runtime.IPredictor)&gt;.IdToIdxLookup * int -&gt; Func&lt;Microsoft.ML.Runtime.Data.UInt128, int64&gt;" Usage="sdcaTrainerBase.GetIndexFromIdGetter (idToIdx, biasLength)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
@@ -183,9 +210,11 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="idToIdx" Type="Microsoft.ML.Runtime.Learners.SdcaTrainerBase&lt;TPredictor&gt;+IdToIdxLookup" />
+        <Parameter Name="biasLength" Type="System.Int32" />
       </Parameters>
       <Docs>
         <param name="idToIdx">To be added.</param>
+        <param name="biasLength">To be added.</param>
         <summary>
             Returns a function delegate to retrieve index from id.
             This is to avoid redundant conditional branches in the tight loop of training.
@@ -261,26 +290,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NeedNormalization">
-      <MemberSignature Language="C#" Value="public override bool NeedNormalization { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool NeedNormalization" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`1.NeedNormalization" />
-      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property NeedNormalization As Boolean" />
-      <MemberSignature Language="F#" Value="member this.NeedNormalization : bool" Usage="Microsoft.ML.Runtime.Learners.SdcaTrainerBase&lt;'Predictor (requires 'Predictor :&gt; Microsoft.ML.Runtime.IPredictor)&gt;.NeedNormalization" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="ShuffleData">
       <MemberSignature Language="C#" Value="protected override bool ShuffleData { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool ShuffleData" />
@@ -302,29 +311,32 @@
       </Docs>
     </Member>
     <Member MemberName="TrainCore">
-      <MemberSignature Language="C#" Value="protected override void TrainCore (Microsoft.ML.Runtime.IChannel ch, Microsoft.ML.Runtime.Data.RoleMappedData data, Microsoft.ML.Runtime.Learners.LinearPredictor predictor);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void TrainCore(class Microsoft.ML.Runtime.IChannel ch, class Microsoft.ML.Runtime.Data.RoleMappedData data, class Microsoft.ML.Runtime.Learners.LinearPredictor predictor) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`1.TrainCore(Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Data.RoleMappedData,Microsoft.ML.Runtime.Learners.LinearPredictor)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Sub TrainCore (ch As IChannel, data As RoleMappedData, predictor As LinearPredictor)" />
-      <MemberSignature Language="F#" Value="override this.TrainCore : Microsoft.ML.Runtime.IChannel * Microsoft.ML.Runtime.Data.RoleMappedData * Microsoft.ML.Runtime.Learners.LinearPredictor -&gt; unit" Usage="sdcaTrainerBase.TrainCore (ch, data, predictor)" />
+      <MemberSignature Language="C#" Value="protected override sealed TPredictor TrainCore (Microsoft.ML.Runtime.IChannel ch, Microsoft.ML.Runtime.Data.RoleMappedData data, Microsoft.ML.Runtime.Learners.LinearPredictor predictor, int weightSetCount);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance !TPredictor TrainCore(class Microsoft.ML.Runtime.IChannel ch, class Microsoft.ML.Runtime.Data.RoleMappedData data, class Microsoft.ML.Runtime.Learners.LinearPredictor predictor, int32 weightSetCount) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`1.TrainCore(Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Data.RoleMappedData,Microsoft.ML.Runtime.Learners.LinearPredictor,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides NotOverridable Function TrainCore (ch As IChannel, data As RoleMappedData, predictor As LinearPredictor, weightSetCount As Integer) As TPredictor" />
+      <MemberSignature Language="F#" Value="override this.TrainCore : Microsoft.ML.Runtime.IChannel * Microsoft.ML.Runtime.Data.RoleMappedData * Microsoft.ML.Runtime.Learners.LinearPredictor * int -&gt; 'Predictor" Usage="sdcaTrainerBase.TrainCore (ch, data, predictor, weightSetCount)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
+        <ReturnType>TPredictor</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
         <Parameter Name="data" Type="Microsoft.ML.Runtime.Data.RoleMappedData" />
         <Parameter Name="predictor" Type="Microsoft.ML.Runtime.Learners.LinearPredictor" />
+        <Parameter Name="weightSetCount" Type="System.Int32" />
       </Parameters>
       <Docs>
         <param name="ch">To be added.</param>
         <param name="data">To be added.</param>
         <param name="predictor">To be added.</param>
+        <param name="weightSetCount">To be added.</param>
         <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

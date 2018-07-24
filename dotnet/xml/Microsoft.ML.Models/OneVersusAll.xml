@@ -24,6 +24,32 @@
             One-vs-All macro (OVA)
             </summary>
     <remarks>To be added.</remarks>
+    <member name="OVA">
+      <summary>
+        Trains a one-versus-all multi-class classifier on top of the specified binary classifier.
+      </summary>
+      <remarks>
+        <para>In this strategy, a binary classification algorithm is used to train one classifier for each class, which distinguishes that class from all other classes.
+        Prediction is then performed by running these binary classifiers, and choosing the prediction with the highest confidence score.</para>
+        <para>This algorithm can be used with any of the binary classifiers in ML.NET.
+        A few binary classifiers already have implementation for multi-class problems,
+        thus users can choose either one depending on the context.</para>
+        <para>The OVA version of a binary classifier, such as wrapping a LightGbmBinaryClassifier ,
+        can be different from LightGbmClassifier, which develops a multi-class classifier directly.</para>
+        <para>Note that even if the classifier indicates that it does not need caching, OneVersusAll will always
+        request caching, as it will be performing multiple passes over the data set.
+        These learner will request normalization from the data pipeline if the classifier indicates it would benefit from it.</para>
+      </remarks>
+      <seealso cref="T:Microsoft.ML.Trainers.LogisticRegressionClassifier" />
+      <seealso cref="T:Microsoft.ML.Trainers.LightGbmClassifier" />
+      <seealso cref="T:Microsoft.ML.Trainers.StochasticDualCoordinateAscentClassifier" />
+      <seealso cref="T:Microsoft.ML.Trainers.NaiveBayesClassifier" />
+      <example>
+        <code language="csharp">
+          pipeline.Add(OneVersusAll.With(new StochasticDualCoordinateAscentBinaryClassifier()));
+        </code>
+      </example>
+    </member>
   </Docs>
   <Members>
     <Member MemberName=".ctor">

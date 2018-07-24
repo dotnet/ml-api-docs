@@ -18,27 +18,33 @@
   <Interfaces />
   <Docs>
     <summary>
-        Logistic Regression is a method in statistics used to predict the probability of occurrence of an event and can be used as a classification algorithm. 
-        The algorithm predicts the probability of occurrence of an event by fitting data to a logistical function.
+        Logistic Regression is a method in statistics used to predict the probability of occurrence of an event and can be used as 
+        a classification algorithm. The algorithm predicts the probability of occurrence of an event by fitting data to a logistical function.
       </summary>
     <remarks>
-        If the dependent variable has more than two possible values (blood type given diagnostic test results), then the logistic regression is multinomial.
+        If the dependent variable has more than two possible values (blood type given diagnostic test results), 
+        then the logistic regression is multinomial.
         <para>
-          The optimization technique used for LogisticRegression Classifier is the limited memory Broyden-Fletcher-Goldfarb-Shanno (L-BFGS).
-          Both the L-BFGS and regular BFGS algorithms use quasi-Newtonian methods to estimate the computationally intensive Hessian matrix in the equation used by Newton's method to calculate steps.
+          The optimization technique used for LogisticRegression Classifier is based on the limited memory Broyden-Fletcher-Goldfarb-Shanno (L-BFGS).
+          Both the L-BFGS and regular BFGS algorithms use quasi-Newtonian methods to estimate the computationally intensive 
+          Hessian matrix in the equation used by Newton's method to calculate steps.
           But the L-BFGS approximation uses only a limited amount of memory to compute the next step direction,
           so that it is especially suited for problems with a large number of variables.
-          The <paramref>MemorySize</paramref> parameter specifies the number of past positions and gradients to store for use in the computation of the next step.
+          The MemorySize argument specifies the number of past positions and gradients to store for use in the 
+          computation of the next step.
         </para><para>
-          This learner can use elastic net regularization: a linear combination of L1 (lasso) and L2 (ridge) regularizations.
-          Regularization is a method that can render an ill-posed problem more tractable by imposing constraints that provide information to supplement the data and that prevents overfitting by penalizing models with extreme coefficient values.
+          This learner can use elastic net regularization: a linear combination of L1 (LASSO) and L2 (ridge) regularizations.
+          Regularization is a method that can render an ill-posed problem more tractable by imposing constraints that provide information 
+          to supplement the data and that prevents overfitting by penalizing models with extreme coefficient values.
           This can improve the generalization of the model learned by selecting the optimal complexity in the bias-variance tradeoff.
           Regularization works by adding the penalty that is associated with coefficient values to the error of the hypothesis.
-          An accurate model with extreme coefficient values would be penalized more, but a less accurate model with more conservative values would be penalized less. L1 and L2 regularization have different effects and uses that are complementary in certain respects.
-        </para><list type="bullet"><item><description><paramref>L1Weight</paramref>: can be applied to sparse models, when working with high-dimensional data.
-              It pulls small weights associated features that are relatively unimportant towards 0.
-            </description></item><item><description><paramref>L2Weight</paramref>: is preferable for data that is not sparse. It pulls large weights towards zero.
-              </description></item></list>
+          An accurate model with extreme coefficient values would be penalized more, but a less accurate model with more conservative 
+          values would be penalized less. L1 and L2 regularization have different effects and uses that are complementary in certain respects.
+        </para><list type="bullet"><item><description>
+              L1Weight can be applied to sparse models, when working with high-dimensional data. It pulls small weights associated features
+              that are relatively unimportant towards 0.
+              L1 regularization is an implementation of OWLQN, based on:
+              <a href="http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.68.5260">Scalable training of L1-regularized log-linear models</a></description></item><item><description>L2Weight is preferable for data that is not sparse. It pulls large weights towards zero.</description></item></list>
           Adding the ridge penalty to the regularization overcomes some of lasso's limitations. It can improve its predictive accuracy, for example, when the number of predictors is greater than the sample size. If x = l1_weight and y = l2_weight, ax + by = c defines the linear span of the regularization terms.
           The default values of x and y are both 1.
           An agressive regularization can harm predictive capacity by excluding important variables out of the model. So choosing the optimal values for the regularization parameters is important for the performance of the logistic regression model.
@@ -48,6 +54,8 @@
           pipeline.Add(new LogisticRegressionBinaryClassifier());
         </code>
     </example>
+    <!-- No matching elements were found for the following include tag -->
+    <include file="doc.xml" path="docs/members/example[@name=&quot;LogisticRegressionBinaryClassifier&quot;]/*" />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -87,12 +95,12 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="feat" Type="Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;&amp;" RefType="ref" />
+        <Parameter Name="feat" Type="Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;" RefType="ref" />
         <Parameter Name="label" Type="System.Single" />
         <Parameter Name="weight" Type="System.Single" />
-        <Parameter Name="x" Type="Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;&amp;" RefType="ref" />
-        <Parameter Name="grad" Type="Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;&amp;" RefType="ref" />
-        <Parameter Name="scratch" Type="System.Single[]&amp;" RefType="ref" />
+        <Parameter Name="x" Type="Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;" RefType="ref" />
+        <Parameter Name="grad" Type="Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;" RefType="ref" />
+        <Parameter Name="scratch" Type="System.Single[]" RefType="ref" />
       </Parameters>
       <Docs>
         <param name="feat">To be added.</param>
@@ -159,10 +167,10 @@
       </Docs>
     </Member>
     <Member MemberName="CreatePredictor">
-      <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor CreatePredictor ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor CreatePredictor() cil managed" />
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor CreatePredictor ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor CreatePredictor() cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.LogisticRegression.CreatePredictor" />
-      <MemberSignature Language="VB.NET" Value="Public Overrides Function CreatePredictor () As ParameterMixingCalibratedPredictor" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function CreatePredictor () As ParameterMixingCalibratedPredictor" />
       <MemberSignature Language="F#" Value="override this.CreatePredictor : unit -&gt; Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor" Usage="logisticRegression.CreatePredictor " />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
@@ -196,8 +204,8 @@
       <Parameters>
         <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
         <Parameter Name="cursorFactory" Type="Microsoft.ML.Runtime.Training.FloatLabelCursor+Factory" />
-        <Parameter Name="init" Type="Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;&amp;" RefType="out" />
-        <Parameter Name="terminationCriterion" Type="Microsoft.ML.Runtime.Numeric.ITerminationCriterion&amp;" RefType="out" />
+        <Parameter Name="init" Type="Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;" RefType="out" />
+        <Parameter Name="terminationCriterion" Type="Microsoft.ML.Runtime.Numeric.ITerminationCriterion" RefType="out" />
       </Parameters>
       <Docs>
         <param name="ch">To be added.</param>
@@ -249,26 +257,6 @@
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="NeedCalibration">
-      <MemberSignature Language="C#" Value="public override bool NeedCalibration { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool NeedCalibration" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Learners.LogisticRegression.NeedCalibration" />
-      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property NeedCalibration As Boolean" />
-      <MemberSignature Language="F#" Value="member this.NeedCalibration : bool" Usage="Microsoft.ML.Runtime.Learners.LogisticRegression.NeedCalibration" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

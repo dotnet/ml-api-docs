@@ -1,24 +1,41 @@
 ﻿<Type Name="MultiClassNaiveBayesTrainer" FullName="Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesTrainer">
-  <TypeSignature Language="C#" Value="public sealed class MultiClassNaiveBayesTrainer : Microsoft.ML.Runtime.Training.TrainerBase&lt;Microsoft.ML.Runtime.Data.RoleMappedData,Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesPredictor&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit MultiClassNaiveBayesTrainer extends Microsoft.ML.Runtime.Training.TrainerBase`2&lt;class Microsoft.ML.Runtime.Data.RoleMappedData, class Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesPredictor&gt;" />
+  <TypeSignature Language="C#" Value="public sealed class MultiClassNaiveBayesTrainer : Microsoft.ML.Runtime.Training.TrainerBase&lt;Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesPredictor&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit MultiClassNaiveBayesTrainer extends Microsoft.ML.Runtime.Training.TrainerBase`1&lt;class Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesPredictor&gt;" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesTrainer" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class MultiClassNaiveBayesTrainer&#xA;Inherits TrainerBase(Of RoleMappedData, MultiClassNaiveBayesPredictor)" />
-  <TypeSignature Language="F#" Value="type MultiClassNaiveBayesTrainer = class&#xA;    inherit TrainerBase&lt;RoleMappedData, MultiClassNaiveBayesPredictor&gt;" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class MultiClassNaiveBayesTrainer&#xA;Inherits TrainerBase(Of MultiClassNaiveBayesPredictor)" />
+  <TypeSignature Language="F#" Value="type MultiClassNaiveBayesTrainer = class&#xA;    inherit TrainerBase&lt;MultiClassNaiveBayesPredictor&gt;" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>Microsoft.ML.Runtime.Training.TrainerBase&lt;Microsoft.ML.Runtime.Data.RoleMappedData,Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesPredictor&gt;</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Runtime.Training.TrainerBase&lt;Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesPredictor&gt;</BaseTypeName>
     <BaseTypeArguments>
-      <BaseTypeArgument TypeParamName="!0">Microsoft.ML.Runtime.Data.RoleMappedData</BaseTypeArgument>
-      <BaseTypeArgument TypeParamName="!1">Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesPredictor</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="!0">Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesPredictor</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
   <Interfaces />
   <Docs>
     <summary>To be added.</summary>
     <remarks>To be added.</remarks>
+    <member name="MultiClassNaiveBayesTrainer">
+      <summary>
+        Trains a multiclass Naive Bayes predictor that supports binary feature values.
+      </summary>
+      <remarks>
+        <a href="https://en.wikipedia.org/wiki/Naive_Bayes_classifier">Naive Bayes</a> is a probabilistic classifier that can be used for multiclass problems.
+        Using Bayes' theorem, the conditional probability for a sample belonging to a class can be calculated based on the sample count for each feature combination groups.
+        However, Naive Bayes Classifier is feasible only if the number of features and the values each feature can take is relatively small.
+        It assumes independence among the presence of features in a class even though they may be dependent on each other.
+        This multi-class trainer accepts binary feature values of type float, i.e., feature values are either true or false.
+        Specifically a feature value greater than zero is treated as true.
+      </remarks>
+      <seealso cref="T:Microsoft.ML.Trainers.LogisticRegressionClassifier" />
+      <seealso cref="T:Microsoft.ML.Trainers.LightGbmClassifier" />
+      <seealso cref="T:Microsoft.ML.Trainers.StochasticDualCoordinateAscentClassifier" />
+      <seealso cref="T:Microsoft.ML.Models.OneVersusAll" />
+    </member>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -43,24 +60,23 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="CreatePredictor">
-      <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesPredictor CreatePredictor ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesPredictor CreatePredictor() cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesTrainer.CreatePredictor" />
-      <MemberSignature Language="VB.NET" Value="Public Overrides Function CreatePredictor () As MultiClassNaiveBayesPredictor" />
-      <MemberSignature Language="F#" Value="override this.CreatePredictor : unit -&gt; Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesPredictor" Usage="multiClassNaiveBayesTrainer.CreatePredictor " />
-      <MemberType>Method</MemberType>
+    <Member MemberName="Info">
+      <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.TrainerInfo Info { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.TrainerInfo Info" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesTrainer.Info" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property Info As TrainerInfo" />
+      <MemberSignature Language="F#" Value="member this.Info : Microsoft.ML.Runtime.TrainerInfo" Usage="Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesTrainer.Info" />
+      <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesPredictor</ReturnType>
+        <ReturnType>Microsoft.ML.Runtime.TrainerInfo</ReturnType>
       </ReturnValue>
-      <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -80,46 +96,6 @@
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="NeedCalibration">
-      <MemberSignature Language="C#" Value="public override bool NeedCalibration { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool NeedCalibration" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesTrainer.NeedCalibration" />
-      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property NeedCalibration As Boolean" />
-      <MemberSignature Language="F#" Value="member this.NeedCalibration : bool" Usage="Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesTrainer.NeedCalibration" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="NeedNormalization">
-      <MemberSignature Language="C#" Value="public override bool NeedNormalization { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool NeedNormalization" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesTrainer.NeedNormalization" />
-      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property NeedNormalization As Boolean" />
-      <MemberSignature Language="F#" Value="member this.NeedNormalization : bool" Usage="Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesTrainer.NeedNormalization" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -144,25 +120,26 @@
       </Docs>
     </Member>
     <Member MemberName="Train">
-      <MemberSignature Language="C#" Value="public override void Train (Microsoft.ML.Runtime.Data.RoleMappedData data);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Train(class Microsoft.ML.Runtime.Data.RoleMappedData data) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesTrainer.Train(Microsoft.ML.Runtime.Data.RoleMappedData)" />
-      <MemberSignature Language="VB.NET" Value="Public Overrides Sub Train (data As RoleMappedData)" />
-      <MemberSignature Language="F#" Value="override this.Train : Microsoft.ML.Runtime.Data.RoleMappedData -&gt; unit" Usage="multiClassNaiveBayesTrainer.Train data" />
+      <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesPredictor Train (Microsoft.ML.Runtime.TrainContext context);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesPredictor Train(class Microsoft.ML.Runtime.TrainContext context) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesTrainer.Train(Microsoft.ML.Runtime.TrainContext)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function Train (context As TrainContext) As MultiClassNaiveBayesPredictor" />
+      <MemberSignature Language="F#" Value="override this.Train : Microsoft.ML.Runtime.TrainContext -&gt; Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesPredictor" Usage="multiClassNaiveBayesTrainer.Train context" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
+        <ReturnType>Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesPredictor</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="data" Type="Microsoft.ML.Runtime.Data.RoleMappedData" />
+        <Parameter Name="context" Type="Microsoft.ML.Runtime.TrainContext" />
       </Parameters>
       <Docs>
-        <param name="data">To be added.</param>
+        <param name="context">To be added.</param>
         <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -179,7 +156,7 @@
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="Train a MultiClassNaiveBayesTrainer.", Name="Trainers.NaiveBayesClassifier", ShortName="MNB", UserName="Multiclass Naive Bayes")</AttributeName>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="Train a MultiClassNaiveBayesTrainer.", Name="Trainers.NaiveBayesClassifier", ShortName="MNB", UserName="Multiclass Naive Bayes", XmlInclude=Mono.Cecil.CustomAttributeArgument[])</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -194,26 +171,6 @@
         <param name="input">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="WantCaching">
-      <MemberSignature Language="C#" Value="public override bool WantCaching { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool WantCaching" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesTrainer.WantCaching" />
-      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property WantCaching As Boolean" />
-      <MemberSignature Language="F#" Value="member this.WantCaching : bool" Usage="Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesTrainer.WantCaching" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
