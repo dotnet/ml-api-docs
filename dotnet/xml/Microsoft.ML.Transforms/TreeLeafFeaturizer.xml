@@ -21,8 +21,7 @@
   </Interfaces>
   <Docs>
       <summary>
-        Trains a tree ensemble, or loads it from a file, then maps a numeric feature vector to three outputs. If a both a model file and a trainer are specified - will use the model file. If neither are specified, 
-        will train a default FastTree model. 
+        Trains a tree ensemble, or loads it from a file, then maps a numeric feature vector to three outputs. If a both a model file and a trainer are specified - will use the model file. If neither are specified, will train a default FastTree model. 
       </summary>
       <remarks>
         <para>Trains a tree ensemble, or loads it from a file, then maps a numeric feature vector to three outputs:
@@ -42,8 +41,7 @@
         </para>
         <para>If a both a model file and a trainer are specified - will use the model file. If neither are specified, will train a default FastTree model. This can handle key labels by training a regression model towards their optionally permuted indices.
         </para>
-        <para>
-          In machine learning, it is a pretty common and powerful approach to utilize the already trained model in the process of defining features.
+        <para> In machine learning, it is a pretty common and powerful approach to utilize the already trained model in the process of defining features.
         </para>
         <para>One such example would be the use of model's scores as features to downstream models. We might run clustering on the original feature and use the cluster distances as the new feature set. Instead of consuming the model's output, we could go deeper and extract the 'intermediate outputs' that are used to produce the final score. </para>
         <para>Some well-known examples of this technique include:</para>
@@ -55,11 +53,11 @@
           </list>
         </para>
         <para>Tree featurizer uses the decision tree ensembles for feature engineering in the same fashion as above.</para>
-        <para>Let's assume that we've built a tree ensemble of 100 trees with 100 leaves each (it doesn't matter whether boosting was used or not in training). 
-        If we associate each leaf of each tree with a sequential integer, we can, for every incoming example x, produce an indicator vector L(x), where Li(x) = 1 if the example x 'falls' into the leaf #i, and 0 otherwise.</para><para>Thus, for every example x, we produce a 10000-valued vector L, with exactly 100 ones and the rest zeroes. 
-        This 'leaf indicator' vector can be considered the ensemble-induced 'footprint' of the example.</para>
+        <para>Let's assume that we've built a tree ensemble of 100 trees with 100 leaves each (it doesn't matter whether boosting was used or not in training). If we associate each leaf of each tree with a sequential integer, we can, for every incoming example x, produce an indicator vector L(x), where Li(x) = 1 if the example x 'falls' into the leaf #i, and 0 otherwise.</para>
+        <para>Thus, for every example x, we produce a 10000-valued vector L, with exactly 100 ones and the rest zeroes. This 'leaf indicator' vector can be considered the ensemble-induced 'footprint' of the example.</para>
         <para>The 'distance' between two examples in the L-space is actually a Hamming distance, and is equal to the number of trees that do not distinguish the two examples.</para>
-        <para>We could repeat the same thought process for the non-leaf, or internal, nodes of the trees (we know that each tree has exactly 99 of them in our 100-leaf example),and produce another indicator vector, N (size 9900), for each example, indicating the 'trajectory' of each example through each of the trees.</para><para>The distance in the combined 19900-dimensional LN-space will be equal to the number of 'decisions' in all trees that 'agree' on the given pair of examples.</para>
+        <para>We could repeat the same thought process for the non-leaf, or internal, nodes of the trees (we know that each tree has exactly 99 of them in our 100-leaf example),and produce another indicator vector, N (size 9900), for each example, indicating the 'trajectory' of each example through each of the trees.</para>
+        <para>The distance in the combined 19900-dimensional LN-space will be equal to the number of 'decisions' in all trees that 'agree' on the given pair of examples.</para>
         <para>The TreeLeafFeaturizer is also producing the third vector, T, which is defined as Ti(x) = output of tree #i on example x.</para>
       </remarks>
       <example>
@@ -67,7 +65,6 @@
           pipeline.Add(new TreeLeafFeaturizer())
         </code>
       </example>
-    </member>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
