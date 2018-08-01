@@ -14,19 +14,19 @@
   <Interfaces />
   <Docs>
     <summary>
-            A synchronization primitive meant to address situations where you have a set of
-            entities of known count, where you want to iteratively provide critical sections
-            for each depending on which comes first, but you do not necessarily know what
-            constitutes "first" until all such entities tell you where they stand in line.
+             A synchronization primitive meant to address situations where you have a set of
+             entities of known count, where you want to iteratively provide critical sections
+             for each depending on which comes first, but you do not necessarily know what
+             constitutes "first" until all such entities tell you where they stand in line.
             
-            The anticipated usage is that whatever entity is using the <see cref="T:Microsoft.ML.Runtime.Internal.Utilities.MinWaiter" />
-            to synchronize itself, will register itself using <see cref="M:Microsoft.ML.Runtime.Internal.Utilities.MinWaiter.Register(System.Int64)" />
-            so as to unblock any "lower" waiters as soon as it knows what value it needs to
-            wait on, perform whatever local work it can, and when it needs to, wait on the
-            event it got when it registered itself. It may then repeat the cycle by
-            registering itself for a new event (or, finally, retiring itself through
-            <see cref="M:Microsoft.ML.Runtime.Internal.Utilities.MinWaiter.Retire" />).
-            </summary>
+             The anticipated usage is that whatever entity is using the <see cref="T:Microsoft.ML.Runtime.Internal.Utilities.MinWaiter" />
+             to synchronize itself, will register itself using <see cref="M:Microsoft.ML.Runtime.Internal.Utilities.MinWaiter.Register(System.Int64)" />
+             so as to unblock any "lower" waiters as soon as it knows what value it needs to
+             wait on, perform whatever local work it can, and when it needs to, wait on the
+             event it got when it registered itself. It may then repeat the cycle by
+             registering itself for a new event (or, finally, retiring itself through
+             <see cref="M:Microsoft.ML.Runtime.Internal.Utilities.MinWaiter.Retire" />).
+             </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -72,15 +72,15 @@
       <Docs>
         <param name="position">To be added.</param>
         <summary>
-            Indicates to the waiter that we want to, at some future point, wait at a given
-            position. This object will return a reset event that can be waited on, at the
-            point when we actually want to wait. This method itself has the potential to
-            signal other events, if by registering ourselves the waiter becomes aware of
-            the maximum number of waiters, allowing that waiter to enter its critical state.
+             Indicates to the waiter that we want to, at some future point, wait at a given
+             position. This object will return a reset event that can be waited on, at the
+             point when we actually want to wait. This method itself has the potential to
+             signal other events, if by registering ourselves the waiter becomes aware of
+             the maximum number of waiters, allowing that waiter to enter its critical state.
             
-            If multiple events are associated with the minimum value, then only one will
-            be signaled, and the rest will remain unsignaled. Which is chosen is undefined.
-            </summary>
+             If multiple events are associated with the minimum value, then only one will
+             be signaled, and the rest will remain unsignaled. Which is chosen is undefined.
+             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>

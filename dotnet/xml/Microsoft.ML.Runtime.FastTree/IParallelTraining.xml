@@ -18,7 +18,7 @@
                To speed up the find bin process, it let different workers to find bins for different features.
                Then perform global sync up.
                In Feature parallel, every machines holds all data, so this is unneeded.
-            2. interactive with TreeLearner: <see cref="M:Microsoft.ML.Runtime.FastTree.IParallelTraining.InitIteration(System.Boolean[]@)" />, <see cref="M:Microsoft.ML.Runtime.FastTree.IParallelTraining.CacheHistogram(System.Boolean,System.Int32,System.Int32,Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase,System.Boolean)" />, <see cref="M:Microsoft.ML.Runtime.FastTree.IParallelTraining.IsNeedFindLocalBestSplit" />, 
+            2. interactive with TreeLearner: <see cref="M:Microsoft.ML.Runtime.FastTree.IParallelTraining.InitIteration(System.Boolean[]@)" />, <see cref="M:Microsoft.ML.Runtime.FastTree.IParallelTraining.CacheHistogram(System.Boolean,System.Int32,System.Int32,Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase,System.Boolean)" />, <see cref="M:Microsoft.ML.Runtime.FastTree.IParallelTraining.IsNeedFindLocalBestSplit" />,
                    <see cref="M:Microsoft.ML.Runtime.FastTree.IParallelTraining.IsSkipNonSplittableHistogram" />, <see cref="M:Microsoft.ML.Runtime.FastTree.IParallelTraining.FindGlobalBestSplit(Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner.LeafSplitCandidates,Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner.LeafSplitCandidates,Microsoft.ML.Runtime.FastTree.FindBestThresholdFromRawArrayFun,Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner.SplitInfo[])" />, <see cref="M:Microsoft.ML.Runtime.FastTree.IParallelTraining.GetGlobalDataCountInLeaf(System.Int32,System.Int32@)" />, <see cref="M:Microsoft.ML.Runtime.FastTree.IParallelTraining.PerformGlobalSplit(System.Int32,System.Int32,System.Int32,Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner.SplitInfo)" />.
                A full process is:
                    Use <see cref="M:Microsoft.ML.Runtime.FastTree.IParallelTraining.InitIteration(System.Boolean[]@)" /> to alter local active features.
@@ -213,7 +213,7 @@
         <param name="numFeatures">To be added.</param>
         <summary>
             Get indices of features that should be find bin in local.
-            After construct local boundary, should call <see href="SyncGlobalBoundary" /> 
+            After construct local boundary, should call <see href="SyncGlobalBoundary" />
             to get boundaries for all features.
             </summary>
         <returns>To be added.</returns>
@@ -298,7 +298,7 @@
         <param name="activeFeatures">To be added.</param>
         <summary>
             Initialize every time before training a tree.
-            will alter activeFeatures in Feature parallel. 
+            will alter activeFeatures in Feature parallel.
             Because it only need to find threshold for part of features in feature parallel.
             </summary>
         <remarks>To be added.</remarks>
@@ -376,10 +376,10 @@
       <Parameters />
       <Docs>
         <summary>
-            True if need to skip non-splittable histogram. 
-            Only will return False in Voting parallel. 
+            True if need to skip non-splittable histogram.
+            Only will return False in Voting parallel.
             That is because local doesn't have global histograms in Voting parallel,
-            So the information about NonSplittable is not correct, and we cannot skip it. 
+            So the information about NonSplittable is not correct, and we cannot skip it.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -441,8 +441,8 @@
         <summary>
             Sync Global feature bucket.
             used in Data parallel and Voting parallel.
-            Data are partitioned by row. To speed up the Global find bin process, 
-            we can let different workers construct Bin Boundary for different features, 
+            Data are partitioned by row. To speed up the Global find bin process,
+            we can let different workers construct Bin Boundary for different features,
             then perform a global sync up.
             </summary>
         <remarks>To be added.</remarks>

@@ -1,0 +1,212 @@
+﻿<Type Name="WordEmbeddingsTransform" FullName="Microsoft.ML.Runtime.Data.WordEmbeddingsTransform">
+  <TypeSignature Language="C#" Value="public sealed class WordEmbeddingsTransform : Microsoft.ML.Runtime.Data.OneToOneTransformBase" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit WordEmbeddingsTransform extends Microsoft.ML.Runtime.Data.OneToOneTransformBase" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.WordEmbeddingsTransform" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class WordEmbeddingsTransform&#xA;Inherits OneToOneTransformBase" />
+  <TypeSignature Language="F#" Value="type WordEmbeddingsTransform = class&#xA;    inherit OneToOneTransformBase" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Microsoft.ML.Runtime.Data.OneToOneTransformBase</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+        Word Embeddings transform is a text featurizer which converts vectors of text tokens into sentence vectors using a pre-trained model.
+      </summary>
+    <remarks>
+        WordEmbeddings wrap different embedding models, such as GloVe. Users can specify which embedding to use. 
+        The available options are various versions of <a href="https://nlp.stanford.edu/projects/glove/">GloVe Models</a>, <a href="https://en.wikipedia.org/wiki/FastText">fastText</a>, and <a href="http://anthology.aclweb.org/P/P14/P14-1146.pdf">SSWE</a>.
+        <para>
+          Note: As WordEmbedding requires a column with text vector, e.g. %3C%27this%27, %27is%27, %27good%27%3E, users need to create an input column by
+          using the output_tokens=True for TextTransform to convert a column with sentences like "This is good" into %3C%27this%27, %27is%27, %27good%27 %3E.
+          The suffix of %27_TransformedText%27 is added to the original column name to create the output token column. For instance if the input column is %27body%27,
+          the output tokens column is named %27body_TransformedText%27.
+        </para><para>
+          License attributes for pretrained models:
+          <list type="bullet"><item><description>
+                "fastText Wikipedia 300D" by Facebook, Inc. is licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA 3.0</a> based on:
+                P. Bojanowski*, E. Grave*, A. Joulin, T. Mikolov,<a href="https://arxiv.org/abs/1607.04606">Enriching Word Vectors with Subword Information</a>
+                %40article%7Bbojanowski2016enriching%2C%0A%20%20title%3D%7BEnriching%20Word%20Vectors%20with%20Subword%20Information%7D%2C%0A%20%20author%3D%7BBojanowski%2C%20Piotr%20and%20Grave%2C%20Edouard%20and%20Joulin%2C%20Armand%20and%20Mikolov%2C%20Tomas%7D%2C%0A%20%20journal%3D%7BarXiv%20preprint%20arXiv%3A1607.04606%7D%2C%0A%20%20year%3D%7B2016%7D%0A%7D
+                More information can be found <a href="https://github.com/facebookresearch/fastText/blob/master/pretrained-vectors.md">here</a>.
+              </description></item><item><description>
+                GloVe models by Stanford University, or (Jeffrey Pennington, Richard Socher, and Christopher D. Manning. 2014. <a href="https://nlp.stanford.edu/pubs/glove.pdf">GloVe: Global Vectors for Word Representation</a>) is licensed under <a href="https://opendatacommons.org/licenses/pddl/1.0/">PDDL</a>.
+                More information can be found <a href="https://nlp.stanford.edu/projects/glove/">here</a>. Repository can be found <a href="https://github.com/stanfordnlp/GloVe">here</a>.
+              </description></item></list></para></remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public WordEmbeddingsTransform (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.WordEmbeddingsTransform.Arguments args, Microsoft.ML.Runtime.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.WordEmbeddingsTransform/Arguments args, class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.WordEmbeddingsTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.WordEmbeddingsTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, args As WordEmbeddingsTransform.Arguments, input As IDataView)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.WordEmbeddingsTransform : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.WordEmbeddingsTransform.Arguments * Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.WordEmbeddingsTransform" Usage="new Microsoft.ML.Runtime.Data.WordEmbeddingsTransform (env, args, input)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="args" Type="Microsoft.ML.Runtime.Data.WordEmbeddingsTransform+Arguments" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="args">To be added.</param>
+        <param name="input">To be added.</param>
+        <summary>
+            Public constructor corresponding to <see cref="T:Microsoft.ML.Runtime.Data.SignatureDataTransform" />.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.WordEmbeddingsTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Model.ModelLoadContext ctx, Microsoft.ML.Runtime.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.WordEmbeddingsTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Model.ModelLoadContext ctx, class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.WordEmbeddingsTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, ctx As ModelLoadContext, input As IDataView) As WordEmbeddingsTransform" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Model.ModelLoadContext * Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.WordEmbeddingsTransform" Usage="Microsoft.ML.Runtime.Data.WordEmbeddingsTransform.Create (env, ctx, input)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.WordEmbeddingsTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="ctx" Type="Microsoft.ML.Runtime.Model.ModelLoadContext" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="ctx">To be added.</param>
+        <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetColumnTypeCore">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.ColumnType GetColumnTypeCore (int iinfo);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.ColumnType GetColumnTypeCore(int32 iinfo) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.WordEmbeddingsTransform.GetColumnTypeCore(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetColumnTypeCore (iinfo As Integer) As ColumnType" />
+      <MemberSignature Language="F#" Value="override this.GetColumnTypeCore : int -&gt; Microsoft.ML.Runtime.Data.ColumnType" Usage="wordEmbeddingsTransform.GetColumnTypeCore iinfo" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ColumnType</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="iinfo" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="iinfo">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetGetterCore">
+      <MemberSignature Language="C#" Value="protected override Delegate GetGetterCore (Microsoft.ML.Runtime.IChannel ch, Microsoft.ML.Runtime.Data.IRow input, int iinfo, out Action disposer);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class System.Delegate GetGetterCore(class Microsoft.ML.Runtime.IChannel ch, class Microsoft.ML.Runtime.Data.IRow input, int32 iinfo, [out] class System.Action&amp; disposer) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.WordEmbeddingsTransform.GetGetterCore(Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Data.IRow,System.Int32,System.Action@)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetGetterCore (ch As IChannel, input As IRow, iinfo As Integer, ByRef disposer As Action) As Delegate" />
+      <MemberSignature Language="F#" Value="override this.GetGetterCore : Microsoft.ML.Runtime.IChannel * Microsoft.ML.Runtime.Data.IRow * int *  -&gt; Delegate" Usage="wordEmbeddingsTransform.GetGetterCore (ch, input, iinfo, disposer)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Delegate</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IRow" />
+        <Parameter Name="iinfo" Type="System.Int32" />
+        <Parameter Name="disposer" Type="System.Action" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="ch">To be added.</param>
+        <param name="input">To be added.</param>
+        <param name="iinfo">To be added.</param>
+        <param name="disposer">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetVersionInfo">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Model.VersionInfo GetVersionInfo ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Microsoft.ML.Runtime.Model.VersionInfo GetVersionInfo() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.WordEmbeddingsTransform.GetVersionInfo" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function GetVersionInfo () As VersionInfo" />
+      <MemberSignature Language="F#" Value="static member GetVersionInfo : unit -&gt; Microsoft.ML.Runtime.Model.VersionInfo" Usage="Microsoft.ML.Runtime.Data.WordEmbeddingsTransform.GetVersionInfo " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Model.VersionInfo</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoaderSignature">
+      <MemberSignature Language="C#" Value="public const string LoaderSignature;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal string LoaderSignature" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Data.WordEmbeddingsTransform.LoaderSignature" />
+      <MemberSignature Language="VB.NET" Value="Public Const LoaderSignature As String " />
+      <MemberSignature Language="F#" Value="val mutable LoaderSignature : string" Usage="Microsoft.ML.Runtime.Data.WordEmbeddingsTransform.LoaderSignature" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Save">
+      <MemberSignature Language="C#" Value="public override void Save (Microsoft.ML.Runtime.Model.ModelSaveContext ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Save(class Microsoft.ML.Runtime.Model.ModelSaveContext ctx) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.WordEmbeddingsTransform.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Sub Save (ctx As ModelSaveContext)" />
+      <MemberSignature Language="F#" Value="override this.Save : Microsoft.ML.Runtime.Model.ModelSaveContext -&gt; unit" Usage="wordEmbeddingsTransform.Save ctx" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ctx" Type="Microsoft.ML.Runtime.Model.ModelSaveContext" />
+      </Parameters>
+      <Docs>
+        <param name="ctx">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
