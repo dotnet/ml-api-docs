@@ -21,6 +21,7 @@
       <BaseTypeArgument TypeParamName="TPredictor">TPredictor</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
+  <Interfaces />
   <Docs>
     <typeparam name="TPredictor">To be added.</typeparam>
     <summary>To be added.</summary>
@@ -91,33 +92,33 @@
             For multiclass classification, there is one dual variable per class per row.
             </param>
         <param name="idToIdx">
-            The id to index mapping. May be null. If it is null, the index is given by the 
+            The id to index mapping. May be null. If it is null, the index is given by the
             corresponding lower bits of the id.
             </param>
         <param name="weights">
-            The weights array. For binary classification or regression, it consists of only one VBuffer. 
+            The weights array. For binary classification or regression, it consists of only one VBuffer.
             For multiclass classification, its size equals the number of classes.
             </param>
         <param name="bestWeights">
-            The weights array that corresponds to the best model obtained from the training iterations thus far. 
+            The weights array that corresponds to the best model obtained from the training iterations thus far.
             </param>
         <param name="biasUnreg">
-            The array containing unregularized bias terms. For binary classification or regression, 
-            it contains only a single value. For multiclass classification its size equals the number of classes. 
+            The array containing unregularized bias terms. For binary classification or regression,
+            it contains only a single value. For multiclass classification its size equals the number of classes.
             </param>
         <param name="bestBiasUnreg">
-            The array containing unregularized bias terms corresponding to the best model obtained from the training iterations thus far. 
-            For binary classification or regression, it contains only a single value. 
-            For multiclass classification its size equals the number of classes. 
+            The array containing unregularized bias terms corresponding to the best model obtained from the training iterations thus far.
+            For binary classification or regression, it contains only a single value.
+            For multiclass classification its size equals the number of classes.
             </param>
         <param name="biasReg">
-            The array containing regularized bias terms. For binary classification or regression, 
-            it contains only a single value. For multiclass classification its size equals the number of classes. 
+            The array containing regularized bias terms. For binary classification or regression,
+            it contains only a single value. For multiclass classification its size equals the number of classes.
             </param>
         <param name="bestBiasReg">
-            The array containing regularized bias terms corresponding to the best model obtained from the training iterations thus far. 
-            For binary classification or regression, it contains only a single value. 
-            For multiclass classification its size equals the number of classes. 
+            The array containing regularized bias terms corresponding to the best model obtained from the training iterations thus far.
+            For binary classification or regression, it contains only a single value.
+            For multiclass classification its size equals the number of classes.
             </param>
         <param name="count">
             The count of (valid) training examples. Bad training examples are excluded from this count.
@@ -130,7 +131,7 @@
             </param>
         <param name="bestIter">The iteration number when the best model is obtained.</param>
         <summary>
-             Returns whether the algorithm converged, and also populates the <paramref name="metrics" /> 
+             Returns whether the algorithm converged, and also populates the <paramref name="metrics" />
             (which is expected to be parallel to the names returned by <see cref="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`1.InitializeConvergenceMetrics(System.String[]@,System.Double[]@)" />).
             When called, the <paramref name="metrics" /> is expected to hold the previously reported values.
             </summary>
@@ -378,7 +379,7 @@
             It may be null. When it is null, the training examples are not shuffled and are cursored in its original order.
             </param>
         <param name="idToIdx">
-            The id to index mapping. May be null. If it is null, the index is given by the 
+            The id to index mapping. May be null. If it is null, the index is given by the
             corresponding lower bits of the id.
             </param>
         <param name="numThreads">The number of threads used in parallel training. It is used in computing the dual update.</param>
@@ -386,33 +387,33 @@
             The dual variables. For binary classification and regression, there is one dual variable per row.
             For multiclass classification, there is one dual variable per class per row.
             </param>
-        <param name="biasReg">The array containing regularized bias terms. For binary classification or regression, 
+        <param name="biasReg">The array containing regularized bias terms. For binary classification or regression,
             it contains only a single value. For multiclass classification its size equals the number of classes.</param>
         <param name="invariants">
-            The dual updates invariants. It may be null. If not null, it holds an array of pre-computed numerical quantities 
+            The dual updates invariants. It may be null. If not null, it holds an array of pre-computed numerical quantities
             that depend on the training example label and features, not the value of dual variables.
             </param>
         <param name="lambdaNInv">The precomputed numerical quantity 1 / (l2Const * (count of training examples)).</param>
         <param name="weights">
-            The weights array. For binary classification or regression, it consists of only one VBuffer. 
+            The weights array. For binary classification or regression, it consists of only one VBuffer.
             For multiclass classification, its size equals the number of classes.
             </param>
         <param name="biasUnreg">
-            The array containing unregularized bias terms. For binary classification or regression, 
-            it contains only a single value. For multiclass classification its size equals the number of classes. 
+            The array containing unregularized bias terms. For binary classification or regression,
+            it contains only a single value. For multiclass classification its size equals the number of classes.
             </param>
         <param name="l1IntermediateWeights">
-            The array holding the intermediate weights prior to making L1 shrinkage adjustment. It is null iff l1Threshold is zero. 
-            Otherwise, for binary classification or regression, it consists of only one VBuffer; 
+            The array holding the intermediate weights prior to making L1 shrinkage adjustment. It is null iff l1Threshold is zero.
+            Otherwise, for binary classification or regression, it consists of only one VBuffer;
             for multiclass classification, its size equals the number of classes.
             </param>
         <param name="l1IntermediateBias">
-            The array holding the intermediate bias prior to making L1 shrinkage adjustment. It is null iff l1Threshold is zero. 
-            Otherwise, for binary classification or regression, it consists of only one value; 
+            The array holding the intermediate bias prior to making L1 shrinkage adjustment. It is null iff l1Threshold is zero.
+            Otherwise, for binary classification or regression, it consists of only one value;
             for multiclass classification, its size equals the number of classes.
             </param>
         <param name="featureNormSquared">
-            The array holding the pre-computed squared L2-norm of features for each training example. It may be null. It is always null for 
+            The array holding the pre-computed squared L2-norm of features for each training example. It may be null. It is always null for
             binary classification and regression because this quantity is not needed.
             </param>
         <summary>

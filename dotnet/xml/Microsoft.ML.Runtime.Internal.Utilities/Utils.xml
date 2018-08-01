@@ -512,12 +512,12 @@
         <Parameter Name="userArgument" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="file">An absolute or relative file path, or null to skip the check 
+        <param name="file">An absolute or relative file path, or null to skip the check
             (useful for optional user parameters)</param>
         <param name="userArgument">The user level parameter name, as exposed by the command line help</param>
         <summary>
             Checks that the directory of the file name passed in already exists.
-            This is meant to be called before calling an API that creates the file, 
+            This is meant to be called before calling an API that creates the file,
             so the file need not exist.
             </summary>
         <remarks>To be added.</remarks>
@@ -955,29 +955,29 @@
         <param name="fileName">File name to find</param>
         <param name="folderPrefix">folder prefix, relative to the current or customSearchDir</param>
         <param name="customSearchDir">
-            Custom directory to search for resources. 
-            If null, the path specified in the environment variable <seealso cref="F:Microsoft.ML.Runtime.Internal.Utilities.Utils.CustomSearchDirEnvVariable" />
-            will be used.
-            </param>
+             Custom directory to search for resources.
+             If null, the path specified in the environment variable <seealso cref="F:Microsoft.ML.Runtime.Internal.Utilities.Utils.CustomSearchDirEnvVariable" />
+             will be used.
+             </param>
         <param name="assemblyForBasePath">
-            Assembly type to search the path of.
-            </param>
+             Assembly type to search the path of.
+             </param>
         <summary>
-            Attempts to find a file that is expected to be distributed with a TLC component. Searches
-            in the following order:
-            1. In the customSearchDir directory, if it is provided.
-            2. In the custom search directory specified by the 
-               <seealso cref="F:Microsoft.ML.Runtime.Internal.Utilities.Utils.CustomSearchDirEnvVariable" /> environment variable.
-            3. In the root folder of the provided assembly.
-            4. In the folder of this assembly.
-            In each case it searches the file in the directory provided and combined with folderPrefix.
+             Attempts to find a file that is expected to be distributed with a TLC component. Searches
+             in the following order:
+             1. In the customSearchDir directory, if it is provided.
+             2. In the custom search directory specified by the
+                <seealso cref="F:Microsoft.ML.Runtime.Internal.Utilities.Utils.CustomSearchDirEnvVariable" /> environment variable.
+             3. In the root folder of the provided assembly.
+             4. In the folder of this assembly.
+             In each case it searches the file in the directory provided and combined with folderPrefix.
             
-            If any of these locations contain the file, a full local path will be returned, otherwise this
-            method will return null.
-            </summary>
+             If any of these locations contain the file, a full local path will be returned, otherwise this
+             method will return null.
+             </summary>
         <returns>
-            Path to the existing file. Null if not found.
-            </returns>
+             Path to the existing file. Null if not found.
+             </returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1969,20 +1969,20 @@
       <Docs>
         <typeparam name="TRet">The return value</typeparam>
         <param name="func">A delegate that should be a generic method with a single type parameter.
-            The generic method definition will be extracted, then a new method will be created with the
-            given type parameter, then the method will be invoked.</param>
+             The generic method definition will be extracted, then a new method will be created with the
+             given type parameter, then the method will be invoked.</param>
         <param name="genArg">The new type parameter for the generic method</param>
         <summary>
-            Given a generic method with a single type parameter, re-create the generic method on a new type,
-            then reinvoke the method and return the result. A common pattern throughout the code base is to
-            have some sort of generic method, whose parameters and return value are, as defined, non-generic,
-            but whose code depends on some sort of generic type parameter. This utility method exists to make
-            this common pattern more convenient, and also safer so that the arguments, if any, can be type
-            checked at compile time instead of at runtime.
+             Given a generic method with a single type parameter, re-create the generic method on a new type,
+             then reinvoke the method and return the result. A common pattern throughout the code base is to
+             have some sort of generic method, whose parameters and return value are, as defined, non-generic,
+             but whose code depends on some sort of generic type parameter. This utility method exists to make
+             this common pattern more convenient, and also safer so that the arguments, if any, can be type
+             checked at compile time instead of at runtime.
             
-            Because it is strongly typed, this can only be applied to methods whose return type
-            is known at compile time, that is, that do not depend on the type parameter of the method itself.
-            </summary>
+             Because it is strongly typed, this can only be applied to methods whose return type
+             is known at compile time, that is, that do not depend on the type parameter of the method itself.
+             </summary>
         <returns>The return value of the invoked function</returns>
         <remarks>To be added.</remarks>
       </Docs>

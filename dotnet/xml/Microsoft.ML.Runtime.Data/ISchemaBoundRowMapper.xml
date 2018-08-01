@@ -16,7 +16,7 @@
   <Docs>
     <summary>
             This interface extends <see cref="T:Microsoft.ML.Runtime.Data.ISchemaBoundMapper" /> with an additional method: <see cref="M:Microsoft.ML.Runtime.Data.ISchemaBoundRowMapper.GetOutputRow(Microsoft.ML.Runtime.Data.IRow,System.Func{System.Int32,System.Boolean},System.Action@)" />. This method
-            takes an input IRow and a predicate indicating which output columns are active, and returns a new IRow 
+            takes an input IRow and a predicate indicating which output columns are active, and returns a new IRow
             containing the output columns.
             </summary>
     <remarks>To be added.</remarks>
@@ -74,11 +74,11 @@
         <param name="disposer">To be added.</param>
         <summary>
             Get an IRow based on the input IRow with the indicated active columns. The active columns are those for which
-            predicate(col) returns true. The schema of the returned IRow will be the same as the OutputSchema, but getting 
+            predicate(col) returns true. The schema of the returned IRow will be the same as the OutputSchema, but getting
             values on inactive columns will throw. Null predicates are disallowed.
             The schema of input should match the InputSchema.
             This method creates a live connection between the input IRow and the output IRow. In particular, when the
-            getters of the output IRow are invoked, they invoke the getters of the input row and base the output values on 
+            getters of the output IRow are invoked, they invoke the getters of the input row and base the output values on
             the current values of the input IRow. The output IRow values are re-computed when requested through the getters.
             The optional disposer is invoked by the cursor wrapping, when it no longer needs the IRow.
             If no action is needed when the cursor is Disposed, the override should set disposer to null,
