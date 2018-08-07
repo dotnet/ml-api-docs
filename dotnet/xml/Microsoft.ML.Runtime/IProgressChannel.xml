@@ -18,17 +18,17 @@
   </Interfaces>
   <Docs>
     <summary>
-            A common interface for progress reporting.
-            It is expected that the progress channel interface is used from only one thread.
+             A common interface for progress reporting.
+             It is expected that the progress channel interface is used from only one thread.
             
-            Supported workflow:
-            1) Create the channel via <see cref="M:Microsoft.ML.Runtime.IProgressChannelProvider.StartProgressChannel(System.String)" />.
-            2) Call <see cref="M:Microsoft.ML.Runtime.IProgressChannel.SetHeader(Microsoft.ML.Runtime.ProgressHeader,System.Action{Microsoft.ML.Runtime.IProgressEntry})" /> as many times as desired (including 0). 
-                  Each call to <see cref="M:Microsoft.ML.Runtime.IProgressChannel.SetHeader(Microsoft.ML.Runtime.ProgressHeader,System.Action{Microsoft.ML.Runtime.IProgressEntry})" /> supersedes the previous one.
-            3) Report checkpoints (0 or more) by calling <see cref="M:Microsoft.ML.Runtime.IProgressChannel.Checkpoint(System.Nullable{System.Double}[])" />.
-            4) Repeat steps 2-3 as often as necessary.
-            5) Dispose the channel.
-            </summary>
+             Supported workflow:
+             1) Create the channel via <see cref="M:Microsoft.ML.Runtime.IProgressChannelProvider.StartProgressChannel(System.String)" />.
+             2) Call <see cref="M:Microsoft.ML.Runtime.IProgressChannel.SetHeader(Microsoft.ML.Runtime.ProgressHeader,System.Action{Microsoft.ML.Runtime.IProgressEntry})" /> as many times as desired (including 0).
+                   Each call to <see cref="M:Microsoft.ML.Runtime.IProgressChannel.SetHeader(Microsoft.ML.Runtime.ProgressHeader,System.Action{Microsoft.ML.Runtime.IProgressEntry})" /> supersedes the previous one.
+             3) Report checkpoints (0 or more) by calling <see cref="M:Microsoft.ML.Runtime.IProgressChannel.Checkpoint(System.Nullable{System.Double}[])" />.
+             4) Repeat steps 2-3 as often as necessary.
+             5) Dispose the channel.
+             </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -58,19 +58,19 @@
       <Docs>
         <param name="values">The metrics, progress units and progress limits.</param>
         <summary>
-            Submit a 'checkpoint' entry. These entries are guaranteed to be delivered to the progress listener,
-            if it is interested. Typically, this would contain some intermediate metrics, that are only calculated
-            at certain moments ('checkpoints') of the computation.
+             Submit a 'checkpoint' entry. These entries are guaranteed to be delivered to the progress listener,
+             if it is interested. Typically, this would contain some intermediate metrics, that are only calculated
+             at certain moments ('checkpoints') of the computation.
             
-            For example, SDCA may report a checkpoint every time it computes the loss, or LBFGS may report a checkpoint
-            every iteration.
+             For example, SDCA may report a checkpoint every time it computes the loss, or LBFGS may report a checkpoint
+             every iteration.
             
-            The only parameter, <paramref name="values" />, is interpreted in the following fashion:
-            * First MetricNames.Length items, if present, are metrics.
-            * Subsequent ProgressNames.Length items, if present, are progress units.
-            * Subsequent ProgressNames.Length items, if present, are progress limits.
-            * If any more values remain, an exception is thrown.
-            </summary>
+             The only parameter, <paramref name="values" />, is interpreted in the following fashion:
+             * First MetricNames.Length items, if present, are metrics.
+             * Subsequent ProgressNames.Length items, if present, are progress units.
+             * Subsequent ProgressNames.Length items, if present, are progress limits.
+             * If any more values remain, an exception is thrown.
+             </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -94,17 +94,17 @@
       </Parameters>
       <Docs>
         <param name="header">The header object.</param>
-        <param name="fillAction">The delegate to provide actual progress. The <see cref="T:Microsoft.ML.Runtime.IProgressEntry" /> parameter of 
-            the delegate will correspond to the provided <paramref name="header" />.</param>
+        <param name="fillAction">The delegate to provide actual progress. The <see cref="T:Microsoft.ML.Runtime.IProgressEntry" /> parameter of
+             the delegate will correspond to the provided <paramref name="header" />.</param>
         <summary>
-            Set up the reporting structure:
-            - Set the 'header' of the progress reports, defining which progress units and metrics are going to be reported.
-            - Provide a thread-safe delegate to be invoked whenever anyone needs to know the progress.
+             Set up the reporting structure:
+             - Set the 'header' of the progress reports, defining which progress units and metrics are going to be reported.
+             - Provide a thread-safe delegate to be invoked whenever anyone needs to know the progress.
             
-            It is acceptable to call <see cref="M:Microsoft.ML.Runtime.IProgressChannel.SetHeader(Microsoft.ML.Runtime.ProgressHeader,System.Action{Microsoft.ML.Runtime.IProgressEntry})" /> multiple times (or none), regardless of whether the calculation is running
-            or not. Because of synchronization, the computation should not deny calls to the 'old' <paramref name="fillAction" /> 
-            delegates even after a new one is provided.
-            </summary>
+             It is acceptable to call <see cref="M:Microsoft.ML.Runtime.IProgressChannel.SetHeader(Microsoft.ML.Runtime.ProgressHeader,System.Action{Microsoft.ML.Runtime.IProgressEntry})" /> multiple times (or none), regardless of whether the calculation is running
+             or not. Because of synchronization, the computation should not deny calls to the 'old' <paramref name="fillAction" />
+             delegates even after a new one is provided.
+             </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

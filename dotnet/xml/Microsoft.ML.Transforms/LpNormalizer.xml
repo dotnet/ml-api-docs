@@ -21,9 +21,20 @@
   </Interfaces>
   <Docs>
     <summary>
-            Normalize vectors (rows) individually by rescaling them to unit norm (L2, L1 or LInf). Performs the following operation on a vector X: Y = (X - M) / D, where M is mean and D is either L2 norm, L1 norm or LInf norm.
-            </summary>
-    <remarks>To be added.</remarks>
+         The LpNormalizer transforms, normalizes vectors (rows) individually by rescaling them to unit norm (L2, L1 or LInf). 
+         <para>Performs the following operation on a vector X:</para><para>Y = (X - M) / D</para><para>where M is mean and D is either L2 norm, L1 norm or LInf norm.</para></summary>
+    <remarks>
+        Scaling inputs to unit norms is a common operation for text classification or clustering.
+        For more information see: <a href="http://www.cs.stanford.edu/~acoates/papers/coatesleeng_aistats_2011.pdf" /></remarks>
+    <altmember cref="!: Microsoft.ML.Transforms.GcNormalize" />
+    <example>
+      <code language="csharp">
+          pipeline.Add(new LpNormalizer("FeatureCol")
+          { 
+            NormKind = LpNormNormalizerTransformNormalizerKind.L1Norm
+          });
+        </code>
+    </example>
   </Docs>
   <Members>
     <Member MemberName=".ctor">

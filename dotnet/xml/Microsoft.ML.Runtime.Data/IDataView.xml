@@ -63,16 +63,16 @@
       <Docs>
         <param name="lazy">To be added.</param>
         <summary>
-            Returns the number of rows if known. Null means unknown. If lazy is true, then
-            this is permitted to return null when it might return a non-null value on a subsequent
-            call. This indicates, that the transform does not YET know the number of rows, but
-            may in the future. If lazy is false, then this is permitted to do some work (no more
-            that it would normally do for cursoring) to determine the number of rows.
+             Returns the number of rows if known. Null means unknown. If lazy is true, then
+             this is permitted to return null when it might return a non-null value on a subsequent
+             call. This indicates, that the transform does not YET know the number of rows, but
+             may in the future. If lazy is false, then this is permitted to do some work (no more
+             that it would normally do for cursoring) to determine the number of rows.
             
-            Most components will return the same answer whether lazy is true or false. Some, like
-            a cache, might return null until the cache is fully populated (when lazy is true). When
-            lazy is false, such a cache would block until the cache was populated.
-            </summary>
+             Most components will return the same answer whether lazy is true or false. Some, like
+             a cache, might return null until the cache is fully populated (when lazy is true). When
+             lazy is false, such a cache would block until the cache was populated.
+             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -123,32 +123,32 @@
         <ReturnType>Microsoft.ML.Runtime.Data.IRowCursor[]</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="consolidator" Type="Microsoft.ML.Runtime.Data.IRowCursorConsolidator&amp;" RefType="out" />
+        <Parameter Name="consolidator" Type="Microsoft.ML.Runtime.Data.IRowCursorConsolidator" RefType="out" />
         <Parameter Name="needCol" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
         <Parameter Name="n" Type="System.Int32" />
         <Parameter Name="rand" Type="Microsoft.ML.Runtime.IRandom" />
       </Parameters>
       <Docs>
         <param name="consolidator">This is an object that can be used to reconcile the
-            returned array of cursors. When the array of cursors is of length 1, it is legal,
-            indeed expected, that this parameter should be null.</param>
+             returned array of cursors. When the array of cursors is of length 1, it is legal,
+             indeed expected, that this parameter should be null.</param>
         <param name="needCol">The predicate, where a column is active if this returns true.</param>
         <param name="n">The suggested degree of parallelism.</param>
         <param name="rand">An instance </param>
         <summary>
-            This constructs a set of parallel batch cursors. The value n is a recommended limit
-            on cardinality. If <paramref name="n" /> is non-positive, this indicates that the caller
-            has no recommendation, and the implementation should have some default behavior to cover
-            this case. Note that this is strictly a recommendation: it is entirely possible that
-            an implementation can return a different number of cursors.
+             This constructs a set of parallel batch cursors. The value n is a recommended limit
+             on cardinality. If <paramref name="n" /> is non-positive, this indicates that the caller
+             has no recommendation, and the implementation should have some default behavior to cover
+             this case. Note that this is strictly a recommendation: it is entirely possible that
+             an implementation can return a different number of cursors.
             
-            The cursors should return the same data as returned through
-            <see cref="M:Microsoft.ML.Runtime.Data.IDataView.GetRowCursor(System.Func{System.Int32,System.Boolean},Microsoft.ML.Runtime.IRandom)" />, except partitioned: no two cursors
-            should return the "same" row as would have been returned through the regular serial cursor,
-            but all rows should be returned by exactly one of the cursors returned from this cursor.
-            The cursors can have their values reconciled downstream through the use of the
-            <see cref="P:Microsoft.ML.Runtime.Data.ICounted.Batch" /> property.
-            </summary>
+             The cursors should return the same data as returned through
+             <see cref="M:Microsoft.ML.Runtime.Data.IDataView.GetRowCursor(System.Func{System.Int32,System.Boolean},Microsoft.ML.Runtime.IRandom)" />, except partitioned: no two cursors
+             should return the "same" row as would have been returned through the regular serial cursor,
+             but all rows should be returned by exactly one of the cursors returned from this cursor.
+             The cursors can have their values reconciled downstream through the use of the
+             <see cref="P:Microsoft.ML.Runtime.Data.ICounted.Batch" /> property.
+             </summary>
         <returns />
         <remarks>To be added.</remarks>
       </Docs>

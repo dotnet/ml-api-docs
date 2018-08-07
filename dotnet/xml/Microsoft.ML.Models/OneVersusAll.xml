@@ -21,9 +21,29 @@
   </Interfaces>
   <Docs>
     <summary>
-            One-vs-All macro (OVA)
-            </summary>
-    <remarks>To be added.</remarks>
+        Trains a one-versus-all multi-class classifier on top of the specified binary classifier.
+      </summary>
+    <remarks>
+      <para>In this strategy, a binary classification algorithm is used to train one classifier for each class, which distinguishes that class from all other classes.
+        Prediction is then performed by running these binary classifiers, and choosing the prediction with the highest confidence score.</para>
+      <para>This algorithm can be used with any of the binary classifiers in ML.NET.
+        A few binary classifiers already have implementation for multi-class problems,
+        thus users can choose either one depending on the context.</para>
+      <para>The OVA version of a binary classifier, such as wrapping a LightGbmBinaryClassifier ,
+        can be different from LightGbmClassifier, which develops a multi-class classifier directly.</para>
+      <para>Note that even if the classifier indicates that it does not need caching, OneVersusAll will always
+        request caching, as it will be performing multiple passes over the data set.
+        These learner will request normalization from the data pipeline if the classifier indicates it would benefit from it.</para>
+    </remarks>
+    <altmember cref="T:Microsoft.ML.Trainers.LogisticRegressionClassifier" />
+    <altmember cref="T:Microsoft.ML.Trainers.LightGbmClassifier" />
+    <altmember cref="T:Microsoft.ML.Trainers.StochasticDualCoordinateAscentClassifier" />
+    <altmember cref="T:Microsoft.ML.Trainers.NaiveBayesClassifier" />
+    <example>
+      <code language="csharp">
+          pipeline.Add(OneVersusAll.With(new StochasticDualCoordinateAscentBinaryClassifier()));
+        </code>
+    </example>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -320,9 +340,9 @@
              the raw uncalibrated scores from each predictor. This is generally not recommended, since these quantities
              are not meant to be comparable from one predictor to another, unlike calibrated probabilities.</param>
         <summary>
-             One-versus-all, OvA, learner (also known as One-vs.-rest, "OvR") is a multi-class learner 
+             One-versus-all, OvA, learner (also known as One-vs.-rest, "OvR") is a multi-class learner
              with the strategy to fit one binary classifier per class in the dataset.
-             It trains the provided binary classifier for each class against the other classes, where the current 
+             It trains the provided binary classifier for each class against the other classes, where the current
              class is treated as the positive labels and examples in other classes are treated as the negative classes.
              See <a href="https://en.wikipedia.org/wiki/Multiclass_classification#One-vs.-rest">wikipedia</a> page.
              </summary>
@@ -334,6 +354,11 @@
         <example>
              In order to use it all you need to do is add it to pipeline as regular learner:
              
+             pipeline.Add(OneVersusAll.With(new StochasticDualCoordinateAscentBinaryClassifier()));
+             </example>
+        <example>
+             In order to use it all you need to do is add it to pipeline as regular learner:
+            
              pipeline.Add(OneVersusAll.With(new StochasticDualCoordinateAscentBinaryClassifier()));
              </example>
       </Docs>

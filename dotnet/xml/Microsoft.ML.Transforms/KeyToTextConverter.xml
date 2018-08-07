@@ -21,9 +21,23 @@
   </Interfaces>
   <Docs>
     <summary>
-            KeyToValueTransform utilizes KeyValues metadata to map key indices to the corresponding values in the KeyValues metadata.
-            </summary>
-    <remarks>To be added.</remarks>
+        Helps retrieving the original values from a key column. 
+      </summary>
+    <remarks>
+        The KeyToTextConverter is the complement of the <see cref="T:Microsoft.ML.Transforms.TextToKeyConverter" /> transform.
+        Since key values are an enumeration into the set of keys, most transforms that produce key valued outputs
+        corresponding to input values will often, wherever possible, associate a piece of KeyValue metadata with that dataset.
+        Transforming values into a categorical variable would be of limited use,
+        if we couldn't somehow backtrack to figure out what those categories actually mean.
+        The KeyToTextConverter enables that functionality.
+      </remarks>
+    <altmember cref="T:Microsoft.ML.Transforms.HashConverter" />
+    <altmember cref="T:Microsoft.ML.Transforms.TextToKeyConverter" />
+    <example>
+      <code language="csharp">
+          pipeline.Add(new KeyToTextConverter(("InColumn", "OutColumn" )));
+        </code>
+    </example>
   </Docs>
   <Members>
     <Member MemberName=".ctor">

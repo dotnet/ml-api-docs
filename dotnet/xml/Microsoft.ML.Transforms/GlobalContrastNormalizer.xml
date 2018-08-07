@@ -21,9 +21,22 @@
   </Interfaces>
   <Docs>
     <summary>
-            Performs a global contrast normalization on input values: Y = (s * X - M) / D, where s is a scale, M is mean and D is either L2 norm or standard deviation.
-            </summary>
-    <remarks>To be added.</remarks>
+      <para>Performs a global contrast normalization on input values:</para>
+      <para>Y = (s * X - M) / D</para>
+      <para>where s is a scale, M is mean and D is either the L2 norm or standard deviation.</para>
+    </summary>
+    <remarks>
+        Scaling inputs to unit norms is a common operation for text classification or clustering.
+        For more information see: <a href="http://www.cs.stanford.edu/~acoates/papers/coatesleeng_aistats_2011.pdf" /></remarks>
+    <altmember cref="T:Microsoft.ML.Transforms.LpNormalizer" />
+    <example>
+      <code language="csharp">
+          pipeline.Add(new GlobalContrastNormalizer("FeatureCol")
+          { 
+            SubMean= false
+          });
+        </code>
+    </example>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
