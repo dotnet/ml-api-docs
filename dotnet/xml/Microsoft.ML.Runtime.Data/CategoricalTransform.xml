@@ -14,19 +14,22 @@
   <Interfaces />
   <Docs>
     <summary>
-            Categorical trans.
-            Each column can specify an output kind, Bag, Ind, or Key.
-            Notes:
-            * Each column builds/uses exactly one "vocabulary" (dictionary).
-            * The Key output kind produces integer values and KeyType columns.
-            * The Key value is the one-based index of the slot set in the Ind/Bag options.
-            * In the Key option, not found is assigned the value zero.
-            * In the Ind/Bag options, not found results in an all zero bit vector.
-            * Ind and Bag differ simply in how the bit-vectors generated from individual slots are aggregated:
-              for Ind they are concatenated and for Bag they are added.
-            * When the source column is a singleton, the Ind and Bag options are identical.
-            </summary>
-    <remarks>To be added.</remarks>
+        Converts the categorical value into an indicator array by building a dictionary of categories based on the data and using the id in the dictionary as the index in the array
+      </summary>
+    <remarks>
+      <para>The CategoricalOneHotVectorizer transform passes through a data set, operating on text columns, to
+        build a dictionary of categories.
+        For each row, the entire text string appearing in the input column is defined as a category.
+        The output of this transform is an indicator vector.</para>
+        Each slot in this vector corresponds to a category in the dictionary, so its length is the size of the built dictionary.
+        <para>The CategoricalOneHotVectorizer can be applied to one or more columns, in which case it builds and uses a separate dictionary
+        for each column that it is applied to.</para><para>The <see cref="T:Microsoft.ML.Transforms.CategoricalTransformOutputKind" /> produces integer values and KeyType columns.
+        The Key value is the one-based index of the slot set in the Ind/Bag options.
+        If the Key option is not found, it is assigned the value zero.
+        In the <see cref="F:Microsoft.ML.Transforms.CategoricalTransformOutputKind.Ind" />, <see cref="F:Microsoft.ML.Transforms.CategoricalTransformOutputKind.Bag" /> options are not found, they result in an all zero bit vector.
+        <see cref="F:Microsoft.ML.Transforms.CategoricalTransformOutputKind.Ind" /> and <see cref="F:Microsoft.ML.Transforms.CategoricalTransformOutputKind.Bag" /> differ simply in how the bit-vectors generated from individual slots are aggregated:
+        for Ind they are concatenated and for Bag they are added.
+        When the source column is a singleton, the Ind and Bag options are identical.</para></remarks>
   </Docs>
   <Members>
     <Member MemberName="Create">
@@ -53,6 +56,39 @@
         <param name="args">To be added.</param>
         <param name="input">To be added.</param>
         <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IDataTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.IDataView input, string name, string source = null, Microsoft.ML.Runtime.Data.CategoricalTransform.OutputKind outputKind = Microsoft.ML.Runtime.Data.CategoricalTransform+OutputKind.Ind);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IDataTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.IDataView input, string name, string source, valuetype Microsoft.ML.Runtime.Data.CategoricalTransform/OutputKind outputKind) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.CategoricalTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,Microsoft.ML.Runtime.Data.CategoricalTransform.OutputKind)" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.IDataView * string * string * Microsoft.ML.Runtime.Data.CategoricalTransform.OutputKind -&gt; Microsoft.ML.Runtime.Data.IDataTransform" Usage="Microsoft.ML.Runtime.Data.CategoricalTransform.Create (env, input, name, source, outputKind)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="source" Type="System.String" />
+        <Parameter Name="outputKind" Type="Microsoft.ML.Runtime.Data.CategoricalTransform+OutputKind" />
+      </Parameters>
+      <Docs>
+        <param name="env">Host Environment.</param>
+        <param name="input">Input <see cref="T:Microsoft.ML.Runtime.Data.IDataView" />. This is the output from previous transform or loader.</param>
+        <param name="name">Name of the output column.</param>
+        <param name="source">Name of the column to be transformed. If this is null '<paramref name="name" />' will be used.</param>
+        <param name="outputKind">The type of output expected.</param>
+        <summary>
+            A helper method to create <see cref="T:Microsoft.ML.Runtime.Data.CategoricalTransform" /> for public facing API.
+            </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>

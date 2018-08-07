@@ -88,12 +88,12 @@
         <param name="env">To be added.</param>
         <param name="path">To be added.</param>
         <summary>
-            Create a <see cref="T:Microsoft.ML.Runtime.PipelineInference.TextFileSample" /> by reading multiple chunks from the file (or other source) and 
+            Create a <see cref="T:Microsoft.ML.Runtime.PipelineInference.TextFileSample" /> by reading multiple chunks from the file (or other source) and
             then stitching them together. The algorithm is as follows:
             0. If the source is not seekable, revert to <see cref="M:Microsoft.ML.Runtime.PipelineInference.TextFileSample.CreateFromHead(System.String)" />.
             1. If the file length is less than 2 * <see cref="F:Microsoft.ML.Runtime.PipelineInference.TextFileSample.BufferSizeMb" />, revert to <see cref="M:Microsoft.ML.Runtime.PipelineInference.TextFileSample.CreateFromHead(System.String)" />.
             2. Read first <see cref="F:Microsoft.ML.Runtime.PipelineInference.TextFileSample.FirstChunkSizeMb" /> MB chunk. Determine average line length in the chunk.
-            3. Determine how large one chunk should be, and how many chunks there should be, to end up 
+            3. Determine how large one chunk should be, and how many chunks there should be, to end up
             with <see cref="F:Microsoft.ML.Runtime.PipelineInference.TextFileSample.BufferSizeMb" /> * <see cref="F:Microsoft.ML.Runtime.PipelineInference.TextFileSample.OversamplingRate" /> MB worth of lines.
             4. Determine seek locations and read the chunks.
             5. Stitch and return a <see cref="T:Microsoft.ML.Runtime.PipelineInference.TextFileSample" />.

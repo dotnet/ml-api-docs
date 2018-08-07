@@ -14,23 +14,21 @@
   <Interfaces />
   <Docs>
     <summary>
-            LightLDA transform: Big Topic Models on Modest Compute Clusters.
-            <see href="http://arxiv.org/abs/1412.1576">LightLDA</see> is an implementation of Latent Dirichlet Allocation (LDA).
-            Previous implementations of LDA such as SparseLDA or AliasLDA allow to achieve massive data and model scales,
-            for example models with tens of billions of parameters to be inferred from billions of documents.
-            However this requires using a cluster of thousands of machines with all ensuing costs to setup and maintain.
-            LightLDA solves this problem in a more cost-effective manner by providing an implementation 
-            that is efﬁcient enough for modest clusters with at most tens of machines... 
-            For more details please see original LightLDA paper: 
-            http://arxiv.org/abs/1412.1576
-            http://www.www2015.it/documents/proceedings/proceedings/p1351.pdf
-            and open source implementation: 
-            https://github.com/Microsoft/LightLDA
-            
-            See <a href="https://github.com/dotnet/machinelearning/blob/master/test/Microsoft.ML.TestFramework/DataPipe/TestDataPipe.cs" />
-            for an example on how to use LdaTransform.
-            </summary>
-    <remarks>To be added.</remarks>
+        The LDA transform implements LightLDA, a state-of-the-art implementation of Latent Dirichlet Allocation.
+      </summary>
+    <remarks>
+        Latent Dirichlet Allocation is a well-known topic modeling algorithm that infers topical structure from text data,
+        and can be used to featurize any text fields as low-dimensional topical vectors. 
+        <para>LightLDA is an extremely efficient implementation of LDA developed in MSR-Asia that incorporates a number of 
+         optimization techniques. See <a href="http://arxiv.org/abs/1412.1576">LightLDA: Big Topic Models on Modest Compute Clusters</a>.
+        </para><para>
+          With the LDA transform, ML.NET users can train a topic model to produce 1 million topics with 1 million vocabulary
+          on a 1-billion-token document set one a single machine in a few hours (typically, LDA at this scale takes days and requires large clusters).
+          The most significant innovation is a super-efficient O(1) <a href="https://en.wikipedia.org/wiki/Metropolis–Hastings_algorithm">Metropolis-Hastings sampling algorithm</a>,
+          whose running cost is (surprisingly) agnostic of model size,
+          allowing it to converges nearly an order of magnitude faster than other <a href="https://en.wikipedia.org/wiki/Gibbs_sampling">Gibbs samplers.</a></para><para>
+          For more details please see original LightLDA paper, and its open source implementation. 
+          <list><item><description><a href="http://arxiv.org/abs/1412.1576"> LightLDA: Big Topic Models on Modest Computer Clusters</a></description></item><item><description><a href=" https://github.com/Microsoft/LightLDA">LightLDA </a></description></item></list></para></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -167,7 +165,7 @@
         <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
         <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IRow" />
         <Parameter Name="iinfo" Type="System.Int32" />
-        <Parameter Name="disposer" Type="System.Action&amp;" RefType="out" />
+        <Parameter Name="disposer" Type="System.Action" RefType="out" />
       </Parameters>
       <Docs>
         <param name="ch">To be added.</param>

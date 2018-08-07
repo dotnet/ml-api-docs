@@ -49,6 +49,36 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ShuffleTransform (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.IDataView input, int poolRows = 1000, bool poolOnly = false, bool forceShuffle = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.IDataView input, int32 poolRows, bool poolOnly, bool forceShuffle) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ShuffleTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.Int32,System.Boolean,System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, input As IDataView, Optional poolRows As Integer = 1000, Optional poolOnly As Boolean = false, Optional forceShuffle As Boolean = false)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.ShuffleTransform : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.IDataView * int * bool * bool -&gt; Microsoft.ML.Runtime.Data.ShuffleTransform" Usage="new Microsoft.ML.Runtime.Data.ShuffleTransform (env, input, poolRows, poolOnly, forceShuffle)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="poolRows" Type="System.Int32" />
+        <Parameter Name="poolOnly" Type="System.Boolean" />
+        <Parameter Name="forceShuffle" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="env">Host Environment.</param>
+        <param name="input">Input <see cref="T:Microsoft.ML.Runtime.Data.IDataView" />. This is the output from previous transform or loader.</param>
+        <param name="poolRows">The pool will have this many rows</param>
+        <param name="poolOnly">If true, the transform will not attempt to shuffle the input cursor but only shuffle based on the pool. This parameter has no effect if the input data was not itself shufflable.</param>
+        <param name="forceShuffle">If true, the transform will always provide a shuffled view.</param>
+        <summary>
+            Convenience constructor for public facing API.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="CanShuffle">
       <MemberSignature Language="C#" Value="public override bool CanShuffle { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool CanShuffle" />
@@ -138,7 +168,7 @@
         <ReturnType>Microsoft.ML.Runtime.Data.IRowCursor[]</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="consolidator" Type="Microsoft.ML.Runtime.Data.IRowCursorConsolidator&amp;" RefType="out" />
+        <Parameter Name="consolidator" Type="Microsoft.ML.Runtime.Data.IRowCursorConsolidator" RefType="out" />
         <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
         <Parameter Name="n" Type="System.Int32" />
         <Parameter Name="rand" Type="Microsoft.ML.Runtime.IRandom" />
