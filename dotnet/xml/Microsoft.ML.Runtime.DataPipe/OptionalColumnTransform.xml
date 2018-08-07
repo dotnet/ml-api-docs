@@ -13,10 +13,48 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>
+        Creates a new column with the specified type and default values.
+      </summary>
+    <remarks>
+        If the user wish to create additional columns with a particular type and default values, or replicated the values from one column to another, changing their type, they can do so using this transform.
+        This transform can be used as a workaround to create a Label column after deserializing a model, for prediction.
+        Some transforms in the serialized model operate on the Label column, and would throw errors during prediction if such a column is not found.
+      </remarks>
   </Docs>
   <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public OptionalColumnTransform (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.IDataView input, params string[] columns);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.IDataView input, string[] columns) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.DataPipe.OptionalColumnTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String[])" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, input As IDataView, ParamArray columns As String())" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.DataPipe.OptionalColumnTransform : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.IDataView * string[] -&gt; Microsoft.ML.Runtime.DataPipe.OptionalColumnTransform" Usage="new Microsoft.ML.Runtime.DataPipe.OptionalColumnTransform (env, input, columns)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="columns" Type="System.String[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="env">Host Environment.</param>
+        <param name="input">Input <see cref="T:Microsoft.ML.Runtime.Data.IDataView" />. This is the output from previous transform or loader.</param>
+        <param name="columns">Columns to transform.</param>
+        <summary>
+            Convenience constructor for public facing API.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public OptionalColumnTransform (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.DataPipe.OptionalColumnTransform.Arguments args, Microsoft.ML.Runtime.Data.IDataView input);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.DataPipe.OptionalColumnTransform/Arguments args, class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
@@ -88,7 +126,7 @@
       <Parameters>
         <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IRow" />
         <Parameter Name="active" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
-        <Parameter Name="disposer" Type="System.Action&amp;" RefType="out" />
+        <Parameter Name="disposer" Type="System.Action" RefType="out" />
       </Parameters>
       <Docs>
         <param name="input">To be added.</param>
@@ -164,7 +202,7 @@
         <ReturnType>Microsoft.ML.Runtime.Data.IRowCursor[]</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="consolidator" Type="Microsoft.ML.Runtime.Data.IRowCursorConsolidator&amp;" RefType="out" />
+        <Parameter Name="consolidator" Type="Microsoft.ML.Runtime.Data.IRowCursorConsolidator" RefType="out" />
         <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
         <Parameter Name="n" Type="System.Int32" />
         <Parameter Name="rand" Type="Microsoft.ML.Runtime.IRandom" />
@@ -211,7 +249,7 @@
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="If the source column does not exist after deserialization, create a column with the right type and default values.", Name="Transforms.OptionalColumnCreator", ShortName="optional", UserName="Optional Column Transform")</AttributeName>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="If the source column does not exist after deserialization, create a column with the right type and default values.", Name="Transforms.OptionalColumnCreator", ShortName="optional", UserName="Optional Column Transform", XmlInclude=Mono.Cecil.CustomAttributeArgument[])</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -244,7 +282,7 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="isSrc" Type="System.Boolean&amp;" RefType="out" />
+        <Parameter Name="isSrc" Type="System.Boolean" RefType="out" />
         <Parameter Name="col" Type="System.Int32" />
       </Parameters>
       <Docs>

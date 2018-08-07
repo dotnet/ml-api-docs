@@ -21,9 +21,28 @@
   </Interfaces>
   <Docs>
     <summary>
-            Converts input values (words, numbers, etc.) to index in a dictionary.
-            </summary>
-    <remarks>To be added.</remarks>
+        Converts input values (words, numbers, etc.) to index in a dictionary.
+      </summary>
+    <remarks>
+        The TextToKeyConverter transform builds up term vocabularies (dictionaries).
+        The TextToKeyConverter and the <see cref="T:Microsoft.ML.Transforms.HashConverter" /> are the two one primary mechanisms by which raw input is transformed into keys.
+        If multiple columns are used, each column builds/uses exactly one vocabulary.
+        The output columns are KeyType-valued.
+        The Key value is the one-based index of the item in the dictionary.
+        If the key is not found in the dictionary, it is assigned the missing value indicator.
+        This dictionary mapping values to keys is most commonly learnt from the unique values in input data,
+        but can be defined through other means: either with the mapping defined directly on the command line, or as loaded from an external file.
+      </remarks>
+    <altmember cref="T:Microsoft.ML.Transforms.HashConverter" />
+    <altmember cref="T:Microsoft.ML.Transforms.KeyToTextConverter" />
+    <example>
+      <code language="csharp">
+          pipeline.Add(new TextToKeyConverter(("Column", "OutColumn"))
+          { 
+            Sort = TermTransformSortOrder.Occurrence 
+          });
+        </code>
+    </example>
   </Docs>
   <Members>
     <Member MemberName=".ctor">

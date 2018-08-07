@@ -14,12 +14,16 @@
   <Interfaces />
   <Docs>
     <summary>
-            This transform can transform either scalars or vectors (both fixed and variable size),
-            creating output columns that are identical to the input columns except for replacing NA values
-            with either the default value, user input, or imputed values (min/max/mean are currently supported).
-            Imputation modes are supported for vectors both by slot and across all slots.
-            </summary>
-    <remarks>To be added.</remarks>
+        Create an output column of the same type and size of the input column, 
+        where missing values are replaced with either the default value or the mean/min/max value (for non-text columns only). 
+      </summary>
+    <remarks>
+        This transform can transform either scalars or vectors (both fixed and variable size),
+        creating output columns that are identical to the input columns except for replacing NA values
+        with either the default value, user input, or imputed values (min/max/mean are currently supported).
+        Imputation modes are supported for vectors both by slot and across all slots.
+      </remarks>
+    <altmember cref="F:Microsoft.ML.Runtime.Data.MetadataUtils.Kinds.HasMissingValues" />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -44,6 +48,35 @@
         <param name="input">To be added.</param>
         <summary>
             Public constructor corresponding to SignatureDataTransform.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public NAReplaceTransform (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.IDataView input, string name, string source = null, Microsoft.ML.Runtime.Data.NAReplaceTransform.ReplacementKind replacementKind = Microsoft.ML.Runtime.Data.NAReplaceTransform+ReplacementKind.Default);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.IDataView input, string name, string source, valuetype Microsoft.ML.Runtime.Data.NAReplaceTransform/ReplacementKind replacementKind) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.NAReplaceTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,Microsoft.ML.Runtime.Data.NAReplaceTransform.ReplacementKind)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.NAReplaceTransform : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.IDataView * string * string * Microsoft.ML.Runtime.Data.NAReplaceTransform.ReplacementKind -&gt; Microsoft.ML.Runtime.Data.NAReplaceTransform" Usage="new Microsoft.ML.Runtime.Data.NAReplaceTransform (env, input, name, source, replacementKind)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="source" Type="System.String" />
+        <Parameter Name="replacementKind" Type="Microsoft.ML.Runtime.Data.NAReplaceTransform+ReplacementKind" />
+      </Parameters>
+      <Docs>
+        <param name="env">Host Environment.</param>
+        <param name="input">Input <see cref="T:Microsoft.ML.Runtime.Data.IDataView" />. This is the output from previous transform or loader.</param>
+        <param name="name">Name of the output column.</param>
+        <param name="source">Name of the column to be transformed. If this is null '<paramref name="name" />' will be used.</param>
+        <param name="replacementKind">The replacement method to utilize.</param>
+        <summary>
+            Convenience constructor for public facing API.
             </summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -138,7 +171,7 @@
         <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
         <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IRow" />
         <Parameter Name="iinfo" Type="System.Int32" />
-        <Parameter Name="disposer" Type="System.Action&amp;" RefType="out" />
+        <Parameter Name="disposer" Type="System.Action" RefType="out" />
       </Parameters>
       <Docs>
         <param name="ch">To be added.</param>

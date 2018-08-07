@@ -21,14 +21,20 @@
   </Interfaces>
   <Docs>
     <summary>
-            TermTransform builds up term vocabularies (dictionaries).
-            Notes:
-            * Each column builds/uses exactly one "vocabulary" (dictionary).
-            * Output columns are KeyType-valued.
-            * The Key value is the one-based index of the item in the dictionary.
-            * Not found is assigned the value zero.
-            </summary>
-    <remarks>To be added.</remarks>
+        Converts input values (words, numbers, etc.) to index in a dictionary.
+      </summary>
+    <remarks>
+        The TextToKeyConverter transform builds up term vocabularies (dictionaries).
+        The TextToKeyConverter and the <see cref="T:Microsoft.ML.Transforms.HashConverter" /> are the two one primary mechanisms by which raw input is transformed into keys.
+        If multiple columns are used, each column builds/uses exactly one vocabulary.
+        The output columns are KeyType-valued.
+        The Key value is the one-based index of the item in the dictionary.
+        If the key is not found in the dictionary, it is assigned the missing value indicator.
+        This dictionary mapping values to keys is most commonly learnt from the unique values in input data,
+        but can be defined through other means: either with the mapping defined directly on the command line, or as loaded from an external file.
+      </remarks>
+    <altmember cref="T:Microsoft.ML.Transforms.HashConverter" />
+    <altmember cref="T:Microsoft.ML.Transforms.KeyToTextConverter" />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -81,6 +87,39 @@
         <param name="input">To be added.</param>
         <summary>
             Public constructor for compositional forms.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public TermTransform (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.IDataView input, string name, string source = null, int maxNumTerms = 1000000, Microsoft.ML.Runtime.Data.TermTransform.SortOrder sort = Microsoft.ML.Runtime.Data.TermTransform+SortOrder.Occurrence);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.IDataView input, string name, string source, int32 maxNumTerms, valuetype Microsoft.ML.Runtime.Data.TermTransform/SortOrder sort) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.TermTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,System.Int32,Microsoft.ML.Runtime.Data.TermTransform.SortOrder)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, input As IDataView, name As String, Optional source As String = null, Optional maxNumTerms As Integer = 1000000, Optional sort As TermTransform.SortOrder = Microsoft.ML.Runtime.Data.TermTransform+SortOrder.Occurrence)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.TermTransform : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.IDataView * string * string * int * Microsoft.ML.Runtime.Data.TermTransform.SortOrder -&gt; Microsoft.ML.Runtime.Data.TermTransform" Usage="new Microsoft.ML.Runtime.Data.TermTransform (env, input, name, source, maxNumTerms, sort)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="source" Type="System.String" />
+        <Parameter Name="maxNumTerms" Type="System.Int32" />
+        <Parameter Name="sort" Type="Microsoft.ML.Runtime.Data.TermTransform+SortOrder" />
+      </Parameters>
+      <Docs>
+        <param name="env">Host Environment.</param>
+        <param name="input">Input <see cref="T:Microsoft.ML.Runtime.Data.IDataView" />. This is the output from previous transform or loader.</param>
+        <param name="name">Name of the output column.</param>
+        <param name="source">Name of the column to be transformed. If this is null '<paramref name="name" />' will be used.</param>
+        <param name="maxNumTerms">Maximum number of terms to keep per column when auto-training.</param>
+        <param name="sort">How items should be ordered when vectorized. By default, they will be in the order encountered.
+            If by value items are sorted according to their default comparison, e.g., text sorting will be case sensitive (e.g., 'A' then 'Z' then 'a').</param>
+        <summary>
+            Convenience constructor for public facing API.
             </summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -224,7 +263,7 @@
         <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
         <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IRow" />
         <Parameter Name="iinfo" Type="System.Int32" />
-        <Parameter Name="disposer" Type="System.Action&amp;" RefType="out" />
+        <Parameter Name="disposer" Type="System.Action" RefType="out" />
       </Parameters>
       <Docs>
         <param name="ch">To be added.</param>

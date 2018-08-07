@@ -21,10 +21,27 @@
   </Interfaces>
   <Docs>
     <summary>
-            LightGBM Regression.  This API requires Microsoft.ML.LightGBM nuget.
-            </summary>
-    <remarks>Light GBM is an open source implementation of boosted trees.
-            <a href="https://github.com/Microsoft/LightGBM/wiki">GitHub: LightGBM</a></remarks>
+        Trains a Light GBM Model.
+      </summary>
+    <remarks>
+        Light GBM is an open source implementation of boosted trees.
+        <a href="https://github.com/Microsoft/LightGBM/wiki">GitHub: LightGBM</a></remarks>
+    <example>
+      <code language="csharp">
+          new LightGbmRegressor
+          {
+            NumBoostRound = 100,
+            LearningRate = 0.5f,
+            NumLeaves = 32,
+            MinDataPerLeaf = 20,
+            Booster = new DartBoosterParameterFunction
+            {
+              XgboostDartMode = true,
+              UniformDrop = true
+            }
+          }
+        </code>
+    </example>
     <example>
       <code>
             pipeline.Add(new LightGbmRegressor() { NumLeaves = 5, NumBoostRound = 5, MinDataPerLeaf = 2 })

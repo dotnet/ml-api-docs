@@ -21,9 +21,20 @@
   </Interfaces>
   <Docs>
     <summary>
-            Converts column values into hashes. This transform accepts both numeric and text inputs, both single and vector-valued columns.
-            </summary>
-    <remarks>To be added.</remarks>
+        Converts multiple column values into hashes. 
+        This transform accepts both numeric and text inputs, both single and vector-valued columns. 
+      </summary>
+    <remarks>
+        This transform can be helpful for ranking and cross-validation. In the case of ranking, where the GroupIdColumn column is required,
+        and needs to be of a key type you can use the <see cref="T:Microsoft.ML.Transforms.CategoricalHashOneHotVectorizer" /> to hash the text value of a single GroupID column into a key value.
+        If the GroupID is the combination of the values from multiple columns, you can use the HashConverter to hash multiple text columns into one key column. 
+        Similarly with CrossValidator and the StratificationColumn. 
+      </remarks>
+    <example>
+      <code language="csharp">
+          pipeline.Add(new HashConverter("Column1", "Column2"));
+        </code>
+    </example>
   </Docs>
   <Members>
     <Member MemberName=".ctor">

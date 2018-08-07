@@ -14,10 +14,21 @@
   <Interfaces />
   <Docs>
     <summary>
-            Selects the top k slots ordered by their mutual information with the label column.
-            Instantiates a DropSlots transform to actually drop the slots.
-            </summary>
-    <remarks>To be added.</remarks>
+        Selects the top k slots across all specified columns ordered by their mutual information with the label column.
+      </summary>
+    <remarks>
+      <para>
+          The mutual information of two random variables X and Y is a measure of the mutual dependence between the variables.
+          Formally, the mutual information can be written as:
+        </para>
+      <para>I(X;Y) = E[log(p(x,y)) - log(p(x)) - log(p(y))]</para>
+      <para>where the expectation is taken over the joint distribution of X and Y. 
+        Here p(x,y) is the joint probability density function of X and Y, p(x) and p(y) are the marginal probability density functions of X and Y respectively. 
+        In general, a higher mutual information between the dependent variable (or label) and an independent variable (or feature) means 
+        that the label has higher mutual dependence over that feature.
+        It keeps the top SlotsInOutput features with the largest mutual information with the label.
+        </para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="Create">
@@ -45,6 +56,48 @@
         <param name="input">To be added.</param>
         <summary>
             Create method corresponding to SignatureDataTransform.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IDataTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.IDataView input, string labelColumn = &quot;Label&quot;, int slotsInOutput = 1000, int numBins = 256, params string[] columns);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IDataTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.IDataView input, string labelColumn, int32 slotsInOutput, int32 numBins, string[] columns) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MutualInformationFeatureSelectionTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,System.Int32,System.Int32,System.String[])" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, input As IDataView, Optional labelColumn As String = &quot;Label&quot;, Optional slotsInOutput As Integer = 1000, Optional numBins As Integer = 256, ParamArray columns As String()) As IDataTransform" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.IDataView * string * int * int * string[] -&gt; Microsoft.ML.Runtime.Data.IDataTransform" Usage="Microsoft.ML.Runtime.Data.MutualInformationFeatureSelectionTransform.Create (env, input, labelColumn, slotsInOutput, numBins, columns)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="labelColumn" Type="System.String" />
+        <Parameter Name="slotsInOutput" Type="System.Int32" />
+        <Parameter Name="numBins" Type="System.Int32" />
+        <Parameter Name="columns" Type="System.String[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="env">Host Environment.</param>
+        <param name="input">Input <see cref="T:Microsoft.ML.Runtime.Data.IDataView" />. This is the output from previous transform or loader.</param>
+        <param name="labelColumn">Column to use for labels.</param>
+        <param name="slotsInOutput">The maximum number of slots to preserve in output.</param>
+        <param name="numBins">Max number of bins for R4/R8 columns, power of 2 recommended.</param>
+        <param name="columns">Columns to use for feature selection.</param>
+        <summary>
+            A helper method to create <see cref="T:Microsoft.ML.Runtime.Data.IDataTransform" /> for selecting the top k slots ordered by their mutual information.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

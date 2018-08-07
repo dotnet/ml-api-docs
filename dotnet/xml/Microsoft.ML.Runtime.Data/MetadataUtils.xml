@@ -88,7 +88,7 @@
       <Docs>
         <param name="rangeCount">To be added.</param>
         <summary>
-            Returns a vector type with item type int and the given size. 
+            Returns a vector type with item type int and the given size.
             The range count must be a positive integer.
             This is a standard type for metadata consisting of multiple int values that represent
             categorical slot ranges with in a column.
@@ -212,7 +212,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="schema" Type="Microsoft.ML.Runtime.Data.ISchema" RefType="this" />
-        <Parameter Name="colMax" Type="System.Int32&amp;" RefType="out" />
+        <Parameter Name="colMax" Type="System.Int32" RefType="out" />
         <Parameter Name="metadataKind" Type="System.String" />
         <Parameter Name="filterFunc" Type="System.Func&lt;Microsoft.ML.Runtime.Data.ISchema,System.Int32,System.Boolean&gt;" />
       </Parameters>
@@ -307,7 +307,7 @@
         <Parameter Name="schema" Type="Microsoft.ML.Runtime.Data.RoleMappedSchema" />
         <Parameter Name="role" Type="Microsoft.ML.Runtime.Data.RoleMappedSchema+ColumnRole" />
         <Parameter Name="vectorSize" Type="System.Int32" />
-        <Parameter Name="slotNames" Type="Microsoft.ML.Runtime.Data.VBuffer&lt;Microsoft.ML.Runtime.Data.DvText&gt;&amp;" RefType="ref" />
+        <Parameter Name="slotNames" Type="Microsoft.ML.Runtime.Data.VBuffer&lt;Microsoft.ML.Runtime.Data.DvText&gt;" RefType="ref" />
       </Parameters>
       <Docs>
         <param name="schema">To be added.</param>
@@ -433,6 +433,37 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="IsNormalized">
+      <MemberSignature Language="C#" Value="public static bool IsNormalized (this Microsoft.ML.Runtime.Data.ISchema schema, int col);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool IsNormalized(class Microsoft.ML.Runtime.Data.ISchema schema, int32 col) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MetadataUtils.IsNormalized(Microsoft.ML.Runtime.Data.ISchema,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function IsNormalized (schema As ISchema, col As Integer) As Boolean" />
+      <MemberSignature Language="F#" Value="static member IsNormalized : Microsoft.ML.Runtime.Data.ISchema * int -&gt; bool" Usage="Microsoft.ML.Runtime.Data.MetadataUtils.IsNormalized (schema, col)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="schema" Type="Microsoft.ML.Runtime.Data.ISchema" RefType="this" />
+        <Parameter Name="col" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="schema">The schema to query</param>
+        <param name="col">Which column in the schema to query</param>
+        <summary>
+            Returns whether a column has the <see cref="F:Microsoft.ML.Runtime.Data.MetadataUtils.Kinds.IsNormalized" /> metadata set to true.
+            That metadata should be set when the data has undergone transforms that would render it
+            "normalized."
+            </summary>
+        <returns>True if and only if the column has the <see cref="F:Microsoft.ML.Runtime.Data.MetadataUtils.Kinds.IsNormalized" /> metadata
+            set to the scalar value <see cref="P:Microsoft.ML.Runtime.Data.DvBool.True" /></returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Marshal&lt;THave,TNeed&gt;">
       <MemberSignature Language="C#" Value="public static void Marshal&lt;THave,TNeed&gt; (this Microsoft.ML.Runtime.Data.MetadataUtils.MetadataGetter&lt;THave&gt; getter, int col, ref TNeed dst);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Marshal&lt;THave, TNeed&gt;(class Microsoft.ML.Runtime.Data.MetadataUtils/MetadataGetter`1&lt;!!THave&gt; getter, int32 col, !!TNeed&amp; dst) cil managed" />
@@ -454,7 +485,7 @@
       <Parameters>
         <Parameter Name="getter" Type="Microsoft.ML.Runtime.Data.MetadataUtils+MetadataGetter&lt;THave&gt;" RefType="this" />
         <Parameter Name="col" Type="System.Int32" />
-        <Parameter Name="dst" Type="TNeed&amp;" RefType="ref" />
+        <Parameter Name="dst" Type="TNeed" RefType="ref" />
       </Parameters>
       <Docs>
         <typeparam name="THave">To be added.</typeparam>
@@ -545,19 +576,19 @@
       <Parameters>
         <Parameter Name="schema" Type="Microsoft.ML.Runtime.Data.ISchema" />
         <Parameter Name="colIndex" Type="System.Int32" />
-        <Parameter Name="categoricalFeatures" Type="System.Int32[]&amp;" RefType="out" />
+        <Parameter Name="categoricalFeatures" Type="System.Int32[]" RefType="out" />
       </Parameters>
       <Docs>
         <param name="schema">To be added.</param>
         <param name="colIndex">To be added.</param>
         <param name="categoricalFeatures">To be added.</param>
         <summary>
-            The categoricalFeatures is a vector of the indices of categorical features slots. 
+            The categoricalFeatures is a vector of the indices of categorical features slots.
             This vector should always have an even number of elements, and the elements should be parsed in groups of two consecutive numbers.
             So if its value is the range of numbers: 0,2,3,4,8,9
             look at it as [0,2],[3,4],[8,9].
             The way to interpret that is: feature with indices 0, 1, and 2 are one categorical
-            Features with indices 3 and 4 are another categorical. Features 5 and 6 don't appear there, so they are not categoricals. 
+            Features with indices 3 and 4 are another categorical. Features 5 and 6 don't appear there, so they are not categoricals.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -585,7 +616,7 @@
         <Parameter Name="type" Type="Microsoft.ML.Runtime.Data.PrimitiveType" />
         <Parameter Name="kind" Type="System.String" />
         <Parameter Name="col" Type="System.Int32" />
-        <Parameter Name="value" Type="T&amp;" RefType="ref" />
+        <Parameter Name="value" Type="T" RefType="ref" />
       </Parameters>
       <Docs>
         <typeparam name="T">The raw type of the metadata, should match the PrimitiveType type</typeparam>

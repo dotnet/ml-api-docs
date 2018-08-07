@@ -21,9 +21,21 @@
   </Interfaces>
   <Docs>
     <summary>
-            If the source column does not exist after deserialization, create a column with the right type and default values.
-            </summary>
-    <remarks>To be added.</remarks>
+        Creates a new column with the specified type and default values.
+      </summary>
+    <remarks>
+        If the user wish to create additional columns with a particular type and default values, or replicated the values from one column to another, changing their type, they can do so using this transform.
+        This transform can be used as a workaround to create a Label column after deserializing a model, for prediction.
+        Some transforms in the serialized model operate on the Label column, and would throw errors during prediction if such a column is not found.
+      </remarks>
+    <example>
+      <code language="csharp">
+          pipeline.Add(new OptionalColumnCreator 
+          { 
+            Column = new[]{ "OptColumn"} 
+          });
+        </code>
+    </example>
   </Docs>
   <Members>
     <Member MemberName=".ctor">

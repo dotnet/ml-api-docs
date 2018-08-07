@@ -15,6 +15,19 @@
   <Docs>
     <summary>To be added.</summary>
     <remarks>To be added.</remarks>
+    <member name="NAFilter">
+      <summary>
+        Removes missing values from vector type columns.
+      </summary>
+      <remarks>
+        This transform removes the entire row if any of the input columns have a missing value in that row.
+        This preprocessing is required for many ML algorithms that cannot work with missing values.
+        Useful if any missing entry invalidates the entire row.
+        If the <see cref="F:Microsoft.ML.Runtime.Data.NAFilter.Defaults.Complement" /> is set to true, this transform would do the exact opposite,
+        it will keep only the rows that have missing values.
+      </remarks>
+      <seealso cref="F:Microsoft.ML.Runtime.Data.MetadataUtils.Kinds.HasMissingValues" />
+    </member>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -62,6 +75,40 @@
         <param name="args">To be added.</param>
         <param name="input">To be added.</param>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public NAFilter (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.IDataView input, bool complement = false, params string[] columns);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.IDataView input, bool complement, string[] columns) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.NAFilter.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.Boolean,System.String[])" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, input As IDataView, Optional complement As Boolean = false, ParamArray columns As String())" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.NAFilter : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.IDataView * bool * string[] -&gt; Microsoft.ML.Runtime.Data.NAFilter" Usage="new Microsoft.ML.Runtime.Data.NAFilter (env, input, complement, columns)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="complement" Type="System.Boolean" />
+        <Parameter Name="columns" Type="System.String[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="env">Host Environment.</param>
+        <param name="input">Input <see cref="T:Microsoft.ML.Runtime.Data.IDataView" />. This is the output from previous transform or loader.</param>
+        <param name="complement">If true, keep only rows that contain NA values, and filter the rest.</param>
+        <param name="columns">Name of the columns. Only these columns will be used to filter rows having 'NA' values.</param>
+        <summary>
+            Convenience constructor for public facing API.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -153,7 +200,7 @@
         <ReturnType>Microsoft.ML.Runtime.Data.IRowCursor[]</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="consolidator" Type="Microsoft.ML.Runtime.Data.IRowCursorConsolidator&amp;" RefType="out" />
+        <Parameter Name="consolidator" Type="Microsoft.ML.Runtime.Data.IRowCursorConsolidator" RefType="out" />
         <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
         <Parameter Name="n" Type="System.Int32" />
         <Parameter Name="rand" Type="Microsoft.ML.Runtime.IRandom" />

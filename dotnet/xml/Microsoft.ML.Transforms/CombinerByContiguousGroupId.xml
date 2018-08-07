@@ -21,9 +21,23 @@
   </Interfaces>
   <Docs>
     <summary>
-            Groups values of a scalar column into a vector, by a contiguous group ID
-            </summary>
-    <remarks>To be added.</remarks>
+       Groups values of a scalar column into a vector, by a contiguous group ID.
+      </summary>
+    <remarks>
+       The CombinerByContiguousGroupId transform groups the consecutive rows that share the specified group key (or keys). 
+       Both group keys and the aggregated values can be of arbitrary non-vector types. 
+       The resulting data will have all the group key columns preserved, 
+       and the aggregated columns will become variable-length vectors of the original types.
+       <para>This transform essentially performs the following SQL-like operation:</para><para>SELECT GroupKey1, GroupKey2, ... GroupKeyK, LIST(Value1), LIST(Value2), ... LIST(ValueN)</para><para>FROM Data</para><para>GROUP BY GroupKey1, GroupKey2, ... GroupKeyK.</para></remarks>
+    <altmember cref="T:Microsoft.ML.Transforms.Segregator" />
+    <example>
+      <code language="csharp">
+          pipeline.Add(new CombinerByContiguousGroupId
+          { 
+            GroupKey = new []{"Key1", "Key2" } 
+          });
+        </code>
+    </example>
   </Docs>
   <Members>
     <Member MemberName=".ctor">

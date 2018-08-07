@@ -18,13 +18,23 @@
   <Interfaces />
   <Docs>
     <summary>
-            This is an averaged perceptron classifier.
-            Configurable subcomponents:
-                - Loss function. By default, hinge loss (aka max-margin avgd perceptron)
-                - Feature normalization. By default, rescaling between min and max values for every feature
-                - Prediction calibration to produce probabilities. Off by default, if on, uses exponential (aka Platt) calibration.
-            </summary>
-    <remarks>To be added.</remarks>
+        Averaged Perceptron Binary Classifier. 
+      </summary>
+    <remarks>
+        Perceptron is a classification algorithm that makes its predictions based on a linear function.
+        I.e., for an instance with feature values f0, f1,..., f_D-1, , the prediction is given by the sign of sigma[0,D-1] ( w_i * f_i), where w_0, w_1,...,w_D-1 are the weights computed by the algorithm.
+        <para>
+          Perceptron is an online algorithm, i.e., it processes the instances in the training set one at a time.
+          The weights are initialized to be 0, or some random values. Then, for each example in the training set, the value of sigma[0, D-1] (w_i * f_i) is computed.
+          If this value has the same sign as the label of the current example, the weights remain the same. If they have opposite signs,
+          the weights vector is updated by either subtracting or adding (if the label is negative or positive, respectively) the feature vector of the current example,
+          multiplied by a factor 0 &lt; a &lt;= 1, called the learning rate. In a generalization of this algorithm, the weights are updated by adding the feature vector multiplied by the learning rate,
+          and by the gradient of some loss function (in the specific case described above, the loss is hinge-loss, whose gradient is 1 when it is non-zero).
+        </para><para>
+          In Averaged Perceptron (AKA voted-perceptron), the weight vectors are stored,
+          together with a weight that counts the number of iterations it survived (this is equivalent to storing the weight vector after every iteration, regardless of whether it was updated or not).
+          The prediction is then calculated by taking the weighted average of all the sums sigma[0, D-1] (w_i * f_i) or the different weight vectors.
+        </para><para> For more information see:</para><para><a href="https://en.wikipedia.org/wiki/Perceptron">Wikipedia entry for Perceptron</a></para><para><a href="http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.48.8200">Large Margin Classification Using the Perceptron Algorithm</a></para></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -73,10 +83,10 @@
       </Docs>
     </Member>
     <Member MemberName="CreatePredictor">
-      <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.Learners.LinearBinaryPredictor CreatePredictor ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Microsoft.ML.Runtime.Learners.LinearBinaryPredictor CreatePredictor() cil managed" />
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Learners.LinearBinaryPredictor CreatePredictor ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Learners.LinearBinaryPredictor CreatePredictor() cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.CreatePredictor" />
-      <MemberSignature Language="VB.NET" Value="Public Overrides Function CreatePredictor () As LinearBinaryPredictor" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function CreatePredictor () As LinearBinaryPredictor" />
       <MemberSignature Language="F#" Value="override this.CreatePredictor : unit -&gt; Microsoft.ML.Runtime.Learners.LinearBinaryPredictor" Usage="averagedPerceptronTrainer.CreatePredictor " />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
@@ -113,10 +123,10 @@
       </Docs>
     </Member>
     <Member MemberName="NeedCalibration">
-      <MemberSignature Language="C#" Value="public override bool NeedCalibration { get; }" />
+      <MemberSignature Language="C#" Value="protected override bool NeedCalibration { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool NeedCalibration" />
       <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.NeedCalibration" />
-      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property NeedCalibration As Boolean" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides ReadOnly Property NeedCalibration As Boolean" />
       <MemberSignature Language="F#" Value="member this.NeedCalibration : bool" Usage="Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.NeedCalibration" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -165,7 +175,7 @@
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="Averaged Perceptron Binary Classifier.", Name="Trainers.AveragedPerceptronBinaryClassifier", Remarks="&lt;remarks&gt;\r\nPerceptron is a classification algorithm that makes its predictions based on a linear function.\r\nI.e., for an instance with feature values f0, f1,..., f_D-1, , the prediction is given by the sign of sigma[0,D-1] ( w_i * f_i), where w_0, w_1,...,w_D-1 are the weights computed by the algorithm.\r\n&lt;para&gt;\r\nPerceptron is an online algorithm, i.e., it processes the instances in the training set one at a time.\r\nThe weights are initialized to be 0, or some random values. Then, for each example in the training set, the value of sigma[0, D-1] (w_i * f_i) is computed. \r\nIf this value has the same sign as the label of the current example, the weights remain the same. If they have opposite signs,\r\nthe weights vector is updated by either subtracting or adding (if the label is negative or positive, respectively) the feature vector of the current example,\r\nmultiplied by a factor 0 &lt; a &lt;= 1, called the learning rate. In a generalization of this algorithm, the weights are updated by adding the feature vector multiplied by the learning rate, \r\nand by the gradient of some loss function (in the specific case described above, the loss is hinge-loss, whose gradient is 1 when it is non-zero).\r\n&lt;/para&gt;\r\n&lt;para&gt;\r\nIn Averaged Perceptron (AKA voted-perceptron), the weight vectors are stored, \r\ntogether with a weight that counts the number of iterations it survived (this is equivalent to storing the weight vector after every iteration, regardless of whether it was updated or not).\r\nThe prediction is then calculated by taking the weighted average of all the sums sigma[0, D-1] (w_i * f_i) or the different weight vectors.\r\n&lt;/para&gt;\r\n&lt;a href='https://en.wikipedia.org/wiki/Perceptron'&gt;Wikipedia entry for Perceptron&lt;/a&gt;\r\n&lt;a href='http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.48.8200'&gt;Large Margin Classification Using the Perceptron Algorithm&lt;/a&gt;\r\n&lt;/remarks&gt;", ShortName="ap", UserName="Averaged Perceptron")</AttributeName>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="Averaged Perceptron Binary Classifier.", Name="Trainers.AveragedPerceptronBinaryClassifier", ShortName="ap", UserName="Averaged Perceptron", XmlInclude=Mono.Cecil.CustomAttributeArgument[])</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
