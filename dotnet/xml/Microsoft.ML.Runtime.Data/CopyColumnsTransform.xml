@@ -1,33 +1,101 @@
 ﻿<Type Name="CopyColumnsTransform" FullName="Microsoft.ML.Runtime.Data.CopyColumnsTransform">
-  <TypeSignature Language="C#" Value="public sealed class CopyColumnsTransform : Microsoft.ML.Runtime.Data.OneToOneTransformBase" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit CopyColumnsTransform extends Microsoft.ML.Runtime.Data.OneToOneTransformBase" />
+  <TypeSignature Language="C#" Value="public sealed class CopyColumnsTransform : Microsoft.ML.Core.Data.ITransformer, Microsoft.ML.Runtime.Model.ICanSaveModel" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit CopyColumnsTransform extends System.Object implements class Microsoft.ML.Core.Data.ITransformer, class Microsoft.ML.Runtime.Model.ICanSaveModel" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.CopyColumnsTransform" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class CopyColumnsTransform&#xA;Inherits OneToOneTransformBase" />
-  <TypeSignature Language="F#" Value="type CopyColumnsTransform = class&#xA;    inherit OneToOneTransformBase" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class CopyColumnsTransform&#xA;Implements ICanSaveModel, ITransformer" />
+  <TypeSignature Language="F#" Value="type CopyColumnsTransform = class&#xA;    interface ITransformer&#xA;    interface ICanSaveModel" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.Data</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>Microsoft.ML.Runtime.Data.OneToOneTransformBase</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">System.Object</BaseTypeName>
   </Base>
-  <Interfaces />
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Core.Data.ITransformer</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.Model.ICanSaveModel</InterfaceName>
+    </Interface>
+  </Interfaces>
   <Docs>
     <summary>To be added.</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CopyColumnsTransform (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.CopyColumnsTransform.Arguments args, Microsoft.ML.Runtime.Data.IDataView input);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.CopyColumnsTransform/Arguments args, class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.CopyColumnsTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.CopyColumnsTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, args As CopyColumnsTransform.Arguments, input As IDataView)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.CopyColumnsTransform : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.CopyColumnsTransform.Arguments * Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.CopyColumnsTransform" Usage="new Microsoft.ML.Runtime.Data.CopyColumnsTransform (env, args, input)" />
+      <MemberSignature Language="C#" Value="public CopyColumnsTransform (Microsoft.ML.Runtime.IHostEnvironment env, params ValueTuple&lt;string,string&gt;[] columns);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, valuetype System.ValueTuple`2&lt;string, string&gt;[] columns) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.CopyColumnsTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.ValueTuple{System.String,System.String}[])" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, ParamArray columns As ValueTuple(Of String, String)())" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.CopyColumnsTransform : Microsoft.ML.Runtime.IHostEnvironment * ValueTuple&lt;string, string&gt;[] -&gt; Microsoft.ML.Runtime.Data.CopyColumnsTransform" Usage="new Microsoft.ML.Runtime.Data.CopyColumnsTransform (env, columns)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="columns" Type="System.ValueTuple&lt;System.String,System.String&gt;[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+            <Attribute>
+              <AttributeName>System.Runtime.CompilerServices.TupleElementNames(Mono.Cecil.CustomAttributeArgument[])</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="columns">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.CopyColumnsTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Model.ModelLoadContext ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.CopyColumnsTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Model.ModelLoadContext ctx) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.CopyColumnsTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, ctx As ModelLoadContext) As CopyColumnsTransform" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Model.ModelLoadContext -&gt; Microsoft.ML.Runtime.Data.CopyColumnsTransform" Usage="Microsoft.ML.Runtime.Data.CopyColumnsTransform.Create (env, ctx)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.CopyColumnsTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="ctx" Type="Microsoft.ML.Runtime.Model.ModelLoadContext" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="ctx">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IDataTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.CopyColumnsTransform.Arguments args, Microsoft.ML.Runtime.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IDataTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.CopyColumnsTransform/Arguments args, class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.CopyColumnsTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.CopyColumnsTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, args As CopyColumnsTransform.Arguments, input As IDataView) As IDataTransform" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.CopyColumnsTransform.Arguments * Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.IDataTransform" Usage="Microsoft.ML.Runtime.Data.CopyColumnsTransform.Create (env, args, input)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataTransform</ReturnType>
+      </ReturnValue>
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
         <Parameter Name="args" Type="Microsoft.ML.Runtime.Data.CopyColumnsTransform+Arguments" />
@@ -38,50 +106,23 @@
         <param name="args">To be added.</param>
         <param name="input">To be added.</param>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CopyColumnsTransform (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.IDataView input, string name, string source);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.IDataView input, string name, string source) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.CopyColumnsTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,System.String)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, input As IDataView, name As String, source As String)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.CopyColumnsTransform : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.IDataView * string * string -&gt; Microsoft.ML.Runtime.Data.CopyColumnsTransform" Usage="new Microsoft.ML.Runtime.Data.CopyColumnsTransform (env, input, name, source)" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
-        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
-        <Parameter Name="name" Type="System.String" />
-        <Parameter Name="source" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="env">Host Environment.</param>
-        <param name="input">Input <see cref="T:Microsoft.ML.Runtime.Data.IDataView" />. This is the output from previous transform or loader.</param>
-        <param name="name">Name of the output column.</param>
-        <param name="source">Name of the column to be copied.</param>
-        <summary>
-            Convenience constructor for public facing API.
-            </summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Create">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.CopyColumnsTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Model.ModelLoadContext ctx, Microsoft.ML.Runtime.Data.IDataView input);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.CopyColumnsTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Model.ModelLoadContext ctx, class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IDataView Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Model.ModelLoadContext ctx, Microsoft.ML.Runtime.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IDataView Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Model.ModelLoadContext ctx, class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.CopyColumnsTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView)" />
-      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, ctx As ModelLoadContext, input As IDataView) As CopyColumnsTransform" />
-      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Model.ModelLoadContext * Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.CopyColumnsTransform" Usage="Microsoft.ML.Runtime.Data.CopyColumnsTransform.Create (env, ctx, input)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, ctx As ModelLoadContext, input As IDataView) As IDataView" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Model.ModelLoadContext * Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.IDataView" Usage="Microsoft.ML.Runtime.Data.CopyColumnsTransform.Create (env, ctx, input)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.CopyColumnsTransform</ReturnType>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataView</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
@@ -97,55 +138,28 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="GetColumnTypeCore">
-      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.ColumnType GetColumnTypeCore (int iinfo);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.ColumnType GetColumnTypeCore(int32 iinfo) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.CopyColumnsTransform.GetColumnTypeCore(System.Int32)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetColumnTypeCore (iinfo As Integer) As ColumnType" />
-      <MemberSignature Language="F#" Value="override this.GetColumnTypeCore : int -&gt; Microsoft.ML.Runtime.Data.ColumnType" Usage="copyColumnsTransform.GetColumnTypeCore iinfo" />
+    <Member MemberName="GetOutputSchema">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.ISchema GetOutputSchema (Microsoft.ML.Runtime.Data.ISchema inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.ISchema GetOutputSchema(class Microsoft.ML.Runtime.Data.ISchema inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.CopyColumnsTransform.GetOutputSchema(Microsoft.ML.Runtime.Data.ISchema)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetOutputSchema (inputSchema As ISchema) As ISchema" />
+      <MemberSignature Language="F#" Value="abstract member GetOutputSchema : Microsoft.ML.Runtime.Data.ISchema -&gt; Microsoft.ML.Runtime.Data.ISchema&#xA;override this.GetOutputSchema : Microsoft.ML.Runtime.Data.ISchema -&gt; Microsoft.ML.Runtime.Data.ISchema" Usage="copyColumnsTransform.GetOutputSchema inputSchema" />
       <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Core.Data.ITransformer.GetOutputSchema(Microsoft.ML.Runtime.Data.ISchema)</InterfaceMember>
+      </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.ColumnType</ReturnType>
+        <ReturnType>Microsoft.ML.Runtime.Data.ISchema</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="iinfo" Type="System.Int32" />
+        <Parameter Name="inputSchema" Type="Microsoft.ML.Runtime.Data.ISchema" />
       </Parameters>
       <Docs>
-        <param name="iinfo">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GetGetterCore">
-      <MemberSignature Language="C#" Value="protected override Delegate GetGetterCore (Microsoft.ML.Runtime.IChannel ch, Microsoft.ML.Runtime.Data.IRow input, int iinfo, out Action disposer);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class System.Delegate GetGetterCore(class Microsoft.ML.Runtime.IChannel ch, class Microsoft.ML.Runtime.Data.IRow input, int32 iinfo, [out] class System.Action&amp; disposer) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.CopyColumnsTransform.GetGetterCore(Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Data.IRow,System.Int32,System.Action@)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetGetterCore (ch As IChannel, input As IRow, iinfo As Integer, ByRef disposer As Action) As Delegate" />
-      <MemberSignature Language="F#" Value="override this.GetGetterCore : Microsoft.ML.Runtime.IChannel * Microsoft.ML.Runtime.Data.IRow * int *  -&gt; Delegate" Usage="copyColumnsTransform.GetGetterCore (ch, input, iinfo, disposer)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Delegate</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
-        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IRow" />
-        <Parameter Name="iinfo" Type="System.Int32" />
-        <Parameter Name="disposer" Type="System.Action" RefType="out" />
-      </Parameters>
-      <Docs>
-        <param name="ch">To be added.</param>
-        <param name="input">To be added.</param>
-        <param name="iinfo">To be added.</param>
-        <param name="disposer">To be added.</param>
+        <param name="inputSchema">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -171,12 +185,15 @@
       </Docs>
     </Member>
     <Member MemberName="Save">
-      <MemberSignature Language="C#" Value="public override void Save (Microsoft.ML.Runtime.Model.ModelSaveContext ctx);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Save(class Microsoft.ML.Runtime.Model.ModelSaveContext ctx) cil managed" />
+      <MemberSignature Language="C#" Value="public void Save (Microsoft.ML.Runtime.Model.ModelSaveContext ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Save(class Microsoft.ML.Runtime.Model.ModelSaveContext ctx) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.CopyColumnsTransform.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
-      <MemberSignature Language="VB.NET" Value="Public Overrides Sub Save (ctx As ModelSaveContext)" />
-      <MemberSignature Language="F#" Value="override this.Save : Microsoft.ML.Runtime.Model.ModelSaveContext -&gt; unit" Usage="copyColumnsTransform.Save ctx" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Save (ctx As ModelSaveContext)" />
+      <MemberSignature Language="F#" Value="abstract member Save : Microsoft.ML.Runtime.Model.ModelSaveContext -&gt; unit&#xA;override this.Save : Microsoft.ML.Runtime.Model.ModelSaveContext -&gt; unit" Usage="copyColumnsTransform.Save ctx" />
       <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Model.ICanSaveModel.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)</InterfaceMember>
+      </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -231,6 +248,33 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Transform">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IDataView Transform (Microsoft.ML.Runtime.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IDataView Transform(class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.CopyColumnsTransform.Transform(Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Transform (input As IDataView) As IDataView" />
+      <MemberSignature Language="F#" Value="abstract member Transform : Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.IDataView&#xA;override this.Transform : Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.IDataView" Usage="copyColumnsTransform.Transform input" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Core.Data.ITransformer.Transform(Microsoft.ML.Runtime.Data.IDataView)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataView</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="UserName">
       <MemberSignature Language="C#" Value="public const string UserName;" />
       <MemberSignature Language="ILAsm" Value=".field public static literal string UserName" />
@@ -247,30 +291,6 @@
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="WantParallelCursors">
-      <MemberSignature Language="C#" Value="protected override bool WantParallelCursors (Func&lt;int,bool&gt; predicate);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance bool WantParallelCursors(class System.Func`2&lt;int32, bool&gt; predicate) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.CopyColumnsTransform.WantParallelCursors(System.Func{System.Int32,System.Boolean})" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function WantParallelCursors (predicate As Func(Of Integer, Boolean)) As Boolean" />
-      <MemberSignature Language="F#" Value="override this.WantParallelCursors : Func&lt;int, bool&gt; -&gt; bool" Usage="copyColumnsTransform.WantParallelCursors predicate" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
-      </Parameters>
-      <Docs>
-        <param name="predicate">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
