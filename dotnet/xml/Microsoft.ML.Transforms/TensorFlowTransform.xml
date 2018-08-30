@@ -1,0 +1,188 @@
+﻿<Type Name="TensorFlowTransform" FullName="Microsoft.ML.Transforms.TensorFlowTransform">
+  <TypeSignature Language="C#" Value="public static class TensorFlowTransform" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit TensorFlowTransform extends System.Object" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Transforms.TensorFlowTransform" />
+  <TypeSignature Language="VB.NET" Value="Public Class TensorFlowTransform" />
+  <TypeSignature Language="F#" Value="type TensorFlowTransform = class" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.TensorFlow</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IDataTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Transforms.TensorFlowTransform.Arguments args, Microsoft.ML.Runtime.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IDataTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Transforms.TensorFlowTransform/Arguments args, class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.TensorFlowTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Transforms.TensorFlowTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, args As TensorFlowTransform.Arguments, input As IDataView) As IDataTransform" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Transforms.TensorFlowTransform.Arguments * Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.IDataTransform" Usage="Microsoft.ML.Transforms.TensorFlowTransform.Create (env, args, input)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TensorFlow</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="args" Type="Microsoft.ML.Transforms.TensorFlowTransform+Arguments" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="args">To be added.</param>
+        <param name="input">To be added.</param>
+        <summary>
+        Extracts hidden layers' values from a pre-trained Tensorflow model.
+      </summary>
+        <returns>To be added.</returns>
+        <remarks>
+        The TensorflowTransform extracts the specified output from the operation computed on the graph (given the input(s)) using a pre-trained <a href="https://www.tensorflow.org">Tensorflow</a> model.
+        The transform takes as input the Tensorflow model together with the names of the inputs to the model and name of the operation for which output values will be extracted from the model.
+
+        The TensorflowTransform has following assumptions regarding the input, output and processing of data.
+        <list type="number"><item>
+            The transform currently accepts the <a href="https://www.tensorflow.org/mobile/prepare_models">frozen TensorFlow model</a> file as input.
+          </item><item>The transform supports scoring only one example at a time.</item><item>The name of input column(s) should match the name of input(s) in Tensorflow model.</item><item>The name of the output column should match one of the operations in the Tensorflow graph.</item><item>Currently, float and double are the only acceptable data types for input/output.</item><item>
+            Upon success, the transform will introduce a new column in <see cref="T:Microsoft.ML.Runtime.Data.IDataView" /> based on the name of the output column specified.
+          </item></list></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IDataTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.IDataView input, string modelFile, string name, params string[] source);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IDataTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.IDataView input, string modelFile, string name, string[] source) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.TensorFlowTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,System.String[])" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, input As IDataView, modelFile As String, name As String, ParamArray source As String()) As IDataTransform" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.IDataView * string * string * string[] -&gt; Microsoft.ML.Runtime.Data.IDataTransform" Usage="Microsoft.ML.Transforms.TensorFlowTransform.Create (env, input, modelFile, name, source)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TensorFlow</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="modelFile" Type="System.String" />
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="source" Type="System.String[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="env">Host Environment.</param>
+        <param name="input">Input <see cref="T:Microsoft.ML.Runtime.Data.IDataView" />. This is the output from previous transform or loader.</param>
+        <param name="modelFile">This is the frozen TensorFlow model file. https://www.tensorflow.org/mobile/prepare_models </param>
+        <param name="name">Name of the output column. Keep it same as in the TensorFlow model.</param>
+        <param name="source">Name of the input column(s). Keep it same as in the TensorFlow model.</param>
+        <summary>
+            Convenience constructor for public facing API.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShortName">
+      <MemberSignature Language="C#" Value="public const string ShortName;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal string ShortName" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.TensorFlowTransform.ShortName" />
+      <MemberSignature Language="VB.NET" Value="Public Const ShortName As String " />
+      <MemberSignature Language="F#" Value="val mutable ShortName : string" Usage="Microsoft.ML.Transforms.TensorFlowTransform.ShortName" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TensorFlow</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Summary">
+      <MemberSignature Language="C#" Value="public const string Summary;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal string Summary" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.TensorFlowTransform.Summary" />
+      <MemberSignature Language="VB.NET" Value="Public Const Summary As String " />
+      <MemberSignature Language="F#" Value="val mutable Summary : string" Usage="Microsoft.ML.Transforms.TensorFlowTransform.Summary" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TensorFlow</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TensorFlowScorer">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.EntryPoints.CommonOutputs.TransformOutput TensorFlowScorer (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Transforms.TensorFlowTransform.Arguments input);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.EntryPoints.CommonOutputs/TransformOutput TensorFlowScorer(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Transforms.TensorFlowTransform/Arguments input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.TensorFlowTransform.TensorFlowScorer(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Transforms.TensorFlowTransform.Arguments)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function TensorFlowScorer (env As IHostEnvironment, input As TensorFlowTransform.Arguments) As CommonOutputs.TransformOutput" />
+      <MemberSignature Language="F#" Value="static member TensorFlowScorer : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Transforms.TensorFlowTransform.Arguments -&gt; Microsoft.ML.Runtime.EntryPoints.CommonOutputs.TransformOutput" Usage="Microsoft.ML.Transforms.TensorFlowTransform.TensorFlowScorer (env, input)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TensorFlow</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="Transforms the data using the TensorFlow model.", Name="Transforms.TensorFlowScorer", ShortName="TFTransform", UserName="TensorFlowTransform")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.EntryPoints.CommonOutputs+TransformOutput</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="input" Type="Microsoft.ML.Transforms.TensorFlowTransform+Arguments" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UserName">
+      <MemberSignature Language="C#" Value="public const string UserName;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal string UserName" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.TensorFlowTransform.UserName" />
+      <MemberSignature Language="VB.NET" Value="Public Const UserName As String " />
+      <MemberSignature Language="F#" Value="val mutable UserName : string" Usage="Microsoft.ML.Transforms.TensorFlowTransform.UserName" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TensorFlow</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
