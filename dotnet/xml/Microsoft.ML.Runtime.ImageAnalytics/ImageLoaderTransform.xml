@@ -1,15 +1,16 @@
 ﻿<Type Name="ImageLoaderTransform" FullName="Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform">
-  <TypeSignature Language="C#" Value="public sealed class ImageLoaderTransform : Microsoft.ML.Runtime.Data.OneToOneTransformBase" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit ImageLoaderTransform extends Microsoft.ML.Runtime.Data.OneToOneTransformBase" />
+  <TypeSignature Language="C#" Value="public sealed class ImageLoaderTransform : Microsoft.ML.Runtime.Data.OneToOneTransformerBase" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit ImageLoaderTransform extends Microsoft.ML.Runtime.Data.OneToOneTransformerBase" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class ImageLoaderTransform&#xA;Inherits OneToOneTransformBase" />
-  <TypeSignature Language="F#" Value="type ImageLoaderTransform = class&#xA;    inherit OneToOneTransformBase" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class ImageLoaderTransform&#xA;Inherits OneToOneTransformerBase" />
+  <TypeSignature Language="F#" Value="type ImageLoaderTransform = class&#xA;    inherit OneToOneTransformerBase" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.Runtime.ImageAnalytics</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>Microsoft.ML.Runtime.Data.OneToOneTransformBase</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Runtime.Data.OneToOneTransformerBase</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -19,11 +20,11 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public ImageLoaderTransform (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Arguments args, Microsoft.ML.Runtime.Data.IDataView input);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform/Arguments args, class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, args As ImageLoaderTransform.Arguments, input As IDataView)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Arguments * Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform" Usage="new Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform (env, args, input)" />
+      <MemberSignature Language="C#" Value="public ImageLoaderTransform (Microsoft.ML.Runtime.IHostEnvironment env, string imageFolder, params ValueTuple&lt;string,string&gt;[] columns);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string imageFolder, valuetype System.ValueTuple`2&lt;string, string&gt;[] columns) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.ValueTuple{System.String,System.String}[])" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, imageFolder As String, ParamArray columns As ValueTuple(Of String, String)())" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform : Microsoft.ML.Runtime.IHostEnvironment * string * ValueTuple&lt;string, string&gt;[] -&gt; Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform" Usage="new Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform (env, imageFolder, columns)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Runtime.ImageAnalytics</AssemblyName>
@@ -31,23 +32,84 @@
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
-        <Parameter Name="args" Type="Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform+Arguments" />
-        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="imageFolder" Type="System.String" />
+        <Parameter Name="columns" Type="System.ValueTuple&lt;System.String,System.String&gt;[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+            <Attribute>
+              <AttributeName>System.Runtime.CompilerServices.TupleElementNames(Mono.Cecil.CustomAttributeArgument[])</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
       </Parameters>
       <Docs>
         <param name="env">To be added.</param>
-        <param name="args">To be added.</param>
-        <param name="input">To be added.</param>
+        <param name="imageFolder">To be added.</param>
+        <param name="columns">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="CheckInputColumn">
+      <MemberSignature Language="C#" Value="protected override void CheckInputColumn (Microsoft.ML.Runtime.Data.ISchema inputSchema, int col, int srcCol);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void CheckInputColumn(class Microsoft.ML.Runtime.Data.ISchema inputSchema, int32 col, int32 srcCol) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.CheckInputColumn(Microsoft.ML.Runtime.Data.ISchema,System.Int32,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Sub CheckInputColumn (inputSchema As ISchema, col As Integer, srcCol As Integer)" />
+      <MemberSignature Language="F#" Value="override this.CheckInputColumn : Microsoft.ML.Runtime.Data.ISchema * int * int -&gt; unit" Usage="imageLoaderTransform.CheckInputColumn (inputSchema, col, srcCol)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Runtime.ImageAnalytics</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.Runtime.Data.ISchema" />
+        <Parameter Name="col" Type="System.Int32" />
+        <Parameter Name="srcCol" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
+        <param name="col">To be added.</param>
+        <param name="srcCol">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Columns">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.IReadOnlyCollection&lt;ValueTuple&lt;string,string&gt;&gt; Columns { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.IReadOnlyCollection`1&lt;valuetype System.ValueTuple`2&lt;string, string&gt;&gt; Columns" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Columns" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Columns As IReadOnlyCollection(Of ValueTuple(Of String, String))" />
+      <MemberSignature Language="F#" Value="member this.Columns : System.Collections.Generic.IReadOnlyCollection&lt;ValueTuple&lt;string, string&gt;&gt;" Usage="Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Columns" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Runtime.ImageAnalytics</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.CompilerServices.TupleElementNames(Mono.Cecil.CustomAttributeArgument[])</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IReadOnlyCollection&lt;System.ValueTuple&lt;System.String,System.String&gt;&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Create">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Model.ModelLoadContext ctx, Microsoft.ML.Runtime.Data.IDataView input);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Model.ModelLoadContext ctx, class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView)" />
-      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, ctx As ModelLoadContext, input As IDataView) As ImageLoaderTransform" />
-      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Model.ModelLoadContext * Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform" Usage="Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Create (env, ctx, input)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Model.ModelLoadContext ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Model.ModelLoadContext ctx) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, ctx As ModelLoadContext) As ImageLoaderTransform" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Model.ModelLoadContext -&gt; Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform" Usage="Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Create (env, ctx)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Runtime.ImageAnalytics</AssemblyName>
@@ -55,6 +117,60 @@
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="ctx" Type="Microsoft.ML.Runtime.Model.ModelLoadContext" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="ctx">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IDataTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Arguments args, Microsoft.ML.Runtime.Data.IDataView data);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IDataTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform/Arguments args, class Microsoft.ML.Runtime.Data.IDataView data) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, args As ImageLoaderTransform.Arguments, data As IDataView) As IDataTransform" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Arguments * Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.IDataTransform" Usage="Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Create (env, args, data)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Runtime.ImageAnalytics</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="args" Type="Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform+Arguments" />
+        <Parameter Name="data" Type="Microsoft.ML.Runtime.Data.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="args">To be added.</param>
+        <param name="data">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IDataTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Model.ModelLoadContext ctx, Microsoft.ML.Runtime.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IDataTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Model.ModelLoadContext ctx, class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, ctx As ModelLoadContext, input As IDataView) As IDataTransform" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Model.ModelLoadContext * Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.IDataTransform" Usage="Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Create (env, ctx, input)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Runtime.ImageAnalytics</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataTransform</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
@@ -70,57 +186,50 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="GetColumnTypeCore">
-      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.ColumnType GetColumnTypeCore (int iinfo);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.ColumnType GetColumnTypeCore(int32 iinfo) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.GetColumnTypeCore(System.Int32)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetColumnTypeCore (iinfo As Integer) As ColumnType" />
-      <MemberSignature Language="F#" Value="override this.GetColumnTypeCore : int -&gt; Microsoft.ML.Runtime.Data.ColumnType" Usage="imageLoaderTransform.GetColumnTypeCore iinfo" />
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IRowMapper Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Model.ModelLoadContext ctx, Microsoft.ML.Runtime.Data.ISchema inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IRowMapper Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Model.ModelLoadContext ctx, class Microsoft.ML.Runtime.Data.ISchema inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.ISchema)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, ctx As ModelLoadContext, inputSchema As ISchema) As IRowMapper" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Model.ModelLoadContext * Microsoft.ML.Runtime.Data.ISchema -&gt; Microsoft.ML.Runtime.Data.IRowMapper" Usage="Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Create (env, ctx, inputSchema)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Runtime.ImageAnalytics</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.ColumnType</ReturnType>
+        <ReturnType>Microsoft.ML.Runtime.Data.IRowMapper</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="iinfo" Type="System.Int32" />
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="ctx" Type="Microsoft.ML.Runtime.Model.ModelLoadContext" />
+        <Parameter Name="inputSchema" Type="Microsoft.ML.Runtime.Data.ISchema" />
       </Parameters>
       <Docs>
-        <param name="iinfo">To be added.</param>
+        <param name="env">To be added.</param>
+        <param name="ctx">To be added.</param>
+        <param name="inputSchema">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="GetGetterCore">
-      <MemberSignature Language="C#" Value="protected override Delegate GetGetterCore (Microsoft.ML.Runtime.IChannel ch, Microsoft.ML.Runtime.Data.IRow input, int iinfo, out Action disposer);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class System.Delegate GetGetterCore(class Microsoft.ML.Runtime.IChannel ch, class Microsoft.ML.Runtime.Data.IRow input, int32 iinfo, [out] class System.Action&amp; disposer) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.GetGetterCore(Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Data.IRow,System.Int32,System.Action@)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetGetterCore (ch As IChannel, input As IRow, iinfo As Integer, ByRef disposer As Action) As Delegate" />
-      <MemberSignature Language="F#" Value="override this.GetGetterCore : Microsoft.ML.Runtime.IChannel * Microsoft.ML.Runtime.Data.IRow * int *  -&gt; Delegate" Usage="imageLoaderTransform.GetGetterCore (ch, input, iinfo, disposer)" />
-      <MemberType>Method</MemberType>
+    <Member MemberName="ImageFolder">
+      <MemberSignature Language="C#" Value="public readonly string ImageFolder;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly string ImageFolder" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.ImageFolder" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly ImageFolder As String " />
+      <MemberSignature Language="F#" Value="val mutable ImageFolder : string" Usage="Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.ImageFolder" />
+      <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Runtime.ImageAnalytics</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Delegate</ReturnType>
+        <ReturnType>System.String</ReturnType>
       </ReturnValue>
-      <Parameters>
-        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
-        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IRow" />
-        <Parameter Name="iinfo" Type="System.Int32" />
-        <Parameter Name="disposer" Type="System.Action" RefType="out" />
-      </Parameters>
       <Docs>
-        <param name="ch">To be added.</param>
-        <param name="input">To be added.</param>
-        <param name="iinfo">To be added.</param>
-        <param name="disposer">To be added.</param>
         <summary>To be added.</summary>
-        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -140,6 +249,30 @@
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MakeRowMapper">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.IRowMapper MakeRowMapper (Microsoft.ML.Runtime.Data.ISchema schema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.IRowMapper MakeRowMapper(class Microsoft.ML.Runtime.Data.ISchema schema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.MakeRowMapper(Microsoft.ML.Runtime.Data.ISchema)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function MakeRowMapper (schema As ISchema) As IRowMapper" />
+      <MemberSignature Language="F#" Value="override this.MakeRowMapper : Microsoft.ML.Runtime.Data.ISchema -&gt; Microsoft.ML.Runtime.Data.IRowMapper" Usage="imageLoaderTransform.MakeRowMapper schema" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Runtime.ImageAnalytics</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IRowMapper</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="schema" Type="Microsoft.ML.Runtime.Data.ISchema" />
+      </Parameters>
+      <Docs>
+        <param name="schema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

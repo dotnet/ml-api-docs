@@ -48,12 +48,18 @@
         The TensorflowTransform extracts the specified output from the operation computed on the graph (given the input(s)) using a pre-trained <a href="https://www.tensorflow.org">Tensorflow</a> model.
         The transform takes as input the Tensorflow model together with the names of the inputs to the model and name of the operation for which output values will be extracted from the model.
 
+        This transform requires the <a href="https://dotnet.myget.org/feed/dotnet-core/package/nuget/Microsoft.ML.TensorFlow/0.5.0-preview-26830-5">Microsoft.ML.TensorFlow</a> nuget to be installed.
+		
         The TensorflowTransform has following assumptions regarding the input, output and processing of data.
         <list type="number"><item>
             The transform currently accepts the <a href="https://www.tensorflow.org/mobile/prepare_models">frozen TensorFlow model</a> file as input.
           </item><item>The transform supports scoring only one example at a time.</item><item>The name of input column(s) should match the name of input(s) in Tensorflow model.</item><item>The name of the output column should match one of the operations in the Tensorflow graph.</item><item>Currently, float and double are the only acceptable data types for input/output.</item><item>
             Upon success, the transform will introduce a new column in <see cref="T:Microsoft.ML.Runtime.Data.IDataView" /> based on the name of the output column specified.
-          </item></list></remarks>
+          </item></list>
+		
+        The inputs and outputs of a TensorFlow model can be obtained using the <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/tools/graph_transforms/README.md#inspecting-graphs"><code>summarize_graph</code> tool</a>.
+		
+      </remarks>
       </Docs>
     </Member>
     <Member MemberName="Create">

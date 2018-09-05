@@ -18,11 +18,11 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public Column (string name, Microsoft.ML.Core.Data.SchemaShape.Column.VectorKind vecKind, Microsoft.ML.Runtime.Data.DataKind itemKind, bool isKey, string[] metadataKinds = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string name, valuetype Microsoft.ML.Core.Data.SchemaShape/Column/VectorKind vecKind, valuetype Microsoft.ML.Runtime.Data.DataKind itemKind, bool isKey, string[] metadataKinds) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Core.Data.SchemaShape.Column.#ctor(System.String,Microsoft.ML.Core.Data.SchemaShape.Column.VectorKind,Microsoft.ML.Runtime.Data.DataKind,System.Boolean,System.String[])" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (name As String, vecKind As SchemaShape.Column.VectorKind, itemKind As DataKind, isKey As Boolean, Optional metadataKinds As String() = null)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Core.Data.SchemaShape.Column : string * Microsoft.ML.Core.Data.SchemaShape.Column.VectorKind * Microsoft.ML.Runtime.Data.DataKind * bool * string[] -&gt; Microsoft.ML.Core.Data.SchemaShape.Column" Usage="new Microsoft.ML.Core.Data.SchemaShape.Column (name, vecKind, itemKind, isKey, metadataKinds)" />
+      <MemberSignature Language="C#" Value="public Column (string name, Microsoft.ML.Core.Data.SchemaShape.Column.VectorKind vecKind, Microsoft.ML.Runtime.Data.ColumnType itemType, bool isKey, string[] metadataKinds = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string name, valuetype Microsoft.ML.Core.Data.SchemaShape/Column/VectorKind vecKind, class Microsoft.ML.Runtime.Data.ColumnType itemType, bool isKey, string[] metadataKinds) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Core.Data.SchemaShape.Column.#ctor(System.String,Microsoft.ML.Core.Data.SchemaShape.Column.VectorKind,Microsoft.ML.Runtime.Data.ColumnType,System.Boolean,System.String[])" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (name As String, vecKind As SchemaShape.Column.VectorKind, itemType As ColumnType, isKey As Boolean, Optional metadataKinds As String() = null)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Core.Data.SchemaShape.Column : string * Microsoft.ML.Core.Data.SchemaShape.Column.VectorKind * Microsoft.ML.Runtime.Data.ColumnType * bool * string[] -&gt; Microsoft.ML.Core.Data.SchemaShape.Column" Usage="new Microsoft.ML.Core.Data.SchemaShape.Column (name, vecKind, itemType, isKey, metadataKinds)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
@@ -31,14 +31,14 @@
       <Parameters>
         <Parameter Name="name" Type="System.String" />
         <Parameter Name="vecKind" Type="Microsoft.ML.Core.Data.SchemaShape+Column+VectorKind" />
-        <Parameter Name="itemKind" Type="Microsoft.ML.Runtime.Data.DataKind" />
+        <Parameter Name="itemType" Type="Microsoft.ML.Runtime.Data.ColumnType" />
         <Parameter Name="isKey" Type="System.Boolean" />
         <Parameter Name="metadataKinds" Type="System.String[]" />
       </Parameters>
       <Docs>
         <param name="name">To be added.</param>
         <param name="vecKind">To be added.</param>
-        <param name="itemKind">To be added.</param>
+        <param name="itemType">To be added.</param>
         <param name="isKey">To be added.</param>
         <param name="metadataKinds">To be added.</param>
         <summary>To be added.</summary>
@@ -90,7 +90,7 @@
              requirement.
             
              Namely, it returns true iff:
-              - The <see cref="F:Microsoft.ML.Core.Data.SchemaShape.Column.Name" />, <see cref="F:Microsoft.ML.Core.Data.SchemaShape.Column.Kind" />, <see cref="F:Microsoft.ML.Core.Data.SchemaShape.Column.ItemKind" />, <see cref="F:Microsoft.ML.Core.Data.SchemaShape.Column.IsKey" /> fields match.
+              - The <see cref="F:Microsoft.ML.Core.Data.SchemaShape.Column.Name" />, <see cref="F:Microsoft.ML.Core.Data.SchemaShape.Column.Kind" />, <see cref="F:Microsoft.ML.Core.Data.SchemaShape.Column.ItemType" />, <see cref="F:Microsoft.ML.Core.Data.SchemaShape.Column.IsKey" /> fields match.
               - The <see cref="F:Microsoft.ML.Core.Data.SchemaShape.Column.MetadataKinds" /> of <paramref name="inputColumn" /> is a superset of our <see cref="F:Microsoft.ML.Core.Data.SchemaShape.Column.MetadataKinds" />.
              </summary>
         <returns>To be added.</returns>
@@ -112,26 +112,31 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            The flag whether the column is actually a key. If yes, <see cref="F:Microsoft.ML.Core.Data.SchemaShape.Column.ItemType" /> is representing
+            the underlying primitive type.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ItemKind">
-      <MemberSignature Language="C#" Value="public readonly Microsoft.ML.Runtime.Data.DataKind ItemKind;" />
-      <MemberSignature Language="ILAsm" Value=".field public initonly valuetype Microsoft.ML.Runtime.Data.DataKind ItemKind" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Core.Data.SchemaShape.Column.ItemKind" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly ItemKind As DataKind " />
-      <MemberSignature Language="F#" Value="val mutable ItemKind : Microsoft.ML.Runtime.Data.DataKind" Usage="Microsoft.ML.Core.Data.SchemaShape.Column.ItemKind" />
+    <Member MemberName="ItemType">
+      <MemberSignature Language="C#" Value="public readonly Microsoft.ML.Runtime.Data.ColumnType ItemType;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly class Microsoft.ML.Runtime.Data.ColumnType ItemType" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Core.Data.SchemaShape.Column.ItemType" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly ItemType As ColumnType " />
+      <MemberSignature Language="F#" Value="val mutable ItemType : Microsoft.ML.Runtime.Data.ColumnType" Usage="Microsoft.ML.Core.Data.SchemaShape.Column.ItemType" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.DataKind</ReturnType>
+        <ReturnType>Microsoft.ML.Runtime.Data.ColumnType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            The 'raw' type of column item: must be a primitive type or a structured type.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -150,7 +155,9 @@
         <ReturnType>Microsoft.ML.Core.Data.SchemaShape+Column+VectorKind</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            The type of the column: scalar, fixed vector or variable vector.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -169,7 +176,9 @@
         <ReturnType>System.String[]</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            The metadata kinds that are present for this column.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -188,7 +197,9 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            The column name.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

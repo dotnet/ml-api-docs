@@ -28,11 +28,11 @@
     </Type>
     <Type Name="Microsoft.ML.Core.Data.SchemaShape/Column" Id="T:Microsoft.ML.Core.Data.SchemaShape.Column">
       <Member Id="F:Microsoft.ML.Core.Data.SchemaShape.Column.IsKey" />
-      <Member Id="F:Microsoft.ML.Core.Data.SchemaShape.Column.ItemKind" />
+      <Member Id="F:Microsoft.ML.Core.Data.SchemaShape.Column.ItemType" />
       <Member Id="F:Microsoft.ML.Core.Data.SchemaShape.Column.Kind" />
       <Member Id="F:Microsoft.ML.Core.Data.SchemaShape.Column.MetadataKinds" />
       <Member Id="F:Microsoft.ML.Core.Data.SchemaShape.Column.Name" />
-      <Member Id="M:Microsoft.ML.Core.Data.SchemaShape.Column.#ctor(System.String,Microsoft.ML.Core.Data.SchemaShape.Column.VectorKind,Microsoft.ML.Runtime.Data.DataKind,System.Boolean,System.String[])" />
+      <Member Id="M:Microsoft.ML.Core.Data.SchemaShape.Column.#ctor(System.String,Microsoft.ML.Core.Data.SchemaShape.Column.VectorKind,Microsoft.ML.Runtime.Data.ColumnType,System.Boolean,System.String[])" />
       <Member Id="M:Microsoft.ML.Core.Data.SchemaShape.Column.GetTypeString" />
       <Member Id="M:Microsoft.ML.Core.Data.SchemaShape.Column.IsCompatibleWith(Microsoft.ML.Core.Data.SchemaShape.Column)" />
     </Type>
@@ -6039,6 +6039,30 @@
       <Member Id="F:Microsoft.ML.Runtime.Data.OneToOneTransformBase.ColInfo.TypeSrc" />
       <Member Id="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.ColInfo.#ctor(System.String,System.Int32,Microsoft.ML.Runtime.Data.ColumnType,Microsoft.ML.Runtime.Data.VectorType)" />
     </Type>
+    <Type Name="Microsoft.ML.Runtime.Data.OneToOneTransformerBase" Id="T:Microsoft.ML.Runtime.Data.OneToOneTransformerBase">
+      <Member Id="F:Microsoft.ML.Runtime.Data.OneToOneTransformerBase.ColumnPairs" />
+      <Member Id="F:Microsoft.ML.Runtime.Data.OneToOneTransformerBase.Host" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.OneToOneTransformerBase.#ctor(Microsoft.ML.Runtime.IHost,Microsoft.ML.Runtime.Model.ModelLoadContext)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.OneToOneTransformerBase.#ctor(Microsoft.ML.Runtime.IHost,System.ValueTuple{System.String,System.String}[])" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.OneToOneTransformerBase.CheckInputColumn(Microsoft.ML.Runtime.Data.ISchema,System.Int32,System.Int32)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.OneToOneTransformerBase.GetOutputSchema(Microsoft.ML.Runtime.Data.ISchema)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.OneToOneTransformerBase.MakeDataTransform(Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.OneToOneTransformerBase.MakeRowMapper(Microsoft.ML.Runtime.Data.ISchema)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.OneToOneTransformerBase.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.OneToOneTransformerBase.SaveColumns(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.OneToOneTransformerBase.Transform(Microsoft.ML.Runtime.Data.IDataView)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.Data.OneToOneTransformerBase/MapperBase" Id="T:Microsoft.ML.Runtime.Data.OneToOneTransformerBase.MapperBase">
+      <Member Id="F:Microsoft.ML.Runtime.Data.OneToOneTransformerBase.MapperBase.ColMapNewToOld" />
+      <Member Id="F:Microsoft.ML.Runtime.Data.OneToOneTransformerBase.MapperBase.Host" />
+      <Member Id="F:Microsoft.ML.Runtime.Data.OneToOneTransformerBase.MapperBase.InputSchema" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.OneToOneTransformerBase.MapperBase.#ctor(Microsoft.ML.Runtime.IHost,Microsoft.ML.Runtime.Data.OneToOneTransformerBase,Microsoft.ML.Runtime.Data.ISchema)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.OneToOneTransformerBase.MapperBase.CreateGetters(Microsoft.ML.Runtime.Data.IRow,System.Func{System.Int32,System.Boolean},System.Action@)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.OneToOneTransformerBase.MapperBase.GetDependencies(System.Func{System.Int32,System.Boolean})" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.OneToOneTransformerBase.MapperBase.GetOutputColumns" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.OneToOneTransformerBase.MapperBase.MakeGetter(Microsoft.ML.Runtime.Data.IRow,System.Int32,System.Action@)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.OneToOneTransformerBase.MapperBase.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+    </Type>
     <Type Name="Microsoft.ML.Runtime.Data.OpaqueDataView" Id="T:Microsoft.ML.Runtime.Data.OpaqueDataView">
       <Member Id="M:Microsoft.ML.Runtime.Data.OpaqueDataView.#ctor(Microsoft.ML.Runtime.Data.IDataView)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.OpaqueDataView.GetRowCount(System.Boolean)" />
@@ -7443,6 +7467,13 @@
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.TreeFeaturize" Id="T:Microsoft.ML.Runtime.Data.TreeFeaturize">
       <Member Id="M:Microsoft.ML.Runtime.Data.TreeFeaturize.Featurizer(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.TreeEnsembleFeaturizerTransform.ArgumentsForEntryPoint)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.Data.TrivialEstimator`1" Id="T:Microsoft.ML.Runtime.Data.TrivialEstimator`1">
+      <Member Id="F:Microsoft.ML.Runtime.Data.TrivialEstimator`1.Host" />
+      <Member Id="F:Microsoft.ML.Runtime.Data.TrivialEstimator`1.Transformer" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.TrivialEstimator`1.#ctor(Microsoft.ML.Runtime.IHost,`0)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.TrivialEstimator`1.Fit(Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.TrivialEstimator`1.GetOutputSchema(Microsoft.ML.Core.Data.SchemaShape)" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.TrivialReaderEstimator`2" Id="T:Microsoft.ML.Runtime.Data.TrivialReaderEstimator`2">
       <Member Id="M:Microsoft.ML.Runtime.Data.TrivialReaderEstimator`2.#ctor(`1)" />
@@ -10929,13 +10960,21 @@
     </Type>
   </Namespace>
   <Namespace Name="Microsoft.ML.Runtime.ImageAnalytics">
+    <Type Name="Microsoft.ML.Runtime.ImageAnalytics.ImageGrayscaleEstimator" Id="T:Microsoft.ML.Runtime.ImageAnalytics.ImageGrayscaleEstimator">
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageGrayscaleEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.ValueTuple{System.String,System.String}[])" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageGrayscaleEstimator.GetOutputSchema(Microsoft.ML.Core.Data.SchemaShape)" />
+    </Type>
     <Type Name="Microsoft.ML.Runtime.ImageAnalytics.ImageGrayscaleTransform" Id="T:Microsoft.ML.Runtime.ImageAnalytics.ImageGrayscaleTransform">
       <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImageGrayscaleTransform.LoaderSignature" />
-      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageGrayscaleTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.ImageAnalytics.ImageGrayscaleTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageGrayscaleTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.ValueTuple{System.String,System.String}[])" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageGrayscaleTransform.CheckInputColumn(Microsoft.ML.Runtime.Data.ISchema,System.Int32,System.Int32)" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageGrayscaleTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.ImageAnalytics.ImageGrayscaleTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageGrayscaleTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext)" />
       <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageGrayscaleTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView)" />
-      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageGrayscaleTransform.GetColumnTypeCore(System.Int32)" />
-      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageGrayscaleTransform.GetGetterCore(Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Data.IRow,System.Int32,System.Action@)" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageGrayscaleTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.ISchema)" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageGrayscaleTransform.MakeRowMapper(Microsoft.ML.Runtime.Data.ISchema)" />
       <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageGrayscaleTransform.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+      <Member Id="P:Microsoft.ML.Runtime.ImageAnalytics.ImageGrayscaleTransform.Columns" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.ImageAnalytics.ImageGrayscaleTransform/Arguments" Id="T:Microsoft.ML.Runtime.ImageAnalytics.ImageGrayscaleTransform.Arguments">
       <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImageGrayscaleTransform.Arguments.Column" />
@@ -10946,13 +10985,23 @@
       <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageGrayscaleTransform.Column.Parse(System.String)" />
       <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageGrayscaleTransform.Column.TryUnparse(System.Text.StringBuilder)" />
     </Type>
+    <Type Name="Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderEstimator" Id="T:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderEstimator">
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform)" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.ValueTuple{System.String,System.String}[])" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderEstimator.GetOutputSchema(Microsoft.ML.Core.Data.SchemaShape)" />
+    </Type>
     <Type Name="Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform" Id="T:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform">
+      <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.ImageFolder" />
       <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.LoaderSignature" />
-      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.ValueTuple{System.String,System.String}[])" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.CheckInputColumn(Microsoft.ML.Runtime.Data.ISchema,System.Int32,System.Int32)" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext)" />
       <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView)" />
-      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.GetColumnTypeCore(System.Int32)" />
-      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.GetGetterCore(Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Data.IRow,System.Int32,System.Action@)" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.ISchema)" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.MakeRowMapper(Microsoft.ML.Runtime.Data.ISchema)" />
       <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+      <Member Id="P:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Columns" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform/Arguments" Id="T:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Arguments">
       <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Arguments.Column" />
@@ -10964,13 +11013,23 @@
       <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Column.Parse(System.String)" />
       <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageLoaderTransform.Column.TryUnparse(System.Text.StringBuilder)" />
     </Type>
+    <Type Name="Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorEstimator" Id="T:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorEstimator">
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.ColumnInfo[])" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.ColorBits,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorEstimator.GetOutputSchema(Microsoft.ML.Core.Data.SchemaShape)" />
+    </Type>
     <Type Name="Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform" Id="T:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform">
       <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.LoaderSignature" />
-      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.ColumnInfo[])" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.ColorBits,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.CheckInputColumn(Microsoft.ML.Runtime.Data.ISchema,System.Int32,System.Int32)" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext)" />
       <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView)" />
-      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.GetColumnTypeCore(System.Int32)" />
-      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.GetGetterCore(Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Data.IRow,System.Int32,System.Action@)" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.ISchema)" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.MakeRowMapper(Microsoft.ML.Runtime.Data.ISchema)" />
       <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+      <Member Id="P:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.Columns" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform/Arguments" Id="T:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.Arguments">
       <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.Arguments.Column" />
@@ -10983,6 +11042,14 @@
       <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.Arguments.UseGreen" />
       <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.Arguments.UseRed" />
       <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.Arguments.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform/ColorBits" Id="T:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.ColorBits">
+      <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.ColorBits.All" />
+      <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.ColorBits.Alpha" />
+      <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.ColorBits.Blue" />
+      <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.ColorBits.Green" />
+      <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.ColorBits.Red" />
+      <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.ColorBits.Rgb" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform/Column" Id="T:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.Column">
       <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.Column.Convert" />
@@ -10997,13 +11064,41 @@
       <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.Column.Parse(System.String)" />
       <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.Column.TryUnparse(System.Text.StringBuilder)" />
     </Type>
+    <Type Name="Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform/ColumnInfo" Id="T:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.ColumnInfo">
+      <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.ColumnInfo.Colors" />
+      <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.ColumnInfo.Convert" />
+      <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.ColumnInfo.Input" />
+      <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.ColumnInfo.Interleave" />
+      <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.ColumnInfo.Offset" />
+      <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.ColumnInfo.Output" />
+      <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.ColumnInfo.Planes" />
+      <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.ColumnInfo.Scale" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.ColumnInfo.#ctor(System.String,System.String,Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.ColorBits,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.ColumnInfo.#ctor(System.String,System.String,Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.ColorBits,System.Boolean,System.Single,System.Single)" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.ColumnInfo.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+      <Member Id="P:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.ColumnInfo.Alpha" />
+      <Member Id="P:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.ColumnInfo.Blue" />
+      <Member Id="P:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.ColumnInfo.Green" />
+      <Member Id="P:Microsoft.ML.Runtime.ImageAnalytics.ImagePixelExtractorTransform.ColumnInfo.Red" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.ImageAnalytics.ImageResizerEstimator" Id="T:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerEstimator">
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform)" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.ColumnInfo[])" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.Int32,System.Int32,Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.ResizingKind,Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Anchor)" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerEstimator.GetOutputSchema(Microsoft.ML.Core.Data.SchemaShape)" />
+    </Type>
     <Type Name="Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform" Id="T:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform">
       <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.LoaderSignature" />
-      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.ColumnInfo[])" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.Int32,System.Int32,Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.ResizingKind,Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Anchor)" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.CheckInputColumn(Microsoft.ML.Runtime.Data.ISchema,System.Int32,System.Int32)" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext)" />
       <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView)" />
-      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.GetColumnTypeCore(System.Int32)" />
-      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.GetGetterCore(Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Data.IRow,System.Int32,System.Action@)" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.ISchema)" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.MakeRowMapper(Microsoft.ML.Runtime.Data.ISchema)" />
       <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+      <Member Id="P:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Columns" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform/Anchor" Id="T:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Anchor">
       <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Anchor.Bottom" />
@@ -11028,6 +11123,16 @@
       <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Column.#ctor" />
       <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Column.Parse(System.String)" />
       <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Column.TryUnparse(System.Text.StringBuilder)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform/ColumnInfo" Id="T:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.ColumnInfo">
+      <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.ColumnInfo.Anchor" />
+      <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.ColumnInfo.Height" />
+      <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.ColumnInfo.Input" />
+      <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.ColumnInfo.Output" />
+      <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.ColumnInfo.Scale" />
+      <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.ColumnInfo.Type" />
+      <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.ColumnInfo.Width" />
+      <Member Id="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.ColumnInfo.#ctor(System.String,System.String,System.Int32,System.Int32,Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.ResizingKind,Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Anchor)" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform/ResizingKind" Id="T:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.ResizingKind">
       <Member Id="F:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.ResizingKind.IsoCrop" />

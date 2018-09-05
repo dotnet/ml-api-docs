@@ -1,15 +1,16 @@
 ﻿<Type Name="ImageResizerTransform" FullName="Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform">
-  <TypeSignature Language="C#" Value="public sealed class ImageResizerTransform : Microsoft.ML.Runtime.Data.OneToOneTransformBase" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit ImageResizerTransform extends Microsoft.ML.Runtime.Data.OneToOneTransformBase" />
+  <TypeSignature Language="C#" Value="public sealed class ImageResizerTransform : Microsoft.ML.Runtime.Data.OneToOneTransformerBase" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit ImageResizerTransform extends Microsoft.ML.Runtime.Data.OneToOneTransformerBase" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class ImageResizerTransform&#xA;Inherits OneToOneTransformBase" />
-  <TypeSignature Language="F#" Value="type ImageResizerTransform = class&#xA;    inherit OneToOneTransformBase" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class ImageResizerTransform&#xA;Inherits OneToOneTransformerBase" />
+  <TypeSignature Language="F#" Value="type ImageResizerTransform = class&#xA;    inherit OneToOneTransformerBase" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.Runtime.ImageAnalytics</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>Microsoft.ML.Runtime.Data.OneToOneTransformBase</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Runtime.Data.OneToOneTransformerBase</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -20,16 +21,152 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public ImageResizerTransform (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Arguments args, Microsoft.ML.Runtime.Data.IDataView input);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform/Arguments args, class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, args As ImageResizerTransform.Arguments, input As IDataView)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Arguments * Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform" Usage="new Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform (env, args, input)" />
+      <MemberSignature Language="C#" Value="public ImageResizerTransform (Microsoft.ML.Runtime.IHostEnvironment env, params Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.ColumnInfo[] columns);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform/ColumnInfo[] columns) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.ColumnInfo[])" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, ParamArray columns As ImageResizerTransform.ColumnInfo())" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.ColumnInfo[] -&gt; Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform" Usage="new Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform (env, columns)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Runtime.ImageAnalytics</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="columns" Type="Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform+ColumnInfo[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="columns">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ImageResizerTransform (Microsoft.ML.Runtime.IHostEnvironment env, string inputColumn, string outputColumn, int imageWidth, int imageHeight, Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.ResizingKind resizing = Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform+ResizingKind.IsoCrop, Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Anchor cropAnchor = Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform+Anchor.Center);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string inputColumn, string outputColumn, int32 imageWidth, int32 imageHeight, valuetype Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform/ResizingKind resizing, valuetype Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform/Anchor cropAnchor) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.Int32,System.Int32,Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.ResizingKind,Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Anchor)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, inputColumn As String, outputColumn As String, imageWidth As Integer, imageHeight As Integer, Optional resizing As ImageResizerTransform.ResizingKind = Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform+ResizingKind.IsoCrop, Optional cropAnchor As ImageResizerTransform.Anchor = Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform+Anchor.Center)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform : Microsoft.ML.Runtime.IHostEnvironment * string * string * int * int * Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.ResizingKind * Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Anchor -&gt; Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform" Usage="new Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform (env, inputColumn, outputColumn, imageWidth, imageHeight, resizing, cropAnchor)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Runtime.ImageAnalytics</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="inputColumn" Type="System.String" />
+        <Parameter Name="outputColumn" Type="System.String" />
+        <Parameter Name="imageWidth" Type="System.Int32" />
+        <Parameter Name="imageHeight" Type="System.Int32" />
+        <Parameter Name="resizing" Type="Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform+ResizingKind" />
+        <Parameter Name="cropAnchor" Type="Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform+Anchor" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="inputColumn">To be added.</param>
+        <param name="outputColumn">To be added.</param>
+        <param name="imageWidth">To be added.</param>
+        <param name="imageHeight">To be added.</param>
+        <param name="resizing">To be added.</param>
+        <param name="cropAnchor">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CheckInputColumn">
+      <MemberSignature Language="C#" Value="protected override void CheckInputColumn (Microsoft.ML.Runtime.Data.ISchema inputSchema, int col, int srcCol);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void CheckInputColumn(class Microsoft.ML.Runtime.Data.ISchema inputSchema, int32 col, int32 srcCol) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.CheckInputColumn(Microsoft.ML.Runtime.Data.ISchema,System.Int32,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Sub CheckInputColumn (inputSchema As ISchema, col As Integer, srcCol As Integer)" />
+      <MemberSignature Language="F#" Value="override this.CheckInputColumn : Microsoft.ML.Runtime.Data.ISchema * int * int -&gt; unit" Usage="imageResizerTransform.CheckInputColumn (inputSchema, col, srcCol)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Runtime.ImageAnalytics</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.Runtime.Data.ISchema" />
+        <Parameter Name="col" Type="System.Int32" />
+        <Parameter Name="srcCol" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
+        <param name="col">To be added.</param>
+        <param name="srcCol">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Columns">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.IReadOnlyCollection&lt;Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.ColumnInfo&gt; Columns { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.IReadOnlyCollection`1&lt;class Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform/ColumnInfo&gt; Columns" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Columns" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Columns As IReadOnlyCollection(Of ImageResizerTransform.ColumnInfo)" />
+      <MemberSignature Language="F#" Value="member this.Columns : System.Collections.Generic.IReadOnlyCollection&lt;Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.ColumnInfo&gt;" Usage="Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Columns" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Runtime.ImageAnalytics</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IReadOnlyCollection&lt;Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform+ColumnInfo&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Model.ModelLoadContext ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Model.ModelLoadContext ctx) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, ctx As ModelLoadContext) As ImageResizerTransform" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Model.ModelLoadContext -&gt; Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform" Usage="Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Create (env, ctx)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Runtime.ImageAnalytics</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="ctx" Type="Microsoft.ML.Runtime.Model.ModelLoadContext" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="ctx">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IDataTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Arguments args, Microsoft.ML.Runtime.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IDataTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform/Arguments args, class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, args As ImageResizerTransform.Arguments, input As IDataView) As IDataTransform" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Arguments * Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.IDataTransform" Usage="Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Create (env, args, input)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Runtime.ImageAnalytics</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataTransform</ReturnType>
+      </ReturnValue>
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
         <Parameter Name="args" Type="Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform+Arguments" />
@@ -40,22 +177,23 @@
         <param name="args">To be added.</param>
         <param name="input">To be added.</param>
         <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Create">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Model.ModelLoadContext ctx, Microsoft.ML.Runtime.Data.IDataView input);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Model.ModelLoadContext ctx, class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IDataTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Model.ModelLoadContext ctx, Microsoft.ML.Runtime.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IDataTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Model.ModelLoadContext ctx, class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView)" />
-      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, ctx As ModelLoadContext, input As IDataView) As ImageResizerTransform" />
-      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Model.ModelLoadContext * Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform" Usage="Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Create (env, ctx, input)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, ctx As ModelLoadContext, input As IDataView) As IDataTransform" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Model.ModelLoadContext * Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.IDataTransform" Usage="Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Create (env, ctx, input)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Runtime.ImageAnalytics</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform</ReturnType>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataTransform</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
@@ -71,55 +209,29 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="GetColumnTypeCore">
-      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.ColumnType GetColumnTypeCore (int iinfo);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.ColumnType GetColumnTypeCore(int32 iinfo) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.GetColumnTypeCore(System.Int32)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetColumnTypeCore (iinfo As Integer) As ColumnType" />
-      <MemberSignature Language="F#" Value="override this.GetColumnTypeCore : int -&gt; Microsoft.ML.Runtime.Data.ColumnType" Usage="imageResizerTransform.GetColumnTypeCore iinfo" />
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IRowMapper Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Model.ModelLoadContext ctx, Microsoft.ML.Runtime.Data.ISchema inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IRowMapper Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Model.ModelLoadContext ctx, class Microsoft.ML.Runtime.Data.ISchema inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.ISchema)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, ctx As ModelLoadContext, inputSchema As ISchema) As IRowMapper" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Model.ModelLoadContext * Microsoft.ML.Runtime.Data.ISchema -&gt; Microsoft.ML.Runtime.Data.IRowMapper" Usage="Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.Create (env, ctx, inputSchema)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Runtime.ImageAnalytics</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.ColumnType</ReturnType>
+        <ReturnType>Microsoft.ML.Runtime.Data.IRowMapper</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="iinfo" Type="System.Int32" />
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="ctx" Type="Microsoft.ML.Runtime.Model.ModelLoadContext" />
+        <Parameter Name="inputSchema" Type="Microsoft.ML.Runtime.Data.ISchema" />
       </Parameters>
       <Docs>
-        <param name="iinfo">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GetGetterCore">
-      <MemberSignature Language="C#" Value="protected override Delegate GetGetterCore (Microsoft.ML.Runtime.IChannel ch, Microsoft.ML.Runtime.Data.IRow input, int iinfo, out Action disposer);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class System.Delegate GetGetterCore(class Microsoft.ML.Runtime.IChannel ch, class Microsoft.ML.Runtime.Data.IRow input, int32 iinfo, [out] class System.Action&amp; disposer) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.GetGetterCore(Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Data.IRow,System.Int32,System.Action@)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetGetterCore (ch As IChannel, input As IRow, iinfo As Integer, ByRef disposer As Action) As Delegate" />
-      <MemberSignature Language="F#" Value="override this.GetGetterCore : Microsoft.ML.Runtime.IChannel * Microsoft.ML.Runtime.Data.IRow * int *  -&gt; Delegate" Usage="imageResizerTransform.GetGetterCore (ch, input, iinfo, disposer)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Runtime.ImageAnalytics</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Delegate</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
-        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IRow" />
-        <Parameter Name="iinfo" Type="System.Int32" />
-        <Parameter Name="disposer" Type="System.Action" RefType="out" />
-      </Parameters>
-      <Docs>
-        <param name="ch">To be added.</param>
-        <param name="input">To be added.</param>
-        <param name="iinfo">To be added.</param>
-        <param name="disposer">To be added.</param>
+        <param name="env">To be added.</param>
+        <param name="ctx">To be added.</param>
+        <param name="inputSchema">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -141,6 +253,30 @@
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MakeRowMapper">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.IRowMapper MakeRowMapper (Microsoft.ML.Runtime.Data.ISchema schema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.IRowMapper MakeRowMapper(class Microsoft.ML.Runtime.Data.ISchema schema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ImageAnalytics.ImageResizerTransform.MakeRowMapper(Microsoft.ML.Runtime.Data.ISchema)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function MakeRowMapper (schema As ISchema) As IRowMapper" />
+      <MemberSignature Language="F#" Value="override this.MakeRowMapper : Microsoft.ML.Runtime.Data.ISchema -&gt; Microsoft.ML.Runtime.Data.IRowMapper" Usage="imageResizerTransform.MakeRowMapper schema" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Runtime.ImageAnalytics</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IRowMapper</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="schema" Type="Microsoft.ML.Runtime.Data.ISchema" />
+      </Parameters>
+      <Docs>
+        <param name="schema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
