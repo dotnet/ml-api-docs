@@ -1,9 +1,9 @@
 ﻿<Type Name="TextLoader" FullName="Microsoft.ML.Runtime.Data.TextLoader">
-  <TypeSignature Language="C#" Value="public sealed class TextLoader : Microsoft.ML.Runtime.Data.IDataLoader, Microsoft.ML.Runtime.Data.IDataView" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit TextLoader extends System.Object implements class Microsoft.ML.Runtime.Data.IDataLoader, class Microsoft.ML.Runtime.Data.IDataView, class Microsoft.ML.Runtime.Data.ISchematized, class Microsoft.ML.Runtime.Model.ICanSaveModel" />
+  <TypeSignature Language="C#" Value="public sealed class TextLoader : Microsoft.ML.Core.Data.IDataReader&lt;Microsoft.ML.Runtime.Data.IMultiStreamSource&gt;, Microsoft.ML.Runtime.Model.ICanSaveModel" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit TextLoader extends System.Object implements class Microsoft.ML.Core.Data.IDataReader`1&lt;class Microsoft.ML.Runtime.Data.IMultiStreamSource&gt;, class Microsoft.ML.Runtime.Model.ICanSaveModel" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.TextLoader" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class TextLoader&#xA;Implements IDataLoader, IDataView" />
-  <TypeSignature Language="F#" Value="type TextLoader = class&#xA;    interface IDataLoader&#xA;    interface IDataView&#xA;    interface ISchematized&#xA;    interface ICanSaveModel" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class TextLoader&#xA;Implements ICanSaveModel, IDataReader(Of IMultiStreamSource)" />
+  <TypeSignature Language="F#" Value="type TextLoader = class&#xA;    interface IDataReader&lt;IMultiStreamSource&gt;&#xA;    interface ICanSaveModel" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.Data</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -13,10 +13,10 @@
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>Microsoft.ML.Runtime.Data.IDataLoader</InterfaceName>
+      <InterfaceName>Microsoft.ML.Core.Data.IDataReader&lt;Microsoft.ML.Runtime.Data.IMultiStreamSource&gt;</InterfaceName>
     </Interface>
     <Interface>
-      <InterfaceName>Microsoft.ML.Runtime.Data.IDataView</InterfaceName>
+      <InterfaceName>Microsoft.ML.Runtime.Model.ICanSaveModel</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -28,16 +28,69 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public TextLoader (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.TextLoader.Arguments args, Microsoft.ML.Runtime.Data.IMultiStreamSource files);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.TextLoader/Arguments args, class Microsoft.ML.Runtime.Data.IMultiStreamSource files) cil managed" />
+      <MemberSignature Language="C#" Value="public TextLoader (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.TextLoader.Arguments args, Microsoft.ML.Runtime.Data.IMultiStreamSource dataSample = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.TextLoader/Arguments args, class Microsoft.ML.Runtime.Data.IMultiStreamSource dataSample) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.TextLoader.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.TextLoader.Arguments,Microsoft.ML.Runtime.Data.IMultiStreamSource)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, args As TextLoader.Arguments, files As IMultiStreamSource)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.TextLoader : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.TextLoader.Arguments * Microsoft.ML.Runtime.Data.IMultiStreamSource -&gt; Microsoft.ML.Runtime.Data.TextLoader" Usage="new Microsoft.ML.Runtime.Data.TextLoader (env, args, files)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, args As TextLoader.Arguments, Optional dataSample As IMultiStreamSource = null)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.TextLoader : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.TextLoader.Arguments * Microsoft.ML.Runtime.Data.IMultiStreamSource -&gt; Microsoft.ML.Runtime.Data.TextLoader" Usage="new Microsoft.ML.Runtime.Data.TextLoader (env, args, dataSample)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" Index="0" />
+        <Parameter Name="args" Type="Microsoft.ML.Runtime.Data.TextLoader+Arguments" Index="1" />
+        <Parameter Name="dataSample" Type="Microsoft.ML.Runtime.Data.IMultiStreamSource" Index="2" FrameworkAlternate="ml-dotnet" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="args">To be added.</param>
+        <param name="dataSample">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.TextLoader Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Model.ModelLoadContext ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.TextLoader Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Model.ModelLoadContext ctx) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.TextLoader.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, ctx As ModelLoadContext) As TextLoader" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Model.ModelLoadContext -&gt; Microsoft.ML.Runtime.Data.TextLoader" Usage="Microsoft.ML.Runtime.Data.TextLoader.Create (env, ctx)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.TextLoader</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="ctx" Type="Microsoft.ML.Runtime.Model.ModelLoadContext" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="ctx">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IDataLoader Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.TextLoader.Arguments args, Microsoft.ML.Runtime.Data.IMultiStreamSource files);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IDataLoader Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.TextLoader/Arguments args, class Microsoft.ML.Runtime.Data.IMultiStreamSource files) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.TextLoader.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.TextLoader.Arguments,Microsoft.ML.Runtime.Data.IMultiStreamSource)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, args As TextLoader.Arguments, files As IMultiStreamSource) As IDataLoader" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.TextLoader.Arguments * Microsoft.ML.Runtime.Data.IMultiStreamSource -&gt; Microsoft.ML.Runtime.Data.IDataLoader" Usage="Microsoft.ML.Runtime.Data.TextLoader.Create (env, args, files)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataLoader</ReturnType>
+      </ReturnValue>
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
         <Parameter Name="args" Type="Microsoft.ML.Runtime.Data.TextLoader+Arguments" />
@@ -48,45 +101,23 @@
         <param name="args">To be added.</param>
         <param name="files">To be added.</param>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CanShuffle">
-      <MemberSignature Language="C#" Value="public bool CanShuffle { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool CanShuffle" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.TextLoader.CanShuffle" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property CanShuffle As Boolean" />
-      <MemberSignature Language="F#" Value="member this.CanShuffle : bool" Usage="Microsoft.ML.Runtime.Data.TextLoader.CanShuffle" />
-      <MemberType>Property</MemberType>
-      <Implements>
-        <InterfaceMember>P:Microsoft.ML.Runtime.Data.IDataView.CanShuffle</InterfaceMember>
-      </Implements>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Create">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.TextLoader Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Model.ModelLoadContext ctx, Microsoft.ML.Runtime.Data.IMultiStreamSource files);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.TextLoader Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Model.ModelLoadContext ctx, class Microsoft.ML.Runtime.Data.IMultiStreamSource files) cil managed" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IDataLoader Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Model.ModelLoadContext ctx, Microsoft.ML.Runtime.Data.IMultiStreamSource files);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IDataLoader Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Model.ModelLoadContext ctx, class Microsoft.ML.Runtime.Data.IMultiStreamSource files) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.TextLoader.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IMultiStreamSource)" />
-      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, ctx As ModelLoadContext, files As IMultiStreamSource) As TextLoader" />
-      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Model.ModelLoadContext * Microsoft.ML.Runtime.Data.IMultiStreamSource -&gt; Microsoft.ML.Runtime.Data.TextLoader" Usage="Microsoft.ML.Runtime.Data.TextLoader.Create (env, ctx, files)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, ctx As ModelLoadContext, files As IMultiStreamSource) As IDataLoader" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Model.ModelLoadContext * Microsoft.ML.Runtime.Data.IMultiStreamSource -&gt; Microsoft.ML.Runtime.Data.IDataLoader" Usage="Microsoft.ML.Runtime.Data.TextLoader.Create (env, ctx, files)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.TextLoader</ReturnType>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataLoader</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
@@ -132,90 +163,25 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="GetRowCount">
-      <MemberSignature Language="C#" Value="public Nullable&lt;long&gt; GetRowCount (bool lazy = true);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Nullable`1&lt;int64&gt; GetRowCount(bool lazy) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.TextLoader.GetRowCount(System.Boolean)" />
-      <MemberSignature Language="VB.NET" Value="Public Function GetRowCount (Optional lazy As Boolean = true) As Nullable(Of Long)" />
-      <MemberSignature Language="F#" Value="abstract member GetRowCount : bool -&gt; Nullable&lt;int64&gt;&#xA;override this.GetRowCount : bool -&gt; Nullable&lt;int64&gt;" Usage="textLoader.GetRowCount lazy" />
+    <Member MemberName="GetOutputSchema">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.ISchema GetOutputSchema ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.ISchema GetOutputSchema() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.TextLoader.GetOutputSchema" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetOutputSchema () As ISchema" />
+      <MemberSignature Language="F#" Value="abstract member GetOutputSchema : unit -&gt; Microsoft.ML.Runtime.Data.ISchema&#xA;override this.GetOutputSchema : unit -&gt; Microsoft.ML.Runtime.Data.ISchema" Usage="textLoader.GetOutputSchema " />
       <MemberType>Method</MemberType>
       <Implements>
-        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IDataView.GetRowCount(System.Boolean)</InterfaceMember>
+        <InterfaceMember>M:Microsoft.ML.Core.Data.IDataReader`1.GetOutputSchema</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Nullable&lt;System.Int64&gt;</ReturnType>
+        <ReturnType>Microsoft.ML.Runtime.Data.ISchema</ReturnType>
       </ReturnValue>
-      <Parameters>
-        <Parameter Name="lazy" Type="System.Boolean" />
-      </Parameters>
+      <Parameters />
       <Docs>
-        <param name="lazy">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GetRowCursor">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IRowCursor GetRowCursor (Func&lt;int,bool&gt; predicate, Microsoft.ML.Runtime.IRandom rand = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IRowCursor GetRowCursor(class System.Func`2&lt;int32, bool&gt; predicate, class Microsoft.ML.Runtime.IRandom rand) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.TextLoader.GetRowCursor(System.Func{System.Int32,System.Boolean},Microsoft.ML.Runtime.IRandom)" />
-      <MemberSignature Language="VB.NET" Value="Public Function GetRowCursor (predicate As Func(Of Integer, Boolean), Optional rand As IRandom = null) As IRowCursor" />
-      <MemberSignature Language="F#" Value="abstract member GetRowCursor : Func&lt;int, bool&gt; * Microsoft.ML.Runtime.IRandom -&gt; Microsoft.ML.Runtime.Data.IRowCursor&#xA;override this.GetRowCursor : Func&lt;int, bool&gt; * Microsoft.ML.Runtime.IRandom -&gt; Microsoft.ML.Runtime.Data.IRowCursor" Usage="textLoader.GetRowCursor (predicate, rand)" />
-      <MemberType>Method</MemberType>
-      <Implements>
-        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IDataView.GetRowCursor(System.Func{System.Int32,System.Boolean},Microsoft.ML.Runtime.IRandom)</InterfaceMember>
-      </Implements>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.IRowCursor</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
-        <Parameter Name="rand" Type="Microsoft.ML.Runtime.IRandom" />
-      </Parameters>
-      <Docs>
-        <param name="predicate">To be added.</param>
-        <param name="rand">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GetRowCursorSet">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IRowCursor[] GetRowCursorSet (out Microsoft.ML.Runtime.Data.IRowCursorConsolidator consolidator, Func&lt;int,bool&gt; predicate, int n, Microsoft.ML.Runtime.IRandom rand = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IRowCursor[] GetRowCursorSet([out] class Microsoft.ML.Runtime.Data.IRowCursorConsolidator&amp; consolidator, class System.Func`2&lt;int32, bool&gt; predicate, int32 n, class Microsoft.ML.Runtime.IRandom rand) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.TextLoader.GetRowCursorSet(Microsoft.ML.Runtime.Data.IRowCursorConsolidator@,System.Func{System.Int32,System.Boolean},System.Int32,Microsoft.ML.Runtime.IRandom)" />
-      <MemberSignature Language="VB.NET" Value="Public Function GetRowCursorSet (ByRef consolidator As IRowCursorConsolidator, predicate As Func(Of Integer, Boolean), n As Integer, Optional rand As IRandom = null) As IRowCursor()" />
-      <MemberSignature Language="F#" Value="abstract member GetRowCursorSet :  * Func&lt;int, bool&gt; * int * Microsoft.ML.Runtime.IRandom -&gt; Microsoft.ML.Runtime.Data.IRowCursor[]&#xA;override this.GetRowCursorSet :  * Func&lt;int, bool&gt; * int * Microsoft.ML.Runtime.IRandom -&gt; Microsoft.ML.Runtime.Data.IRowCursor[]" Usage="textLoader.GetRowCursorSet (consolidator, predicate, n, rand)" />
-      <MemberType>Method</MemberType>
-      <Implements>
-        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IDataView.GetRowCursorSet(Microsoft.ML.Runtime.Data.IRowCursorConsolidator,System.Func{System.Int32,System.Boolean},System.Int32,Microsoft.ML.Runtime.IRandom)</InterfaceMember>
-      </Implements>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.IRowCursor[]</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="consolidator" Type="Microsoft.ML.Runtime.Data.IRowCursorConsolidator" RefType="out" />
-        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
-        <Parameter Name="n" Type="System.Int32" />
-        <Parameter Name="rand" Type="Microsoft.ML.Runtime.IRandom" />
-      </Parameters>
-      <Docs>
-        <param name="consolidator">To be added.</param>
-        <param name="predicate">To be added.</param>
-        <param name="n">To be added.</param>
-        <param name="rand">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -237,6 +203,63 @@
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Read">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IDataView Read (Microsoft.ML.Runtime.Data.IMultiStreamSource source);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IDataView Read(class Microsoft.ML.Runtime.Data.IMultiStreamSource source) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.TextLoader.Read(Microsoft.ML.Runtime.Data.IMultiStreamSource)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Read (source As IMultiStreamSource) As IDataView" />
+      <MemberSignature Language="F#" Value="abstract member Read : Microsoft.ML.Runtime.Data.IMultiStreamSource -&gt; Microsoft.ML.Runtime.Data.IDataView&#xA;override this.Read : Microsoft.ML.Runtime.Data.IMultiStreamSource -&gt; Microsoft.ML.Runtime.Data.IDataView" Usage="textLoader.Read source" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Core.Data.IDataReader`1.Read(`0)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataView</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="source" Type="Microsoft.ML.Runtime.Data.IMultiStreamSource" />
+      </Parameters>
+      <Docs>
+        <param name="source">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReadFile">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IDataView ReadFile (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.TextLoader.Arguments args, Microsoft.ML.Runtime.Data.IMultiStreamSource fileSource);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IDataView ReadFile(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.TextLoader/Arguments args, class Microsoft.ML.Runtime.Data.IMultiStreamSource fileSource) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.TextLoader.ReadFile(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.TextLoader.Arguments,Microsoft.ML.Runtime.Data.IMultiStreamSource)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function ReadFile (env As IHostEnvironment, args As TextLoader.Arguments, fileSource As IMultiStreamSource) As IDataView" />
+      <MemberSignature Language="F#" Value="static member ReadFile : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.TextLoader.Arguments * Microsoft.ML.Runtime.Data.IMultiStreamSource -&gt; Microsoft.ML.Runtime.Data.IDataView" Usage="Microsoft.ML.Runtime.Data.TextLoader.ReadFile (env, args, fileSource)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataView</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="args" Type="Microsoft.ML.Runtime.Data.TextLoader+Arguments" />
+        <Parameter Name="fileSource" Type="Microsoft.ML.Runtime.Data.IMultiStreamSource" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="args">To be added.</param>
+        <param name="fileSource">To be added.</param>
+        <summary>
+            Convenience method to create a <see cref="T:Microsoft.ML.Runtime.Data.TextLoader" /> and use it to read a specified file.
+            </summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -263,29 +286,6 @@
       <Docs>
         <param name="ctx">To be added.</param>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Schema">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.ISchema Schema { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.Data.ISchema Schema" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.TextLoader.Schema" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Schema As ISchema" />
-      <MemberSignature Language="F#" Value="member this.Schema : Microsoft.ML.Runtime.Data.ISchema" Usage="Microsoft.ML.Runtime.Data.TextLoader.Schema" />
-      <MemberType>Property</MemberType>
-      <Implements>
-        <InterfaceMember>P:Microsoft.ML.Runtime.Data.ISchematized.Schema</InterfaceMember>
-      </Implements>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.ISchema</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

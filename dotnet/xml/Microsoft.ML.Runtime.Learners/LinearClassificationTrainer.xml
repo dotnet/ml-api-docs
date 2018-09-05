@@ -1,9 +1,9 @@
 ﻿<Type Name="LinearClassificationTrainer" FullName="Microsoft.ML.Runtime.Learners.LinearClassificationTrainer">
-  <TypeSignature Language="C#" Value="public sealed class LinearClassificationTrainer : Microsoft.ML.Runtime.Learners.SdcaTrainerBase&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt;&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit LinearClassificationTrainer extends Microsoft.ML.Runtime.Learners.SdcaTrainerBase`1&lt;class Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt;&gt;" />
+  <TypeSignature Language="C#" Value="public sealed class LinearClassificationTrainer : Microsoft.ML.Runtime.Learners.SdcaTrainerBase&lt;Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt;&gt;,Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt;&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit LinearClassificationTrainer extends Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2&lt;class Microsoft.ML.Runtime.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt;&gt;, class Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt;&gt;" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Learners.LinearClassificationTrainer" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class LinearClassificationTrainer&#xA;Inherits SdcaTrainerBase(Of IPredictorWithFeatureWeights(Of Single))" />
-  <TypeSignature Language="F#" Value="type LinearClassificationTrainer = class&#xA;    inherit SdcaTrainerBase&lt;IPredictorWithFeatureWeights&lt;single&gt;&gt;" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class LinearClassificationTrainer&#xA;Inherits SdcaTrainerBase(Of BinaryPredictionTransformer(Of IPredictorWithFeatureWeights(Of Single)), IPredictorWithFeatureWeights(Of Single))" />
+  <TypeSignature Language="F#" Value="type LinearClassificationTrainer = class&#xA;    inherit SdcaTrainerBase&lt;BinaryPredictionTransformer&lt;IPredictorWithFeatureWeights&lt;single&gt;&gt;, IPredictorWithFeatureWeights&lt;single&gt;&gt;" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -11,8 +11,10 @@
   <Base>
     <BaseTypeName>Microsoft.ML.Runtime.Learners.SdcaTrainerBase&lt;Microsoft.ML.Runtime.IPredictor&gt;</BaseTypeName>
     <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Runtime.Learners.SdcaTrainerBase&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Runtime.Learners.SdcaTrainerBase&lt;Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;,Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;</BaseTypeName>
     <BaseTypeArguments>
-      <BaseTypeArgument TypeParamName="TPredictor">Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TTransformer">Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TModel">Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
   <Interfaces></Interfaces>
@@ -43,6 +45,34 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public LinearClassificationTrainer (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Learners.LinearClassificationTrainer.Arguments args, string featureColumn, string labelColumn, string weightColumn = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Learners.LinearClassificationTrainer/Arguments args, string featureColumn, string labelColumn, string weightColumn) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.LinearClassificationTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Learners.LinearClassificationTrainer.Arguments,System.String,System.String,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, args As LinearClassificationTrainer.Arguments, featureColumn As String, labelColumn As String, Optional weightColumn As String = null)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Learners.LinearClassificationTrainer : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Learners.LinearClassificationTrainer.Arguments * string * string * string -&gt; Microsoft.ML.Runtime.Learners.LinearClassificationTrainer" Usage="new Microsoft.ML.Runtime.Learners.LinearClassificationTrainer (env, args, featureColumn, labelColumn, weightColumn)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="args" Type="Microsoft.ML.Runtime.Learners.LinearClassificationTrainer+Arguments" />
+        <Parameter Name="featureColumn" Type="System.String" />
+        <Parameter Name="labelColumn" Type="System.String" />
+        <Parameter Name="weightColumn" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="args">To be added.</param>
+        <param name="featureColumn">To be added.</param>
+        <param name="labelColumn">To be added.</param>
+        <param name="weightColumn">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="CheckLabel">
       <MemberSignature Language="C#" Value="protected override void CheckLabel (Microsoft.ML.Runtime.Data.RoleMappedData examples, out int weightSetCount);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void CheckLabel(class Microsoft.ML.Runtime.Data.RoleMappedData examples, [out] int32&amp; weightSetCount) cil managed" />
@@ -64,6 +94,29 @@
       <Docs>
         <param name="examples">To be added.</param>
         <param name="weightSetCount">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CheckLabelCompatible">
+      <MemberSignature Language="C#" Value="protected override void CheckLabelCompatible (Microsoft.ML.Core.Data.SchemaShape.Column labelCol);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void CheckLabelCompatible(class Microsoft.ML.Core.Data.SchemaShape/Column labelCol) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.LinearClassificationTrainer.CheckLabelCompatible(Microsoft.ML.Core.Data.SchemaShape.Column)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Sub CheckLabelCompatible (labelCol As SchemaShape.Column)" />
+      <MemberSignature Language="F#" Value="override this.CheckLabelCompatible : Microsoft.ML.Core.Data.SchemaShape.Column -&gt; unit" Usage="linearClassificationTrainer.CheckLabelCompatible labelCol" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="labelCol" Type="Microsoft.ML.Core.Data.SchemaShape+Column" />
+      </Parameters>
+      <Docs>
+        <param name="labelCol">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -157,6 +210,52 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="MakeTransformer">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt;&gt; MakeTransformer (Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt; model, Microsoft.ML.Runtime.Data.ISchema trainSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt;&gt; MakeTransformer(class Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt; model, class Microsoft.ML.Runtime.Data.ISchema trainSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.LinearClassificationTrainer.MakeTransformer(Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights{System.Single},Microsoft.ML.Runtime.Data.ISchema)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function MakeTransformer (model As IPredictorWithFeatureWeights(Of Single), trainSchema As ISchema) As BinaryPredictionTransformer(Of IPredictorWithFeatureWeights(Of Single))" />
+      <MemberSignature Language="F#" Value="override this.MakeTransformer : Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;single&gt; * Microsoft.ML.Runtime.Data.ISchema -&gt; Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;single&gt;&gt;" Usage="linearClassificationTrainer.MakeTransformer (model, trainSchema)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="model" Type="Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;" />
+        <Parameter Name="trainSchema" Type="Microsoft.ML.Runtime.Data.ISchema" />
+      </Parameters>
+      <Docs>
+        <param name="model">To be added.</param>
+        <param name="trainSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OutputColumns">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Core.Data.SchemaShape.Column[] OutputColumns { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Core.Data.SchemaShape/Column[] OutputColumns" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Learners.LinearClassificationTrainer.OutputColumns" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides ReadOnly Property OutputColumns As SchemaShape.Column()" />
+      <MemberSignature Language="F#" Value="member this.OutputColumns : Microsoft.ML.Core.Data.SchemaShape.Column[]" Usage="Microsoft.ML.Runtime.Learners.LinearClassificationTrainer.OutputColumns" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Core.Data.SchemaShape+Column[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="PredictionKind">
       <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.PredictionKind PredictionKind { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.ML.Runtime.PredictionKind PredictionKind" />
@@ -194,6 +293,32 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Train">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt;&gt; Train (Microsoft.ML.Runtime.Data.IDataView trainData, Microsoft.ML.Runtime.Data.IDataView validationData);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Runtime.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt;&gt; Train(class Microsoft.ML.Runtime.Data.IDataView trainData, class Microsoft.ML.Runtime.Data.IDataView validationData) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.LinearClassificationTrainer.Train(Microsoft.ML.Runtime.Data.IDataView,Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Train (trainData As IDataView, validationData As IDataView) As BinaryPredictionTransformer(Of IPredictorWithFeatureWeights(Of Single))" />
+      <MemberSignature Language="F#" Value="override this.Train : Microsoft.ML.Runtime.Data.IDataView * Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;single&gt;&gt;" Usage="linearClassificationTrainer.Train (trainData, validationData)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="trainData" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="validationData" Type="Microsoft.ML.Runtime.Data.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="trainData">To be added.</param>
+        <param name="validationData">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
