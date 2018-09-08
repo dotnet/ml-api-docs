@@ -1,0 +1,85 @@
+﻿<Type Name="IEstimator&lt;TTransformer&gt;" FullName="Microsoft.ML.Core.Data.IEstimator&lt;TTransformer&gt;">
+  <TypeSignature Language="C#" Value="public interface IEstimator&lt;out TTransformer&gt; where TTransformer : ITransformer" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IEstimator`1&lt;(class Microsoft.ML.Core.Data.ITransformer) + TTransformer&gt;" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Core.Data.IEstimator`1" />
+  <TypeSignature Language="VB.NET" Value="Public Interface IEstimator(Of Out TTransformer)" />
+  <TypeSignature Language="F#" Value="type IEstimator&lt;'ransformer (requires 'ransformer :&gt; ITransformer)&gt; = interface" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Core</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <TypeParameters>
+    <TypeParameter Name="TTransformer">
+      <Constraints>
+        <ParameterAttribute>Covariant</ParameterAttribute>
+        <InterfaceName>Microsoft.ML.Core.Data.ITransformer</InterfaceName>
+      </Constraints>
+    </TypeParameter>
+  </TypeParameters>
+  <Interfaces />
+  <Docs>
+    <typeparam name="TTransformer">To be added.</typeparam>
+    <summary>
+            The estimator (in Spark terminology) is an 'untrained transformer'. It needs to 'fit' on the data to manufacture
+            a transformer.
+            It also provides the 'schema propagation' like transformers do, but over <see cref="T:Microsoft.ML.Core.Data.SchemaShape" /> instead of <see cref="T:Microsoft.ML.Runtime.Data.ISchema" />.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Fit">
+      <MemberSignature Language="C#" Value="public TTransformer Fit (Microsoft.ML.Runtime.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance !TTransformer Fit(class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Core.Data.IEstimator`1.Fit(Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Fit (input As IDataView) As TTransformer" />
+      <MemberSignature Language="F#" Value="abstract member Fit : Microsoft.ML.Runtime.Data.IDataView -&gt; 'ransformer" Usage="iEstimator.Fit input" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>TTransformer</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="input">To be added.</param>
+        <summary>
+            Train and return a transformer.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetOutputSchema">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Core.Data.SchemaShape GetOutputSchema (Microsoft.ML.Core.Data.SchemaShape inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Core.Data.SchemaShape GetOutputSchema(class Microsoft.ML.Core.Data.SchemaShape inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Core.Data.IEstimator`1.GetOutputSchema(Microsoft.ML.Core.Data.SchemaShape)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetOutputSchema (inputSchema As SchemaShape) As SchemaShape" />
+      <MemberSignature Language="F#" Value="abstract member GetOutputSchema : Microsoft.ML.Core.Data.SchemaShape -&gt; Microsoft.ML.Core.Data.SchemaShape" Usage="iEstimator.GetOutputSchema inputSchema" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Core.Data.SchemaShape</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.Core.Data.SchemaShape" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
+        <summary>
+            Schema propagation for estimators.
+            Returns the output schema shape of the estimator, if the input schema shape is like the one provided.
+            Throws <see cref="T:Microsoft.ML.Core.Data.SchemaException" /> iff the input schema is not valid for the estimator.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
