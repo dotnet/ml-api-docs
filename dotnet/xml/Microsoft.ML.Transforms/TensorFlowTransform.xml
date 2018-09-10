@@ -13,8 +13,45 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Extracts hidden layers' values from a pre-trained Tensorflow model.</summary>
+    <remarks>
+	 <para>
+          The TensorflowTransform extracts the specified outputs from the operations computed on the graph (given the input(s)) using a pre-trained <a href="https://www.tensorflow.org">Tensorflow</a> model.
+          The transform takes as input the Tensorflow model together with the names of the inputs to the model and names of the operations for which output values will be extracted from the model.
+        </para>
+        <para>
+          This transform requires the <a href="">Microsoft.ML.TensorFlow</a> version 0.5.0 nuget to be installed.
+          The TensorflowTransform has following assumptions regarding the input, output and processing of data.
+        </para>
+	<para>    
+        <list type="number">
+          <item>
+            <description>
+              The transform currently accepts the <a href="https://www.tensorflow.org/mobile/prepare_models">frozen TensorFlow model</a> file as input.
+            </description>
+          </item>
+          <item>
+            <description>The transform supports scoring only one example at a time.</description>
+          </item>
+          <item>
+            <description>The name of input column(s) should match the name of input(s) in Tensorflow model.</description>
+          </item>
+          <item>
+            <description>The name of each output column should match one of the operations in the Tensorflow graph.</description>
+          </item>
+          <item>
+            <description>Currently, float and double are the only acceptable data types for input/output.</description>
+          </item>
+          <item>
+            Upon success, the transform will introduce a new column in <see cref="IDataView"/> corresponding to each output column specified.
+          </item>
+        </list>
+	</para>
+	<para?
+        The inputs and outputs of a TensorFlow model can be obtained using the <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/tools/graph_transforms/README.md#inspecting-graphs">
+          <code>summarize_graph</code> tool</a>.
+	</para>
+</remarks>
   </Docs>
   <Members>
     <Member MemberName="Create">
