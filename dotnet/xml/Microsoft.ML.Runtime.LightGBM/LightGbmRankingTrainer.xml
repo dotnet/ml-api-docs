@@ -1,18 +1,20 @@
 ﻿<Type Name="LightGbmRankingTrainer" FullName="Microsoft.ML.Runtime.LightGBM.LightGbmRankingTrainer">
-  <TypeSignature Language="C#" Value="public sealed class LightGbmRankingTrainer : Microsoft.ML.Runtime.LightGBM.LightGbmTrainerBase&lt;float,Microsoft.ML.Runtime.LightGBM.LightGbmRankingPredictor&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit LightGbmRankingTrainer extends Microsoft.ML.Runtime.LightGBM.LightGbmTrainerBase`2&lt;float32, class Microsoft.ML.Runtime.LightGBM.LightGbmRankingPredictor&gt;" />
+  <TypeSignature Language="C#" Value="public sealed class LightGbmRankingTrainer : Microsoft.ML.Runtime.LightGBM.LightGbmTrainerBase&lt;float,Microsoft.ML.Runtime.Data.RankingPredictionTransformer&lt;Microsoft.ML.Runtime.LightGBM.LightGbmRankingPredictor&gt;,Microsoft.ML.Runtime.LightGBM.LightGbmRankingPredictor&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit LightGbmRankingTrainer extends Microsoft.ML.Runtime.LightGBM.LightGbmTrainerBase`3&lt;float32, class Microsoft.ML.Runtime.Data.RankingPredictionTransformer`1&lt;class Microsoft.ML.Runtime.LightGBM.LightGbmRankingPredictor&gt;, class Microsoft.ML.Runtime.LightGBM.LightGbmRankingPredictor&gt;" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.LightGBM.LightGbmRankingTrainer" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class LightGbmRankingTrainer&#xA;Inherits LightGbmTrainerBase(Of Single, LightGbmRankingPredictor)" />
-  <TypeSignature Language="F#" Value="type LightGbmRankingTrainer = class&#xA;    inherit LightGbmTrainerBase&lt;single, LightGbmRankingPredictor&gt;" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class LightGbmRankingTrainer&#xA;Inherits LightGbmTrainerBase(Of Single, RankingPredictionTransformer(Of LightGbmRankingPredictor), LightGbmRankingPredictor)" />
+  <TypeSignature Language="F#" Value="type LightGbmRankingTrainer = class&#xA;    inherit LightGbmTrainerBase&lt;single, RankingPredictionTransformer&lt;LightGbmRankingPredictor&gt;, LightGbmRankingPredictor&gt;" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.LightGBM</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>Microsoft.ML.Runtime.LightGBM.LightGbmTrainerBase&lt;System.Single,Microsoft.ML.Runtime.LightGBM.LightGbmRankingPredictor&gt;</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Runtime.LightGBM.LightGbmTrainerBase&lt;System.Single,Microsoft.ML.Runtime.Data.RankingPredictionTransformer&lt;Microsoft.ML.Runtime.LightGBM.LightGbmRankingPredictor&gt;,Microsoft.ML.Runtime.LightGBM.LightGbmRankingPredictor&gt;</BaseTypeName>
     <BaseTypeArguments>
       <BaseTypeArgument TypeParamName="TOutput">System.Single</BaseTypeArgument>
-      <BaseTypeArgument TypeParamName="TPredictor">Microsoft.ML.Runtime.LightGBM.LightGbmRankingPredictor</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TTransformer">Microsoft.ML.Runtime.Data.RankingPredictionTransformer&lt;Microsoft.ML.Runtime.LightGBM.LightGbmRankingPredictor&gt;</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TModel">Microsoft.ML.Runtime.LightGBM.LightGbmRankingPredictor</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
   <Interfaces />
@@ -26,11 +28,11 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public LightGbmRankingTrainer (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.LightGBM.LightGbmArguments args);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.LightGBM.LightGbmArguments args) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.LightGBM.LightGbmRankingTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.LightGBM.LightGbmArguments)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, args As LightGbmArguments)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.LightGBM.LightGbmRankingTrainer : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.LightGBM.LightGbmArguments -&gt; Microsoft.ML.Runtime.LightGBM.LightGbmRankingTrainer" Usage="new Microsoft.ML.Runtime.LightGBM.LightGbmRankingTrainer (env, args)" />
+      <MemberSignature Language="C#" Value="public LightGbmRankingTrainer (Microsoft.ML.Runtime.IHostEnvironment env, string labelColumn, string featureColumn, string groupIdColumn, string weightColumn = null, Action&lt;Microsoft.ML.Runtime.LightGBM.LightGbmArguments&gt; advancedSettings = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string labelColumn, string featureColumn, string groupIdColumn, string weightColumn, class System.Action`1&lt;class Microsoft.ML.Runtime.LightGBM.LightGbmArguments&gt; advancedSettings) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.LightGBM.LightGbmRankingTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String,System.String,System.Action{Microsoft.ML.Runtime.LightGBM.LightGbmArguments})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, labelColumn As String, featureColumn As String, groupIdColumn As String, Optional weightColumn As String = null, Optional advancedSettings As Action(Of LightGbmArguments) = null)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.LightGBM.LightGbmRankingTrainer : Microsoft.ML.Runtime.IHostEnvironment * string * string * string * string * Action&lt;Microsoft.ML.Runtime.LightGBM.LightGbmArguments&gt; -&gt; Microsoft.ML.Runtime.LightGBM.LightGbmRankingTrainer" Usage="new Microsoft.ML.Runtime.LightGBM.LightGbmRankingTrainer (env, labelColumn, featureColumn, groupIdColumn, weightColumn, advancedSettings)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.LightGBM</AssemblyName>
@@ -38,12 +40,21 @@
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
-        <Parameter Name="args" Type="Microsoft.ML.Runtime.LightGBM.LightGbmArguments" />
+        <Parameter Name="labelColumn" Type="System.String" />
+        <Parameter Name="featureColumn" Type="System.String" />
+        <Parameter Name="groupIdColumn" Type="System.String" />
+        <Parameter Name="weightColumn" Type="System.String" />
+        <Parameter Name="advancedSettings" Type="System.Action&lt;Microsoft.ML.Runtime.LightGBM.LightGbmArguments&gt;" />
       </Parameters>
       <Docs>
-        <param name="env">To be added.</param>
-        <param name="args">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="env">The private instance of <see cref="T:Microsoft.ML.Runtime.IHostEnvironment" />.</param>
+        <param name="labelColumn">The name of the label column.</param>
+        <param name="featureColumn">The name of the feature column.</param>
+        <param name="groupIdColumn">The name for the column containing the group ID. </param>
+        <param name="weightColumn">The name for the column containing the initial weight.</param>
+        <param name="advancedSettings">A delegate to apply all the advanced arguments to the algorithm.</param>
+        <summary>
+            Initializes a new instance of <see cref="T:Microsoft.ML.Runtime.LightGBM.LightGbmRankingTrainer" /></summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -101,6 +112,30 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="GetOutputColumnsCore">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Core.Data.SchemaShape.Column[] GetOutputColumnsCore (Microsoft.ML.Core.Data.SchemaShape inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Core.Data.SchemaShape/Column[] GetOutputColumnsCore(class Microsoft.ML.Core.Data.SchemaShape inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.LightGBM.LightGbmRankingTrainer.GetOutputColumnsCore(Microsoft.ML.Core.Data.SchemaShape)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetOutputColumnsCore (inputSchema As SchemaShape) As SchemaShape.Column()" />
+      <MemberSignature Language="F#" Value="override this.GetOutputColumnsCore : Microsoft.ML.Core.Data.SchemaShape -&gt; Microsoft.ML.Core.Data.SchemaShape.Column[]" Usage="lightGbmRankingTrainer.GetOutputColumnsCore inputSchema" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.LightGBM</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Core.Data.SchemaShape+Column[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.Core.Data.SchemaShape" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="LoadNameValue">
       <MemberSignature Language="C#" Value="public const string LoadNameValue;" />
       <MemberSignature Language="ILAsm" Value=".field public static literal string LoadNameValue" />
@@ -117,6 +152,32 @@
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MakeTransformer">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.RankingPredictionTransformer&lt;Microsoft.ML.Runtime.LightGBM.LightGbmRankingPredictor&gt; MakeTransformer (Microsoft.ML.Runtime.LightGBM.LightGbmRankingPredictor model, Microsoft.ML.Runtime.Data.ISchema trainSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.RankingPredictionTransformer`1&lt;class Microsoft.ML.Runtime.LightGBM.LightGbmRankingPredictor&gt; MakeTransformer(class Microsoft.ML.Runtime.LightGBM.LightGbmRankingPredictor model, class Microsoft.ML.Runtime.Data.ISchema trainSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.LightGBM.LightGbmRankingTrainer.MakeTransformer(Microsoft.ML.Runtime.LightGBM.LightGbmRankingPredictor,Microsoft.ML.Runtime.Data.ISchema)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function MakeTransformer (model As LightGbmRankingPredictor, trainSchema As ISchema) As RankingPredictionTransformer(Of LightGbmRankingPredictor)" />
+      <MemberSignature Language="F#" Value="override this.MakeTransformer : Microsoft.ML.Runtime.LightGBM.LightGbmRankingPredictor * Microsoft.ML.Runtime.Data.ISchema -&gt; Microsoft.ML.Runtime.Data.RankingPredictionTransformer&lt;Microsoft.ML.Runtime.LightGBM.LightGbmRankingPredictor&gt;" Usage="lightGbmRankingTrainer.MakeTransformer (model, trainSchema)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.LightGBM</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.RankingPredictionTransformer&lt;Microsoft.ML.Runtime.LightGBM.LightGbmRankingPredictor&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="model" Type="Microsoft.ML.Runtime.LightGBM.LightGbmRankingPredictor" />
+        <Parameter Name="trainSchema" Type="Microsoft.ML.Runtime.Data.ISchema" />
+      </Parameters>
+      <Docs>
+        <param name="model">To be added.</param>
+        <param name="trainSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

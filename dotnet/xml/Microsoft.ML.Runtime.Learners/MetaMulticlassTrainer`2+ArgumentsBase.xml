@@ -1,9 +1,9 @@
-﻿<Type Name="MetaMulticlassTrainer&lt;TPred,TArgs&gt;+ArgumentsBase" FullName="Microsoft.ML.Runtime.Learners.MetaMulticlassTrainer&lt;TPred,TArgs&gt;+ArgumentsBase">
-  <TypeSignature Language="C#" Value="public abstract class MetaMulticlassTrainer&lt;TPred,TArgs&gt;.ArgumentsBase where TPred : IPredictor where TArgs : MetaMulticlassTrainer&lt;TPred,TArgs&gt;.ArgumentsBase" />
-  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi abstract beforefieldinit MetaMulticlassTrainer`2/ArgumentsBase&lt;(class Microsoft.ML.Runtime.IPredictor) TPred, (class Microsoft.ML.Runtime.Learners.MetaMulticlassTrainer`2/ArgumentsBase&lt;!TPred, !TArgs&gt;) TArgs&gt; extends System.Object" />
+﻿<Type Name="MetaMulticlassTrainer&lt;TTransformer,TModel&gt;+ArgumentsBase" FullName="Microsoft.ML.Runtime.Learners.MetaMulticlassTrainer&lt;TTransformer,TModel&gt;+ArgumentsBase">
+  <TypeSignature Language="C#" Value="public abstract class MetaMulticlassTrainer&lt;TTransformer,TModel&gt;.ArgumentsBase where TTransformer : ISingleFeaturePredictionTransformer&lt;TModel&gt; where TModel : IPredictor" />
+  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi abstract beforefieldinit MetaMulticlassTrainer`2/ArgumentsBase&lt;(class Microsoft.ML.Runtime.ISingleFeaturePredictionTransformer`1&lt;!TModel&gt;) TTransformer, (class Microsoft.ML.Runtime.IPredictor) TModel&gt; extends System.Object" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Learners.MetaMulticlassTrainer`2.ArgumentsBase" />
-  <TypeSignature Language="VB.NET" Value="Public MustInherit Class MetaMulticlassTrainer(Of TPred, TArgs).ArgumentsBase" />
-  <TypeSignature Language="F#" Value="type MetaMulticlassTrainer&lt;'Pred, 'Args (requires 'Pred :&gt; IPredictor and 'Args :&gt; MetaMulticlassTrainer&lt;'Pred, 'Args&gt;.ArgumentsBase)&gt;.ArgumentsBase = class" />
+  <TypeSignature Language="VB.NET" Value="Public MustInherit Class MetaMulticlassTrainer(Of TTransformer, TModel).ArgumentsBase" />
+  <TypeSignature Language="F#" Value="type MetaMulticlassTrainer&lt;'ransformer, 'Model (requires 'ransformer :&gt; ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model :&gt; IPredictor)&gt;.ArgumentsBase = class" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -46,11 +46,11 @@
       </Docs>
     </Member>
     <Member MemberName="Calibrator">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.EntryPoints.IComponentFactory&lt;Microsoft.ML.Runtime.Internal.Calibration.ICalibratorTrainer&gt; Calibrator;" />
-      <MemberSignature Language="ILAsm" Value=".field public class Microsoft.ML.Runtime.EntryPoints.IComponentFactory`1&lt;class Microsoft.ML.Runtime.Internal.Calibration.ICalibratorTrainer&gt; Calibrator" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.IComponentFactory&lt;Microsoft.ML.Runtime.Internal.Calibration.ICalibratorTrainer&gt; Calibrator;" />
+      <MemberSignature Language="ILAsm" Value=".field public class Microsoft.ML.Runtime.IComponentFactory`1&lt;class Microsoft.ML.Runtime.Internal.Calibration.ICalibratorTrainer&gt; Calibrator" />
       <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Learners.MetaMulticlassTrainer`2.ArgumentsBase.Calibrator" />
       <MemberSignature Language="VB.NET" Value="Public Calibrator As IComponentFactory(Of ICalibratorTrainer) " />
-      <MemberSignature Language="F#" Value="val mutable Calibrator : Microsoft.ML.Runtime.EntryPoints.IComponentFactory&lt;Microsoft.ML.Runtime.Internal.Calibration.ICalibratorTrainer&gt;" Usage="Microsoft.ML.Runtime.Learners.MetaMulticlassTrainer&lt;'Pred, 'Args (requires 'Pred :&gt; Microsoft.ML.Runtime.IPredictor and 'Args :&gt; Microsoft.ML.Runtime.Learners.MetaMulticlassTrainer&lt;'Pred, 'Args&gt;.ArgumentsBase)&gt;.ArgumentsBase.Calibrator" />
+      <MemberSignature Language="F#" Value="val mutable Calibrator : Microsoft.ML.Runtime.IComponentFactory&lt;Microsoft.ML.Runtime.Internal.Calibration.ICalibratorTrainer&gt;" Usage="Microsoft.ML.Runtime.Learners.MetaMulticlassTrainer&lt;'ransformer, 'Model (requires 'ransformer :&gt; Microsoft.ML.Runtime.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model :&gt; Microsoft.ML.Runtime.IPredictor)&gt;.ArgumentsBase.Calibrator" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
@@ -58,11 +58,11 @@
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>Microsoft.ML.Runtime.CommandLine.Argument(Microsoft.ML.Runtime.CommandLine.ArgumentType.LastOccurenceWins, HelpText="Output calibrator", NullName="&lt;None&gt;", ShortName="cali", SignatureType=typeof(Microsoft.ML.Runtime.Internal.Calibration.SignatureCalibrator))</AttributeName>
+          <AttributeName>Microsoft.ML.Runtime.CommandLine.Argument(Microsoft.ML.Runtime.CommandLine.ArgumentType.LastOccurenceWins, HelpText="Output calibrator", NullName="&lt;None&gt;", ShortName="cali", SignatureType=typeof(Microsoft.ML.Runtime.Internal.Calibration.SignatureCalibrator), SortOrder=150)</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.EntryPoints.IComponentFactory&lt;Microsoft.ML.Runtime.Internal.Calibration.ICalibratorTrainer&gt;</ReturnType>
+        <ReturnType>Microsoft.ML.Runtime.IComponentFactory&lt;Microsoft.ML.Runtime.Internal.Calibration.ICalibratorTrainer&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -74,7 +74,7 @@
       <MemberSignature Language="ILAsm" Value=".field public bool ImputeMissingLabelsAsNegative" />
       <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Learners.MetaMulticlassTrainer`2.ArgumentsBase.ImputeMissingLabelsAsNegative" />
       <MemberSignature Language="VB.NET" Value="Public ImputeMissingLabelsAsNegative As Boolean " />
-      <MemberSignature Language="F#" Value="val mutable ImputeMissingLabelsAsNegative : bool" Usage="Microsoft.ML.Runtime.Learners.MetaMulticlassTrainer&lt;'Pred, 'Args (requires 'Pred :&gt; Microsoft.ML.Runtime.IPredictor and 'Args :&gt; Microsoft.ML.Runtime.Learners.MetaMulticlassTrainer&lt;'Pred, 'Args&gt;.ArgumentsBase)&gt;.ArgumentsBase.ImputeMissingLabelsAsNegative" />
+      <MemberSignature Language="F#" Value="val mutable ImputeMissingLabelsAsNegative : bool" Usage="Microsoft.ML.Runtime.Learners.MetaMulticlassTrainer&lt;'ransformer, 'Model (requires 'ransformer :&gt; Microsoft.ML.Runtime.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model :&gt; Microsoft.ML.Runtime.IPredictor)&gt;.ArgumentsBase.ImputeMissingLabelsAsNegative" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
@@ -82,7 +82,7 @@
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>Microsoft.ML.Runtime.CommandLine.Argument(Microsoft.ML.Runtime.CommandLine.ArgumentType.LastOccurenceWins, HelpText="Whether to treat missing labels as having negative labels, instead of keeping them missing", ShortName="missNeg")</AttributeName>
+          <AttributeName>Microsoft.ML.Runtime.CommandLine.Argument(Microsoft.ML.Runtime.CommandLine.ArgumentType.LastOccurenceWins, HelpText="Whether to treat missing labels as having negative labels, instead of keeping them missing", ShortName="missNeg", SortOrder=150)</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -98,7 +98,7 @@
       <MemberSignature Language="ILAsm" Value=".field public int32 MaxCalibrationExamples" />
       <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Learners.MetaMulticlassTrainer`2.ArgumentsBase.MaxCalibrationExamples" />
       <MemberSignature Language="VB.NET" Value="Public MaxCalibrationExamples As Integer " />
-      <MemberSignature Language="F#" Value="val mutable MaxCalibrationExamples : int" Usage="Microsoft.ML.Runtime.Learners.MetaMulticlassTrainer&lt;'Pred, 'Args (requires 'Pred :&gt; Microsoft.ML.Runtime.IPredictor and 'Args :&gt; Microsoft.ML.Runtime.Learners.MetaMulticlassTrainer&lt;'Pred, 'Args&gt;.ArgumentsBase)&gt;.ArgumentsBase.MaxCalibrationExamples" />
+      <MemberSignature Language="F#" Value="val mutable MaxCalibrationExamples : int" Usage="Microsoft.ML.Runtime.Learners.MetaMulticlassTrainer&lt;'ransformer, 'Model (requires 'ransformer :&gt; Microsoft.ML.Runtime.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model :&gt; Microsoft.ML.Runtime.IPredictor)&gt;.ArgumentsBase.MaxCalibrationExamples" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
@@ -106,7 +106,7 @@
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>Microsoft.ML.Runtime.CommandLine.Argument(Microsoft.ML.Runtime.CommandLine.ArgumentType.LastOccurenceWins, HelpText="Number of instances to train the calibrator", ShortName="numcali")</AttributeName>
+          <AttributeName>Microsoft.ML.Runtime.CommandLine.Argument(Microsoft.ML.Runtime.CommandLine.ArgumentType.LastOccurenceWins, HelpText="Number of instances to train the calibrator", ShortName="numcali", SortOrder=150)</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -118,11 +118,11 @@
       </Docs>
     </Member>
     <Member MemberName="PredictorType">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.EntryPoints.IComponentFactory&lt;Microsoft.ML.Runtime.ITrainer&lt;Microsoft.ML.Runtime.IPredictorProducing&lt;float&gt;&gt;&gt; PredictorType;" />
-      <MemberSignature Language="ILAsm" Value=".field public class Microsoft.ML.Runtime.EntryPoints.IComponentFactory`1&lt;class Microsoft.ML.Runtime.ITrainer`1&lt;class Microsoft.ML.Runtime.IPredictorProducing`1&lt;float32&gt;&gt;&gt; PredictorType" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.IComponentFactory&lt;Microsoft.ML.Runtime.Training.ITrainerEstimator&lt;Microsoft.ML.Runtime.ISingleFeaturePredictionTransformer&lt;Microsoft.ML.Runtime.IPredictorProducing&lt;float&gt;&gt;,Microsoft.ML.Runtime.IPredictorProducing&lt;float&gt;&gt;&gt; PredictorType;" />
+      <MemberSignature Language="ILAsm" Value=".field public class Microsoft.ML.Runtime.IComponentFactory`1&lt;class Microsoft.ML.Runtime.Training.ITrainerEstimator`2&lt;class Microsoft.ML.Runtime.ISingleFeaturePredictionTransformer`1&lt;class Microsoft.ML.Runtime.IPredictorProducing`1&lt;float32&gt;&gt;, class Microsoft.ML.Runtime.IPredictorProducing`1&lt;float32&gt;&gt;&gt; PredictorType" />
       <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Learners.MetaMulticlassTrainer`2.ArgumentsBase.PredictorType" />
-      <MemberSignature Language="VB.NET" Value="Public PredictorType As IComponentFactory(Of ITrainer(Of IPredictorProducing(Of Single))) " />
-      <MemberSignature Language="F#" Value="val mutable PredictorType : Microsoft.ML.Runtime.EntryPoints.IComponentFactory&lt;Microsoft.ML.Runtime.ITrainer&lt;Microsoft.ML.Runtime.IPredictorProducing&lt;single&gt;&gt;&gt;" Usage="Microsoft.ML.Runtime.Learners.MetaMulticlassTrainer&lt;'Pred, 'Args (requires 'Pred :&gt; Microsoft.ML.Runtime.IPredictor and 'Args :&gt; Microsoft.ML.Runtime.Learners.MetaMulticlassTrainer&lt;'Pred, 'Args&gt;.ArgumentsBase)&gt;.ArgumentsBase.PredictorType" />
+      <MemberSignature Language="VB.NET" Value="Public PredictorType As IComponentFactory(Of ITrainerEstimator(Of ISingleFeaturePredictionTransformer(Of IPredictorProducing(Of Single)), IPredictorProducing(Of Single))) " />
+      <MemberSignature Language="F#" Value="val mutable PredictorType : Microsoft.ML.Runtime.IComponentFactory&lt;Microsoft.ML.Runtime.Training.ITrainerEstimator&lt;Microsoft.ML.Runtime.ISingleFeaturePredictionTransformer&lt;Microsoft.ML.Runtime.IPredictorProducing&lt;single&gt;&gt;, Microsoft.ML.Runtime.IPredictorProducing&lt;single&gt;&gt;&gt;" Usage="Microsoft.ML.Runtime.Learners.MetaMulticlassTrainer&lt;'ransformer, 'Model (requires 'ransformer :&gt; Microsoft.ML.Runtime.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model :&gt; Microsoft.ML.Runtime.IPredictor)&gt;.ArgumentsBase.PredictorType" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
@@ -133,11 +133,11 @@
           <AttributeName>Microsoft.ML.Runtime.Internal.Internallearn.TGUI(Description="Type of underlying binary predictor", Label="Predictor Type")</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>Microsoft.ML.Runtime.CommandLine.Argument(Microsoft.ML.Runtime.CommandLine.ArgumentType.LastOccurenceWins, HelpText="Base predictor", ShortName="p", SignatureType=typeof(Microsoft.ML.Runtime.SignatureBinaryClassifierTrainer), SortOrder=1)</AttributeName>
+          <AttributeName>Microsoft.ML.Runtime.CommandLine.Argument(Microsoft.ML.Runtime.CommandLine.ArgumentType.LastOccurenceWins, HelpText="Base predictor", ShortName="p", SignatureType=typeof(Microsoft.ML.Runtime.SignatureBinaryClassifierTrainer), SortOrder=4)</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.EntryPoints.IComponentFactory&lt;Microsoft.ML.Runtime.ITrainer&lt;Microsoft.ML.Runtime.IPredictorProducing&lt;System.Single&gt;&gt;&gt;</ReturnType>
+        <ReturnType>Microsoft.ML.Runtime.IComponentFactory&lt;Microsoft.ML.Runtime.Training.ITrainerEstimator&lt;Microsoft.ML.Runtime.ISingleFeaturePredictionTransformer&lt;Microsoft.ML.Runtime.IPredictorProducing&lt;System.Single&gt;&gt;,Microsoft.ML.Runtime.IPredictorProducing&lt;System.Single&gt;&gt;&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

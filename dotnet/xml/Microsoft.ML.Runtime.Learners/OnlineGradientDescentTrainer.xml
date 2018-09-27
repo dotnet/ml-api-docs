@@ -1,18 +1,19 @@
 ﻿<Type Name="OnlineGradientDescentTrainer" FullName="Microsoft.ML.Runtime.Learners.OnlineGradientDescentTrainer">
-  <TypeSignature Language="C#" Value="public sealed class OnlineGradientDescentTrainer : Microsoft.ML.Runtime.Learners.AveragedLinearTrainer&lt;Microsoft.ML.Runtime.Learners.OnlineGradientDescentTrainer.Arguments,Microsoft.ML.Runtime.Learners.LinearRegressionPredictor&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit OnlineGradientDescentTrainer extends Microsoft.ML.Runtime.Learners.AveragedLinearTrainer`2&lt;class Microsoft.ML.Runtime.Learners.OnlineGradientDescentTrainer/Arguments, class Microsoft.ML.Runtime.Learners.LinearRegressionPredictor&gt;" />
+  <TypeSignature Language="C#" Value="public sealed class OnlineGradientDescentTrainer : Microsoft.ML.Runtime.Learners.AveragedLinearTrainer&lt;Microsoft.ML.Runtime.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.LinearRegressionPredictor&gt;,Microsoft.ML.Runtime.Learners.LinearRegressionPredictor&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit OnlineGradientDescentTrainer extends Microsoft.ML.Runtime.Learners.AveragedLinearTrainer`2&lt;class Microsoft.ML.Runtime.Data.RegressionPredictionTransformer`1&lt;class Microsoft.ML.Runtime.Learners.LinearRegressionPredictor&gt;, class Microsoft.ML.Runtime.Learners.LinearRegressionPredictor&gt;" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Learners.OnlineGradientDescentTrainer" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class OnlineGradientDescentTrainer&#xA;Inherits AveragedLinearTrainer(Of OnlineGradientDescentTrainer.Arguments, LinearRegressionPredictor)" />
-  <TypeSignature Language="F#" Value="type OnlineGradientDescentTrainer = class&#xA;    inherit AveragedLinearTrainer&lt;OnlineGradientDescentTrainer.Arguments, LinearRegressionPredictor&gt;" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class OnlineGradientDescentTrainer&#xA;Inherits AveragedLinearTrainer(Of RegressionPredictionTransformer(Of LinearRegressionPredictor), LinearRegressionPredictor)" />
+  <TypeSignature Language="F#" Value="type OnlineGradientDescentTrainer = class&#xA;    inherit AveragedLinearTrainer&lt;RegressionPredictionTransformer&lt;LinearRegressionPredictor&gt;, LinearRegressionPredictor&gt;" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>Microsoft.ML.Runtime.Learners.AveragedLinearTrainer&lt;Microsoft.ML.Runtime.Learners.OnlineGradientDescentTrainer+Arguments,Microsoft.ML.Runtime.Learners.LinearRegressionPredictor&gt;</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Runtime.Learners.AveragedLinearTrainer&lt;Microsoft.ML.Runtime.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.LinearRegressionPredictor&gt;,Microsoft.ML.Runtime.Learners.LinearRegressionPredictor&gt;</BaseTypeName>
     <BaseTypeArguments>
-      <BaseTypeArgument TypeParamName="TArguments">Microsoft.ML.Runtime.Learners.OnlineGradientDescentTrainer+Arguments</BaseTypeArgument>
-      <BaseTypeArgument TypeParamName="TPredictor">Microsoft.ML.Runtime.Learners.LinearRegressionPredictor</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TTransformer">Microsoft.ML.Runtime.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.LinearRegressionPredictor&gt;</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TModel">Microsoft.ML.Runtime.Learners.LinearRegressionPredictor</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
   <Interfaces />
@@ -94,6 +95,56 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="GetOutputColumnsCore">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Core.Data.SchemaShape.Column[] GetOutputColumnsCore (Microsoft.ML.Core.Data.SchemaShape inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Core.Data.SchemaShape/Column[] GetOutputColumnsCore(class Microsoft.ML.Core.Data.SchemaShape inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.OnlineGradientDescentTrainer.GetOutputColumnsCore(Microsoft.ML.Core.Data.SchemaShape)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetOutputColumnsCore (inputSchema As SchemaShape) As SchemaShape.Column()" />
+      <MemberSignature Language="F#" Value="override this.GetOutputColumnsCore : Microsoft.ML.Core.Data.SchemaShape -&gt; Microsoft.ML.Core.Data.SchemaShape.Column[]" Usage="onlineGradientDescentTrainer.GetOutputColumnsCore inputSchema" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Core.Data.SchemaShape+Column[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.Core.Data.SchemaShape" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MakeTransformer">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.LinearRegressionPredictor&gt; MakeTransformer (Microsoft.ML.Runtime.Learners.LinearRegressionPredictor model, Microsoft.ML.Runtime.Data.ISchema trainSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.RegressionPredictionTransformer`1&lt;class Microsoft.ML.Runtime.Learners.LinearRegressionPredictor&gt; MakeTransformer(class Microsoft.ML.Runtime.Learners.LinearRegressionPredictor model, class Microsoft.ML.Runtime.Data.ISchema trainSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.OnlineGradientDescentTrainer.MakeTransformer(Microsoft.ML.Runtime.Learners.LinearRegressionPredictor,Microsoft.ML.Runtime.Data.ISchema)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function MakeTransformer (model As LinearRegressionPredictor, trainSchema As ISchema) As RegressionPredictionTransformer(Of LinearRegressionPredictor)" />
+      <MemberSignature Language="F#" Value="override this.MakeTransformer : Microsoft.ML.Runtime.Learners.LinearRegressionPredictor * Microsoft.ML.Runtime.Data.ISchema -&gt; Microsoft.ML.Runtime.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.LinearRegressionPredictor&gt;" Usage="onlineGradientDescentTrainer.MakeTransformer (model, trainSchema)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.LinearRegressionPredictor&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="model" Type="Microsoft.ML.Runtime.Learners.LinearRegressionPredictor" />
+        <Parameter Name="trainSchema" Type="Microsoft.ML.Runtime.Data.ISchema" />
+      </Parameters>
+      <Docs>
+        <param name="model">To be added.</param>
+        <param name="trainSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="PredictionKind">
       <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.PredictionKind PredictionKind { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.ML.Runtime.PredictionKind PredictionKind" />
@@ -127,7 +178,7 @@
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="Train a Online gradient descent perceptron.", Name="Trainers.OnlineGradientDescentRegressor", ShortName="ogd", UserName="Stochastic Gradient Descent (Regression)", XmlInclude=Mono.Cecil.CustomAttributeArgument[])</AttributeName>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="Train a Online gradient descent perceptron.", Name="Trainers.OnlineGradientDescentRegressor", ShortName="ogd", UserName="Stochastic Gradient Descent (Regression)", XmlInclude=new System.String[] { "&lt;include file='../Microsoft.ML.StandardLearners/Standard/Online/doc.xml' path='doc/members/member[@name="OGD"]/*' /&gt;", "&lt;include file='../Microsoft.ML.StandardLearners/Standard/Online/doc.xml' path='doc/members/example[@name="OGD"]/*' /&gt;" })</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>

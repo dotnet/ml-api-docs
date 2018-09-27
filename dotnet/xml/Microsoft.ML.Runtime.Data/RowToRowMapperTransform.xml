@@ -1,9 +1,9 @@
 ﻿<Type Name="RowToRowMapperTransform" FullName="Microsoft.ML.Runtime.Data.RowToRowMapperTransform">
-  <TypeSignature Language="C#" Value="public sealed class RowToRowMapperTransform : Microsoft.ML.Runtime.Data.RowToRowTransformBase" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit RowToRowMapperTransform extends Microsoft.ML.Runtime.Data.RowToRowTransformBase" />
+  <TypeSignature Language="C#" Value="public sealed class RowToRowMapperTransform : Microsoft.ML.Runtime.Data.RowToRowTransformBase, Microsoft.ML.Runtime.Data.IDataView, Microsoft.ML.Runtime.Data.IRowToRowMapper, Microsoft.ML.Runtime.Model.Onnx.ITransformCanSaveOnnx, Microsoft.ML.Runtime.Model.Pfa.ITransformCanSavePfa" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit RowToRowMapperTransform extends Microsoft.ML.Runtime.Data.RowToRowTransformBase implements class Microsoft.ML.Runtime.Data.IDataTransform, class Microsoft.ML.Runtime.Data.IDataView, class Microsoft.ML.Runtime.Data.IRowToRowMapper, class Microsoft.ML.Runtime.Data.ISchematized, class Microsoft.ML.Runtime.Model.ICanSaveModel, class Microsoft.ML.Runtime.Model.Onnx.ICanSaveOnnx, class Microsoft.ML.Runtime.Model.Onnx.ISaveAsOnnx, class Microsoft.ML.Runtime.Model.Onnx.ITransformCanSaveOnnx, class Microsoft.ML.Runtime.Model.Pfa.ICanSavePfa, class Microsoft.ML.Runtime.Model.Pfa.ISaveAsPfa, class Microsoft.ML.Runtime.Model.Pfa.ITransformCanSavePfa" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.RowToRowMapperTransform" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class RowToRowMapperTransform&#xA;Inherits RowToRowTransformBase" />
-  <TypeSignature Language="F#" Value="type RowToRowMapperTransform = class&#xA;    inherit RowToRowTransformBase" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class RowToRowMapperTransform&#xA;Inherits RowToRowTransformBase&#xA;Implements IDataView, IRowToRowMapper, ITransformCanSaveOnnx, ITransformCanSavePfa" />
+  <TypeSignature Language="F#" Value="type RowToRowMapperTransform = class&#xA;    inherit RowToRowTransformBase&#xA;    interface IRowToRowMapper&#xA;    interface ISchematized&#xA;    interface ITransformCanSaveOnnx&#xA;    interface ISaveAsOnnx&#xA;    interface ICanSaveOnnx&#xA;    interface IDataTransform&#xA;    interface IDataView&#xA;    interface ICanSaveModel&#xA;    interface ITransformCanSavePfa&#xA;    interface ISaveAsPfa&#xA;    interface ICanSavePfa" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.Data</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -11,7 +11,20 @@
   <Base>
     <BaseTypeName>Microsoft.ML.Runtime.Data.RowToRowTransformBase</BaseTypeName>
   </Base>
-  <Interfaces />
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.Data.IDataView</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.Data.IRowToRowMapper</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.Model.Onnx.ITransformCanSaveOnnx</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.Model.Pfa.ITransformCanSavePfa</InterfaceName>
+    </Interface>
+  </Interfaces>
   <Docs>
     <summary>
             This class is a transform that can add any number of output columns, that depend on any number of input columns.
@@ -45,6 +58,52 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="CanSaveOnnx">
+      <MemberSignature Language="C#" Value="public bool CanSaveOnnx { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool CanSaveOnnx" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.RowToRowMapperTransform.CanSaveOnnx" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property CanSaveOnnx As Boolean" />
+      <MemberSignature Language="F#" Value="member this.CanSaveOnnx : bool" Usage="Microsoft.ML.Runtime.Data.RowToRowMapperTransform.CanSaveOnnx" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Runtime.Model.Onnx.ICanSaveOnnx.CanSaveOnnx</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CanSavePfa">
+      <MemberSignature Language="C#" Value="public bool CanSavePfa { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool CanSavePfa" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.RowToRowMapperTransform.CanSavePfa" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property CanSavePfa As Boolean" />
+      <MemberSignature Language="F#" Value="member this.CanSavePfa : bool" Usage="Microsoft.ML.Runtime.Data.RowToRowMapperTransform.CanSavePfa" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Runtime.Model.Pfa.ICanSavePfa.CanSavePfa</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Create">
       <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.RowToRowMapperTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Model.ModelLoadContext ctx, Microsoft.ML.Runtime.Data.IDataView input);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.RowToRowMapperTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Model.ModelLoadContext ctx, class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
@@ -68,6 +127,90 @@
         <param name="env">To be added.</param>
         <param name="ctx">To be added.</param>
         <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetDependencies">
+      <MemberSignature Language="C#" Value="public Func&lt;int,bool&gt; GetDependencies (Func&lt;int,bool&gt; predicate);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Func`2&lt;int32, bool&gt; GetDependencies(class System.Func`2&lt;int32, bool&gt; predicate) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.RowToRowMapperTransform.GetDependencies(System.Func{System.Int32,System.Boolean})" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetDependencies (predicate As Func(Of Integer, Boolean)) As Func(Of Integer, Boolean)" />
+      <MemberSignature Language="F#" Value="abstract member GetDependencies : Func&lt;int, bool&gt; -&gt; Func&lt;int, bool&gt;&#xA;override this.GetDependencies : Func&lt;int, bool&gt; -&gt; Func&lt;int, bool&gt;" Usage="rowToRowMapperTransform.GetDependencies predicate" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IRowToRowMapper.GetDependencies(System.Func{System.Int32,System.Boolean})</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Func&lt;System.Int32,System.Boolean&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="predicate">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetOutputSchema">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.ISchema GetOutputSchema (Microsoft.ML.Runtime.Data.ISchema inputSchema, Microsoft.ML.Runtime.Data.IRowMapper mapper);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.ISchema GetOutputSchema(class Microsoft.ML.Runtime.Data.ISchema inputSchema, class Microsoft.ML.Runtime.Data.IRowMapper mapper) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.RowToRowMapperTransform.GetOutputSchema(Microsoft.ML.Runtime.Data.ISchema,Microsoft.ML.Runtime.Data.IRowMapper)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function GetOutputSchema (inputSchema As ISchema, mapper As IRowMapper) As ISchema" />
+      <MemberSignature Language="F#" Value="static member GetOutputSchema : Microsoft.ML.Runtime.Data.ISchema * Microsoft.ML.Runtime.Data.IRowMapper -&gt; Microsoft.ML.Runtime.Data.ISchema" Usage="Microsoft.ML.Runtime.Data.RowToRowMapperTransform.GetOutputSchema (inputSchema, mapper)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ISchema</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.Runtime.Data.ISchema" />
+        <Parameter Name="mapper" Type="Microsoft.ML.Runtime.Data.IRowMapper" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
+        <param name="mapper">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRow">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IRow GetRow (Microsoft.ML.Runtime.Data.IRow input, Func&lt;int,bool&gt; active, out Action disposer);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IRow GetRow(class Microsoft.ML.Runtime.Data.IRow input, class System.Func`2&lt;int32, bool&gt; active, [out] class System.Action&amp; disposer) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.RowToRowMapperTransform.GetRow(Microsoft.ML.Runtime.Data.IRow,System.Func{System.Int32,System.Boolean},System.Action@)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetRow (input As IRow, active As Func(Of Integer, Boolean), ByRef disposer As Action) As IRow" />
+      <MemberSignature Language="F#" Value="abstract member GetRow : Microsoft.ML.Runtime.Data.IRow * Func&lt;int, bool&gt; *  -&gt; Microsoft.ML.Runtime.Data.IRow&#xA;override this.GetRow : Microsoft.ML.Runtime.Data.IRow * Func&lt;int, bool&gt; *  -&gt; Microsoft.ML.Runtime.Data.IRow" Usage="rowToRowMapperTransform.GetRow (input, active, disposer)" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IRowToRowMapper.GetRow(Microsoft.ML.Runtime.Data.IRow,System.Func{System.Int32,System.Boolean},System.Action@)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IRow</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IRow" />
+        <Parameter Name="active" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+        <Parameter Name="disposer" Type="System.Action" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="input">To be added.</param>
+        <param name="active">To be added.</param>
+        <param name="disposer">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -106,6 +249,9 @@
       <MemberSignature Language="VB.NET" Value="Public Overrides Function GetRowCursorSet (ByRef consolidator As IRowCursorConsolidator, predicate As Func(Of Integer, Boolean), n As Integer, Optional rand As IRandom = null) As IRowCursor()" />
       <MemberSignature Language="F#" Value="override this.GetRowCursorSet :  * Func&lt;int, bool&gt; * int * Microsoft.ML.Runtime.IRandom -&gt; Microsoft.ML.Runtime.Data.IRowCursor[]" Usage="rowToRowMapperTransform.GetRowCursorSet (consolidator, predicate, n, rand)" />
       <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IDataView.GetRowCursorSet(Microsoft.ML.Runtime.Data.IRowCursorConsolidator@,System.Func{System.Int32,System.Boolean},System.Int32,Microsoft.ML.Runtime.IRandom)</InterfaceMember>
+      </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -148,6 +294,29 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Microsoft.ML.Runtime.Data.IRowToRowMapper.InputSchema">
+      <MemberSignature Language="C#" Value="Microsoft.ML.Runtime.Data.ISchema Microsoft.ML.Runtime.Data.IRowToRowMapper.InputSchema { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.Data.ISchema Microsoft.ML.Runtime.Data.IRowToRowMapper.InputSchema" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.RowToRowMapperTransform.Microsoft#ML#Runtime#Data#IRowToRowMapper#InputSchema" />
+      <MemberSignature Language="VB.NET" Value=" ReadOnly Property InputSchema As ISchema Implements IRowToRowMapper.InputSchema" />
+      <MemberSignature Language="F#" Usage="Microsoft.ML.Runtime.Data.IRowToRowMapper.InputSchema" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Runtime.Data.IRowToRowMapper.InputSchema</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ISchema</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="RegistrationName">
       <MemberSignature Language="C#" Value="public const string RegistrationName;" />
       <MemberSignature Language="ILAsm" Value=".field public static literal string RegistrationName" />
@@ -174,6 +343,9 @@
       <MemberSignature Language="VB.NET" Value="Public Overrides Sub Save (ctx As ModelSaveContext)" />
       <MemberSignature Language="F#" Value="override this.Save : Microsoft.ML.Runtime.Model.ModelSaveContext -&gt; unit" Usage="rowToRowMapperTransform.Save ctx" />
       <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Model.ICanSaveModel.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)</InterfaceMember>
+      </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -190,6 +362,58 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="SaveAsOnnx">
+      <MemberSignature Language="C#" Value="public void SaveAsOnnx (Microsoft.ML.Runtime.Model.Onnx.OnnxContext ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SaveAsOnnx(class Microsoft.ML.Runtime.Model.Onnx.OnnxContext ctx) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.RowToRowMapperTransform.SaveAsOnnx(Microsoft.ML.Runtime.Model.Onnx.OnnxContext)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub SaveAsOnnx (ctx As OnnxContext)" />
+      <MemberSignature Language="F#" Value="abstract member SaveAsOnnx : Microsoft.ML.Runtime.Model.Onnx.OnnxContext -&gt; unit&#xA;override this.SaveAsOnnx : Microsoft.ML.Runtime.Model.Onnx.OnnxContext -&gt; unit" Usage="rowToRowMapperTransform.SaveAsOnnx ctx" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Model.Onnx.ISaveAsOnnx.SaveAsOnnx(Microsoft.ML.Runtime.Model.Onnx.OnnxContext)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ctx" Type="Microsoft.ML.Runtime.Model.Onnx.OnnxContext" />
+      </Parameters>
+      <Docs>
+        <param name="ctx">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SaveAsPfa">
+      <MemberSignature Language="C#" Value="public void SaveAsPfa (Microsoft.ML.Runtime.Model.Pfa.BoundPfaContext ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SaveAsPfa(class Microsoft.ML.Runtime.Model.Pfa.BoundPfaContext ctx) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.RowToRowMapperTransform.SaveAsPfa(Microsoft.ML.Runtime.Model.Pfa.BoundPfaContext)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub SaveAsPfa (ctx As BoundPfaContext)" />
+      <MemberSignature Language="F#" Value="abstract member SaveAsPfa : Microsoft.ML.Runtime.Model.Pfa.BoundPfaContext -&gt; unit&#xA;override this.SaveAsPfa : Microsoft.ML.Runtime.Model.Pfa.BoundPfaContext -&gt; unit" Usage="rowToRowMapperTransform.SaveAsPfa ctx" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Model.Pfa.ISaveAsPfa.SaveAsPfa(Microsoft.ML.Runtime.Model.Pfa.BoundPfaContext)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ctx" Type="Microsoft.ML.Runtime.Model.Pfa.BoundPfaContext" />
+      </Parameters>
+      <Docs>
+        <param name="ctx">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Schema">
       <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.Data.ISchema Schema { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.Data.ISchema Schema" />
@@ -197,6 +421,9 @@
       <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property Schema As ISchema" />
       <MemberSignature Language="F#" Value="member this.Schema : Microsoft.ML.Runtime.Data.ISchema" Usage="Microsoft.ML.Runtime.Data.RowToRowMapperTransform.Schema" />
       <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Runtime.Data.ISchematized.Schema</InterfaceMember>
+      </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>

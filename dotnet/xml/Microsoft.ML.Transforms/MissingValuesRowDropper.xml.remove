@@ -1,0 +1,180 @@
+<Type Name="MissingValuesRowDropper" FullName="Microsoft.ML.Transforms.MissingValuesRowDropper">
+  <TypeSignature Language="C#" Value="public sealed class MissingValuesRowDropper : Microsoft.ML.ILearningPipelineItem, Microsoft.ML.Runtime.EntryPoints.CommonInputs.ITransformInput" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit MissingValuesRowDropper extends System.Object implements class Microsoft.ML.ILearningPipelineItem, class Microsoft.ML.Runtime.EntryPoints.CommonInputs/ITransformInput" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Transforms.MissingValuesRowDropper" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class MissingValuesRowDropper&#xA;Implements CommonInputs.ITransformInput, ILearningPipelineItem" />
+  <TypeSignature Language="F#" Value="type MissingValuesRowDropper = class&#xA;    interface CommonInputs.ITransformInput&#xA;    interface ILearningPipelineItem" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.ILearningPipelineItem</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.EntryPoints.CommonInputs+ITransformInput</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+        Removes missing values from vector type columns.
+      </summary>
+    <remarks>
+        This transform removes the entire row if any of the input columns have a missing value in that row.
+        This preprocessing is required for many ML algorithms that cannot work with missing values.
+        Useful if any missing entry invalidates the entire row.
+        If the <see cref="P:Microsoft.ML.Transforms.MissingValuesRowDropper.Complement" /> is set to true, this transform would do the exact opposite,
+        it will keep only the rows that have missing values.
+      </remarks>
+    <altmember cref="F:Microsoft.ML.Runtime.Data.MetadataUtils.Kinds.HasMissingValues" />
+    <altmember cref="T:Microsoft.ML.Runtime.Data.MetadataUtils.Kinds.HasMissingValues" />
+    <example>
+      <code language="csharp">
+          pipeline.Add(new MissingValuesRowDropper("Column1"));
+        </code>
+    </example>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public MissingValuesRowDropper ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.MissingValuesRowDropper.#ctor" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New ()" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ApplyStep">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.ILearningPipelineStep ApplyStep (Microsoft.ML.ILearningPipelineStep previousStep, Microsoft.ML.Runtime.Experiment experiment);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.ILearningPipelineStep ApplyStep(class Microsoft.ML.ILearningPipelineStep previousStep, class Microsoft.ML.Runtime.Experiment experiment) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.MissingValuesRowDropper.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <MemberSignature Language="F#" Value="abstract member ApplyStep : Microsoft.ML.ILearningPipelineStep * Microsoft.ML.Runtime.Experiment -&gt; Microsoft.ML.ILearningPipelineStep&#xA;override this.ApplyStep : Microsoft.ML.ILearningPipelineStep * Microsoft.ML.Runtime.Experiment -&gt; Microsoft.ML.ILearningPipelineStep" Usage="missingValuesRowDropper.ApplyStep (previousStep, experiment)" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.ILearningPipelineItem.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.ILearningPipelineStep</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="previousStep" Type="Microsoft.ML.ILearningPipelineStep" />
+        <Parameter Name="experiment" Type="Microsoft.ML.Runtime.Experiment" />
+      </Parameters>
+      <Docs>
+        <param name="previousStep">To be added.</param>
+        <param name="experiment">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Column">
+      <MemberSignature Language="C#" Value="public string[] Column { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string[] Column" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Transforms.MissingValuesRowDropper.Column" />
+      <MemberSignature Language="VB.NET" Value="Public Property Column As String()" />
+      <MemberSignature Language="F#" Value="member this.Column : string[] with get, set" Usage="Microsoft.ML.Transforms.MissingValuesRowDropper.Column" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Column
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Complement">
+      <MemberSignature Language="C#" Value="public bool Complement { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Complement" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Transforms.MissingValuesRowDropper.Complement" />
+      <MemberSignature Language="VB.NET" Value="Public Property Complement As Boolean" />
+      <MemberSignature Language="F#" Value="member this.Complement : bool with get, set" Usage="Microsoft.ML.Transforms.MissingValuesRowDropper.Complement" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            If true, keep only rows that contain NA values, and filter the rest.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Data">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt; Data { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.EntryPoints.Var`1&lt;class Microsoft.ML.Runtime.Data.IDataView&gt; Data" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Transforms.MissingValuesRowDropper.Data" />
+      <MemberSignature Language="VB.NET" Value="Public Property Data As Var(Of IDataView)" />
+      <MemberSignature Language="F#" Value="member this.Data : Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt; with get, set" Usage="Microsoft.ML.Transforms.MissingValuesRowDropper.Data" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Runtime.EntryPoints.CommonInputs.ITransformInput.Data</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Input dataset
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetInputData">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt; GetInputData ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.EntryPoints.Var`1&lt;class Microsoft.ML.Runtime.Data.IDataView&gt; GetInputData() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.MissingValuesRowDropper.GetInputData" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetInputData () As Var(Of IDataView)" />
+      <MemberSignature Language="F#" Value="abstract member GetInputData : unit -&gt; Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;&#xA;override this.GetInputData : unit -&gt; Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;" Usage="missingValuesRowDropper.GetInputData " />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.ILearningPipelineItem.GetInputData</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

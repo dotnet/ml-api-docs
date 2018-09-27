@@ -1,15 +1,16 @@
 ﻿<Type Name="KeyToBinaryVectorTransform" FullName="Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform">
-  <TypeSignature Language="C#" Value="public sealed class KeyToBinaryVectorTransform : Microsoft.ML.Runtime.Data.OneToOneTransformBase" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit KeyToBinaryVectorTransform extends Microsoft.ML.Runtime.Data.OneToOneTransformBase" />
+  <TypeSignature Language="C#" Value="public sealed class KeyToBinaryVectorTransform : Microsoft.ML.Runtime.Data.OneToOneTransformerBase" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit KeyToBinaryVectorTransform extends Microsoft.ML.Runtime.Data.OneToOneTransformerBase" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class KeyToBinaryVectorTransform&#xA;Inherits OneToOneTransformBase" />
-  <TypeSignature Language="F#" Value="type KeyToBinaryVectorTransform = class&#xA;    inherit OneToOneTransformBase" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class KeyToBinaryVectorTransform&#xA;Inherits OneToOneTransformerBase" />
+  <TypeSignature Language="F#" Value="type KeyToBinaryVectorTransform = class&#xA;    inherit OneToOneTransformerBase" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>Microsoft.ML.Runtime.Data.OneToOneTransformBase</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Runtime.Data.OneToOneTransformerBase</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -18,16 +19,128 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public KeyToBinaryVectorTransform (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.Arguments args, Microsoft.ML.Runtime.Data.IDataView input);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform/Arguments args, class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, args As KeyToBinaryVectorTransform.Arguments, input As IDataView)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.Arguments * Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform" Usage="new Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform (env, args, input)" />
+      <MemberSignature Language="C#" Value="public KeyToBinaryVectorTransform (Microsoft.ML.Runtime.IHostEnvironment env, params Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.ColumnInfo[] columns);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform/ColumnInfo[] columns) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.ColumnInfo[])" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, ParamArray columns As KeyToBinaryVectorTransform.ColumnInfo())" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.ColumnInfo[] -&gt; Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform" Usage="new Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform (env, columns)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="columns" Type="Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform+ColumnInfo[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="columns">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CheckInputColumn">
+      <MemberSignature Language="C#" Value="protected override void CheckInputColumn (Microsoft.ML.Runtime.Data.ISchema inputSchema, int col, int srcCol);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void CheckInputColumn(class Microsoft.ML.Runtime.Data.ISchema inputSchema, int32 col, int32 srcCol) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.CheckInputColumn(Microsoft.ML.Runtime.Data.ISchema,System.Int32,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Sub CheckInputColumn (inputSchema As ISchema, col As Integer, srcCol As Integer)" />
+      <MemberSignature Language="F#" Value="override this.CheckInputColumn : Microsoft.ML.Runtime.Data.ISchema * int * int -&gt; unit" Usage="keyToBinaryVectorTransform.CheckInputColumn (inputSchema, col, srcCol)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.Runtime.Data.ISchema" />
+        <Parameter Name="col" Type="System.Int32" />
+        <Parameter Name="srcCol" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
+        <param name="col">To be added.</param>
+        <param name="srcCol">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Columns">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.IReadOnlyCollection&lt;Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.ColumnInfo&gt; Columns { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.IReadOnlyCollection`1&lt;class Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform/ColumnInfo&gt; Columns" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.Columns" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Columns As IReadOnlyCollection(Of KeyToBinaryVectorTransform.ColumnInfo)" />
+      <MemberSignature Language="F#" Value="member this.Columns : System.Collections.Generic.IReadOnlyCollection&lt;Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.ColumnInfo&gt;" Usage="Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.Columns" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IReadOnlyCollection&lt;Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform+ColumnInfo&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IDataTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.IDataView input, params Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.ColumnInfo[] columns);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IDataTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.IDataView input, class Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform/ColumnInfo[] columns) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.ColumnInfo[])" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, input As IDataView, ParamArray columns As KeyToBinaryVectorTransform.ColumnInfo()) As IDataTransform" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.IDataView * Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.ColumnInfo[] -&gt; Microsoft.ML.Runtime.Data.IDataTransform" Usage="Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.Create (env, input, columns)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="columns" Type="Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform+ColumnInfo[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="input">To be added.</param>
+        <param name="columns">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IDataTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.Arguments args, Microsoft.ML.Runtime.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IDataTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform/Arguments args, class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, args As KeyToBinaryVectorTransform.Arguments, input As IDataView) As IDataTransform" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.Arguments * Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.IDataTransform" Usage="Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.Create (env, args, input)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataTransform</ReturnType>
+      </ReturnValue>
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
         <Parameter Name="args" Type="Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform+Arguments" />
@@ -37,117 +150,6 @@
         <param name="env">To be added.</param>
         <param name="args">To be added.</param>
         <param name="input">To be added.</param>
-        <summary>
-            Public constructor corresponding to SignatureDataTransform.
-            </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public KeyToBinaryVectorTransform (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.IDataView input, string name, string source = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.IDataView input, string name, string source) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,System.String)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, input As IDataView, name As String, Optional source As String = null)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.IDataView * string * string -&gt; Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform" Usage="new Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform (env, input, name, source)" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
-        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
-        <Parameter Name="name" Type="System.String" />
-        <Parameter Name="source" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="env">Host Environment.</param>
-        <param name="input">Input <see cref="T:Microsoft.ML.Runtime.Data.IDataView" />. This is the output from previous transform or loader.</param>
-        <param name="name">Name of the output column.</param>
-        <param name="source">Name of the column to be transformed. If this is null '<paramref name="name" />' will be used.</param>
-        <summary>
-            Convenience constructor for public facing API.
-            </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Create">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Model.ModelLoadContext ctx, Microsoft.ML.Runtime.Data.IDataView input);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Model.ModelLoadContext ctx, class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView)" />
-      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, ctx As ModelLoadContext, input As IDataView) As KeyToBinaryVectorTransform" />
-      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Model.ModelLoadContext * Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform" Usage="Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.Create (env, ctx, input)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
-        <Parameter Name="ctx" Type="Microsoft.ML.Runtime.Model.ModelLoadContext" />
-        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
-      </Parameters>
-      <Docs>
-        <param name="env">To be added.</param>
-        <param name="ctx">To be added.</param>
-        <param name="input">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GetColumnTypeCore">
-      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.ColumnType GetColumnTypeCore (int iinfo);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.ColumnType GetColumnTypeCore(int32 iinfo) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.GetColumnTypeCore(System.Int32)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetColumnTypeCore (iinfo As Integer) As ColumnType" />
-      <MemberSignature Language="F#" Value="override this.GetColumnTypeCore : int -&gt; Microsoft.ML.Runtime.Data.ColumnType" Usage="keyToBinaryVectorTransform.GetColumnTypeCore iinfo" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.ColumnType</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="iinfo" Type="System.Int32" />
-      </Parameters>
-      <Docs>
-        <param name="iinfo">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GetGetterCore">
-      <MemberSignature Language="C#" Value="protected override Delegate GetGetterCore (Microsoft.ML.Runtime.IChannel ch, Microsoft.ML.Runtime.Data.IRow input, int iinfo, out Action disposer);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class System.Delegate GetGetterCore(class Microsoft.ML.Runtime.IChannel ch, class Microsoft.ML.Runtime.Data.IRow input, int32 iinfo, [out] class System.Action&amp; disposer) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.GetGetterCore(Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Data.IRow,System.Int32,System.Action@)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetGetterCore (ch As IChannel, input As IRow, iinfo As Integer, ByRef disposer As Action) As Delegate" />
-      <MemberSignature Language="F#" Value="override this.GetGetterCore : Microsoft.ML.Runtime.IChannel * Microsoft.ML.Runtime.Data.IRow * int *  -&gt; Delegate" Usage="keyToBinaryVectorTransform.GetGetterCore (ch, input, iinfo, disposer)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Delegate</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
-        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IRow" />
-        <Parameter Name="iinfo" Type="System.Int32" />
-        <Parameter Name="disposer" Type="System.Action" RefType="out" />
-      </Parameters>
-      <Docs>
-        <param name="ch">To be added.</param>
-        <param name="input">To be added.</param>
-        <param name="iinfo">To be added.</param>
-        <param name="disposer">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -172,6 +174,30 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="MakeRowMapper">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.IRowMapper MakeRowMapper (Microsoft.ML.Runtime.Data.ISchema schema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.IRowMapper MakeRowMapper(class Microsoft.ML.Runtime.Data.ISchema schema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.MakeRowMapper(Microsoft.ML.Runtime.Data.ISchema)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function MakeRowMapper (schema As ISchema) As IRowMapper" />
+      <MemberSignature Language="F#" Value="override this.MakeRowMapper : Microsoft.ML.Runtime.Data.ISchema -&gt; Microsoft.ML.Runtime.Data.IRowMapper" Usage="keyToBinaryVectorTransform.MakeRowMapper schema" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IRowMapper</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="schema" Type="Microsoft.ML.Runtime.Data.ISchema" />
+      </Parameters>
+      <Docs>
+        <param name="schema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Save">
       <MemberSignature Language="C#" Value="public override void Save (Microsoft.ML.Runtime.Model.ModelSaveContext ctx);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Save(class Microsoft.ML.Runtime.Model.ModelSaveContext ctx) cil managed" />
@@ -191,6 +217,25 @@
       </Parameters>
       <Docs>
         <param name="ctx">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UserName">
+      <MemberSignature Language="C#" Value="public const string UserName;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal string UserName" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.UserName" />
+      <MemberSignature Language="VB.NET" Value="Public Const UserName As String " />
+      <MemberSignature Language="F#" Value="val mutable UserName : string" Usage="Microsoft.ML.Runtime.Data.KeyToBinaryVectorTransform.UserName" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

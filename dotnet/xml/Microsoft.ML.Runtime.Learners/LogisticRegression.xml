@@ -1,18 +1,20 @@
 ﻿<Type Name="LogisticRegression" FullName="Microsoft.ML.Runtime.Learners.LogisticRegression">
-  <TypeSignature Language="C#" Value="public sealed class LogisticRegression : Microsoft.ML.Runtime.Learners.LbfgsTrainerBase&lt;float,Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit LogisticRegression extends Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`2&lt;float32, class Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor&gt;" />
+  <TypeSignature Language="C#" Value="public sealed class LogisticRegression : Microsoft.ML.Runtime.Learners.LbfgsTrainerBase&lt;Microsoft.ML.Runtime.Learners.LogisticRegression.Arguments,Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor&gt;,Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit LogisticRegression extends Microsoft.ML.Runtime.Learners.LbfgsTrainerBase`3&lt;class Microsoft.ML.Runtime.Learners.LogisticRegression/Arguments, class Microsoft.ML.Runtime.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor&gt;, class Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor&gt;" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Learners.LogisticRegression" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class LogisticRegression&#xA;Inherits LbfgsTrainerBase(Of Single, ParameterMixingCalibratedPredictor)" />
-  <TypeSignature Language="F#" Value="type LogisticRegression = class&#xA;    inherit LbfgsTrainerBase&lt;single, ParameterMixingCalibratedPredictor&gt;" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class LogisticRegression&#xA;Inherits LbfgsTrainerBase(Of LogisticRegression.Arguments, BinaryPredictionTransformer(Of ParameterMixingCalibratedPredictor), ParameterMixingCalibratedPredictor)" />
+  <TypeSignature Language="F#" Value="type LogisticRegression = class&#xA;    inherit LbfgsTrainerBase&lt;LogisticRegression.Arguments, BinaryPredictionTransformer&lt;ParameterMixingCalibratedPredictor&gt;, ParameterMixingCalibratedPredictor&gt;" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>Microsoft.ML.Runtime.Learners.LbfgsTrainerBase&lt;System.Single,Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor&gt;</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Runtime.Learners.LbfgsTrainerBase&lt;Microsoft.ML.Runtime.Learners.LogisticRegression+Arguments,Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor&gt;,Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor&gt;</BaseTypeName>
     <BaseTypeArguments>
-      <BaseTypeArgument TypeParamName="TOutput">System.Single</BaseTypeArgument>
-      <BaseTypeArgument TypeParamName="TPredictor">Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TArgs">Microsoft.ML.Runtime.Learners.LogisticRegression+Arguments</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TTransformer">Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor&gt;</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TModel">Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
   <Interfaces />
@@ -44,11 +46,11 @@
               L1Weight can be applied to sparse models, when working with high-dimensional data. It pulls small weights associated features
               that are relatively unimportant towards 0.
               L1 regularization is an implementation of OWLQN, based on:
-              <a href="http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.68.5260">Scalable training of L1-regularized log-linear models</a></description></item><item><description>L2Weight is preferable for data that is not sparse. It pulls large weights towards zero.</description></item></list>
+              <a href="https://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.68.5260">Scalable training of L1-regularized log-linear models</a></description></item><item><description>L2Weight is preferable for data that is not sparse. It pulls large weights towards zero.</description></item></list>
           Adding the ridge penalty to the regularization overcomes some of lasso's limitations. It can improve its predictive accuracy, for example, when the number of predictors is greater than the sample size. If x = l1_weight and y = l2_weight, ax + by = c defines the linear span of the regularization terms.
           The default values of x and y are both 1.
           An agressive regularization can harm predictive capacity by excluding important variables out of the model. So choosing the optimal values for the regularization parameters is important for the performance of the logistic regression model.
-        <para>For more information see:</para><list type="bullet"><item><description><a href="http://research.microsoft.com/apps/pubs/default.aspx?id=78900">Scalable Training of L1-Regularized Log-Linear Models</a>.</description></item><item><description><a href="https://msdn.microsoft.com/en-us/magazine/dn904675.aspx">Test Run - L1 and L2 Regularization for Machine Learning</a>.</description></item><item><description><a href="http://en.wikipedia.org/wiki/L-BFGS">Wikipedia: L-BFGS</a>.</description></item><item><description><a href="http://en.wikipedia.org/wiki/Logistic_regression">Wikipedia: Logistic regression</a>.</description></item></list></remarks>
+        <para>For more information see:</para><list type="bullet"><item><description><a href="https://research.microsoft.com/apps/pubs/default.aspx?id=78900">Scalable Training of L1-Regularized Log-Linear Models</a>.</description></item><item><description><a href="https://msdn.microsoft.com/en-us/magazine/dn904675.aspx">Test Run - L1 and L2 Regularization for Machine Learning</a>.</description></item><item><description><a href="https://en.wikipedia.org/wiki/L-BFGS">Wikipedia: L-BFGS</a>.</description></item><item><description><a href="https://en.wikipedia.org/wiki/Logistic_regression">Wikipedia: Logistic regression</a>.</description></item></list></remarks>
     <example>
       <code>
           pipeline.Add(new LogisticRegressionBinaryClassifier());
@@ -59,11 +61,11 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public LogisticRegression (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Learners.LogisticRegression.Arguments args);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Learners.LogisticRegression/Arguments args) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.LogisticRegression.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Learners.LogisticRegression.Arguments)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, args As LogisticRegression.Arguments)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Learners.LogisticRegression : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Learners.LogisticRegression.Arguments -&gt; Microsoft.ML.Runtime.Learners.LogisticRegression" Usage="new Microsoft.ML.Runtime.Learners.LogisticRegression (env, args)" />
+      <MemberSignature Language="C#" Value="public LogisticRegression (Microsoft.ML.Runtime.IHostEnvironment env, string featureColumn, string labelColumn, string weightColumn = null, Action&lt;Microsoft.ML.Runtime.Learners.LogisticRegression.Arguments&gt; advancedSettings = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string featureColumn, string labelColumn, string weightColumn, class System.Action`1&lt;class Microsoft.ML.Runtime.Learners.LogisticRegression/Arguments&gt; advancedSettings) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.LogisticRegression.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String,System.Action{Microsoft.ML.Runtime.Learners.LogisticRegression.Arguments})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, featureColumn As String, labelColumn As String, Optional weightColumn As String = null, Optional advancedSettings As Action(Of LogisticRegression.Arguments) = null)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Learners.LogisticRegression : Microsoft.ML.Runtime.IHostEnvironment * string * string * string * Action&lt;Microsoft.ML.Runtime.Learners.LogisticRegression.Arguments&gt; -&gt; Microsoft.ML.Runtime.Learners.LogisticRegression" Usage="new Microsoft.ML.Runtime.Learners.LogisticRegression (env, featureColumn, labelColumn, weightColumn, advancedSettings)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
@@ -71,12 +73,19 @@
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
-        <Parameter Name="args" Type="Microsoft.ML.Runtime.Learners.LogisticRegression+Arguments" />
+        <Parameter Name="featureColumn" Type="System.String" />
+        <Parameter Name="labelColumn" Type="System.String" />
+        <Parameter Name="weightColumn" Type="System.String" />
+        <Parameter Name="advancedSettings" Type="System.Action&lt;Microsoft.ML.Runtime.Learners.LogisticRegression+Arguments&gt;" />
       </Parameters>
       <Docs>
-        <param name="env">To be added.</param>
-        <param name="args">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="env">The environment to use.</param>
+        <param name="featureColumn">The name of the feature column.</param>
+        <param name="labelColumn">The name of the label column.</param>
+        <param name="weightColumn">The name for the example weight column.</param>
+        <param name="advancedSettings">A delegate to apply all the advanced arguments to the algorithm.</param>
+        <summary>
+            Initializes a new instance of <see cref="T:Microsoft.ML.Runtime.Learners.LogisticRegression" /></summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -187,6 +196,30 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="GetOutputColumnsCore">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Core.Data.SchemaShape.Column[] GetOutputColumnsCore (Microsoft.ML.Core.Data.SchemaShape inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Core.Data.SchemaShape/Column[] GetOutputColumnsCore(class Microsoft.ML.Core.Data.SchemaShape inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.LogisticRegression.GetOutputColumnsCore(Microsoft.ML.Core.Data.SchemaShape)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetOutputColumnsCore (inputSchema As SchemaShape) As SchemaShape.Column()" />
+      <MemberSignature Language="F#" Value="override this.GetOutputColumnsCore : Microsoft.ML.Core.Data.SchemaShape -&gt; Microsoft.ML.Core.Data.SchemaShape.Column[]" Usage="logisticRegression.GetOutputColumnsCore inputSchema" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Core.Data.SchemaShape+Column[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.Core.Data.SchemaShape" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="InitializeOptimizer">
       <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Numeric.Optimizer InitializeOptimizer (Microsoft.ML.Runtime.IChannel ch, Microsoft.ML.Runtime.Training.FloatLabelCursor.Factory cursorFactory, out Microsoft.ML.Runtime.Data.VBuffer&lt;float&gt; init, out Microsoft.ML.Runtime.Numeric.ITerminationCriterion terminationCriterion);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Numeric.Optimizer InitializeOptimizer(class Microsoft.ML.Runtime.IChannel ch, class Microsoft.ML.Runtime.Training.FloatLabelCursor/Factory cursorFactory, [out] valuetype Microsoft.ML.Runtime.Data.VBuffer`1&lt;float32&gt;&amp; init, [out] class Microsoft.ML.Runtime.Numeric.ITerminationCriterion&amp; terminationCriterion) cil managed" />
@@ -260,6 +293,32 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="MakeTransformer">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor&gt; MakeTransformer (Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor model, Microsoft.ML.Runtime.Data.ISchema trainSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor&gt; MakeTransformer(class Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor model, class Microsoft.ML.Runtime.Data.ISchema trainSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.LogisticRegression.MakeTransformer(Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor,Microsoft.ML.Runtime.Data.ISchema)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function MakeTransformer (model As ParameterMixingCalibratedPredictor, trainSchema As ISchema) As BinaryPredictionTransformer(Of ParameterMixingCalibratedPredictor)" />
+      <MemberSignature Language="F#" Value="override this.MakeTransformer : Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor * Microsoft.ML.Runtime.Data.ISchema -&gt; Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor&gt;" Usage="logisticRegression.MakeTransformer (model, trainSchema)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="model" Type="Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor" />
+        <Parameter Name="trainSchema" Type="Microsoft.ML.Runtime.Data.ISchema" />
+      </Parameters>
+      <Docs>
+        <param name="model">To be added.</param>
+        <param name="trainSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="PredictionKind">
       <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.PredictionKind PredictionKind { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.ML.Runtime.PredictionKind PredictionKind" />
@@ -318,7 +377,7 @@
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="Logistic Regression is a method in statistics used to predict the probability of occurrence of an event and can be used as a classification algorithm. The algorithm predicts the probability of occurrence of an event by fitting data to a logistical function.", Name="Trainers.LogisticRegressionBinaryClassifier", ShortName="lr", UserName="Logistic Regression", XmlInclude=Mono.Cecil.CustomAttributeArgument[])</AttributeName>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="Logistic Regression is a method in statistics used to predict the probability of occurrence of an event and can be used as a classification algorithm. The algorithm predicts the probability of occurrence of an event by fitting data to a logistical function.", Name="Trainers.LogisticRegressionBinaryClassifier", ShortName="lr", UserName="Logistic Regression", XmlInclude=new System.String[] { "&lt;include file='../Microsoft.ML.StandardLearners/Standard/LogisticRegression/doc.xml' path='doc/members/member[@name="LBFGS"]/*' /&gt;", "&lt;include file='../Microsoft.ML.StandardLearners/Standard/LogisticRegression/doc.xml' path='doc/members/example[@name="LogisticRegressionBinaryClassifier"]/*' /&gt;" })</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -349,7 +408,7 @@
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="Logistic Regression is a method in statistics used to predict the probability of occurrence of an event and can be used as a classification algorithm. The algorithm predicts the probability of occurrence of an event by fitting data to a logistical function.", Name="Trainers.LogisticRegressionClassifier", ShortName="mlr", UserName="Multi-class Logistic Regression", XmlInclude=Mono.Cecil.CustomAttributeArgument[])</AttributeName>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="Logistic Regression is a method in statistics used to predict the probability of occurrence of an event and can be used as a classification algorithm. The algorithm predicts the probability of occurrence of an event by fitting data to a logistical function.", Name="Trainers.LogisticRegressionClassifier", ShortName="mlr", UserName="Multi-class Logistic Regression", XmlInclude=new System.String[] { "&lt;include file='../Microsoft.ML.StandardLearners/Standard/LogisticRegression/doc.xml' path='doc/members/member[@name="LBFGS"]/*' /&gt;", "&lt;include file='../Microsoft.ML.StandardLearners/Standard/LogisticRegression/doc.xml' path='doc/members/example[@name="LogisticRegressionClassifier"]/*' /&gt;" })</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>

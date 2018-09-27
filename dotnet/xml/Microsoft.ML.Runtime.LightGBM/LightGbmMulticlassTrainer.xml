@@ -1,18 +1,20 @@
 ﻿<Type Name="LightGbmMulticlassTrainer" FullName="Microsoft.ML.Runtime.LightGBM.LightGbmMulticlassTrainer">
-  <TypeSignature Language="C#" Value="public sealed class LightGbmMulticlassTrainer : Microsoft.ML.Runtime.LightGBM.LightGbmTrainerBase&lt;Microsoft.ML.Runtime.Data.VBuffer&lt;float&gt;,Microsoft.ML.Runtime.Learners.OvaPredictor&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit LightGbmMulticlassTrainer extends Microsoft.ML.Runtime.LightGBM.LightGbmTrainerBase`2&lt;valuetype Microsoft.ML.Runtime.Data.VBuffer`1&lt;float32&gt;, class Microsoft.ML.Runtime.Learners.OvaPredictor&gt;" />
+  <TypeSignature Language="C#" Value="public sealed class LightGbmMulticlassTrainer : Microsoft.ML.Runtime.LightGBM.LightGbmTrainerBase&lt;Microsoft.ML.Runtime.Data.VBuffer&lt;float&gt;,Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.OvaPredictor&gt;,Microsoft.ML.Runtime.Learners.OvaPredictor&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit LightGbmMulticlassTrainer extends Microsoft.ML.Runtime.LightGBM.LightGbmTrainerBase`3&lt;valuetype Microsoft.ML.Runtime.Data.VBuffer`1&lt;float32&gt;, class Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer`1&lt;class Microsoft.ML.Runtime.Learners.OvaPredictor&gt;, class Microsoft.ML.Runtime.Learners.OvaPredictor&gt;" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.LightGBM.LightGbmMulticlassTrainer" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class LightGbmMulticlassTrainer&#xA;Inherits LightGbmTrainerBase(Of VBuffer(Of Single), OvaPredictor)" />
-  <TypeSignature Language="F#" Value="type LightGbmMulticlassTrainer = class&#xA;    inherit LightGbmTrainerBase&lt;VBuffer&lt;single&gt;, OvaPredictor&gt;" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class LightGbmMulticlassTrainer&#xA;Inherits LightGbmTrainerBase(Of VBuffer(Of Single), MulticlassPredictionTransformer(Of OvaPredictor), OvaPredictor)" />
+  <TypeSignature Language="F#" Value="type LightGbmMulticlassTrainer = class&#xA;    inherit LightGbmTrainerBase&lt;VBuffer&lt;single&gt;, MulticlassPredictionTransformer&lt;OvaPredictor&gt;, OvaPredictor&gt;" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.LightGBM</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>Microsoft.ML.Runtime.LightGBM.LightGbmTrainerBase&lt;Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;,Microsoft.ML.Runtime.Learners.OvaPredictor&gt;</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Runtime.LightGBM.LightGbmTrainerBase&lt;Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;,Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.OvaPredictor&gt;,Microsoft.ML.Runtime.Learners.OvaPredictor&gt;</BaseTypeName>
     <BaseTypeArguments>
       <BaseTypeArgument TypeParamName="TOutput">Microsoft.ML.Runtime.Data.VBuffer&lt;System.Single&gt;</BaseTypeArgument>
-      <BaseTypeArgument TypeParamName="TPredictor">Microsoft.ML.Runtime.Learners.OvaPredictor</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TTransformer">Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.OvaPredictor&gt;</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TModel">Microsoft.ML.Runtime.Learners.OvaPredictor</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
   <Interfaces />
@@ -26,11 +28,11 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public LightGbmMulticlassTrainer (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.LightGBM.LightGbmArguments args);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.LightGBM.LightGbmArguments args) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.LightGBM.LightGbmMulticlassTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.LightGBM.LightGbmArguments)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, args As LightGbmArguments)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.LightGBM.LightGbmMulticlassTrainer : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.LightGBM.LightGbmArguments -&gt; Microsoft.ML.Runtime.LightGBM.LightGbmMulticlassTrainer" Usage="new Microsoft.ML.Runtime.LightGBM.LightGbmMulticlassTrainer (env, args)" />
+      <MemberSignature Language="C#" Value="public LightGbmMulticlassTrainer (Microsoft.ML.Runtime.IHostEnvironment env, string labelColumn, string featureColumn, string groupIdColumn = null, string weightColumn = null, Action&lt;Microsoft.ML.Runtime.LightGBM.LightGbmArguments&gt; advancedSettings = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string labelColumn, string featureColumn, string groupIdColumn, string weightColumn, class System.Action`1&lt;class Microsoft.ML.Runtime.LightGBM.LightGbmArguments&gt; advancedSettings) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.LightGBM.LightGbmMulticlassTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String,System.String,System.Action{Microsoft.ML.Runtime.LightGBM.LightGbmArguments})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, labelColumn As String, featureColumn As String, Optional groupIdColumn As String = null, Optional weightColumn As String = null, Optional advancedSettings As Action(Of LightGbmArguments) = null)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.LightGBM.LightGbmMulticlassTrainer : Microsoft.ML.Runtime.IHostEnvironment * string * string * string * string * Action&lt;Microsoft.ML.Runtime.LightGBM.LightGbmArguments&gt; -&gt; Microsoft.ML.Runtime.LightGBM.LightGbmMulticlassTrainer" Usage="new Microsoft.ML.Runtime.LightGBM.LightGbmMulticlassTrainer (env, labelColumn, featureColumn, groupIdColumn, weightColumn, advancedSettings)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.LightGBM</AssemblyName>
@@ -38,12 +40,21 @@
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
-        <Parameter Name="args" Type="Microsoft.ML.Runtime.LightGBM.LightGbmArguments" />
+        <Parameter Name="labelColumn" Type="System.String" />
+        <Parameter Name="featureColumn" Type="System.String" />
+        <Parameter Name="groupIdColumn" Type="System.String" />
+        <Parameter Name="weightColumn" Type="System.String" />
+        <Parameter Name="advancedSettings" Type="System.Action&lt;Microsoft.ML.Runtime.LightGBM.LightGbmArguments&gt;" />
       </Parameters>
       <Docs>
-        <param name="env">To be added.</param>
-        <param name="args">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="env">The private instance of <see cref="T:Microsoft.ML.Runtime.IHostEnvironment" />.</param>
+        <param name="labelColumn">The name of the label column.</param>
+        <param name="featureColumn">The name of the feature column.</param>
+        <param name="groupIdColumn">The name for the column containing the group ID. </param>
+        <param name="weightColumn">The name for the column containing the initial weight.</param>
+        <param name="advancedSettings">A delegate to apply all the advanced arguments to the algorithm.</param>
+        <summary>
+            Initializes a new instance of <see cref="T:Microsoft.ML.Runtime.LightGBM.LightGbmMulticlassTrainer" /></summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -159,6 +170,30 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="GetOutputColumnsCore">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Core.Data.SchemaShape.Column[] GetOutputColumnsCore (Microsoft.ML.Core.Data.SchemaShape inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Core.Data.SchemaShape/Column[] GetOutputColumnsCore(class Microsoft.ML.Core.Data.SchemaShape inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.LightGBM.LightGbmMulticlassTrainer.GetOutputColumnsCore(Microsoft.ML.Core.Data.SchemaShape)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetOutputColumnsCore (inputSchema As SchemaShape) As SchemaShape.Column()" />
+      <MemberSignature Language="F#" Value="override this.GetOutputColumnsCore : Microsoft.ML.Core.Data.SchemaShape -&gt; Microsoft.ML.Core.Data.SchemaShape.Column[]" Usage="lightGbmMulticlassTrainer.GetOutputColumnsCore inputSchema" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.LightGBM</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Core.Data.SchemaShape+Column[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.Core.Data.SchemaShape" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="LoadNameValue">
       <MemberSignature Language="C#" Value="public const string LoadNameValue;" />
       <MemberSignature Language="ILAsm" Value=".field public static literal string LoadNameValue" />
@@ -175,6 +210,32 @@
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MakeTransformer">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.OvaPredictor&gt; MakeTransformer (Microsoft.ML.Runtime.Learners.OvaPredictor model, Microsoft.ML.Runtime.Data.ISchema trainSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer`1&lt;class Microsoft.ML.Runtime.Learners.OvaPredictor&gt; MakeTransformer(class Microsoft.ML.Runtime.Learners.OvaPredictor model, class Microsoft.ML.Runtime.Data.ISchema trainSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.LightGBM.LightGbmMulticlassTrainer.MakeTransformer(Microsoft.ML.Runtime.Learners.OvaPredictor,Microsoft.ML.Runtime.Data.ISchema)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function MakeTransformer (model As OvaPredictor, trainSchema As ISchema) As MulticlassPredictionTransformer(Of OvaPredictor)" />
+      <MemberSignature Language="F#" Value="override this.MakeTransformer : Microsoft.ML.Runtime.Learners.OvaPredictor * Microsoft.ML.Runtime.Data.ISchema -&gt; Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.OvaPredictor&gt;" Usage="lightGbmMulticlassTrainer.MakeTransformer (model, trainSchema)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.LightGBM</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.OvaPredictor&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="model" Type="Microsoft.ML.Runtime.Learners.OvaPredictor" />
+        <Parameter Name="trainSchema" Type="Microsoft.ML.Runtime.Data.ISchema" />
+      </Parameters>
+      <Docs>
+        <param name="model">To be added.</param>
+        <param name="trainSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

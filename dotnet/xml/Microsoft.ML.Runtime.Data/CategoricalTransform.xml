@@ -1,9 +1,9 @@
 ﻿<Type Name="CategoricalTransform" FullName="Microsoft.ML.Runtime.Data.CategoricalTransform">
-  <TypeSignature Language="C#" Value="public static class CategoricalTransform" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit CategoricalTransform extends System.Object" />
+  <TypeSignature Language="C#" Value="public sealed class CategoricalTransform : Microsoft.ML.Core.Data.ITransformer, Microsoft.ML.Runtime.Model.ICanSaveModel" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit CategoricalTransform extends System.Object implements class Microsoft.ML.Core.Data.ITransformer, class Microsoft.ML.Runtime.Model.ICanSaveModel" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.CategoricalTransform" />
-  <TypeSignature Language="VB.NET" Value="Public Class CategoricalTransform" />
-  <TypeSignature Language="F#" Value="type CategoricalTransform = class" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class CategoricalTransform&#xA;Implements ICanSaveModel, ITransformer" />
+  <TypeSignature Language="F#" Value="type CategoricalTransform = class&#xA;    interface ITransformer&#xA;    interface ICanSaveModel" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -11,7 +11,14 @@
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
-  <Interfaces />
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Core.Data.ITransformer</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.Model.ICanSaveModel</InterfaceName>
+    </Interface>
+  </Interfaces>
   <Docs>
     <summary>
         Converts the categorical value into an indicator array by building a dictionary of categories based on the data and using the id in the dictionary as the index in the array
@@ -39,6 +46,30 @@
         </code></example>
   </Docs>
   <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CategoricalTransform (Microsoft.ML.Runtime.Data.TermEstimator term, Microsoft.ML.Core.Data.IEstimator&lt;Microsoft.ML.Core.Data.ITransformer&gt; keyToVector, Microsoft.ML.Runtime.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.Data.TermEstimator term, class Microsoft.ML.Core.Data.IEstimator`1&lt;class Microsoft.ML.Core.Data.ITransformer&gt; keyToVector, class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.CategoricalTransform.#ctor(Microsoft.ML.Runtime.Data.TermEstimator,Microsoft.ML.Core.Data.IEstimator{Microsoft.ML.Core.Data.ITransformer},Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (term As TermEstimator, keyToVector As IEstimator(Of ITransformer), input As IDataView)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.CategoricalTransform : Microsoft.ML.Runtime.Data.TermEstimator * Microsoft.ML.Core.Data.IEstimator&lt;Microsoft.ML.Core.Data.ITransformer&gt; * Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.CategoricalTransform" Usage="new Microsoft.ML.Runtime.Data.CategoricalTransform (term, keyToVector, input)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="term" Type="Microsoft.ML.Runtime.Data.TermEstimator" />
+        <Parameter Name="keyToVector" Type="Microsoft.ML.Core.Data.IEstimator&lt;Microsoft.ML.Core.Data.ITransformer&gt;" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="term">To be added.</param>
+        <param name="keyToVector">To be added.</param>
+        <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Create">
       <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IDataTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.CategoricalTransform.Arguments args, Microsoft.ML.Runtime.Data.IDataView input);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IDataTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.CategoricalTransform/Arguments args, class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
@@ -68,17 +99,17 @@
       </Docs>
     </Member>
     <Member MemberName="Create">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IDataTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.IDataView input, string name, string source = null, Microsoft.ML.Runtime.Data.CategoricalTransform.OutputKind outputKind = Microsoft.ML.Runtime.Data.CategoricalTransform+OutputKind.Ind);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IDataTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.IDataView input, string name, string source, valuetype Microsoft.ML.Runtime.Data.CategoricalTransform/OutputKind outputKind) cil managed" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IDataView Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.IDataView input, string name, string source = null, Microsoft.ML.Runtime.Data.CategoricalTransform.OutputKind outputKind = Microsoft.ML.Runtime.Data.CategoricalTransform+OutputKind.Ind);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IDataView Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.IDataView input, string name, string source, valuetype Microsoft.ML.Runtime.Data.CategoricalTransform/OutputKind outputKind) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.CategoricalTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,Microsoft.ML.Runtime.Data.CategoricalTransform.OutputKind)" />
-      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.IDataView * string * string * Microsoft.ML.Runtime.Data.CategoricalTransform.OutputKind -&gt; Microsoft.ML.Runtime.Data.IDataTransform" Usage="Microsoft.ML.Runtime.Data.CategoricalTransform.Create (env, input, name, source, outputKind)" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.IDataView * string * string * Microsoft.ML.Runtime.Data.CategoricalTransform.OutputKind -&gt; Microsoft.ML.Runtime.Data.IDataView" Usage="Microsoft.ML.Runtime.Data.CategoricalTransform.Create (env, input, name, source, outputKind)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.IDataTransform</ReturnType>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataView</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
@@ -94,43 +125,137 @@
         <param name="source">Name of the column to be transformed. If this is null '<paramref name="name" />' will be used.</param>
         <param name="outputKind">The type of output expected.</param>
         <summary>
-            A helper method to create <see cref="T:Microsoft.ML.Runtime.Data.CategoricalTransform" /> for public facing API.
+            A helper method to create <see cref="T:Microsoft.ML.Runtime.Data.CategoricalTransform" />.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="CreateTransformCore">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IDataTransform CreateTransformCore (Microsoft.ML.Runtime.Data.CategoricalTransform.OutputKind argsOutputKind, Microsoft.ML.Runtime.Data.OneToOneColumn[] columns, System.Collections.Generic.List&lt;Nullable&lt;Microsoft.ML.Runtime.Data.CategoricalTransform.OutputKind&gt;&gt; columnOutputKinds, Microsoft.ML.Runtime.Data.IDataTransform input, Microsoft.ML.Runtime.IHost h, Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.CategoricalHashTransform.Arguments catHashArgs = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IDataTransform CreateTransformCore(valuetype Microsoft.ML.Runtime.Data.CategoricalTransform/OutputKind argsOutputKind, class Microsoft.ML.Runtime.Data.OneToOneColumn[] columns, class System.Collections.Generic.List`1&lt;valuetype System.Nullable`1&lt;valuetype Microsoft.ML.Runtime.Data.CategoricalTransform/OutputKind&gt;&gt; columnOutputKinds, class Microsoft.ML.Runtime.Data.IDataTransform input, class Microsoft.ML.Runtime.IHost h, class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.CategoricalHashTransform/Arguments catHashArgs) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.CategoricalTransform.CreateTransformCore(Microsoft.ML.Runtime.Data.CategoricalTransform.OutputKind,Microsoft.ML.Runtime.Data.OneToOneColumn[],System.Collections.Generic.List{System.Nullable{Microsoft.ML.Runtime.Data.CategoricalTransform.OutputKind}},Microsoft.ML.Runtime.Data.IDataTransform,Microsoft.ML.Runtime.IHost,Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.CategoricalHashTransform.Arguments)" />
-      <MemberSignature Language="VB.NET" Value="Public Shared Function CreateTransformCore (argsOutputKind As CategoricalTransform.OutputKind, columns As OneToOneColumn(), columnOutputKinds As List(Of Nullable(Of CategoricalTransform.OutputKind)), input As IDataTransform, h As IHost, env As IHostEnvironment, Optional catHashArgs As CategoricalHashTransform.Arguments = null) As IDataTransform" />
-      <MemberSignature Language="F#" Value="static member CreateTransformCore : Microsoft.ML.Runtime.Data.CategoricalTransform.OutputKind * Microsoft.ML.Runtime.Data.OneToOneColumn[] * System.Collections.Generic.List&lt;Nullable&lt;Microsoft.ML.Runtime.Data.CategoricalTransform.OutputKind&gt;&gt; * Microsoft.ML.Runtime.Data.IDataTransform * Microsoft.ML.Runtime.IHost * Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.CategoricalHashTransform.Arguments -&gt; Microsoft.ML.Runtime.Data.IDataTransform" Usage="Microsoft.ML.Runtime.Data.CategoricalTransform.CreateTransformCore (argsOutputKind, columns, columnOutputKinds, input, h, env, catHashArgs)" />
+    <Member MemberName="GetOutputSchema">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.ISchema GetOutputSchema (Microsoft.ML.Runtime.Data.ISchema inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.ISchema GetOutputSchema(class Microsoft.ML.Runtime.Data.ISchema inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.CategoricalTransform.GetOutputSchema(Microsoft.ML.Runtime.Data.ISchema)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetOutputSchema (inputSchema As ISchema) As ISchema" />
+      <MemberSignature Language="F#" Value="abstract member GetOutputSchema : Microsoft.ML.Runtime.Data.ISchema -&gt; Microsoft.ML.Runtime.Data.ISchema&#xA;override this.GetOutputSchema : Microsoft.ML.Runtime.Data.ISchema -&gt; Microsoft.ML.Runtime.Data.ISchema" Usage="categoricalTransform.GetOutputSchema inputSchema" />
       <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Core.Data.ITransformer.GetOutputSchema(Microsoft.ML.Runtime.Data.ISchema)</InterfaceMember>
+      </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.IDataTransform</ReturnType>
+        <ReturnType>Microsoft.ML.Runtime.Data.ISchema</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="argsOutputKind" Type="Microsoft.ML.Runtime.Data.CategoricalTransform+OutputKind" />
-        <Parameter Name="columns" Type="Microsoft.ML.Runtime.Data.OneToOneColumn[]" />
-        <Parameter Name="columnOutputKinds" Type="System.Collections.Generic.List&lt;System.Nullable&lt;Microsoft.ML.Runtime.Data.CategoricalTransform+OutputKind&gt;&gt;" />
-        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataTransform" />
-        <Parameter Name="h" Type="Microsoft.ML.Runtime.IHost" />
-        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
-        <Parameter Name="catHashArgs" Type="Microsoft.ML.Runtime.Data.CategoricalHashTransform+Arguments" />
+        <Parameter Name="inputSchema" Type="Microsoft.ML.Runtime.Data.ISchema" />
       </Parameters>
       <Docs>
-        <param name="argsOutputKind">To be added.</param>
-        <param name="columns">To be added.</param>
-        <param name="columnOutputKinds">To be added.</param>
+        <param name="inputSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRowToRowMapper">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IRowToRowMapper GetRowToRowMapper (Microsoft.ML.Runtime.Data.ISchema inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IRowToRowMapper GetRowToRowMapper(class Microsoft.ML.Runtime.Data.ISchema inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.CategoricalTransform.GetRowToRowMapper(Microsoft.ML.Runtime.Data.ISchema)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetRowToRowMapper (inputSchema As ISchema) As IRowToRowMapper" />
+      <MemberSignature Language="F#" Value="abstract member GetRowToRowMapper : Microsoft.ML.Runtime.Data.ISchema -&gt; Microsoft.ML.Runtime.Data.IRowToRowMapper&#xA;override this.GetRowToRowMapper : Microsoft.ML.Runtime.Data.ISchema -&gt; Microsoft.ML.Runtime.Data.IRowToRowMapper" Usage="categoricalTransform.GetRowToRowMapper inputSchema" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Core.Data.ITransformer.GetRowToRowMapper(Microsoft.ML.Runtime.Data.ISchema)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IRowToRowMapper</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.Runtime.Data.ISchema" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsRowToRowMapper">
+      <MemberSignature Language="C#" Value="public bool IsRowToRowMapper { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsRowToRowMapper" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.CategoricalTransform.IsRowToRowMapper" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property IsRowToRowMapper As Boolean" />
+      <MemberSignature Language="F#" Value="member this.IsRowToRowMapper : bool" Usage="Microsoft.ML.Runtime.Data.CategoricalTransform.IsRowToRowMapper" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Core.Data.ITransformer.IsRowToRowMapper</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Save">
+      <MemberSignature Language="C#" Value="public void Save (Microsoft.ML.Runtime.Model.ModelSaveContext ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Save(class Microsoft.ML.Runtime.Model.ModelSaveContext ctx) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.CategoricalTransform.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Save (ctx As ModelSaveContext)" />
+      <MemberSignature Language="F#" Value="abstract member Save : Microsoft.ML.Runtime.Model.ModelSaveContext -&gt; unit&#xA;override this.Save : Microsoft.ML.Runtime.Model.ModelSaveContext -&gt; unit" Usage="categoricalTransform.Save ctx" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Model.ICanSaveModel.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ctx" Type="Microsoft.ML.Runtime.Model.ModelSaveContext" />
+      </Parameters>
+      <Docs>
+        <param name="ctx">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Transform">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IDataView Transform (Microsoft.ML.Runtime.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IDataView Transform(class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.CategoricalTransform.Transform(Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Transform (input As IDataView) As IDataView" />
+      <MemberSignature Language="F#" Value="abstract member Transform : Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.IDataView&#xA;override this.Transform : Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.IDataView" Usage="categoricalTransform.Transform input" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Core.Data.ITransformer.Transform(Microsoft.ML.Runtime.Data.IDataView)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataView</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+      </Parameters>
+      <Docs>
         <param name="input">To be added.</param>
-        <param name="h">To be added.</param>
-        <param name="env">To be added.</param>
-        <param name="catHashArgs">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

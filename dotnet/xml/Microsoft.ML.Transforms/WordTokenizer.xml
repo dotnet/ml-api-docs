@@ -1,28 +1,27 @@
 ﻿<Type Name="WordTokenizer" FullName="Microsoft.ML.Transforms.WordTokenizer">
-  <TypeSignature Language="C#" Value="public sealed class WordTokenizer : Microsoft.ML.ILearningPipelineItem, Microsoft.ML.Runtime.EntryPoints.CommonInputs.ITransformInput" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit WordTokenizer extends System.Object implements class Microsoft.ML.ILearningPipelineItem, class Microsoft.ML.Runtime.EntryPoints.CommonInputs/ITransformInput" />
+  <TypeSignature Language="C#" Value="public sealed class WordTokenizer : Microsoft.ML.Runtime.Data.TrivialWrapperEstimator" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit WordTokenizer extends Microsoft.ML.Runtime.Data.TrivialWrapperEstimator" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Transforms.WordTokenizer" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class WordTokenizer&#xA;Implements CommonInputs.ITransformInput, ILearningPipelineItem" />
-  <TypeSignature Language="F#" Value="type WordTokenizer = class&#xA;    interface CommonInputs.ITransformInput&#xA;    interface ILearningPipelineItem" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class WordTokenizer&#xA;Inherits TrivialWrapperEstimator" />
+  <TypeSignature Language="F#" Value="type WordTokenizer = class&#xA;    inherit TrivialWrapperEstimator" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </AssemblyInfo>
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Runtime.Data.TrivialWrapperEstimator</BaseTypeName>
   </Base>
-  <Interfaces>
-    <Interface>
-      <InterfaceName>Microsoft.ML.ILearningPipelineItem</InterfaceName>
-    </Interface>
-    <Interface>
-      <InterfaceName>Microsoft.ML.Runtime.EntryPoints.CommonInputs+ITransformInput</InterfaceName>
-    </Interface>
-  </Interfaces>
+  <Interfaces></Interfaces>
   <Docs>
     <summary>
-        This transform splits the text into words using the separator character(s).
-      </summary>
+            Word tokenizer splits text into tokens using the delimiter.
+            For each text input, the output column is a variable vector of text.
+            </summary>
     <remarks>
         The input for this transform is a <see cref="T:Microsoft.ML.Runtime.Data.DvText">DvText</see> or a vector of <see cref="T:Microsoft.ML.Runtime.Data.DvText">DvTexts</see>,
         and its output is a vector of DvTexts, corresponding to the tokens in the input text.
@@ -41,239 +40,62 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public WordTokenizer ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.WordTokenizer.#ctor" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New ()" />
+      <MemberSignature Language="C#" Value="public WordTokenizer (Microsoft.ML.Runtime.IHostEnvironment env, ValueTuple&lt;string,string&gt;[] columns, string separators = &quot;space&quot;);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, valuetype System.ValueTuple`2&lt;string, string&gt;[] columns, string separators) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.WordTokenizer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.ValueTuple{System.String,System.String}[],System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, columns As ValueTuple(Of String, String)(), Optional separators As String = &quot;space&quot;)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.WordTokenizer : Microsoft.ML.Runtime.IHostEnvironment * ValueTuple&lt;string, string&gt;[] * string -&gt; Microsoft.ML.Transforms.WordTokenizer" Usage="new Microsoft.ML.Transforms.WordTokenizer (env, columns, separators)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
-        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Parameters />
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="columns" Type="System.ValueTuple&lt;System.String,System.String&gt;[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.Runtime.CompilerServices.TupleElementNames(new System.String[] { "input", "output" })</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+        <Parameter Name="separators" Type="System.String" />
+      </Parameters>
       <Docs>
-        <summary>To be added.</summary>
+        <param name="env">The environment.</param>
+        <param name="columns">Pairs of columns to run the tokenization on.</param>
+        <param name="separators">The separators to use (comma separated).</param>
+        <summary>
+            Tokenize incoming text in input columns and output the tokens as output columns.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public WordTokenizer (params string[] inputColumns);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string[] inputColumns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.WordTokenizer.#ctor(System.String[])" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (ParamArray inputColumns As String())" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.WordTokenizer : string[] -&gt; Microsoft.ML.Transforms.WordTokenizer" Usage="new Microsoft.ML.Transforms.WordTokenizer inputColumns" />
+      <MemberSignature Language="C#" Value="public WordTokenizer (Microsoft.ML.Runtime.IHostEnvironment env, string inputColumn, string outputColumn = null, string separators = &quot;space&quot;);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string inputColumn, string outputColumn, string separators) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.WordTokenizer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, inputColumn As String, Optional outputColumn As String = null, Optional separators As String = &quot;space&quot;)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.WordTokenizer : Microsoft.ML.Runtime.IHostEnvironment * string * string * string -&gt; Microsoft.ML.Transforms.WordTokenizer" Usage="new Microsoft.ML.Transforms.WordTokenizer (env, inputColumn, outputColumn, separators)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
-        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="inputColumns" Type="System.String[]">
-          <Attributes>
-            <Attribute>
-              <AttributeName>System.ParamArray</AttributeName>
-            </Attribute>
-          </Attributes>
-        </Parameter>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="inputColumn" Type="System.String" />
+        <Parameter Name="outputColumn" Type="System.String" />
+        <Parameter Name="separators" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="inputColumns">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public WordTokenizer (params ValueTuple&lt;string,string&gt;[] inputOutputColumns);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype System.ValueTuple`2&lt;string, string&gt;[] inputOutputColumns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.WordTokenizer.#ctor(System.ValueTuple{System.String,System.String}[])" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (ParamArray inputOutputColumns As ValueTuple(Of String, String)())" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.WordTokenizer : ValueTuple&lt;string, string&gt;[] -&gt; Microsoft.ML.Transforms.WordTokenizer" Usage="new Microsoft.ML.Transforms.WordTokenizer inputOutputColumns" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="inputOutputColumns" Type="System.ValueTuple&lt;System.String,System.String&gt;[]">
-          <Attributes>
-            <Attribute>
-              <AttributeName>System.ParamArray</AttributeName>
-            </Attribute>
-          </Attributes>
-        </Parameter>
-      </Parameters>
-      <Docs>
-        <param name="inputOutputColumns">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AddColumn">
-      <MemberSignature Language="C#" Value="public void AddColumn (string inputColumn);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddColumn(string inputColumn) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.WordTokenizer.AddColumn(System.String)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub AddColumn (inputColumn As String)" />
-      <MemberSignature Language="F#" Value="member this.AddColumn : string -&gt; unit" Usage="wordTokenizer.AddColumn inputColumn" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="inputColumn" Type="System.String" Index="0" FrameworkAlternate="ml-dotnet" />
-      </Parameters>
-      <Docs>
-        <param name="inputColumn">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AddColumn">
-      <MemberSignature Language="C#" Value="public void AddColumn (string outputColumn, string inputColumn);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddColumn(string outputColumn, string inputColumn) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.WordTokenizer.AddColumn(System.String,System.String)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub AddColumn (outputColumn As String, inputColumn As String)" />
-      <MemberSignature Language="F#" Value="member this.AddColumn : string * string -&gt; unit" Usage="wordTokenizer.AddColumn (outputColumn, inputColumn)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="outputColumn" Type="System.String" Index="0" FrameworkAlternate="ml-dotnet" />
-        <Parameter Name="inputColumn" Type="System.String" Index="1" FrameworkAlternate="ml-dotnet" />
-      </Parameters>
-      <Docs>
-        <param name="outputColumn">To be added.</param>
-        <param name="inputColumn">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ApplyStep">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.ILearningPipelineStep ApplyStep (Microsoft.ML.ILearningPipelineStep previousStep, Microsoft.ML.Runtime.Experiment experiment);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.ILearningPipelineStep ApplyStep(class Microsoft.ML.ILearningPipelineStep previousStep, class Microsoft.ML.Runtime.Experiment experiment) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.WordTokenizer.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
-      <MemberSignature Language="F#" Value="abstract member ApplyStep : Microsoft.ML.ILearningPipelineStep * Microsoft.ML.Runtime.Experiment -&gt; Microsoft.ML.ILearningPipelineStep&#xA;override this.ApplyStep : Microsoft.ML.ILearningPipelineStep * Microsoft.ML.Runtime.Experiment -&gt; Microsoft.ML.ILearningPipelineStep" Usage="wordTokenizer.ApplyStep (previousStep, experiment)" />
-      <MemberType>Method</MemberType>
-      <Implements>
-        <InterfaceMember>M:Microsoft.ML.ILearningPipelineItem.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)</InterfaceMember>
-      </Implements>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.ILearningPipelineStep</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="previousStep" Type="Microsoft.ML.ILearningPipelineStep" />
-        <Parameter Name="experiment" Type="Microsoft.ML.Runtime.Experiment" />
-      </Parameters>
-      <Docs>
-        <param name="previousStep">To be added.</param>
-        <param name="experiment">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Column">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Transforms.DelimitedTokenizeTransformColumn[] Column { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Transforms.DelimitedTokenizeTransformColumn[] Column" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Transforms.WordTokenizer.Column" />
-      <MemberSignature Language="VB.NET" Value="Public Property Column As DelimitedTokenizeTransformColumn()" />
-      <MemberSignature Language="F#" Value="member this.Column : Microsoft.ML.Transforms.DelimitedTokenizeTransformColumn[] with get, set" Usage="Microsoft.ML.Transforms.WordTokenizer.Column" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Transforms.DelimitedTokenizeTransformColumn[]</ReturnType>
-      </ReturnValue>
-      <Docs>
+        <param name="env">The environment.</param>
+        <param name="inputColumn">The column containing text to tokenize.</param>
+        <param name="outputColumn">The column containing output tokens. Null means <paramref name="inputColumn" /> is replaced.</param>
+        <param name="separators">The separators to use (comma separated).</param>
         <summary>
-            New column definition(s)
+            Tokenize incoming text in <paramref name="inputColumn" /> and output the tokens as <paramref name="outputColumn" />.
             </summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Data">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt; Data { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.EntryPoints.Var`1&lt;class Microsoft.ML.Runtime.Data.IDataView&gt; Data" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Transforms.WordTokenizer.Data" />
-      <MemberSignature Language="VB.NET" Value="Public Property Data As Var(Of IDataView)" />
-      <MemberSignature Language="F#" Value="member this.Data : Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt; with get, set" Usage="Microsoft.ML.Transforms.WordTokenizer.Data" />
-      <MemberType>Property</MemberType>
-      <Implements>
-        <InterfaceMember>P:Microsoft.ML.Runtime.EntryPoints.CommonInputs.ITransformInput.Data</InterfaceMember>
-      </Implements>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>
-            Input dataset
-            </summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GetInputData">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt; GetInputData ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.EntryPoints.Var`1&lt;class Microsoft.ML.Runtime.Data.IDataView&gt; GetInputData() cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.WordTokenizer.GetInputData" />
-      <MemberSignature Language="VB.NET" Value="Public Function GetInputData () As Var(Of IDataView)" />
-      <MemberSignature Language="F#" Value="abstract member GetInputData : unit -&gt; Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;&#xA;override this.GetInputData : unit -&gt; Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;" Usage="wordTokenizer.GetInputData " />
-      <MemberType>Method</MemberType>
-      <Implements>
-        <InterfaceMember>M:Microsoft.ML.ILearningPipelineItem.GetInputData</InterfaceMember>
-      </Implements>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="TermSeparators">
-      <MemberSignature Language="C#" Value="public string TermSeparators { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string TermSeparators" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Transforms.WordTokenizer.TermSeparators" />
-      <MemberSignature Language="VB.NET" Value="Public Property TermSeparators As String" />
-      <MemberSignature Language="F#" Value="member this.TermSeparators : string with get, set" Usage="Microsoft.ML.Transforms.WordTokenizer.TermSeparators" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>
-            Comma separated set of term separator(s). Commonly: 'space', 'comma', 'semicolon' or other single character.
-            </summary>
-        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
