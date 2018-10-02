@@ -1,0 +1,454 @@
+<Type Name="FieldAwareFactorizationMachineBinaryClassifier" FullName="Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier">
+  <TypeSignature Language="C#" Value="public sealed class FieldAwareFactorizationMachineBinaryClassifier : Microsoft.ML.ILearningPipelineItem, Microsoft.ML.Runtime.EntryPoints.CommonInputs.ITrainerInputWithLabel" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit FieldAwareFactorizationMachineBinaryClassifier extends System.Object implements class Microsoft.ML.ILearningPipelineItem, class Microsoft.ML.Runtime.EntryPoints.CommonInputs/ITrainerInput, class Microsoft.ML.Runtime.EntryPoints.CommonInputs/ITrainerInputWithLabel" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class FieldAwareFactorizationMachineBinaryClassifier&#xA;Implements CommonInputs.ITrainerInputWithLabel, ILearningPipelineItem" />
+  <TypeSignature Language="F#" Value="type FieldAwareFactorizationMachineBinaryClassifier = class&#xA;    interface CommonInputs.ITrainerInputWithLabel&#xA;    interface CommonInputs.ITrainerInput&#xA;    interface ILearningPipelineItem" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.ILearningPipelineItem</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.EntryPoints.CommonInputs+ITrainerInputWithLabel</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+        Train a field-aware factorization machine for binary classification using ADAGRAD (an advanced stochastic gradient method). 
+      </summary>
+    <remarks>
+        Field Aware Factorization Machines use, in addition to the input variables, factorized parameters to model the interaction between pairs of variables.
+        The algorithm is particularly useful for high dimensional datasets which can be very sparse (e.g. click-prediction for advertising systems).
+        <para>An advantage of FFM over SVMs is that the training data does not need to be stored in memory, and the coefficients can be optimized directly.
+          For a general idea of what Field-aware Factorization Machines are see: <a href="https://www.csie.ntu.edu.tw/~r01922136/slides/ffm.pdf">Field Aware Factorization Machines</a></para><para>See references below for more details. 
+        This trainer is essentially faster the one introduced in [2] because of some implemtation tricks[3].
+        </para><list type="bullet"><item><description><a href="http://www.csie.ntu.edu.tw/~cjlin/papers/ffm.pdf">Field-aware Factorization Machines for CTR Prediction</a></description></item><item><description><a href="http://jmlr.org/papers/volume12/duchi11a/duchi11a.pdf">Adaptive Subgradient Methods for Online Learning and Stochastic Optimization</a></description></item><item><description><a href="https://github.com/wschin/fast-ffm/blob/master/fast-ffm.pdf">An Improved Stochastic Gradient Method for Training Large-scale Field-aware Factorization Machine.</a></description></item></list></remarks>
+    <example>
+      <code language="csharp">
+          pipeline.Add(new FieldAwareFactorizationMachineBinaryClassifier
+          { 
+            LearningRate = 0.5f, 
+            Iter=2 
+          });
+        </code>
+    </example>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public FieldAwareFactorizationMachineBinaryClassifier ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.#ctor" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New ()" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ApplyStep">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.ILearningPipelineStep ApplyStep (Microsoft.ML.ILearningPipelineStep previousStep, Microsoft.ML.Runtime.Experiment experiment);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.ILearningPipelineStep ApplyStep(class Microsoft.ML.ILearningPipelineStep previousStep, class Microsoft.ML.Runtime.Experiment experiment) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <MemberSignature Language="F#" Value="abstract member ApplyStep : Microsoft.ML.ILearningPipelineStep * Microsoft.ML.Runtime.Experiment -&gt; Microsoft.ML.ILearningPipelineStep&#xA;override this.ApplyStep : Microsoft.ML.ILearningPipelineStep * Microsoft.ML.Runtime.Experiment -&gt; Microsoft.ML.ILearningPipelineStep" Usage="fieldAwareFactorizationMachineBinaryClassifier.ApplyStep (previousStep, experiment)" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.ILearningPipelineItem.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.ILearningPipelineStep</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="previousStep" Type="Microsoft.ML.ILearningPipelineStep" />
+        <Parameter Name="experiment" Type="Microsoft.ML.Runtime.Experiment" />
+      </Parameters>
+      <Docs>
+        <param name="previousStep">To be added.</param>
+        <param name="experiment">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Caching">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Models.CachingOptions Caching { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.ML.Models.CachingOptions Caching" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.Caching" />
+      <MemberSignature Language="VB.NET" Value="Public Property Caching As CachingOptions" />
+      <MemberSignature Language="F#" Value="member this.Caching : Microsoft.ML.Models.CachingOptions with get, set" Usage="Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.Caching" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Models.CachingOptions</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Whether learner should cache input training data
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FeatureColumn">
+      <MemberSignature Language="C#" Value="public string FeatureColumn { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string FeatureColumn" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.FeatureColumn" />
+      <MemberSignature Language="VB.NET" Value="Public Property FeatureColumn As String" />
+      <MemberSignature Language="F#" Value="member this.FeatureColumn : string with get, set" Usage="Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.FeatureColumn" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Column to use for features
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetInputData">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt; GetInputData ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.EntryPoints.Var`1&lt;class Microsoft.ML.Runtime.Data.IDataView&gt; GetInputData() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.GetInputData" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetInputData () As Var(Of IDataView)" />
+      <MemberSignature Language="F#" Value="abstract member GetInputData : unit -&gt; Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;&#xA;override this.GetInputData : unit -&gt; Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;" Usage="fieldAwareFactorizationMachineBinaryClassifier.GetInputData " />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.ILearningPipelineItem.GetInputData</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Iters">
+      <MemberSignature Language="C#" Value="public int Iters { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Iters" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.Iters" />
+      <MemberSignature Language="VB.NET" Value="Public Property Iters As Integer" />
+      <MemberSignature Language="F#" Value="member this.Iters : int with get, set" Usage="Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.Iters" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/SweepableLongParam("Iters", 1, 100, -1, -1, false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Number of training iterations
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LabelColumn">
+      <MemberSignature Language="C#" Value="public string LabelColumn { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string LabelColumn" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.LabelColumn" />
+      <MemberSignature Language="VB.NET" Value="Public Property LabelColumn As String" />
+      <MemberSignature Language="F#" Value="member this.LabelColumn : string with get, set" Usage="Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.LabelColumn" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Column to use for labels
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LambdaLatent">
+      <MemberSignature Language="C#" Value="public float LambdaLatent { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 LambdaLatent" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.LambdaLatent" />
+      <MemberSignature Language="VB.NET" Value="Public Property LambdaLatent As Single" />
+      <MemberSignature Language="F#" Value="member this.LambdaLatent : single with get, set" Usage="Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.LambdaLatent" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/SweepableFloatParam("LambdaLatent", 1E-08, 1, -1, -1, true)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Regularization coefficient of latent weights
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LambdaLinear">
+      <MemberSignature Language="C#" Value="public float LambdaLinear { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 LambdaLinear" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.LambdaLinear" />
+      <MemberSignature Language="VB.NET" Value="Public Property LambdaLinear As Single" />
+      <MemberSignature Language="F#" Value="member this.LambdaLinear : single with get, set" Usage="Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.LambdaLinear" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/SweepableFloatParam("LambdaLinear", 1E-08, 1, -1, -1, true)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Regularization coefficient of linear weights
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LatentDim">
+      <MemberSignature Language="C#" Value="public int LatentDim { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 LatentDim" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.LatentDim" />
+      <MemberSignature Language="VB.NET" Value="Public Property LatentDim As Integer" />
+      <MemberSignature Language="F#" Value="member this.LatentDim : int with get, set" Usage="Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.LatentDim" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/SweepableLongParam("LatentDim", 4, 100, -1, -1, false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Latent space dimension
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LearningRate">
+      <MemberSignature Language="C#" Value="public float LearningRate { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 LearningRate" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.LearningRate" />
+      <MemberSignature Language="VB.NET" Value="Public Property LearningRate As Single" />
+      <MemberSignature Language="F#" Value="member this.LearningRate : single with get, set" Usage="Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.LearningRate" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/SweepableFloatParam("LearningRate", 0.001, 1, -1, -1, true)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Initial learning rate
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Norm">
+      <MemberSignature Language="C#" Value="public bool Norm { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Norm" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.Norm" />
+      <MemberSignature Language="VB.NET" Value="Public Property Norm As Boolean" />
+      <MemberSignature Language="F#" Value="member this.Norm : bool with get, set" Usage="Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.Norm" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Whether to normalize the input vectors so that the concatenation of all fields' feature vectors is unit-length
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NormalizeFeatures">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Models.NormalizeOption NormalizeFeatures { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.ML.Models.NormalizeOption NormalizeFeatures" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.NormalizeFeatures" />
+      <MemberSignature Language="VB.NET" Value="Public Property NormalizeFeatures As NormalizeOption" />
+      <MemberSignature Language="F#" Value="member this.NormalizeFeatures : Microsoft.ML.Models.NormalizeOption with get, set" Usage="Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.NormalizeFeatures" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Models.NormalizeOption</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Normalize option for the feature column
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Radius">
+      <MemberSignature Language="C#" Value="public float Radius { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 Radius" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.Radius" />
+      <MemberSignature Language="VB.NET" Value="Public Property Radius As Single" />
+      <MemberSignature Language="F#" Value="member this.Radius : single with get, set" Usage="Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.Radius" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/SweepableFloatParam("Radius", 0.1, 1, -1, -1, false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Radius of initial latent factors
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Shuffle">
+      <MemberSignature Language="C#" Value="public bool Shuffle { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Shuffle" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.Shuffle" />
+      <MemberSignature Language="VB.NET" Value="Public Property Shuffle As Boolean" />
+      <MemberSignature Language="F#" Value="member this.Shuffle : bool with get, set" Usage="Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.Shuffle" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Whether to shuffle for each training iteration
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TrainingData">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt; TrainingData { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.EntryPoints.Var`1&lt;class Microsoft.ML.Runtime.Data.IDataView&gt; TrainingData" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.TrainingData" />
+      <MemberSignature Language="VB.NET" Value="Public Property TrainingData As Var(Of IDataView)" />
+      <MemberSignature Language="F#" Value="member this.TrainingData : Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt; with get, set" Usage="Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.TrainingData" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Runtime.EntryPoints.CommonInputs.ITrainerInput.TrainingData</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The data to be used for training
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Verbose">
+      <MemberSignature Language="C#" Value="public bool Verbose { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Verbose" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.Verbose" />
+      <MemberSignature Language="VB.NET" Value="Public Property Verbose As Boolean" />
+      <MemberSignature Language="F#" Value="member this.Verbose : bool with get, set" Usage="Microsoft.ML.Trainers.FieldAwareFactorizationMachineBinaryClassifier.Verbose" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Report traning progress or not
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

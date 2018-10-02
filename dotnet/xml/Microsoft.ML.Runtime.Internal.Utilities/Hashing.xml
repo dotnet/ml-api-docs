@@ -196,11 +196,11 @@
       </Docs>
     </Member>
     <Member MemberName="HashString">
-      <MemberSignature Language="C#" Value="public static uint HashString (string str);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig unsigned int32 HashString(string str) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.Hashing.HashString(System.String)" />
-      <MemberSignature Language="VB.NET" Value="Public Shared Function HashString (str As String) As UInteger" />
-      <MemberSignature Language="F#" Value="static member HashString : string -&gt; uint32" Usage="Microsoft.ML.Runtime.Internal.Utilities.Hashing.HashString str" />
+      <MemberSignature Language="C#" Value="public static uint HashString (ReadOnlySpan&lt;char&gt; str);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig unsigned int32 HashString(valuetype System.ReadOnlySpan`1&lt;char&gt; str) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.Hashing.HashString(System.ReadOnlySpan{System.Char})" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function HashString (str As ReadOnlySpan(Of Char)) As UInteger" />
+      <MemberSignature Language="F#" Value="static member HashString : ReadOnlySpan&lt;char&gt; -&gt; uint32" Usage="Microsoft.ML.Runtime.Internal.Utilities.Hashing.HashString str" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
@@ -210,13 +210,13 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="str" Type="System.String" />
+        <Parameter Name="str" Type="System.ReadOnlySpan&lt;System.Char&gt;" />
       </Parameters>
       <Docs>
         <param name="str">To be added.</param>
         <summary>
-            Hash the characters in a string. This MUST produce the same result as the other
-            overloads (with equivalent characters).
+            Hash the characters in a <see cref="T:System.ReadOnlySpan`1" /> of <see cref="T:System.Char" />.
+            This MUST produce the same result as the other overloads (with equivalent characters).
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -244,37 +244,6 @@
         <summary>
             Hash the characters in a string builder. This MUST produce the same result
             as HashString(sb.ToString()).
-            </summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="HashString">
-      <MemberSignature Language="C#" Value="public static uint HashString (string str, int ichMin, int ichLim);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig unsigned int32 HashString(string str, int32 ichMin, int32 ichLim) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.Hashing.HashString(System.String,System.Int32,System.Int32)" />
-      <MemberSignature Language="VB.NET" Value="Public Shared Function HashString (str As String, ichMin As Integer, ichLim As Integer) As UInteger" />
-      <MemberSignature Language="F#" Value="static member HashString : string * int * int -&gt; uint32" Usage="Microsoft.ML.Runtime.Internal.Utilities.Hashing.HashString (str, ichMin, ichLim)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Core</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.UInt32</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="str" Type="System.String" />
-        <Parameter Name="ichMin" Type="System.Int32" />
-        <Parameter Name="ichLim" Type="System.Int32" />
-      </Parameters>
-      <Docs>
-        <param name="str">To be added.</param>
-        <param name="ichMin">To be added.</param>
-        <param name="ichLim">To be added.</param>
-        <summary>
-            Hash the characters in a sub-string. This MUST produce the same result
-            as HashString(str.SubString(ichMin, ichLim - ichMin)).
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -333,6 +302,43 @@
       </Docs>
     </Member>
     <Member MemberName="MurmurHash">
+      <MemberSignature Language="C#" Value="public static uint MurmurHash (uint hash, ReadOnlySpan&lt;char&gt; span, bool toUpper = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig unsigned int32 MurmurHash(unsigned int32 hash, valuetype System.ReadOnlySpan`1&lt;char&gt; span, bool toUpper) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.Hashing.MurmurHash(System.UInt32,System.ReadOnlySpan{System.Char},System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function MurmurHash (hash As UInteger, span As ReadOnlySpan(Of Char), Optional toUpper As Boolean = false) As UInteger" />
+      <MemberSignature Language="F#" Value="static member MurmurHash : uint32 * ReadOnlySpan&lt;char&gt; * bool -&gt; uint32" Usage="Microsoft.ML.Runtime.Internal.Utilities.Hashing.MurmurHash (hash, span, toUpper)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="hash" Type="System.UInt32" />
+        <Parameter Name="span" Type="System.ReadOnlySpan&lt;System.Char&gt;" />
+        <Parameter Name="toUpper" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="hash">To be added.</param>
+        <param name="span">To be added.</param>
+        <param name="toUpper">To be added.</param>
+        <summary>
+            Implements the murmur hash 3 algorithm, using a mock UTF-8 encoding.
+            The UTF-8 conversion ignores the possibilities of unicode planes other than the 0th.
+            That is, it simply converts char values to one, two, or three bytes according to
+            the following rules:
+            * 0x0000 to 0x007F : 0xxxxxxx
+            * 0x0080 to 0x07FF : 110xxxxx 10xxxxxx
+            * 0x0800 to 0xFFFF : 1110xxxx 10xxxxxx 10xxxxxx
+            NOTE: This MUST match the StringBuilder version below.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MurmurHash">
       <MemberSignature Language="C#" Value="public static uint MurmurHash (uint hash, uint[] data, int min, int lim);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig unsigned int32 MurmurHash(unsigned int32 hash, unsigned int32[] data, int32 min, int32 lim) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.Hashing.MurmurHash(System.UInt32,System.UInt32[],System.Int32,System.Int32)" />
@@ -359,47 +365,6 @@
         <param name="lim">To be added.</param>
         <summary>
             Performs a MurmurRound on each int in the sequence
-            </summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="MurmurHash">
-      <MemberSignature Language="C#" Value="public static uint MurmurHash (uint hash, string data, int ichMin, int ichLim, bool toUpper = false);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig unsigned int32 MurmurHash(unsigned int32 hash, string data, int32 ichMin, int32 ichLim, bool toUpper) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.Hashing.MurmurHash(System.UInt32,System.String,System.Int32,System.Int32,System.Boolean)" />
-      <MemberSignature Language="VB.NET" Value="Public Shared Function MurmurHash (hash As UInteger, data As String, ichMin As Integer, ichLim As Integer, Optional toUpper As Boolean = false) As UInteger" />
-      <MemberSignature Language="F#" Value="static member MurmurHash : uint32 * string * int * int * bool -&gt; uint32" Usage="Microsoft.ML.Runtime.Internal.Utilities.Hashing.MurmurHash (hash, data, ichMin, ichLim, toUpper)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Core</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.UInt32</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="hash" Type="System.UInt32" />
-        <Parameter Name="data" Type="System.String" />
-        <Parameter Name="ichMin" Type="System.Int32" />
-        <Parameter Name="ichLim" Type="System.Int32" />
-        <Parameter Name="toUpper" Type="System.Boolean" />
-      </Parameters>
-      <Docs>
-        <param name="hash">To be added.</param>
-        <param name="data">To be added.</param>
-        <param name="ichMin">To be added.</param>
-        <param name="ichLim">To be added.</param>
-        <param name="toUpper">To be added.</param>
-        <summary>
-            Implements the murmur hash 3 algorithm, using a mock UTF-8 encoding.
-            The UTF-8 conversion ignores the possibilities of unicode planes other than the 0th.
-            That is, it simply converts char values to one, two, or three bytes according to
-            the following rules:
-            * 0x0000 to 0x007F : 0xxxxxxx
-            * 0x0080 to 0x07FF : 110xxxxx 10xxxxxx
-            * 0x0800 to 0xFFFF : 1110xxxx 10xxxxxx 10xxxxxx
-            NOTE: This MUST match the StringBuilder version below.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

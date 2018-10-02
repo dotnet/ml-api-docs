@@ -18,11 +18,11 @@
   </Docs>
   <Members>
     <Member MemberName="BeginRead">
-      <MemberSignature Language="C#" Value="public static void BeginRead (out long fpMin, out Microsoft.ML.Runtime.Model.ModelHeader header, out string[] strings, System.IO.BinaryReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void BeginRead([out] int64&amp; fpMin, [out] valuetype Microsoft.ML.Runtime.Model.ModelHeader&amp; header, [out] string[]&amp; strings, class System.IO.BinaryReader reader) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Model.ModelHeader.BeginRead(System.Int64@,Microsoft.ML.Runtime.Model.ModelHeader@,System.String[]@,System.IO.BinaryReader)" />
-      <MemberSignature Language="VB.NET" Value="Public Shared Sub BeginRead (ByRef fpMin As Long, ByRef header As ModelHeader, ByRef strings As String(), reader As BinaryReader)" />
-      <MemberSignature Language="F#" Value="static member BeginRead :  *  *  * System.IO.BinaryReader -&gt; unit" Usage="Microsoft.ML.Runtime.Model.ModelHeader.BeginRead (fpMin, header, strings, reader)" />
+      <MemberSignature Language="C#" Value="public static void BeginRead (out long fpMin, out Microsoft.ML.Runtime.Model.ModelHeader header, out string[] strings, out string loaderAssemblyName, System.IO.BinaryReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void BeginRead([out] int64&amp; fpMin, [out] valuetype Microsoft.ML.Runtime.Model.ModelHeader&amp; header, [out] string[]&amp; strings, [out] string&amp; loaderAssemblyName, class System.IO.BinaryReader reader) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Model.ModelHeader.BeginRead(System.Int64@,Microsoft.ML.Runtime.Model.ModelHeader@,System.String[]@,System.String@,System.IO.BinaryReader)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Sub BeginRead (ByRef fpMin As Long, ByRef header As ModelHeader, ByRef strings As String(), ByRef loaderAssemblyName As String, reader As BinaryReader)" />
+      <MemberSignature Language="F#" Value="static member BeginRead :  *  *  *  * System.IO.BinaryReader -&gt; unit" Usage="Microsoft.ML.Runtime.Model.ModelHeader.BeginRead (fpMin, header, strings, loaderAssemblyName, reader)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -35,12 +35,14 @@
         <Parameter Name="fpMin" Type="System.Int64" RefType="out" />
         <Parameter Name="header" Type="Microsoft.ML.Runtime.Model.ModelHeader" RefType="out" />
         <Parameter Name="strings" Type="System.String[]" RefType="out" />
+        <Parameter Name="loaderAssemblyName" Type="System.String" RefType="out" />
         <Parameter Name="reader" Type="System.IO.BinaryReader" />
       </Parameters>
       <Docs>
         <param name="fpMin">To be added.</param>
         <param name="header">To be added.</param>
         <param name="strings">To be added.</param>
+        <param name="loaderAssemblyName">To be added.</param>
         <param name="reader">To be added.</param>
         <summary>
             Read the model header, strings, etc from reader. Also validates the header (throws if bad).
@@ -76,6 +78,25 @@
             Initialize the header and writer for writing. The value of fpMin and header
             should be passed to the other utility methods here.
             </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CbAssemblyName">
+      <MemberSignature Language="C#" Value="public uint CbAssemblyName;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 CbAssemblyName" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Model.ModelHeader.CbAssemblyName" />
+      <MemberSignature Language="VB.NET" Value="Public CbAssemblyName As UInteger " />
+      <MemberSignature Language="F#" Value="val mutable CbAssemblyName : uint32" Usage="Microsoft.ML.Runtime.Model.ModelHeader.CbAssemblyName" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -224,10 +245,10 @@
       </Docs>
     </Member>
     <Member MemberName="EndWrite">
-      <MemberSignature Language="C#" Value="public static void EndWrite (System.IO.BinaryWriter writer, long fpMin, ref Microsoft.ML.Runtime.Model.ModelHeader header, Microsoft.ML.Runtime.Internal.Utilities.NormStr.Pool pool = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void EndWrite(class System.IO.BinaryWriter writer, int64 fpMin, valuetype Microsoft.ML.Runtime.Model.ModelHeader&amp; header, class Microsoft.ML.Runtime.Internal.Utilities.NormStr/Pool pool) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Model.ModelHeader.EndWrite(System.IO.BinaryWriter,System.Int64,Microsoft.ML.Runtime.Model.ModelHeader@,Microsoft.ML.Runtime.Internal.Utilities.NormStr.Pool)" />
-      <MemberSignature Language="F#" Value="static member EndWrite : System.IO.BinaryWriter * int64 *  * Microsoft.ML.Runtime.Internal.Utilities.NormStr.Pool -&gt; unit" Usage="Microsoft.ML.Runtime.Model.ModelHeader.EndWrite (writer, fpMin, header, pool)" />
+      <MemberSignature Language="C#" Value="public static void EndWrite (System.IO.BinaryWriter writer, long fpMin, ref Microsoft.ML.Runtime.Model.ModelHeader header, Microsoft.ML.Runtime.Internal.Utilities.NormStr.Pool pool = null, string loaderAssemblyName = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void EndWrite(class System.IO.BinaryWriter writer, int64 fpMin, valuetype Microsoft.ML.Runtime.Model.ModelHeader&amp; header, class Microsoft.ML.Runtime.Internal.Utilities.NormStr/Pool pool, string loaderAssemblyName) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Model.ModelHeader.EndWrite(System.IO.BinaryWriter,System.Int64,Microsoft.ML.Runtime.Model.ModelHeader@,Microsoft.ML.Runtime.Internal.Utilities.NormStr.Pool,System.String)" />
+      <MemberSignature Language="F#" Value="static member EndWrite : System.IO.BinaryWriter * int64 *  * Microsoft.ML.Runtime.Internal.Utilities.NormStr.Pool * string -&gt; unit" Usage="Microsoft.ML.Runtime.Model.ModelHeader.EndWrite (writer, fpMin, header, pool, loaderAssemblyName)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -241,16 +262,37 @@
         <Parameter Name="fpMin" Type="System.Int64" />
         <Parameter Name="header" Type="Microsoft.ML.Runtime.Model.ModelHeader" RefType="ref" />
         <Parameter Name="pool" Type="Microsoft.ML.Runtime.Internal.Utilities.NormStr+Pool" />
+        <Parameter Name="loaderAssemblyName" Type="System.String" />
       </Parameters>
       <Docs>
         <param name="writer">To be added.</param>
         <param name="fpMin">To be added.</param>
         <param name="header">To be added.</param>
         <param name="pool">To be added.</param>
+        <param name="loaderAssemblyName">To be added.</param>
         <summary>
             The current writer position should be the end of the model blob. Records the model size, writes the string table,
             completes and writes the header, and writes the tail.
             </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FpAssemblyName">
+      <MemberSignature Language="C#" Value="public long FpAssemblyName;" />
+      <MemberSignature Language="ILAsm" Value=".field public int64 FpAssemblyName" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Model.ModelHeader.FpAssemblyName" />
+      <MemberSignature Language="VB.NET" Value="Public FpAssemblyName As Long " />
+      <MemberSignature Language="F#" Value="val mutable FpAssemblyName : int64" Usage="Microsoft.ML.Runtime.Model.ModelHeader.FpAssemblyName" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int64</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -820,11 +862,11 @@
       </Docs>
     </Member>
     <Member MemberName="TryValidate">
-      <MemberSignature Language="C#" Value="public static bool TryValidate (ref Microsoft.ML.Runtime.Model.ModelHeader header, System.IO.BinaryReader reader, long fpMin, out string[] strings, out Exception ex);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool TryValidate(valuetype Microsoft.ML.Runtime.Model.ModelHeader&amp; header, class System.IO.BinaryReader reader, int64 fpMin, [out] string[]&amp; strings, [out] class System.Exception&amp; ex) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Model.ModelHeader.TryValidate(Microsoft.ML.Runtime.Model.ModelHeader@,System.IO.BinaryReader,System.Int64,System.String[]@,System.Exception@)" />
-      <MemberSignature Language="VB.NET" Value="Public Shared Function TryValidate (ByRef header As ModelHeader, reader As BinaryReader, fpMin As Long, ByRef strings As String(), ByRef ex As Exception) As Boolean" />
-      <MemberSignature Language="F#" Value="static member TryValidate :  * System.IO.BinaryReader * int64 *  *  -&gt; bool" Usage="Microsoft.ML.Runtime.Model.ModelHeader.TryValidate (header, reader, fpMin, strings, ex)" />
+      <MemberSignature Language="C#" Value="public static bool TryValidate (ref Microsoft.ML.Runtime.Model.ModelHeader header, System.IO.BinaryReader reader, long fpMin, out string[] strings, out string loaderAssemblyName, out Exception ex);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool TryValidate(valuetype Microsoft.ML.Runtime.Model.ModelHeader&amp; header, class System.IO.BinaryReader reader, int64 fpMin, [out] string[]&amp; strings, [out] string&amp; loaderAssemblyName, [out] class System.Exception&amp; ex) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Model.ModelHeader.TryValidate(Microsoft.ML.Runtime.Model.ModelHeader@,System.IO.BinaryReader,System.Int64,System.String[]@,System.String@,System.Exception@)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function TryValidate (ByRef header As ModelHeader, reader As BinaryReader, fpMin As Long, ByRef strings As String(), ByRef loaderAssemblyName As String, ByRef ex As Exception) As Boolean" />
+      <MemberSignature Language="F#" Value="static member TryValidate :  * System.IO.BinaryReader * int64 *  *  *  -&gt; bool" Usage="Microsoft.ML.Runtime.Model.ModelHeader.TryValidate (header, reader, fpMin, strings, loaderAssemblyName, ex)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -838,6 +880,7 @@
         <Parameter Name="reader" Type="System.IO.BinaryReader" />
         <Parameter Name="fpMin" Type="System.Int64" />
         <Parameter Name="strings" Type="System.String[]" RefType="out" />
+        <Parameter Name="loaderAssemblyName" Type="System.String" RefType="out" />
         <Parameter Name="ex" Type="System.Exception" RefType="out" />
       </Parameters>
       <Docs>
@@ -845,6 +888,7 @@
         <param name="reader">To be added.</param>
         <param name="fpMin">To be added.</param>
         <param name="strings">To be added.</param>
+        <param name="loaderAssemblyName">To be added.</param>
         <param name="ex">To be added.</param>
         <summary>
             Checks the validity of the header, reads the string table, etc.

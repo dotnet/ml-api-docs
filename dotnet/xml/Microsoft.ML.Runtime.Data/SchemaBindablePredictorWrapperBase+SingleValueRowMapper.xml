@@ -1,6 +1,6 @@
 ﻿<Type Name="SchemaBindablePredictorWrapperBase+SingleValueRowMapper" FullName="Microsoft.ML.Runtime.Data.SchemaBindablePredictorWrapperBase+SingleValueRowMapper">
   <TypeSignature Language="C#" Value="protected sealed class SchemaBindablePredictorWrapperBase.SingleValueRowMapper : Microsoft.ML.Runtime.Data.ISchemaBoundRowMapper" />
-  <TypeSignature Language="ILAsm" Value=".class nested protected auto ansi sealed beforefieldinit SchemaBindablePredictorWrapperBase/SingleValueRowMapper extends System.Object implements class Microsoft.ML.Runtime.Data.ISchemaBoundMapper, class Microsoft.ML.Runtime.Data.ISchemaBoundRowMapper" />
+  <TypeSignature Language="ILAsm" Value=".class nested protected auto ansi sealed beforefieldinit SchemaBindablePredictorWrapperBase/SingleValueRowMapper extends System.Object implements class Microsoft.ML.Runtime.Data.IRowToRowMapper, class Microsoft.ML.Runtime.Data.ISchemaBoundMapper, class Microsoft.ML.Runtime.Data.ISchemaBoundRowMapper, class Microsoft.ML.Runtime.Data.ISchematized" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.SchemaBindablePredictorWrapperBase.SingleValueRowMapper" />
   <TypeSignature Language="VB.NET" Value="Protected NotInheritable Class SchemaBindablePredictorWrapperBase.SingleValueRowMapper&#xA;Implements ISchemaBoundRowMapper" />
   <AssemblyInfo>
@@ -80,7 +80,7 @@
       <MemberSignature Language="F#" Value="abstract member GetDependencies : Func&lt;int, bool&gt; -&gt; Func&lt;int, bool&gt;&#xA;override this.GetDependencies : Func&lt;int, bool&gt; -&gt; Func&lt;int, bool&gt;" Usage="singleValueRowMapper.GetDependencies predicate" />
       <MemberType>Method</MemberType>
       <Implements>
-        <InterfaceMember>M:Microsoft.ML.Runtime.Data.ISchemaBoundRowMapper.GetDependencies(System.Func{System.Int32,System.Boolean})</InterfaceMember>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IRowToRowMapper.GetDependencies(System.Func{System.Int32,System.Boolean})</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -128,15 +128,15 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="GetOutputRow">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IRow GetOutputRow (Microsoft.ML.Runtime.Data.IRow input, Func&lt;int,bool&gt; predicate, out Action disposer);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IRow GetOutputRow(class Microsoft.ML.Runtime.Data.IRow input, class System.Func`2&lt;int32, bool&gt; predicate, [out] class System.Action&amp; disposer) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.SchemaBindablePredictorWrapperBase.SingleValueRowMapper.GetOutputRow(Microsoft.ML.Runtime.Data.IRow,System.Func{System.Int32,System.Boolean},System.Action@)" />
-      <MemberSignature Language="VB.NET" Value="Public Function GetOutputRow (input As IRow, predicate As Func(Of Integer, Boolean), ByRef disposer As Action) As IRow" />
-      <MemberSignature Language="F#" Value="abstract member GetOutputRow : Microsoft.ML.Runtime.Data.IRow * Func&lt;int, bool&gt; *  -&gt; Microsoft.ML.Runtime.Data.IRow&#xA;override this.GetOutputRow : Microsoft.ML.Runtime.Data.IRow * Func&lt;int, bool&gt; *  -&gt; Microsoft.ML.Runtime.Data.IRow" Usage="singleValueRowMapper.GetOutputRow (input, predicate, disposer)" />
+    <Member MemberName="GetRow">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IRow GetRow (Microsoft.ML.Runtime.Data.IRow input, Func&lt;int,bool&gt; predicate, out Action disposer);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IRow GetRow(class Microsoft.ML.Runtime.Data.IRow input, class System.Func`2&lt;int32, bool&gt; predicate, [out] class System.Action&amp; disposer) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.SchemaBindablePredictorWrapperBase.SingleValueRowMapper.GetRow(Microsoft.ML.Runtime.Data.IRow,System.Func{System.Int32,System.Boolean},System.Action@)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetRow (input As IRow, predicate As Func(Of Integer, Boolean), ByRef disposer As Action) As IRow" />
+      <MemberSignature Language="F#" Value="abstract member GetRow : Microsoft.ML.Runtime.Data.IRow * Func&lt;int, bool&gt; *  -&gt; Microsoft.ML.Runtime.Data.IRow&#xA;override this.GetRow : Microsoft.ML.Runtime.Data.IRow * Func&lt;int, bool&gt; *  -&gt; Microsoft.ML.Runtime.Data.IRow" Usage="singleValueRowMapper.GetRow (input, predicate, disposer)" />
       <MemberType>Method</MemberType>
       <Implements>
-        <InterfaceMember>M:Microsoft.ML.Runtime.Data.ISchemaBoundRowMapper.GetOutputRow(Microsoft.ML.Runtime.Data.IRow,System.Func{System.Int32,System.Boolean},System.Action@)</InterfaceMember>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IRowToRowMapper.GetRow(Microsoft.ML.Runtime.Data.IRow,System.Func{System.Int32,System.Boolean},System.Action@)</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -159,15 +159,15 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="InputSchema">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.RoleMappedSchema InputSchema { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.Data.RoleMappedSchema InputSchema" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.SchemaBindablePredictorWrapperBase.SingleValueRowMapper.InputSchema" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property InputSchema As RoleMappedSchema" />
-      <MemberSignature Language="F#" Value="member this.InputSchema : Microsoft.ML.Runtime.Data.RoleMappedSchema" Usage="Microsoft.ML.Runtime.Data.SchemaBindablePredictorWrapperBase.SingleValueRowMapper.InputSchema" />
+    <Member MemberName="InputRoleMappedSchema">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.RoleMappedSchema InputRoleMappedSchema { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.Data.RoleMappedSchema InputRoleMappedSchema" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.SchemaBindablePredictorWrapperBase.SingleValueRowMapper.InputRoleMappedSchema" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property InputRoleMappedSchema As RoleMappedSchema" />
+      <MemberSignature Language="F#" Value="member this.InputRoleMappedSchema : Microsoft.ML.Runtime.Data.RoleMappedSchema" Usage="Microsoft.ML.Runtime.Data.SchemaBindablePredictorWrapperBase.SingleValueRowMapper.InputRoleMappedSchema" />
       <MemberType>Property</MemberType>
       <Implements>
-        <InterfaceMember>P:Microsoft.ML.Runtime.Data.ISchemaBoundMapper.InputSchema</InterfaceMember>
+        <InterfaceMember>P:Microsoft.ML.Runtime.Data.ISchemaBoundMapper.InputRoleMappedSchema</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -182,15 +182,38 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OutputSchema">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.ISchema OutputSchema { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.Data.ISchema OutputSchema" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.SchemaBindablePredictorWrapperBase.SingleValueRowMapper.OutputSchema" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property OutputSchema As ISchema" />
-      <MemberSignature Language="F#" Value="member this.OutputSchema : Microsoft.ML.Runtime.Data.ISchema" Usage="Microsoft.ML.Runtime.Data.SchemaBindablePredictorWrapperBase.SingleValueRowMapper.OutputSchema" />
+    <Member MemberName="InputSchema">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.ISchema InputSchema { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.Data.ISchema InputSchema" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.SchemaBindablePredictorWrapperBase.SingleValueRowMapper.InputSchema" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property InputSchema As ISchema" />
+      <MemberSignature Language="F#" Value="member this.InputSchema : Microsoft.ML.Runtime.Data.ISchema" Usage="Microsoft.ML.Runtime.Data.SchemaBindablePredictorWrapperBase.SingleValueRowMapper.InputSchema" />
       <MemberType>Property</MemberType>
       <Implements>
-        <InterfaceMember>P:Microsoft.ML.Runtime.Data.ISchemaBoundMapper.OutputSchema</InterfaceMember>
+        <InterfaceMember>P:Microsoft.ML.Runtime.Data.IRowToRowMapper.InputSchema</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ISchema</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Schema">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.ISchema Schema { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.Data.ISchema Schema" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.SchemaBindablePredictorWrapperBase.SingleValueRowMapper.Schema" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Schema As ISchema" />
+      <MemberSignature Language="F#" Value="member this.Schema : Microsoft.ML.Runtime.Data.ISchema" Usage="Microsoft.ML.Runtime.Data.SchemaBindablePredictorWrapperBase.SingleValueRowMapper.Schema" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Runtime.Data.ISchematized.Schema</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
