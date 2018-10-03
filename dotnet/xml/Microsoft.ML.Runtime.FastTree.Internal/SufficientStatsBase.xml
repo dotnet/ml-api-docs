@@ -1,0 +1,532 @@
+﻿<Type Name="SufficientStatsBase" FullName="Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase">
+  <TypeSignature Language="C#" Value="public abstract class SufficientStatsBase" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit SufficientStatsBase extends System.Object" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase" />
+  <TypeSignature Language="VB.NET" Value="Public MustInherit Class SufficientStatsBase" />
+  <TypeSignature Language="F#" Value="type SufficientStatsBase = class" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+             These objects are stateful, reusable objects that enable the collection of sufficient
+             stats per feature flock, per node or leaf of a tree, to enable it to find the "best"
+             splits.
+            
+             Each instance of this corresponds to a single flock, but multiple of these will be created
+             per flock. Note that feature indices, whenever present, refer to the feature within the
+             particular flock the same as they do with <see cref="T:Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase" />.
+             </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected SufficientStatsBase (int features);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(int32 features) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase.#ctor(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected Sub New (features As Integer)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase : int -&gt; Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase" Usage="new Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase features" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="features" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="features">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CopyFeatureHistogram">
+      <MemberSignature Language="C#" Value="public void CopyFeatureHistogram (int subfeatureIndex, ref Microsoft.ML.Runtime.FastTree.Internal.PerBinStats[] hist);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CopyFeatureHistogram(int32 subfeatureIndex, valuetype Microsoft.ML.Runtime.FastTree.Internal.PerBinStats[]&amp; hist) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase.CopyFeatureHistogram(System.Int32,Microsoft.ML.Runtime.FastTree.Internal.PerBinStats[]@)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub CopyFeatureHistogram (subfeatureIndex As Integer, ByRef hist As PerBinStats())" />
+      <MemberSignature Language="F#" Value="member this.CopyFeatureHistogram : int *  -&gt; unit" Usage="sufficientStatsBase.CopyFeatureHistogram (subfeatureIndex, hist)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="subfeatureIndex" Type="System.Int32" />
+        <Parameter Name="hist" Type="Microsoft.ML.Runtime.FastTree.Internal.PerBinStats[]" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="subfeatureIndex">To be added.</param>
+        <param name="hist">To be added.</param>
+        <summary>
+            Get a fullcopy of histogram for one sub feature.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FillSplitCandidates">
+      <MemberSignature Language="C#" Value="public void FillSplitCandidates (Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner learner, Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner.LeafSplitCandidates leafSplitCandidates, int flock, int[] featureUseCount, double featureFirstUsePenalty, double featureReusePenalty, double minDocsInLeaf, bool hasWeights, double gainConfidenceInSquaredStandardDeviations, double entropyCoefficient);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void FillSplitCandidates(class Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner learner, class Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner/LeafSplitCandidates leafSplitCandidates, int32 flock, int32[] featureUseCount, float64 featureFirstUsePenalty, float64 featureReusePenalty, float64 minDocsInLeaf, bool hasWeights, float64 gainConfidenceInSquaredStandardDeviations, float64 entropyCoefficient) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase.FillSplitCandidates(Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner,Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner.LeafSplitCandidates,System.Int32,System.Int32[],System.Double,System.Double,System.Double,System.Boolean,System.Double,System.Double)" />
+      <MemberSignature Language="F#" Value="member this.FillSplitCandidates : Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner * Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner.LeafSplitCandidates * int * int[] * double * double * double * bool * double * double -&gt; unit" Usage="sufficientStatsBase.FillSplitCandidates (learner, leafSplitCandidates, flock, featureUseCount, featureFirstUsePenalty, featureReusePenalty, minDocsInLeaf, hasWeights, gainConfidenceInSquaredStandardDeviations, entropyCoefficient)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="learner" Type="Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner" />
+        <Parameter Name="leafSplitCandidates" Type="Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner+LeafSplitCandidates" />
+        <Parameter Name="flock" Type="System.Int32" />
+        <Parameter Name="featureUseCount" Type="System.Int32[]" />
+        <Parameter Name="featureFirstUsePenalty" Type="System.Double" />
+        <Parameter Name="featureReusePenalty" Type="System.Double" />
+        <Parameter Name="minDocsInLeaf" Type="System.Double" />
+        <Parameter Name="hasWeights" Type="System.Boolean" />
+        <Parameter Name="gainConfidenceInSquaredStandardDeviations" Type="System.Double" />
+        <Parameter Name="entropyCoefficient" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="learner">To be added.</param>
+        <param name="leafSplitCandidates">To be added.</param>
+        <param name="flock">To be added.</param>
+        <param name="featureUseCount">To be added.</param>
+        <param name="featureFirstUsePenalty">To be added.</param>
+        <param name="featureReusePenalty">To be added.</param>
+        <param name="minDocsInLeaf">To be added.</param>
+        <param name="hasWeights">To be added.</param>
+        <param name="gainConfidenceInSquaredStandardDeviations">To be added.</param>
+        <param name="entropyCoefficient">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FillSplitCandidatesCategorical">
+      <MemberSignature Language="C#" Value="public void FillSplitCandidatesCategorical (Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner learner, Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner.LeafSplitCandidates leafSplitCandidates, int flock, int[] featureUseCount, double featureFirstUsePenalty, double featureReusePenalty, double minDocsInLeaf, bool hasWeights, double gainConfidenceInSquaredStandardDeviations, double entropyCoefficient);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void FillSplitCandidatesCategorical(class Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner learner, class Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner/LeafSplitCandidates leafSplitCandidates, int32 flock, int32[] featureUseCount, float64 featureFirstUsePenalty, float64 featureReusePenalty, float64 minDocsInLeaf, bool hasWeights, float64 gainConfidenceInSquaredStandardDeviations, float64 entropyCoefficient) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase.FillSplitCandidatesCategorical(Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner,Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner.LeafSplitCandidates,System.Int32,System.Int32[],System.Double,System.Double,System.Double,System.Boolean,System.Double,System.Double)" />
+      <MemberSignature Language="F#" Value="member this.FillSplitCandidatesCategorical : Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner * Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner.LeafSplitCandidates * int * int[] * double * double * double * bool * double * double -&gt; unit" Usage="sufficientStatsBase.FillSplitCandidatesCategorical (learner, leafSplitCandidates, flock, featureUseCount, featureFirstUsePenalty, featureReusePenalty, minDocsInLeaf, hasWeights, gainConfidenceInSquaredStandardDeviations, entropyCoefficient)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="learner" Type="Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner" />
+        <Parameter Name="leafSplitCandidates" Type="Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner+LeafSplitCandidates" />
+        <Parameter Name="flock" Type="System.Int32" />
+        <Parameter Name="featureUseCount" Type="System.Int32[]" />
+        <Parameter Name="featureFirstUsePenalty" Type="System.Double" />
+        <Parameter Name="featureReusePenalty" Type="System.Double" />
+        <Parameter Name="minDocsInLeaf" Type="System.Double" />
+        <Parameter Name="hasWeights" Type="System.Boolean" />
+        <Parameter Name="gainConfidenceInSquaredStandardDeviations" Type="System.Double" />
+        <Parameter Name="entropyCoefficient" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="learner">To be added.</param>
+        <param name="leafSplitCandidates">To be added.</param>
+        <param name="flock">To be added.</param>
+        <param name="featureUseCount">To be added.</param>
+        <param name="featureFirstUsePenalty">To be added.</param>
+        <param name="featureReusePenalty">To be added.</param>
+        <param name="minDocsInLeaf">To be added.</param>
+        <param name="hasWeights">To be added.</param>
+        <param name="gainConfidenceInSquaredStandardDeviations">To be added.</param>
+        <param name="entropyCoefficient">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FillSplitCandidatesCategoricalLowPopulation">
+      <MemberSignature Language="C#" Value="public void FillSplitCandidatesCategoricalLowPopulation (Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner learner, Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner.LeafSplitCandidates leafSplitCandidates, int flock, int[] featureUseCount, double featureFirstUsePenalty, double featureReusePenalty, double minDocsInLeaf, bool hasWeights, double gainConfidenceInSquaredStandardDeviations, double entropyCoefficient);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void FillSplitCandidatesCategoricalLowPopulation(class Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner learner, class Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner/LeafSplitCandidates leafSplitCandidates, int32 flock, int32[] featureUseCount, float64 featureFirstUsePenalty, float64 featureReusePenalty, float64 minDocsInLeaf, bool hasWeights, float64 gainConfidenceInSquaredStandardDeviations, float64 entropyCoefficient) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase.FillSplitCandidatesCategoricalLowPopulation(Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner,Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner.LeafSplitCandidates,System.Int32,System.Int32[],System.Double,System.Double,System.Double,System.Boolean,System.Double,System.Double)" />
+      <MemberSignature Language="F#" Value="member this.FillSplitCandidatesCategoricalLowPopulation : Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner * Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner.LeafSplitCandidates * int * int[] * double * double * double * bool * double * double -&gt; unit" Usage="sufficientStatsBase.FillSplitCandidatesCategoricalLowPopulation (learner, leafSplitCandidates, flock, featureUseCount, featureFirstUsePenalty, featureReusePenalty, minDocsInLeaf, hasWeights, gainConfidenceInSquaredStandardDeviations, entropyCoefficient)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="learner" Type="Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner" />
+        <Parameter Name="leafSplitCandidates" Type="Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner+LeafSplitCandidates" />
+        <Parameter Name="flock" Type="System.Int32" />
+        <Parameter Name="featureUseCount" Type="System.Int32[]" />
+        <Parameter Name="featureFirstUsePenalty" Type="System.Double" />
+        <Parameter Name="featureReusePenalty" Type="System.Double" />
+        <Parameter Name="minDocsInLeaf" Type="System.Double" />
+        <Parameter Name="hasWeights" Type="System.Boolean" />
+        <Parameter Name="gainConfidenceInSquaredStandardDeviations" Type="System.Double" />
+        <Parameter Name="entropyCoefficient" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="learner">To be added.</param>
+        <param name="leafSplitCandidates">To be added.</param>
+        <param name="flock">To be added.</param>
+        <param name="featureUseCount">To be added.</param>
+        <param name="featureFirstUsePenalty">To be added.</param>
+        <param name="featureReusePenalty">To be added.</param>
+        <param name="minDocsInLeaf">To be added.</param>
+        <param name="hasWeights">To be added.</param>
+        <param name="gainConfidenceInSquaredStandardDeviations">To be added.</param>
+        <param name="entropyCoefficient">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FillSplitCandidatesCategoricalNeighborBundling">
+      <MemberSignature Language="C#" Value="public void FillSplitCandidatesCategoricalNeighborBundling (Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner learner, Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner.LeafSplitCandidates leafSplitCandidates, int flock, int[] featureUseCount, double featureFirstUsePenalty, double featureReusePenalty, double minDocsInLeaf, bool hasWeights, double gainConfidenceInSquaredStandardDeviations, double entropyCoefficient);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void FillSplitCandidatesCategoricalNeighborBundling(class Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner learner, class Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner/LeafSplitCandidates leafSplitCandidates, int32 flock, int32[] featureUseCount, float64 featureFirstUsePenalty, float64 featureReusePenalty, float64 minDocsInLeaf, bool hasWeights, float64 gainConfidenceInSquaredStandardDeviations, float64 entropyCoefficient) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase.FillSplitCandidatesCategoricalNeighborBundling(Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner,Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner.LeafSplitCandidates,System.Int32,System.Int32[],System.Double,System.Double,System.Double,System.Boolean,System.Double,System.Double)" />
+      <MemberSignature Language="F#" Value="member this.FillSplitCandidatesCategoricalNeighborBundling : Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner * Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner.LeafSplitCandidates * int * int[] * double * double * double * bool * double * double -&gt; unit" Usage="sufficientStatsBase.FillSplitCandidatesCategoricalNeighborBundling (learner, leafSplitCandidates, flock, featureUseCount, featureFirstUsePenalty, featureReusePenalty, minDocsInLeaf, hasWeights, gainConfidenceInSquaredStandardDeviations, entropyCoefficient)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="learner" Type="Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner" />
+        <Parameter Name="leafSplitCandidates" Type="Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner+LeafSplitCandidates" />
+        <Parameter Name="flock" Type="System.Int32" />
+        <Parameter Name="featureUseCount" Type="System.Int32[]" />
+        <Parameter Name="featureFirstUsePenalty" Type="System.Double" />
+        <Parameter Name="featureReusePenalty" Type="System.Double" />
+        <Parameter Name="minDocsInLeaf" Type="System.Double" />
+        <Parameter Name="hasWeights" Type="System.Boolean" />
+        <Parameter Name="gainConfidenceInSquaredStandardDeviations" Type="System.Double" />
+        <Parameter Name="entropyCoefficient" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="learner">To be added.</param>
+        <param name="leafSplitCandidates">To be added.</param>
+        <param name="flock">To be added.</param>
+        <param name="featureUseCount">To be added.</param>
+        <param name="featureFirstUsePenalty">To be added.</param>
+        <param name="featureReusePenalty">To be added.</param>
+        <param name="minDocsInLeaf">To be added.</param>
+        <param name="hasWeights">To be added.</param>
+        <param name="gainConfidenceInSquaredStandardDeviations">To be added.</param>
+        <param name="entropyCoefficient">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Flock">
+      <MemberSignature Language="C#" Value="public abstract Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase Flock { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase Flock" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase.Flock" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride ReadOnly Property Flock As FeatureFlockBase" />
+      <MemberSignature Language="F#" Value="member this.Flock : Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase" Usage="Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase.Flock" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.FastTree.Internal.FeatureFlockBase</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetBinGradient">
+      <MemberSignature Language="C#" Value="protected abstract double GetBinGradient (int featureIndex, double bias);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance float64 GetBinGradient(int32 featureIndex, float64 bias) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase.GetBinGradient(System.Int32,System.Double)" />
+      <MemberSignature Language="VB.NET" Value="Protected MustOverride Function GetBinGradient (featureIndex As Integer, bias As Double) As Double" />
+      <MemberSignature Language="F#" Value="abstract member GetBinGradient : int * double -&gt; double" Usage="sufficientStatsBase.GetBinGradient (featureIndex, bias)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureIndex" Type="System.Int32" />
+        <Parameter Name="bias" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="featureIndex">To be added.</param>
+        <param name="bias">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetBinStats">
+      <MemberSignature Language="C#" Value="protected abstract Microsoft.ML.Runtime.FastTree.Internal.PerBinStats GetBinStats (int featureIndex);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype Microsoft.ML.Runtime.FastTree.Internal.PerBinStats GetBinStats(int32 featureIndex) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase.GetBinStats(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected MustOverride Function GetBinStats (featureIndex As Integer) As PerBinStats" />
+      <MemberSignature Language="F#" Value="abstract member GetBinStats : int -&gt; Microsoft.ML.Runtime.FastTree.Internal.PerBinStats" Usage="sufficientStatsBase.GetBinStats featureIndex" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.FastTree.Internal.PerBinStats</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureIndex" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="featureIndex">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetMaxBorder">
+      <MemberSignature Language="C#" Value="protected abstract int GetMaxBorder (int featureIndex);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance int32 GetMaxBorder(int32 featureIndex) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase.GetMaxBorder(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected MustOverride Function GetMaxBorder (featureIndex As Integer) As Integer" />
+      <MemberSignature Language="F#" Value="abstract member GetMaxBorder : int -&gt; int" Usage="sufficientStatsBase.GetMaxBorder featureIndex" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureIndex" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="featureIndex">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetMinBorder">
+      <MemberSignature Language="C#" Value="protected abstract int GetMinBorder (int featureIndexInFlock);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance int32 GetMinBorder(int32 featureIndexInFlock) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase.GetMinBorder(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected MustOverride Function GetMinBorder (featureIndexInFlock As Integer) As Integer" />
+      <MemberSignature Language="F#" Value="abstract member GetMinBorder : int -&gt; int" Usage="sufficientStatsBase.GetMinBorder featureIndexInFlock" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureIndexInFlock" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="featureIndexInFlock">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsSplittable">
+      <MemberSignature Language="C#" Value="public readonly bool[] IsSplittable;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly bool[] IsSplittable" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase.IsSplittable" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly IsSplittable As Boolean() " />
+      <MemberSignature Language="F#" Value="val mutable IsSplittable : bool[]" Usage="Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase.IsSplittable" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            An array as large as there are count of features in the corresponding flock. Used by
+            <see cref="T:Microsoft.ML.Runtime.FastTree.Internal.LeastSquaresRegressionTreeLearner" /> to indicate whether a particular
+            feature has been judged to be potentially splittable or not.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SizeInBytes">
+      <MemberSignature Language="C#" Value="public abstract long SizeInBytes ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance int64 SizeInBytes() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase.SizeInBytes" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function SizeInBytes () As Long" />
+      <MemberSignature Language="F#" Value="abstract member SizeInBytes : unit -&gt; int64" Usage="sufficientStatsBase.SizeInBytes " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int64</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            An approximation of the size in bytes used by this structure. Used for tracking
+            and memory size estimation purposes.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Subtract">
+      <MemberSignature Language="C#" Value="public void Subtract (Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase other);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Subtract(class Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase other) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase.Subtract(Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Subtract (other As SufficientStatsBase)" />
+      <MemberSignature Language="F#" Value="member this.Subtract : Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase -&gt; unit" Usage="sufficientStatsBase.Subtract other" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="other" Type="Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase" />
+      </Parameters>
+      <Docs>
+        <param name="other">To be added.</param>
+        <summary>
+            Subtracts one sufficient statistics from another. Note that this other
+            sufficient statistics object must be over the same feature flock in order
+            to be meaningful, as well as have undergone <see cref="M:Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase.Sumup(System.Int32,System.Boolean[],System.Int32,System.Double,System.Double,System.Double[],System.Double[],System.Int32[])" /> under
+            the same set of active features.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SubtractCore">
+      <MemberSignature Language="C#" Value="protected abstract void SubtractCore (Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase other);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void SubtractCore(class Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase other) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase.SubtractCore(Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase)" />
+      <MemberSignature Language="VB.NET" Value="Protected MustOverride Sub SubtractCore (other As SufficientStatsBase)" />
+      <MemberSignature Language="F#" Value="abstract member SubtractCore : Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase -&gt; unit" Usage="sufficientStatsBase.SubtractCore other" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="other" Type="Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase" />
+      </Parameters>
+      <Docs>
+        <param name="other">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Sumup">
+      <MemberSignature Language="C#" Value="public void Sumup (int featureOffset, bool[] active, int numDocsInLeaf, double sumTargets, double sumWeights, double[] outputs, double[] weights, int[] docIndices);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Sumup(int32 featureOffset, bool[] active, int32 numDocsInLeaf, float64 sumTargets, float64 sumWeights, float64[] outputs, float64[] weights, int32[] docIndices) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase.Sumup(System.Int32,System.Boolean[],System.Int32,System.Double,System.Double,System.Double[],System.Double[],System.Int32[])" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Sumup (featureOffset As Integer, active As Boolean(), numDocsInLeaf As Integer, sumTargets As Double, sumWeights As Double, outputs As Double(), weights As Double(), docIndices As Integer())" />
+      <MemberSignature Language="F#" Value="member this.Sumup : int * bool[] * int * double * double * double[] * double[] * int[] -&gt; unit" Usage="sufficientStatsBase.Sumup (featureOffset, active, numDocsInLeaf, sumTargets, sumWeights, outputs, weights, docIndices)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureOffset" Type="System.Int32" />
+        <Parameter Name="active" Type="System.Boolean[]" />
+        <Parameter Name="numDocsInLeaf" Type="System.Int32" />
+        <Parameter Name="sumTargets" Type="System.Double" />
+        <Parameter Name="sumWeights" Type="System.Double" />
+        <Parameter Name="outputs" Type="System.Double[]" />
+        <Parameter Name="weights" Type="System.Double[]" />
+        <Parameter Name="docIndices" Type="System.Int32[]" />
+      </Parameters>
+      <Docs>
+        <param name="featureOffset">Offset into <paramref name="active" /> where we should start querying active stats</param>
+        <param name="active">The indicator array of whether features are active or not, logically starting for
+            this flock at <paramref name="featureOffset" />, where after this </param>
+        <param name="numDocsInLeaf">Minimum documents total in this leaf</param>
+        <param name="sumTargets">The sum of the targets for this leaf</param>
+        <param name="sumWeights">The sum of the weights for this leaf</param>
+        <param name="outputs">The target values, indexed by <paramref name="numDocsInLeaf" /></param>
+        <param name="weights"></param>
+        <param name="docIndices">The first <paramref name="numDocsInLeaf" /> entries indicate the row indices
+            in this leaf, and these row indices are used to </param>
+        <summary>
+            Performs the accumulation of sufficient statistics for active features within a flock.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SumupCore">
+      <MemberSignature Language="C#" Value="protected abstract void SumupCore (int featureOffset, bool[] active, int numDocsInLeaf, double sumTargets, double sumWeights, double[] outputs, double[] weights, int[] docIndices);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void SumupCore(int32 featureOffset, bool[] active, int32 numDocsInLeaf, float64 sumTargets, float64 sumWeights, float64[] outputs, float64[] weights, int32[] docIndices) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase.SumupCore(System.Int32,System.Boolean[],System.Int32,System.Double,System.Double,System.Double[],System.Double[],System.Int32[])" />
+      <MemberSignature Language="VB.NET" Value="Protected MustOverride Sub SumupCore (featureOffset As Integer, active As Boolean(), numDocsInLeaf As Integer, sumTargets As Double, sumWeights As Double, outputs As Double(), weights As Double(), docIndices As Integer())" />
+      <MemberSignature Language="F#" Value="abstract member SumupCore : int * bool[] * int * double * double * double[] * double[] * int[] -&gt; unit" Usage="sufficientStatsBase.SumupCore (featureOffset, active, numDocsInLeaf, sumTargets, sumWeights, outputs, weights, docIndices)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureOffset" Type="System.Int32" />
+        <Parameter Name="active" Type="System.Boolean[]" />
+        <Parameter Name="numDocsInLeaf" Type="System.Int32" />
+        <Parameter Name="sumTargets" Type="System.Double" />
+        <Parameter Name="sumWeights" Type="System.Double" />
+        <Parameter Name="outputs" Type="System.Double[]" />
+        <Parameter Name="weights" Type="System.Double[]" />
+        <Parameter Name="docIndices" Type="System.Int32[]" />
+      </Parameters>
+      <Docs>
+        <param name="featureOffset">To be added.</param>
+        <param name="active">To be added.</param>
+        <param name="numDocsInLeaf">To be added.</param>
+        <param name="sumTargets">To be added.</param>
+        <param name="sumWeights">To be added.</param>
+        <param name="outputs">To be added.</param>
+        <param name="weights">To be added.</param>
+        <param name="docIndices">To be added.</param>
+        <summary>
+            The core implementation called from <see cref="M:Microsoft.ML.Runtime.FastTree.Internal.SufficientStatsBase.Sumup(System.Int32,System.Boolean[],System.Int32,System.Double,System.Double,System.Double[],System.Double[],System.Int32[])" />.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

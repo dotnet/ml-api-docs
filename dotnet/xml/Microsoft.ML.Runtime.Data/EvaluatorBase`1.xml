@@ -1,0 +1,351 @@
+﻿<Type Name="EvaluatorBase&lt;TAgg&gt;" FullName="Microsoft.ML.Runtime.Data.EvaluatorBase&lt;TAgg&gt;">
+  <TypeSignature Language="C#" Value="public abstract class EvaluatorBase&lt;TAgg&gt; : Microsoft.ML.Runtime.Data.IEvaluator where TAgg : EvaluatorBase&lt;TAgg&gt;.AggregatorBase" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit EvaluatorBase`1&lt;(class Microsoft.ML.Runtime.Data.EvaluatorBase`1/AggregatorBase&lt;!TAgg&gt;) TAgg&gt; extends System.Object implements class Microsoft.ML.Runtime.Data.IEvaluator" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.EvaluatorBase`1" />
+  <TypeSignature Language="VB.NET" Value="Public MustInherit Class EvaluatorBase(Of TAgg)&#xA;Implements IEvaluator" />
+  <TypeSignature Language="F#" Value="type EvaluatorBase&lt;'Agg (requires 'Agg :&gt; EvaluatorBase&lt;'Agg&gt;.AggregatorBase)&gt; = class&#xA;    interface IEvaluator" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Data</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <TypeParameters>
+    <TypeParameter Name="TAgg">
+      <Constraints>
+        <BaseTypeName>Microsoft.ML.Runtime.Data.EvaluatorBase&lt;TAgg&gt;+AggregatorBase</BaseTypeName>
+      </Constraints>
+    </TypeParameter>
+  </TypeParameters>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.Data.IEvaluator</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <typeparam name="TAgg">To be added.</typeparam>
+    <summary>
+            This is a base class for TLC evaluators. It implements both of the <see cref="T:Microsoft.ML.Runtime.Data.IEvaluator" /> methods: <see cref="M:Microsoft.ML.Runtime.Data.EvaluatorBase`1.Evaluate(Microsoft.ML.Runtime.Data.RoleMappedData)" /> and
+             <see cref="M:Microsoft.ML.Runtime.Data.EvaluatorBase`1.GetPerInstanceMetrics(Microsoft.ML.Runtime.Data.RoleMappedData)" />. Note that the input <see cref="T:Microsoft.ML.Runtime.Data.RoleMappedData" /> is assumed to contain all the column
+            roles needed for evaluation, including the score column.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected EvaluatorBase (Microsoft.ML.Runtime.IHostEnvironment env, string registrationName);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string registrationName) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.EvaluatorBase`1.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Protected Sub New (env As IHostEnvironment, registrationName As String)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.EvaluatorBase&lt;'Agg (requires 'Agg :&gt; Microsoft.ML.Runtime.Data.EvaluatorBase&lt;'Agg&gt;.AggregatorBase)&gt; : Microsoft.ML.Runtime.IHostEnvironment * string -&gt; Microsoft.ML.Runtime.Data.EvaluatorBase&lt;'Agg (requires 'Agg :&gt; Microsoft.ML.Runtime.Data.EvaluatorBase&lt;'Agg&gt;.AggregatorBase)&gt;" Usage="new Microsoft.ML.Runtime.Data.EvaluatorBase&lt;'Agg (requires 'Agg :&gt; Microsoft.ML.Runtime.Data.EvaluatorBase&lt;'Agg&gt;.AggregatorBase)&gt; (env, registrationName)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="registrationName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="registrationName">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CheckColumnTypes">
+      <MemberSignature Language="C#" Value="protected void CheckColumnTypes (Microsoft.ML.Runtime.Data.RoleMappedSchema schema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void CheckColumnTypes(class Microsoft.ML.Runtime.Data.RoleMappedSchema schema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.EvaluatorBase`1.CheckColumnTypes(Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
+      <MemberSignature Language="VB.NET" Value="Protected Sub CheckColumnTypes (schema As RoleMappedSchema)" />
+      <MemberSignature Language="F#" Value="member this.CheckColumnTypes : Microsoft.ML.Runtime.Data.RoleMappedSchema -&gt; unit" Usage="evaluatorBase.CheckColumnTypes schema" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="schema" Type="Microsoft.ML.Runtime.Data.RoleMappedSchema" />
+      </Parameters>
+      <Docs>
+        <param name="schema">To be added.</param>
+        <summary>
+            Checks the column types of the evaluator's input columns. The base class implementation checks only the type
+            of the weight column, and all other columns should be checked by the deriving classes in <see cref="M:Microsoft.ML.Runtime.Data.EvaluatorBase`1.CheckCustomColumnTypesCore(Microsoft.ML.Runtime.Data.RoleMappedSchema)" />.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CheckCustomColumnTypesCore">
+      <MemberSignature Language="C#" Value="protected virtual void CheckCustomColumnTypesCore (Microsoft.ML.Runtime.Data.RoleMappedSchema schema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void CheckCustomColumnTypesCore(class Microsoft.ML.Runtime.Data.RoleMappedSchema schema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.EvaluatorBase`1.CheckCustomColumnTypesCore(Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overridable Sub CheckCustomColumnTypesCore (schema As RoleMappedSchema)" />
+      <MemberSignature Language="F#" Value="abstract member CheckCustomColumnTypesCore : Microsoft.ML.Runtime.Data.RoleMappedSchema -&gt; unit&#xA;override this.CheckCustomColumnTypesCore : Microsoft.ML.Runtime.Data.RoleMappedSchema -&gt; unit" Usage="evaluatorBase.CheckCustomColumnTypesCore schema" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="schema" Type="Microsoft.ML.Runtime.Data.RoleMappedSchema" />
+      </Parameters>
+      <Docs>
+        <param name="schema">To be added.</param>
+        <summary>
+            Check the types of any other columns needed by the evaluator. Only override if the evaluator uses
+            columns other than label, score and weight.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CheckScoreAndLabelTypes">
+      <MemberSignature Language="C#" Value="protected abstract void CheckScoreAndLabelTypes (Microsoft.ML.Runtime.Data.RoleMappedSchema schema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void CheckScoreAndLabelTypes(class Microsoft.ML.Runtime.Data.RoleMappedSchema schema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.EvaluatorBase`1.CheckScoreAndLabelTypes(Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
+      <MemberSignature Language="VB.NET" Value="Protected MustOverride Sub CheckScoreAndLabelTypes (schema As RoleMappedSchema)" />
+      <MemberSignature Language="F#" Value="abstract member CheckScoreAndLabelTypes : Microsoft.ML.Runtime.Data.RoleMappedSchema -&gt; unit" Usage="evaluatorBase.CheckScoreAndLabelTypes schema" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="schema" Type="Microsoft.ML.Runtime.Data.RoleMappedSchema" />
+      </Parameters>
+      <Docs>
+        <param name="schema">To be added.</param>
+        <summary>
+            Check that the types of the score and label columns are as expected by the evaluator. The <see cref="T:Microsoft.ML.Runtime.Data.RoleMappedSchema" />
+            is assumed to contain the label column (if it exists) and the score column.
+            Access the label column with the <see cref="P:Microsoft.ML.Runtime.Data.RoleMappedSchema.Label" /> property, and the score column with the
+            <see cref="M:Microsoft.ML.Runtime.Data.RoleMappedSchema.GetUniqueColumn(Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole)" /> or <see cref="M:Microsoft.ML.Runtime.Data.RoleMappedSchema.GetColumns(Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole)" /> methods.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Evaluate">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.Dictionary&lt;string,Microsoft.ML.Runtime.Data.IDataView&gt; Evaluate (Microsoft.ML.Runtime.Data.RoleMappedData data);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Collections.Generic.Dictionary`2&lt;string, class Microsoft.ML.Runtime.Data.IDataView&gt; Evaluate(class Microsoft.ML.Runtime.Data.RoleMappedData data) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.EvaluatorBase`1.Evaluate(Microsoft.ML.Runtime.Data.RoleMappedData)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Evaluate (data As RoleMappedData) As Dictionary(Of String, IDataView)" />
+      <MemberSignature Language="F#" Value="abstract member Evaluate : Microsoft.ML.Runtime.Data.RoleMappedData -&gt; System.Collections.Generic.Dictionary&lt;string, Microsoft.ML.Runtime.Data.IDataView&gt;&#xA;override this.Evaluate : Microsoft.ML.Runtime.Data.RoleMappedData -&gt; System.Collections.Generic.Dictionary&lt;string, Microsoft.ML.Runtime.Data.IDataView&gt;" Usage="evaluatorBase.Evaluate data" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IEvaluator.Evaluate(Microsoft.ML.Runtime.Data.RoleMappedData)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.Dictionary&lt;System.String,Microsoft.ML.Runtime.Data.IDataView&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data" Type="Microsoft.ML.Runtime.Data.RoleMappedData" />
+      </Parameters>
+      <Docs>
+        <param name="data">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetActiveColsCore">
+      <MemberSignature Language="C#" Value="protected virtual Func&lt;int,bool&gt; GetActiveColsCore (Microsoft.ML.Runtime.Data.RoleMappedSchema schema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class System.Func`2&lt;int32, bool&gt; GetActiveColsCore(class Microsoft.ML.Runtime.Data.RoleMappedSchema schema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.EvaluatorBase`1.GetActiveColsCore(Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overridable Function GetActiveColsCore (schema As RoleMappedSchema) As Func(Of Integer, Boolean)" />
+      <MemberSignature Language="F#" Value="abstract member GetActiveColsCore : Microsoft.ML.Runtime.Data.RoleMappedSchema -&gt; Func&lt;int, bool&gt;&#xA;override this.GetActiveColsCore : Microsoft.ML.Runtime.Data.RoleMappedSchema -&gt; Func&lt;int, bool&gt;" Usage="evaluatorBase.GetActiveColsCore schema" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Func&lt;System.Int32,System.Boolean&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="schema" Type="Microsoft.ML.Runtime.Data.RoleMappedSchema" />
+      </Parameters>
+      <Docs>
+        <param name="schema">To be added.</param>
+        <summary>
+            Used in the Evaluate() method, to get the predicate for cursoring over the data.
+            The base class implementation activates the score column, the label column if it exists, the weight column if it exists
+            and the stratification columns.
+            Override if other input columns need to be activated.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetAggregatorConsolidationFuncs">
+      <MemberSignature Language="C#" Value="protected abstract void GetAggregatorConsolidationFuncs (TAgg aggregator, Microsoft.ML.Runtime.Data.EvaluatorBase&lt;TAgg&gt;.AggregatorDictionaryBase[] dictionaries, out Action&lt;uint,ReadOnlyMemory&lt;char&gt;,TAgg&gt; addAgg, out Func&lt;System.Collections.Generic.Dictionary&lt;string,Microsoft.ML.Runtime.Data.IDataView&gt;&gt; consolidate);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void GetAggregatorConsolidationFuncs(!TAgg aggregator, class Microsoft.ML.Runtime.Data.EvaluatorBase`1/AggregatorDictionaryBase&lt;!TAgg&gt;[] dictionaries, [out] class System.Action`3&lt;unsigned int32, valuetype System.ReadOnlyMemory`1&lt;char&gt;, !TAgg&gt;&amp; addAgg, [out] class System.Func`1&lt;class System.Collections.Generic.Dictionary`2&lt;string, class Microsoft.ML.Runtime.Data.IDataView&gt;&gt;&amp; consolidate) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.EvaluatorBase`1.GetAggregatorConsolidationFuncs(`0,Microsoft.ML.Runtime.Data.EvaluatorBase`1.AggregatorDictionaryBase{`0}[],System.Action{System.UInt32,System.ReadOnlyMemory{System.Char},`0}@,System.Func{System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView}}@)" />
+      <MemberSignature Language="VB.NET" Value="Protected MustOverride Sub GetAggregatorConsolidationFuncs (aggregator As TAgg, dictionaries As EvaluatorBase(Of TAgg).AggregatorDictionaryBase(), ByRef addAgg As Action(Of UInteger, ReadOnlyMemory(Of Char), TAgg), ByRef consolidate As Func(Of Dictionary(Of String, IDataView)))" />
+      <MemberSignature Language="F#" Value="abstract member GetAggregatorConsolidationFuncs : 'Agg * Microsoft.ML.Runtime.Data.EvaluatorBase&lt;'Agg (requires 'Agg :&gt; Microsoft.ML.Runtime.Data.EvaluatorBase&lt;'Agg&gt;.AggregatorBase)&gt;.AggregatorDictionaryBase[] *  *  -&gt; unit" Usage="evaluatorBase.GetAggregatorConsolidationFuncs (aggregator, dictionaries, addAgg, consolidate)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="aggregator" Type="TAgg" />
+        <Parameter Name="dictionaries" Type="Microsoft.ML.Runtime.Data.EvaluatorBase&lt;TAgg&gt;+AggregatorDictionaryBase[]" />
+        <Parameter Name="addAgg" Type="System.Action&lt;System.UInt32,System.ReadOnlyMemory&lt;System.Char&gt;,TAgg&gt;" RefType="out" />
+        <Parameter Name="consolidate" Type="System.Func&lt;System.Collections.Generic.Dictionary&lt;System.String,Microsoft.ML.Runtime.Data.IDataView&gt;&gt;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="aggregator">To be added.</param>
+        <param name="dictionaries">To be added.</param>
+        <param name="addAgg">To be added.</param>
+        <param name="consolidate">To be added.</param>
+        <summary>
+            This method returns two functions used to create the data views of metrics computed by the different
+            aggregators (the overall one, and any stratified ones if they exist). The <paramref name="addAgg" />
+            function is called for every aggregator, and it is where the aggregators should finish their aggregations
+            and the aggregator results should be stored. The <paramref name="consolidate" /> function
+            is called after <paramref name="addAgg" /> has been called on all the aggregators, and it returns
+            the dictionary of metric data views.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetAggregatorCore">
+      <MemberSignature Language="C#" Value="protected abstract TAgg GetAggregatorCore (Microsoft.ML.Runtime.Data.RoleMappedSchema schema, string stratName);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance !TAgg GetAggregatorCore(class Microsoft.ML.Runtime.Data.RoleMappedSchema schema, string stratName) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.EvaluatorBase`1.GetAggregatorCore(Microsoft.ML.Runtime.Data.RoleMappedSchema,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Protected MustOverride Function GetAggregatorCore (schema As RoleMappedSchema, stratName As String) As TAgg" />
+      <MemberSignature Language="F#" Value="abstract member GetAggregatorCore : Microsoft.ML.Runtime.Data.RoleMappedSchema * string -&gt; 'Agg" Usage="evaluatorBase.GetAggregatorCore (schema, stratName)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>TAgg</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="schema" Type="Microsoft.ML.Runtime.Data.RoleMappedSchema" />
+        <Parameter Name="stratName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="schema">To be added.</param>
+        <param name="stratName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetKeyValueGetter">
+      <MemberSignature Language="C#" Value="protected Microsoft.ML.Runtime.Data.ValueGetter&lt;Microsoft.ML.Runtime.Data.VBuffer&lt;ReadOnlyMemory&lt;char&gt;&gt;&gt; GetKeyValueGetter (Microsoft.ML.Runtime.Data.EvaluatorBase&lt;TAgg&gt;.AggregatorDictionaryBase[] dictionaries);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance class Microsoft.ML.Runtime.Data.ValueGetter`1&lt;valuetype Microsoft.ML.Runtime.Data.VBuffer`1&lt;valuetype System.ReadOnlyMemory`1&lt;char&gt;&gt;&gt; GetKeyValueGetter(class Microsoft.ML.Runtime.Data.EvaluatorBase`1/AggregatorDictionaryBase&lt;!TAgg&gt;[] dictionaries) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.EvaluatorBase`1.GetKeyValueGetter(Microsoft.ML.Runtime.Data.EvaluatorBase`1.AggregatorDictionaryBase{`0}[])" />
+      <MemberSignature Language="VB.NET" Value="Protected Function GetKeyValueGetter (dictionaries As EvaluatorBase(Of TAgg).AggregatorDictionaryBase()) As ValueGetter(Of VBuffer(Of ReadOnlyMemory(Of Char)))" />
+      <MemberSignature Language="F#" Value="member this.GetKeyValueGetter : Microsoft.ML.Runtime.Data.EvaluatorBase&lt;'Agg (requires 'Agg :&gt; Microsoft.ML.Runtime.Data.EvaluatorBase&lt;'Agg&gt;.AggregatorBase)&gt;.AggregatorDictionaryBase[] -&gt; Microsoft.ML.Runtime.Data.ValueGetter&lt;Microsoft.ML.Runtime.Data.VBuffer&lt;ReadOnlyMemory&lt;char&gt;&gt;&gt;" Usage="evaluatorBase.GetKeyValueGetter dictionaries" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ValueGetter&lt;Microsoft.ML.Runtime.Data.VBuffer&lt;System.ReadOnlyMemory&lt;System.Char&gt;&gt;&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="dictionaries" Type="Microsoft.ML.Runtime.Data.EvaluatorBase&lt;TAgg&gt;+AggregatorDictionaryBase[]" />
+      </Parameters>
+      <Docs>
+        <param name="dictionaries">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetOverallMetricColumns">
+      <MemberSignature Language="C#" Value="public abstract System.Collections.Generic.IEnumerable&lt;Microsoft.ML.Runtime.Data.MetricColumn&gt; GetOverallMetricColumns ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Collections.Generic.IEnumerable`1&lt;class Microsoft.ML.Runtime.Data.MetricColumn&gt; GetOverallMetricColumns() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.EvaluatorBase`1.GetOverallMetricColumns" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function GetOverallMetricColumns () As IEnumerable(Of MetricColumn)" />
+      <MemberSignature Language="F#" Value="abstract member GetOverallMetricColumns : unit -&gt; seq&lt;Microsoft.ML.Runtime.Data.MetricColumn&gt;" Usage="evaluatorBase.GetOverallMetricColumns " />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IEvaluator.GetOverallMetricColumns</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;Microsoft.ML.Runtime.Data.MetricColumn&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetPerInstanceMetrics">
+      <MemberSignature Language="C#" Value="public abstract Microsoft.ML.Runtime.Data.IDataTransform GetPerInstanceMetrics (Microsoft.ML.Runtime.Data.RoleMappedData data);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IDataTransform GetPerInstanceMetrics(class Microsoft.ML.Runtime.Data.RoleMappedData data) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.EvaluatorBase`1.GetPerInstanceMetrics(Microsoft.ML.Runtime.Data.RoleMappedData)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function GetPerInstanceMetrics (data As RoleMappedData) As IDataTransform" />
+      <MemberSignature Language="F#" Value="abstract member GetPerInstanceMetrics : Microsoft.ML.Runtime.Data.RoleMappedData -&gt; Microsoft.ML.Runtime.Data.IDataTransform" Usage="evaluatorBase.GetPerInstanceMetrics data" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IEvaluator.GetPerInstanceMetrics(Microsoft.ML.Runtime.Data.RoleMappedData)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data" Type="Microsoft.ML.Runtime.Data.RoleMappedData" />
+      </Parameters>
+      <Docs>
+        <param name="data">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Host">
+      <MemberSignature Language="C#" Value="protected readonly Microsoft.ML.Runtime.IHost Host;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly class Microsoft.ML.Runtime.IHost Host" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Data.EvaluatorBase`1.Host" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly Host As IHost " />
+      <MemberSignature Language="F#" Value="val mutable Host : Microsoft.ML.Runtime.IHost" Usage="Microsoft.ML.Runtime.Data.EvaluatorBase&lt;'Agg (requires 'Agg :&gt; Microsoft.ML.Runtime.Data.EvaluatorBase&lt;'Agg&gt;.AggregatorBase)&gt;.Host" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.IHost</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

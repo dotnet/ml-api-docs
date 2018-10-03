@@ -1,0 +1,132 @@
+﻿<Type Name="Pkpd" FullName="Microsoft.ML.Runtime.Learners.Pkpd">
+  <TypeSignature Language="C#" Value="public sealed class Pkpd : Microsoft.ML.Runtime.Learners.MetaMulticlassTrainer&lt;Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.PkpdPredictor&gt;,Microsoft.ML.Runtime.Learners.PkpdPredictor&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit Pkpd extends Microsoft.ML.Runtime.Learners.MetaMulticlassTrainer`2&lt;class Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer`1&lt;class Microsoft.ML.Runtime.Learners.PkpdPredictor&gt;, class Microsoft.ML.Runtime.Learners.PkpdPredictor&gt;" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Learners.Pkpd" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class Pkpd&#xA;Inherits MetaMulticlassTrainer(Of MulticlassPredictionTransformer(Of PkpdPredictor), PkpdPredictor)" />
+  <TypeSignature Language="F#" Value="type Pkpd = class&#xA;    inherit MetaMulticlassTrainer&lt;MulticlassPredictionTransformer&lt;PkpdPredictor&gt;, PkpdPredictor&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Microsoft.ML.Runtime.Learners.MetaMulticlassTrainer&lt;Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.PkpdPredictor&gt;,Microsoft.ML.Runtime.Learners.PkpdPredictor&gt;</BaseTypeName>
+    <BaseTypeArguments>
+      <BaseTypeArgument TypeParamName="TTransformer">Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.PkpdPredictor&gt;</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TModel">Microsoft.ML.Runtime.Learners.PkpdPredictor</BaseTypeArgument>
+    </BaseTypeArguments>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+             In this strategy, a binary classification algorithm is trained on each pair of classes.
+             The pairs are unordered but created with replacement: so, if there were three classes, 0, 1,
+             2, we would train classifiers for the pairs (0,0), (0,1), (0,2), (1,1), (1,2),
+             and(2,2). For each binary classifier, an input data point is considered a
+             positive example if it is in either of the two classes in the pair, and a
+             negative example otherwise. At prediction time, the probabilities for each
+             pair of classes is considered as the probability of being in either class of
+             the pair given the data, and the final predictive probabilities out of that
+             per class are calculated given the probability that an example is in any given
+             pair.
+            
+             These two can allow you to exploit trainers that do not naturally have a
+             multiclass option, e.g., using the Runtime.FastTree.FastTreeBinaryClassificationTrainer
+             to solve a multiclass problem.
+             Alternately, it can allow ML.NET to solve a "simpler" problem even in the cases
+             where the trainer has a multiclass option, but using it directly is not
+             practical due to, usually, memory constraints.For example, while a multiclass
+             logistic regression is a more principled way to solve a multiclass problem, it
+             requires that the learner store a lot more intermediate state in the form of
+             L-BFGS history for all classes *simultaneously*, rather than just one-by-one
+             as would be needed for OVA.
+             </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Pkpd (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Training.ITrainerEstimator&lt;Microsoft.ML.Runtime.ISingleFeaturePredictionTransformer&lt;Microsoft.ML.Runtime.IPredictorProducing&lt;float&gt;&gt;,Microsoft.ML.Runtime.IPredictorProducing&lt;float&gt;&gt; binaryEstimator, string labelColumn = &quot;Label&quot;, bool imputeMissingLabelsAsNegative = false, Microsoft.ML.Runtime.Internal.Calibration.ICalibratorTrainer calibrator = null, int maxCalibrationExamples = 1000000000);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Training.ITrainerEstimator`2&lt;class Microsoft.ML.Runtime.ISingleFeaturePredictionTransformer`1&lt;class Microsoft.ML.Runtime.IPredictorProducing`1&lt;float32&gt;&gt;, class Microsoft.ML.Runtime.IPredictorProducing`1&lt;float32&gt;&gt; binaryEstimator, string labelColumn, bool imputeMissingLabelsAsNegative, class Microsoft.ML.Runtime.Internal.Calibration.ICalibratorTrainer calibrator, int32 maxCalibrationExamples) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.Pkpd.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Training.ITrainerEstimator{Microsoft.ML.Runtime.ISingleFeaturePredictionTransformer{Microsoft.ML.Runtime.IPredictorProducing{System.Single}},Microsoft.ML.Runtime.IPredictorProducing{System.Single}},System.String,System.Boolean,Microsoft.ML.Runtime.Internal.Calibration.ICalibratorTrainer,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, binaryEstimator As ITrainerEstimator(Of ISingleFeaturePredictionTransformer(Of IPredictorProducing(Of Single)), IPredictorProducing(Of Single)), Optional labelColumn As String = &quot;Label&quot;, Optional imputeMissingLabelsAsNegative As Boolean = false, Optional calibrator As ICalibratorTrainer = null, Optional maxCalibrationExamples As Integer = 1000000000)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Learners.Pkpd : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Training.ITrainerEstimator&lt;Microsoft.ML.Runtime.ISingleFeaturePredictionTransformer&lt;Microsoft.ML.Runtime.IPredictorProducing&lt;single&gt;&gt;, Microsoft.ML.Runtime.IPredictorProducing&lt;single&gt;&gt; * string * bool * Microsoft.ML.Runtime.Internal.Calibration.ICalibratorTrainer * int -&gt; Microsoft.ML.Runtime.Learners.Pkpd" Usage="new Microsoft.ML.Runtime.Learners.Pkpd (env, binaryEstimator, labelColumn, imputeMissingLabelsAsNegative, calibrator, maxCalibrationExamples)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="binaryEstimator" Type="Microsoft.ML.Runtime.Training.ITrainerEstimator&lt;Microsoft.ML.Runtime.ISingleFeaturePredictionTransformer&lt;Microsoft.ML.Runtime.IPredictorProducing&lt;System.Single&gt;&gt;,Microsoft.ML.Runtime.IPredictorProducing&lt;System.Single&gt;&gt;" />
+        <Parameter Name="labelColumn" Type="System.String" />
+        <Parameter Name="imputeMissingLabelsAsNegative" Type="System.Boolean" />
+        <Parameter Name="calibrator" Type="Microsoft.ML.Runtime.Internal.Calibration.ICalibratorTrainer" />
+        <Parameter Name="maxCalibrationExamples" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="env">The <see cref="T:Microsoft.ML.Runtime.IHostEnvironment" /> instance.</param>
+        <param name="binaryEstimator">An instance of a binary <see cref="T:Microsoft.ML.Runtime.Training.ITrainerEstimator`2" /> used as the base trainer.</param>
+        <param name="labelColumn">The name of the label colum.</param>
+        <param name="imputeMissingLabelsAsNegative">Whether to treat missing labels as having negative labels, instead of keeping them missing.</param>
+        <param name="calibrator">The calibrator. If a calibrator is not explicitely provided, it will default to <see cref="T:Microsoft.ML.Runtime.PlattCalibratorCalibratorTrainer" /></param>
+        <param name="maxCalibrationExamples">Number of instances to train the calibrator.</param>
+        <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ML.Runtime.Learners.Pkpd" /></summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Fit">
+      <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.PkpdPredictor&gt; Fit (Microsoft.ML.Runtime.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer`1&lt;class Microsoft.ML.Runtime.Learners.PkpdPredictor&gt; Fit(class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.Pkpd.Fit(Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function Fit (input As IDataView) As MulticlassPredictionTransformer(Of PkpdPredictor)" />
+      <MemberSignature Language="F#" Value="override this.Fit : Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.PkpdPredictor&gt;" Usage="pkpd.Fit input" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.PkpdPredictor&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="input">The input data.</param>
+        <summary>
+            Fits the data to the transformer
+            </summary>
+        <returns>The trained predictor.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TrainCore">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Learners.PkpdPredictor TrainCore (Microsoft.ML.Runtime.IChannel ch, Microsoft.ML.Runtime.Data.RoleMappedData data, int count);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Learners.PkpdPredictor TrainCore(class Microsoft.ML.Runtime.IChannel ch, class Microsoft.ML.Runtime.Data.RoleMappedData data, int32 count) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.Pkpd.TrainCore(Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Data.RoleMappedData,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function TrainCore (ch As IChannel, data As RoleMappedData, count As Integer) As PkpdPredictor" />
+      <MemberSignature Language="F#" Value="override this.TrainCore : Microsoft.ML.Runtime.IChannel * Microsoft.ML.Runtime.Data.RoleMappedData * int -&gt; Microsoft.ML.Runtime.Learners.PkpdPredictor" Usage="pkpd.TrainCore (ch, data, count)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Learners.PkpdPredictor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
+        <Parameter Name="data" Type="Microsoft.ML.Runtime.Data.RoleMappedData" />
+        <Parameter Name="count" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="ch">To be added.</param>
+        <param name="data">To be added.</param>
+        <param name="count">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

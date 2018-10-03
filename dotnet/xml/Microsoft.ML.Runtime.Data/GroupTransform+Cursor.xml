@@ -1,0 +1,231 @@
+﻿<Type Name="GroupTransform+Cursor" FullName="Microsoft.ML.Runtime.Data.GroupTransform+Cursor">
+  <TypeSignature Language="C#" Value="public sealed class GroupTransform.Cursor : Microsoft.ML.Runtime.Data.RootCursorBase, IDisposable, Microsoft.ML.Runtime.Data.IRowCursor" />
+  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi sealed beforefieldinit GroupTransform/Cursor extends Microsoft.ML.Runtime.Data.RootCursorBase implements class Microsoft.ML.Runtime.Data.ICounted, class Microsoft.ML.Runtime.Data.ICursor, class Microsoft.ML.Runtime.Data.IRow, class Microsoft.ML.Runtime.Data.IRowCursor, class Microsoft.ML.Runtime.Data.ISchematized, class System.IDisposable" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.GroupTransform.Cursor" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class GroupTransform.Cursor&#xA;Inherits RootCursorBase&#xA;Implements IDisposable, IRowCursor" />
+  <TypeSignature Language="F#" Value="type GroupTransform.Cursor = class&#xA;    inherit RootCursorBase&#xA;    interface IRowCursor&#xA;    interface ICursor&#xA;    interface ICounted&#xA;    interface IDisposable&#xA;    interface IRow&#xA;    interface ISchematized" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Microsoft.ML.Runtime.Data.RootCursorBase</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.Data.IRowCursor</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.IDisposable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+             This cursor will create two cursors on the input data view:
+             - The leading cursor will activate all the group columns, and will advance until it hits the end of the contiguous group.
+             - The trailing cursor will activate all the requested columns, and will go through the group
+                 (as identified by the leading cursor), and aggregate the keep columns.
+            
+             The getters are as follows:
+             - The group column getters are taken directly from the trailing cursor.
+             - The keep column getters are provided by the aggregators.
+             </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Cursor (Microsoft.ML.Runtime.Data.GroupTransform parent, Func&lt;int,bool&gt; predicate);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.Data.GroupTransform parent, class System.Func`2&lt;int32, bool&gt; predicate) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.GroupTransform.Cursor.#ctor(Microsoft.ML.Runtime.Data.GroupTransform,System.Func{System.Int32,System.Boolean})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (parent As GroupTransform, predicate As Func(Of Integer, Boolean))" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.GroupTransform.Cursor : Microsoft.ML.Runtime.Data.GroupTransform * Func&lt;int, bool&gt; -&gt; Microsoft.ML.Runtime.Data.GroupTransform.Cursor" Usage="new Microsoft.ML.Runtime.Data.GroupTransform.Cursor (parent, predicate)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="parent" Type="Microsoft.ML.Runtime.Data.GroupTransform" />
+        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="parent">To be added.</param>
+        <param name="predicate">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Batch">
+      <MemberSignature Language="C#" Value="public override long Batch { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int64 Batch" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.GroupTransform.Cursor.Batch" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property Batch As Long" />
+      <MemberSignature Language="F#" Value="member this.Batch : int64" Usage="Microsoft.ML.Runtime.Data.GroupTransform.Cursor.Batch" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Runtime.Data.ICounted.Batch</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int64</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dispose">
+      <MemberSignature Language="C#" Value="public override void Dispose ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Dispose() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.GroupTransform.Cursor.Dispose" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Sub Dispose ()" />
+      <MemberSignature Language="F#" Value="override this.Dispose : unit -&gt; unit" Usage="cursor.Dispose " />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:System.IDisposable.Dispose</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetGetter&lt;TValue&gt;">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.ValueGetter&lt;TValue&gt; GetGetter&lt;TValue&gt; (int col);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.ValueGetter`1&lt;!!TValue&gt; GetGetter&lt;TValue&gt;(int32 col) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.GroupTransform.Cursor.GetGetter``1(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetGetter(Of TValue) (col As Integer) As ValueGetter(Of TValue)" />
+      <MemberSignature Language="F#" Value="abstract member GetGetter : int -&gt; Microsoft.ML.Runtime.Data.ValueGetter&lt;'Value&gt;&#xA;override this.GetGetter : int -&gt; Microsoft.ML.Runtime.Data.ValueGetter&lt;'Value&gt;" Usage="cursor.GetGetter col" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IRow.GetGetter``1(System.Int32)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ValueGetter&lt;TValue&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TValue" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="col" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TValue">To be added.</typeparam>
+        <param name="col">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetIdGetter">
+      <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.Data.ValueGetter&lt;Microsoft.ML.Runtime.Data.UInt128&gt; GetIdGetter ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Microsoft.ML.Runtime.Data.ValueGetter`1&lt;valuetype Microsoft.ML.Runtime.Data.UInt128&gt; GetIdGetter() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.GroupTransform.Cursor.GetIdGetter" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function GetIdGetter () As ValueGetter(Of UInt128)" />
+      <MemberSignature Language="F#" Value="override this.GetIdGetter : unit -&gt; Microsoft.ML.Runtime.Data.ValueGetter&lt;Microsoft.ML.Runtime.Data.UInt128&gt;" Usage="cursor.GetIdGetter " />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.ICounted.GetIdGetter</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ValueGetter&lt;Microsoft.ML.Runtime.Data.UInt128&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsColumnActive">
+      <MemberSignature Language="C#" Value="public bool IsColumnActive (int col);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool IsColumnActive(int32 col) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.GroupTransform.Cursor.IsColumnActive(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Function IsColumnActive (col As Integer) As Boolean" />
+      <MemberSignature Language="F#" Value="abstract member IsColumnActive : int -&gt; bool&#xA;override this.IsColumnActive : int -&gt; bool" Usage="cursor.IsColumnActive col" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IRow.IsColumnActive(System.Int32)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="col" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="col">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MoveNextCore">
+      <MemberSignature Language="C#" Value="protected override bool MoveNextCore ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance bool MoveNextCore() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.GroupTransform.Cursor.MoveNextCore" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function MoveNextCore () As Boolean" />
+      <MemberSignature Language="F#" Value="override this.MoveNextCore : unit -&gt; bool" Usage="cursor.MoveNextCore " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Schema">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.ISchema Schema { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.Data.ISchema Schema" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.GroupTransform.Cursor.Schema" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Schema As ISchema" />
+      <MemberSignature Language="F#" Value="member this.Schema : Microsoft.ML.Runtime.Data.ISchema" Usage="Microsoft.ML.Runtime.Data.GroupTransform.Cursor.Schema" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Runtime.Data.ISchematized.Schema</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ISchema</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

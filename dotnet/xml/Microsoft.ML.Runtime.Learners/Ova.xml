@@ -1,0 +1,164 @@
+﻿<Type Name="Ova" FullName="Microsoft.ML.Runtime.Learners.Ova">
+  <TypeSignature Language="C#" Value="public sealed class Ova : Microsoft.ML.Runtime.Learners.MetaMulticlassTrainer&lt;Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.OvaPredictor&gt;,Microsoft.ML.Runtime.Learners.OvaPredictor&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit Ova extends Microsoft.ML.Runtime.Learners.MetaMulticlassTrainer`2&lt;class Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer`1&lt;class Microsoft.ML.Runtime.Learners.OvaPredictor&gt;, class Microsoft.ML.Runtime.Learners.OvaPredictor&gt;" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Learners.Ova" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class Ova&#xA;Inherits MetaMulticlassTrainer(Of MulticlassPredictionTransformer(Of OvaPredictor), OvaPredictor)" />
+  <TypeSignature Language="F#" Value="type Ova = class&#xA;    inherit MetaMulticlassTrainer&lt;MulticlassPredictionTransformer&lt;OvaPredictor&gt;, OvaPredictor&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Microsoft.ML.Runtime.Learners.MetaMulticlassTrainer&lt;Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.OvaPredictor&gt;,Microsoft.ML.Runtime.Learners.OvaPredictor&gt;</BaseTypeName>
+    <BaseTypeArguments>
+      <BaseTypeArgument TypeParamName="TTransformer">Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.OvaPredictor&gt;</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TModel">Microsoft.ML.Runtime.Learners.OvaPredictor</BaseTypeArgument>
+    </BaseTypeArguments>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+    <member name="OVA">
+      <summary>
+        Trains a one-versus-all multi-class classifier on top of the specified binary classifier.
+      </summary>
+      <remarks>
+        <para>In this strategy, a binary classification algorithm is used to train one classifier for each class, which distinguishes that class from all other classes.
+        Prediction is then performed by running these binary classifiers, and choosing the prediction with the highest confidence score.</para>
+        <para>This algorithm can be used with any of the binary classifiers in ML.NET.
+        A few binary classifiers already have implementation for multi-class problems,
+        thus users can choose either one depending on the context.</para>
+        <para>The OVA version of a binary classifier, such as wrapping a LightGbmBinaryClassifier ,
+        can be different from LightGbmClassifier, which develops a multi-class classifier directly.</para>
+        <para>Note that even if the classifier indicates that it does not need caching, OneVersusAll will always
+        request caching, as it will be performing multiple passes over the data set.
+        These learner will request normalization from the data pipeline if the classifier indicates it would benefit from it.</para>
+      </remarks>
+      <seealso cref="T:Microsoft.ML.Legacy.Trainers.LogisticRegressionClassifier" />
+      <seealso cref="T:Microsoft.ML.Legacy.Trainers.LightGbmClassifier" />
+      <seealso cref="T:Microsoft.ML.Legacy.Trainers.StochasticDualCoordinateAscentClassifier" />
+      <seealso cref="T:Microsoft.ML.Legacy.Trainers.NaiveBayesClassifier" />
+      <example>
+        <code language="csharp">
+          pipeline.Add(OneVersusAll.With(new StochasticDualCoordinateAscentBinaryClassifier()));
+        </code>
+      </example>
+    </member>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Ova (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Learners.Ova.Arguments args);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Learners.Ova/Arguments args) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.Ova.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Learners.Ova.Arguments)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, args As Ova.Arguments)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Learners.Ova : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Learners.Ova.Arguments -&gt; Microsoft.ML.Runtime.Learners.Ova" Usage="new Microsoft.ML.Runtime.Learners.Ova (env, args)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="args" Type="Microsoft.ML.Runtime.Learners.Ova+Arguments" />
+      </Parameters>
+      <Docs>
+        <param name="env">The private <see cref="T:Microsoft.ML.Runtime.IHostEnvironment" /> for this estimator.</param>
+        <param name="args">The legacy <see cref="T:Microsoft.ML.Runtime.Learners.Ova.Arguments" /></param>
+        <summary>
+            Legacy constructor that builds the <see cref="T:Microsoft.ML.Runtime.Learners.Ova" /> trainer supplying the base trainer to use, for the classification task
+            through the <see cref="T:Microsoft.ML.Runtime.Learners.Ova.Arguments" />arguments.
+            Developers should instantiate OVA by supplying the trainer argument directly to the OVA constructor
+            using the other public constructor.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Ova (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Training.ITrainerEstimator&lt;Microsoft.ML.Runtime.ISingleFeaturePredictionTransformer&lt;Microsoft.ML.Runtime.IPredictorProducing&lt;float&gt;&gt;,Microsoft.ML.Runtime.IPredictorProducing&lt;float&gt;&gt; binaryEstimator, string labelColumn = &quot;Label&quot;, bool imputeMissingLabelsAsNegative = false, Microsoft.ML.Runtime.Internal.Calibration.ICalibratorTrainer calibrator = null, int maxCalibrationExamples = 1000000000, bool useProbabilities = true);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Training.ITrainerEstimator`2&lt;class Microsoft.ML.Runtime.ISingleFeaturePredictionTransformer`1&lt;class Microsoft.ML.Runtime.IPredictorProducing`1&lt;float32&gt;&gt;, class Microsoft.ML.Runtime.IPredictorProducing`1&lt;float32&gt;&gt; binaryEstimator, string labelColumn, bool imputeMissingLabelsAsNegative, class Microsoft.ML.Runtime.Internal.Calibration.ICalibratorTrainer calibrator, int32 maxCalibrationExamples, bool useProbabilities) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.Ova.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Training.ITrainerEstimator{Microsoft.ML.Runtime.ISingleFeaturePredictionTransformer{Microsoft.ML.Runtime.IPredictorProducing{System.Single}},Microsoft.ML.Runtime.IPredictorProducing{System.Single}},System.String,System.Boolean,Microsoft.ML.Runtime.Internal.Calibration.ICalibratorTrainer,System.Int32,System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, binaryEstimator As ITrainerEstimator(Of ISingleFeaturePredictionTransformer(Of IPredictorProducing(Of Single)), IPredictorProducing(Of Single)), Optional labelColumn As String = &quot;Label&quot;, Optional imputeMissingLabelsAsNegative As Boolean = false, Optional calibrator As ICalibratorTrainer = null, Optional maxCalibrationExamples As Integer = 1000000000, Optional useProbabilities As Boolean = true)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Learners.Ova : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Training.ITrainerEstimator&lt;Microsoft.ML.Runtime.ISingleFeaturePredictionTransformer&lt;Microsoft.ML.Runtime.IPredictorProducing&lt;single&gt;&gt;, Microsoft.ML.Runtime.IPredictorProducing&lt;single&gt;&gt; * string * bool * Microsoft.ML.Runtime.Internal.Calibration.ICalibratorTrainer * int * bool -&gt; Microsoft.ML.Runtime.Learners.Ova" Usage="new Microsoft.ML.Runtime.Learners.Ova (env, binaryEstimator, labelColumn, imputeMissingLabelsAsNegative, calibrator, maxCalibrationExamples, useProbabilities)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="binaryEstimator" Type="Microsoft.ML.Runtime.Training.ITrainerEstimator&lt;Microsoft.ML.Runtime.ISingleFeaturePredictionTransformer&lt;Microsoft.ML.Runtime.IPredictorProducing&lt;System.Single&gt;&gt;,Microsoft.ML.Runtime.IPredictorProducing&lt;System.Single&gt;&gt;" />
+        <Parameter Name="labelColumn" Type="System.String" />
+        <Parameter Name="imputeMissingLabelsAsNegative" Type="System.Boolean" />
+        <Parameter Name="calibrator" Type="Microsoft.ML.Runtime.Internal.Calibration.ICalibratorTrainer" />
+        <Parameter Name="maxCalibrationExamples" Type="System.Int32" />
+        <Parameter Name="useProbabilities" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="env">The <see cref="T:Microsoft.ML.Runtime.IHostEnvironment" /> instance.</param>
+        <param name="binaryEstimator">An instance of a binary <see cref="T:Microsoft.ML.Runtime.Training.ITrainerEstimator`2" /> used as the base trainer.</param>
+        <param name="labelColumn">The name of the label colum.</param>
+        <param name="imputeMissingLabelsAsNegative">Whether to treat missing labels as having negative labels, instead of keeping them missing.</param>
+        <param name="calibrator">The calibrator. If a calibrator is not explicitely provided, it will default to <see cref="T:Microsoft.ML.Runtime.PlattCalibratorCalibratorTrainer" /></param>
+        <param name="maxCalibrationExamples">Number of instances to train the calibrator.</param>
+        <param name="useProbabilities">Use probabilities (vs. raw outputs) to identify top-score category.</param>
+        <summary>
+            Initializes a new instance of <see cref="T:Microsoft.ML.Runtime.Learners.Ova" />.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Fit">
+      <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.OvaPredictor&gt; Fit (Microsoft.ML.Runtime.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer`1&lt;class Microsoft.ML.Runtime.Learners.OvaPredictor&gt; Fit(class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.Ova.Fit(Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function Fit (input As IDataView) As MulticlassPredictionTransformer(Of OvaPredictor)" />
+      <MemberSignature Language="F#" Value="override this.Fit : Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.OvaPredictor&gt;" Usage="ova.Fit input" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.OvaPredictor&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TrainCore">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Learners.OvaPredictor TrainCore (Microsoft.ML.Runtime.IChannel ch, Microsoft.ML.Runtime.Data.RoleMappedData data, int count);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Learners.OvaPredictor TrainCore(class Microsoft.ML.Runtime.IChannel ch, class Microsoft.ML.Runtime.Data.RoleMappedData data, int32 count) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.Ova.TrainCore(Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Data.RoleMappedData,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function TrainCore (ch As IChannel, data As RoleMappedData, count As Integer) As OvaPredictor" />
+      <MemberSignature Language="F#" Value="override this.TrainCore : Microsoft.ML.Runtime.IChannel * Microsoft.ML.Runtime.Data.RoleMappedData * int -&gt; Microsoft.ML.Runtime.Learners.OvaPredictor" Usage="ova.TrainCore (ch, data, count)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Learners.OvaPredictor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
+        <Parameter Name="data" Type="Microsoft.ML.Runtime.Data.RoleMappedData" />
+        <Parameter Name="count" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="ch">To be added.</param>
+        <param name="data">To be added.</param>
+        <param name="count">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

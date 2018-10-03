@@ -1,0 +1,182 @@
+﻿<Type Name="ScoreModel" FullName="Microsoft.ML.Runtime.EntryPoints.ScoreModel">
+  <TypeSignature Language="C#" Value="public static class ScoreModel" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit ScoreModel extends System.Object" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.EntryPoints.ScoreModel" />
+  <TypeSignature Language="VB.NET" Value="Public Class ScoreModel" />
+  <TypeSignature Language="F#" Value="type ScoreModel = class" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Data</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+             This module handles scoring a <see cref="T:Microsoft.ML.Runtime.EntryPoints.IPredictorModel" /> against a new dataset.
+             As a result, we return both the scored data and the scoring transform as a <see cref="T:Microsoft.ML.Runtime.EntryPoints.ITransformModel" />.
+            
+             REVIEW: This module does not support 'exotic' scoring scenarios, like recommendation and quantile regression
+             (those where the user-defined scorer settings are necessary to identify the scorer). We could resolve this by
+             adding a sub-component for extra scorer args, or by creating specialized EPs for these scenarios.
+             </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="MakeScoringTransform">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.EntryPoints.ScoreModel.Output MakeScoringTransform (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.EntryPoints.ScoreModel.ModelInput input);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.EntryPoints.ScoreModel/Output MakeScoringTransform(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.EntryPoints.ScoreModel/ModelInput input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.EntryPoints.ScoreModel.MakeScoringTransform(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.EntryPoints.ScoreModel.ModelInput)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function MakeScoringTransform (env As IHostEnvironment, input As ScoreModel.ModelInput) As ScoreModel.Output" />
+      <MemberSignature Language="F#" Value="static member MakeScoringTransform : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.EntryPoints.ScoreModel.ModelInput -&gt; Microsoft.ML.Runtime.EntryPoints.ScoreModel.Output" Usage="Microsoft.ML.Runtime.EntryPoints.ScoreModel.MakeScoringTransform (env, input)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="Turn the predictor model into a transform model", Name="Transforms.Scorer")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.EntryPoints.ScoreModel+Output</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.EntryPoints.ScoreModel+ModelInput" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RenameBinaryPredictionScoreColumns">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.EntryPoints.CommonOutputs.TransformOutput RenameBinaryPredictionScoreColumns (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.EntryPoints.ScoreModel.RenameBinaryPredictionScoreColumnsInput input);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.EntryPoints.CommonOutputs/TransformOutput RenameBinaryPredictionScoreColumns(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.EntryPoints.ScoreModel/RenameBinaryPredictionScoreColumnsInput input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.EntryPoints.ScoreModel.RenameBinaryPredictionScoreColumns(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.EntryPoints.ScoreModel.RenameBinaryPredictionScoreColumnsInput)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function RenameBinaryPredictionScoreColumns (env As IHostEnvironment, input As ScoreModel.RenameBinaryPredictionScoreColumnsInput) As CommonOutputs.TransformOutput" />
+      <MemberSignature Language="F#" Value="static member RenameBinaryPredictionScoreColumns : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.EntryPoints.ScoreModel.RenameBinaryPredictionScoreColumnsInput -&gt; Microsoft.ML.Runtime.EntryPoints.CommonOutputs.TransformOutput" Usage="Microsoft.ML.Runtime.EntryPoints.ScoreModel.RenameBinaryPredictionScoreColumns (env, input)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="For binary prediction, it renames the PredictedLabel and Score columns to include the name of the positive class.", Name="Transforms.BinaryPredictionScoreColumnsRenamer", UserName="Rename Binary Prediction Score Columns")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.EntryPoints.CommonOutputs+TransformOutput</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.EntryPoints.ScoreModel+RenameBinaryPredictionScoreColumnsInput" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Score">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.EntryPoints.ScoreModel.Output Score (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.EntryPoints.ScoreModel.Input input);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.EntryPoints.ScoreModel/Output Score(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.EntryPoints.ScoreModel/Input input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.EntryPoints.ScoreModel.Score(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.EntryPoints.ScoreModel.Input)" />
+      <MemberSignature Language="F#" Value="static member Score : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.EntryPoints.ScoreModel.Input -&gt; Microsoft.ML.Runtime.EntryPoints.ScoreModel.Output" Usage="Microsoft.ML.Runtime.EntryPoints.ScoreModel.Score (env, input)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="Score a dataset with a predictor model", Name="Transforms.DatasetScorer")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.EntryPoints.ScoreModel+Output</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.EntryPoints.ScoreModel+Input" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ScoreUsingTransform">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.EntryPoints.ScoreModel.Output ScoreUsingTransform (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.EntryPoints.ScoreModel.InputTransformScorer input);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.EntryPoints.ScoreModel/Output ScoreUsingTransform(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.EntryPoints.ScoreModel/InputTransformScorer input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.EntryPoints.ScoreModel.ScoreUsingTransform(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.EntryPoints.ScoreModel.InputTransformScorer)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function ScoreUsingTransform (env As IHostEnvironment, input As ScoreModel.InputTransformScorer) As ScoreModel.Output" />
+      <MemberSignature Language="F#" Value="static member ScoreUsingTransform : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.EntryPoints.ScoreModel.InputTransformScorer -&gt; Microsoft.ML.Runtime.EntryPoints.ScoreModel.Output" Usage="Microsoft.ML.Runtime.EntryPoints.ScoreModel.ScoreUsingTransform (env, input)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="Score a dataset with a transform model", Name="Transforms.DatasetTransformScorer")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.EntryPoints.ScoreModel+Output</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.EntryPoints.ScoreModel+InputTransformScorer" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SelectColumns">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.EntryPoints.CommonOutputs.TransformOutput SelectColumns (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.EntryPoints.ScoreModel.ScoreColumnSelectorInput input);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.EntryPoints.CommonOutputs/TransformOutput SelectColumns(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.EntryPoints.ScoreModel/ScoreColumnSelectorInput input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.EntryPoints.ScoreModel.SelectColumns(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.EntryPoints.ScoreModel.ScoreColumnSelectorInput)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function SelectColumns (env As IHostEnvironment, input As ScoreModel.ScoreColumnSelectorInput) As CommonOutputs.TransformOutput" />
+      <MemberSignature Language="F#" Value="static member SelectColumns : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.EntryPoints.ScoreModel.ScoreColumnSelectorInput -&gt; Microsoft.ML.Runtime.EntryPoints.CommonOutputs.TransformOutput" Usage="Microsoft.ML.Runtime.EntryPoints.ScoreModel.SelectColumns (env, input)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="Selects only the last score columns and the extra columns specified in the arguments.", Name="Transforms.ScoreColumnSelector", UserName="Choose Columns By Index")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.EntryPoints.CommonOutputs+TransformOutput</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.EntryPoints.ScoreModel+ScoreColumnSelectorInput" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

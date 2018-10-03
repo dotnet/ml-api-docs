@@ -1,0 +1,329 @@
+﻿<Type Name="FieldAwareFactorizationMachineTrainer" FullName="Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer">
+  <TypeSignature Language="C#" Value="public sealed class FieldAwareFactorizationMachineTrainer : Microsoft.ML.Runtime.Training.TrainerBase&lt;Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachinePredictor&gt;, Microsoft.ML.Core.Data.IEstimator&lt;Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachinePredictionTransformer&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit FieldAwareFactorizationMachineTrainer extends Microsoft.ML.Runtime.Training.TrainerBase`1&lt;class Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachinePredictor&gt; implements class Microsoft.ML.Core.Data.IEstimator`1&lt;class Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachinePredictionTransformer&gt;" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class FieldAwareFactorizationMachineTrainer&#xA;Inherits TrainerBase(Of FieldAwareFactorizationMachinePredictor)&#xA;Implements IEstimator(Of FieldAwareFactorizationMachinePredictionTransformer)" />
+  <TypeSignature Language="F#" Value="type FieldAwareFactorizationMachineTrainer = class&#xA;    inherit TrainerBase&lt;FieldAwareFactorizationMachinePredictor&gt;&#xA;    interface IEstimator&lt;FieldAwareFactorizationMachinePredictionTransformer&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Microsoft.ML.Runtime.Training.TrainerBase&lt;Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachinePredictor&gt;</BaseTypeName>
+    <BaseTypeArguments>
+      <BaseTypeArgument TypeParamName="!0">Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachinePredictor</BaseTypeArgument>
+    </BaseTypeArguments>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Core.Data.IEstimator&lt;Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachinePredictionTransformer&gt;</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+        Train a field-aware factorization machine for binary classification using ADAGRAD (an advanced stochastic gradient method). 
+      </summary>
+    <remarks>
+        Field Aware Factorization Machines use, in addition to the input variables, factorized parameters to model the interaction between pairs of variables.
+        The algorithm is particularly useful for high dimensional datasets which can be very sparse (e.g. click-prediction for advertising systems).
+        <para>An advantage of FFM over SVMs is that the training data does not need to be stored in memory, and the coefficients can be optimized directly.
+          For a general idea of what Field-aware Factorization Machines are see: <a href="https://www.csie.ntu.edu.tw/~r01922136/slides/ffm.pdf">Field Aware Factorization Machines</a></para><para>See references below for more details. 
+        This trainer is essentially faster the one introduced in [2] because of some implemtation tricks[3].
+        </para><list type="bullet"><item><description><a href="https://www.csie.ntu.edu.tw/~cjlin/papers/ffm.pdf">Field-aware Factorization Machines for CTR Prediction</a></description></item><item><description><a href="http://jmlr.org/papers/volume12/duchi11a/duchi11a.pdf">Adaptive Subgradient Methods for Online Learning and Stochastic Optimization</a></description></item><item><description><a href="https://github.com/wschin/fast-ffm/blob/master/fast-ffm.pdf">An Improved Stochastic Gradient Method for Training Large-scale Field-aware Factorization Machine.</a></description></item></list></remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public FieldAwareFactorizationMachineTrainer (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.Arguments args);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer/Arguments args) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.Arguments)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, args As FieldAwareFactorizationMachineTrainer.Arguments)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.Arguments -&gt; Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer" Usage="new Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer (env, args)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="args" Type="Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer+Arguments" />
+      </Parameters>
+      <Docs>
+        <param name="env">The private instance of <see cref="T:Microsoft.ML.Runtime.IHostEnvironment" />.</param>
+        <param name="args">An instance of the legacy <see cref="T:Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.Arguments" /> to apply advanced parameters to the algorithm.</param>
+        <summary>
+            Legacy constructor initializing a new instance of <see cref="T:Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer" /> through the legacy
+            <see cref="T:Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.Arguments" /> class.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public FieldAwareFactorizationMachineTrainer (Microsoft.ML.Runtime.IHostEnvironment env, string labelColumn, string[] featureColumns, string weightColumn = null, Microsoft.ML.Core.Prediction.TrainerEstimatorContext context = null, Action&lt;Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.Arguments&gt; advancedSettings = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string labelColumn, string[] featureColumns, string weightColumn, class Microsoft.ML.Core.Prediction.TrainerEstimatorContext context, class System.Action`1&lt;class Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer/Arguments&gt; advancedSettings) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String[],System.String,Microsoft.ML.Core.Prediction.TrainerEstimatorContext,System.Action{Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.Arguments})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, labelColumn As String, featureColumns As String(), Optional weightColumn As String = null, Optional context As TrainerEstimatorContext = null, Optional advancedSettings As Action(Of FieldAwareFactorizationMachineTrainer.Arguments) = null)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer : Microsoft.ML.Runtime.IHostEnvironment * string * string[] * string * Microsoft.ML.Core.Prediction.TrainerEstimatorContext * Action&lt;Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.Arguments&gt; -&gt; Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer" Usage="new Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer (env, labelColumn, featureColumns, weightColumn, context, advancedSettings)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="labelColumn" Type="System.String" />
+        <Parameter Name="featureColumns" Type="System.String[]" />
+        <Parameter Name="weightColumn" Type="System.String" />
+        <Parameter Name="context" Type="Microsoft.ML.Core.Prediction.TrainerEstimatorContext" />
+        <Parameter Name="advancedSettings" Type="System.Action&lt;Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer+Arguments&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="env">The private instance of <see cref="T:Microsoft.ML.Runtime.IHostEnvironment" />.</param>
+        <param name="labelColumn">The name of the label column.</param>
+        <param name="featureColumns">The name of  column hosting the features.</param>
+        <param name="weightColumn">The name of the weight column.</param>
+        <param name="context">The <see cref="T:Microsoft.ML.Core.Prediction.TrainerEstimatorContext" /> for additional input data to training.</param>
+        <param name="advancedSettings">A delegate to apply all the advanced arguments to the algorithm.</param>
+        <summary>
+            Initializing a new instance of <see cref="T:Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer" />.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Context">
+      <MemberSignature Language="C#" Value="public readonly Microsoft.ML.Core.Prediction.TrainerEstimatorContext Context;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly class Microsoft.ML.Core.Prediction.TrainerEstimatorContext Context" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.Context" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Context As TrainerEstimatorContext " />
+      <MemberSignature Language="F#" Value="val mutable Context : Microsoft.ML.Core.Prediction.TrainerEstimatorContext" Usage="Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.Context" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Core.Prediction.TrainerEstimatorContext</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Additional data for training, through <see cref="T:Microsoft.ML.Core.Prediction.TrainerEstimatorContext" /></summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FeatureColumns">
+      <MemberSignature Language="C#" Value="public readonly Microsoft.ML.Core.Data.SchemaShape.Column[] FeatureColumns;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly class Microsoft.ML.Core.Data.SchemaShape/Column[] FeatureColumns" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.FeatureColumns" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly FeatureColumns As SchemaShape.Column() " />
+      <MemberSignature Language="F#" Value="val mutable FeatureColumns : Microsoft.ML.Core.Data.SchemaShape.Column[]" Usage="Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.FeatureColumns" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Core.Data.SchemaShape+Column[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The feature column that the trainer expects.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Fit">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachinePredictionTransformer Fit (Microsoft.ML.Runtime.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachinePredictionTransformer Fit(class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.Fit(Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Fit (input As IDataView) As FieldAwareFactorizationMachinePredictionTransformer" />
+      <MemberSignature Language="F#" Value="abstract member Fit : Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachinePredictionTransformer&#xA;override this.Fit : Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachinePredictionTransformer" Usage="fieldAwareFactorizationMachineTrainer.Fit input" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Core.Data.IEstimator`1.Fit(Microsoft.ML.Runtime.Data.IDataView)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachinePredictionTransformer</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetOutputSchema">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Core.Data.SchemaShape GetOutputSchema (Microsoft.ML.Core.Data.SchemaShape inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Core.Data.SchemaShape GetOutputSchema(class Microsoft.ML.Core.Data.SchemaShape inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.GetOutputSchema(Microsoft.ML.Core.Data.SchemaShape)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetOutputSchema (inputSchema As SchemaShape) As SchemaShape" />
+      <MemberSignature Language="F#" Value="abstract member GetOutputSchema : Microsoft.ML.Core.Data.SchemaShape -&gt; Microsoft.ML.Core.Data.SchemaShape&#xA;override this.GetOutputSchema : Microsoft.ML.Core.Data.SchemaShape -&gt; Microsoft.ML.Core.Data.SchemaShape" Usage="fieldAwareFactorizationMachineTrainer.GetOutputSchema inputSchema" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Core.Data.IEstimator`1.GetOutputSchema(Microsoft.ML.Core.Data.SchemaShape)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Core.Data.SchemaShape</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.Core.Data.SchemaShape" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Info">
+      <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.TrainerInfo Info { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.TrainerInfo Info" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.Info" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property Info As TrainerInfo" />
+      <MemberSignature Language="F#" Value="member this.Info : Microsoft.ML.Runtime.TrainerInfo" Usage="Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.Info" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.TrainerInfo</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The <see cref="T:Microsoft.ML.Runtime.TrainerInfo" /> containing at least the training data for this trainer.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LabelColumn">
+      <MemberSignature Language="C#" Value="public readonly Microsoft.ML.Core.Data.SchemaShape.Column LabelColumn;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly class Microsoft.ML.Core.Data.SchemaShape/Column LabelColumn" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.LabelColumn" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly LabelColumn As SchemaShape.Column " />
+      <MemberSignature Language="F#" Value="val mutable LabelColumn : Microsoft.ML.Core.Data.SchemaShape.Column" Usage="Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.LabelColumn" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Core.Data.SchemaShape+Column</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The label column that the trainer expects. Can be <c>null</c>, which indicates that label
+            is not used for training.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PredictionKind">
+      <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.PredictionKind PredictionKind { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.ML.Runtime.PredictionKind PredictionKind" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.PredictionKind" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property PredictionKind As PredictionKind" />
+      <MemberSignature Language="F#" Value="member this.PredictionKind : Microsoft.ML.Runtime.PredictionKind" Usage="Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.PredictionKind" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.PredictionKind</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Train">
+      <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachinePredictor Train (Microsoft.ML.Runtime.TrainContext context);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachinePredictor Train(class Microsoft.ML.Runtime.TrainContext context) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.Train(Microsoft.ML.Runtime.TrainContext)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function Train (context As TrainContext) As FieldAwareFactorizationMachinePredictor" />
+      <MemberSignature Language="F#" Value="override this.Train : Microsoft.ML.Runtime.TrainContext -&gt; Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachinePredictor" Usage="fieldAwareFactorizationMachineTrainer.Train context" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachinePredictor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="context" Type="Microsoft.ML.Runtime.TrainContext" />
+      </Parameters>
+      <Docs>
+        <param name="context">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TrainBinary">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.EntryPoints.CommonOutputs.BinaryClassificationOutput TrainBinary (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.Arguments input);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.EntryPoints.CommonOutputs/BinaryClassificationOutput TrainBinary(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer/Arguments input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.TrainBinary(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.Arguments)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function TrainBinary (env As IHostEnvironment, input As FieldAwareFactorizationMachineTrainer.Arguments) As CommonOutputs.BinaryClassificationOutput" />
+      <MemberSignature Language="F#" Value="static member TrainBinary : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.Arguments -&gt; Microsoft.ML.Runtime.EntryPoints.CommonOutputs.BinaryClassificationOutput" Usage="Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.TrainBinary (env, input)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="Train a field-aware factorization machine for binary classification", Name="Trainers.FieldAwareFactorizationMachineBinaryClassifier", ShortName="ffm", UserName="Field-aware Factorization Machine", XmlInclude=new System.String[] { "&lt;include file='../Microsoft.ML.StandardLearners/FactorizationMachine/doc.xml' path='doc/members/member[@name="FieldAwareFactorizationMachineBinaryClassifier"]/*' /&gt;", "&lt;include file='../Microsoft.ML.StandardLearners/FactorizationMachine/doc.xml' path='doc/members/example[@name="FieldAwareFactorizationMachineBinaryClassifier"]/*' /&gt;" })</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.EntryPoints.CommonOutputs+BinaryClassificationOutput</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer+Arguments" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WeightColumn">
+      <MemberSignature Language="C#" Value="public readonly Microsoft.ML.Core.Data.SchemaShape.Column WeightColumn;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly class Microsoft.ML.Core.Data.SchemaShape/Column WeightColumn" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.WeightColumn" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly WeightColumn As SchemaShape.Column " />
+      <MemberSignature Language="F#" Value="val mutable WeightColumn : Microsoft.ML.Core.Data.SchemaShape.Column" Usage="Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.WeightColumn" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Core.Data.SchemaShape+Column</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The weight column that the trainer expects. Can be <c>null</c>, which indicates that weight is
+            not used for training.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

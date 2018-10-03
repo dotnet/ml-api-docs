@@ -1,0 +1,632 @@
+﻿<Type Name="MamlEvaluatorBase" FullName="Microsoft.ML.Runtime.Data.MamlEvaluatorBase">
+  <TypeSignature Language="C#" Value="public abstract class MamlEvaluatorBase : Microsoft.ML.Runtime.Data.IMamlEvaluator" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit MamlEvaluatorBase extends System.Object implements class Microsoft.ML.Runtime.Data.IEvaluator, class Microsoft.ML.Runtime.Data.IMamlEvaluator" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.MamlEvaluatorBase" />
+  <TypeSignature Language="VB.NET" Value="Public MustInherit Class MamlEvaluatorBase&#xA;Implements IMamlEvaluator" />
+  <TypeSignature Language="F#" Value="type MamlEvaluatorBase = class&#xA;    interface IMamlEvaluator&#xA;    interface IEvaluator" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Data</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.Data.IMamlEvaluator</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+            A base class implementation of <see cref="T:Microsoft.ML.Runtime.Data.IMamlEvaluator" />. The <see cref="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.Evaluate(Microsoft.ML.Runtime.Data.RoleMappedData)" /> and <see cref="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.GetPerInstanceMetrics(Microsoft.ML.Runtime.Data.RoleMappedData)" />
+            methods create a new <see cref="T:Microsoft.ML.Runtime.Data.RoleMappedData" /> containing all the columns needed for evaluation, and call the corresponding
+            methods on an <see cref="T:Microsoft.ML.Runtime.Data.IEvaluator" /> of the appropriate type.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected MamlEvaluatorBase (Microsoft.ML.Runtime.Data.MamlEvaluatorBase.ArgumentsBase args, Microsoft.ML.Runtime.IHostEnvironment env, string scoreColumnKind, string registrationName);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.Data.MamlEvaluatorBase/ArgumentsBase args, class Microsoft.ML.Runtime.IHostEnvironment env, string scoreColumnKind, string registrationName) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.#ctor(Microsoft.ML.Runtime.Data.MamlEvaluatorBase.ArgumentsBase,Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Protected Sub New (args As MamlEvaluatorBase.ArgumentsBase, env As IHostEnvironment, scoreColumnKind As String, registrationName As String)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.MamlEvaluatorBase : Microsoft.ML.Runtime.Data.MamlEvaluatorBase.ArgumentsBase * Microsoft.ML.Runtime.IHostEnvironment * string * string -&gt; Microsoft.ML.Runtime.Data.MamlEvaluatorBase" Usage="new Microsoft.ML.Runtime.Data.MamlEvaluatorBase (args, env, scoreColumnKind, registrationName)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="args" Type="Microsoft.ML.Runtime.Data.MamlEvaluatorBase+ArgumentsBase" />
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="scoreColumnKind" Type="System.String" />
+        <Parameter Name="registrationName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="args">To be added.</param>
+        <param name="env">To be added.</param>
+        <param name="scoreColumnKind">To be added.</param>
+        <param name="registrationName">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CombineOverallMetricsCore">
+      <MemberSignature Language="C#" Value="protected virtual Microsoft.ML.Runtime.Data.IDataView CombineOverallMetricsCore (Microsoft.ML.Runtime.Data.IDataView[] metrics);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IDataView CombineOverallMetricsCore(class Microsoft.ML.Runtime.Data.IDataView[] metrics) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.CombineOverallMetricsCore(Microsoft.ML.Runtime.Data.IDataView[])" />
+      <MemberSignature Language="VB.NET" Value="Protected Overridable Function CombineOverallMetricsCore (metrics As IDataView()) As IDataView" />
+      <MemberSignature Language="F#" Value="abstract member CombineOverallMetricsCore : Microsoft.ML.Runtime.Data.IDataView[] -&gt; Microsoft.ML.Runtime.Data.IDataView&#xA;override this.CombineOverallMetricsCore : Microsoft.ML.Runtime.Data.IDataView[] -&gt; Microsoft.ML.Runtime.Data.IDataView" Usage="mamlEvaluatorBase.CombineOverallMetricsCore metrics" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataView</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="metrics" Type="Microsoft.ML.Runtime.Data.IDataView[]" />
+      </Parameters>
+      <Docs>
+        <param name="metrics">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Evaluate">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.Dictionary&lt;string,Microsoft.ML.Runtime.Data.IDataView&gt; Evaluate (Microsoft.ML.Runtime.Data.RoleMappedData data);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Collections.Generic.Dictionary`2&lt;string, class Microsoft.ML.Runtime.Data.IDataView&gt; Evaluate(class Microsoft.ML.Runtime.Data.RoleMappedData data) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.Evaluate(Microsoft.ML.Runtime.Data.RoleMappedData)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Evaluate (data As RoleMappedData) As Dictionary(Of String, IDataView)" />
+      <MemberSignature Language="F#" Value="abstract member Evaluate : Microsoft.ML.Runtime.Data.RoleMappedData -&gt; System.Collections.Generic.Dictionary&lt;string, Microsoft.ML.Runtime.Data.IDataView&gt;&#xA;override this.Evaluate : Microsoft.ML.Runtime.Data.RoleMappedData -&gt; System.Collections.Generic.Dictionary&lt;string, Microsoft.ML.Runtime.Data.IDataView&gt;" Usage="mamlEvaluatorBase.Evaluate data" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IEvaluator.Evaluate(Microsoft.ML.Runtime.Data.RoleMappedData)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.Dictionary&lt;System.String,Microsoft.ML.Runtime.Data.IDataView&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data" Type="Microsoft.ML.Runtime.Data.RoleMappedData" />
+      </Parameters>
+      <Docs>
+        <param name="data">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Evaluator">
+      <MemberSignature Language="C#" Value="protected abstract Microsoft.ML.Runtime.Data.IEvaluator Evaluator { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.Data.IEvaluator Evaluator" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.Evaluator" />
+      <MemberSignature Language="VB.NET" Value="Protected MustOverride ReadOnly Property Evaluator As IEvaluator" />
+      <MemberSignature Language="F#" Value="member this.Evaluator : Microsoft.ML.Runtime.Data.IEvaluator" Usage="Microsoft.ML.Runtime.Data.MamlEvaluatorBase.Evaluator" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IEvaluator</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetInputColumnRoles">
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.IEnumerable&lt;System.Collections.Generic.KeyValuePair&lt;Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole,string&gt;&gt; GetInputColumnRoles (Microsoft.ML.Runtime.Data.RoleMappedSchema schema, bool needStrat = false, bool needName = false);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance class System.Collections.Generic.IEnumerable`1&lt;valuetype System.Collections.Generic.KeyValuePair`2&lt;valuetype Microsoft.ML.Runtime.Data.RoleMappedSchema/ColumnRole, string&gt;&gt; GetInputColumnRoles(class Microsoft.ML.Runtime.Data.RoleMappedSchema schema, bool needStrat, bool needName) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.GetInputColumnRoles(Microsoft.ML.Runtime.Data.RoleMappedSchema,System.Boolean,System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Protected Function GetInputColumnRoles (schema As RoleMappedSchema, Optional needStrat As Boolean = false, Optional needName As Boolean = false) As IEnumerable(Of KeyValuePair(Of RoleMappedSchema.ColumnRole, String))" />
+      <MemberSignature Language="F#" Value="member this.GetInputColumnRoles : Microsoft.ML.Runtime.Data.RoleMappedSchema * bool * bool -&gt; seq&lt;System.Collections.Generic.KeyValuePair&lt;Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole, string&gt;&gt;" Usage="mamlEvaluatorBase.GetInputColumnRoles (schema, needStrat, needName)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;System.Collections.Generic.KeyValuePair&lt;Microsoft.ML.Runtime.Data.RoleMappedSchema+ColumnRole,System.String&gt;&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="schema" Type="Microsoft.ML.Runtime.Data.RoleMappedSchema" />
+        <Parameter Name="needStrat" Type="System.Boolean" />
+        <Parameter Name="needName" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="schema">To be added.</param>
+        <param name="needStrat">To be added.</param>
+        <param name="needName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetInputColumnRolesCore">
+      <MemberSignature Language="C#" Value="protected virtual System.Collections.Generic.IEnumerable&lt;System.Collections.Generic.KeyValuePair&lt;Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole,string&gt;&gt; GetInputColumnRolesCore (Microsoft.ML.Runtime.Data.RoleMappedSchema schema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class System.Collections.Generic.IEnumerable`1&lt;valuetype System.Collections.Generic.KeyValuePair`2&lt;valuetype Microsoft.ML.Runtime.Data.RoleMappedSchema/ColumnRole, string&gt;&gt; GetInputColumnRolesCore(class Microsoft.ML.Runtime.Data.RoleMappedSchema schema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.GetInputColumnRolesCore(Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
+      <MemberSignature Language="VB.NET" Value="Protected Iterator Overridable Function GetInputColumnRolesCore (schema As RoleMappedSchema) As IEnumerable(Of KeyValuePair(Of RoleMappedSchema.ColumnRole, String))" />
+      <MemberSignature Language="F#" Value="abstract member GetInputColumnRolesCore : Microsoft.ML.Runtime.Data.RoleMappedSchema -&gt; seq&lt;System.Collections.Generic.KeyValuePair&lt;Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole, string&gt;&gt;&#xA;override this.GetInputColumnRolesCore : Microsoft.ML.Runtime.Data.RoleMappedSchema -&gt; seq&lt;System.Collections.Generic.KeyValuePair&lt;Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole, string&gt;&gt;" Usage="mamlEvaluatorBase.GetInputColumnRolesCore schema" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.CompilerServices.IteratorStateMachine(typeof(Microsoft.ML.Runtime.Data.MamlEvaluatorBase/&lt;GetInputColumnRolesCore&gt;d__13))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;System.Collections.Generic.KeyValuePair&lt;Microsoft.ML.Runtime.Data.RoleMappedSchema+ColumnRole,System.String&gt;&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="schema" Type="Microsoft.ML.Runtime.Data.RoleMappedSchema" />
+      </Parameters>
+      <Docs>
+        <param name="schema">To be added.</param>
+        <summary>
+            All the input columns needed by an evaluator should be added here.
+            The base class ipmlementation gets the score column, the label column (if exists) and the weight column (if exists).
+            Override if additional columns are needed.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetOverallMetricColumns">
+      <MemberSignature Language="C#" Value="public virtual System.Collections.Generic.IEnumerable&lt;Microsoft.ML.Runtime.Data.MetricColumn&gt; GetOverallMetricColumns ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Collections.Generic.IEnumerable`1&lt;class Microsoft.ML.Runtime.Data.MetricColumn&gt; GetOverallMetricColumns() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.GetOverallMetricColumns" />
+      <MemberSignature Language="VB.NET" Value="Public Overridable Function GetOverallMetricColumns () As IEnumerable(Of MetricColumn)" />
+      <MemberSignature Language="F#" Value="abstract member GetOverallMetricColumns : unit -&gt; seq&lt;Microsoft.ML.Runtime.Data.MetricColumn&gt;&#xA;override this.GetOverallMetricColumns : unit -&gt; seq&lt;Microsoft.ML.Runtime.Data.MetricColumn&gt;" Usage="mamlEvaluatorBase.GetOverallMetricColumns " />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IEvaluator.GetOverallMetricColumns</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;Microsoft.ML.Runtime.Data.MetricColumn&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetOverallResults">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IDataView GetOverallResults (params Microsoft.ML.Runtime.Data.IDataView[] metrics);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IDataView GetOverallResults(class Microsoft.ML.Runtime.Data.IDataView[] metrics) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.GetOverallResults(Microsoft.ML.Runtime.Data.IDataView[])" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetOverallResults (ParamArray metrics As IDataView()) As IDataView" />
+      <MemberSignature Language="F#" Value="abstract member GetOverallResults : Microsoft.ML.Runtime.Data.IDataView[] -&gt; Microsoft.ML.Runtime.Data.IDataView&#xA;override this.GetOverallResults : Microsoft.ML.Runtime.Data.IDataView[] -&gt; Microsoft.ML.Runtime.Data.IDataView" Usage="mamlEvaluatorBase.GetOverallResults metrics" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IMamlEvaluator.GetOverallResults(Microsoft.ML.Runtime.Data.IDataView[])</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataView</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="metrics" Type="Microsoft.ML.Runtime.Data.IDataView[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="metrics">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetOverallResultsCore">
+      <MemberSignature Language="C#" Value="protected virtual Microsoft.ML.Runtime.Data.IDataView GetOverallResultsCore (Microsoft.ML.Runtime.Data.IDataView overall);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IDataView GetOverallResultsCore(class Microsoft.ML.Runtime.Data.IDataView overall) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.GetOverallResultsCore(Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overridable Function GetOverallResultsCore (overall As IDataView) As IDataView" />
+      <MemberSignature Language="F#" Value="abstract member GetOverallResultsCore : Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.IDataView&#xA;override this.GetOverallResultsCore : Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.IDataView" Usage="mamlEvaluatorBase.GetOverallResultsCore overall" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataView</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="overall" Type="Microsoft.ML.Runtime.Data.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="overall">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetPerInstanceColumnsToSave">
+      <MemberSignature Language="C#" Value="protected abstract System.Collections.Generic.IEnumerable&lt;string&gt; GetPerInstanceColumnsToSave (Microsoft.ML.Runtime.Data.RoleMappedSchema schema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class System.Collections.Generic.IEnumerable`1&lt;string&gt; GetPerInstanceColumnsToSave(class Microsoft.ML.Runtime.Data.RoleMappedSchema schema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.GetPerInstanceColumnsToSave(Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
+      <MemberSignature Language="VB.NET" Value="Protected MustOverride Function GetPerInstanceColumnsToSave (schema As RoleMappedSchema) As IEnumerable(Of String)" />
+      <MemberSignature Language="F#" Value="abstract member GetPerInstanceColumnsToSave : Microsoft.ML.Runtime.Data.RoleMappedSchema -&gt; seq&lt;string&gt;" Usage="mamlEvaluatorBase.GetPerInstanceColumnsToSave schema" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;System.String&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="schema" Type="Microsoft.ML.Runtime.Data.RoleMappedSchema" />
+      </Parameters>
+      <Docs>
+        <param name="schema">To be added.</param>
+        <summary>
+            Returns the names of the columns that should be saved in the per-instance results file. These can include
+            the columns generated by the corresponding <see cref="T:Microsoft.ML.Runtime.Data.IRowMapper" />, or any of the input columns used by
+            it. The Name and Weight columns should not be included, since the base class includes them automatically.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetPerInstanceDataViewToSave">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IDataView GetPerInstanceDataViewToSave (Microsoft.ML.Runtime.Data.RoleMappedData perInstance);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IDataView GetPerInstanceDataViewToSave(class Microsoft.ML.Runtime.Data.RoleMappedData perInstance) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.GetPerInstanceDataViewToSave(Microsoft.ML.Runtime.Data.RoleMappedData)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetPerInstanceDataViewToSave (perInstance As RoleMappedData) As IDataView" />
+      <MemberSignature Language="F#" Value="abstract member GetPerInstanceDataViewToSave : Microsoft.ML.Runtime.Data.RoleMappedData -&gt; Microsoft.ML.Runtime.Data.IDataView&#xA;override this.GetPerInstanceDataViewToSave : Microsoft.ML.Runtime.Data.RoleMappedData -&gt; Microsoft.ML.Runtime.Data.IDataView" Usage="mamlEvaluatorBase.GetPerInstanceDataViewToSave perInstance" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IMamlEvaluator.GetPerInstanceDataViewToSave(Microsoft.ML.Runtime.Data.RoleMappedData)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataView</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="perInstance" Type="Microsoft.ML.Runtime.Data.RoleMappedData" />
+      </Parameters>
+      <Docs>
+        <param name="perInstance">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetPerInstanceMetrics">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IDataTransform GetPerInstanceMetrics (Microsoft.ML.Runtime.Data.RoleMappedData scoredData);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IDataTransform GetPerInstanceMetrics(class Microsoft.ML.Runtime.Data.RoleMappedData scoredData) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.GetPerInstanceMetrics(Microsoft.ML.Runtime.Data.RoleMappedData)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetPerInstanceMetrics (scoredData As RoleMappedData) As IDataTransform" />
+      <MemberSignature Language="F#" Value="abstract member GetPerInstanceMetrics : Microsoft.ML.Runtime.Data.RoleMappedData -&gt; Microsoft.ML.Runtime.Data.IDataTransform&#xA;override this.GetPerInstanceMetrics : Microsoft.ML.Runtime.Data.RoleMappedData -&gt; Microsoft.ML.Runtime.Data.IDataTransform" Usage="mamlEvaluatorBase.GetPerInstanceMetrics scoredData" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IEvaluator.GetPerInstanceMetrics(Microsoft.ML.Runtime.Data.RoleMappedData)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="scoredData" Type="Microsoft.ML.Runtime.Data.RoleMappedData" />
+      </Parameters>
+      <Docs>
+        <param name="scoredData">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetPerInstanceMetricsCore">
+      <MemberSignature Language="C#" Value="protected virtual Microsoft.ML.Runtime.Data.IDataView GetPerInstanceMetricsCore (Microsoft.ML.Runtime.Data.IDataView perInst, Microsoft.ML.Runtime.Data.RoleMappedSchema schema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IDataView GetPerInstanceMetricsCore(class Microsoft.ML.Runtime.Data.IDataView perInst, class Microsoft.ML.Runtime.Data.RoleMappedSchema schema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.GetPerInstanceMetricsCore(Microsoft.ML.Runtime.Data.IDataView,Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overridable Function GetPerInstanceMetricsCore (perInst As IDataView, schema As RoleMappedSchema) As IDataView" />
+      <MemberSignature Language="F#" Value="abstract member GetPerInstanceMetricsCore : Microsoft.ML.Runtime.Data.IDataView * Microsoft.ML.Runtime.Data.RoleMappedSchema -&gt; Microsoft.ML.Runtime.Data.IDataView&#xA;override this.GetPerInstanceMetricsCore : Microsoft.ML.Runtime.Data.IDataView * Microsoft.ML.Runtime.Data.RoleMappedSchema -&gt; Microsoft.ML.Runtime.Data.IDataView" Usage="mamlEvaluatorBase.GetPerInstanceMetricsCore (perInst, schema)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataView</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="perInst" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="schema" Type="Microsoft.ML.Runtime.Data.RoleMappedSchema" />
+      </Parameters>
+      <Docs>
+        <param name="perInst">To be added.</param>
+        <param name="schema">To be added.</param>
+        <summary>
+            The perInst dataview contains all a name column (called Instance), the FoldId, Label and Weight columns if
+            they exist, and all the columns returned by <see cref="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.GetPerInstanceColumnsToSave(Microsoft.ML.Runtime.Data.RoleMappedSchema)" />.
+            It should be overridden only if additional processing is needed, such as dropping slots in the "top k scores" column
+            in the multi-class case.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Host">
+      <MemberSignature Language="C#" Value="protected readonly Microsoft.ML.Runtime.IHost Host;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly class Microsoft.ML.Runtime.IHost Host" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.Host" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly Host As IHost " />
+      <MemberSignature Language="F#" Value="val mutable Host : Microsoft.ML.Runtime.IHost" Usage="Microsoft.ML.Runtime.Data.MamlEvaluatorBase.Host" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.IHost</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LabelCol">
+      <MemberSignature Language="C#" Value="protected readonly string LabelCol;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly string LabelCol" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.LabelCol" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly LabelCol As String " />
+      <MemberSignature Language="F#" Value="val mutable LabelCol : string" Usage="Microsoft.ML.Runtime.Data.MamlEvaluatorBase.LabelCol" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PrintAdditionalMetrics">
+      <MemberSignature Language="C#" Value="public void PrintAdditionalMetrics (Microsoft.ML.Runtime.IChannel ch, params System.Collections.Generic.Dictionary&lt;string,Microsoft.ML.Runtime.Data.IDataView&gt;[] metrics);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void PrintAdditionalMetrics(class Microsoft.ML.Runtime.IChannel ch, class System.Collections.Generic.Dictionary`2&lt;string, class Microsoft.ML.Runtime.Data.IDataView&gt;[] metrics) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.PrintAdditionalMetrics(Microsoft.ML.Runtime.IChannel,System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView}[])" />
+      <MemberSignature Language="VB.NET" Value="Public Sub PrintAdditionalMetrics (ch As IChannel, ParamArray metrics As Dictionary(Of String, IDataView)())" />
+      <MemberSignature Language="F#" Value="abstract member PrintAdditionalMetrics : Microsoft.ML.Runtime.IChannel * System.Collections.Generic.Dictionary&lt;string, Microsoft.ML.Runtime.Data.IDataView&gt;[] -&gt; unit&#xA;override this.PrintAdditionalMetrics : Microsoft.ML.Runtime.IChannel * System.Collections.Generic.Dictionary&lt;string, Microsoft.ML.Runtime.Data.IDataView&gt;[] -&gt; unit" Usage="mamlEvaluatorBase.PrintAdditionalMetrics (ch, metrics)" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IMamlEvaluator.PrintAdditionalMetrics(Microsoft.ML.Runtime.IChannel,System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView}[])</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
+        <Parameter Name="metrics" Type="System.Collections.Generic.Dictionary&lt;System.String,Microsoft.ML.Runtime.Data.IDataView&gt;[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="ch">To be added.</param>
+        <param name="metrics">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PrintAdditionalMetricsCore">
+      <MemberSignature Language="C#" Value="protected virtual void PrintAdditionalMetricsCore (Microsoft.ML.Runtime.IChannel ch, System.Collections.Generic.Dictionary&lt;string,Microsoft.ML.Runtime.Data.IDataView&gt;[] metrics);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void PrintAdditionalMetricsCore(class Microsoft.ML.Runtime.IChannel ch, class System.Collections.Generic.Dictionary`2&lt;string, class Microsoft.ML.Runtime.Data.IDataView&gt;[] metrics) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.PrintAdditionalMetricsCore(Microsoft.ML.Runtime.IChannel,System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView}[])" />
+      <MemberSignature Language="VB.NET" Value="Protected Overridable Sub PrintAdditionalMetricsCore (ch As IChannel, metrics As Dictionary(Of String, IDataView)())" />
+      <MemberSignature Language="F#" Value="abstract member PrintAdditionalMetricsCore : Microsoft.ML.Runtime.IChannel * System.Collections.Generic.Dictionary&lt;string, Microsoft.ML.Runtime.Data.IDataView&gt;[] -&gt; unit&#xA;override this.PrintAdditionalMetricsCore : Microsoft.ML.Runtime.IChannel * System.Collections.Generic.Dictionary&lt;string, Microsoft.ML.Runtime.Data.IDataView&gt;[] -&gt; unit" Usage="mamlEvaluatorBase.PrintAdditionalMetricsCore (ch, metrics)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
+        <Parameter Name="metrics" Type="System.Collections.Generic.Dictionary&lt;System.String,Microsoft.ML.Runtime.Data.IDataView&gt;[]" />
+      </Parameters>
+      <Docs>
+        <param name="ch">To be added.</param>
+        <param name="metrics">To be added.</param>
+        <summary>
+            This method simply prints the overall metrics using EvaluateUtils.PrintOverallMetrics.
+            Override if something else is needed.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PrintFoldResults">
+      <MemberSignature Language="C#" Value="public void PrintFoldResults (Microsoft.ML.Runtime.IChannel ch, System.Collections.Generic.Dictionary&lt;string,Microsoft.ML.Runtime.Data.IDataView&gt; metrics);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void PrintFoldResults(class Microsoft.ML.Runtime.IChannel ch, class System.Collections.Generic.Dictionary`2&lt;string, class Microsoft.ML.Runtime.Data.IDataView&gt; metrics) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.PrintFoldResults(Microsoft.ML.Runtime.IChannel,System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub PrintFoldResults (ch As IChannel, metrics As Dictionary(Of String, IDataView))" />
+      <MemberSignature Language="F#" Value="abstract member PrintFoldResults : Microsoft.ML.Runtime.IChannel * System.Collections.Generic.Dictionary&lt;string, Microsoft.ML.Runtime.Data.IDataView&gt; -&gt; unit&#xA;override this.PrintFoldResults : Microsoft.ML.Runtime.IChannel * System.Collections.Generic.Dictionary&lt;string, Microsoft.ML.Runtime.Data.IDataView&gt; -&gt; unit" Usage="mamlEvaluatorBase.PrintFoldResults (ch, metrics)" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IMamlEvaluator.PrintFoldResults(Microsoft.ML.Runtime.IChannel,System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView})</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
+        <Parameter Name="metrics" Type="System.Collections.Generic.Dictionary&lt;System.String,Microsoft.ML.Runtime.Data.IDataView&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="ch">To be added.</param>
+        <param name="metrics">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PrintFoldResultsCore">
+      <MemberSignature Language="C#" Value="protected virtual void PrintFoldResultsCore (Microsoft.ML.Runtime.IChannel ch, System.Collections.Generic.Dictionary&lt;string,Microsoft.ML.Runtime.Data.IDataView&gt; metrics);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void PrintFoldResultsCore(class Microsoft.ML.Runtime.IChannel ch, class System.Collections.Generic.Dictionary`2&lt;string, class Microsoft.ML.Runtime.Data.IDataView&gt; metrics) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.PrintFoldResultsCore(Microsoft.ML.Runtime.IChannel,System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView})" />
+      <MemberSignature Language="VB.NET" Value="Protected Overridable Sub PrintFoldResultsCore (ch As IChannel, metrics As Dictionary(Of String, IDataView))" />
+      <MemberSignature Language="F#" Value="abstract member PrintFoldResultsCore : Microsoft.ML.Runtime.IChannel * System.Collections.Generic.Dictionary&lt;string, Microsoft.ML.Runtime.Data.IDataView&gt; -&gt; unit&#xA;override this.PrintFoldResultsCore : Microsoft.ML.Runtime.IChannel * System.Collections.Generic.Dictionary&lt;string, Microsoft.ML.Runtime.Data.IDataView&gt; -&gt; unit" Usage="mamlEvaluatorBase.PrintFoldResultsCore (ch, metrics)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
+        <Parameter Name="metrics" Type="System.Collections.Generic.Dictionary&lt;System.String,Microsoft.ML.Runtime.Data.IDataView&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="ch">To be added.</param>
+        <param name="metrics">To be added.</param>
+        <summary>
+            This method simply prints the overall metrics using EvaluateUtils.PrintConfusionMatrixAndPerFoldResults.
+            Override if something else is needed.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ScoreCol">
+      <MemberSignature Language="C#" Value="protected readonly string ScoreCol;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly string ScoreCol" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.ScoreCol" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly ScoreCol As String " />
+      <MemberSignature Language="F#" Value="val mutable ScoreCol : string" Usage="Microsoft.ML.Runtime.Data.MamlEvaluatorBase.ScoreCol" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ScoreColumnKind">
+      <MemberSignature Language="C#" Value="protected readonly string ScoreColumnKind;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly string ScoreColumnKind" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.ScoreColumnKind" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly ScoreColumnKind As String " />
+      <MemberSignature Language="F#" Value="val mutable ScoreColumnKind : string" Usage="Microsoft.ML.Runtime.Data.MamlEvaluatorBase.ScoreColumnKind" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Strat">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole Strat;" />
+      <MemberSignature Language="ILAsm" Value=".field public static valuetype Microsoft.ML.Runtime.Data.RoleMappedSchema/ColumnRole Strat" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.Strat" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Strat As RoleMappedSchema.ColumnRole " />
+      <MemberSignature Language="F#" Value=" staticval mutable Strat : Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole" Usage="Microsoft.ML.Runtime.Data.MamlEvaluatorBase.Strat" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.RoleMappedSchema+ColumnRole</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StratCols">
+      <MemberSignature Language="C#" Value="protected readonly string[] StratCols;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly string[] StratCols" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.StratCols" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly StratCols As String() " />
+      <MemberSignature Language="F#" Value="val mutable StratCols : string[]" Usage="Microsoft.ML.Runtime.Data.MamlEvaluatorBase.StratCols" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WeightCol">
+      <MemberSignature Language="C#" Value="protected readonly string WeightCol;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly string WeightCol" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Data.MamlEvaluatorBase.WeightCol" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly WeightCol As String " />
+      <MemberSignature Language="F#" Value="val mutable WeightCol : string" Usage="Microsoft.ML.Runtime.Data.MamlEvaluatorBase.WeightCol" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

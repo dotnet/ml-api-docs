@@ -1,0 +1,145 @@
+﻿<Type Name="UpperBoundOnDistanceWithL2" FullName="Microsoft.ML.Runtime.Numeric.UpperBoundOnDistanceWithL2">
+  <TypeSignature Language="C#" Value="public sealed class UpperBoundOnDistanceWithL2 : Microsoft.ML.Runtime.Numeric.StaticTerminationCriterion" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit UpperBoundOnDistanceWithL2 extends Microsoft.ML.Runtime.Numeric.StaticTerminationCriterion" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Numeric.UpperBoundOnDistanceWithL2" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class UpperBoundOnDistanceWithL2&#xA;Inherits StaticTerminationCriterion" />
+  <TypeSignature Language="F#" Value="type UpperBoundOnDistanceWithL2 = class&#xA;    inherit StaticTerminationCriterion" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Microsoft.ML.Runtime.Numeric.StaticTerminationCriterion</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+            Uses the gradient to determine an upper bound on (relative) distance from the optimum.
+            </summary>
+    <remarks>
+            Works if the objective uses L2 prior (or in general if the hessian H is such
+            that H &gt; (1 / sigmaSq) * I at all points)
+            Inappropriate for functions whose optimal value is non-positive, because of normalization
+            </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public UpperBoundOnDistanceWithL2 (float sigmaSq = 1, float tol = 0.01);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 sigmaSq, float32 tol) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Numeric.UpperBoundOnDistanceWithL2.#ctor(System.Single,System.Single)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (Optional sigmaSq As Single = 1, Optional tol As Single = 0.01)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Numeric.UpperBoundOnDistanceWithL2 : single * single -&gt; Microsoft.ML.Runtime.Numeric.UpperBoundOnDistanceWithL2" Usage="new Microsoft.ML.Runtime.Numeric.UpperBoundOnDistanceWithL2 (sigmaSq, tol)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="sigmaSq" Type="System.Single" />
+        <Parameter Name="tol" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="sigmaSq">value of sigmaSq in L2 regularizer</param>
+        <param name="tol">tolerance level</param>
+        <summary>
+            Create termination criterion with supplied value of sigmaSq and tolerance
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FriendlyName">
+      <MemberSignature Language="C#" Value="public override string FriendlyName { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string FriendlyName" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Numeric.UpperBoundOnDistanceWithL2.FriendlyName" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property FriendlyName As String" />
+      <MemberSignature Language="F#" Value="member this.FriendlyName : string" Usage="Microsoft.ML.Runtime.Numeric.UpperBoundOnDistanceWithL2.FriendlyName" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Terminate">
+      <MemberSignature Language="C#" Value="public override bool Terminate (Microsoft.ML.Runtime.Numeric.Optimizer.OptimizerState state, out string message);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Terminate(class Microsoft.ML.Runtime.Numeric.Optimizer/OptimizerState state, [out] string&amp; message) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Numeric.UpperBoundOnDistanceWithL2.Terminate(Microsoft.ML.Runtime.Numeric.Optimizer.OptimizerState,System.String@)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function Terminate (state As Optimizer.OptimizerState, ByRef message As String) As Boolean" />
+      <MemberSignature Language="F#" Value="override this.Terminate : Microsoft.ML.Runtime.Numeric.Optimizer.OptimizerState *  -&gt; bool" Usage="upperBoundOnDistanceWithL2.Terminate (state, message)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="state" Type="Microsoft.ML.Runtime.Numeric.Optimizer+OptimizerState" />
+        <Parameter Name="message" Type="System.String" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="state">current state of the optimizer</param>
+        <param name="message">value of criterion</param>
+        <summary>
+            Returns true if the proved bound on the distance from the optimum,
+            normalized by the function value, is less than the tolerance
+            </summary>
+        <returns>true if criterion is less than tolerance</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Tolerance">
+      <MemberSignature Language="C#" Value="public float Tolerance { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 Tolerance" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Numeric.UpperBoundOnDistanceWithL2.Tolerance" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Tolerance As Single" />
+      <MemberSignature Language="F#" Value="member this.Tolerance : single" Usage="Microsoft.ML.Runtime.Numeric.UpperBoundOnDistanceWithL2.Tolerance" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            When criterion drops below this value, optimization is terminated
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Numeric.UpperBoundOnDistanceWithL2.ToString" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function ToString () As String" />
+      <MemberSignature Language="F#" Value="override this.ToString : unit -&gt; string" Usage="upperBoundOnDistanceWithL2.ToString " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            String summary of criterion
+            </summary>
+        <returns>summary of criterion</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
