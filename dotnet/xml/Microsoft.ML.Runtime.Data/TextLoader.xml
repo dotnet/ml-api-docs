@@ -133,19 +133,19 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="CreateReader&lt;TTupleShape&gt;">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.DataReader&lt;Microsoft.ML.Runtime.Data.IMultiStreamSource,TTupleShape&gt; CreateReader&lt;TTupleShape&gt; (Microsoft.ML.Runtime.IHostEnvironment env, Func&lt;Microsoft.ML.Runtime.Data.TextLoader.Context,TTupleShape&gt; func, Microsoft.ML.Runtime.Data.IMultiStreamSource files = null, bool hasHeader = false, char separator = '\t', bool allowQuoting = true, bool allowSparse = true, bool trimWhitspace = false);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.DataReader`2&lt;class Microsoft.ML.Runtime.Data.IMultiStreamSource, !!TTupleShape&gt; CreateReader&lt;TTupleShape&gt;(class Microsoft.ML.Runtime.IHostEnvironment env, class System.Func`2&lt;class Microsoft.ML.Runtime.Data.TextLoader/Context, !!TTupleShape&gt; func, class Microsoft.ML.Runtime.Data.IMultiStreamSource files, bool hasHeader, char separator, bool allowQuoting, bool allowSparse, bool trimWhitspace) cil managed" />
+    <Member MemberName="CreateReader&lt;TShape&gt;">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.DataReader&lt;Microsoft.ML.Runtime.Data.IMultiStreamSource,TShape&gt; CreateReader&lt;TShape&gt; (Microsoft.ML.Runtime.IHostEnvironment env, Func&lt;Microsoft.ML.Runtime.Data.TextLoader.Context,TShape&gt; func, Microsoft.ML.Runtime.Data.IMultiStreamSource files = null, bool hasHeader = false, char separator = '\t', bool allowQuoting = true, bool allowSparse = true, bool trimWhitspace = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.DataReader`2&lt;class Microsoft.ML.Runtime.Data.IMultiStreamSource, !!TShape&gt; CreateReader&lt;TShape&gt;(class Microsoft.ML.Runtime.IHostEnvironment env, class System.Func`2&lt;class Microsoft.ML.Runtime.Data.TextLoader/Context, !!TShape&gt; func, class Microsoft.ML.Runtime.Data.IMultiStreamSource files, bool hasHeader, char separator, bool allowQuoting, bool allowSparse, bool trimWhitspace) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.TextLoader.CreateReader``1(Microsoft.ML.Runtime.IHostEnvironment,System.Func{Microsoft.ML.Runtime.Data.TextLoader.Context,``0},Microsoft.ML.Runtime.Data.IMultiStreamSource,System.Boolean,System.Char,System.Boolean,System.Boolean,System.Boolean)" />
-      <MemberSignature Language="VB.NET" Value="Public Shared Function CreateReader(Of TTupleShape) (env As IHostEnvironment, func As Func(Of TextLoader.Context, TTupleShape), Optional files As IMultiStreamSource = null, Optional hasHeader As Boolean = false, Optional separator As Char = '\t', Optional allowQuoting As Boolean = true, Optional allowSparse As Boolean = true, Optional trimWhitspace As Boolean = false) As DataReader(Of IMultiStreamSource, TTupleShape)" />
-      <MemberSignature Language="F#" Value="static member CreateReader : Microsoft.ML.Runtime.IHostEnvironment * Func&lt;Microsoft.ML.Runtime.Data.TextLoader.Context, 'upleShape&gt; * Microsoft.ML.Runtime.Data.IMultiStreamSource * bool * char * bool * bool * bool -&gt; Microsoft.ML.StaticPipe.DataReader&lt;Microsoft.ML.Runtime.Data.IMultiStreamSource, 'upleShape&gt;" Usage="Microsoft.ML.Runtime.Data.TextLoader.CreateReader (env, func, files, hasHeader, separator, allowQuoting, allowSparse, trimWhitspace)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function CreateReader(Of TShape) (env As IHostEnvironment, func As Func(Of TextLoader.Context, TShape), Optional files As IMultiStreamSource = null, Optional hasHeader As Boolean = false, Optional separator As Char = '\t', Optional allowQuoting As Boolean = true, Optional allowSparse As Boolean = true, Optional trimWhitspace As Boolean = false) As DataReader(Of IMultiStreamSource, TShape)" />
+      <MemberSignature Language="F#" Value="static member CreateReader : Microsoft.ML.Runtime.IHostEnvironment * Func&lt;Microsoft.ML.Runtime.Data.TextLoader.Context, 'Shape&gt; * Microsoft.ML.Runtime.Data.IMultiStreamSource * bool * char * bool * bool * bool -&gt; Microsoft.ML.StaticPipe.DataReader&lt;Microsoft.ML.Runtime.Data.IMultiStreamSource, 'Shape&gt;" Usage="Microsoft.ML.Runtime.Data.TextLoader.CreateReader (env, func, files, hasHeader, separator, allowQuoting, allowSparse, trimWhitspace)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.StaticPipe.DataReader&lt;Microsoft.ML.Runtime.Data.IMultiStreamSource,TTupleShape&gt;</ReturnType>
+        <ReturnType>Microsoft.ML.StaticPipe.DataReader&lt;Microsoft.ML.Runtime.Data.IMultiStreamSource,TShape&gt;</ReturnType>
       </ReturnValue>
       <TypeParameters>
         <TypeParameter Name="TTupleShape">
@@ -158,7 +158,7 @@
       </TypeParameters>
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
-        <Parameter Name="func" Type="System.Func&lt;Microsoft.ML.Runtime.Data.TextLoader+Context,TTupleShape&gt;" />
+        <Parameter Name="func" Type="System.Func&lt;Microsoft.ML.Runtime.Data.TextLoader+Context,TShape&gt;" />
         <Parameter Name="files" Type="Microsoft.ML.Runtime.Data.IMultiStreamSource" />
         <Parameter Name="hasHeader" Type="System.Boolean" />
         <Parameter Name="separator" Type="System.Char" />
@@ -168,11 +168,15 @@
       </Parameters>
       <Docs>
         <typeparam name="TTupleShape">The type shape parameter, which must be</typeparam>
-        <param name="env"></param>
+        <typeparam name="TShape">The type shape parameter, which must be a valid-schema shape. As a practical
+            matter this is generally not explicitly defined from the user, but is instead inferred from the return
+            type of the <paramref name="func" /> where one takes an input <see cref="T:Microsoft.ML.Runtime.Data.TextLoader.Context" /> and uses it to compose
+            a shape-type instance describing what the columns are and how to load them from the file.</typeparam>
+        <param name="env">The environment.</param>
         <param name="func">The delegate that describes what fields to read from the text file, as well as
             describing their input type. The way in which it works is that the delegate is fed a <see cref="T:Microsoft.ML.Runtime.Data.TextLoader.Context" />,
-            and the user composes a value-tuple with <see cref="T:Microsoft.ML.StaticPipe.PipelineColumn" /> instances out of that <see cref="T:Microsoft.ML.Runtime.Data.TextLoader.Context" />.
-            The resulting data will have columns with the names corresponding to their names in the value-tuple.</param>
+            and the user composes a shape type with <see cref="T:Microsoft.ML.StaticPipe.PipelineColumn" /> instances out of that <see cref="T:Microsoft.ML.Runtime.Data.TextLoader.Context" />.
+            The resulting data will have columns with the names corresponding to their names in the shape type.</param>
         <param name="files">Input files. If <c>null</c> then no files are read, but this means that options or
             configurations that require input data for initialization (e.g., <paramref name="hasHeader" /> or
             <see cref="M:Microsoft.ML.Runtime.Data.TextLoader.Context.LoadFloat(System.Int32,System.Nullable{System.Int32})" />) with a <c>null</c> second argument.</param>

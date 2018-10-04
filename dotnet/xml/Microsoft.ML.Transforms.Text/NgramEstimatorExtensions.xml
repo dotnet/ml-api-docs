@@ -19,12 +19,12 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName="ToNgrams">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.Vector&lt;float&gt; ToNgrams (this Microsoft.ML.StaticPipe.VarVector&lt;Microsoft.ML.StaticPipe.Key&lt;uint,string&gt;&gt; input, int ngramLength = 1, int skipLength = 0, bool allLengths = true, int maxNumTerms = 10000000, Microsoft.ML.Runtime.Data.NgramTransform.WeightingCriteria weighting = Microsoft.ML.Runtime.Data.NgramTransform+WeightingCriteria.Tf);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.Vector`1&lt;float32&gt; ToNgrams(class Microsoft.ML.StaticPipe.VarVector`1&lt;class Microsoft.ML.StaticPipe.Key`2&lt;unsigned int32, string&gt;&gt; input, int32 ngramLength, int32 skipLength, bool allLengths, int32 maxNumTerms, valuetype Microsoft.ML.Runtime.Data.NgramTransform/WeightingCriteria weighting) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Text.NgramEstimatorExtensions.ToNgrams(Microsoft.ML.StaticPipe.VarVector{Microsoft.ML.StaticPipe.Key{System.UInt32,System.String}},System.Int32,System.Int32,System.Boolean,System.Int32,Microsoft.ML.Runtime.Data.NgramTransform.WeightingCriteria)" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ToNgrams (input As VarVector(Of Key(Of UInteger, String)), Optional ngramLength As Integer = 1, Optional skipLength As Integer = 0, Optional allLengths As Boolean = true, Optional maxNumTerms As Integer = 10000000, Optional weighting As NgramTransform.WeightingCriteria = Microsoft.ML.Runtime.Data.NgramTransform+WeightingCriteria.Tf) As Vector(Of Single)" />
-      <MemberSignature Language="F#" Value="static member ToNgrams : Microsoft.ML.StaticPipe.VarVector&lt;Microsoft.ML.StaticPipe.Key&lt;uint32, string&gt;&gt; * int * int * bool * int * Microsoft.ML.Runtime.Data.NgramTransform.WeightingCriteria -&gt; Microsoft.ML.StaticPipe.Vector&lt;single&gt;" Usage="Microsoft.ML.Transforms.Text.NgramEstimatorExtensions.ToNgrams (input, ngramLength, skipLength, allLengths, maxNumTerms, weighting)" />
+    <Member MemberName="ToNgrams&lt;TKey&gt;">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.Vector&lt;float&gt; ToNgrams&lt;TKey&gt; (this Microsoft.ML.StaticPipe.VarVector&lt;Microsoft.ML.StaticPipe.Key&lt;TKey,string&gt;&gt; input, int ngramLength = 1, int skipLength = 0, bool allLengths = true, int maxNumTerms = 10000000, Microsoft.ML.Runtime.Data.NgramTransform.WeightingCriteria weighting = Microsoft.ML.Runtime.Data.NgramTransform+WeightingCriteria.Tf);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.Vector`1&lt;float32&gt; ToNgrams&lt;TKey&gt;(class Microsoft.ML.StaticPipe.VarVector`1&lt;class Microsoft.ML.StaticPipe.Key`2&lt;!!TKey, string&gt;&gt; input, int32 ngramLength, int32 skipLength, bool allLengths, int32 maxNumTerms, valuetype Microsoft.ML.Runtime.Data.NgramTransform/WeightingCriteria weighting) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Text.NgramEstimatorExtensions.ToNgrams``1(Microsoft.ML.StaticPipe.VarVector{Microsoft.ML.StaticPipe.Key{``0,System.String}},System.Int32,System.Int32,System.Boolean,System.Int32,Microsoft.ML.Runtime.Data.NgramTransform.WeightingCriteria)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ToNgrams(Of TKey) (input As VarVector(Of Key(Of TKey, String)), Optional ngramLength As Integer = 1, Optional skipLength As Integer = 0, Optional allLengths As Boolean = true, Optional maxNumTerms As Integer = 10000000, Optional weighting As NgramTransform.WeightingCriteria = Microsoft.ML.Runtime.Data.NgramTransform+WeightingCriteria.Tf) As Vector(Of Single)" />
+      <MemberSignature Language="F#" Value="static member ToNgrams : Microsoft.ML.StaticPipe.VarVector&lt;Microsoft.ML.StaticPipe.Key&lt;'Key, string&gt;&gt; * int * int * bool * int * Microsoft.ML.Runtime.Data.NgramTransform.WeightingCriteria -&gt; Microsoft.ML.StaticPipe.Vector&lt;single&gt;" Usage="Microsoft.ML.Transforms.Text.NgramEstimatorExtensions.ToNgrams (input, ngramLength, skipLength, allLengths, maxNumTerms, weighting)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
@@ -33,8 +33,11 @@
       <ReturnValue>
         <ReturnType>Microsoft.ML.StaticPipe.Vector&lt;System.Single&gt;</ReturnType>
       </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TKey" />
+      </TypeParameters>
       <Parameters>
-        <Parameter Name="input" Type="Microsoft.ML.StaticPipe.VarVector&lt;Microsoft.ML.StaticPipe.Key&lt;System.UInt32,System.String&gt;&gt;" RefType="this" />
+        <Parameter Name="input" Type="Microsoft.ML.StaticPipe.VarVector&lt;Microsoft.ML.StaticPipe.Key&lt;TKey,System.String&gt;&gt;" RefType="this" />
         <Parameter Name="ngramLength" Type="System.Int32" />
         <Parameter Name="skipLength" Type="System.Int32" />
         <Parameter Name="allLengths" Type="System.Boolean" />
@@ -42,6 +45,7 @@
         <Parameter Name="weighting" Type="Microsoft.ML.Runtime.Data.NgramTransform+WeightingCriteria" />
       </Parameters>
       <Docs>
+        <typeparam name="TKey">To be added.</typeparam>
         <param name="input">The column to apply to.</param>
         <param name="ngramLength">Ngram length.</param>
         <param name="skipLength">Maximum number of tokens to skip when constructing an ngram.</param>
@@ -52,8 +56,8 @@
              Produces a bag of counts of ngrams (sequences of consecutive words ) in a given tokenized text.
              It does so by building a dictionary of ngrams and using the id in the dictionary as the index in the bag.
             
-             /// <see cref="M:Microsoft.ML.Transforms.Text.NgramEstimatorExtensions.ToNgrams(Microsoft.ML.StaticPipe.VarVector{Microsoft.ML.StaticPipe.Key{System.UInt32,System.String}},System.Int32,System.Int32,System.Boolean,System.Int32,Microsoft.ML.Runtime.Data.NgramTransform.WeightingCriteria)" /> is different from <see cref="M:Microsoft.ML.Transforms.Text.WordBagEstimatorExtensions.ToBagofWords(Microsoft.ML.StaticPipe.Scalar{System.String},System.Int32,System.Int32,System.Boolean,System.Int32,Microsoft.ML.Runtime.Data.NgramTransform.WeightingCriteria)" />
-             in a way that <see cref="M:Microsoft.ML.Transforms.Text.NgramEstimatorExtensions.ToNgrams(Microsoft.ML.StaticPipe.VarVector{Microsoft.ML.StaticPipe.Key{System.UInt32,System.String}},System.Int32,System.Int32,System.Boolean,System.Int32,Microsoft.ML.Runtime.Data.NgramTransform.WeightingCriteria)" /> takes tokenized text as input while <see cref="M:Microsoft.ML.Transforms.Text.WordBagEstimatorExtensions.ToBagofWords(Microsoft.ML.StaticPipe.Scalar{System.String},System.Int32,System.Int32,System.Boolean,System.Int32,Microsoft.ML.Runtime.Data.NgramTransform.WeightingCriteria)" /> tokenizes text internally.
+             /// <see cref="M:Microsoft.ML.Transforms.Text.NgramEstimatorExtensions.ToNgrams``1(Microsoft.ML.StaticPipe.VarVector{Microsoft.ML.StaticPipe.Key{``0,System.String}},System.Int32,System.Int32,System.Boolean,System.Int32,Microsoft.ML.Runtime.Data.NgramTransform.WeightingCriteria)" /> is different from <see cref="M:Microsoft.ML.Transforms.Text.WordBagEstimatorExtensions.ToBagofWords(Microsoft.ML.StaticPipe.Scalar{System.String},System.Int32,System.Int32,System.Boolean,System.Int32,Microsoft.ML.Runtime.Data.NgramTransform.WeightingCriteria)" />
+             in a way that <see cref="M:Microsoft.ML.Transforms.Text.NgramEstimatorExtensions.ToNgrams``1(Microsoft.ML.StaticPipe.VarVector{Microsoft.ML.StaticPipe.Key{``0,System.String}},System.Int32,System.Int32,System.Boolean,System.Int32,Microsoft.ML.Runtime.Data.NgramTransform.WeightingCriteria)" /> takes tokenized text as input while <see cref="M:Microsoft.ML.Transforms.Text.WordBagEstimatorExtensions.ToBagofWords(Microsoft.ML.StaticPipe.Scalar{System.String},System.Int32,System.Int32,System.Boolean,System.Int32,Microsoft.ML.Runtime.Data.NgramTransform.WeightingCriteria)" /> tokenizes text internally.
              </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
