@@ -1,9 +1,9 @@
 ﻿<Type Name="PriorTrainer" FullName="Microsoft.ML.Runtime.Learners.PriorTrainer">
-  <TypeSignature Language="C#" Value="public sealed class PriorTrainer : Microsoft.ML.Runtime.Training.TrainerBase&lt;Microsoft.ML.Runtime.Learners.PriorPredictor&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit PriorTrainer extends Microsoft.ML.Runtime.Training.TrainerBase`1&lt;class Microsoft.ML.Runtime.Learners.PriorPredictor&gt;" />
+  <TypeSignature Language="C#" Value="public sealed class PriorTrainer : Microsoft.ML.Runtime.Training.TrainerBase&lt;Microsoft.ML.Runtime.Learners.PriorPredictor&gt;, Microsoft.ML.Core.Data.IEstimator&lt;Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.PriorPredictor&gt;&gt;, Microsoft.ML.Runtime.Training.ITrainerEstimator&lt;Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.PriorPredictor&gt;,Microsoft.ML.Runtime.Learners.PriorPredictor&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit PriorTrainer extends Microsoft.ML.Runtime.Training.TrainerBase`1&lt;class Microsoft.ML.Runtime.Learners.PriorPredictor&gt; implements class Microsoft.ML.Core.Data.IEstimator`1&lt;class Microsoft.ML.Runtime.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.Runtime.Learners.PriorPredictor&gt;&gt;, class Microsoft.ML.Runtime.Training.ITrainerEstimator`2&lt;class Microsoft.ML.Runtime.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.Runtime.Learners.PriorPredictor&gt;, class Microsoft.ML.Runtime.Learners.PriorPredictor&gt;" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Learners.PriorTrainer" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class PriorTrainer&#xA;Inherits TrainerBase(Of PriorPredictor)" />
-  <TypeSignature Language="F#" Value="type PriorTrainer = class&#xA;    inherit TrainerBase&lt;PriorPredictor&gt;" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class PriorTrainer&#xA;Inherits TrainerBase(Of PriorPredictor)&#xA;Implements IEstimator(Of BinaryPredictionTransformer(Of PriorPredictor)), ITrainerEstimator(Of BinaryPredictionTransformer(Of PriorPredictor), PriorPredictor)" />
+  <TypeSignature Language="F#" Value="type PriorTrainer = class&#xA;    inherit TrainerBase&lt;PriorPredictor&gt;&#xA;    interface ITrainerEstimator&lt;BinaryPredictionTransformer&lt;PriorPredictor&gt;, PriorPredictor&gt;&#xA;    interface IEstimator&lt;BinaryPredictionTransformer&lt;PriorPredictor&gt;&gt;" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -15,9 +15,18 @@
       <BaseTypeArgument TypeParamName="!0">Microsoft.ML.Runtime.Learners.PriorPredictor</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
-  <Interfaces />
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Core.Data.IEstimator&lt;Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.PriorPredictor&gt;&gt;</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.Training.ITrainerEstimator&lt;Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.PriorPredictor&gt;,Microsoft.ML.Runtime.Learners.PriorPredictor&gt;</InterfaceName>
+    </Interface>
+  </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+            Learns the prior distribution for 0/1 class labels and just outputs that.
+            </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -43,6 +52,86 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public PriorTrainer (Microsoft.ML.Runtime.IHost host, string labelColumn, string weightColunn = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHost host, string labelColumn, string weightColunn) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.PriorTrainer.#ctor(Microsoft.ML.Runtime.IHost,System.String,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (host As IHost, labelColumn As String, Optional weightColunn As String = null)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Learners.PriorTrainer : Microsoft.ML.Runtime.IHost * string * string -&gt; Microsoft.ML.Runtime.Learners.PriorTrainer" Usage="new Microsoft.ML.Runtime.Learners.PriorTrainer (host, labelColumn, weightColunn)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="host" Type="Microsoft.ML.Runtime.IHost" />
+        <Parameter Name="labelColumn" Type="System.String" />
+        <Parameter Name="weightColunn" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="host">To be added.</param>
+        <param name="labelColumn">To be added.</param>
+        <param name="weightColunn">To be added.</param>
+        <summary>
+            Initializes PriorTrainer object.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Fit">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.PriorPredictor&gt; Fit (Microsoft.ML.Runtime.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.Runtime.Learners.PriorPredictor&gt; Fit(class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.PriorTrainer.Fit(Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Fit (input As IDataView) As BinaryPredictionTransformer(Of PriorPredictor)" />
+      <MemberSignature Language="F#" Value="abstract member Fit : Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.PriorPredictor&gt;&#xA;override this.Fit : Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.PriorPredictor&gt;" Usage="priorTrainer.Fit input" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Core.Data.IEstimator`1.Fit(Microsoft.ML.Runtime.Data.IDataView)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.PriorPredictor&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetOutputSchema">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Core.Data.SchemaShape GetOutputSchema (Microsoft.ML.Core.Data.SchemaShape inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Core.Data.SchemaShape GetOutputSchema(class Microsoft.ML.Core.Data.SchemaShape inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.PriorTrainer.GetOutputSchema(Microsoft.ML.Core.Data.SchemaShape)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetOutputSchema (inputSchema As SchemaShape) As SchemaShape" />
+      <MemberSignature Language="F#" Value="abstract member GetOutputSchema : Microsoft.ML.Core.Data.SchemaShape -&gt; Microsoft.ML.Core.Data.SchemaShape&#xA;override this.GetOutputSchema : Microsoft.ML.Core.Data.SchemaShape -&gt; Microsoft.ML.Core.Data.SchemaShape" Usage="priorTrainer.GetOutputSchema inputSchema" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Core.Data.IEstimator`1.GetOutputSchema(Microsoft.ML.Core.Data.SchemaShape)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Core.Data.SchemaShape</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.Core.Data.SchemaShape" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Info">
       <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.TrainerInfo Info { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.TrainerInfo Info" />
@@ -50,6 +139,9 @@
       <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property Info As TrainerInfo" />
       <MemberSignature Language="F#" Value="member this.Info : Microsoft.ML.Runtime.TrainerInfo" Usage="Microsoft.ML.Runtime.Learners.PriorTrainer.Info" />
       <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Runtime.Training.ITrainerEstimator`2.Info</InterfaceMember>
+      </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -70,6 +162,9 @@
       <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property PredictionKind As PredictionKind" />
       <MemberSignature Language="F#" Value="member this.PredictionKind : Microsoft.ML.Runtime.PredictionKind" Usage="Microsoft.ML.Runtime.Learners.PriorTrainer.PredictionKind" />
       <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Runtime.Training.ITrainerEstimator`2.PredictionKind</InterfaceMember>
+      </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>

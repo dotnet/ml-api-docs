@@ -1,9 +1,9 @@
 ﻿<Type Name="RandomizedPcaTrainer" FullName="Microsoft.ML.Runtime.PCA.RandomizedPcaTrainer">
-  <TypeSignature Language="C#" Value="public sealed class RandomizedPcaTrainer : Microsoft.ML.Runtime.Training.TrainerBase&lt;Microsoft.ML.Runtime.PCA.PcaPredictor&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit RandomizedPcaTrainer extends Microsoft.ML.Runtime.Training.TrainerBase`1&lt;class Microsoft.ML.Runtime.PCA.PcaPredictor&gt;" />
+  <TypeSignature Language="C#" Value="public sealed class RandomizedPcaTrainer : Microsoft.ML.Runtime.Training.TrainerEstimatorBase&lt;Microsoft.ML.Runtime.Data.AnomalyPredictionTransformer&lt;Microsoft.ML.Runtime.PCA.PcaPredictor&gt;,Microsoft.ML.Runtime.PCA.PcaPredictor&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit RandomizedPcaTrainer extends Microsoft.ML.Runtime.Training.TrainerEstimatorBase`2&lt;class Microsoft.ML.Runtime.Data.AnomalyPredictionTransformer`1&lt;class Microsoft.ML.Runtime.PCA.PcaPredictor&gt;, class Microsoft.ML.Runtime.PCA.PcaPredictor&gt;" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.PCA.RandomizedPcaTrainer" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class RandomizedPcaTrainer&#xA;Inherits TrainerBase(Of PcaPredictor)" />
-  <TypeSignature Language="F#" Value="type RandomizedPcaTrainer = class&#xA;    inherit TrainerBase&lt;PcaPredictor&gt;" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class RandomizedPcaTrainer&#xA;Inherits TrainerEstimatorBase(Of AnomalyPredictionTransformer(Of PcaPredictor), PcaPredictor)" />
+  <TypeSignature Language="F#" Value="type RandomizedPcaTrainer = class&#xA;    inherit TrainerEstimatorBase&lt;AnomalyPredictionTransformer&lt;PcaPredictor&gt;, PcaPredictor&gt;" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.PCA</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -11,15 +11,17 @@
   <Base>
     <BaseTypeName>Microsoft.ML.Runtime.Training.TrainerBase&lt;Microsoft.ML.Runtime.Data.RoleMappedData,Microsoft.ML.Runtime.PCA.PcaPredictor&gt;</BaseTypeName>
     <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Runtime.Training.TrainerBase&lt;Microsoft.ML.Runtime.PCA.PcaPredictor&gt;</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Runtime.Training.TrainerEstimatorBase&lt;Microsoft.ML.Runtime.Data.AnomalyPredictionTransformer&lt;Microsoft.ML.Runtime.PCA.PcaPredictor&gt;,Microsoft.ML.Runtime.PCA.PcaPredictor&gt;</BaseTypeName>
     <BaseTypeArguments>
-      <BaseTypeArgument TypeParamName="!0">Microsoft.ML.Runtime.PCA.PcaPredictor</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="!0">Microsoft.ML.Runtime.Data.AnomalyPredictionTransformer&lt;Microsoft.ML.Runtime.PCA.PcaPredictor&gt;</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="!1">Microsoft.ML.Runtime.PCA.PcaPredictor</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
   <Interfaces />
   <Docs>
     <summary>
             This trainer trains an approximate PCA using Randomized SVD algorithm
-            Reference: http://web.stanford.edu/group/mmds/slides2010/Martinsson.pdf
+            Reference: https://web.stanford.edu/group/mmds/slides2010/Martinsson.pdf
             </summary>
     <remarks>
             This PCA can be made into Kernel PCA by using Random Fourier Features transform
@@ -27,11 +29,11 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public RandomizedPcaTrainer (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.PCA.RandomizedPcaTrainer.Arguments args);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.PCA.RandomizedPcaTrainer/Arguments args) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.PCA.RandomizedPcaTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.PCA.RandomizedPcaTrainer.Arguments)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, args As RandomizedPcaTrainer.Arguments)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.PCA.RandomizedPcaTrainer : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.PCA.RandomizedPcaTrainer.Arguments -&gt; Microsoft.ML.Runtime.PCA.RandomizedPcaTrainer" Usage="new Microsoft.ML.Runtime.PCA.RandomizedPcaTrainer (env, args)" />
+      <MemberSignature Language="C#" Value="public RandomizedPcaTrainer (Microsoft.ML.Runtime.IHostEnvironment env, string featureColumn, string weightColumn = null, int rank = 20, int oversampling = 20, bool center = true, Nullable&lt;int&gt; seed = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string featureColumn, string weightColumn, int32 rank, int32 oversampling, bool center, valuetype System.Nullable`1&lt;int32&gt; seed) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.PCA.RandomizedPcaTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.Int32,System.Int32,System.Boolean,System.Nullable{System.Int32})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, featureColumn As String, Optional weightColumn As String = null, Optional rank As Integer = 20, Optional oversampling As Integer = 20, Optional center As Boolean = true, Optional seed As Nullable(Of Integer) = null)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.PCA.RandomizedPcaTrainer : Microsoft.ML.Runtime.IHostEnvironment * string * string * int * int * bool * Nullable&lt;int&gt; -&gt; Microsoft.ML.Runtime.PCA.RandomizedPcaTrainer" Usage="new Microsoft.ML.Runtime.PCA.RandomizedPcaTrainer (env, featureColumn, weightColumn, rank, oversampling, center, seed)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.PCA</AssemblyName>
@@ -39,12 +41,48 @@
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
-        <Parameter Name="args" Type="Microsoft.ML.Runtime.PCA.RandomizedPcaTrainer+Arguments" />
+        <Parameter Name="featureColumn" Type="System.String" />
+        <Parameter Name="weightColumn" Type="System.String" />
+        <Parameter Name="rank" Type="System.Int32" />
+        <Parameter Name="oversampling" Type="System.Int32" />
+        <Parameter Name="center" Type="System.Boolean" />
+        <Parameter Name="seed" Type="System.Nullable&lt;System.Int32&gt;" />
       </Parameters>
       <Docs>
-        <param name="env">To be added.</param>
-        <param name="args">To be added.</param>
+        <param name="env">The local instance of the <see cref="T:Microsoft.ML.Runtime.IHostEnvironment" />.</param>
+        <param name="featureColumn">The name of the feature column.</param>
+        <param name="weightColumn">The name of the weight column.</param>
+        <param name="rank">The number of components in the PCA.</param>
+        <param name="oversampling">Oversampling parameter for randomized PCA training.</param>
+        <param name="center">If enabled, data is centered to be zero mean.</param>
+        <param name="seed">The seed for random number generation.</param>
+        <summary>
+            Initializes a new instance of <see cref="T:Microsoft.ML.Runtime.PCA.RandomizedPcaTrainer" />.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetOutputColumnsCore">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Core.Data.SchemaShape.Column[] GetOutputColumnsCore (Microsoft.ML.Core.Data.SchemaShape inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Core.Data.SchemaShape/Column[] GetOutputColumnsCore(class Microsoft.ML.Core.Data.SchemaShape inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.PCA.RandomizedPcaTrainer.GetOutputColumnsCore(Microsoft.ML.Core.Data.SchemaShape)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetOutputColumnsCore (inputSchema As SchemaShape) As SchemaShape.Column()" />
+      <MemberSignature Language="F#" Value="override this.GetOutputColumnsCore : Microsoft.ML.Core.Data.SchemaShape -&gt; Microsoft.ML.Core.Data.SchemaShape.Column[]" Usage="randomizedPcaTrainer.GetOutputColumnsCore inputSchema" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.PCA</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Core.Data.SchemaShape+Column[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.Core.Data.SchemaShape" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
         <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -87,6 +125,32 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="MakeTransformer">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.AnomalyPredictionTransformer&lt;Microsoft.ML.Runtime.PCA.PcaPredictor&gt; MakeTransformer (Microsoft.ML.Runtime.PCA.PcaPredictor model, Microsoft.ML.Runtime.Data.ISchema trainSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.AnomalyPredictionTransformer`1&lt;class Microsoft.ML.Runtime.PCA.PcaPredictor&gt; MakeTransformer(class Microsoft.ML.Runtime.PCA.PcaPredictor model, class Microsoft.ML.Runtime.Data.ISchema trainSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.PCA.RandomizedPcaTrainer.MakeTransformer(Microsoft.ML.Runtime.PCA.PcaPredictor,Microsoft.ML.Runtime.Data.ISchema)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function MakeTransformer (model As PcaPredictor, trainSchema As ISchema) As AnomalyPredictionTransformer(Of PcaPredictor)" />
+      <MemberSignature Language="F#" Value="override this.MakeTransformer : Microsoft.ML.Runtime.PCA.PcaPredictor * Microsoft.ML.Runtime.Data.ISchema -&gt; Microsoft.ML.Runtime.Data.AnomalyPredictionTransformer&lt;Microsoft.ML.Runtime.PCA.PcaPredictor&gt;" Usage="randomizedPcaTrainer.MakeTransformer (model, trainSchema)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.PCA</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.AnomalyPredictionTransformer&lt;Microsoft.ML.Runtime.PCA.PcaPredictor&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="model" Type="Microsoft.ML.Runtime.PCA.PcaPredictor" />
+        <Parameter Name="trainSchema" Type="Microsoft.ML.Runtime.Data.ISchema" />
+      </Parameters>
+      <Docs>
+        <param name="model">To be added.</param>
+        <param name="trainSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="PredictionKind">
       <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.PredictionKind PredictionKind { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.ML.Runtime.PredictionKind PredictionKind" />
@@ -107,12 +171,12 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Train">
-      <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.PCA.PcaPredictor Train (Microsoft.ML.Runtime.TrainContext context);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Microsoft.ML.Runtime.PCA.PcaPredictor Train(class Microsoft.ML.Runtime.TrainContext context) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.PCA.RandomizedPcaTrainer.Train(Microsoft.ML.Runtime.TrainContext)" />
-      <MemberSignature Language="VB.NET" Value="Public Overrides Function Train (context As TrainContext) As PcaPredictor" />
-      <MemberSignature Language="F#" Value="override this.Train : Microsoft.ML.Runtime.TrainContext -&gt; Microsoft.ML.Runtime.PCA.PcaPredictor" Usage="randomizedPcaTrainer.Train context" />
+    <Member MemberName="TrainModelCore">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.PCA.PcaPredictor TrainModelCore (Microsoft.ML.Runtime.TrainContext context);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.PCA.PcaPredictor TrainModelCore(class Microsoft.ML.Runtime.TrainContext context) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.PCA.RandomizedPcaTrainer.TrainModelCore(Microsoft.ML.Runtime.TrainContext)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function TrainModelCore (context As TrainContext) As PcaPredictor" />
+      <MemberSignature Language="F#" Value="override this.TrainModelCore : Microsoft.ML.Runtime.TrainContext -&gt; Microsoft.ML.Runtime.PCA.PcaPredictor" Usage="randomizedPcaTrainer.TrainModelCore context" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.PCA</AssemblyName>
@@ -144,7 +208,7 @@
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="Train an PCA Anomaly model.", Name="Trainers.PcaAnomalyDetector", ShortName="pcaAnom", UserName="PCA Anomaly Detector", XmlInclude=Mono.Cecil.CustomAttributeArgument[])</AttributeName>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="Train an PCA Anomaly model.", Name="Trainers.PcaAnomalyDetector", ShortName="pcaAnom", UserName="PCA Anomaly Detector", XmlInclude=new System.String[] { "&lt;include file='../Microsoft.ML.PCA/doc.xml' path='doc/members/member[@name="PCA"]/*' /&gt;", "&lt;include file='../Microsoft.ML.PCA/doc.xml' path='doc/members/example[@name="PcaAnomalyDetector"]/*' /&gt;" })</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>

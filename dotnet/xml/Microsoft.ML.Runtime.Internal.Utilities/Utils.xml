@@ -632,6 +632,38 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="CopyRange">
+      <MemberSignature Language="C#" Value="public static long CopyRange (this System.IO.Stream source, System.IO.Stream destination, long length, int bufferSize = 81920);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig int64 CopyRange(class System.IO.Stream source, class System.IO.Stream destination, int64 length, int32 bufferSize) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.Utils.CopyRange(System.IO.Stream,System.IO.Stream,System.Int64,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function CopyRange (source As Stream, destination As Stream, length As Long, Optional bufferSize As Integer = 81920) As Long" />
+      <MemberSignature Language="F#" Value="static member CopyRange : System.IO.Stream * System.IO.Stream * int64 * int -&gt; int64" Usage="Microsoft.ML.Runtime.Internal.Utilities.Utils.CopyRange (source, destination, length, bufferSize)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int64</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="source" Type="System.IO.Stream" RefType="this" />
+        <Parameter Name="destination" Type="System.IO.Stream" />
+        <Parameter Name="length" Type="System.Int64" />
+        <Parameter Name="bufferSize" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="source">Source stream to copy from</param>
+        <param name="destination">Destination stream to copy to</param>
+        <param name="length">Number of bytes to copy</param>
+        <param name="bufferSize">Size of buffer to use when copying, default is 81920 to match that of Stream</param>
+        <summary>
+            Similar to Stream.CopyTo but takes a length rather than assuming copy to end.  Returns amount copied.
+            </summary>
+        <returns>number of bytes copied</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="CreateArray&lt;T&gt;">
       <MemberSignature Language="C#" Value="public static T[] CreateArray&lt;T&gt; (int length, T value);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig !!T[] CreateArray&lt;T&gt;(int32 length, !!T value) cil managed" />
@@ -1941,6 +1973,84 @@
         <param name="arg1">To be added.</param>
         <summary>
             A one-argument version of <see cref="M:Microsoft.ML.Runtime.Internal.Utilities.Utils.MarshalActionInvoke(System.Action,System.Type)" />.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MarshalActionInvoke&lt;TArg1,TArg2&gt;">
+      <MemberSignature Language="C#" Value="public static void MarshalActionInvoke&lt;TArg1,TArg2&gt; (Action&lt;TArg1,TArg2&gt; act, Type genArg, TArg1 arg1, TArg2 arg2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void MarshalActionInvoke&lt;TArg1, TArg2&gt;(class System.Action`2&lt;!!TArg1, !!TArg2&gt; act, class System.Type genArg, !!TArg1 arg1, !!TArg2 arg2) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.Utils.MarshalActionInvoke``2(System.Action{``0,``1},System.Type,``0,``1)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub MarshalActionInvoke(Of TArg1, TArg2) (act As Action(Of TArg1, TArg2), genArg As Type, arg1 As TArg1, arg2 As TArg2)" />
+      <MemberSignature Language="F#" Value="static member MarshalActionInvoke : Action&lt;'TArg1, 'TArg2&gt; * Type * 'TArg1 * 'TArg2 -&gt; unit" Usage="Microsoft.ML.Runtime.Internal.Utilities.Utils.MarshalActionInvoke (act, genArg, arg1, arg2)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TArg1" />
+        <TypeParameter Name="TArg2" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="act" Type="System.Action&lt;TArg1,TArg2&gt;" />
+        <Parameter Name="genArg" Type="System.Type" />
+        <Parameter Name="arg1" Type="TArg1" />
+        <Parameter Name="arg2" Type="TArg2" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TArg1">To be added.</typeparam>
+        <typeparam name="TArg2">To be added.</typeparam>
+        <param name="act">To be added.</param>
+        <param name="genArg">To be added.</param>
+        <param name="arg1">To be added.</param>
+        <param name="arg2">To be added.</param>
+        <summary>
+            A two-argument version of <see cref="M:Microsoft.ML.Runtime.Internal.Utilities.Utils.MarshalActionInvoke(System.Action,System.Type)" />.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MarshalActionInvoke&lt;TArg1,TArg2,TArg3&gt;">
+      <MemberSignature Language="C#" Value="public static void MarshalActionInvoke&lt;TArg1,TArg2,TArg3&gt; (Action&lt;TArg1,TArg2,TArg3&gt; act, Type genArg, TArg1 arg1, TArg2 arg2, TArg3 arg3);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void MarshalActionInvoke&lt;TArg1, TArg2, TArg3&gt;(class System.Action`3&lt;!!TArg1, !!TArg2, !!TArg3&gt; act, class System.Type genArg, !!TArg1 arg1, !!TArg2 arg2, !!TArg3 arg3) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.Utils.MarshalActionInvoke``3(System.Action{``0,``1,``2},System.Type,``0,``1,``2)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub MarshalActionInvoke(Of TArg1, TArg2, TArg3) (act As Action(Of TArg1, TArg2, TArg3), genArg As Type, arg1 As TArg1, arg2 As TArg2, arg3 As TArg3)" />
+      <MemberSignature Language="F#" Value="static member MarshalActionInvoke : Action&lt;'TArg1, 'TArg2, 'TArg3&gt; * Type * 'TArg1 * 'TArg2 * 'TArg3 -&gt; unit" Usage="Microsoft.ML.Runtime.Internal.Utilities.Utils.MarshalActionInvoke (act, genArg, arg1, arg2, arg3)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TArg1" />
+        <TypeParameter Name="TArg2" />
+        <TypeParameter Name="TArg3" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="act" Type="System.Action&lt;TArg1,TArg2,TArg3&gt;" />
+        <Parameter Name="genArg" Type="System.Type" />
+        <Parameter Name="arg1" Type="TArg1" />
+        <Parameter Name="arg2" Type="TArg2" />
+        <Parameter Name="arg3" Type="TArg3" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TArg1">To be added.</typeparam>
+        <typeparam name="TArg2">To be added.</typeparam>
+        <typeparam name="TArg3">To be added.</typeparam>
+        <param name="act">To be added.</param>
+        <param name="genArg">To be added.</param>
+        <param name="arg1">To be added.</param>
+        <param name="arg2">To be added.</param>
+        <param name="arg3">To be added.</param>
+        <summary>
+            A three-argument version of <see cref="M:Microsoft.ML.Runtime.Internal.Utilities.Utils.MarshalActionInvoke(System.Action,System.Type)" />.
             </summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -4732,7 +4842,7 @@
         <summary>
             Writes what Microsoft calls a UTF-7 encoded number in the binary reader and
             writer string methods. For non-negative integers this is equivalent to LEB128
-            (see http://en.wikipedia.org/wiki/LEB128).
+            (see https://en.wikipedia.org/wiki/LEB128).
             </summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -5064,11 +5174,11 @@
       </Docs>
     </Member>
     <Member MemberName="WriteULongStream">
-      <MemberSignature Language="C#" Value="public static long WriteULongStream (this System.IO.BinaryWriter writer, System.Collections.Generic.IEnumerable&lt;ulong&gt; e);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig int64 WriteULongStream(class System.IO.BinaryWriter writer, class System.Collections.Generic.IEnumerable`1&lt;unsigned int64&gt; e) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.Utils.WriteULongStream(System.IO.BinaryWriter,System.Collections.Generic.IEnumerable{System.UInt64})" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function WriteULongStream (writer As BinaryWriter, e As IEnumerable(Of ULong)) As Long" />
-      <MemberSignature Language="F#" Value="static member WriteULongStream : System.IO.BinaryWriter * seq&lt;uint64&gt; -&gt; int64" Usage="Microsoft.ML.Runtime.Internal.Utilities.Utils.WriteULongStream (writer, e)" />
+      <MemberSignature Language="C#" Value="public static long WriteULongStream (this System.IO.BinaryWriter writer, System.Collections.Generic.IEnumerable&lt;long&gt; e);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig int64 WriteULongStream(class System.IO.BinaryWriter writer, class System.Collections.Generic.IEnumerable`1&lt;int64&gt; e) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.Utils.WriteULongStream(System.IO.BinaryWriter,System.Collections.Generic.IEnumerable{System.Int64})" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function WriteULongStream (writer As BinaryWriter, e As IEnumerable(Of Long)) As Long" />
+      <MemberSignature Language="F#" Value="static member WriteULongStream : System.IO.BinaryWriter * seq&lt;int64&gt; -&gt; int64" Usage="Microsoft.ML.Runtime.Internal.Utilities.Utils.WriteULongStream (writer, e)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
@@ -5079,7 +5189,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="writer" Type="System.IO.BinaryWriter" RefType="this" />
-        <Parameter Name="e" Type="System.Collections.Generic.IEnumerable&lt;System.UInt64&gt;" />
+        <Parameter Name="e" Type="System.Collections.Generic.IEnumerable&lt;System.Int64&gt;" />
       </Parameters>
       <Docs>
         <param name="writer">To be added.</param>

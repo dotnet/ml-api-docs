@@ -1,9 +1,9 @@
 ﻿<Type Name="BinaryPredictionTransformer&lt;TModel&gt;" FullName="Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;TModel&gt;">
-  <TypeSignature Language="C#" Value="public sealed class BinaryPredictionTransformer&lt;TModel&gt; : Microsoft.ML.Runtime.Data.PredictionTransformerBase&lt;TModel&gt; where TModel : class, IPredictorProducing&lt;float&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit BinaryPredictionTransformer`1&lt;class (class Microsoft.ML.Runtime.IPredictorProducing`1&lt;float32&gt;) TModel&gt; extends Microsoft.ML.Runtime.Data.PredictionTransformerBase`1&lt;!TModel&gt;" />
+  <TypeSignature Language="C#" Value="public sealed class BinaryPredictionTransformer&lt;TModel&gt; : Microsoft.ML.Runtime.Data.SingleFeaturePredictionTransformerBase&lt;TModel,Microsoft.ML.Runtime.Data.BinaryClassifierScorer&gt; where TModel : class, IPredictorProducing&lt;float&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit BinaryPredictionTransformer`1&lt;class (class Microsoft.ML.Runtime.IPredictorProducing`1&lt;float32&gt;) TModel&gt; extends Microsoft.ML.Runtime.Data.SingleFeaturePredictionTransformerBase`2&lt;!TModel, class Microsoft.ML.Runtime.Data.BinaryClassifierScorer&gt;" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.BinaryPredictionTransformer`1" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class BinaryPredictionTransformer(Of TModel)&#xA;Inherits PredictionTransformerBase(Of TModel)" />
-  <TypeSignature Language="F#" Value="type BinaryPredictionTransformer&lt;'Model (requires 'Model : null and 'Model :&gt; IPredictorProducing&lt;single&gt;)&gt; = class&#xA;    inherit PredictionTransformerBase&lt;'Model (requires 'Model : null and 'Model :&gt; IPredictorProducing&lt;single&gt;)&gt;" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class BinaryPredictionTransformer(Of TModel)&#xA;Inherits SingleFeaturePredictionTransformerBase(Of TModel, BinaryClassifierScorer)" />
+  <TypeSignature Language="F#" Value="type BinaryPredictionTransformer&lt;'Model (requires 'Model : null and 'Model :&gt; IPredictorProducing&lt;single&gt;)&gt; = class&#xA;    inherit SingleFeaturePredictionTransformerBase&lt;'Model, BinaryClassifierScorer (requires 'Model : null and 'Model :&gt; IPredictorProducing&lt;single&gt;)&gt;" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.Data</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -18,14 +18,18 @@
   </TypeParameters>
   <Base>
     <BaseTypeName>Microsoft.ML.Runtime.Data.PredictionTransformerBase&lt;TModel&gt;</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Runtime.Data.SingleFeaturePredictionTransformerBase&lt;TModel,Microsoft.ML.Runtime.Data.BinaryClassifierScorer&gt;</BaseTypeName>
     <BaseTypeArguments>
       <BaseTypeArgument TypeParamName="TModel">TModel</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TScorer">Microsoft.ML.Runtime.Data.BinaryClassifierScorer</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
   <Interfaces />
   <Docs>
-    <typeparam name="TModel">To be added.</typeparam>
-    <summary>To be added.</summary>
+    <typeparam name="TModel">An implementation of the <see cref="T:Microsoft.ML.Runtime.IPredictorProducing`1" /></typeparam>
+    <summary>
+            Base class for the <see cref="T:Microsoft.ML.Runtime.ISingleFeaturePredictionTransformer`1" /> working on binary classification tasks.
+            </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -139,30 +143,6 @@
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Transform">
-      <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.Data.IDataView Transform (Microsoft.ML.Runtime.Data.IDataView input);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Microsoft.ML.Runtime.Data.IDataView Transform(class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.BinaryPredictionTransformer`1.Transform(Microsoft.ML.Runtime.Data.IDataView)" />
-      <MemberSignature Language="VB.NET" Value="Public Overrides Function Transform (input As IDataView) As IDataView" />
-      <MemberSignature Language="F#" Value="override this.Transform : Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.IDataView" Usage="binaryPredictionTransformer.Transform input" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.IDataView</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
-      </Parameters>
-      <Docs>
-        <param name="input">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
