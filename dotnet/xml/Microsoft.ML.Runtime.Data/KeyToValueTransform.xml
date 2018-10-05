@@ -1,15 +1,16 @@
 ﻿<Type Name="KeyToValueTransform" FullName="Microsoft.ML.Runtime.Data.KeyToValueTransform">
-  <TypeSignature Language="C#" Value="public sealed class KeyToValueTransform : Microsoft.ML.Runtime.Data.OneToOneTransformBase" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit KeyToValueTransform extends Microsoft.ML.Runtime.Data.OneToOneTransformBase" />
+  <TypeSignature Language="C#" Value="public sealed class KeyToValueTransform : Microsoft.ML.Runtime.Data.OneToOneTransformerBase" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit KeyToValueTransform extends Microsoft.ML.Runtime.Data.OneToOneTransformerBase" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.KeyToValueTransform" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class KeyToValueTransform&#xA;Inherits OneToOneTransformBase" />
-  <TypeSignature Language="F#" Value="type KeyToValueTransform = class&#xA;    inherit OneToOneTransformBase" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class KeyToValueTransform&#xA;Inherits OneToOneTransformerBase" />
+  <TypeSignature Language="F#" Value="type KeyToValueTransform = class&#xA;    inherit OneToOneTransformerBase" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.Data</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>Microsoft.ML.Runtime.Data.OneToOneTransformBase</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Runtime.Data.OneToOneTransformerBase</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -23,16 +24,101 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public KeyToValueTransform (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.KeyToValueTransform.Arguments args, Microsoft.ML.Runtime.Data.IDataView input);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.KeyToValueTransform/Arguments args, class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.KeyToValueTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.KeyToValueTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, args As KeyToValueTransform.Arguments, input As IDataView)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.KeyToValueTransform : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.KeyToValueTransform.Arguments * Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.KeyToValueTransform" Usage="new Microsoft.ML.Runtime.Data.KeyToValueTransform (env, args, input)" />
+      <MemberSignature Language="C#" Value="public KeyToValueTransform (Microsoft.ML.Runtime.IHostEnvironment env, string columnName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string columnName) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.KeyToValueTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, columnName As String)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.KeyToValueTransform : Microsoft.ML.Runtime.IHostEnvironment * string -&gt; Microsoft.ML.Runtime.Data.KeyToValueTransform" Usage="new Microsoft.ML.Runtime.Data.KeyToValueTransform (env, columnName)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="columnName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="columnName">To be added.</param>
+        <summary>
+            Create a <see cref="T:Microsoft.ML.Runtime.Data.KeyToValueTransform" /> that takes and transforms one column.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public KeyToValueTransform (Microsoft.ML.Runtime.IHostEnvironment env, params ValueTuple&lt;string,string&gt;[] columns);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, valuetype System.ValueTuple`2&lt;string, string&gt;[] columns) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.KeyToValueTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.ValueTuple{System.String,System.String}[])" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, ParamArray columns As ValueTuple(Of String, String)())" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.KeyToValueTransform : Microsoft.ML.Runtime.IHostEnvironment * ValueTuple&lt;string, string&gt;[] -&gt; Microsoft.ML.Runtime.Data.KeyToValueTransform" Usage="new Microsoft.ML.Runtime.Data.KeyToValueTransform (env, columns)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="columns" Type="System.ValueTuple&lt;System.String,System.String&gt;[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+            <Attribute>
+              <AttributeName>System.Runtime.CompilerServices.TupleElementNames(new System.String[] { "input", "output" })</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="columns">To be added.</param>
+        <summary>
+            Create a <see cref="T:Microsoft.ML.Runtime.Data.KeyToValueTransform" /> that takes multiple pairs of columns.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Columns">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.IReadOnlyCollection&lt;ValueTuple&lt;string,string&gt;&gt; Columns { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.IReadOnlyCollection`1&lt;valuetype System.ValueTuple`2&lt;string, string&gt;&gt; Columns" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.KeyToValueTransform.Columns" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Columns As IReadOnlyCollection(Of ValueTuple(Of String, String))" />
+      <MemberSignature Language="F#" Value="member this.Columns : System.Collections.Generic.IReadOnlyCollection&lt;ValueTuple&lt;string, string&gt;&gt;" Usage="Microsoft.ML.Runtime.Data.KeyToValueTransform.Columns" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.CompilerServices.TupleElementNames(new System.String[] { "input", "output" })</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IReadOnlyCollection&lt;System.ValueTuple&lt;System.String,System.String&gt;&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IDataTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.KeyToValueTransform.Arguments args, Microsoft.ML.Runtime.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IDataTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.KeyToValueTransform/Arguments args, class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.KeyToValueTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.KeyToValueTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, args As KeyToValueTransform.Arguments, input As IDataView) As IDataTransform" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.KeyToValueTransform.Arguments * Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.IDataTransform" Usage="Microsoft.ML.Runtime.Data.KeyToValueTransform.Create (env, args, input)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataTransform</ReturnType>
+      </ReturnValue>
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
         <Parameter Name="args" Type="Microsoft.ML.Runtime.Data.KeyToValueTransform+Arguments" />
@@ -43,137 +129,8 @@
         <param name="args">To be added.</param>
         <param name="input">To be added.</param>
         <summary>
-            Public constructor corresponding to SignatureDataTransform.
+            Factory method for SignatureDataTransform.
             </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public KeyToValueTransform (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.IDataView input, string name, string source = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.IDataView input, string name, string source) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.KeyToValueTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,System.String)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, input As IDataView, name As String, Optional source As String = null)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.KeyToValueTransform : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.IDataView * string * string -&gt; Microsoft.ML.Runtime.Data.KeyToValueTransform" Usage="new Microsoft.ML.Runtime.Data.KeyToValueTransform (env, input, name, source)" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
-        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
-        <Parameter Name="name" Type="System.String" />
-        <Parameter Name="source" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="env">Host Environment.</param>
-        <param name="input">Input <see cref="T:Microsoft.ML.Runtime.Data.IDataView" />. This is the output from previous transform or loader.</param>
-        <param name="name">Name of the output column.</param>
-        <param name="source">Name of the input column.  If this is null '<paramref name="name" />' will be used.</param>
-        <summary>
-            Convenience constructor for public facing API.
-            </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CanSavePfa">
-      <MemberSignature Language="C#" Value="public override bool CanSavePfa { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool CanSavePfa" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.KeyToValueTransform.CanSavePfa" />
-      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property CanSavePfa As Boolean" />
-      <MemberSignature Language="F#" Value="member this.CanSavePfa : bool" Usage="Microsoft.ML.Runtime.Data.KeyToValueTransform.CanSavePfa" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Create">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.KeyToValueTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Model.ModelLoadContext ctx, Microsoft.ML.Runtime.Data.IDataView input);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.KeyToValueTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Model.ModelLoadContext ctx, class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.KeyToValueTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView)" />
-      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, ctx As ModelLoadContext, input As IDataView) As KeyToValueTransform" />
-      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Model.ModelLoadContext * Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.KeyToValueTransform" Usage="Microsoft.ML.Runtime.Data.KeyToValueTransform.Create (env, ctx, input)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.KeyToValueTransform</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
-        <Parameter Name="ctx" Type="Microsoft.ML.Runtime.Model.ModelLoadContext" />
-        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
-      </Parameters>
-      <Docs>
-        <param name="env">To be added.</param>
-        <param name="ctx">To be added.</param>
-        <param name="input">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GetColumnTypeCore">
-      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.ColumnType GetColumnTypeCore (int iinfo);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.ColumnType GetColumnTypeCore(int32 iinfo) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.KeyToValueTransform.GetColumnTypeCore(System.Int32)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetColumnTypeCore (iinfo As Integer) As ColumnType" />
-      <MemberSignature Language="F#" Value="override this.GetColumnTypeCore : int -&gt; Microsoft.ML.Runtime.Data.ColumnType" Usage="keyToValueTransform.GetColumnTypeCore iinfo" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.ColumnType</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="iinfo" Type="System.Int32" />
-      </Parameters>
-      <Docs>
-        <param name="iinfo">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GetGetterCore">
-      <MemberSignature Language="C#" Value="protected override Delegate GetGetterCore (Microsoft.ML.Runtime.IChannel ch, Microsoft.ML.Runtime.Data.IRow input, int iinfo, out Action disposer);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class System.Delegate GetGetterCore(class Microsoft.ML.Runtime.IChannel ch, class Microsoft.ML.Runtime.Data.IRow input, int32 iinfo, [out] class System.Action&amp; disposer) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.KeyToValueTransform.GetGetterCore(Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Data.IRow,System.Int32,System.Action@)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetGetterCore (ch As IChannel, input As IRow, iinfo As Integer, ByRef disposer As Action) As Delegate" />
-      <MemberSignature Language="F#" Value="override this.GetGetterCore : Microsoft.ML.Runtime.IChannel * Microsoft.ML.Runtime.Data.IRow * int *  -&gt; Delegate" Usage="keyToValueTransform.GetGetterCore (ch, input, iinfo, disposer)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Delegate</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
-        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IRow" />
-        <Parameter Name="iinfo" Type="System.Int32" />
-        <Parameter Name="disposer" Type="System.Action" RefType="out" />
-      </Parameters>
-      <Docs>
-        <param name="ch">To be added.</param>
-        <param name="input">To be added.</param>
-        <param name="iinfo">To be added.</param>
-        <param name="disposer">To be added.</param>
-        <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -197,6 +154,30 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="MakeRowMapper">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.IRowMapper MakeRowMapper (Microsoft.ML.Runtime.Data.ISchema inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.IRowMapper MakeRowMapper(class Microsoft.ML.Runtime.Data.ISchema inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.KeyToValueTransform.MakeRowMapper(Microsoft.ML.Runtime.Data.ISchema)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function MakeRowMapper (inputSchema As ISchema) As IRowMapper" />
+      <MemberSignature Language="F#" Value="override this.MakeRowMapper : Microsoft.ML.Runtime.Data.ISchema -&gt; Microsoft.ML.Runtime.Data.IRowMapper" Usage="keyToValueTransform.MakeRowMapper inputSchema" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IRowMapper</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.Runtime.Data.ISchema" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Save">
       <MemberSignature Language="C#" Value="public override void Save (Microsoft.ML.Runtime.Model.ModelSaveContext ctx);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Save(class Microsoft.ML.Runtime.Model.ModelSaveContext ctx) cil managed" />
@@ -217,36 +198,6 @@
       <Docs>
         <param name="ctx">To be added.</param>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SaveAsPfaCore">
-      <MemberSignature Language="C#" Value="protected override Newtonsoft.Json.Linq.JToken SaveAsPfaCore (Microsoft.ML.Runtime.Model.Pfa.BoundPfaContext ctx, int iinfo, Microsoft.ML.Runtime.Data.OneToOneTransformBase.ColInfo info, Newtonsoft.Json.Linq.JToken srcToken);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Newtonsoft.Json.Linq.JToken SaveAsPfaCore(class Microsoft.ML.Runtime.Model.Pfa.BoundPfaContext ctx, int32 iinfo, class Microsoft.ML.Runtime.Data.OneToOneTransformBase/ColInfo info, class Newtonsoft.Json.Linq.JToken srcToken) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.KeyToValueTransform.SaveAsPfaCore(Microsoft.ML.Runtime.Model.Pfa.BoundPfaContext,System.Int32,Microsoft.ML.Runtime.Data.OneToOneTransformBase.ColInfo,Newtonsoft.Json.Linq.JToken)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function SaveAsPfaCore (ctx As BoundPfaContext, iinfo As Integer, info As OneToOneTransformBase.ColInfo, srcToken As JToken) As JToken" />
-      <MemberSignature Language="F#" Value="override this.SaveAsPfaCore : Microsoft.ML.Runtime.Model.Pfa.BoundPfaContext * int * Microsoft.ML.Runtime.Data.OneToOneTransformBase.ColInfo * Newtonsoft.Json.Linq.JToken -&gt; Newtonsoft.Json.Linq.JToken" Usage="keyToValueTransform.SaveAsPfaCore (ctx, iinfo, info, srcToken)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Newtonsoft.Json.Linq.JToken</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="ctx" Type="Microsoft.ML.Runtime.Model.Pfa.BoundPfaContext" />
-        <Parameter Name="iinfo" Type="System.Int32" />
-        <Parameter Name="info" Type="Microsoft.ML.Runtime.Data.OneToOneTransformBase+ColInfo" />
-        <Parameter Name="srcToken" Type="Newtonsoft.Json.Linq.JToken" />
-      </Parameters>
-      <Docs>
-        <param name="ctx">To be added.</param>
-        <param name="iinfo">To be added.</param>
-        <param name="info">To be added.</param>
-        <param name="srcToken">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

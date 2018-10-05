@@ -1,0 +1,98 @@
+﻿<Type Name="TrainerEstimatorContext" FullName="Microsoft.ML.Core.Prediction.TrainerEstimatorContext">
+  <TypeSignature Language="C#" Value="public class TrainerEstimatorContext" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit TrainerEstimatorContext extends System.Object" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Core.Prediction.TrainerEstimatorContext" />
+  <TypeSignature Language="VB.NET" Value="Public Class TrainerEstimatorContext" />
+  <TypeSignature Language="F#" Value="type TrainerEstimatorContext = class" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Data</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+            Holds information relevant to trainers. It is passed to the constructor of the<see cref="T:Microsoft.ML.Runtime.Training.ITrainerEstimator`2" />
+            holding additional data needed to fit the estimator. The additional data can be a validation set or an initial model.
+            This holds at least a training set, as well as optioonally a predictor.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public TrainerEstimatorContext (Microsoft.ML.Runtime.Data.IDataView validationSet = null, Microsoft.ML.Runtime.IPredictor initialPredictor = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.Data.IDataView validationSet, class Microsoft.ML.Runtime.IPredictor initialPredictor) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Core.Prediction.TrainerEstimatorContext.#ctor(Microsoft.ML.Runtime.Data.IDataView,Microsoft.ML.Runtime.IPredictor)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (Optional validationSet As IDataView = null, Optional initialPredictor As IPredictor = null)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Core.Prediction.TrainerEstimatorContext : Microsoft.ML.Runtime.Data.IDataView * Microsoft.ML.Runtime.IPredictor -&gt; Microsoft.ML.Core.Prediction.TrainerEstimatorContext" Usage="new Microsoft.ML.Core.Prediction.TrainerEstimatorContext (validationSet, initialPredictor)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="validationSet" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="initialPredictor" Type="Microsoft.ML.Runtime.IPredictor" />
+      </Parameters>
+      <Docs>
+        <param name="validationSet">Will set <see cref="P:Microsoft.ML.Core.Prediction.TrainerEstimatorContext.ValidationSet" /> to this value if specified</param>
+        <param name="initialPredictor">Will set <see cref="P:Microsoft.ML.Core.Prediction.TrainerEstimatorContext.InitialPredictor" /> to this value if specified</param>
+        <summary>
+            Initializes a new instance of <see cref="T:Microsoft.ML.Core.Prediction.TrainerEstimatorContext" />, given a training set and optional other arguments.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitialPredictor">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.IPredictor InitialPredictor { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.IPredictor InitialPredictor" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Core.Prediction.TrainerEstimatorContext.InitialPredictor" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property InitialPredictor As IPredictor" />
+      <MemberSignature Language="F#" Value="member this.InitialPredictor : Microsoft.ML.Runtime.IPredictor" Usage="Microsoft.ML.Core.Prediction.TrainerEstimatorContext.InitialPredictor" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.IPredictor</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The initial predictor, for incremental training. Note that if a <see cref="T:Microsoft.ML.Runtime.Training.ITrainerEstimator`2" /> implementor
+            does not support incremental training, then it can ignore it similarly to how one would ignore
+            <see cref="P:Microsoft.ML.Core.Prediction.TrainerEstimatorContext.ValidationSet" />. However, if the trainer does support incremental training and there
+            is something wrong with a non-<c>null</c> value of this, then the trainer ought to throw an exception.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ValidationSet">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IDataView ValidationSet { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.Data.IDataView ValidationSet" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Core.Prediction.TrainerEstimatorContext.ValidationSet" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property ValidationSet As IDataView" />
+      <MemberSignature Language="F#" Value="member this.ValidationSet : Microsoft.ML.Runtime.Data.IDataView" Usage="Microsoft.ML.Core.Prediction.TrainerEstimatorContext.ValidationSet" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataView</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The validation set. Can be <c>null</c>. Note that passing a non-<c>null</c> validation set into
+            a trainer that does not support validation sets should not be considered an error condition. It
+            should simply be ignored in that case.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

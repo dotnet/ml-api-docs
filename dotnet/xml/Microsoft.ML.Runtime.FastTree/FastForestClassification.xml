@@ -1,18 +1,20 @@
 ﻿<Type Name="FastForestClassification" FullName="Microsoft.ML.Runtime.FastTree.FastForestClassification">
-  <TypeSignature Language="C#" Value="public sealed class FastForestClassification : Microsoft.ML.Runtime.FastTree.RandomForestTrainerBase&lt;Microsoft.ML.Runtime.FastTree.FastForestClassification.Arguments,Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt;&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit FastForestClassification extends Microsoft.ML.Runtime.FastTree.RandomForestTrainerBase`2&lt;class Microsoft.ML.Runtime.FastTree.FastForestClassification/Arguments, class Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt;&gt;" />
+  <TypeSignature Language="C#" Value="public sealed class FastForestClassification : Microsoft.ML.Runtime.FastTree.RandomForestTrainerBase&lt;Microsoft.ML.Runtime.FastTree.FastForestClassification.Arguments,Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt;&gt;,Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt;&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit FastForestClassification extends Microsoft.ML.Runtime.FastTree.RandomForestTrainerBase`3&lt;class Microsoft.ML.Runtime.FastTree.FastForestClassification/Arguments, class Microsoft.ML.Runtime.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt;&gt;, class Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt;&gt;" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.FastTree.FastForestClassification" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class FastForestClassification&#xA;Inherits RandomForestTrainerBase(Of FastForestClassification.Arguments, IPredictorWithFeatureWeights(Of Single))" />
-  <TypeSignature Language="F#" Value="type FastForestClassification = class&#xA;    inherit RandomForestTrainerBase&lt;FastForestClassification.Arguments, IPredictorWithFeatureWeights&lt;single&gt;&gt;" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class FastForestClassification&#xA;Inherits RandomForestTrainerBase(Of FastForestClassification.Arguments, BinaryPredictionTransformer(Of IPredictorWithFeatureWeights(Of Single)), IPredictorWithFeatureWeights(Of Single))" />
+  <TypeSignature Language="F#" Value="type FastForestClassification = class&#xA;    inherit RandomForestTrainerBase&lt;FastForestClassification.Arguments, BinaryPredictionTransformer&lt;IPredictorWithFeatureWeights&lt;single&gt;&gt;, IPredictorWithFeatureWeights&lt;single&gt;&gt;" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>Microsoft.ML.Runtime.FastTree.RandomForestTrainerBase&lt;Microsoft.ML.Runtime.FastTree.FastForestClassification+Arguments,Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Runtime.FastTree.RandomForestTrainerBase&lt;Microsoft.ML.Runtime.FastTree.FastForestClassification+Arguments,Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;,Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;</BaseTypeName>
     <BaseTypeArguments>
       <BaseTypeArgument TypeParamName="TArgs">Microsoft.ML.Runtime.FastTree.FastForestClassification+Arguments</BaseTypeArgument>
-      <BaseTypeArgument TypeParamName="TPredictor">Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TTransformer">Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TModel">Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
   <Interfaces />
@@ -28,7 +30,7 @@
         The model consists of an ensemble of decision trees. Each tree in a decision forest outputs a Gaussian distribution by way of prediction.
         An aggregation is performed over the ensemble of trees to find a Gaussian distribution closest to the combined distribution for all trees in the model.
         This decision forest classifier consists of an ensemble of decision trees.</para><para>Generally, ensemble models provide better coverage and accuracy than single decision trees.
-         Each tree in a decision forest outputs a Gaussian distribution.</para><para>For more see: </para><list type="bullet"><item><description><a href="http://en.wikipedia.org/wiki/Random_forest">Wikipedia: Random forest</a></description></item><item><description><a href="http://jmlr.org/papers/volume7/meinshausen06a/meinshausen06a.pdf">Quantile regression forest</a></description></item><item><description><a href="https://blogs.technet.microsoft.com/machinelearning/2014/09/10/from-stumps-to-trees-to-forests/">From Stumps to Trees to Forests</a></description></item></list></remarks>
+         Each tree in a decision forest outputs a Gaussian distribution.</para><para>For more see: </para><list type="bullet"><item><description><a href="https://en.wikipedia.org/wiki/Random_forest">Wikipedia: Random forest</a></description></item><item><description><a href="http://jmlr.org/papers/volume7/meinshausen06a/meinshausen06a.pdf">Quantile regression forest</a></description></item><item><description><a href="https://blogs.technet.microsoft.com/machinelearning/2014/09/10/from-stumps-to-trees-to-forests/">From Stumps to Trees to Forests</a></description></item></list></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -49,7 +51,40 @@
       <Docs>
         <param name="env">To be added.</param>
         <param name="args">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>
+            Initializes a new instance of <see cref="T:Microsoft.ML.Runtime.FastTree.FastForestClassification" /> by using the legacy <see cref="T:Microsoft.ML.Runtime.FastTree.FastForestClassification.Arguments" /> class.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public FastForestClassification (Microsoft.ML.Runtime.IHostEnvironment env, string labelColumn, string featureColumn, string groupIdColumn = null, string weightColumn = null, Action&lt;Microsoft.ML.Runtime.FastTree.FastForestClassification.Arguments&gt; advancedSettings = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string labelColumn, string featureColumn, string groupIdColumn, string weightColumn, class System.Action`1&lt;class Microsoft.ML.Runtime.FastTree.FastForestClassification/Arguments&gt; advancedSettings) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.FastForestClassification.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String,System.String,System.Action{Microsoft.ML.Runtime.FastTree.FastForestClassification.Arguments})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, labelColumn As String, featureColumn As String, Optional groupIdColumn As String = null, Optional weightColumn As String = null, Optional advancedSettings As Action(Of FastForestClassification.Arguments) = null)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.FastTree.FastForestClassification : Microsoft.ML.Runtime.IHostEnvironment * string * string * string * string * Action&lt;Microsoft.ML.Runtime.FastTree.FastForestClassification.Arguments&gt; -&gt; Microsoft.ML.Runtime.FastTree.FastForestClassification" Usage="new Microsoft.ML.Runtime.FastTree.FastForestClassification (env, labelColumn, featureColumn, groupIdColumn, weightColumn, advancedSettings)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="labelColumn" Type="System.String" />
+        <Parameter Name="featureColumn" Type="System.String" />
+        <Parameter Name="groupIdColumn" Type="System.String" />
+        <Parameter Name="weightColumn" Type="System.String" />
+        <Parameter Name="advancedSettings" Type="System.Action&lt;Microsoft.ML.Runtime.FastTree.FastForestClassification+Arguments&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="env">The private instance of <see cref="T:Microsoft.ML.Runtime.IHostEnvironment" />.</param>
+        <param name="labelColumn">The name of the label column.</param>
+        <param name="featureColumn">The name of the feature column.</param>
+        <param name="groupIdColumn">The name for the column containing the group ID.</param>
+        <param name="weightColumn">The name for the column containing the initial weight.</param>
+        <param name="advancedSettings">A delegate to apply all the advanced arguments to the algorithm.</param>
+        <summary>
+            Initializes a new instance of <see cref="T:Microsoft.ML.Runtime.FastTree.FastForestClassification" /></summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -98,6 +133,56 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="GetOutputColumnsCore">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Core.Data.SchemaShape.Column[] GetOutputColumnsCore (Microsoft.ML.Core.Data.SchemaShape inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Core.Data.SchemaShape/Column[] GetOutputColumnsCore(class Microsoft.ML.Core.Data.SchemaShape inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.FastForestClassification.GetOutputColumnsCore(Microsoft.ML.Core.Data.SchemaShape)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetOutputColumnsCore (inputSchema As SchemaShape) As SchemaShape.Column()" />
+      <MemberSignature Language="F#" Value="override this.GetOutputColumnsCore : Microsoft.ML.Core.Data.SchemaShape -&gt; Microsoft.ML.Core.Data.SchemaShape.Column[]" Usage="fastForestClassification.GetOutputColumnsCore inputSchema" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Core.Data.SchemaShape+Column[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.Core.Data.SchemaShape" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MakeTransformer">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt;&gt; MakeTransformer (Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt; model, Microsoft.ML.Runtime.Data.ISchema trainSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt;&gt; MakeTransformer(class Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt; model, class Microsoft.ML.Runtime.Data.ISchema trainSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.FastForestClassification.MakeTransformer(Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights{System.Single},Microsoft.ML.Runtime.Data.ISchema)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function MakeTransformer (model As IPredictorWithFeatureWeights(Of Single), trainSchema As ISchema) As BinaryPredictionTransformer(Of IPredictorWithFeatureWeights(Of Single))" />
+      <MemberSignature Language="F#" Value="override this.MakeTransformer : Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;single&gt; * Microsoft.ML.Runtime.Data.ISchema -&gt; Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;single&gt;&gt;" Usage="fastForestClassification.MakeTransformer (model, trainSchema)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="model" Type="Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;" />
+        <Parameter Name="trainSchema" Type="Microsoft.ML.Runtime.Data.ISchema" />
+      </Parameters>
+      <Docs>
+        <param name="model">To be added.</param>
+        <param name="trainSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="PredictionKind">
       <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.PredictionKind PredictionKind { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.ML.Runtime.PredictionKind PredictionKind" />
@@ -141,50 +226,12 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ShortName">
-      <MemberSignature Language="C#" Value="public const string ShortName;" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal string ShortName" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.FastTree.FastForestClassification.ShortName" />
-      <MemberSignature Language="VB.NET" Value="Public Const ShortName As String " />
-      <MemberSignature Language="F#" Value="val mutable ShortName : string" Usage="Microsoft.ML.Runtime.FastTree.FastForestClassification.ShortName" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Summary">
-      <MemberSignature Language="C#" Value="public const string Summary;" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal string Summary" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.FastTree.FastForestClassification.Summary" />
-      <MemberSignature Language="VB.NET" Value="Public Const Summary As String " />
-      <MemberSignature Language="F#" Value="val mutable Summary : string" Usage="Microsoft.ML.Runtime.FastTree.FastForestClassification.Summary" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Train">
-      <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt; Train (Microsoft.ML.Runtime.TrainContext context);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt; Train(class Microsoft.ML.Runtime.TrainContext context) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.FastForestClassification.Train(Microsoft.ML.Runtime.TrainContext)" />
-      <MemberSignature Language="VB.NET" Value="Public Overrides Function Train (context As TrainContext) As IPredictorWithFeatureWeights(Of Single)" />
-      <MemberSignature Language="F#" Value="override this.Train : Microsoft.ML.Runtime.TrainContext -&gt; Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;single&gt;" Usage="fastForestClassification.Train context" />
+    <Member MemberName="TrainModelCore">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt; TrainModelCore (Microsoft.ML.Runtime.TrainContext context);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt; TrainModelCore(class Microsoft.ML.Runtime.TrainContext context) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.FastForestClassification.TrainModelCore(Microsoft.ML.Runtime.TrainContext)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function TrainModelCore (context As TrainContext) As IPredictorWithFeatureWeights(Of Single)" />
+      <MemberSignature Language="F#" Value="override this.TrainModelCore : Microsoft.ML.Runtime.TrainContext -&gt; Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;single&gt;" Usage="fastForestClassification.TrainModelCore context" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
@@ -200,25 +247,6 @@
         <param name="context">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="UserNameValue">
-      <MemberSignature Language="C#" Value="public const string UserNameValue;" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal string UserNameValue" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.FastTree.FastForestClassification.UserNameValue" />
-      <MemberSignature Language="VB.NET" Value="Public Const UserNameValue As String " />
-      <MemberSignature Language="F#" Value="val mutable UserNameValue : string" Usage="Microsoft.ML.Runtime.FastTree.FastForestClassification.UserNameValue" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
