@@ -1,9 +1,9 @@
 ﻿<Type Name="BinaryClassGamPredictor" FullName="Microsoft.ML.Runtime.FastTree.BinaryClassGamPredictor">
-  <TypeSignature Language="C#" Value="public class BinaryClassGamPredictor : Microsoft.ML.Runtime.FastTree.GamPredictorBase" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit BinaryClassGamPredictor extends Microsoft.ML.Runtime.FastTree.GamPredictorBase" />
+  <TypeSignature Language="C#" Value="public class BinaryClassGamPredictor : Microsoft.ML.Runtime.FastTree.GamPredictorBase, Microsoft.ML.Runtime.IPredictorProducing&lt;float&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit BinaryClassGamPredictor extends Microsoft.ML.Runtime.FastTree.GamPredictorBase implements class Microsoft.ML.Runtime.IPredictor, class Microsoft.ML.Runtime.IPredictorProducing`1&lt;float32&gt;" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.FastTree.BinaryClassGamPredictor" />
-  <TypeSignature Language="VB.NET" Value="Public Class BinaryClassGamPredictor&#xA;Inherits GamPredictorBase" />
-  <TypeSignature Language="F#" Value="type BinaryClassGamPredictor = class&#xA;    inherit GamPredictorBase" />
+  <TypeSignature Language="VB.NET" Value="Public Class BinaryClassGamPredictor&#xA;Inherits GamPredictorBase&#xA;Implements IPredictorProducing(Of Single)" />
+  <TypeSignature Language="F#" Value="type BinaryClassGamPredictor = class&#xA;    inherit GamPredictorBase&#xA;    interface IPredictorProducing&lt;single&gt;&#xA;    interface IPredictor" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -11,18 +11,22 @@
   <Base>
     <BaseTypeName>Microsoft.ML.Runtime.FastTree.GamPredictorBase</BaseTypeName>
   </Base>
-  <Interfaces />
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.IPredictorProducing&lt;System.Single&gt;</InterfaceName>
+    </Interface>
+  </Interfaces>
   <Docs>
     <summary>To be added.</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public BinaryClassGamPredictor (Microsoft.ML.Runtime.IHostEnvironment env, int inputLength, Microsoft.ML.Runtime.FastTree.Internal.Dataset trainset, double[][] binEffects, int[] featureMap = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, int32 inputLength, class Microsoft.ML.Runtime.FastTree.Internal.Dataset trainset, float64[][] binEffects, int32[] featureMap) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.BinaryClassGamPredictor.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.Int32,Microsoft.ML.Runtime.FastTree.Internal.Dataset,System.Double[][],System.Int32[])" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, inputLength As Integer, trainset As Dataset, binEffects As Double()(), Optional featureMap As Integer() = null)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.FastTree.BinaryClassGamPredictor : Microsoft.ML.Runtime.IHostEnvironment * int * Microsoft.ML.Runtime.FastTree.Internal.Dataset * double[][] * int[] -&gt; Microsoft.ML.Runtime.FastTree.BinaryClassGamPredictor" Usage="new Microsoft.ML.Runtime.FastTree.BinaryClassGamPredictor (env, inputLength, trainset, binEffects, featureMap)" />
+      <MemberSignature Language="C#" Value="public BinaryClassGamPredictor (Microsoft.ML.Runtime.IHostEnvironment env, int inputLength, Microsoft.ML.Runtime.FastTree.Internal.Dataset trainset, double meanEffect, double[][] binEffects, int[] featureMap);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, int32 inputLength, class Microsoft.ML.Runtime.FastTree.Internal.Dataset trainset, float64 meanEffect, float64[][] binEffects, int32[] featureMap) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.BinaryClassGamPredictor.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.Int32,Microsoft.ML.Runtime.FastTree.Internal.Dataset,System.Double,System.Double[][],System.Int32[])" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, inputLength As Integer, trainset As Dataset, meanEffect As Double, binEffects As Double()(), featureMap As Integer())" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.FastTree.BinaryClassGamPredictor : Microsoft.ML.Runtime.IHostEnvironment * int * Microsoft.ML.Runtime.FastTree.Internal.Dataset * double * double[][] * int[] -&gt; Microsoft.ML.Runtime.FastTree.BinaryClassGamPredictor" Usage="new Microsoft.ML.Runtime.FastTree.BinaryClassGamPredictor (env, inputLength, trainset, meanEffect, binEffects, featureMap)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
@@ -32,6 +36,7 @@
         <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
         <Parameter Name="inputLength" Type="System.Int32" />
         <Parameter Name="trainset" Type="Microsoft.ML.Runtime.FastTree.Internal.Dataset" />
+        <Parameter Name="meanEffect" Type="System.Double" />
         <Parameter Name="binEffects" Type="System.Double[][]" />
         <Parameter Name="featureMap" Type="System.Int32[]" />
       </Parameters>
@@ -39,6 +44,7 @@
         <param name="env">To be added.</param>
         <param name="inputLength">To be added.</param>
         <param name="trainset">To be added.</param>
+        <param name="meanEffect">To be added.</param>
         <param name="binEffects">To be added.</param>
         <param name="featureMap">To be added.</param>
         <summary>To be added.</summary>
@@ -46,18 +52,18 @@
       </Docs>
     </Member>
     <Member MemberName="Create">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.FastTree.BinaryClassGamPredictor Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Model.ModelLoadContext ctx);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.FastTree.BinaryClassGamPredictor Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Model.ModelLoadContext ctx) cil managed" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.IPredictorProducing&lt;float&gt; Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Model.ModelLoadContext ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.IPredictorProducing`1&lt;float32&gt; Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Model.ModelLoadContext ctx) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.BinaryClassGamPredictor.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext)" />
-      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, ctx As ModelLoadContext) As BinaryClassGamPredictor" />
-      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Model.ModelLoadContext -&gt; Microsoft.ML.Runtime.FastTree.BinaryClassGamPredictor" Usage="Microsoft.ML.Runtime.FastTree.BinaryClassGamPredictor.Create (env, ctx)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, ctx As ModelLoadContext) As IPredictorProducing(Of Single)" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Model.ModelLoadContext -&gt; Microsoft.ML.Runtime.IPredictorProducing&lt;single&gt;" Usage="Microsoft.ML.Runtime.FastTree.BinaryClassGamPredictor.Create (env, ctx)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.FastTree.BinaryClassGamPredictor</ReturnType>
+        <ReturnType>Microsoft.ML.Runtime.IPredictorProducing&lt;System.Single&gt;</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
@@ -118,6 +124,9 @@
       <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property PredictionKind As PredictionKind" />
       <MemberSignature Language="F#" Value="member this.PredictionKind : Microsoft.ML.Runtime.PredictionKind" Usage="Microsoft.ML.Runtime.FastTree.BinaryClassGamPredictor.PredictionKind" />
       <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Runtime.IPredictor.PredictionKind</InterfaceMember>
+      </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>

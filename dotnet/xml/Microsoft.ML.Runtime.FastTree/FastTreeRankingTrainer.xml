@@ -1,18 +1,20 @@
 ﻿<Type Name="FastTreeRankingTrainer" FullName="Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer">
-  <TypeSignature Language="C#" Value="public sealed class FastTreeRankingTrainer : Microsoft.ML.Runtime.FastTree.BoostingFastTreeTrainerBase&lt;Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer.Arguments,Microsoft.ML.Runtime.FastTree.FastTreeRankingPredictor&gt;, Microsoft.ML.Runtime.Internal.Internallearn.IHasLabelGains" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit FastTreeRankingTrainer extends Microsoft.ML.Runtime.FastTree.BoostingFastTreeTrainerBase`2&lt;class Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer/Arguments, class Microsoft.ML.Runtime.FastTree.FastTreeRankingPredictor&gt; implements class Microsoft.ML.Runtime.Internal.Internallearn.IHasLabelGains, class Microsoft.ML.Runtime.ITrainer" />
+  <TypeSignature Language="C#" Value="public sealed class FastTreeRankingTrainer : Microsoft.ML.Runtime.FastTree.BoostingFastTreeTrainerBase&lt;Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer.Arguments,Microsoft.ML.Runtime.Data.RankingPredictionTransformer&lt;Microsoft.ML.Runtime.FastTree.FastTreeRankingPredictor&gt;,Microsoft.ML.Runtime.FastTree.FastTreeRankingPredictor&gt;, Microsoft.ML.Runtime.Internal.Internallearn.IHasLabelGains" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit FastTreeRankingTrainer extends Microsoft.ML.Runtime.FastTree.BoostingFastTreeTrainerBase`3&lt;class Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer/Arguments, class Microsoft.ML.Runtime.Data.RankingPredictionTransformer`1&lt;class Microsoft.ML.Runtime.FastTree.FastTreeRankingPredictor&gt;, class Microsoft.ML.Runtime.FastTree.FastTreeRankingPredictor&gt; implements class Microsoft.ML.Runtime.Internal.Internallearn.IHasLabelGains, class Microsoft.ML.Runtime.ITrainer" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class FastTreeRankingTrainer&#xA;Inherits BoostingFastTreeTrainerBase(Of FastTreeRankingTrainer.Arguments, FastTreeRankingPredictor)&#xA;Implements IHasLabelGains" />
-  <TypeSignature Language="F#" Value="type FastTreeRankingTrainer = class&#xA;    inherit BoostingFastTreeTrainerBase&lt;FastTreeRankingTrainer.Arguments, FastTreeRankingPredictor&gt;&#xA;    interface IHasLabelGains&#xA;    interface ITrainer" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class FastTreeRankingTrainer&#xA;Inherits BoostingFastTreeTrainerBase(Of FastTreeRankingTrainer.Arguments, RankingPredictionTransformer(Of FastTreeRankingPredictor), FastTreeRankingPredictor)&#xA;Implements IHasLabelGains" />
+  <TypeSignature Language="F#" Value="type FastTreeRankingTrainer = class&#xA;    inherit BoostingFastTreeTrainerBase&lt;FastTreeRankingTrainer.Arguments, RankingPredictionTransformer&lt;FastTreeRankingPredictor&gt;, FastTreeRankingPredictor&gt;&#xA;    interface IHasLabelGains&#xA;    interface ITrainer" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>Microsoft.ML.Runtime.FastTree.BoostingFastTreeTrainerBase&lt;Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer+Arguments,Microsoft.ML.Runtime.FastTree.FastTreeRankingPredictor&gt;</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Runtime.FastTree.BoostingFastTreeTrainerBase&lt;Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer+Arguments,Microsoft.ML.Runtime.Data.RankingPredictionTransformer&lt;Microsoft.ML.Runtime.FastTree.FastTreeRankingPredictor&gt;,Microsoft.ML.Runtime.FastTree.FastTreeRankingPredictor&gt;</BaseTypeName>
     <BaseTypeArguments>
       <BaseTypeArgument TypeParamName="TArgs">Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer+Arguments</BaseTypeArgument>
-      <BaseTypeArgument TypeParamName="TPredictor">Microsoft.ML.Runtime.FastTree.FastTreeRankingPredictor</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TTransformer">Microsoft.ML.Runtime.Data.RankingPredictionTransformer&lt;Microsoft.ML.Runtime.FastTree.FastTreeRankingPredictor&gt;</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TModel">Microsoft.ML.Runtime.FastTree.FastTreeRankingPredictor</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
   <Interfaces>
@@ -61,7 +63,7 @@
         </item>
         <item>
           <description>
-            <a href="http://projecteuclid.org/DPubS?service=UI&amp;version=1.0&amp;verb=Display&amp;handle=euclid.aos/1013203451">Greedy function approximation: A gradient boosting machine.</a>
+            <a href="https://projecteuclid.org/DPubS?service=UI&amp;version=1.0&amp;verb=Display&amp;handle=euclid.aos/1013203451">Greedy function approximation: A gradient boosting machine.</a>
           </description>
         </item>
       </list>
@@ -69,11 +71,11 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public FastTreeRankingTrainer (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer.Arguments args);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer/Arguments args) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer.Arguments)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, args As FastTreeRankingTrainer.Arguments)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer.Arguments -&gt; Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer" Usage="new Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer (env, args)" />
+      <MemberSignature Language="C#" Value="public FastTreeRankingTrainer (Microsoft.ML.Runtime.IHostEnvironment env, string labelColumn, string featureColumn, string groupIdColumn, string weightColumn = null, Action&lt;Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer.Arguments&gt; advancedSettings = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string labelColumn, string featureColumn, string groupIdColumn, string weightColumn, class System.Action`1&lt;class Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer/Arguments&gt; advancedSettings) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String,System.String,System.Action{Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer.Arguments})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, labelColumn As String, featureColumn As String, groupIdColumn As String, Optional weightColumn As String = null, Optional advancedSettings As Action(Of FastTreeRankingTrainer.Arguments) = null)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer : Microsoft.ML.Runtime.IHostEnvironment * string * string * string * string * Action&lt;Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer.Arguments&gt; -&gt; Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer" Usage="new Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer (env, labelColumn, featureColumn, groupIdColumn, weightColumn, advancedSettings)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
@@ -81,12 +83,21 @@
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
-        <Parameter Name="args" Type="Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer+Arguments" />
+        <Parameter Name="labelColumn" Type="System.String" />
+        <Parameter Name="featureColumn" Type="System.String" />
+        <Parameter Name="groupIdColumn" Type="System.String" />
+        <Parameter Name="weightColumn" Type="System.String" />
+        <Parameter Name="advancedSettings" Type="System.Action&lt;Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer+Arguments&gt;" />
       </Parameters>
       <Docs>
-        <param name="env">To be added.</param>
-        <param name="args">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="env">The private instance of <see cref="T:Microsoft.ML.Runtime.IHostEnvironment" />.</param>
+        <param name="labelColumn">The name of the label column.</param>
+        <param name="featureColumn">The name of the feature column.</param>
+        <param name="groupIdColumn">The name for the column containing the group ID. </param>
+        <param name="weightColumn">The name for the column containing the initial weight.</param>
+        <param name="advancedSettings">A delegate to apply all the advanced arguments to the algorithm.</param>
+        <summary>
+            Initializes a new instance of <see cref="T:Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer" /></summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -291,6 +302,30 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="GetOutputColumnsCore">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Core.Data.SchemaShape.Column[] GetOutputColumnsCore (Microsoft.ML.Core.Data.SchemaShape inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Core.Data.SchemaShape/Column[] GetOutputColumnsCore(class Microsoft.ML.Core.Data.SchemaShape inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer.GetOutputColumnsCore(Microsoft.ML.Core.Data.SchemaShape)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetOutputColumnsCore (inputSchema As SchemaShape) As SchemaShape.Column()" />
+      <MemberSignature Language="F#" Value="override this.GetOutputColumnsCore : Microsoft.ML.Core.Data.SchemaShape -&gt; Microsoft.ML.Core.Data.SchemaShape.Column[]" Usage="fastTreeRankingTrainer.GetOutputColumnsCore inputSchema" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Core.Data.SchemaShape+Column[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.Core.Data.SchemaShape" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="GetTestGraphHeader">
       <MemberSignature Language="C#" Value="protected override string GetTestGraphHeader ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance string GetTestGraphHeader() cil managed" />
@@ -378,22 +413,29 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="LoadNameValue">
-      <MemberSignature Language="C#" Value="public const string LoadNameValue;" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal string LoadNameValue" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer.LoadNameValue" />
-      <MemberSignature Language="VB.NET" Value="Public Const LoadNameValue As String " />
-      <MemberSignature Language="F#" Value="val mutable LoadNameValue : string" Usage="Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer.LoadNameValue" />
-      <MemberType>Field</MemberType>
+    <Member MemberName="MakeTransformer">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.RankingPredictionTransformer&lt;Microsoft.ML.Runtime.FastTree.FastTreeRankingPredictor&gt; MakeTransformer (Microsoft.ML.Runtime.FastTree.FastTreeRankingPredictor model, Microsoft.ML.Runtime.Data.ISchema trainSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.RankingPredictionTransformer`1&lt;class Microsoft.ML.Runtime.FastTree.FastTreeRankingPredictor&gt; MakeTransformer(class Microsoft.ML.Runtime.FastTree.FastTreeRankingPredictor model, class Microsoft.ML.Runtime.Data.ISchema trainSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer.MakeTransformer(Microsoft.ML.Runtime.FastTree.FastTreeRankingPredictor,Microsoft.ML.Runtime.Data.ISchema)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function MakeTransformer (model As FastTreeRankingPredictor, trainSchema As ISchema) As RankingPredictionTransformer(Of FastTreeRankingPredictor)" />
+      <MemberSignature Language="F#" Value="override this.MakeTransformer : Microsoft.ML.Runtime.FastTree.FastTreeRankingPredictor * Microsoft.ML.Runtime.Data.ISchema -&gt; Microsoft.ML.Runtime.Data.RankingPredictionTransformer&lt;Microsoft.ML.Runtime.FastTree.FastTreeRankingPredictor&gt;" Usage="fastTreeRankingTrainer.MakeTransformer (model, trainSchema)" />
+      <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.String</ReturnType>
+        <ReturnType>Microsoft.ML.Runtime.Data.RankingPredictionTransformer&lt;Microsoft.ML.Runtime.FastTree.FastTreeRankingPredictor&gt;</ReturnType>
       </ReturnValue>
+      <Parameters>
+        <Parameter Name="model" Type="Microsoft.ML.Runtime.FastTree.FastTreeRankingPredictor" />
+        <Parameter Name="trainSchema" Type="Microsoft.ML.Runtime.Data.ISchema" />
+      </Parameters>
       <Docs>
+        <param name="model">To be added.</param>
+        <param name="trainSchema">To be added.</param>
         <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -415,7 +457,9 @@
         <ReturnType>Microsoft.ML.Runtime.PredictionKind</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            The prediction kind for this trainer.
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -491,12 +535,12 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Train">
-      <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.FastTree.FastTreeRankingPredictor Train (Microsoft.ML.Runtime.TrainContext context);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Microsoft.ML.Runtime.FastTree.FastTreeRankingPredictor Train(class Microsoft.ML.Runtime.TrainContext context) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer.Train(Microsoft.ML.Runtime.TrainContext)" />
-      <MemberSignature Language="VB.NET" Value="Public Overrides Function Train (context As TrainContext) As FastTreeRankingPredictor" />
-      <MemberSignature Language="F#" Value="override this.Train : Microsoft.ML.Runtime.TrainContext -&gt; Microsoft.ML.Runtime.FastTree.FastTreeRankingPredictor" Usage="fastTreeRankingTrainer.Train context" />
+    <Member MemberName="TrainModelCore">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.FastTree.FastTreeRankingPredictor TrainModelCore (Microsoft.ML.Runtime.TrainContext context);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.FastTree.FastTreeRankingPredictor TrainModelCore(class Microsoft.ML.Runtime.TrainContext context) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer.TrainModelCore(Microsoft.ML.Runtime.TrainContext)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function TrainModelCore (context As TrainContext) As FastTreeRankingPredictor" />
+      <MemberSignature Language="F#" Value="override this.TrainModelCore : Microsoft.ML.Runtime.TrainContext -&gt; Microsoft.ML.Runtime.FastTree.FastTreeRankingPredictor" Usage="fastTreeRankingTrainer.TrainModelCore context" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>

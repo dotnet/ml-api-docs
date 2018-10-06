@@ -1,0 +1,379 @@
+﻿<Type Name="NGramTranslator" FullName="Microsoft.ML.Legacy.Transforms.NGramTranslator">
+  <TypeSignature Language="C#" Value="public sealed class NGramTranslator : Microsoft.ML.Legacy.ILearningPipelineItem, Microsoft.ML.Runtime.EntryPoints.CommonInputs.ITransformInput" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit NGramTranslator extends System.Object implements class Microsoft.ML.Legacy.ILearningPipelineItem, class Microsoft.ML.Runtime.EntryPoints.CommonInputs/ITransformInput" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Legacy.Transforms.NGramTranslator" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class NGramTranslator&#xA;Implements CommonInputs.ITransformInput, ILearningPipelineItem" />
+  <TypeSignature Language="F#" Value="type NGramTranslator = class&#xA;    interface CommonInputs.ITransformInput&#xA;    interface ILearningPipelineItem" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Legacy.ILearningPipelineItem</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.EntryPoints.CommonInputs+ITransformInput</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+        This transform produces a bag of counts of n-grams (sequences of consecutive values of length 1-n) in a given vector of keys. 
+        It does so by building a dictionary of n-grams and using the id in the dictionary as the index in the bag.
+      </summary>
+    <remarks>
+        This transform produces a matrix of token ngrams/skip-grams counts for a given corpus of text.
+        The n-grams are represented as count vectors, with vector slots corresponding to n-grams.
+        Embedding ngrams in a vector space allows their contents to be compared in an efficient manner. 
+        The slot values in the vector can be weighted by the following factors:
+        <list type="bullet"><item><term>term frequency</term><description> the number of occurrences of the slot in the text</description></item><item><term>inverse document frequency</term><description> a ratio (the logarithm of inverse relative slot frequency)
+              that measures the information a slot provides by determining how common or rare it is across the entire text.</description></item><item><term>term frequency-inverse document frequency</term><description> the product term frequency and the inverse document frequency.</description></item></list>
+        This transform is not typically used on its own, but it is one of the transforms composing the <see cref="!:Microsoft.ML.Transforms.TextFeaturizer">Text Featurizer</see> .
+      </remarks>
+    <altmember cref="T:Microsoft.ML.Transforms.WordTokenizer" />
+    <altmember cref="!:Microsoft.ML.Transforms.TextToKey" />
+    <altmember cref="!:Microsoft.ML.Transforms.TextFeaturizer" />
+    <altmember cref="T:Microsoft.ML.Transforms.CharacterTokenizer" />
+    <example>
+      <code language="csharp">
+          pipeline.Add(new NGramTranslator("TextColumn")
+          { 
+            Weighting=NgramTransformWeightingCriteria.TfIdf  
+          });
+      </code>
+    </example>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public NGramTranslator ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Legacy.Transforms.NGramTranslator.#ctor" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New ()" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public NGramTranslator (params string[] inputColumns);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string[] inputColumns) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Legacy.Transforms.NGramTranslator.#ctor(System.String[])" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (ParamArray inputColumns As String())" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Legacy.Transforms.NGramTranslator : string[] -&gt; Microsoft.ML.Legacy.Transforms.NGramTranslator" Usage="new Microsoft.ML.Legacy.Transforms.NGramTranslator inputColumns" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="inputColumns" Type="System.String[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="inputColumns">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public NGramTranslator (params ValueTuple&lt;string,string&gt;[] inputOutputColumns);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype System.ValueTuple`2&lt;string, string&gt;[] inputOutputColumns) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Legacy.Transforms.NGramTranslator.#ctor(System.ValueTuple{System.String,System.String}[])" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (ParamArray inputOutputColumns As ValueTuple(Of String, String)())" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Legacy.Transforms.NGramTranslator : ValueTuple&lt;string, string&gt;[] -&gt; Microsoft.ML.Legacy.Transforms.NGramTranslator" Usage="new Microsoft.ML.Legacy.Transforms.NGramTranslator inputOutputColumns" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="inputOutputColumns" Type="System.ValueTuple&lt;System.String,System.String&gt;[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+            <Attribute>
+              <AttributeName>System.Runtime.CompilerServices.TupleElementNames(new System.String[] { "inputColumn", "outputColumn" })</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="inputOutputColumns">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddColumn">
+      <MemberSignature Language="C#" Value="public void AddColumn (string inputColumn);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddColumn(string inputColumn) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Legacy.Transforms.NGramTranslator.AddColumn(System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub AddColumn (inputColumn As String)" />
+      <MemberSignature Language="F#" Value="member this.AddColumn : string -&gt; unit" Usage="nGramTranslator.AddColumn inputColumn" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputColumn" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="inputColumn">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddColumn">
+      <MemberSignature Language="C#" Value="public void AddColumn (string outputColumn, string inputColumn);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddColumn(string outputColumn, string inputColumn) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Legacy.Transforms.NGramTranslator.AddColumn(System.String,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub AddColumn (outputColumn As String, inputColumn As String)" />
+      <MemberSignature Language="F#" Value="member this.AddColumn : string * string -&gt; unit" Usage="nGramTranslator.AddColumn (outputColumn, inputColumn)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="outputColumn" Type="System.String" />
+        <Parameter Name="inputColumn" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="outputColumn">To be added.</param>
+        <param name="inputColumn">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AllLengths">
+      <MemberSignature Language="C#" Value="public bool AllLengths { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool AllLengths" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Transforms.NGramTranslator.AllLengths" />
+      <MemberSignature Language="VB.NET" Value="Public Property AllLengths As Boolean" />
+      <MemberSignature Language="F#" Value="member this.AllLengths : bool with get, set" Usage="Microsoft.ML.Legacy.Transforms.NGramTranslator.AllLengths" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Whether to store all ngram lengths up to ngramLength, or only ngramLength
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ApplyStep">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Legacy.ILearningPipelineStep ApplyStep (Microsoft.ML.Legacy.ILearningPipelineStep previousStep, Microsoft.ML.Runtime.Experiment experiment);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Legacy.ILearningPipelineStep ApplyStep(class Microsoft.ML.Legacy.ILearningPipelineStep previousStep, class Microsoft.ML.Runtime.Experiment experiment) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Legacy.Transforms.NGramTranslator.ApplyStep(Microsoft.ML.Legacy.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <MemberSignature Language="F#" Value="abstract member ApplyStep : Microsoft.ML.Legacy.ILearningPipelineStep * Microsoft.ML.Runtime.Experiment -&gt; Microsoft.ML.Legacy.ILearningPipelineStep&#xA;override this.ApplyStep : Microsoft.ML.Legacy.ILearningPipelineStep * Microsoft.ML.Runtime.Experiment -&gt; Microsoft.ML.Legacy.ILearningPipelineStep" Usage="nGramTranslator.ApplyStep (previousStep, experiment)" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Legacy.ILearningPipelineItem.ApplyStep(Microsoft.ML.Legacy.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Legacy.ILearningPipelineStep</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="previousStep" Type="Microsoft.ML.Legacy.ILearningPipelineStep" />
+        <Parameter Name="experiment" Type="Microsoft.ML.Runtime.Experiment" />
+      </Parameters>
+      <Docs>
+        <param name="previousStep">To be added.</param>
+        <param name="experiment">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Column">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Legacy.Transforms.NgramTransformColumn[] Column { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Legacy.Transforms.NgramTransformColumn[] Column" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Transforms.NGramTranslator.Column" />
+      <MemberSignature Language="VB.NET" Value="Public Property Column As NgramTransformColumn()" />
+      <MemberSignature Language="F#" Value="member this.Column : Microsoft.ML.Legacy.Transforms.NgramTransformColumn[] with get, set" Usage="Microsoft.ML.Legacy.Transforms.NGramTranslator.Column" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Legacy.Transforms.NgramTransformColumn[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            New column definition(s) (optional form: name:src)
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Data">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt; Data { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.EntryPoints.Var`1&lt;class Microsoft.ML.Runtime.Data.IDataView&gt; Data" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Transforms.NGramTranslator.Data" />
+      <MemberSignature Language="VB.NET" Value="Public Property Data As Var(Of IDataView)" />
+      <MemberSignature Language="F#" Value="member this.Data : Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt; with get, set" Usage="Microsoft.ML.Legacy.Transforms.NGramTranslator.Data" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Runtime.EntryPoints.CommonInputs.ITransformInput.Data</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Input dataset
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetInputData">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt; GetInputData ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.EntryPoints.Var`1&lt;class Microsoft.ML.Runtime.Data.IDataView&gt; GetInputData() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Legacy.Transforms.NGramTranslator.GetInputData" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetInputData () As Var(Of IDataView)" />
+      <MemberSignature Language="F#" Value="abstract member GetInputData : unit -&gt; Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;&#xA;override this.GetInputData : unit -&gt; Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;" Usage="nGramTranslator.GetInputData " />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Legacy.ILearningPipelineItem.GetInputData</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxNumTerms">
+      <MemberSignature Language="C#" Value="public int[] MaxNumTerms { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32[] MaxNumTerms" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Transforms.NGramTranslator.MaxNumTerms" />
+      <MemberSignature Language="VB.NET" Value="Public Property MaxNumTerms As Integer()" />
+      <MemberSignature Language="F#" Value="member this.MaxNumTerms : int[] with get, set" Usage="Microsoft.ML.Legacy.Transforms.NGramTranslator.MaxNumTerms" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Maximum number of ngrams to store in the dictionary
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NgramLength">
+      <MemberSignature Language="C#" Value="public int NgramLength { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 NgramLength" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Transforms.NGramTranslator.NgramLength" />
+      <MemberSignature Language="VB.NET" Value="Public Property NgramLength As Integer" />
+      <MemberSignature Language="F#" Value="member this.NgramLength : int with get, set" Usage="Microsoft.ML.Legacy.Transforms.NGramTranslator.NgramLength" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Maximum ngram length
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SkipLength">
+      <MemberSignature Language="C#" Value="public int SkipLength { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 SkipLength" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Transforms.NGramTranslator.SkipLength" />
+      <MemberSignature Language="VB.NET" Value="Public Property SkipLength As Integer" />
+      <MemberSignature Language="F#" Value="member this.SkipLength : int with get, set" Usage="Microsoft.ML.Legacy.Transforms.NGramTranslator.SkipLength" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Maximum number of tokens to skip when constructing an ngram
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Weighting">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Legacy.Transforms.NgramTransformWeightingCriteria Weighting { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.ML.Legacy.Transforms.NgramTransformWeightingCriteria Weighting" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Transforms.NGramTranslator.Weighting" />
+      <MemberSignature Language="VB.NET" Value="Public Property Weighting As NgramTransformWeightingCriteria" />
+      <MemberSignature Language="F#" Value="member this.Weighting : Microsoft.ML.Legacy.Transforms.NgramTransformWeightingCriteria with get, set" Usage="Microsoft.ML.Legacy.Transforms.NGramTranslator.Weighting" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Legacy.Transforms.NgramTransformWeightingCriteria</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The weighting criteria
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

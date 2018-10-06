@@ -290,10 +290,10 @@
       </Docs>
     </Member>
     <Member MemberName="GetSlotNames">
-      <MemberSignature Language="C#" Value="public static void GetSlotNames (Microsoft.ML.Runtime.Data.RoleMappedSchema schema, Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole role, int vectorSize, ref Microsoft.ML.Runtime.Data.VBuffer&lt;Microsoft.ML.Runtime.Data.DvText&gt; slotNames);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void GetSlotNames(class Microsoft.ML.Runtime.Data.RoleMappedSchema schema, valuetype Microsoft.ML.Runtime.Data.RoleMappedSchema/ColumnRole role, int32 vectorSize, valuetype Microsoft.ML.Runtime.Data.VBuffer`1&lt;valuetype Microsoft.ML.Runtime.Data.DvText&gt;&amp; slotNames) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MetadataUtils.GetSlotNames(Microsoft.ML.Runtime.Data.RoleMappedSchema,Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole,System.Int32,Microsoft.ML.Runtime.Data.VBuffer{Microsoft.ML.Runtime.Data.DvText}@)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub GetSlotNames (schema As RoleMappedSchema, role As RoleMappedSchema.ColumnRole, vectorSize As Integer, ByRef slotNames As VBuffer(Of DvText))" />
+      <MemberSignature Language="C#" Value="public static void GetSlotNames (Microsoft.ML.Runtime.Data.RoleMappedSchema schema, Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole role, int vectorSize, ref Microsoft.ML.Runtime.Data.VBuffer&lt;ReadOnlyMemory&lt;char&gt;&gt; slotNames);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void GetSlotNames(class Microsoft.ML.Runtime.Data.RoleMappedSchema schema, valuetype Microsoft.ML.Runtime.Data.RoleMappedSchema/ColumnRole role, int32 vectorSize, valuetype Microsoft.ML.Runtime.Data.VBuffer`1&lt;valuetype System.ReadOnlyMemory`1&lt;char&gt;&gt;&amp; slotNames) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MetadataUtils.GetSlotNames(Microsoft.ML.Runtime.Data.RoleMappedSchema,Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole,System.Int32,Microsoft.ML.Runtime.Data.VBuffer{System.ReadOnlyMemory{System.Char}}@)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub GetSlotNames (schema As RoleMappedSchema, role As RoleMappedSchema.ColumnRole, vectorSize As Integer, ByRef slotNames As VBuffer(Of ReadOnlyMemory(Of Char)))" />
       <MemberSignature Language="F#" Value="static member GetSlotNames : Microsoft.ML.Runtime.Data.RoleMappedSchema * Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole * int *  -&gt; unit" Usage="Microsoft.ML.Runtime.Data.MetadataUtils.GetSlotNames (schema, role, vectorSize, slotNames)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
@@ -307,7 +307,7 @@
         <Parameter Name="schema" Type="Microsoft.ML.Runtime.Data.RoleMappedSchema" />
         <Parameter Name="role" Type="Microsoft.ML.Runtime.Data.RoleMappedSchema+ColumnRole" />
         <Parameter Name="vectorSize" Type="System.Int32" />
-        <Parameter Name="slotNames" Type="Microsoft.ML.Runtime.Data.VBuffer&lt;Microsoft.ML.Runtime.Data.DvText&gt;" RefType="ref" />
+        <Parameter Name="slotNames" Type="Microsoft.ML.Runtime.Data.VBuffer&lt;System.ReadOnlyMemory&lt;System.Char&gt;&gt;" RefType="ref" />
       </Parameters>
       <Docs>
         <param name="schema">To be added.</param>
@@ -344,6 +344,32 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="GetTrainerOutputMetadata">
+      <MemberSignature Language="C#" Value="public static System.Collections.Generic.IEnumerable&lt;Microsoft.ML.Core.Data.SchemaShape.Column&gt; GetTrainerOutputMetadata (bool isNormalized = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Collections.Generic.IEnumerable`1&lt;class Microsoft.ML.Core.Data.SchemaShape/Column&gt; GetTrainerOutputMetadata(bool isNormalized) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MetadataUtils.GetTrainerOutputMetadata(System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetTrainerOutputMetadata (Optional isNormalized As Boolean = false) As IEnumerable(Of SchemaShape.Column)" />
+      <MemberSignature Language="F#" Value="static member GetTrainerOutputMetadata : bool -&gt; seq&lt;Microsoft.ML.Core.Data.SchemaShape.Column&gt;" Usage="Microsoft.ML.Runtime.Data.MetadataUtils.GetTrainerOutputMetadata isNormalized" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;Microsoft.ML.Core.Data.SchemaShape+Column&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="isNormalized" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="isNormalized">whether we should also append 'IsNormalized' (typically for probability column)</param>
+        <summary>
+            Produces sequence of columns that are generated by trainer estimators.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="HasKeyNames">
       <MemberSignature Language="C#" Value="public static bool HasKeyNames (this Microsoft.ML.Runtime.Data.ISchema schema, int col, int keyCount);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool HasKeyNames(class Microsoft.ML.Runtime.Data.ISchema schema, int32 col, int32 keyCount) cil managed" />
@@ -369,6 +395,34 @@
         <param name="keyCount">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="HasSlotNames">
+      <MemberSignature Language="C#" Value="public static bool HasSlotNames (this Microsoft.ML.Core.Data.SchemaShape.Column col);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool HasSlotNames(class Microsoft.ML.Core.Data.SchemaShape/Column col) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MetadataUtils.HasSlotNames(Microsoft.ML.Core.Data.SchemaShape.Column)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function HasSlotNames (col As SchemaShape.Column) As Boolean" />
+      <MemberSignature Language="F#" Value="static member HasSlotNames : Microsoft.ML.Core.Data.SchemaShape.Column -&gt; bool" Usage="Microsoft.ML.Runtime.Data.MetadataUtils.HasSlotNames col" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="col" Type="Microsoft.ML.Core.Data.SchemaShape+Column" RefType="this" />
+      </Parameters>
+      <Docs>
+        <param name="col">The schema shape column to query</param>
+        <summary>
+            Returns whether a column has the <see cref="F:Microsoft.ML.Runtime.Data.MetadataUtils.Kinds.SlotNames" /> metadata indicated by
+            the schema shape.
+            </summary>
+        <returns>True if and only if the column is a definite sized vector type, has the
+            <see cref="F:Microsoft.ML.Runtime.Data.MetadataUtils.Kinds.SlotNames" /> metadata of definite sized vectors of text.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -399,7 +453,7 @@
             Returns <c>true</c> if the specified column:
              * is a vector of length N (including 0)
              * has a SlotNames metadata
-             * metadata type is VBuffer&lt;DvText&gt; of length N
+             * metadata type is VBuffer&lt;ReadOnlyMemory&lt;char&gt;&gt; of length N
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -434,6 +488,34 @@
       </Docs>
     </Member>
     <Member MemberName="IsNormalized">
+      <MemberSignature Language="C#" Value="public static bool IsNormalized (this Microsoft.ML.Core.Data.SchemaShape.Column col);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool IsNormalized(class Microsoft.ML.Core.Data.SchemaShape/Column col) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MetadataUtils.IsNormalized(Microsoft.ML.Core.Data.SchemaShape.Column)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function IsNormalized (col As SchemaShape.Column) As Boolean" />
+      <MemberSignature Language="F#" Value="static member IsNormalized : Microsoft.ML.Core.Data.SchemaShape.Column -&gt; bool" Usage="Microsoft.ML.Runtime.Data.MetadataUtils.IsNormalized col" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="col" Type="Microsoft.ML.Core.Data.SchemaShape+Column" RefType="this" />
+      </Parameters>
+      <Docs>
+        <param name="col">The schema shape column to query</param>
+        <summary>
+            Returns whether a column has the <see cref="F:Microsoft.ML.Runtime.Data.MetadataUtils.Kinds.IsNormalized" /> metadata indicated by
+            the schema shape.
+            </summary>
+        <returns>True if and only if the column has the <see cref="F:Microsoft.ML.Runtime.Data.MetadataUtils.Kinds.IsNormalized" /> metadata
+            of a scalar <see cref="T:Microsoft.ML.Runtime.Data.BoolType" /> type, which we assume, if set, should be <c>true</c>.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsNormalized">
       <MemberSignature Language="C#" Value="public static bool IsNormalized (this Microsoft.ML.Runtime.Data.ISchema schema, int col);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool IsNormalized(class Microsoft.ML.Runtime.Data.ISchema schema, int32 col) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MetadataUtils.IsNormalized(Microsoft.ML.Runtime.Data.ISchema,System.Int32)" />
@@ -460,7 +542,7 @@
             "normalized."
             </summary>
         <returns>True if and only if the column has the <see cref="F:Microsoft.ML.Runtime.Data.MetadataUtils.Kinds.IsNormalized" /> metadata
-            set to the scalar value <see cref="P:Microsoft.ML.Runtime.Data.DvBool.True" /></returns>
+            set to the scalar value true</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

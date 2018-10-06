@@ -188,6 +188,73 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Evaluate">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.Result Evaluate (Microsoft.ML.Runtime.Data.IDataView data, string label, string score, string predictedLabel);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator/Result Evaluate(class Microsoft.ML.Runtime.Data.IDataView data, string label, string score, string predictedLabel) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.Evaluate(Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Evaluate (data As IDataView, label As String, score As String, predictedLabel As String) As BinaryClassifierEvaluator.Result" />
+      <MemberSignature Language="F#" Value="override this.Evaluate : Microsoft.ML.Runtime.Data.IDataView * string * string * string -&gt; Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.Result" Usage="binaryClassifierEvaluator.Evaluate (data, label, score, predictedLabel)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator+Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="label" Type="System.String" />
+        <Parameter Name="score" Type="System.String" />
+        <Parameter Name="predictedLabel" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="data">The scored data.</param>
+        <param name="label">The name of the label column in <paramref name="data" />.</param>
+        <param name="score">The name of the score column in <paramref name="data" />.</param>
+        <param name="predictedLabel">The name of the predicted label column in <paramref name="data" />.</param>
+        <summary>
+            Evaluates scored binary classification data, without probability-based metrics.
+            </summary>
+        <returns>The evaluation results for these uncalibrated outputs.</returns>
+        <remarks>To be added.</remarks>
+        <altmember cref="M:Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.Evaluate(Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,System.String)" />
+      </Docs>
+    </Member>
+    <Member MemberName="Evaluate">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.CalibratedResult Evaluate (Microsoft.ML.Runtime.Data.IDataView data, string label, string score, string probability, string predictedLabel);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator/CalibratedResult Evaluate(class Microsoft.ML.Runtime.Data.IDataView data, string label, string score, string probability, string predictedLabel) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.Evaluate(Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,System.String,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Evaluate (data As IDataView, label As String, score As String, probability As String, predictedLabel As String) As BinaryClassifierEvaluator.CalibratedResult" />
+      <MemberSignature Language="F#" Value="override this.Evaluate : Microsoft.ML.Runtime.Data.IDataView * string * string * string * string -&gt; Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.CalibratedResult" Usage="binaryClassifierEvaluator.Evaluate (data, label, score, probability, predictedLabel)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator+CalibratedResult</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="label" Type="System.String" />
+        <Parameter Name="score" Type="System.String" />
+        <Parameter Name="probability" Type="System.String" />
+        <Parameter Name="predictedLabel" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="data">The scored data.</param>
+        <param name="label">The name of the label column in <paramref name="data" />.</param>
+        <param name="score">The name of the score column in <paramref name="data" />.</param>
+        <param name="probability">The name of the probability column in <paramref name="data" />, the calibrated version of <paramref name="score" />.</param>
+        <param name="predictedLabel">The name of the predicted label column in <paramref name="data" />.</param>
+        <summary>
+            Evaluates scored binary classification data.
+            </summary>
+        <returns>The evaluation results for these calibrated outputs.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="F1">
       <MemberSignature Language="C#" Value="public const string F1;" />
       <MemberSignature Language="ILAsm" Value=".field public static literal string F1" />
@@ -251,9 +318,9 @@
       </Docs>
     </Member>
     <Member MemberName="GetAggregatorConsolidationFuncs">
-      <MemberSignature Language="C#" Value="protected override void GetAggregatorConsolidationFuncs (Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.Aggregator aggregator, Microsoft.ML.Runtime.Data.EvaluatorBase&lt;Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.Aggregator&gt;.AggregatorDictionaryBase[] dictionaries, out Action&lt;uint,Microsoft.ML.Runtime.Data.DvText,Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.Aggregator&gt; addAgg, out Func&lt;System.Collections.Generic.Dictionary&lt;string,Microsoft.ML.Runtime.Data.IDataView&gt;&gt; consolidate);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void GetAggregatorConsolidationFuncs(class Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator/Aggregator aggregator, class Microsoft.ML.Runtime.Data.EvaluatorBase`1/AggregatorDictionaryBase&lt;class Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator/Aggregator&gt;[] dictionaries, [out] class System.Action`3&lt;unsigned int32, valuetype Microsoft.ML.Runtime.Data.DvText, class Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator/Aggregator&gt;&amp; addAgg, [out] class System.Func`1&lt;class System.Collections.Generic.Dictionary`2&lt;string, class Microsoft.ML.Runtime.Data.IDataView&gt;&gt;&amp; consolidate) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.GetAggregatorConsolidationFuncs(Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.Aggregator,Microsoft.ML.Runtime.Data.EvaluatorBase`1.AggregatorDictionaryBase{Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.Aggregator}[],System.Action{System.UInt32,Microsoft.ML.Runtime.Data.DvText,Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.Aggregator}@,System.Func{System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView}}@)" />
+      <MemberSignature Language="C#" Value="protected override void GetAggregatorConsolidationFuncs (Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.Aggregator aggregator, Microsoft.ML.Runtime.Data.EvaluatorBase&lt;Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.Aggregator&gt;.AggregatorDictionaryBase[] dictionaries, out Action&lt;uint,ReadOnlyMemory&lt;char&gt;,Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.Aggregator&gt; addAgg, out Func&lt;System.Collections.Generic.Dictionary&lt;string,Microsoft.ML.Runtime.Data.IDataView&gt;&gt; consolidate);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void GetAggregatorConsolidationFuncs(class Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator/Aggregator aggregator, class Microsoft.ML.Runtime.Data.EvaluatorBase`1/AggregatorDictionaryBase&lt;class Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator/Aggregator&gt;[] dictionaries, [out] class System.Action`3&lt;unsigned int32, valuetype System.ReadOnlyMemory`1&lt;char&gt;, class Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator/Aggregator&gt;&amp; addAgg, [out] class System.Func`1&lt;class System.Collections.Generic.Dictionary`2&lt;string, class Microsoft.ML.Runtime.Data.IDataView&gt;&gt;&amp; consolidate) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.GetAggregatorConsolidationFuncs(Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.Aggregator,Microsoft.ML.Runtime.Data.EvaluatorBase`1.AggregatorDictionaryBase{Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.Aggregator}[],System.Action{System.UInt32,System.ReadOnlyMemory{System.Char},Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.Aggregator}@,System.Func{System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView}}@)" />
       <MemberSignature Language="F#" Value="override this.GetAggregatorConsolidationFuncs : Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.Aggregator * Microsoft.ML.Runtime.Data.EvaluatorBase&lt;Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.Aggregator&gt;.AggregatorDictionaryBase[] *  *  -&gt; unit" Usage="binaryClassifierEvaluator.GetAggregatorConsolidationFuncs (aggregator, dictionaries, addAgg, consolidate)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
@@ -266,7 +333,7 @@
       <Parameters>
         <Parameter Name="aggregator" Type="Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator+Aggregator" />
         <Parameter Name="dictionaries" Type="Microsoft.ML.Runtime.Data.EvaluatorBase&lt;Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator+Aggregator&gt;+AggregatorDictionaryBase[]" />
-        <Parameter Name="addAgg" Type="System.Action&lt;System.UInt32,Microsoft.ML.Runtime.Data.DvText,Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator+Aggregator&gt;" RefType="out" />
+        <Parameter Name="addAgg" Type="System.Action&lt;System.UInt32,System.ReadOnlyMemory&lt;System.Char&gt;,Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator+Aggregator&gt;" RefType="out" />
         <Parameter Name="consolidate" Type="System.Func&lt;System.Collections.Generic.Dictionary&lt;System.String,Microsoft.ML.Runtime.Data.IDataView&gt;&gt;" RefType="out" />
       </Parameters>
       <Docs>

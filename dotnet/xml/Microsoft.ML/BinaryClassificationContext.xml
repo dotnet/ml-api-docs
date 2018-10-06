@@ -1,0 +1,217 @@
+﻿<Type Name="BinaryClassificationContext" FullName="Microsoft.ML.BinaryClassificationContext">
+  <TypeSignature Language="C#" Value="public sealed class BinaryClassificationContext : Microsoft.ML.TrainContextBase" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit BinaryClassificationContext extends Microsoft.ML.TrainContextBase" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.BinaryClassificationContext" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class BinaryClassificationContext&#xA;Inherits TrainContextBase" />
+  <TypeSignature Language="F#" Value="type BinaryClassificationContext = class&#xA;    inherit TrainContextBase" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Data</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Microsoft.ML.TrainContextBase</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+            The central context for binary classification trainers.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public BinaryClassificationContext (Microsoft.ML.Runtime.IHostEnvironment env);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.BinaryClassificationContext.#ctor(Microsoft.ML.Runtime.IHostEnvironment)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.BinaryClassificationContext : Microsoft.ML.Runtime.IHostEnvironment -&gt; Microsoft.ML.BinaryClassificationContext" Usage="new Microsoft.ML.BinaryClassificationContext env" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CrossValidate">
+      <MemberSignature Language="C#" Value="public ValueTuple&lt;Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.CalibratedResult,Microsoft.ML.Core.Data.ITransformer,Microsoft.ML.Runtime.Data.IDataView&gt;[] CrossValidate (Microsoft.ML.Runtime.Data.IDataView data, Microsoft.ML.Core.Data.IEstimator&lt;Microsoft.ML.Core.Data.ITransformer&gt; estimator, int numFolds = 5, string labelColumn = &quot;Label&quot;, string stratificationColumn = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype System.ValueTuple`3&lt;class Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator/CalibratedResult, class Microsoft.ML.Core.Data.ITransformer, class Microsoft.ML.Runtime.Data.IDataView&gt;[] CrossValidate(class Microsoft.ML.Runtime.Data.IDataView data, class Microsoft.ML.Core.Data.IEstimator`1&lt;class Microsoft.ML.Core.Data.ITransformer&gt; estimator, int32 numFolds, string labelColumn, string stratificationColumn) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.BinaryClassificationContext.CrossValidate(Microsoft.ML.Runtime.Data.IDataView,Microsoft.ML.Core.Data.IEstimator{Microsoft.ML.Core.Data.ITransformer},System.Int32,System.String,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Function CrossValidate (data As IDataView, estimator As IEstimator(Of ITransformer), Optional numFolds As Integer = 5, Optional labelColumn As String = &quot;Label&quot;, Optional stratificationColumn As String = null) As ValueTuple(Of BinaryClassifierEvaluator.CalibratedResult, ITransformer, IDataView)()" />
+      <MemberSignature Language="F#" Value="member this.CrossValidate : Microsoft.ML.Runtime.Data.IDataView * Microsoft.ML.Core.Data.IEstimator&lt;Microsoft.ML.Core.Data.ITransformer&gt; * int * string * string -&gt; ValueTuple&lt;Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.CalibratedResult, Microsoft.ML.Core.Data.ITransformer, Microsoft.ML.Runtime.Data.IDataView&gt;[]" Usage="binaryClassificationContext.CrossValidate (data, estimator, numFolds, labelColumn, stratificationColumn)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.ValueTuple&lt;Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator+CalibratedResult,Microsoft.ML.Core.Data.ITransformer,Microsoft.ML.Runtime.Data.IDataView&gt;[]</ReturnType>
+        <Attributes>
+          <Attribute>
+            <AttributeName>System.Runtime.CompilerServices.TupleElementNames(new System.String[] { "metrics", "model", "scoredTestData" })</AttributeName>
+          </Attribute>
+        </Attributes>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="estimator" Type="Microsoft.ML.Core.Data.IEstimator&lt;Microsoft.ML.Core.Data.ITransformer&gt;" />
+        <Parameter Name="numFolds" Type="System.Int32" />
+        <Parameter Name="labelColumn" Type="System.String" />
+        <Parameter Name="stratificationColumn" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="data">The data to run cross-validation on.</param>
+        <param name="estimator">The estimator to fit.</param>
+        <param name="numFolds">Number of cross-validation folds.</param>
+        <param name="labelColumn">The label column (for evaluation).</param>
+        <param name="stratificationColumn">Optional stratification column.</param>
+        <summary>
+            Run cross-validation over <paramref name="numFolds" /> folds of <paramref name="data" />, by fitting <paramref name="estimator" />,
+            and respecting <paramref name="stratificationColumn" /> if provided.
+            Then evaluate each sub-model against <paramref name="labelColumn" /> and return metrics.
+            </summary>
+        <returns>Per-fold results: metrics, models, scored datasets.</returns>
+        <remarks>If two examples share the same value of the <paramref name="stratificationColumn" /> (if provided),
+            they are guaranteed to appear in the same subset (train or test). Use this to make sure there is no label leakage from
+            train to the test set.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CrossValidateNonCalibrated">
+      <MemberSignature Language="C#" Value="public ValueTuple&lt;Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.Result,Microsoft.ML.Core.Data.ITransformer,Microsoft.ML.Runtime.Data.IDataView&gt;[] CrossValidateNonCalibrated (Microsoft.ML.Runtime.Data.IDataView data, Microsoft.ML.Core.Data.IEstimator&lt;Microsoft.ML.Core.Data.ITransformer&gt; estimator, int numFolds = 5, string labelColumn = &quot;Label&quot;, string stratificationColumn = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype System.ValueTuple`3&lt;class Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator/Result, class Microsoft.ML.Core.Data.ITransformer, class Microsoft.ML.Runtime.Data.IDataView&gt;[] CrossValidateNonCalibrated(class Microsoft.ML.Runtime.Data.IDataView data, class Microsoft.ML.Core.Data.IEstimator`1&lt;class Microsoft.ML.Core.Data.ITransformer&gt; estimator, int32 numFolds, string labelColumn, string stratificationColumn) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.BinaryClassificationContext.CrossValidateNonCalibrated(Microsoft.ML.Runtime.Data.IDataView,Microsoft.ML.Core.Data.IEstimator{Microsoft.ML.Core.Data.ITransformer},System.Int32,System.String,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Function CrossValidateNonCalibrated (data As IDataView, estimator As IEstimator(Of ITransformer), Optional numFolds As Integer = 5, Optional labelColumn As String = &quot;Label&quot;, Optional stratificationColumn As String = null) As ValueTuple(Of BinaryClassifierEvaluator.Result, ITransformer, IDataView)()" />
+      <MemberSignature Language="F#" Value="member this.CrossValidateNonCalibrated : Microsoft.ML.Runtime.Data.IDataView * Microsoft.ML.Core.Data.IEstimator&lt;Microsoft.ML.Core.Data.ITransformer&gt; * int * string * string -&gt; ValueTuple&lt;Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.Result, Microsoft.ML.Core.Data.ITransformer, Microsoft.ML.Runtime.Data.IDataView&gt;[]" Usage="binaryClassificationContext.CrossValidateNonCalibrated (data, estimator, numFolds, labelColumn, stratificationColumn)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.ValueTuple&lt;Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator+Result,Microsoft.ML.Core.Data.ITransformer,Microsoft.ML.Runtime.Data.IDataView&gt;[]</ReturnType>
+        <Attributes>
+          <Attribute>
+            <AttributeName>System.Runtime.CompilerServices.TupleElementNames(new System.String[] { "metrics", "model", "scoredTestData" })</AttributeName>
+          </Attribute>
+        </Attributes>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="estimator" Type="Microsoft.ML.Core.Data.IEstimator&lt;Microsoft.ML.Core.Data.ITransformer&gt;" />
+        <Parameter Name="numFolds" Type="System.Int32" />
+        <Parameter Name="labelColumn" Type="System.String" />
+        <Parameter Name="stratificationColumn" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="data">The data to run cross-validation on.</param>
+        <param name="estimator">The estimator to fit.</param>
+        <param name="numFolds">Number of cross-validation folds.</param>
+        <param name="labelColumn">The label column (for evaluation).</param>
+        <param name="stratificationColumn">Optional stratification column.</param>
+        <summary>
+            Run cross-validation over <paramref name="numFolds" /> folds of <paramref name="data" />, by fitting <paramref name="estimator" />,
+            and respecting <paramref name="stratificationColumn" /> if provided.
+            Then evaluate each sub-model against <paramref name="labelColumn" /> and return metrics.
+            </summary>
+        <returns>Per-fold results: metrics, models, scored datasets.</returns>
+        <remarks>If two examples share the same value of the <paramref name="stratificationColumn" /> (if provided),
+            they are guaranteed to appear in the same subset (train or test). Use this to make sure there is no label leakage from
+            train to the test set.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Evaluate">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.CalibratedResult Evaluate (Microsoft.ML.Runtime.Data.IDataView data, string label, string score = &quot;Score&quot;, string probability = &quot;Probability&quot;, string predictedLabel = &quot;PredictedLabel&quot;);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator/CalibratedResult Evaluate(class Microsoft.ML.Runtime.Data.IDataView data, string label, string score, string probability, string predictedLabel) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.BinaryClassificationContext.Evaluate(Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,System.String,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Evaluate (data As IDataView, label As String, Optional score As String = &quot;Score&quot;, Optional probability As String = &quot;Probability&quot;, Optional predictedLabel As String = &quot;PredictedLabel&quot;) As BinaryClassifierEvaluator.CalibratedResult" />
+      <MemberSignature Language="F#" Value="member this.Evaluate : Microsoft.ML.Runtime.Data.IDataView * string * string * string * string -&gt; Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.CalibratedResult" Usage="binaryClassificationContext.Evaluate (data, label, score, probability, predictedLabel)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator+CalibratedResult</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="label" Type="System.String" />
+        <Parameter Name="score" Type="System.String" />
+        <Parameter Name="probability" Type="System.String" />
+        <Parameter Name="predictedLabel" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="data">The scored data.</param>
+        <param name="label">The name of the label column in <paramref name="data" />.</param>
+        <param name="score">The name of the score column in <paramref name="data" />.</param>
+        <param name="probability">The name of the probability column in <paramref name="data" />, the calibrated version of <paramref name="score" />.</param>
+        <param name="predictedLabel">The name of the predicted label column in <paramref name="data" />.</param>
+        <summary>
+            Evaluates scored binary classification data.
+            </summary>
+        <returns>The evaluation results for these calibrated outputs.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EvaluateNonCalibrated">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.Result EvaluateNonCalibrated (Microsoft.ML.Runtime.Data.IDataView data, string label, string score = &quot;Score&quot;, string predictedLabel = &quot;PredictedLabel&quot;);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator/Result EvaluateNonCalibrated(class Microsoft.ML.Runtime.Data.IDataView data, string label, string score, string predictedLabel) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.BinaryClassificationContext.EvaluateNonCalibrated(Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Function EvaluateNonCalibrated (data As IDataView, label As String, Optional score As String = &quot;Score&quot;, Optional predictedLabel As String = &quot;PredictedLabel&quot;) As BinaryClassifierEvaluator.Result" />
+      <MemberSignature Language="F#" Value="member this.EvaluateNonCalibrated : Microsoft.ML.Runtime.Data.IDataView * string * string * string -&gt; Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.Result" Usage="binaryClassificationContext.EvaluateNonCalibrated (data, label, score, predictedLabel)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator+Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="label" Type="System.String" />
+        <Parameter Name="score" Type="System.String" />
+        <Parameter Name="predictedLabel" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="data">The scored data.</param>
+        <param name="label">The name of the label column in <paramref name="data" />.</param>
+        <param name="score">The name of the score column in <paramref name="data" />.</param>
+        <param name="predictedLabel">The name of the predicted label column in <paramref name="data" />.</param>
+        <summary>
+            Evaluates scored binary classification data, without probability-based metrics.
+            </summary>
+        <returns>The evaluation results for these uncalibrated outputs.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Trainers">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.BinaryClassificationContext.BinaryClassificationTrainers Trainers { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.BinaryClassificationContext/BinaryClassificationTrainers Trainers" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.BinaryClassificationContext.Trainers" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Trainers As BinaryClassificationContext.BinaryClassificationTrainers" />
+      <MemberSignature Language="F#" Value="member this.Trainers : Microsoft.ML.BinaryClassificationContext.BinaryClassificationTrainers" Usage="Microsoft.ML.BinaryClassificationContext.Trainers" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.BinaryClassificationContext+BinaryClassificationTrainers</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            For trainers for performing binary classification.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
