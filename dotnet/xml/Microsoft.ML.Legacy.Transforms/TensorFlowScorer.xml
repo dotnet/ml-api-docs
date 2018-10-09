@@ -21,12 +21,19 @@
   </Interfaces>
   <Docs>
     <summary>
-        Extracts hidden layers' values from a pre-trained Tensorflow model.
-      </summary>
+        The <see cref="!:TensorFlowTransform" /> is used in following two scenarios.
+        <list type="number"><item><description>
+            Scoring with pretrained TensorFlow model: In this mode, the transform extracts hidden layers' values from a pre-trained Tensorflow model and uses outputs as features in ML.Net pipeline.
+          </description></item><item><description>
+            Retraining of TensorFlow model: In this mode, the transform retrains a TensorFlow model using the user data passed through ML.Net pipeline. Once the model is trained, it's outputs can be used as features for scoring.
+          </description></item></list></summary>
     <remarks>
       <para>
           The TensorFlowTransform extracts specified outputs using a pre-trained <a href="https://www.tensorflow.org">Tensorflow</a> model.
-          The transform takes as inputs the pre-trained Tensorflow model, the names of the input nodes, and names of the output nodes whose values we want to extract. 
+          Optionally, it can further retrain TensorFlow model on user data to adjust model parameters on the user data ( also know as "Transfer Learning").
+
+          For scoring, the transform takes as inputs the pre-trained Tensorflow model, the names of the input nodes, and names of the output nodes whose values we want to extract.
+          For retraining, the transform also requires training related parameters such as the names of optimization operation in the TensorFlow graph, the name of the learning rate operation in the graph and its value, name of the operations in the graph to compute loss and performance metric etc.
         </para>
       <para>
           This transform requires the <a href="https://dotnet.myget.org/feed/dotnet-core/package/nuget/Microsoft.ML.TensorFlow">Microsoft.ML.TensorFlow</a> nuget to be installed.
@@ -36,10 +43,12 @@
         <item>
           <description>
               For the input model, currently the TensorFlowTransform supports both the <a href="https://www.tensorflow.org/mobile/prepare_models">Frozen model</a> format and also the <a href="https://www.tensorflow.org/guide/saved_model#build_and_load_a_savedmodel">SavedModel</a> format.
+              However, retraining of the model is only possible for the <a href="https://www.tensorflow.org/guide/saved_model#build_and_load_a_savedmodel">SavedModel</a> format.
+              <a href="https://www.tensorflow.org/guide/checkpoints">Checkpoint</a> format is currently neither supported for scoring nor for retraining due lack of TensorFlow C-API support for loading it.
             </description>
         </item>
         <item>
-          <description>The transform supports scoring only one example at a time.</description>
+          <description>The transform supports scoring only one example at a time. However, retraining can be performed in batches.</description>
         </item>
         <item>
           <description>The name of input column(s) should match the name of input(s) in TensorFlow model.</description>
@@ -48,14 +57,14 @@
           <description>The name of each output column should match one of the operations in the TensorFlow graph.</description>
         </item>
         <item>
-          <description>Currently, float and double are the only acceptable data types for input/output.</description>
+          <description>Currently, float, double, int, long, uint, ulong are the acceptable data types for input/output.</description>
         </item>
         <item>
           <description>Upon success, the transform will introduce a new column in <see cref="T:Microsoft.ML.Runtime.Data.IDataView" /> corresponding to each output column specified.</description>
         </item>
       </list>
 
-        The inputs and outputs of a TensorFlow model can be obtained using the <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/tools/graph_transforms/README.md#inspecting-graphs"><code>summarize_graph</code> tool
+        The inputs and outputs of a TensorFlow model can be obtained using the <see cref="!:TensorFlowUtils.GetModelSchema(IExceptionContext, string)" /> or <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/tools/graph_transforms/README.md#inspecting-graphs"><code>summarize_graph</code> tools.
         </a>.
 
       </remarks>
@@ -190,6 +199,28 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="BatchSize">
+      <MemberSignature Language="C#" Value="public int BatchSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 BatchSize" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Transforms.TensorFlowScorer.BatchSize" />
+      <MemberSignature Language="VB.NET" Value="Public Property BatchSize As Integer" />
+      <MemberSignature Language="F#" Value="member this.BatchSize : int with get, set" Usage="Microsoft.ML.Legacy.Transforms.TensorFlowScorer.BatchSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Number of samples to use for mini-batch training.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Data">
       <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt; Data { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.EntryPoints.Var`1&lt;class Microsoft.ML.Runtime.Data.IDataView&gt; Data" />
@@ -210,6 +241,28 @@
       <Docs>
         <summary>
             Input dataset
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Epoch">
+      <MemberSignature Language="C#" Value="public int Epoch { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Epoch" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Transforms.TensorFlowScorer.Epoch" />
+      <MemberSignature Language="VB.NET" Value="Public Property Epoch As Integer" />
+      <MemberSignature Language="F#" Value="member this.Epoch : int with get, set" Usage="Microsoft.ML.Legacy.Transforms.TensorFlowScorer.Epoch" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Number of training iterations.
             </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
@@ -261,6 +314,116 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="LabelColumn">
+      <MemberSignature Language="C#" Value="public string LabelColumn { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string LabelColumn" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Transforms.TensorFlowScorer.LabelColumn" />
+      <MemberSignature Language="VB.NET" Value="Public Property LabelColumn As String" />
+      <MemberSignature Language="F#" Value="member this.LabelColumn : string with get, set" Usage="Microsoft.ML.Legacy.Transforms.TensorFlowScorer.LabelColumn" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Training labels.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LearningRate">
+      <MemberSignature Language="C#" Value="public float LearningRate { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 LearningRate" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Transforms.TensorFlowScorer.LearningRate" />
+      <MemberSignature Language="VB.NET" Value="Public Property LearningRate As Single" />
+      <MemberSignature Language="F#" Value="member this.LearningRate : single with get, set" Usage="Microsoft.ML.Legacy.Transforms.TensorFlowScorer.LearningRate" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Learning rate to use during optimization.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LearningRateOperation">
+      <MemberSignature Language="C#" Value="public string LearningRateOperation { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string LearningRateOperation" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Transforms.TensorFlowScorer.LearningRateOperation" />
+      <MemberSignature Language="VB.NET" Value="Public Property LearningRateOperation As String" />
+      <MemberSignature Language="F#" Value="member this.LearningRateOperation : string with get, set" Usage="Microsoft.ML.Legacy.Transforms.TensorFlowScorer.LearningRateOperation" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The name of the operation in the TensorFlow graph which sets optimizer learning rate (Optional).
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LossOperation">
+      <MemberSignature Language="C#" Value="public string LossOperation { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string LossOperation" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Transforms.TensorFlowScorer.LossOperation" />
+      <MemberSignature Language="VB.NET" Value="Public Property LossOperation As String" />
+      <MemberSignature Language="F#" Value="member this.LossOperation : string with get, set" Usage="Microsoft.ML.Legacy.Transforms.TensorFlowScorer.LossOperation" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The name of the operation in the TensorFlow graph to compute training loss (Optional)
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MetricOperation">
+      <MemberSignature Language="C#" Value="public string MetricOperation { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string MetricOperation" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Transforms.TensorFlowScorer.MetricOperation" />
+      <MemberSignature Language="VB.NET" Value="Public Property MetricOperation As String" />
+      <MemberSignature Language="F#" Value="member this.MetricOperation : string with get, set" Usage="Microsoft.ML.Legacy.Transforms.TensorFlowScorer.MetricOperation" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The name of the operation in the TensorFlow graph to compute performance metric during training (Optional)
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Model">
       <MemberSignature Language="C#" Value="public string Model { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string Model" />
@@ -283,6 +446,28 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="OptimizationOperation">
+      <MemberSignature Language="C#" Value="public string OptimizationOperation { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string OptimizationOperation" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Transforms.TensorFlowScorer.OptimizationOperation" />
+      <MemberSignature Language="VB.NET" Value="Public Property OptimizationOperation As String" />
+      <MemberSignature Language="F#" Value="member this.OptimizationOperation : string with get, set" Usage="Microsoft.ML.Legacy.Transforms.TensorFlowScorer.OptimizationOperation" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The name of the optimization operation in the TensorFlow graph.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="OutputColumns">
       <MemberSignature Language="C#" Value="public string[] OutputColumns { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string[] OutputColumns" />
@@ -300,6 +485,116 @@
       <Docs>
         <summary>
             The name of the outputs
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReTrain">
+      <MemberSignature Language="C#" Value="public bool ReTrain { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool ReTrain" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Transforms.TensorFlowScorer.ReTrain" />
+      <MemberSignature Language="VB.NET" Value="Public Property ReTrain As Boolean" />
+      <MemberSignature Language="F#" Value="member this.ReTrain : bool with get, set" Usage="Microsoft.ML.Legacy.Transforms.TensorFlowScorer.ReTrain" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Retrain TensorFlow model.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SaveLocationOperation">
+      <MemberSignature Language="C#" Value="public string SaveLocationOperation { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string SaveLocationOperation" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Transforms.TensorFlowScorer.SaveLocationOperation" />
+      <MemberSignature Language="VB.NET" Value="Public Property SaveLocationOperation As String" />
+      <MemberSignature Language="F#" Value="member this.SaveLocationOperation : string with get, set" Usage="Microsoft.ML.Legacy.Transforms.TensorFlowScorer.SaveLocationOperation" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Name of the input in TensorFlow graph that specifiy the location for saving/restoring models from disk.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SaveOperation">
+      <MemberSignature Language="C#" Value="public string SaveOperation { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string SaveOperation" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Transforms.TensorFlowScorer.SaveOperation" />
+      <MemberSignature Language="VB.NET" Value="Public Property SaveOperation As String" />
+      <MemberSignature Language="F#" Value="member this.SaveOperation : string with get, set" Usage="Microsoft.ML.Legacy.Transforms.TensorFlowScorer.SaveOperation" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Name of the input in TensorFlow graph that specifiy the location for saving/restoring models from disk.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Shuffle">
+      <MemberSignature Language="C#" Value="public bool Shuffle { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Shuffle" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Transforms.TensorFlowScorer.Shuffle" />
+      <MemberSignature Language="VB.NET" Value="Public Property Shuffle As Boolean" />
+      <MemberSignature Language="F#" Value="member this.Shuffle : bool with get, set" Usage="Microsoft.ML.Legacy.Transforms.TensorFlowScorer.Shuffle" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Shuffle data before each iteration.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TensorFlowLabel">
+      <MemberSignature Language="C#" Value="public string TensorFlowLabel { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string TensorFlowLabel" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Transforms.TensorFlowScorer.TensorFlowLabel" />
+      <MemberSignature Language="VB.NET" Value="Public Property TensorFlowLabel As String" />
+      <MemberSignature Language="F#" Value="member this.TensorFlowLabel : string with get, set" Usage="Microsoft.ML.Legacy.Transforms.TensorFlowScorer.TensorFlowLabel" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            TensorFlow label node.
             </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>

@@ -1,9 +1,9 @@
 ﻿<Type Name="StochasticGradientDescentClassificationTrainer" FullName="Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer">
-  <TypeSignature Language="C#" Value="public sealed class StochasticGradientDescentClassificationTrainer : Microsoft.ML.Runtime.Learners.LinearTrainerBase&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt;&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit StochasticGradientDescentClassificationTrainer extends Microsoft.ML.Runtime.Learners.LinearTrainerBase`1&lt;class Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt;&gt;" />
+  <TypeSignature Language="C#" Value="public sealed class StochasticGradientDescentClassificationTrainer : Microsoft.ML.Runtime.Learners.LinearTrainerBase&lt;Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt;&gt;,Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt;&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit StochasticGradientDescentClassificationTrainer extends Microsoft.ML.Runtime.Learners.LinearTrainerBase`2&lt;class Microsoft.ML.Runtime.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt;&gt;, class Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt;&gt;" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class StochasticGradientDescentClassificationTrainer&#xA;Inherits LinearTrainerBase(Of IPredictorWithFeatureWeights(Of Single))" />
-  <TypeSignature Language="F#" Value="type StochasticGradientDescentClassificationTrainer = class&#xA;    inherit LinearTrainerBase&lt;IPredictorWithFeatureWeights&lt;single&gt;&gt;" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class StochasticGradientDescentClassificationTrainer&#xA;Inherits LinearTrainerBase(Of BinaryPredictionTransformer(Of IPredictorWithFeatureWeights(Of Single)), IPredictorWithFeatureWeights(Of Single))" />
+  <TypeSignature Language="F#" Value="type StochasticGradientDescentClassificationTrainer = class&#xA;    inherit LinearTrainerBase&lt;BinaryPredictionTransformer&lt;IPredictorWithFeatureWeights&lt;single&gt;&gt;, IPredictorWithFeatureWeights&lt;single&gt;&gt;" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -11,8 +11,10 @@
   <Base>
     <BaseTypeName>Microsoft.ML.Runtime.Learners.LinearTrainerBase&lt;Microsoft.ML.Runtime.IPredictor&gt;</BaseTypeName>
     <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Runtime.Learners.LinearTrainerBase&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Runtime.Learners.LinearTrainerBase&lt;Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;,Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;</BaseTypeName>
     <BaseTypeArguments>
-      <BaseTypeArgument TypeParamName="TPredictor">Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TTransformer">Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TModel">Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
   <Interfaces></Interfaces>
@@ -22,11 +24,11 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public StochasticGradientDescentClassificationTrainer (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer.Arguments args);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer/Arguments args) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer.Arguments)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, args As StochasticGradientDescentClassificationTrainer.Arguments)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer.Arguments -&gt; Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer" Usage="new Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer (env, args)" />
+      <MemberSignature Language="C#" Value="public StochasticGradientDescentClassificationTrainer (Microsoft.ML.Runtime.IHostEnvironment env, string featureColumn, string labelColumn, string weightColumn = null, int maxIterations = 20, double initLearningRate = 0.01, float l2Weight = 1E-06, Microsoft.ML.Runtime.ISupportClassificationLossFactory loss = null, Action&lt;Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer.Arguments&gt; advancedSettings = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string featureColumn, string labelColumn, string weightColumn, int32 maxIterations, float64 initLearningRate, float32 l2Weight, class Microsoft.ML.Runtime.ISupportClassificationLossFactory loss, class System.Action`1&lt;class Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer/Arguments&gt; advancedSettings) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String,System.Int32,System.Double,System.Single,Microsoft.ML.Runtime.ISupportClassificationLossFactory,System.Action{Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer.Arguments})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, featureColumn As String, labelColumn As String, Optional weightColumn As String = null, Optional maxIterations As Integer = 20, Optional initLearningRate As Double = 0.01, Optional l2Weight As Single = 1E-06, Optional loss As ISupportClassificationLossFactory = null, Optional advancedSettings As Action(Of StochasticGradientDescentClassificationTrainer.Arguments) = null)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer : Microsoft.ML.Runtime.IHostEnvironment * string * string * string * int * double * single * Microsoft.ML.Runtime.ISupportClassificationLossFactory * Action&lt;Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer.Arguments&gt; -&gt; Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer" Usage="new Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer (env, featureColumn, labelColumn, weightColumn, maxIterations, initLearningRate, l2Weight, loss, advancedSettings)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
@@ -34,12 +36,27 @@
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
-        <Parameter Name="args" Type="Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer+Arguments" />
+        <Parameter Name="featureColumn" Type="System.String" />
+        <Parameter Name="labelColumn" Type="System.String" />
+        <Parameter Name="weightColumn" Type="System.String" />
+        <Parameter Name="maxIterations" Type="System.Int32" />
+        <Parameter Name="initLearningRate" Type="System.Double" />
+        <Parameter Name="l2Weight" Type="System.Single" />
+        <Parameter Name="loss" Type="Microsoft.ML.Runtime.ISupportClassificationLossFactory" />
+        <Parameter Name="advancedSettings" Type="System.Action&lt;Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer+Arguments&gt;" />
       </Parameters>
       <Docs>
-        <param name="env">To be added.</param>
-        <param name="args">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="env">The environment to use.</param>
+        <param name="featureColumn">The name of the feature column.</param>
+        <param name="labelColumn">The name of the label column.</param>
+        <param name="weightColumn">The name for the example weight column.</param>
+        <param name="maxIterations">The maximum number of iterations; set to 1 to simulate online learning.</param>
+        <param name="initLearningRate">The initial learning rate used by SGD.</param>
+        <param name="l2Weight">The L2 regularizer constant.</param>
+        <param name="loss">The loss function to use.</param>
+        <param name="advancedSettings">A delegate to apply all the advanced arguments to the algorithm.</param>
+        <summary>
+            Initializes a new instance of <see cref="T:Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer" /></summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -68,6 +85,30 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="GetOutputColumnsCore">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Core.Data.SchemaShape.Column[] GetOutputColumnsCore (Microsoft.ML.Core.Data.SchemaShape inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Core.Data.SchemaShape/Column[] GetOutputColumnsCore(class Microsoft.ML.Core.Data.SchemaShape inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer.GetOutputColumnsCore(Microsoft.ML.Core.Data.SchemaShape)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetOutputColumnsCore (inputSchema As SchemaShape) As SchemaShape.Column()" />
+      <MemberSignature Language="F#" Value="override this.GetOutputColumnsCore : Microsoft.ML.Core.Data.SchemaShape -&gt; Microsoft.ML.Core.Data.SchemaShape.Column[]" Usage="stochasticGradientDescentClassificationTrainer.GetOutputColumnsCore inputSchema" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Core.Data.SchemaShape+Column[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.Core.Data.SchemaShape" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Info">
       <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.TrainerInfo Info { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.TrainerInfo Info" />
@@ -88,22 +129,29 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="LoadNameValue">
-      <MemberSignature Language="C#" Value="public const string LoadNameValue;" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal string LoadNameValue" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer.LoadNameValue" />
-      <MemberSignature Language="VB.NET" Value="Public Const LoadNameValue As String " />
-      <MemberSignature Language="F#" Value="val mutable LoadNameValue : string" Usage="Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer.LoadNameValue" />
-      <MemberType>Field</MemberType>
+    <Member MemberName="MakeTransformer">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt;&gt; MakeTransformer (Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt; model, Microsoft.ML.Runtime.Data.ISchema trainSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt;&gt; MakeTransformer(class Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt; model, class Microsoft.ML.Runtime.Data.ISchema trainSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer.MakeTransformer(Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights{System.Single},Microsoft.ML.Runtime.Data.ISchema)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function MakeTransformer (model As IPredictorWithFeatureWeights(Of Single), trainSchema As ISchema) As BinaryPredictionTransformer(Of IPredictorWithFeatureWeights(Of Single))" />
+      <MemberSignature Language="F#" Value="override this.MakeTransformer : Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;single&gt; * Microsoft.ML.Runtime.Data.ISchema -&gt; Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;single&gt;&gt;" Usage="stochasticGradientDescentClassificationTrainer.MakeTransformer (model, trainSchema)" />
+      <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.String</ReturnType>
+        <ReturnType>Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;</ReturnType>
       </ReturnValue>
+      <Parameters>
+        <Parameter Name="model" Type="Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;" />
+        <Parameter Name="trainSchema" Type="Microsoft.ML.Runtime.Data.ISchema" />
+      </Parameters>
       <Docs>
+        <param name="model">To be added.</param>
+        <param name="trainSchema">To be added.</param>
         <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -124,25 +172,6 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ShortName">
-      <MemberSignature Language="C#" Value="public const string ShortName;" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal string ShortName" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer.ShortName" />
-      <MemberSignature Language="VB.NET" Value="Public Const ShortName As String " />
-      <MemberSignature Language="F#" Value="val mutable ShortName : string" Usage="Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer.ShortName" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -224,25 +253,6 @@
         <param name="weightSetCount">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="UserNameValue">
-      <MemberSignature Language="C#" Value="public const string UserNameValue;" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal string UserNameValue" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer.UserNameValue" />
-      <MemberSignature Language="VB.NET" Value="Public Const UserNameValue As String " />
-      <MemberSignature Language="F#" Value="val mutable UserNameValue : string" Usage="Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer.UserNameValue" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
