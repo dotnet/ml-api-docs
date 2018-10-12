@@ -153,6 +153,49 @@
 
         </code>
     </example>
+    <example>
+      <code language="csharp">
+          pipeline.Add(new TextLoader(dataFile).CreateFrom&lt;MNISTData&gt;(useHeader: false));
+          pipeline.Add(new ColumnCopier(("NumericImageVec", "Input");
+          pipeline.Add(new TensorFlowScorer()
+          {
+            ModelLocation = model_location;
+            InputColumns = new[] { "Input" };
+            OutputColumns = new[] { "Output" };
+          }
+        </code>
+    </example>
+    <example>
+      <code language="csharp">
+          var pipeline = new Legacy.LearningPipeline(seed: 1);
+          pipeline.Add(new Microsoft.ML.Legacy.Data.TextLoader(dataFile).CreateFrom&lt;CifarData&gt;(useHeader: false));
+          pipeline.Add(new ImageLoader(("ImagePath", "ImageReal"))
+          {
+            ImageFolder = imageFolder
+          });
+
+          pipeline.Add(new ImageResizer(("ImageReal", "ImageCropped"))
+          {
+            ImageHeight = imageHeight,
+            ImageWidth = imageWidth,
+            Resizing = ImageResizerTransformResizingKind.IsoCrop
+          });
+
+          pipeline.Add(new ImagePixelExtractor(("ImageCropped", "Input"))
+          {
+            UseAlpha = false,
+            InterleaveArgb = true
+          });
+
+          pipeline.Add(new TensorFlowScorer()
+          {
+            ModelLocation = model_location,
+            InputColumns = new[] { "Input" },
+            OutputColumns = new[] { "Output" }
+          });
+
+        </code>
+    </example>
   </Docs>
   <Members>
     <Member MemberName="BatchSize">
@@ -203,6 +246,43 @@
       </Docs>
     </Member>
     <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IDataTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.IDataView input, Microsoft.ML.Transforms.TensorFlowModelInfo tfModelInfo, string[] names, string[] source);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IDataTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.IDataView input, class Microsoft.ML.Transforms.TensorFlowModelInfo tfModelInfo, string[] names, string[] source) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.TensorFlowTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,Microsoft.ML.Transforms.TensorFlowModelInfo,System.String[],System.String[])" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, input As IDataView, tfModelInfo As TensorFlowModelInfo, names As String(), source As String()) As IDataTransform" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.IDataView * Microsoft.ML.Transforms.TensorFlowModelInfo * string[] * string[] -&gt; Microsoft.ML.Runtime.Data.IDataTransform" Usage="Microsoft.ML.Transforms.TensorFlowTransform.Create (env, input, tfModelInfo, names, source)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TensorFlow</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="tfModelInfo" Type="Microsoft.ML.Transforms.TensorFlowModelInfo" />
+        <Parameter Name="names" Type="System.String[]" />
+        <Parameter Name="source" Type="System.String[]" />
+      </Parameters>
+      <Docs>
+        <param name="env">Host Environment.</param>
+        <param name="input">Input <see cref="T:Microsoft.ML.Runtime.Data.IDataView" />. This is the output from previous transform or loader.</param>
+        <param name="tfModelInfo">
+          <see cref="T:Microsoft.ML.Transforms.TensorFlowModelInfo" /> object created with <see cref="M:Microsoft.ML.Transforms.TensorFlow.TensorFlowUtils.LoadTensorFlowModel(Microsoft.ML.Runtime.IHostEnvironment,System.String)" />.</param>
+        <param name="names">Name of the output column(s). Keep it same as in the Tensorflow model.</param>
+        <param name="source">Name of the input column(s). Keep it same as in the Tensorflow model.</param>
+        <summary>
+            Creates <see cref="T:Microsoft.ML.Runtime.Data.IDataTransform" /> using <see cref="T:Microsoft.ML.Transforms.TensorFlowTransform" />.
+            This convenience method avoids reloading of TensorFlow model.
+            It is useful in a situation where user has already loaded TensorFlow model using <see cref="M:Microsoft.ML.Transforms.TensorFlow.TensorFlowUtils.LoadTensorFlowModel(Microsoft.ML.Runtime.IHostEnvironment,System.String)" /> for inspecting model schema.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
       <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IDataTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.IDataView input, string model, string[] names, string[] source);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IDataTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.IDataView input, string model, string[] names, string[] source) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.TensorFlowTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,System.String[],System.String[])" />
@@ -230,7 +310,9 @@
         <param name="names">Name of the output column(s). Keep it same as in the Tensorflow model.</param>
         <param name="source">Name of the input column(s). Keep it same as in the Tensorflow model.</param>
         <summary>
-            Convenience constructor for public facing API.
+            Creates <see cref="T:Microsoft.ML.Runtime.Data.IDataTransform" /> using <see cref="T:Microsoft.ML.Transforms.TensorFlowTransform" />.
+            This convenience method get the model file as input and loads the model internally.
+            If the model is already loaded please <see cref="M:Microsoft.ML.Transforms.TensorFlowTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,Microsoft.ML.Transforms.TensorFlowModelInfo,System.String[],System.String[])" /> to avoid reloading of model.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

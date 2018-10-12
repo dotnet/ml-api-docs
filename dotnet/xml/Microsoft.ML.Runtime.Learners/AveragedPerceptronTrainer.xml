@@ -39,11 +39,11 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public AveragedPerceptronTrainer (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.Arguments args);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer/Arguments args) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.Arguments)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, args As AveragedPerceptronTrainer.Arguments)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.Arguments -&gt; Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer" Usage="new Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer (env, args)" />
+      <MemberSignature Language="C#" Value="public AveragedPerceptronTrainer (Microsoft.ML.Runtime.IHostEnvironment env, string label, string features, string weights = null, Microsoft.ML.Runtime.ISupportClassificationLossFactory lossFunction = null, float learningRate = 1, bool decreaseLearningRate = false, float l2RegularizerWeight = 0, int numIterations = 1, Action&lt;Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.Arguments&gt; advancedSettings = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string label, string features, string weights, class Microsoft.ML.Runtime.ISupportClassificationLossFactory lossFunction, float32 learningRate, bool decreaseLearningRate, float32 l2RegularizerWeight, int32 numIterations, class System.Action`1&lt;class Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer/Arguments&gt; advancedSettings) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String,Microsoft.ML.Runtime.ISupportClassificationLossFactory,System.Single,System.Boolean,System.Single,System.Int32,System.Action{Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.Arguments})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, label As String, features As String, Optional weights As String = null, Optional lossFunction As ISupportClassificationLossFactory = null, Optional learningRate As Single = 1, Optional decreaseLearningRate As Boolean = false, Optional l2RegularizerWeight As Single = 0, Optional numIterations As Integer = 1, Optional advancedSettings As Action(Of AveragedPerceptronTrainer.Arguments) = null)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer : Microsoft.ML.Runtime.IHostEnvironment * string * string * string * Microsoft.ML.Runtime.ISupportClassificationLossFactory * single * bool * single * int * Action&lt;Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.Arguments&gt; -&gt; Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer" Usage="new Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer (env, label, features, weights, lossFunction, learningRate, decreaseLearningRate, l2RegularizerWeight, numIterations, advancedSettings)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
@@ -51,12 +51,30 @@
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
-        <Parameter Name="args" Type="Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer+Arguments" />
+        <Parameter Name="label" Type="System.String" />
+        <Parameter Name="features" Type="System.String" />
+        <Parameter Name="weights" Type="System.String" />
+        <Parameter Name="lossFunction" Type="Microsoft.ML.Runtime.ISupportClassificationLossFactory" />
+        <Parameter Name="learningRate" Type="System.Single" />
+        <Parameter Name="decreaseLearningRate" Type="System.Boolean" />
+        <Parameter Name="l2RegularizerWeight" Type="System.Single" />
+        <Parameter Name="numIterations" Type="System.Int32" />
+        <Parameter Name="advancedSettings" Type="System.Action&lt;Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer+Arguments&gt;" />
       </Parameters>
       <Docs>
-        <param name="env">To be added.</param>
-        <param name="args">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="env">The local instance of the <see cref="T:Microsoft.ML.Runtime.IHostEnvironment" /></param>
+        <param name="label">The name of the label column. </param>
+        <param name="features">The name of the feature column.</param>
+        <param name="weights">The optional name of the weights column.</param>
+        <param name="lossFunction">The classification loss function. </param>
+        <param name="learningRate">The learning rate. </param>
+        <param name="decreaseLearningRate">Wheather to decrease learning rate as iterations progress.</param>
+        <param name="l2RegularizerWeight">L2 Regularization Weight.</param>
+        <param name="numIterations">The number of training iteraitons.</param>
+        <param name="advancedSettings">A delegate to supply more advanced arguments to the algorithm.</param>
+        <summary>
+            Trains a linear binary classifier using the averaged perceptron.
+            <a href="https://en.wikipedia.org/wiki/Perceptron">Wikipedia entry for Perceptron</a></summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

@@ -667,10 +667,15 @@
       <Member Id="P:Microsoft.ML.Legacy.Models.OnnxConverter.Model" />
       <Member Id="P:Microsoft.ML.Legacy.Models.OnnxConverter.Name" />
       <Member Id="P:Microsoft.ML.Legacy.Models.OnnxConverter.Onnx" />
+      <Member Id="P:Microsoft.ML.Legacy.Models.OnnxConverter.OnnxVersion" />
       <Member Id="P:Microsoft.ML.Legacy.Models.OnnxConverter.OutputsToDrop" />
     </Type>
     <Type Name="Microsoft.ML.Legacy.Models.OnnxConverter/Output" Id="T:Microsoft.ML.Legacy.Models.OnnxConverter.Output">
       <Member Id="M:Microsoft.ML.Legacy.Models.OnnxConverter.Output.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Legacy.Models.OnnxVersion" Id="T:Microsoft.ML.Legacy.Models.OnnxVersion">
+      <Member Id="F:Microsoft.ML.Legacy.Models.OnnxVersion.Experimental" />
+      <Member Id="F:Microsoft.ML.Legacy.Models.OnnxVersion.Stable" />
     </Type>
     <Type Name="Microsoft.ML.Legacy.Models.OvaModelCombiner" Id="T:Microsoft.ML.Legacy.Models.OvaModelCombiner">
       <Member Id="M:Microsoft.ML.Legacy.Models.OvaModelCombiner.#ctor" />
@@ -3306,7 +3311,7 @@
       <Member Id="P:Microsoft.ML.Legacy.Transforms.TensorFlowScorer.LearningRateOperation" />
       <Member Id="P:Microsoft.ML.Legacy.Transforms.TensorFlowScorer.LossOperation" />
       <Member Id="P:Microsoft.ML.Legacy.Transforms.TensorFlowScorer.MetricOperation" />
-      <Member Id="P:Microsoft.ML.Legacy.Transforms.TensorFlowScorer.Model" />
+      <Member Id="P:Microsoft.ML.Legacy.Transforms.TensorFlowScorer.ModelLocation" />
       <Member Id="P:Microsoft.ML.Legacy.Transforms.TensorFlowScorer.OptimizationOperation" />
       <Member Id="P:Microsoft.ML.Legacy.Transforms.TensorFlowScorer.OutputColumns" />
       <Member Id="P:Microsoft.ML.Legacy.Transforms.TensorFlowScorer.ReTrain" />
@@ -6442,12 +6447,14 @@
       <Member Id="F:Microsoft.ML.Runtime.Data.ConvertTransform.LoaderSignature" />
       <Member Id="M:Microsoft.ML.Runtime.Data.ConvertTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.ConvertTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.ConvertTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,Microsoft.ML.Runtime.Data.DataKind,System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.ConvertTransform.CanSaveOnnx(Microsoft.ML.Runtime.Model.Onnx.OnnxContext)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.ConvertTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.ConvertTransform.GetColumnTypeCore(System.Int32)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.ConvertTransform.GetGetterCore(Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Data.IRow,System.Int32,System.Action@)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.ConvertTransform.GetSlotCursorCore(System.Int32)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.ConvertTransform.GetSlotTypeCore(System.Int32)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.ConvertTransform.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.ConvertTransform.SaveAsOnnxCore(Microsoft.ML.Runtime.Model.Onnx.OnnxContext,System.Int32,Microsoft.ML.Runtime.Data.OneToOneTransformBase.ColInfo,System.String,System.String)" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.ConvertTransform/Arguments" Id="T:Microsoft.ML.Runtime.Data.ConvertTransform.Arguments">
       <Member Id="F:Microsoft.ML.Runtime.Data.ConvertTransform.Arguments.Column" />
@@ -6983,6 +6990,7 @@
       <Member Id="F:Microsoft.ML.Runtime.Data.GenericScorer.LoadName" />
       <Member Id="M:Microsoft.ML.Runtime.Data.GenericScorer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.ScorerArgumentsBase,Microsoft.ML.Runtime.Data.IDataView,Microsoft.ML.Runtime.Data.ISchemaBoundMapper,Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.GenericScorer.ApplyToData(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.GenericScorer.CanSaveOnnx(Microsoft.ML.Runtime.Model.Onnx.OnnxContext)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.GenericScorer.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.GenericScorer.GetBindings" />
       <Member Id="M:Microsoft.ML.Runtime.Data.GenericScorer.GetGetters(Microsoft.ML.Runtime.Data.IRow,System.Func{System.Int32,System.Boolean})" />
@@ -6990,7 +6998,6 @@
       <Member Id="M:Microsoft.ML.Runtime.Data.GenericScorer.SaveAsPfa(Microsoft.ML.Runtime.Model.Pfa.BoundPfaContext)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.GenericScorer.SaveCore(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.GenericScorer.WantParallelCursors(System.Func{System.Int32,System.Boolean})" />
-      <Member Id="P:Microsoft.ML.Runtime.Data.GenericScorer.CanSaveOnnx" />
       <Member Id="P:Microsoft.ML.Runtime.Data.GenericScorer.CanSavePfa" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.GenericScorer/Arguments" Id="T:Microsoft.ML.Runtime.Data.GenericScorer.Arguments">
@@ -7974,13 +7981,13 @@
     <Type Name="Microsoft.ML.Runtime.Data.MultiClassClassifierScorer/LabelNameBindableMapper" Id="T:Microsoft.ML.Runtime.Data.MultiClassClassifierScorer.LabelNameBindableMapper">
       <Member Id="F:Microsoft.ML.Runtime.Data.MultiClassClassifierScorer.LabelNameBindableMapper.LoaderSignature" />
       <Member Id="M:Microsoft.ML.Runtime.Data.MultiClassClassifierScorer.LabelNameBindableMapper.Bind(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.MultiClassClassifierScorer.LabelNameBindableMapper.CanSaveOnnx(Microsoft.ML.Runtime.Model.Onnx.OnnxContext)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.MultiClassClassifierScorer.LabelNameBindableMapper.Clone(Microsoft.ML.Runtime.Data.ISchemaBindableMapper)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.MultiClassClassifierScorer.LabelNameBindableMapper.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.MultiClassClassifierScorer.LabelNameBindableMapper.CreateBound``1(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.ISchemaBoundRowMapper,Microsoft.ML.Runtime.Data.VectorType,System.Delegate,System.String,System.Func{Microsoft.ML.Runtime.Data.ISchemaBoundMapper,Microsoft.ML.Runtime.Data.ColumnType,System.Boolean})" />
       <Member Id="M:Microsoft.ML.Runtime.Data.MultiClassClassifierScorer.LabelNameBindableMapper.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.MultiClassClassifierScorer.LabelNameBindableMapper.SaveAsOnnx(Microsoft.ML.Runtime.Model.Onnx.OnnxContext,Microsoft.ML.Runtime.Data.RoleMappedSchema,System.String[])" />
       <Member Id="M:Microsoft.ML.Runtime.Data.MultiClassClassifierScorer.LabelNameBindableMapper.SaveAsPfa(Microsoft.ML.Runtime.Model.Pfa.BoundPfaContext,Microsoft.ML.Runtime.Data.RoleMappedSchema,System.String[])" />
-      <Member Id="P:Microsoft.ML.Runtime.Data.MultiClassClassifierScorer.LabelNameBindableMapper.CanSaveOnnx" />
       <Member Id="P:Microsoft.ML.Runtime.Data.MultiClassClassifierScorer.LabelNameBindableMapper.CanSavePfa" />
       <Member Id="P:Microsoft.ML.Runtime.Data.MultiClassClassifierScorer.LabelNameBindableMapper.InnerBindable" />
       <Member Id="P:Microsoft.ML.Runtime.Data.MultiClassClassifierScorer.LabelNameBindableMapper.Type" />
@@ -8632,6 +8639,7 @@
       <Member Id="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,Microsoft.ML.Runtime.Data.OneToOneColumn[],Microsoft.ML.Runtime.Data.IDataView,System.Func{Microsoft.ML.Runtime.Data.ColumnType,System.String})" />
       <Member Id="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,Microsoft.ML.Runtime.Data.OneToOneTransformBase,Microsoft.ML.Runtime.Data.IDataView,System.Func{Microsoft.ML.Runtime.Data.ColumnType,System.String})" />
       <Member Id="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.ActivateSourceColumns(System.Int32,System.Boolean[])" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.CanSaveOnnx(Microsoft.ML.Runtime.Model.Onnx.OnnxContext)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.ColumnIndex(System.Int32)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.CreateGetters(Microsoft.ML.Runtime.Data.IRow,System.Func{System.Int32,System.Boolean},System.Action@)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.ExceptGetSlotCursor(System.Int32)" />
@@ -8660,7 +8668,6 @@
       <Member Id="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.TestIsTextItem(Microsoft.ML.Runtime.Data.ColumnType)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.TestIsTextVector(Microsoft.ML.Runtime.Data.ColumnType)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.WantParallelCursors(System.Func{System.Int32,System.Boolean})" />
-      <Member Id="P:Microsoft.ML.Runtime.Data.OneToOneTransformBase.CanSaveOnnx" />
       <Member Id="P:Microsoft.ML.Runtime.Data.OneToOneTransformBase.CanSavePfa" />
       <Member Id="P:Microsoft.ML.Runtime.Data.OneToOneTransformBase.InputTransposeSchema" />
       <Member Id="P:Microsoft.ML.Runtime.Data.OneToOneTransformBase.Metadata" />
@@ -8855,6 +8862,7 @@
       <Member Id="M:Microsoft.ML.Runtime.Data.PredictedLabelScorerBase.#ctor(Microsoft.ML.Runtime.Data.ScorerArgumentsBase,Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,Microsoft.ML.Runtime.Data.ISchemaBoundMapper,Microsoft.ML.Runtime.Data.RoleMappedSchema,System.String,System.String,System.String,System.Func{Microsoft.ML.Runtime.Data.ColumnType,System.Boolean},System.Func{Microsoft.ML.Runtime.Data.ColumnType,Microsoft.ML.Runtime.Data.ISchemaBoundRowMapper,Microsoft.ML.Runtime.Data.ColumnType})" />
       <Member Id="M:Microsoft.ML.Runtime.Data.PredictedLabelScorerBase.#ctor(Microsoft.ML.Runtime.IHost,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView,System.Func{Microsoft.ML.Runtime.Data.ColumnType,System.Boolean},System.Func{Microsoft.ML.Runtime.Data.ColumnType,Microsoft.ML.Runtime.Data.ISchemaBoundRowMapper,Microsoft.ML.Runtime.Data.ColumnType})" />
       <Member Id="M:Microsoft.ML.Runtime.Data.PredictedLabelScorerBase.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.PredictedLabelScorerBase,Microsoft.ML.Runtime.Data.IDataView,System.String)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.PredictedLabelScorerBase.CanSaveOnnx(Microsoft.ML.Runtime.Model.Onnx.OnnxContext)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.PredictedLabelScorerBase.EnsureCachedPosition``1(System.Int64@,``0@,Microsoft.ML.Runtime.Data.IRow,Microsoft.ML.Runtime.Data.ValueGetter{``0})" />
       <Member Id="M:Microsoft.ML.Runtime.Data.PredictedLabelScorerBase.GetBindings" />
       <Member Id="M:Microsoft.ML.Runtime.Data.PredictedLabelScorerBase.GetGetters(Microsoft.ML.Runtime.Data.IRow,System.Func{System.Int32,System.Boolean})" />
@@ -8864,7 +8872,6 @@
       <Member Id="M:Microsoft.ML.Runtime.Data.PredictedLabelScorerBase.SaveAsPfa(Microsoft.ML.Runtime.Model.Pfa.BoundPfaContext)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.PredictedLabelScorerBase.SaveCore(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.PredictedLabelScorerBase.WantParallelCursors(System.Func{System.Int32,System.Boolean})" />
-      <Member Id="P:Microsoft.ML.Runtime.Data.PredictedLabelScorerBase.CanSaveOnnx" />
       <Member Id="P:Microsoft.ML.Runtime.Data.PredictedLabelScorerBase.CanSavePfa" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.PredictedLabelScorerBase/BindingsImpl" Id="T:Microsoft.ML.Runtime.Data.PredictedLabelScorerBase.BindingsImpl">
@@ -9368,6 +9375,7 @@
       <Member Id="F:Microsoft.ML.Runtime.Data.RowToRowMapperTransform.LoaderSignature" />
       <Member Id="F:Microsoft.ML.Runtime.Data.RowToRowMapperTransform.RegistrationName" />
       <Member Id="M:Microsoft.ML.Runtime.Data.RowToRowMapperTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,Microsoft.ML.Runtime.Data.IRowMapper)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.RowToRowMapperTransform.CanSaveOnnx(Microsoft.ML.Runtime.Model.Onnx.OnnxContext)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.RowToRowMapperTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.RowToRowMapperTransform.GetDependencies(System.Func{System.Int32,System.Boolean})" />
       <Member Id="M:Microsoft.ML.Runtime.Data.RowToRowMapperTransform.GetOutputSchema(Microsoft.ML.Runtime.Data.ISchema,Microsoft.ML.Runtime.Data.IRowMapper)" />
@@ -9378,7 +9386,6 @@
       <Member Id="M:Microsoft.ML.Runtime.Data.RowToRowMapperTransform.SaveAsOnnx(Microsoft.ML.Runtime.Model.Onnx.OnnxContext)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.RowToRowMapperTransform.SaveAsPfa(Microsoft.ML.Runtime.Model.Pfa.BoundPfaContext)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.RowToRowMapperTransform.ShouldUseParallelCursors(System.Func{System.Int32,System.Boolean})" />
-      <Member Id="P:Microsoft.ML.Runtime.Data.RowToRowMapperTransform.CanSaveOnnx" />
       <Member Id="P:Microsoft.ML.Runtime.Data.RowToRowMapperTransform.CanSavePfa" />
       <Member Id="P:Microsoft.ML.Runtime.Data.RowToRowMapperTransform.Microsoft#ML#Runtime#Data#IRowToRowMapper#InputSchema" />
       <Member Id="P:Microsoft.ML.Runtime.Data.RowToRowMapperTransform.Schema" />
@@ -9466,12 +9473,12 @@
       <Member Id="M:Microsoft.ML.Runtime.Data.SchemaBindablePredictorWrapperBase.#ctor(Microsoft.ML.Runtime.IPredictor)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.SchemaBindablePredictorWrapperBase.Bind(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.SchemaBindablePredictorWrapperBase.BindCore(Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
+      <Member Id="M:Microsoft.ML.Runtime.Data.SchemaBindablePredictorWrapperBase.CanSaveOnnx(Microsoft.ML.Runtime.Model.Onnx.OnnxContext)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.SchemaBindablePredictorWrapperBase.GetPredictionGetter(Microsoft.ML.Runtime.Data.IRow,System.Int32)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.SchemaBindablePredictorWrapperBase.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
       <Member Id="M:Microsoft.ML.Runtime.Data.SchemaBindablePredictorWrapperBase.SaveAsOnnx(Microsoft.ML.Runtime.Model.Onnx.OnnxContext,Microsoft.ML.Runtime.Data.RoleMappedSchema,System.String[])" />
       <Member Id="M:Microsoft.ML.Runtime.Data.SchemaBindablePredictorWrapperBase.SaveAsPfa(Microsoft.ML.Runtime.Model.Pfa.BoundPfaContext,Microsoft.ML.Runtime.Data.RoleMappedSchema,System.String[])" />
       <Member Id="M:Microsoft.ML.Runtime.Data.SchemaBindablePredictorWrapperBase.SaveSummary(System.IO.TextWriter,Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
-      <Member Id="P:Microsoft.ML.Runtime.Data.SchemaBindablePredictorWrapperBase.CanSaveOnnx" />
       <Member Id="P:Microsoft.ML.Runtime.Data.SchemaBindablePredictorWrapperBase.CanSavePfa" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Data.SchemaBindablePredictorWrapperBase/SingleValueRowMapper" Id="T:Microsoft.ML.Runtime.Data.SchemaBindablePredictorWrapperBase.SingleValueRowMapper">
@@ -12323,6 +12330,7 @@
       <Member Id="F:Microsoft.ML.Runtime.FastTree.FastTreePredictionWrapper.NumFeatures" />
       <Member Id="M:Microsoft.ML.Runtime.FastTree.FastTreePredictionWrapper.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,Microsoft.ML.Runtime.FastTree.Internal.Ensemble,System.Int32,System.String)" />
       <Member Id="M:Microsoft.ML.Runtime.FastTree.FastTreePredictionWrapper.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Model.VersionInfo)" />
+      <Member Id="M:Microsoft.ML.Runtime.FastTree.FastTreePredictionWrapper.CanSaveOnnx(Microsoft.ML.Runtime.Model.Onnx.OnnxContext)" />
       <Member Id="M:Microsoft.ML.Runtime.FastTree.FastTreePredictionWrapper.GetFeatureWeights(Microsoft.ML.Runtime.Data.VBuffer{System.Single}@)" />
       <Member Id="M:Microsoft.ML.Runtime.FastTree.FastTreePredictionWrapper.GetLeaf(System.Int32,Microsoft.ML.Runtime.Data.VBuffer{System.Single}@,System.Collections.Generic.List{System.Int32}@)" />
       <Member Id="M:Microsoft.ML.Runtime.FastTree.FastTreePredictionWrapper.GetLeafValue(System.Int32,System.Int32)" />
@@ -12340,7 +12348,6 @@
       <Member Id="M:Microsoft.ML.Runtime.FastTree.FastTreePredictionWrapper.SaveAsText(System.IO.TextWriter,Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
       <Member Id="M:Microsoft.ML.Runtime.FastTree.FastTreePredictionWrapper.SaveCore(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
       <Member Id="M:Microsoft.ML.Runtime.FastTree.FastTreePredictionWrapper.SaveSummary(System.IO.TextWriter,Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
-      <Member Id="P:Microsoft.ML.Runtime.FastTree.FastTreePredictionWrapper.CanSaveOnnx" />
       <Member Id="P:Microsoft.ML.Runtime.FastTree.FastTreePredictionWrapper.CanSavePfa" />
       <Member Id="P:Microsoft.ML.Runtime.FastTree.FastTreePredictionWrapper.InputType" />
       <Member Id="P:Microsoft.ML.Runtime.FastTree.FastTreePredictionWrapper.NumTrees" />
@@ -14206,6 +14213,7 @@
       <Member Id="F:Microsoft.ML.Runtime.Internal.Calibration.PlattCalibrator.LoaderSignature" />
       <Member Id="F:Microsoft.ML.Runtime.Internal.Calibration.PlattCalibrator.RegistrationName" />
       <Member Id="M:Microsoft.ML.Runtime.Internal.Calibration.PlattCalibrator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.Double,System.Double)" />
+      <Member Id="M:Microsoft.ML.Runtime.Internal.Calibration.PlattCalibrator.CanSaveOnnx(Microsoft.ML.Runtime.Model.Onnx.OnnxContext)" />
       <Member Id="M:Microsoft.ML.Runtime.Internal.Calibration.PlattCalibrator.CombineParameters(System.Collections.Generic.IList{Microsoft.ML.Runtime.Internal.Internallearn.IParameterMixer})" />
       <Member Id="M:Microsoft.ML.Runtime.Internal.Calibration.PlattCalibrator.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext)" />
       <Member Id="M:Microsoft.ML.Runtime.Internal.Calibration.PlattCalibrator.GetSummary" />
@@ -14214,7 +14222,6 @@
       <Member Id="M:Microsoft.ML.Runtime.Internal.Calibration.PlattCalibrator.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
       <Member Id="M:Microsoft.ML.Runtime.Internal.Calibration.PlattCalibrator.SaveAsOnnx(Microsoft.ML.Runtime.Model.Onnx.OnnxContext,System.String[],System.String)" />
       <Member Id="M:Microsoft.ML.Runtime.Internal.Calibration.PlattCalibrator.SaveAsPfa(Microsoft.ML.Runtime.Model.Pfa.BoundPfaContext,Newtonsoft.Json.Linq.JToken)" />
-      <Member Id="P:Microsoft.ML.Runtime.Internal.Calibration.PlattCalibrator.CanSaveOnnx" />
       <Member Id="P:Microsoft.ML.Runtime.Internal.Calibration.PlattCalibrator.CanSavePfa" />
       <Member Id="P:Microsoft.ML.Runtime.Internal.Calibration.PlattCalibrator.ParamA" />
       <Member Id="P:Microsoft.ML.Runtime.Internal.Calibration.PlattCalibrator.ParamB" />
@@ -14231,24 +14238,24 @@
       <Member Id="F:Microsoft.ML.Runtime.Internal.Calibration.SchemaBindableCalibratedPredictor.LoaderSignature" />
       <Member Id="M:Microsoft.ML.Runtime.Internal.Calibration.SchemaBindableCalibratedPredictor.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.IPredictorProducing{System.Single},Microsoft.ML.Runtime.Internal.Calibration.ICalibrator)" />
       <Member Id="M:Microsoft.ML.Runtime.Internal.Calibration.SchemaBindableCalibratedPredictor.Bind(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
+      <Member Id="M:Microsoft.ML.Runtime.Internal.Calibration.SchemaBindableCalibratedPredictor.CanSaveOnnx(Microsoft.ML.Runtime.Model.Onnx.OnnxContext)" />
       <Member Id="M:Microsoft.ML.Runtime.Internal.Calibration.SchemaBindableCalibratedPredictor.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext)" />
       <Member Id="M:Microsoft.ML.Runtime.Internal.Calibration.SchemaBindableCalibratedPredictor.GetWhatTheFeatureMapper``2(System.Int32,System.Int32,System.Boolean)" />
       <Member Id="M:Microsoft.ML.Runtime.Internal.Calibration.SchemaBindableCalibratedPredictor.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
       <Member Id="M:Microsoft.ML.Runtime.Internal.Calibration.SchemaBindableCalibratedPredictor.SaveAsOnnx(Microsoft.ML.Runtime.Model.Onnx.OnnxContext,Microsoft.ML.Runtime.Data.RoleMappedSchema,System.String[])" />
       <Member Id="M:Microsoft.ML.Runtime.Internal.Calibration.SchemaBindableCalibratedPredictor.SaveAsPfa(Microsoft.ML.Runtime.Model.Pfa.BoundPfaContext,Microsoft.ML.Runtime.Data.RoleMappedSchema,System.String[])" />
-      <Member Id="P:Microsoft.ML.Runtime.Internal.Calibration.SchemaBindableCalibratedPredictor.CanSaveOnnx" />
       <Member Id="P:Microsoft.ML.Runtime.Internal.Calibration.SchemaBindableCalibratedPredictor.CanSavePfa" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Internal.Calibration.SignatureCalibrator" Id="T:Microsoft.ML.Runtime.Internal.Calibration.SignatureCalibrator" />
     <Type Name="Microsoft.ML.Runtime.Internal.Calibration.ValueMapperCalibratedPredictorBase" Id="T:Microsoft.ML.Runtime.Internal.Calibration.ValueMapperCalibratedPredictorBase">
       <Member Id="M:Microsoft.ML.Runtime.Internal.Calibration.ValueMapperCalibratedPredictorBase.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,Microsoft.ML.Runtime.IPredictorProducing{System.Single},Microsoft.ML.Runtime.Internal.Calibration.ICalibrator)" />
+      <Member Id="M:Microsoft.ML.Runtime.Internal.Calibration.ValueMapperCalibratedPredictorBase.CanSaveOnnx(Microsoft.ML.Runtime.Model.Onnx.OnnxContext)" />
       <Member Id="M:Microsoft.ML.Runtime.Internal.Calibration.ValueMapperCalibratedPredictorBase.GetMapper``2" />
       <Member Id="M:Microsoft.ML.Runtime.Internal.Calibration.ValueMapperCalibratedPredictorBase.GetMapper``3" />
       <Member Id="M:Microsoft.ML.Runtime.Internal.Calibration.ValueMapperCalibratedPredictorBase.GetWhatTheFeatureMapper``2(System.Int32,System.Int32,System.Boolean)" />
       <Member Id="M:Microsoft.ML.Runtime.Internal.Calibration.ValueMapperCalibratedPredictorBase.SaveAsOnnx(Microsoft.ML.Runtime.Model.Onnx.OnnxContext,System.String[],System.String)" />
       <Member Id="M:Microsoft.ML.Runtime.Internal.Calibration.ValueMapperCalibratedPredictorBase.SaveAsPfa(Microsoft.ML.Runtime.Model.Pfa.BoundPfaContext,Newtonsoft.Json.Linq.JToken)" />
       <Member Id="M:Microsoft.ML.Runtime.Internal.Calibration.ValueMapperCalibratedPredictorBase.SaveAsPfa(Microsoft.ML.Runtime.Model.Pfa.BoundPfaContext,Newtonsoft.Json.Linq.JToken,System.String,Newtonsoft.Json.Linq.JToken@,System.String,Newtonsoft.Json.Linq.JToken@)" />
-      <Member Id="P:Microsoft.ML.Runtime.Internal.Calibration.ValueMapperCalibratedPredictorBase.CanSaveOnnx" />
       <Member Id="P:Microsoft.ML.Runtime.Internal.Calibration.ValueMapperCalibratedPredictorBase.CanSavePfa" />
       <Member Id="P:Microsoft.ML.Runtime.Internal.Calibration.ValueMapperCalibratedPredictorBase.DistType" />
       <Member Id="P:Microsoft.ML.Runtime.Internal.Calibration.ValueMapperCalibratedPredictorBase.InputType" />
@@ -15632,9 +15639,11 @@
     <Type Name="Microsoft.ML.Runtime.KMeans.KMeansPredictor" Id="T:Microsoft.ML.Runtime.KMeans.KMeansPredictor">
       <Member Id="F:Microsoft.ML.Runtime.KMeans.KMeansPredictor.LoaderSignature" />
       <Member Id="M:Microsoft.ML.Runtime.KMeans.KMeansPredictor.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.Int32,Microsoft.ML.Runtime.Data.VBuffer{System.Single}[],System.Boolean)" />
+      <Member Id="M:Microsoft.ML.Runtime.KMeans.KMeansPredictor.CanSaveOnnx(Microsoft.ML.Runtime.Model.Onnx.OnnxContext)" />
       <Member Id="M:Microsoft.ML.Runtime.KMeans.KMeansPredictor.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext)" />
       <Member Id="M:Microsoft.ML.Runtime.KMeans.KMeansPredictor.GetClusterCentroids(Microsoft.ML.Runtime.Data.VBuffer{System.Single}[]@,System.Int32@)" />
       <Member Id="M:Microsoft.ML.Runtime.KMeans.KMeansPredictor.GetMapper``2" />
+      <Member Id="M:Microsoft.ML.Runtime.KMeans.KMeansPredictor.SaveAsOnnx(Microsoft.ML.Runtime.Model.Onnx.OnnxContext,System.String[],System.String)" />
       <Member Id="M:Microsoft.ML.Runtime.KMeans.KMeansPredictor.SaveAsText(System.IO.TextWriter,Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
       <Member Id="M:Microsoft.ML.Runtime.KMeans.KMeansPredictor.SaveCore(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
       <Member Id="P:Microsoft.ML.Runtime.KMeans.KMeansPredictor.InputType" />
@@ -15675,7 +15684,7 @@
     </Type>
     <Type Name="Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer" Id="T:Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer">
       <Member Id="F:Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.LoadNameValue" />
-      <Member Id="M:Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.Arguments)" />
+      <Member Id="M:Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String,Microsoft.ML.Runtime.ISupportClassificationLossFactory,System.Single,System.Boolean,System.Single,System.Int32,System.Action{Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.Arguments})" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.CheckLabel(Microsoft.ML.Runtime.Data.RoleMappedData)" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.CheckLabelCompatible(Microsoft.ML.Core.Data.SchemaShape.Column)" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.CreatePredictor" />
@@ -15773,7 +15782,7 @@
     <Type Name="Microsoft.ML.Runtime.Learners.LinearClassificationTrainer" Id="T:Microsoft.ML.Runtime.Learners.LinearClassificationTrainer">
       <Member Id="F:Microsoft.ML.Runtime.Learners.LinearClassificationTrainer.LoadNameValue" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.LinearClassificationTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Learners.LinearClassificationTrainer.Arguments)" />
-      <Member Id="M:Microsoft.ML.Runtime.Learners.LinearClassificationTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Learners.LinearClassificationTrainer.Arguments,System.String,System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.Runtime.Learners.LinearClassificationTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String,Microsoft.ML.Runtime.ISupportSdcaClassificationLoss,System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Int32},System.Action{Microsoft.ML.Runtime.Learners.LinearClassificationTrainer.Arguments})" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.LinearClassificationTrainer.CheckLabel(Microsoft.ML.Runtime.Data.RoleMappedData,System.Int32@)" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.LinearClassificationTrainer.CheckLabelCompatible(Microsoft.ML.Core.Data.SchemaShape.Column)" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.LinearClassificationTrainer.CreatePredictor(Microsoft.ML.Runtime.Data.VBuffer{System.Single}[],System.Single[])" />
@@ -15810,6 +15819,7 @@
     <Type Name="Microsoft.ML.Runtime.Learners.LinearPredictor" Id="T:Microsoft.ML.Runtime.Learners.LinearPredictor">
       <Member Id="F:Microsoft.ML.Runtime.Learners.LinearPredictor.Weight" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.LinearPredictor.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,Microsoft.ML.Runtime.Model.ModelLoadContext)" />
+      <Member Id="M:Microsoft.ML.Runtime.Learners.LinearPredictor.CanSaveOnnx(Microsoft.ML.Runtime.Model.Onnx.OnnxContext)" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.LinearPredictor.CombineParameters(System.Collections.Generic.IList{Microsoft.ML.Runtime.Internal.Internallearn.IParameterMixer{System.Single}},Microsoft.ML.Runtime.Data.VBuffer{System.Single}@,System.Single@)" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.LinearPredictor.GetFeatureContributions(Microsoft.ML.Runtime.Data.VBuffer{System.Single}@,Microsoft.ML.Runtime.Data.VBuffer{System.Single}@,System.Int32,System.Int32,System.Boolean)" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.LinearPredictor.GetFeatureWeights(Microsoft.ML.Runtime.Data.VBuffer{System.Single}@)" />
@@ -15826,7 +15836,6 @@
       <Member Id="M:Microsoft.ML.Runtime.Learners.LinearPredictor.SaveSummary(System.IO.TextWriter,Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.LinearPredictor.Score(Microsoft.ML.Runtime.Data.VBuffer{System.Single}@)" />
       <Member Id="P:Microsoft.ML.Runtime.Learners.LinearPredictor.Bias" />
-      <Member Id="P:Microsoft.ML.Runtime.Learners.LinearPredictor.CanSaveOnnx" />
       <Member Id="P:Microsoft.ML.Runtime.Learners.LinearPredictor.CanSavePfa" />
       <Member Id="P:Microsoft.ML.Runtime.Learners.LinearPredictor.InputType" />
       <Member Id="P:Microsoft.ML.Runtime.Learners.LinearPredictor.OutputType" />
@@ -15944,7 +15953,9 @@
       <Member Id="F:Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor.LoaderSignature" />
       <Member Id="F:Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor.RegistrationName" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.VBuffer{System.Single}[],System.Single[],System.Int32,System.Int32,System.String[],Microsoft.ML.Runtime.Learners.LinearModelStatistics)" />
+      <Member Id="M:Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor.CanSaveOnnx(Microsoft.ML.Runtime.Model.Onnx.OnnxContext)" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext)" />
+      <Member Id="M:Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor.GetBiases" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor.GetMapper``2" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor.GetStatsIRowOrNull(Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor.GetSummaryDataView(Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
@@ -15957,7 +15968,6 @@
       <Member Id="M:Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor.SaveAsText(System.IO.TextWriter,Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor.SaveCore(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor.SaveSummary(System.IO.TextWriter,Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
-      <Member Id="P:Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor.CanSaveOnnx" />
       <Member Id="P:Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor.CanSavePfa" />
       <Member Id="P:Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor.InputType" />
       <Member Id="P:Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor.OutputType" />
@@ -15988,7 +15998,7 @@
       <Member Id="M:Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesTrainer.Arguments.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Learners.OnlineGradientDescentTrainer" Id="T:Microsoft.ML.Runtime.Learners.OnlineGradientDescentTrainer">
-      <Member Id="M:Microsoft.ML.Runtime.Learners.OnlineGradientDescentTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.Single,System.Boolean,System.Single,System.Int32,System.String,Microsoft.ML.Runtime.IRegressionLoss)" />
+      <Member Id="M:Microsoft.ML.Runtime.Learners.OnlineGradientDescentTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.Single,System.Boolean,System.Single,System.Int32,System.String,Microsoft.ML.Runtime.IRegressionLoss,System.Action{Microsoft.ML.Runtime.Learners.AveragedLinearArguments})" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.OnlineGradientDescentTrainer.CheckLabel(Microsoft.ML.Runtime.Data.RoleMappedData)" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.OnlineGradientDescentTrainer.CreatePredictor" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.OnlineGradientDescentTrainer.GetOutputColumnsCore(Microsoft.ML.Core.Data.SchemaShape)" />
@@ -16169,9 +16179,8 @@
       <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaMultiClassTrainer.LoadNameValue" />
       <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaMultiClassTrainer.ShortName" />
       <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaMultiClassTrainer.UserNameValue" />
-      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaMultiClassTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Learners.SdcaMultiClassTrainer.Arguments)" />
-      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaMultiClassTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Learners.SdcaMultiClassTrainer.Arguments,System.String,System.String,System.String)" />
-      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaMultiClassTrainer.CheckConvergence(Microsoft.ML.Runtime.IProgressChannel,System.Int32,Microsoft.ML.Runtime.Training.FloatLabelCursor.Factory,Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.DualsTableBase{Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer{Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor},Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor},Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.IdToIdxLookup{Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer{Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor},Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor},Microsoft.ML.Runtime.Data.VBuffer{System.Single}[],Microsoft.ML.Runtime.Data.VBuffer{System.Single}[],System.Single[],System.Single[],System.Single[],System.Single[],System.Int64,System.Double[],System.Double@,System.Int32@)" />
+      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaMultiClassTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String,Microsoft.ML.Runtime.ISupportSdcaClassificationLoss,System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Int32},System.Action{Microsoft.ML.Runtime.Learners.SdcaMultiClassTrainer.Arguments})" />
+      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaMultiClassTrainer.CheckConvergence(Microsoft.ML.Runtime.IProgressChannel,System.Int32,Microsoft.ML.Runtime.Training.FloatLabelCursor.Factory,Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.DualsTableBase{Microsoft.ML.Runtime.Learners.SdcaMultiClassTrainer.Arguments,Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer{Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor},Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor},Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.IdToIdxLookup{Microsoft.ML.Runtime.Learners.SdcaMultiClassTrainer.Arguments,Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer{Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor},Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor},Microsoft.ML.Runtime.Data.VBuffer{System.Single}[],Microsoft.ML.Runtime.Data.VBuffer{System.Single}[],System.Single[],System.Single[],System.Single[],System.Single[],System.Int64,System.Double[],System.Double@,System.Int32@)" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaMultiClassTrainer.CheckLabel(Microsoft.ML.Runtime.Data.RoleMappedData,System.Int32@)" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaMultiClassTrainer.CheckLabelCompatible(Microsoft.ML.Core.Data.SchemaShape.Column)" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaMultiClassTrainer.CreatePredictor(Microsoft.ML.Runtime.Data.VBuffer{System.Single}[],System.Single[])" />
@@ -16179,7 +16188,7 @@
       <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaMultiClassTrainer.GetOutputColumnsCore(Microsoft.ML.Core.Data.SchemaShape)" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaMultiClassTrainer.InitializeFeatureNormSquared(System.Int32)" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaMultiClassTrainer.MakeTransformer(Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor,Microsoft.ML.Runtime.Data.ISchema)" />
-      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaMultiClassTrainer.TrainWithoutLock(Microsoft.ML.Runtime.IProgressChannelProvider,Microsoft.ML.Runtime.Training.FloatLabelCursor.Factory,Microsoft.ML.Runtime.IRandom,Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.IdToIdxLookup{Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer{Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor},Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor},System.Int32,Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.DualsTableBase{Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer{Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor},Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor},System.Single[],System.Single[],System.Single,Microsoft.ML.Runtime.Data.VBuffer{System.Single}[],System.Single[],Microsoft.ML.Runtime.Data.VBuffer{System.Single}[],System.Single[],System.Single[])" />
+      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaMultiClassTrainer.TrainWithoutLock(Microsoft.ML.Runtime.IProgressChannelProvider,Microsoft.ML.Runtime.Training.FloatLabelCursor.Factory,Microsoft.ML.Runtime.IRandom,Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.IdToIdxLookup{Microsoft.ML.Runtime.Learners.SdcaMultiClassTrainer.Arguments,Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer{Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor},Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor},System.Int32,Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.DualsTableBase{Microsoft.ML.Runtime.Learners.SdcaMultiClassTrainer.Arguments,Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer{Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor},Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor},System.Single[],System.Single[],System.Single,Microsoft.ML.Runtime.Data.VBuffer{System.Single}[],System.Single[],Microsoft.ML.Runtime.Data.VBuffer{System.Single}[],System.Single[],System.Single[])" />
       <Member Id="P:Microsoft.ML.Runtime.Learners.SdcaMultiClassTrainer.PredictionKind" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Learners.SdcaMultiClassTrainer/Arguments" Id="T:Microsoft.ML.Runtime.Learners.SdcaMultiClassTrainer.Arguments">
@@ -16187,7 +16196,7 @@
       <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaMultiClassTrainer.Arguments.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Learners.SdcaRegressionTrainer" Id="T:Microsoft.ML.Runtime.Learners.SdcaRegressionTrainer">
-      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaRegressionTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Learners.SdcaRegressionTrainer.Arguments,System.String,System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaRegressionTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String,Microsoft.ML.Runtime.ISupportSdcaRegressionLoss,System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Int32},System.Action{Microsoft.ML.Runtime.Learners.SdcaRegressionTrainer.Arguments})" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaRegressionTrainer.CheckLabel(Microsoft.ML.Runtime.Data.RoleMappedData,System.Int32@)" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaRegressionTrainer.ComputeNumThreads(Microsoft.ML.Runtime.Training.FloatLabelCursor.Factory)" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaRegressionTrainer.CreatePredictor(Microsoft.ML.Runtime.Data.VBuffer{System.Single}[],System.Single[])" />
@@ -16201,53 +16210,53 @@
       <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaRegressionTrainer.Arguments.LossFunction" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaRegressionTrainer.Arguments.#ctor" />
     </Type>
-    <Type Name="Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2" Id="T:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2">
-      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.Loss" />
-      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.#ctor(Microsoft.ML.Runtime.IHost,Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.ArgumentsBase{`0,`1},Microsoft.ML.Core.Data.SchemaShape.Column,Microsoft.ML.Core.Data.SchemaShape.Column,Microsoft.ML.Core.Data.SchemaShape.Column)" />
-      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.CheckConvergence(Microsoft.ML.Runtime.IProgressChannel,System.Int32,Microsoft.ML.Runtime.Training.FloatLabelCursor.Factory,Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.DualsTableBase{`0,`1},Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.IdToIdxLookup{`0,`1},Microsoft.ML.Runtime.Data.VBuffer{System.Single}[],Microsoft.ML.Runtime.Data.VBuffer{System.Single}[],System.Single[],System.Single[],System.Single[],System.Single[],System.Int64,System.Double[],System.Double@,System.Int32@)" />
-      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.CreatePredictor(Microsoft.ML.Runtime.Data.VBuffer{System.Single}[],System.Single[])" />
-      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.GetIndexFromIdAndRowGetter(Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.IdToIdxLookup{`0,`1},System.Int32)" />
-      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.GetIndexFromIdGetter(Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.IdToIdxLookup{`0,`1},System.Int32)" />
-      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.GetInstanceWeight(Microsoft.ML.Runtime.Training.FloatLabelCursor)" />
-      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.InitializeFeatureNormSquared(System.Int32)" />
-      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.TrainCore(Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Data.RoleMappedData,Microsoft.ML.Runtime.Learners.LinearPredictor,System.Int32)" />
-      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.TrainWithoutLock(Microsoft.ML.Runtime.IProgressChannelProvider,Microsoft.ML.Runtime.Training.FloatLabelCursor.Factory,Microsoft.ML.Runtime.IRandom,Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.IdToIdxLookup{`0,`1},System.Int32,Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.DualsTableBase{`0,`1},System.Single[],System.Single[],System.Single,Microsoft.ML.Runtime.Data.VBuffer{System.Single}[],System.Single[],Microsoft.ML.Runtime.Data.VBuffer{System.Single}[],System.Single[],System.Single[])" />
-      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.TuneDefaultL2(Microsoft.ML.Runtime.IChannel,System.Int32,System.Int64,System.Int32)" />
-      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.WDot(Microsoft.ML.Runtime.Data.VBuffer{System.Single}@,Microsoft.ML.Runtime.Data.VBuffer{System.Single}@,System.Single)" />
-      <Member Id="P:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.ShuffleData" />
+    <Type Name="Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3" Id="T:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3">
+      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.Args" />
+      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.Loss" />
+      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.CheckConvergence(Microsoft.ML.Runtime.IProgressChannel,System.Int32,Microsoft.ML.Runtime.Training.FloatLabelCursor.Factory,Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.DualsTableBase{`0,`1,`2},Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.IdToIdxLookup{`0,`1,`2},Microsoft.ML.Runtime.Data.VBuffer{System.Single}[],Microsoft.ML.Runtime.Data.VBuffer{System.Single}[],System.Single[],System.Single[],System.Single[],System.Single[],System.Int64,System.Double[],System.Double@,System.Int32@)" />
+      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.CreatePredictor(Microsoft.ML.Runtime.Data.VBuffer{System.Single}[],System.Single[])" />
+      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.GetIndexFromIdAndRowGetter(Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.IdToIdxLookup{`0,`1,`2},System.Int32)" />
+      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.GetIndexFromIdGetter(Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.IdToIdxLookup{`0,`1,`2},System.Int32)" />
+      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.GetInstanceWeight(Microsoft.ML.Runtime.Training.FloatLabelCursor)" />
+      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.InitializeFeatureNormSquared(System.Int32)" />
+      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.TrainCore(Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Data.RoleMappedData,Microsoft.ML.Runtime.Learners.LinearPredictor,System.Int32)" />
+      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.TrainWithoutLock(Microsoft.ML.Runtime.IProgressChannelProvider,Microsoft.ML.Runtime.Training.FloatLabelCursor.Factory,Microsoft.ML.Runtime.IRandom,Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.IdToIdxLookup{`0,`1,`2},System.Int32,Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.DualsTableBase{`0,`1,`2},System.Single[],System.Single[],System.Single,Microsoft.ML.Runtime.Data.VBuffer{System.Single}[],System.Single[],Microsoft.ML.Runtime.Data.VBuffer{System.Single}[],System.Single[],System.Single[])" />
+      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.TuneDefaultL2(Microsoft.ML.Runtime.IChannel,System.Int32,System.Int64,System.Int32)" />
+      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.WDot(Microsoft.ML.Runtime.Data.VBuffer{System.Single}@,Microsoft.ML.Runtime.Data.VBuffer{System.Single}@,System.Single)" />
+      <Member Id="P:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.ShuffleData" />
     </Type>
-    <Type Name="Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2/ArgumentsBase" Id="T:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.ArgumentsBase">
-      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.ArgumentsBase.BiasLearningRate" />
-      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.ArgumentsBase.CheckFrequency" />
-      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.ArgumentsBase.ConvergenceTolerance" />
-      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.ArgumentsBase.L1Threshold" />
-      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.ArgumentsBase.L2Const" />
-      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.ArgumentsBase.MaxIterations" />
-      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.ArgumentsBase.NumThreads" />
-      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.ArgumentsBase.Shuffle" />
-      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.ArgumentsBase.#ctor" />
+    <Type Name="Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3/ArgumentsBase" Id="T:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.ArgumentsBase">
+      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.ArgumentsBase.BiasLearningRate" />
+      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.ArgumentsBase.CheckFrequency" />
+      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.ArgumentsBase.ConvergenceTolerance" />
+      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.ArgumentsBase.L1Threshold" />
+      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.ArgumentsBase.L2Const" />
+      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.ArgumentsBase.MaxIterations" />
+      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.ArgumentsBase.NumThreads" />
+      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.ArgumentsBase.Shuffle" />
+      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.ArgumentsBase.#ctor" />
     </Type>
-    <Type Name="Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2/DualsTableBase" Id="T:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.DualsTableBase">
-      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.DualsTableBase.#ctor" />
-      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.DualsTableBase.ApplyAt(System.Int64,Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.Visitor{`0,`1})" />
-      <Member Id="P:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.DualsTableBase.Item(System.Int64)" />
-      <Member Id="P:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.DualsTableBase.Length" />
+    <Type Name="Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3/DualsTableBase" Id="T:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.DualsTableBase">
+      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.DualsTableBase.#ctor" />
+      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.DualsTableBase.ApplyAt(System.Int64,Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.Visitor{`0,`1,`2})" />
+      <Member Id="P:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.DualsTableBase.Item(System.Int64)" />
+      <Member Id="P:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.DualsTableBase.Length" />
     </Type>
-    <Type Name="Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2/IdToIdxLookup" Id="T:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.IdToIdxLookup">
-      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.IdToIdxLookup.#ctor(System.Int64)" />
-      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.IdToIdxLookup.Add(Microsoft.ML.Runtime.Data.UInt128)" />
-      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.IdToIdxLookup.TryGetIndex(Microsoft.ML.Runtime.Data.UInt128,System.Int64@)" />
-      <Member Id="P:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.IdToIdxLookup.Count" />
+    <Type Name="Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3/IdToIdxLookup" Id="T:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.IdToIdxLookup">
+      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.IdToIdxLookup.#ctor(System.Int64)" />
+      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.IdToIdxLookup.Add(Microsoft.ML.Runtime.Data.UInt128)" />
+      <Member Id="M:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.IdToIdxLookup.TryGetIndex(Microsoft.ML.Runtime.Data.UInt128,System.Int64@)" />
+      <Member Id="P:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.IdToIdxLookup.Count" />
     </Type>
-    <Type Name="Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2/MetricKind" Id="T:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.MetricKind">
-      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.MetricKind.BiasReg" />
-      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.MetricKind.BiasUnreg" />
-      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.MetricKind.DualityGap" />
-      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.MetricKind.DualLoss" />
-      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.MetricKind.L1Sparsity" />
-      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.MetricKind.Loss" />
+    <Type Name="Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3/MetricKind" Id="T:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.MetricKind">
+      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.MetricKind.BiasReg" />
+      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.MetricKind.BiasUnreg" />
+      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.MetricKind.DualityGap" />
+      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.MetricKind.DualLoss" />
+      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.MetricKind.L1Sparsity" />
+      <Member Id="F:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.MetricKind.Loss" />
     </Type>
-    <Type Name="Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2/Visitor" Id="T:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`2.Visitor" />
+    <Type Name="Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3/Visitor" Id="T:Microsoft.ML.Runtime.Learners.SdcaTrainerBase`3.Visitor" />
     <Type Name="Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer" Id="T:Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer">
       <Member Id="M:Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String,System.Int32,System.Double,System.Single,Microsoft.ML.Runtime.ISupportClassificationLossFactory,System.Action{Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer.Arguments})" />
       <Member Id="M:Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer.CheckLabel(Microsoft.ML.Runtime.Data.RoleMappedData,System.Int32@)" />
@@ -16673,7 +16682,7 @@
       <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.IBindableCanSaveOnnx.SaveAsOnnx(Microsoft.ML.Runtime.Model.Onnx.OnnxContext,Microsoft.ML.Runtime.Data.RoleMappedSchema,System.String[])" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Model.Onnx.ICanSaveOnnx" Id="T:Microsoft.ML.Runtime.Model.Onnx.ICanSaveOnnx">
-      <Member Id="P:Microsoft.ML.Runtime.Model.Onnx.ICanSaveOnnx.CanSaveOnnx" />
+      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.ICanSaveOnnx.CanSaveOnnx(Microsoft.ML.Runtime.Model.Onnx.OnnxContext)" />
     </Type>
     <Type Name="Microsoft.ML.Runtime.Model.Onnx.IDistCanSaveOnnx" Id="T:Microsoft.ML.Runtime.Model.Onnx.IDistCanSaveOnnx">
       <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.IDistCanSaveOnnx.SaveAsOnnx(Microsoft.ML.Runtime.Model.Onnx.OnnxContext,System.String[],System.String)" />
@@ -16698,7 +16707,9 @@
       <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.CreateNode(System.String,System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.CreateNode(System.String,System.String,System.String,System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.GetNodeName(System.String)" />
+      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.GetOnnxVersion" />
       <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.GetVariableName(System.String)" />
+      <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.IsVariableDefined(System.String)" />
       <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.RemoveColumn(System.String,System.Boolean)" />
       <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.RemoveVariable(System.String,System.Boolean)" />
       <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.RetrieveShapeOrNull(System.String)" />
@@ -16718,6 +16729,10 @@
       <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxNode.AddAttribute(System.String,System.String)" />
       <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.OnnxNode.AddAttribute(System.String,System.String[])" />
     </Type>
+    <Type Name="Microsoft.ML.Runtime.Model.Onnx.OnnxVersion" Id="T:Microsoft.ML.Runtime.Model.Onnx.OnnxVersion">
+      <Member Id="F:Microsoft.ML.Runtime.Model.Onnx.OnnxVersion.Experimental" />
+      <Member Id="F:Microsoft.ML.Runtime.Model.Onnx.OnnxVersion.Stable" />
+    </Type>
     <Type Name="Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand" Id="T:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand">
       <Member Id="F:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.LoadName" />
       <Member Id="F:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.Summary" />
@@ -16734,6 +16749,7 @@
       <Member Id="F:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.Arguments.Model" />
       <Member Id="F:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.Arguments.Name" />
       <Member Id="F:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.Arguments.Onnx" />
+      <Member Id="F:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.Arguments.OnnxVersion" />
       <Member Id="F:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.Arguments.OutputsToDrop" />
       <Member Id="F:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.Arguments.OutputsToDropArray" />
       <Member Id="M:Microsoft.ML.Runtime.Model.Onnx.SaveOnnxCommand.Arguments.#ctor" />
@@ -18993,6 +19009,20 @@
       <Member Id="F:Microsoft.ML.Runtime.UniversalModelFormat.Onnx.Version.StartVersion" />
     </Type>
   </Namespace>
+  <Namespace Name="Microsoft.ML.SamplesUtils">
+    <Type Name="Microsoft.ML.SamplesUtils.DatasetUtils" Id="T:Microsoft.ML.SamplesUtils.DatasetUtils">
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.DownloadHousingRegressionDataset" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.GetInputData" />
+    </Type>
+    <Type Name="Microsoft.ML.SamplesUtils.DatasetUtils/SampleInput" Id="T:Microsoft.ML.SamplesUtils.DatasetUtils.SampleInput">
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.SampleInput.#ctor" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleInput.Feature0" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleInput.Feature1" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleInput.Feature2" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleInput.Feature3" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleInput.Target" />
+    </Type>
+  </Namespace>
   <Namespace Name="Microsoft.ML.StaticPipe">
     <Type Name="Microsoft.ML.StaticPipe.Custom`1" Id="T:Microsoft.ML.StaticPipe.Custom`1">
       <Member Id="M:Microsoft.ML.StaticPipe.Custom`1.#ctor(Microsoft.ML.StaticPipe.Runtime.Reconciler,Microsoft.ML.StaticPipe.PipelineColumn[])" />
@@ -19193,11 +19223,11 @@
   </Namespace>
   <Namespace Name="Microsoft.ML.Trainers">
     <Type Name="Microsoft.ML.Trainers.BinaryClassificationTrainers" Id="T:Microsoft.ML.Trainers.BinaryClassificationTrainers">
-      <Member Id="M:Microsoft.ML.Trainers.BinaryClassificationTrainers.AveragedPerceptron(Microsoft.ML.BinaryClassificationContext.BinaryClassificationTrainers,Microsoft.ML.Runtime.IClassificationLoss,Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Single,System.Boolean,System.Single,System.Int32,System.Action{Microsoft.ML.Runtime.Learners.LinearBinaryPredictor})" />
+      <Member Id="M:Microsoft.ML.Trainers.BinaryClassificationTrainers.AveragedPerceptron(Microsoft.ML.BinaryClassificationContext.BinaryClassificationTrainers,Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.Runtime.IClassificationLoss,System.Single,System.Boolean,System.Single,System.Int32,System.Action{Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.Arguments},System.Action{Microsoft.ML.Runtime.Learners.LinearBinaryPredictor})" />
       <Member Id="M:Microsoft.ML.Trainers.BinaryClassificationTrainers.FastTree(Microsoft.ML.BinaryClassificationContext.BinaryClassificationTrainers,Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Int32,System.Int32,System.Int32,System.Double,System.Action{Microsoft.ML.Runtime.FastTree.FastTreeBinaryClassificationTrainer.Arguments},System.Action{Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights{System.Single}})" />
-      <Member Id="M:Microsoft.ML.Trainers.BinaryClassificationTrainers.LogisticRegressionBinaryClassifier(Microsoft.ML.BinaryClassificationContext.BinaryClassificationTrainers,Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Single,System.Single,System.Single,System.Int32,System.Boolean,System.Action{Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor})" />
-      <Member Id="M:Microsoft.ML.Trainers.BinaryClassificationTrainers.Sdca(Microsoft.ML.BinaryClassificationContext.BinaryClassificationTrainers,Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.Runtime.ISupportSdcaClassificationLoss,Microsoft.ML.StaticPipe.Scalar{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Int32},System.Action{Microsoft.ML.Runtime.Learners.LinearBinaryPredictor})" />
-      <Member Id="M:Microsoft.ML.Trainers.BinaryClassificationTrainers.Sdca(Microsoft.ML.BinaryClassificationContext.BinaryClassificationTrainers,Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Int32},System.Action{Microsoft.ML.Runtime.Learners.LinearBinaryPredictor,Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor})" />
+      <Member Id="M:Microsoft.ML.Trainers.BinaryClassificationTrainers.LogisticRegressionBinaryClassifier(Microsoft.ML.BinaryClassificationContext.BinaryClassificationTrainers,Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Single,System.Single,System.Single,System.Int32,System.Boolean,System.Action{Microsoft.ML.Runtime.Learners.LogisticRegression.Arguments},System.Action{Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor})" />
+      <Member Id="M:Microsoft.ML.Trainers.BinaryClassificationTrainers.Sdca(Microsoft.ML.BinaryClassificationContext.BinaryClassificationTrainers,Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.Runtime.ISupportSdcaClassificationLoss,Microsoft.ML.StaticPipe.Scalar{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Int32},System.Action{Microsoft.ML.Runtime.Learners.LinearClassificationTrainer.Arguments},System.Action{Microsoft.ML.Runtime.Learners.LinearBinaryPredictor})" />
+      <Member Id="M:Microsoft.ML.Trainers.BinaryClassificationTrainers.Sdca(Microsoft.ML.BinaryClassificationContext.BinaryClassificationTrainers,Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Int32},System.Action{Microsoft.ML.Runtime.Learners.LinearClassificationTrainer.Arguments},System.Action{Microsoft.ML.Runtime.Learners.LinearBinaryPredictor,Microsoft.ML.Runtime.Internal.Calibration.ParameterMixingCalibratedPredictor})" />
       <Member Id="M:Microsoft.ML.Trainers.BinaryClassificationTrainers.StochasticGradientDescentClassificationTrainer(Microsoft.ML.BinaryClassificationContext.BinaryClassificationTrainers,Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Int32,System.Double,System.Single,Microsoft.ML.Runtime.ISupportClassificationLossFactory,System.Action{Microsoft.ML.Runtime.Learners.StochasticGradientDescentClassificationTrainer.Arguments},System.Action{Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights{System.Single}})" />
     </Type>
     <Type Name="Microsoft.ML.Trainers.ClassificationTrainers" Id="T:Microsoft.ML.Trainers.ClassificationTrainers">
@@ -19210,9 +19240,9 @@
       <Member Id="M:Microsoft.ML.Trainers.FactorizationMachineStatic.FieldAwareFactorizationMachine(Microsoft.ML.BinaryClassificationContext.BinaryClassificationTrainers,Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.Vector{System.Single}[],System.Single,System.Int32,System.Int32,System.Action{Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachineTrainer.Arguments},System.Action{Microsoft.ML.Runtime.FactorizationMachine.FieldAwareFactorizationMachinePredictor})" />
     </Type>
     <Type Name="Microsoft.ML.Trainers.MultiClassClassificationTrainers" Id="T:Microsoft.ML.Trainers.MultiClassClassificationTrainers">
-      <Member Id="M:Microsoft.ML.Trainers.MultiClassClassificationTrainers.MultiClassLogisticRegression``1(Microsoft.ML.MulticlassClassificationContext.MulticlassClassificationTrainers,Microsoft.ML.StaticPipe.Key{System.UInt32,``0},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Single,System.Single,System.Single,System.Int32,System.Boolean,System.Action{Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor})" />
+      <Member Id="M:Microsoft.ML.Trainers.MultiClassClassificationTrainers.MultiClassLogisticRegression``1(Microsoft.ML.MulticlassClassificationContext.MulticlassClassificationTrainers,Microsoft.ML.StaticPipe.Key{System.UInt32,``0},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Single,System.Single,System.Single,System.Int32,System.Boolean,System.Action{Microsoft.ML.Runtime.Learners.LogisticRegression.Arguments},System.Action{Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor})" />
       <Member Id="M:Microsoft.ML.Trainers.MultiClassClassificationTrainers.MultiClassNaiveBayesTrainer``1(Microsoft.ML.MulticlassClassificationContext.MulticlassClassificationTrainers,Microsoft.ML.StaticPipe.Key{System.UInt32,``0},Microsoft.ML.StaticPipe.Vector{System.Single},System.Action{Microsoft.ML.Runtime.Learners.MultiClassNaiveBayesPredictor})" />
-      <Member Id="M:Microsoft.ML.Trainers.MultiClassClassificationTrainers.Sdca``1(Microsoft.ML.MulticlassClassificationContext.MulticlassClassificationTrainers,Microsoft.ML.StaticPipe.Key{System.UInt32,``0},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.Runtime.ISupportSdcaClassificationLoss,Microsoft.ML.StaticPipe.Scalar{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Int32},System.Action{Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor})" />
+      <Member Id="M:Microsoft.ML.Trainers.MultiClassClassificationTrainers.Sdca``1(Microsoft.ML.MulticlassClassificationContext.MulticlassClassificationTrainers,Microsoft.ML.StaticPipe.Key{System.UInt32,``0},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.Runtime.ISupportSdcaClassificationLoss,Microsoft.ML.StaticPipe.Scalar{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Int32},System.Action{Microsoft.ML.Runtime.Learners.SdcaMultiClassTrainer.Arguments},System.Action{Microsoft.ML.Runtime.Learners.MulticlassLogisticRegressionPredictor})" />
     </Type>
     <Type Name="Microsoft.ML.Trainers.RankingTrainers" Id="T:Microsoft.ML.Trainers.RankingTrainers">
       <Member Id="M:Microsoft.ML.Trainers.RankingTrainers.FastTree``1(Microsoft.ML.RankerContext.RankerTrainers,Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Key{System.UInt32,``0},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Int32,System.Int32,System.Int32,System.Double,System.Action{Microsoft.ML.Runtime.FastTree.FastTreeRankingTrainer.Arguments},System.Action{Microsoft.ML.Runtime.FastTree.FastTreeRankingPredictor})" />
@@ -19220,9 +19250,9 @@
     <Type Name="Microsoft.ML.Trainers.RegressionTrainers" Id="T:Microsoft.ML.Trainers.RegressionTrainers">
       <Member Id="M:Microsoft.ML.Trainers.RegressionTrainers.FastTree(Microsoft.ML.RegressionContext.RegressionTrainers,Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Int32,System.Int32,System.Int32,System.Double,System.Action{Microsoft.ML.Runtime.FastTree.FastTreeRegressionTrainer.Arguments},System.Action{Microsoft.ML.Runtime.FastTree.FastTreeRegressionPredictor})" />
       <Member Id="M:Microsoft.ML.Trainers.RegressionTrainers.LightGbm(Microsoft.ML.RegressionContext.RegressionTrainers,Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Double},System.Int32,System.Action{Microsoft.ML.Runtime.LightGBM.LightGbmArguments},System.Action{Microsoft.ML.Runtime.LightGBM.LightGbmRegressionPredictor})" />
-      <Member Id="M:Microsoft.ML.Trainers.RegressionTrainers.OnlineGradientDescent(Microsoft.ML.RegressionContext.RegressionTrainers,Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.Runtime.IRegressionLoss,System.Single,System.Boolean,System.Single,System.Int32,System.Action{Microsoft.ML.Runtime.Learners.LinearRegressionPredictor})" />
-      <Member Id="M:Microsoft.ML.Trainers.RegressionTrainers.PoissonRegression(Microsoft.ML.RegressionContext.RegressionTrainers,Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Single,System.Single,System.Single,System.Int32,System.Boolean,System.Action{Microsoft.ML.Runtime.Learners.PoissonRegressionPredictor})" />
-      <Member Id="M:Microsoft.ML.Trainers.RegressionTrainers.Sdca(Microsoft.ML.RegressionContext.RegressionTrainers,Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Int32},Microsoft.ML.Runtime.ISupportSdcaRegressionLoss,System.Action{Microsoft.ML.Runtime.Learners.LinearRegressionPredictor})" />
+      <Member Id="M:Microsoft.ML.Trainers.RegressionTrainers.OnlineGradientDescent(Microsoft.ML.RegressionContext.RegressionTrainers,Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.Runtime.IRegressionLoss,System.Single,System.Boolean,System.Single,System.Int32,System.Action{Microsoft.ML.Runtime.Learners.AveragedLinearArguments},System.Action{Microsoft.ML.Runtime.Learners.LinearRegressionPredictor})" />
+      <Member Id="M:Microsoft.ML.Trainers.RegressionTrainers.PoissonRegression(Microsoft.ML.RegressionContext.RegressionTrainers,Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Single,System.Single,System.Single,System.Int32,System.Boolean,System.Action{Microsoft.ML.Runtime.Learners.LogisticRegression.Arguments},System.Action{Microsoft.ML.Runtime.Learners.PoissonRegressionPredictor})" />
+      <Member Id="M:Microsoft.ML.Trainers.RegressionTrainers.Sdca(Microsoft.ML.RegressionContext.RegressionTrainers,Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Int32},Microsoft.ML.Runtime.ISupportSdcaRegressionLoss,System.Action{Microsoft.ML.Runtime.Learners.SdcaRegressionTrainer.Arguments},System.Action{Microsoft.ML.Runtime.Learners.LinearRegressionPredictor})" />
     </Type>
   </Namespace>
   <Namespace Name="Microsoft.ML.Transforms">
@@ -19437,17 +19467,25 @@
       <Member Id="M:Microsoft.ML.Transforms.StopwordRemover.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.ValueTuple{System.String,System.String}[],Microsoft.ML.Runtime.TextAnalytics.StopWordsRemoverTransform.Language)" />
     </Type>
     <Type Name="Microsoft.ML.Transforms.TensorFlowEstimator" Id="T:Microsoft.ML.Transforms.TensorFlowEstimator">
+      <Member Id="M:Microsoft.ML.Transforms.TensorFlowEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Transforms.TensorFlowModelInfo,System.String[],System.String[])" />
       <Member Id="M:Microsoft.ML.Transforms.TensorFlowEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Transforms.TensorFlowTransform)" />
       <Member Id="M:Microsoft.ML.Transforms.TensorFlowEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String[],System.String[])" />
       <Member Id="M:Microsoft.ML.Transforms.TensorFlowEstimator.GetOutputSchema(Microsoft.ML.Core.Data.SchemaShape)" />
     </Type>
+    <Type Name="Microsoft.ML.Transforms.TensorFlowModelInfo" Id="T:Microsoft.ML.Transforms.TensorFlowModelInfo">
+      <Member Id="M:Microsoft.ML.Transforms.TensorFlowModelInfo.GetInputSchema" />
+      <Member Id="M:Microsoft.ML.Transforms.TensorFlowModelInfo.GetModelSchema" />
+      <Member Id="P:Microsoft.ML.Transforms.TensorFlowModelInfo.ModelPath" />
+    </Type>
     <Type Name="Microsoft.ML.Transforms.TensorFlowStaticExtensions" Id="T:Microsoft.ML.Transforms.TensorFlowStaticExtensions">
+      <Member Id="M:Microsoft.ML.Transforms.TensorFlowStaticExtensions.ApplyTensorFlowGraph(Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.Transforms.TensorFlowModelInfo)" />
       <Member Id="M:Microsoft.ML.Transforms.TensorFlowStaticExtensions.ApplyTensorFlowGraph(Microsoft.ML.StaticPipe.Vector{System.Single},System.String)" />
     </Type>
     <Type Name="Microsoft.ML.Transforms.TensorFlowTransform" Id="T:Microsoft.ML.Transforms.TensorFlowTransform">
       <Member Id="F:Microsoft.ML.Transforms.TensorFlowTransform.BatchSize" />
       <Member Id="F:Microsoft.ML.Transforms.TensorFlowTransform.Inputs" />
       <Member Id="F:Microsoft.ML.Transforms.TensorFlowTransform.Outputs" />
+      <Member Id="M:Microsoft.ML.Transforms.TensorFlowTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,Microsoft.ML.Transforms.TensorFlowModelInfo,System.String[],System.String[])" />
       <Member Id="M:Microsoft.ML.Transforms.TensorFlowTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,System.String[],System.String[])" />
       <Member Id="M:Microsoft.ML.Transforms.TensorFlowTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Transforms.TensorFlowTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
       <Member Id="M:Microsoft.ML.Transforms.TensorFlowTransform.Finalize" />
@@ -19467,7 +19505,7 @@
       <Member Id="F:Microsoft.ML.Transforms.TensorFlowTransform.Arguments.LearningRateOperation" />
       <Member Id="F:Microsoft.ML.Transforms.TensorFlowTransform.Arguments.LossOperation" />
       <Member Id="F:Microsoft.ML.Transforms.TensorFlowTransform.Arguments.MetricOperation" />
-      <Member Id="F:Microsoft.ML.Transforms.TensorFlowTransform.Arguments.Model" />
+      <Member Id="F:Microsoft.ML.Transforms.TensorFlowTransform.Arguments.ModelLocation" />
       <Member Id="F:Microsoft.ML.Transforms.TensorFlowTransform.Arguments.OptimizationOperation" />
       <Member Id="F:Microsoft.ML.Transforms.TensorFlowTransform.Arguments.OutputColumns" />
       <Member Id="F:Microsoft.ML.Transforms.TensorFlowTransform.Arguments.ReTrain" />
@@ -19513,6 +19551,7 @@
       <Member Id="F:Microsoft.ML.Transforms.TensorFlow.TensorFlowUtils.OpType" />
       <Member Id="M:Microsoft.ML.Transforms.TensorFlow.TensorFlowUtils.GetModelNodes(System.String)" />
       <Member Id="M:Microsoft.ML.Transforms.TensorFlow.TensorFlowUtils.GetModelSchema(Microsoft.ML.Runtime.IExceptionContext,System.String)" />
+      <Member Id="M:Microsoft.ML.Transforms.TensorFlow.TensorFlowUtils.LoadTensorFlowModel(Microsoft.ML.Runtime.IHostEnvironment,System.String)" />
     </Type>
   </Namespace>
   <Namespace Name="Microsoft.ML.Transforms.Text">

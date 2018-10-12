@@ -153,6 +153,49 @@
 
         </code>
     </example>
+    <example>
+      <code language="csharp">
+          pipeline.Add(new TextLoader(dataFile).CreateFrom&lt;MNISTData&gt;(useHeader: false));
+          pipeline.Add(new ColumnCopier(("NumericImageVec", "Input");
+          pipeline.Add(new TensorFlowScorer()
+          {
+            ModelLocation = model_location;
+            InputColumns = new[] { "Input" };
+            OutputColumns = new[] { "Output" };
+          }
+        </code>
+    </example>
+    <example>
+      <code language="csharp">
+          var pipeline = new Legacy.LearningPipeline(seed: 1);
+          pipeline.Add(new Microsoft.ML.Legacy.Data.TextLoader(dataFile).CreateFrom&lt;CifarData&gt;(useHeader: false));
+          pipeline.Add(new ImageLoader(("ImagePath", "ImageReal"))
+          {
+            ImageFolder = imageFolder
+          });
+
+          pipeline.Add(new ImageResizer(("ImageReal", "ImageCropped"))
+          {
+            ImageHeight = imageHeight,
+            ImageWidth = imageWidth,
+            Resizing = ImageResizerTransformResizingKind.IsoCrop
+          });
+
+          pipeline.Add(new ImagePixelExtractor(("ImageCropped", "Input"))
+          {
+            UseAlpha = false,
+            InterleaveArgb = true
+          });
+
+          pipeline.Add(new TensorFlowScorer()
+          {
+            ModelLocation = model_location,
+            InputColumns = new[] { "Input" },
+            OutputColumns = new[] { "Output" }
+          });
+
+        </code>
+    </example>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -424,12 +467,12 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Model">
-      <MemberSignature Language="C#" Value="public string Model { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string Model" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Transforms.TensorFlowScorer.Model" />
-      <MemberSignature Language="VB.NET" Value="Public Property Model As String" />
-      <MemberSignature Language="F#" Value="member this.Model : string with get, set" Usage="Microsoft.ML.Legacy.Transforms.TensorFlowScorer.Model" />
+    <Member MemberName="ModelLocation">
+      <MemberSignature Language="C#" Value="public string ModelLocation { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string ModelLocation" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Transforms.TensorFlowScorer.ModelLocation" />
+      <MemberSignature Language="VB.NET" Value="Public Property ModelLocation As String" />
+      <MemberSignature Language="F#" Value="member this.ModelLocation : string with get, set" Usage="Microsoft.ML.Legacy.Transforms.TensorFlowScorer.ModelLocation" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
