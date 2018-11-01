@@ -1,9 +1,9 @@
 ﻿<Type Name="BigArray&lt;T&gt;" FullName="Microsoft.ML.Runtime.Internal.Utilities.BigArray&lt;T&gt;">
-  <TypeSignature Language="C#" Value="public sealed class BigArray&lt;T&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit BigArray`1&lt;T&gt; extends System.Object" />
+  <TypeSignature Language="C#" Value="public sealed class BigArray&lt;T&gt; : System.Collections.Generic.IEnumerable&lt;T&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit BigArray`1&lt;T&gt; extends System.Object implements class System.Collections.Generic.IEnumerable`1&lt;!T&gt;, class System.Collections.IEnumerable" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class BigArray(Of T)" />
-  <TypeSignature Language="F#" Value="type BigArray&lt;'T&gt; = class" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class BigArray(Of T)&#xA;Implements IEnumerable(Of T)" />
+  <TypeSignature Language="F#" Value="type BigArray&lt;'T&gt; = class&#xA;    interface seq&lt;'T&gt;&#xA;    interface IEnumerable" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.Core</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -14,7 +14,14 @@
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
-  <Interfaces />
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.Collections.Generic.IEnumerable&lt;T&gt;</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.Collections.IEnumerable</InterfaceName>
+    </Interface>
+  </Interfaces>
   <Docs>
     <typeparam name="T">The type of entries.</typeparam>
     <summary>
@@ -203,6 +210,35 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="GetEnumerator">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.IEnumerator&lt;T&gt; GetEnumerator ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Collections.Generic.IEnumerator`1&lt;!T&gt; GetEnumerator() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1.GetEnumerator" />
+      <MemberSignature Language="VB.NET" Value="Public Iterator Overridable NotOverridable Function GetEnumerator () As IEnumerator(Of T)" />
+      <MemberSignature Language="F#" Value="abstract member GetEnumerator : unit -&gt; System.Collections.Generic.IEnumerator&lt;'T&gt;&#xA;override this.GetEnumerator : unit -&gt; System.Collections.Generic.IEnumerator&lt;'T&gt;" Usage="bigArray.GetEnumerator " />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:System.Collections.Generic.IEnumerable`1.GetEnumerator</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.CompilerServices.IteratorStateMachine(typeof(Microsoft.ML.Runtime.Internal.Utilities.BigArray`1/&lt;GetEnumerator&gt;d__23))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerator&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Item">
       <MemberSignature Language="C#" Value="public T this[long index] { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance !T Item(int64)" />
@@ -289,6 +325,29 @@
             grows to double its current capacity or <paramref name="newLength" />, which ever is larger,
             but up to <see cref="F:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1.BlockSize" />.
             </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="System.Collections.IEnumerable.GetEnumerator">
+      <MemberSignature Language="C#" Value="System.Collections.IEnumerator IEnumerable.GetEnumerator ();" />
+      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1.System#Collections#IEnumerable#GetEnumerator" />
+      <MemberSignature Language="VB.NET" Value="Function GetEnumerator () As IEnumerator Implements IEnumerable.GetEnumerator" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:System.Collections.IEnumerable.GetEnumerator</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.IEnumerator</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

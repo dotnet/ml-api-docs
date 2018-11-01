@@ -1,0 +1,436 @@
+﻿<Type Name="FastTreeTweedieTrainer" FullName="Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer">
+  <TypeSignature Language="C#" Value="public sealed class FastTreeTweedieTrainer : Microsoft.ML.Trainers.FastTree.BoostingFastTreeTrainerBase&lt;Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer.Arguments,Microsoft.ML.Runtime.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Trainers.FastTree.FastTreeTweediePredictor&gt;,Microsoft.ML.Trainers.FastTree.FastTreeTweediePredictor&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit FastTreeTweedieTrainer extends Microsoft.ML.Trainers.FastTree.BoostingFastTreeTrainerBase`3&lt;class Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer/Arguments, class Microsoft.ML.Runtime.Data.RegressionPredictionTransformer`1&lt;class Microsoft.ML.Trainers.FastTree.FastTreeTweediePredictor&gt;, class Microsoft.ML.Trainers.FastTree.FastTreeTweediePredictor&gt;" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class FastTreeTweedieTrainer&#xA;Inherits BoostingFastTreeTrainerBase(Of FastTreeTweedieTrainer.Arguments, RegressionPredictionTransformer(Of FastTreeTweediePredictor), FastTreeTweediePredictor)" />
+  <TypeSignature Language="F#" Value="type FastTreeTweedieTrainer = class&#xA;    inherit BoostingFastTreeTrainerBase&lt;FastTreeTweedieTrainer.Arguments, RegressionPredictionTransformer&lt;FastTreeTweediePredictor&gt;, FastTreeTweediePredictor&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Microsoft.ML.Trainers.FastTree.BoostingFastTreeTrainerBase&lt;Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer+Arguments,Microsoft.ML.Runtime.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Trainers.FastTree.FastTreeTweediePredictor&gt;,Microsoft.ML.Trainers.FastTree.FastTreeTweediePredictor&gt;</BaseTypeName>
+    <BaseTypeArguments>
+      <BaseTypeArgument TypeParamName="TArgs">Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer+Arguments</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TTransformer">Microsoft.ML.Runtime.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Trainers.FastTree.FastTreeTweediePredictor&gt;</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TModel">Microsoft.ML.Trainers.FastTree.FastTreeTweediePredictor</BaseTypeArgument>
+    </BaseTypeArguments>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+        Trains gradient boosted decision trees to fit target values using a Tweedie loss function. 
+        This learner is a generalization of Poisson, compound Poisson, and gamma regression.
+      </summary>
+    <remarks>
+        The Tweedie boosting model follows the mathematics established in <a href="https://arxiv.org/pdf/1508.06378.pdf">
+        Insurance Premium Prediction via Gradient Tree-Boosted Tweedie Compound Poisson Models.</a> from Yang, Quan, and Zou. 
+        <para>For an introduction to Gradient Boosting, and more information, see:</para><para><a href="https://en.wikipedia.org/wiki/Gradient_boosting#Gradient_tree_boosting">Wikipedia: Gradient boosting (Gradient tree boosting)</a></para><para><a href="https://projecteuclid.org/DPubS?service=UI&amp;version=1.0&amp;verb=Display&amp;handle=euclid.aos/1013203451">Greedy function approximation: A gradient boosting machine</a></para></remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public FastTreeTweedieTrainer (Microsoft.ML.Runtime.IHostEnvironment env, string labelColumn, string featureColumn, string weightColumn = null, int numLeaves = 20, int numTrees = 100, int minDocumentsInLeafs = 10, double learningRate = 0.2, Action&lt;Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer.Arguments&gt; advancedSettings = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string labelColumn, string featureColumn, string weightColumn, int32 numLeaves, int32 numTrees, int32 minDocumentsInLeafs, float64 learningRate, class System.Action`1&lt;class Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer/Arguments&gt; advancedSettings) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Double,System.Action{Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer.Arguments})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, labelColumn As String, featureColumn As String, Optional weightColumn As String = null, Optional numLeaves As Integer = 20, Optional numTrees As Integer = 100, Optional minDocumentsInLeafs As Integer = 10, Optional learningRate As Double = 0.2, Optional advancedSettings As Action(Of FastTreeTweedieTrainer.Arguments) = null)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer : Microsoft.ML.Runtime.IHostEnvironment * string * string * string * int * int * int * double * Action&lt;Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer.Arguments&gt; -&gt; Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer" Usage="new Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer (env, labelColumn, featureColumn, weightColumn, numLeaves, numTrees, minDocumentsInLeafs, learningRate, advancedSettings)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="labelColumn" Type="System.String" />
+        <Parameter Name="featureColumn" Type="System.String" />
+        <Parameter Name="weightColumn" Type="System.String" />
+        <Parameter Name="numLeaves" Type="System.Int32" />
+        <Parameter Name="numTrees" Type="System.Int32" />
+        <Parameter Name="minDocumentsInLeafs" Type="System.Int32" />
+        <Parameter Name="learningRate" Type="System.Double" />
+        <Parameter Name="advancedSettings" Type="System.Action&lt;Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer+Arguments&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="env">The private instance of <see cref="T:Microsoft.ML.Runtime.IHostEnvironment" />.</param>
+        <param name="labelColumn">The name of the label column.</param>
+        <param name="featureColumn">The name of the feature column.</param>
+        <param name="weightColumn">The name for the column containing the initial weight.</param>
+        <param name="numLeaves">The max number of leaves in each regression tree.</param>
+        <param name="numTrees">Total number of decision trees to create in the ensemble.</param>
+        <param name="minDocumentsInLeafs">The minimal number of documents allowed in a leaf of a regression tree, out of the subsampled data.</param>
+        <param name="learningRate">The learning rate.</param>
+        <param name="advancedSettings">A delegate to apply all the advanced arguments to the algorithm.</param>
+        <summary>
+            Initializes a new instance of <see cref="T:Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer" /></summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CheckArgs">
+      <MemberSignature Language="C#" Value="protected override void CheckArgs (Microsoft.ML.Runtime.IChannel ch);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void CheckArgs(class Microsoft.ML.Runtime.IChannel ch) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer.CheckArgs(Microsoft.ML.Runtime.IChannel)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Sub CheckArgs (ch As IChannel)" />
+      <MemberSignature Language="F#" Value="override this.CheckArgs : Microsoft.ML.Runtime.IChannel -&gt; unit" Usage="fastTreeTweedieTrainer.CheckArgs ch" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
+      </Parameters>
+      <Docs>
+        <param name="ch">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ComputeTests">
+      <MemberSignature Language="C#" Value="protected override void ComputeTests ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void ComputeTests() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer.ComputeTests" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Sub ComputeTests ()" />
+      <MemberSignature Language="F#" Value="override this.ComputeTests : unit -&gt; unit" Usage="fastTreeTweedieTrainer.ComputeTests " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConstructObjFunc">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Trainers.FastTree.Internal.ObjectiveFunctionBase ConstructObjFunc (Microsoft.ML.Runtime.IChannel ch);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Trainers.FastTree.Internal.ObjectiveFunctionBase ConstructObjFunc(class Microsoft.ML.Runtime.IChannel ch) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer.ConstructObjFunc(Microsoft.ML.Runtime.IChannel)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function ConstructObjFunc (ch As IChannel) As ObjectiveFunctionBase" />
+      <MemberSignature Language="F#" Value="override this.ConstructObjFunc : Microsoft.ML.Runtime.IChannel -&gt; Microsoft.ML.Trainers.FastTree.Internal.ObjectiveFunctionBase" Usage="fastTreeTweedieTrainer.ConstructObjFunc ch" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Trainers.FastTree.Internal.ObjectiveFunctionBase</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
+      </Parameters>
+      <Docs>
+        <param name="ch">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConstructOptimizationAlgorithm">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Trainers.FastTree.Internal.OptimizationAlgorithm ConstructOptimizationAlgorithm (Microsoft.ML.Runtime.IChannel ch);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Trainers.FastTree.Internal.OptimizationAlgorithm ConstructOptimizationAlgorithm(class Microsoft.ML.Runtime.IChannel ch) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer.ConstructOptimizationAlgorithm(Microsoft.ML.Runtime.IChannel)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function ConstructOptimizationAlgorithm (ch As IChannel) As OptimizationAlgorithm" />
+      <MemberSignature Language="F#" Value="override this.ConstructOptimizationAlgorithm : Microsoft.ML.Runtime.IChannel -&gt; Microsoft.ML.Trainers.FastTree.Internal.OptimizationAlgorithm" Usage="fastTreeTweedieTrainer.ConstructOptimizationAlgorithm ch" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Trainers.FastTree.Internal.OptimizationAlgorithm</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
+      </Parameters>
+      <Docs>
+        <param name="ch">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConstructTestForTrainingData">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Trainers.FastTree.Internal.Test ConstructTestForTrainingData ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Trainers.FastTree.Internal.Test ConstructTestForTrainingData() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer.ConstructTestForTrainingData" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function ConstructTestForTrainingData () As Test" />
+      <MemberSignature Language="F#" Value="override this.ConstructTestForTrainingData : unit -&gt; Microsoft.ML.Trainers.FastTree.Internal.Test" Usage="fastTreeTweedieTrainer.ConstructTestForTrainingData " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Trainers.FastTree.Internal.Test</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetDatasetRegressionLabels">
+      <MemberSignature Language="C#" Value="public static float[] GetDatasetRegressionLabels (Microsoft.ML.Trainers.FastTree.Internal.Dataset set);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32[] GetDatasetRegressionLabels(class Microsoft.ML.Trainers.FastTree.Internal.Dataset set) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer.GetDatasetRegressionLabels(Microsoft.ML.Trainers.FastTree.Internal.Dataset)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function GetDatasetRegressionLabels (set As Dataset) As Single()" />
+      <MemberSignature Language="F#" Value="static member GetDatasetRegressionLabels : Microsoft.ML.Trainers.FastTree.Internal.Dataset -&gt; single[]" Usage="Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer.GetDatasetRegressionLabels set" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="set" Type="Microsoft.ML.Trainers.FastTree.Internal.Dataset" />
+      </Parameters>
+      <Docs>
+        <param name="set">The dataset</param>
+        <summary>
+            Gets the regression labels that were stored in the dataset skeleton, or
+            constructs them from the ratings if absent. This returns null if the
+            dataset itself is null.
+            </summary>
+        <returns>The list of regression targets, or null if <paramref name="set" /> was null</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetOutputColumnsCore">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Core.Data.SchemaShape.Column[] GetOutputColumnsCore (Microsoft.ML.Core.Data.SchemaShape inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Core.Data.SchemaShape/Column[] GetOutputColumnsCore(class Microsoft.ML.Core.Data.SchemaShape inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer.GetOutputColumnsCore(Microsoft.ML.Core.Data.SchemaShape)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetOutputColumnsCore (inputSchema As SchemaShape) As SchemaShape.Column()" />
+      <MemberSignature Language="F#" Value="override this.GetOutputColumnsCore : Microsoft.ML.Core.Data.SchemaShape -&gt; Microsoft.ML.Core.Data.SchemaShape.Column[]" Usage="fastTreeTweedieTrainer.GetOutputColumnsCore inputSchema" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Core.Data.SchemaShape+Column[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.Core.Data.SchemaShape" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetTestGraphHeader">
+      <MemberSignature Language="C#" Value="protected override string GetTestGraphHeader ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance string GetTestGraphHeader() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer.GetTestGraphHeader" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetTestGraphHeader () As String" />
+      <MemberSignature Language="F#" Value="override this.GetTestGraphHeader : unit -&gt; string" Usage="fastTreeTweedieTrainer.GetTestGraphHeader " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetTestGraphLine">
+      <MemberSignature Language="C#" Value="protected override string GetTestGraphLine ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance string GetTestGraphLine() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer.GetTestGraphLine" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetTestGraphLine () As String" />
+      <MemberSignature Language="F#" Value="override this.GetTestGraphLine : unit -&gt; string" Usage="fastTreeTweedieTrainer.GetTestGraphLine " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitializeTests">
+      <MemberSignature Language="C#" Value="protected override void InitializeTests ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void InitializeTests() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer.InitializeTests" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Sub InitializeTests ()" />
+      <MemberSignature Language="F#" Value="override this.InitializeTests : unit -&gt; unit" Usage="fastTreeTweedieTrainer.InitializeTests " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MakeTransformer">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Trainers.FastTree.FastTreeTweediePredictor&gt; MakeTransformer (Microsoft.ML.Trainers.FastTree.FastTreeTweediePredictor model, Microsoft.ML.Runtime.Data.Schema trainSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.RegressionPredictionTransformer`1&lt;class Microsoft.ML.Trainers.FastTree.FastTreeTweediePredictor&gt; MakeTransformer(class Microsoft.ML.Trainers.FastTree.FastTreeTweediePredictor model, class Microsoft.ML.Runtime.Data.Schema trainSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer.MakeTransformer(Microsoft.ML.Trainers.FastTree.FastTreeTweediePredictor,Microsoft.ML.Runtime.Data.Schema)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function MakeTransformer (model As FastTreeTweediePredictor, trainSchema As Schema) As RegressionPredictionTransformer(Of FastTreeTweediePredictor)" />
+      <MemberSignature Language="F#" Value="override this.MakeTransformer : Microsoft.ML.Trainers.FastTree.FastTreeTweediePredictor * Microsoft.ML.Runtime.Data.Schema -&gt; Microsoft.ML.Runtime.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Trainers.FastTree.FastTreeTweediePredictor&gt;" Usage="fastTreeTweedieTrainer.MakeTransformer (model, trainSchema)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Trainers.FastTree.FastTreeTweediePredictor&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="model" Type="Microsoft.ML.Trainers.FastTree.FastTreeTweediePredictor" />
+        <Parameter Name="trainSchema" Type="Microsoft.ML.Runtime.Data.Schema" />
+      </Parameters>
+      <Docs>
+        <param name="model">To be added.</param>
+        <param name="trainSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PredictionKind">
+      <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.PredictionKind PredictionKind { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.ML.Runtime.PredictionKind PredictionKind" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer.PredictionKind" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property PredictionKind As PredictionKind" />
+      <MemberSignature Language="F#" Value="member this.PredictionKind : Microsoft.ML.Runtime.PredictionKind" Usage="Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer.PredictionKind" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.PredictionKind</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PrepareLabels">
+      <MemberSignature Language="C#" Value="protected override void PrepareLabels (Microsoft.ML.Runtime.IChannel ch);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void PrepareLabels(class Microsoft.ML.Runtime.IChannel ch) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer.PrepareLabels(Microsoft.ML.Runtime.IChannel)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Sub PrepareLabels (ch As IChannel)" />
+      <MemberSignature Language="F#" Value="override this.PrepareLabels : Microsoft.ML.Runtime.IChannel -&gt; unit" Usage="fastTreeTweedieTrainer.PrepareLabels ch" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
+      </Parameters>
+      <Docs>
+        <param name="ch">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PrintIterationMessage">
+      <MemberSignature Language="C#" Value="protected override void PrintIterationMessage (Microsoft.ML.Runtime.IChannel ch, Microsoft.ML.Runtime.IProgressChannel pch);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void PrintIterationMessage(class Microsoft.ML.Runtime.IChannel ch, class Microsoft.ML.Runtime.IProgressChannel pch) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer.PrintIterationMessage(Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.IProgressChannel)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Sub PrintIterationMessage (ch As IChannel, pch As IProgressChannel)" />
+      <MemberSignature Language="F#" Value="override this.PrintIterationMessage : Microsoft.ML.Runtime.IChannel * Microsoft.ML.Runtime.IProgressChannel -&gt; unit" Usage="fastTreeTweedieTrainer.PrintIterationMessage (ch, pch)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
+        <Parameter Name="pch" Type="Microsoft.ML.Runtime.IProgressChannel" />
+      </Parameters>
+      <Docs>
+        <param name="ch">To be added.</param>
+        <param name="pch">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Train">
+      <MemberSignature Language="C#" Value="protected override void Train (Microsoft.ML.Runtime.IChannel ch);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Train(class Microsoft.ML.Runtime.IChannel ch) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer.Train(Microsoft.ML.Runtime.IChannel)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Sub Train (ch As IChannel)" />
+      <MemberSignature Language="F#" Value="override this.Train : Microsoft.ML.Runtime.IChannel -&gt; unit" Usage="fastTreeTweedieTrainer.Train ch" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
+      </Parameters>
+      <Docs>
+        <param name="ch">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TrainModelCore">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Trainers.FastTree.FastTreeTweediePredictor TrainModelCore (Microsoft.ML.Runtime.TrainContext context);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Trainers.FastTree.FastTreeTweediePredictor TrainModelCore(class Microsoft.ML.Runtime.TrainContext context) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer.TrainModelCore(Microsoft.ML.Runtime.TrainContext)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function TrainModelCore (context As TrainContext) As FastTreeTweediePredictor" />
+      <MemberSignature Language="F#" Value="override this.TrainModelCore : Microsoft.ML.Runtime.TrainContext -&gt; Microsoft.ML.Trainers.FastTree.FastTreeTweediePredictor" Usage="fastTreeTweedieTrainer.TrainModelCore context" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Trainers.FastTree.FastTreeTweediePredictor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="context" Type="Microsoft.ML.Runtime.TrainContext" />
+      </Parameters>
+      <Docs>
+        <param name="context">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

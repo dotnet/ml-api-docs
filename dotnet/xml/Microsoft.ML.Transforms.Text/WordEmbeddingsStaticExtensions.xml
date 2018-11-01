@@ -1,0 +1,117 @@
+﻿<Type Name="WordEmbeddingsStaticExtensions" FullName="Microsoft.ML.Transforms.Text.WordEmbeddingsStaticExtensions">
+  <TypeSignature Language="C#" Value="public static class WordEmbeddingsStaticExtensions" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit WordEmbeddingsStaticExtensions extends System.Object" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Transforms.Text.WordEmbeddingsStaticExtensions" />
+  <TypeSignature Language="VB.NET" Value="Public Module WordEmbeddingsStaticExtensions" />
+  <TypeSignature Language="F#" Value="type WordEmbeddingsStaticExtensions = class" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="WordEmbeddings">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.Vector&lt;float&gt; WordEmbeddings (this Microsoft.ML.StaticPipe.VarVector&lt;string&gt; input, Microsoft.ML.Transforms.Text.WordEmbeddingsTransform.PretrainedModelKind modelKind = Microsoft.ML.Transforms.Text.WordEmbeddingsTransform+PretrainedModelKind.Sswe);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.Vector`1&lt;float32&gt; WordEmbeddings(class Microsoft.ML.StaticPipe.VarVector`1&lt;string&gt; input, valuetype Microsoft.ML.Transforms.Text.WordEmbeddingsTransform/PretrainedModelKind modelKind) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Text.WordEmbeddingsStaticExtensions.WordEmbeddings(Microsoft.ML.StaticPipe.VarVector{System.String},Microsoft.ML.Transforms.Text.WordEmbeddingsTransform.PretrainedModelKind)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function WordEmbeddings (input As VarVector(Of String), Optional modelKind As WordEmbeddingsTransform.PretrainedModelKind = Microsoft.ML.Transforms.Text.WordEmbeddingsTransform+PretrainedModelKind.Sswe) As Vector(Of Single)" />
+      <MemberSignature Language="F#" Value="static member WordEmbeddings : Microsoft.ML.StaticPipe.VarVector&lt;string&gt; * Microsoft.ML.Transforms.Text.WordEmbeddingsTransform.PretrainedModelKind -&gt; Microsoft.ML.StaticPipe.Vector&lt;single&gt;" Usage="Microsoft.ML.Transforms.Text.WordEmbeddingsStaticExtensions.WordEmbeddings (input, modelKind)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.StaticPipe.Vector&lt;System.Single&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.StaticPipe.VarVector&lt;System.String&gt;" RefType="this" />
+        <Parameter Name="modelKind" Type="Microsoft.ML.Transforms.Text.WordEmbeddingsTransform+PretrainedModelKind" />
+      </Parameters>
+      <Docs>
+        <param name="input">Vector of tokenized text.</param>
+        <param name="modelKind">The pretrained word embedding model.</param>
+        <summary>
+        Word Embeddings transform is a text featurizer which converts vectors of text tokens into sentence vectors using a pre-trained model.
+      </summary>
+        <returns />
+        <remarks>
+          <para>WordEmbeddings wrap different embedding models, such as GloVe. Users can specify which embedding to use. 
+        The available options are various versions of <a href="https://nlp.stanford.edu/projects/glove/">GloVe Models</a>, <a href="https://en.wikipedia.org/wiki/FastText">fastText</a>, and <a href="https://anthology.aclweb.org/P/P14/P14-1146.pdf">SSWE</a>.
+        </para>
+          <para>Note: As WordEmbedding requires a column with text vector, for example, 'this', 'is', 'good', users need to create an input column by
+          using the output_tokens=True for TextTransform to convert a column with sentences like 'This is good' into 'this', 'is', 'good'.
+          The suffix of '_TransformedText' is added to the original column name to create the output token column. For instance if the input column is 'body',
+          the output tokens column is named 'body_TransformedText'.</para>
+          <para>
+          License attributes for pretrained models:
+          <list type="bullet"><item><description>
+                "fastText Wikipedia 300D" by Facebook, Inc. is licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA 3.0</a> based on:
+                P. Bojanowski*, E. Grave*, A. Joulin, T. Mikolov,<a href="https://arxiv.org/abs/1607.04606">Enriching Word Vectors with Subword Information</a>
+                More information can be found <a href="https://github.com/facebookresearch/fastText/blob/master/pretrained-vectors.md">here</a>.
+              </description></item><item><description>
+                GloVe models by Stanford University, or (Jeffrey Pennington, Richard Socher, and Christopher D. Manning. 2014. 
+                <a href="https://nlp.stanford.edu/pubs/glove.pdf">GloVe: Global Vectors for Word Representation</a>) is licensed under <a href="https://opendatacommons.org/licenses/pddl/1.0/">PDDL</a>.
+                More information can be found <a href="https://nlp.stanford.edu/projects/glove/">here</a>. 
+                Repository can be found <a href="https://github.com/stanfordnlp/GloVe">here</a>.
+              </description></item></list></para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WordEmbeddings">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.Vector&lt;float&gt; WordEmbeddings (this Microsoft.ML.StaticPipe.VarVector&lt;string&gt; input, string customModelFile);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.Vector`1&lt;float32&gt; WordEmbeddings(class Microsoft.ML.StaticPipe.VarVector`1&lt;string&gt; input, string customModelFile) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Text.WordEmbeddingsStaticExtensions.WordEmbeddings(Microsoft.ML.StaticPipe.VarVector{System.String},System.String)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function WordEmbeddings (input As VarVector(Of String), customModelFile As String) As Vector(Of Single)" />
+      <MemberSignature Language="F#" Value="static member WordEmbeddings : Microsoft.ML.StaticPipe.VarVector&lt;string&gt; * string -&gt; Microsoft.ML.StaticPipe.Vector&lt;single&gt;" Usage="Microsoft.ML.Transforms.Text.WordEmbeddingsStaticExtensions.WordEmbeddings (input, customModelFile)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.StaticPipe.Vector&lt;System.Single&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.StaticPipe.VarVector&lt;System.String&gt;" RefType="this" />
+        <Parameter Name="customModelFile" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="input">Vector of tokenized text.</param>
+        <param name="customModelFile">The custom word embedding model file.</param>
+        <summary>
+        Word Embeddings transform is a text featurizer which converts vectors of text tokens into sentence vectors using a pre-trained model.
+      </summary>
+        <returns>To be added.</returns>
+        <remarks>
+          <para>WordEmbeddings wrap different embedding models, such as GloVe. Users can specify which embedding to use. 
+        The available options are various versions of <a href="https://nlp.stanford.edu/projects/glove/">GloVe Models</a>, <a href="https://en.wikipedia.org/wiki/FastText">fastText</a>, and <a href="https://anthology.aclweb.org/P/P14/P14-1146.pdf">SSWE</a>.
+        </para>
+          <para>Note: As WordEmbedding requires a column with text vector, for example, 'this', 'is', 'good', users need to create an input column by
+          using the output_tokens=True for TextTransform to convert a column with sentences like 'This is good' into 'this', 'is', 'good'.
+          The suffix of '_TransformedText' is added to the original column name to create the output token column. For instance if the input column is 'body',
+          the output tokens column is named 'body_TransformedText'.</para>
+          <para>
+          License attributes for pretrained models:
+          <list type="bullet"><item><description>
+                "fastText Wikipedia 300D" by Facebook, Inc. is licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA 3.0</a> based on:
+                P. Bojanowski*, E. Grave*, A. Joulin, T. Mikolov,<a href="https://arxiv.org/abs/1607.04606">Enriching Word Vectors with Subword Information</a>
+                More information can be found <a href="https://github.com/facebookresearch/fastText/blob/master/pretrained-vectors.md">here</a>.
+              </description></item><item><description>
+                GloVe models by Stanford University, or (Jeffrey Pennington, Richard Socher, and Christopher D. Manning. 2014. 
+                <a href="https://nlp.stanford.edu/pubs/glove.pdf">GloVe: Global Vectors for Word Representation</a>) is licensed under <a href="https://opendatacommons.org/licenses/pddl/1.0/">PDDL</a>.
+                More information can be found <a href="https://nlp.stanford.edu/projects/glove/">here</a>. 
+                Repository can be found <a href="https://github.com/stanfordnlp/GloVe">here</a>.
+              </description></item></list></para>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

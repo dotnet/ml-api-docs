@@ -1,9 +1,9 @@
 ﻿<Type Name="LightGbmTrainerBase&lt;TOutput,TTransformer,TModel&gt;" FullName="Microsoft.ML.Runtime.LightGBM.LightGbmTrainerBase&lt;TOutput,TTransformer,TModel&gt;">
-  <TypeSignature Language="C#" Value="public abstract class LightGbmTrainerBase&lt;TOutput,TTransformer,TModel&gt; : Microsoft.ML.Runtime.Training.TrainerEstimatorBase&lt;TTransformer,TModel&gt; where TTransformer : ISingleFeaturePredictionTransformer&lt;TModel&gt; where TModel : IPredictorProducing&lt;TOutput&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit LightGbmTrainerBase`3&lt;TOutput, (class Microsoft.ML.Runtime.ISingleFeaturePredictionTransformer`1&lt;!TModel&gt;) TTransformer, (class Microsoft.ML.Runtime.IPredictorProducing`1&lt;!TOutput&gt;) TModel&gt; extends Microsoft.ML.Runtime.Training.TrainerEstimatorBase`2&lt;!TTransformer, !TModel&gt;" />
+  <TypeSignature Language="C#" Value="public abstract class LightGbmTrainerBase&lt;TOutput,TTransformer,TModel&gt; : Microsoft.ML.Runtime.Training.TrainerEstimatorBaseWithGroupId&lt;TTransformer,TModel&gt; where TTransformer : ISingleFeaturePredictionTransformer&lt;TModel&gt; where TModel : IPredictorProducing&lt;TOutput&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit LightGbmTrainerBase`3&lt;TOutput, (class Microsoft.ML.Runtime.ISingleFeaturePredictionTransformer`1&lt;!TModel&gt;) TTransformer, (class Microsoft.ML.Runtime.IPredictorProducing`1&lt;!TOutput&gt;) TModel&gt; extends Microsoft.ML.Runtime.Training.TrainerEstimatorBaseWithGroupId`2&lt;!TTransformer, !TModel&gt;" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.LightGBM.LightGbmTrainerBase`3" />
-  <TypeSignature Language="VB.NET" Value="Public MustInherit Class LightGbmTrainerBase(Of TOutput, TTransformer, TModel)&#xA;Inherits TrainerEstimatorBase(Of TTransformer, TModel)" />
-  <TypeSignature Language="F#" Value="type LightGbmTrainerBase&lt;'Output, 'ransformer, 'Model (requires 'ransformer :&gt; ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model :&gt; IPredictorProducing&lt;'Output&gt;)&gt; = class&#xA;    inherit TrainerEstimatorBase&lt;'ransformer, 'Model (requires 'ransformer :&gt; ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model :&gt; IPredictorProducing&lt;'Output&gt;)&gt;" />
+  <TypeSignature Language="VB.NET" Value="Public MustInherit Class LightGbmTrainerBase(Of TOutput, TTransformer, TModel)&#xA;Inherits TrainerEstimatorBaseWithGroupId(Of TTransformer, TModel)" />
+  <TypeSignature Language="F#" Value="type LightGbmTrainerBase&lt;'Output, 'ransformer, 'Model (requires 'ransformer :&gt; ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model :&gt; IPredictorProducing&lt;'Output&gt;)&gt; = class&#xA;    inherit TrainerEstimatorBaseWithGroupId&lt;'ransformer, 'Model (requires 'ransformer :&gt; ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model :&gt; IPredictorProducing&lt;'Output&gt;)&gt;" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.LightGBM</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -23,6 +23,7 @@
   </TypeParameters>
   <Base>
     <BaseTypeName>Microsoft.ML.Runtime.Training.TrainerEstimatorBase&lt;TTransformer,TModel&gt;</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Runtime.Training.TrainerEstimatorBaseWithGroupId&lt;TTransformer,TModel&gt;</BaseTypeName>
     <BaseTypeArguments>
       <BaseTypeArgument TypeParamName="!0">TTransformer</BaseTypeArgument>
       <BaseTypeArgument TypeParamName="!1">TModel</BaseTypeArgument>
@@ -66,46 +67,6 @@
         <param name="groups">To be added.</param>
         <summary>
             This function will be called before training. It will check the label/group and add parameters for specific applications.
-            </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CheckArgsAndAdvancedSettingMismatch">
-      <MemberSignature Language="C#" Value="protected void CheckArgsAndAdvancedSettingMismatch (Nullable&lt;int&gt; numLeaves, Nullable&lt;int&gt; minDataPerLeaf, Nullable&lt;double&gt; learningRate, int numBoostRound, Microsoft.ML.Runtime.LightGBM.LightGbmArguments snapshot, Microsoft.ML.Runtime.LightGBM.LightGbmArguments currentArgs);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void CheckArgsAndAdvancedSettingMismatch(valuetype System.Nullable`1&lt;int32&gt; numLeaves, valuetype System.Nullable`1&lt;int32&gt; minDataPerLeaf, valuetype System.Nullable`1&lt;float64&gt; learningRate, int32 numBoostRound, class Microsoft.ML.Runtime.LightGBM.LightGbmArguments snapshot, class Microsoft.ML.Runtime.LightGBM.LightGbmArguments currentArgs) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.LightGBM.LightGbmTrainerBase`3.CheckArgsAndAdvancedSettingMismatch(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Double},System.Int32,Microsoft.ML.Runtime.LightGBM.LightGbmArguments,Microsoft.ML.Runtime.LightGBM.LightGbmArguments)" />
-      <MemberSignature Language="VB.NET" Value="Protected Sub CheckArgsAndAdvancedSettingMismatch (numLeaves As Nullable(Of Integer), minDataPerLeaf As Nullable(Of Integer), learningRate As Nullable(Of Double), numBoostRound As Integer, snapshot As LightGbmArguments, currentArgs As LightGbmArguments)" />
-      <MemberSignature Language="F#" Value="member this.CheckArgsAndAdvancedSettingMismatch : Nullable&lt;int&gt; * Nullable&lt;int&gt; * Nullable&lt;double&gt; * int * Microsoft.ML.Runtime.LightGBM.LightGbmArguments * Microsoft.ML.Runtime.LightGBM.LightGbmArguments -&gt; unit" Usage="lightGbmTrainerBase.CheckArgsAndAdvancedSettingMismatch (numLeaves, minDataPerLeaf, learningRate, numBoostRound, snapshot, currentArgs)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.LightGBM</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="numLeaves" Type="System.Nullable&lt;System.Int32&gt;" />
-        <Parameter Name="minDataPerLeaf" Type="System.Nullable&lt;System.Int32&gt;" />
-        <Parameter Name="learningRate" Type="System.Nullable&lt;System.Double&gt;" />
-        <Parameter Name="numBoostRound" Type="System.Int32" />
-        <Parameter Name="snapshot" Type="Microsoft.ML.Runtime.LightGBM.LightGbmArguments" />
-        <Parameter Name="currentArgs" Type="Microsoft.ML.Runtime.LightGBM.LightGbmArguments" />
-      </Parameters>
-      <Docs>
-        <param name="numLeaves">To be added.</param>
-        <param name="minDataPerLeaf">To be added.</param>
-        <param name="learningRate">To be added.</param>
-        <param name="numBoostRound">To be added.</param>
-        <param name="snapshot">To be added.</param>
-        <param name="currentArgs">To be added.</param>
-        <summary>
-            If, after applying the advancedSettings delegate, the args are different that the default value
-            and are also different than the value supplied directly to the xtension method, warn the user
-            about which value is being used.
-            The parameters that appear here, numTrees, minDocumentsInLeafs, numLeaves, learningRate are the ones the users are most likely to tune.
-            This list should follow the one in the constructor, and the extension methods on the <see cref="T:Microsoft.ML.TrainContextBase" />.
-            REVIEW: we should somehow mark the arguments that are set apart in those two places. Currently they stand out by their sort order annotation.
             </summary>
         <remarks>To be added.</remarks>
       </Docs>
