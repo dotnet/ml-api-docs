@@ -13,6 +13,7 @@
     <Assembly Name="Microsoft.ML.LightGBM" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.Maml" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.Onnx" Version="1.0.0.0" />
+    <Assembly Name="Microsoft.ML.OnnxTransform" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.Parquet" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.PCA" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.PipelineInference" Version="1.0.0.0" />
@@ -22,6 +23,7 @@
     <Assembly Name="Microsoft.ML.StandardLearners" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.Sweeper" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.TensorFlow" Version="1.0.0.0" />
+    <Assembly Name="Microsoft.ML.TimeSeries" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.Transforms" Version="1.0.0.0" />
   </Assemblies>
   <Namespace Name="Microsoft.ML">
@@ -15223,6 +15225,532 @@
       <Member Id="M:Microsoft.ML.Runtime.Sweeper.UniformRandomSweeper.CreateParamSet" />
     </Type>
   </Namespace>
+  <Namespace Name="Microsoft.ML.Runtime.TimeSeriesProcessing">
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.LoaderSignature" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.Int32,System.Int32,System.Int32,System.Single,Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{System.Single},Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.RankSelectionMethod,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Boolean,System.Boolean,System.Boolean,System.Nullable{Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.GrowthRatio})" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.Clone" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.ComputeForecastIntervals(Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.SsaForecastResult@,System.Single)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.Consume(System.Single@,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.Forecast(Microsoft.ML.Runtime.TimeSeriesProcessing.ForecastResultBase{System.Single}@,System.Int32)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.InitState" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.PredictNext(System.Single@)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.Train(Microsoft.ML.Runtime.Data.RoleMappedData)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.Train(Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{System.Single})" />
+      <Member Id="P:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.Info" />
+      <Member Id="P:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.LastSmoothedValue" />
+      <Member Id="P:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.LastValue" />
+      <Member Id="P:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.Rank" />
+      <Member Id="P:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.ShouldComputeForecastIntervals" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler/GrowthRatio" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.GrowthRatio">
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.GrowthRatio.#ctor(System.Int32,System.Double)" />
+      <Member Id="P:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.GrowthRatio.Growth" />
+      <Member Id="P:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.GrowthRatio.Ratio" />
+      <Member Id="P:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.GrowthRatio.TimeSpan" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler/ModelInfo" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.ModelInfo">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.ModelInfo.AutoRegressiveCoefficients" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.ModelInfo.ExponentialTrendFactor" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.ModelInfo.IsArtificialSeasonalityRemoved" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.ModelInfo.IsExponentialTrendPresent" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.ModelInfo.IsNaiveModelTrained" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.ModelInfo.IsPolynomialTrendPresent" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.ModelInfo.IsStabilized" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.ModelInfo.IsTrained" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.ModelInfo.Rank" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.ModelInfo.RootsAfterStabilization" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.ModelInfo.RootsBeforeStabilization" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.ModelInfo.Spectrum" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.ModelInfo.WindowSize" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.ModelInfo.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler/RankSelectionMethod" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.RankSelectionMethod">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.RankSelectionMethod.Exact" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.RankSelectionMethod.Fast" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.RankSelectionMethod.Fixed" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler/SsaForecastResult" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.SsaForecastResult">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.SsaForecastResult.ConfidenceLevel" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.SsaForecastResult.ForecastStandardDeviation" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.SsaForecastResult.LowerBound" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.SsaForecastResult.UpperBound" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.SsaForecastResult.#ctor" />
+      <Member Id="P:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.SsaForecastResult.IsVarianceValid" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils">
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Dhseqr(Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Layout,Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Job,Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Compz,System.Int32,System.Int32,System.Int32,System.Double[],System.Int32,System.Double[],System.Double[],System.Double[],System.Int32)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Dorgtr(Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Layout,Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Uplo,System.Int32,System.Double[],System.Int32,System.Double[])" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Dsteqr(Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Layout,Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Compz,System.Int32,System.Double[],System.Double[],System.Double[],System.Int32)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Dsytrd(Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Layout,Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Uplo,System.Int32,System.Double[],System.Int32,System.Double[],System.Double[],System.Double[])" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.EigenDecomposition(System.Single[],System.Single[]@,System.Single[]@)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.MklSymmetricEigenDecomposition(System.Single[],System.Int32,System.Single[]@,System.Single[]@)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Shseqr(Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Layout,Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Job,Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Compz,System.Int32,System.Int32,System.Int32,System.Single[],System.Int32,System.Single[],System.Single[],System.Single[],System.Int32)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Sorgtr(Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Layout,Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Uplo,System.Int32,System.Single[],System.Int32,System.Single[])" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Ssteqr(Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Layout,Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Compz,System.Int32,System.Single[],System.Single[],System.Single[],System.Int32)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Ssytrd(Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Layout,Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Uplo,System.Int32,System.Single[],System.Int32,System.Single[],System.Single[],System.Single[])" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils/Compz" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Compz">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Compz.None" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Compz.SchurA" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Compz.SchurH" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils/Job" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Job">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Job.EigenValues" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Job.Schur" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils/Layout" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Layout">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Layout.ColMajor" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Layout.RowMajor" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils/Uplo" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Uplo">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Uplo.LowerTriangular" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.EigenUtils.Uplo.UpperTriangular" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.ErrorFunctionUtils" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.ErrorFunctionUtils">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.ErrorFunctionUtils.ErrorFunctionHelpText" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.ErrorFunctionUtils.AbsoluteDifference(System.Double,System.Double)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.ErrorFunctionUtils.AbsoluteProportion(System.Double,System.Double)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.ErrorFunctionUtils.GetErrorFunction(Microsoft.ML.Runtime.TimeSeriesProcessing.ErrorFunctionUtils.ErrorFunction)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.ErrorFunctionUtils.SignedDifference(System.Double,System.Double)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.ErrorFunctionUtils.SignedProportion(System.Double,System.Double)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.ErrorFunctionUtils.SquaredDifference(System.Double,System.Double)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.ErrorFunctionUtils/ErrorFunction" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.ErrorFunctionUtils.ErrorFunction">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.ErrorFunctionUtils.ErrorFunction.AbsoluteDifference" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.ErrorFunctionUtils.ErrorFunction.AbsoluteProportion" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.ErrorFunctionUtils.ErrorFunction.SignedDifference" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.ErrorFunctionUtils.ErrorFunction.SignedProportion" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.ErrorFunctionUtils.ErrorFunction.SquaredDifference" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.ExponentialAverageTransform" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.ExponentialAverageTransform">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.ExponentialAverageTransform.LoaderSignature" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.ExponentialAverageTransform.ShortName" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.ExponentialAverageTransform.Summary" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.ExponentialAverageTransform.UserName" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.ExponentialAverageTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.ExponentialAverageTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.TimeSeriesProcessing.ExponentialAverageTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.ExponentialAverageTransform.ComputeExponentialAverage(System.Single,System.Single,System.Single)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.ExponentialAverageTransform.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.ExponentialAverageTransform/Arguments" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.ExponentialAverageTransform.Arguments">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.ExponentialAverageTransform.Arguments.Decay" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.ExponentialAverageTransform.Arguments.Name" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.ExponentialAverageTransform.Arguments.Source" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.ExponentialAverageTransform.Arguments.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.ExponentialAverageTransform/State" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.ExponentialAverageTransform.State">
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.ExponentialAverageTransform.State.#ctor" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.ExponentialAverageTransform.State.InitializeStateCore" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.ExponentialAverageTransform.State.LearnStateFromDataCore(Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{System.Single})" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.ExponentialAverageTransform.State.SetNaOutput(System.Single@)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.ExponentialAverageTransform.State.TransformCore(System.Single@,Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{System.Single},System.Int64,System.Single@)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.ForecastResultBase`1" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.ForecastResultBase`1">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.ForecastResultBase`1.PointForecast" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.ForecastResultBase`1.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.IidAnomalyDetectionBase" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.IidAnomalyDetectionBase">
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.IidAnomalyDetectionBase.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,System.String)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.IidAnomalyDetectionBase.#ctor(Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.ArgumentsBase{System.Single,Microsoft.ML.Runtime.TimeSeriesProcessing.IidAnomalyDetectionBase.State},System.String,Microsoft.ML.Runtime.IHostEnvironment)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.IidAnomalyDetectionBase.GetOutputSchema(Microsoft.ML.Runtime.Data.Schema)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.IidAnomalyDetectionBase.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.IidAnomalyDetectionBase/State" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.IidAnomalyDetectionBase.State">
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.IidAnomalyDetectionBase.State.#ctor" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.IidAnomalyDetectionBase.State.ComputeRawAnomalyScore(System.Single@,Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{System.Single},System.Int64)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.IidAnomalyDetectionBase.State.InitializeAnomalyDetector" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.IidAnomalyDetectionBase.State.LearnStateFromDataCore(Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{System.Single})" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.IidChangePointDetector" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.IidChangePointDetector">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.IidChangePointDetector.LoaderSignature" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.IidChangePointDetector.ShortName" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.IidChangePointDetector.UserName" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.IidChangePointDetector.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.IidChangePointDetector/Arguments" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.IidChangePointDetector.Arguments">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.IidChangePointDetector.Arguments.ChangeHistoryLength" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.IidChangePointDetector.Arguments.Confidence" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.IidChangePointDetector.Arguments.Martingale" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.IidChangePointDetector.Arguments.Name" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.IidChangePointDetector.Arguments.PowerMartingaleEpsilon" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.IidChangePointDetector.Arguments.Source" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.IidChangePointDetector.Arguments.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.IidChangePointEstimator" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.IidChangePointEstimator">
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.IidChangePointEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.TimeSeriesProcessing.IidChangePointDetector.Arguments)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.IidChangePointEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.Int32,System.Int32,Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.MartingaleType{System.Single,Microsoft.ML.Runtime.TimeSeriesProcessing.IidAnomalyDetectionBase.State},System.Double)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.IidChangePointEstimator.GetOutputSchema(Microsoft.ML.Core.Data.SchemaShape)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.IidSpikeDetector" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.IidSpikeDetector">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.IidSpikeDetector.LoaderSignature" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.IidSpikeDetector.ShortName" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.IidSpikeDetector.UserName" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.IidSpikeDetector.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.IidSpikeDetector.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.IidSpikeDetector/Arguments" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.IidSpikeDetector.Arguments">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.IidSpikeDetector.Arguments.Confidence" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.IidSpikeDetector.Arguments.Name" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.IidSpikeDetector.Arguments.PvalueHistoryLength" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.IidSpikeDetector.Arguments.Side" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.IidSpikeDetector.Arguments.Source" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.IidSpikeDetector.Arguments.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.IidSpikeEstimator" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.IidSpikeEstimator">
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.IidSpikeEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.TimeSeriesProcessing.IidSpikeDetector.Arguments)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.IidSpikeEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.Int32,System.Int32,Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.AnomalySide{System.Single,Microsoft.ML.Runtime.TimeSeriesProcessing.IidAnomalyDetectionBase.State})" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.IidSpikeEstimator.GetOutputSchema(Microsoft.ML.Core.Data.SchemaShape)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.ISequenceModeler`2" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.ISequenceModeler`2">
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.ISequenceModeler`2.Clone" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.ISequenceModeler`2.Consume(`0@,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.ISequenceModeler`2.Forecast(Microsoft.ML.Runtime.TimeSeriesProcessing.ForecastResultBase{`1}@,System.Int32)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.ISequenceModeler`2.InitState" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.ISequenceModeler`2.PredictNext(`1@)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.ISequenceModeler`2.Train(Microsoft.ML.Runtime.Data.RoleMappedData)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.ISequenceModeler`2.Train(Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{`0})" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.MovingAverageTransform" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.MovingAverageTransform">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.MovingAverageTransform.LoaderSignature" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.MovingAverageTransform.Summary" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.MovingAverageTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.MovingAverageTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.TimeSeriesProcessing.MovingAverageTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.MovingAverageTransform.ComputeMovingAverageNonUniform(Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{System.Single},System.Single,System.Single[],System.Int32)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.MovingAverageTransform.ComputeMovingAverageUniform(Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{System.Single},System.Single,System.Int32,System.Single,System.Single@,System.Boolean@,System.Int32@)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.MovingAverageTransform.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.MovingAverageTransform/Arguments" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.MovingAverageTransform.Arguments">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.MovingAverageTransform.Arguments.Lag" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.MovingAverageTransform.Arguments.Name" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.MovingAverageTransform.Arguments.Source" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.MovingAverageTransform.Arguments.Weights" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.MovingAverageTransform.Arguments.WindowSize" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.MovingAverageTransform.Arguments.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.MovingAverageTransform/State" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.MovingAverageTransform.State">
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.MovingAverageTransform.State.#ctor" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.MovingAverageTransform.State.InitializeStateCore" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.MovingAverageTransform.State.LearnStateFromDataCore(Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{System.Single})" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.MovingAverageTransform.State.SetNaOutput(System.Single@)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.MovingAverageTransform.State.TransformCore(System.Single@,Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{System.Single},System.Int64,System.Single@)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.PercentileThresholdTransform" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.PercentileThresholdTransform">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.PercentileThresholdTransform.LoaderSignature" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.PercentileThresholdTransform.MaxPercentile" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.PercentileThresholdTransform.MinPercentile" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.PercentileThresholdTransform.ShortName" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.PercentileThresholdTransform.Summary" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.PercentileThresholdTransform.UserName" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.PercentileThresholdTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.PercentileThresholdTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.TimeSeriesProcessing.PercentileThresholdTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.PercentileThresholdTransform.CountGreaterOrEqualValues(Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{System.Single},System.Single,System.Int32@,System.Int32@,System.Int32@)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.PercentileThresholdTransform.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.PercentileThresholdTransform/Arguments" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.PercentileThresholdTransform.Arguments">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.PercentileThresholdTransform.Arguments.Name" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.PercentileThresholdTransform.Arguments.Percentile" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.PercentileThresholdTransform.Arguments.Source" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.PercentileThresholdTransform.Arguments.WindowSize" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.PercentileThresholdTransform.Arguments.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.PercentileThresholdTransform/State" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.PercentileThresholdTransform.State">
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.PercentileThresholdTransform.State.#ctor" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.PercentileThresholdTransform.State.InitializeStateCore" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.PercentileThresholdTransform.State.LearnStateFromDataCore(Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{System.Single})" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.PercentileThresholdTransform.State.SetNaOutput(System.Boolean@)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.PercentileThresholdTransform.State.TransformCore(System.Single@,Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{System.Single},System.Int64,System.Boolean@)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.PolynomialUtils" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.PolynomialUtils">
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.PolynomialUtils.FindPolynomialCoefficients(System.Numerics.Complex[],System.Double[]@)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.PolynomialUtils.FindPolynomialRoots(System.Double[],System.Numerics.Complex[]@,System.Int32,System.Double)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.PValueTransform" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.PValueTransform">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.PValueTransform.LoaderSignature" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.PValueTransform.ShortName" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.PValueTransform.UserName" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.PValueTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.PValueTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.TimeSeriesProcessing.PValueTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.PValueTransform.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.PValueTransform/Arguments" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.PValueTransform.Arguments">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.PValueTransform.Arguments.InitialWindowSize" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.PValueTransform.Arguments.Name" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.PValueTransform.Arguments.PositiveSide" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.PValueTransform.Arguments.Seed" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.PValueTransform.Arguments.Source" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.PValueTransform.Arguments.WindowSize" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.PValueTransform.Arguments.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.PValueTransform/State" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.PValueTransform.State">
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.PValueTransform.State.#ctor" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.PValueTransform.State.InitializeStateCore" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.PValueTransform.State.LearnStateFromDataCore(Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{System.Single})" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.PValueTransform.State.SetNaOutput(System.Single@)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.PValueTransform.State.TransformCore(System.Single@,Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{System.Single},System.Int64,System.Single@)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.AlertThreshold" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.Martingale" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.PowerMartingaleEpsilon" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.Side" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.ThresholdScore" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,System.String)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.#ctor(Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.ArgumentsBase{`0,`1},System.String,Microsoft.ML.Runtime.IHostEnvironment)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.#ctor(System.Int32,System.Int32,System.String,System.String,System.String,Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.AnomalySide{`0,`1},Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.MartingaleType{`0,`1},Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.AlertingScore{`0,`1},System.Double,System.Double)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.LogMixtureMartigaleBettingFunc(System.Double)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.LogPowerMartigaleBettingFunc(System.Double,System.Double)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.MakeRowMapper(Microsoft.ML.Runtime.Data.ISchema)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2/AlertingScore" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.AlertingScore">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.AlertingScore.MartingaleScore" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.AlertingScore.PValueScore" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.AlertingScore.RawScore" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2/AnomalyDetectionStateBase" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.AnomalyDetectionStateBase">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.AnomalyDetectionStateBase.Parent" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.AnomalyDetectionStateBase.#ctor" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.AnomalyDetectionStateBase.ComputeRawAnomalyScore(`0@,Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{`0},System.Int64)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.AnomalyDetectionStateBase.InitializeAnomalyDetector" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.AnomalyDetectionStateBase.InitializeStateCore" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.AnomalyDetectionStateBase.SetNaOutput(Microsoft.ML.Runtime.Data.VBuffer{System.Double}@)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.AnomalyDetectionStateBase.TransformCore(`0@,Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{`0},System.Int64,Microsoft.ML.Runtime.Data.VBuffer{System.Double}@)" />
+      <Member Id="P:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.AnomalyDetectionStateBase.LatestMartingaleScore" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2/AnomalySide" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.AnomalySide">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.AnomalySide.Negative" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.AnomalySide.Positive" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.AnomalySide.TwoSided" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2/ArgumentsBase" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.ArgumentsBase">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.ArgumentsBase.AlertOn" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.ArgumentsBase.AlertThreshold" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.ArgumentsBase.InitialWindowSize" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.ArgumentsBase.Martingale" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.ArgumentsBase.Name" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.ArgumentsBase.PowerMartingaleEpsilon" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.ArgumentsBase.Side" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.ArgumentsBase.Source" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.ArgumentsBase.WindowSize" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.ArgumentsBase.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2/MartingaleType" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.MartingaleType">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.MartingaleType.Mixture" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.MartingaleType.None" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.MartingaleType.Power" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.InitialWindowSize" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.InputColumnName" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.OutputColumnName" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.WindowSize" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,System.String,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.#ctor(System.Int32,System.Int32,System.String,System.String,Microsoft.ML.Runtime.IHost,Microsoft.ML.Runtime.Data.IDataView,Microsoft.ML.Runtime.Data.ColumnType)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.#ctor(System.Int32,System.Int32,System.String,System.String,System.String,Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,Microsoft.ML.Runtime.Data.ColumnType)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.GetRowCount(System.Boolean)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.GetRowCursorCore(System.Func{System.Int32,System.Boolean},Microsoft.ML.Runtime.IRandom)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.GetRowCursorSet(Microsoft.ML.Runtime.Data.IRowCursorConsolidator@,System.Func{System.Int32,System.Boolean},System.Int32,Microsoft.ML.Runtime.IRandom)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.ShouldUseParallelCursors(System.Func{System.Int32,System.Boolean})" />
+      <Member Id="P:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.CanShuffle" />
+      <Member Id="P:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.Schema" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3/StateBase" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.StateBase">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.StateBase.Host" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.StateBase.InitialWindowedBuffer" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.StateBase.ParentTransform" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.StateBase.WindowedBuffer" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.StateBase.#ctor" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.StateBase.IncrementRowCounter" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.StateBase.InitializeStateCore" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.StateBase.InitState(System.Int32,System.Int32,Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase{`0,`1,`2},Microsoft.ML.Runtime.IHost)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.StateBase.LearnStateFromDataCore(Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{`0})" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.StateBase.Process(`0@,`1@)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.StateBase.ProcessWithoutBuffer(`0@,`1@)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.StateBase.Reset" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.StateBase.SetNaOutput(`1@)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.StateBase.TransformCore(`0@,Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{`0},System.Int64,`1@)" />
+      <Member Id="P:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.StateBase.InitialWindowSize" />
+      <Member Id="P:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.StateBase.RowCounter" />
+      <Member Id="P:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformBase`3.StateBase.WindowSize" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.Host" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.InitialWindowSize" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.InputColumnName" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.OutputColumnName" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.OutputColumnType" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.WindowSize" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.#ctor(Microsoft.ML.Runtime.IHost,Microsoft.ML.Runtime.Model.ModelLoadContext)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.#ctor(Microsoft.ML.Runtime.IHost,System.Int32,System.Int32,System.String,System.String,Microsoft.ML.Runtime.Data.ColumnType)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.GetOutputSchema(Microsoft.ML.Runtime.Data.Schema)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.GetRowToRowMapper(Microsoft.ML.Runtime.Data.Schema)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.MakeDataTransform(Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.MakeRowMapper(Microsoft.ML.Runtime.Data.ISchema)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.Transform(Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="P:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.IsRowToRowMapper" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3/SequentialDataTransform" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.SequentialDataTransform">
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.SequentialDataTransform.#ctor(Microsoft.ML.Runtime.IHost,Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase{`0,`1,`2},Microsoft.ML.Runtime.Data.IDataView,Microsoft.ML.Runtime.Data.IRowMapper)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.SequentialDataTransform.ApplyToData(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.SequentialDataTransform.GetRowCount(System.Boolean)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.SequentialDataTransform.GetRowCursorCore(System.Func{System.Int32,System.Boolean},Microsoft.ML.Runtime.IRandom)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.SequentialDataTransform.GetRowCursorSet(Microsoft.ML.Runtime.Data.IRowCursorConsolidator@,System.Func{System.Int32,System.Boolean},System.Int32,Microsoft.ML.Runtime.IRandom)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.SequentialDataTransform.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.SequentialDataTransform.ShouldUseParallelCursors(System.Func{System.Int32,System.Boolean})" />
+      <Member Id="P:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.SequentialDataTransform.CanShuffle" />
+      <Member Id="P:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.SequentialDataTransform.Schema" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3/StateBase" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.Host" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.InitialWindowedBuffer" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.ParentTransform" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.WindowedBuffer" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.#ctor" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.IncrementRowCounter" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.InitializeStateCore" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.InitState(System.Int32,System.Int32,Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase{`0,`1,`2},Microsoft.ML.Runtime.IHost)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.LearnStateFromDataCore(Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{`0})" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.Process(`0@,`1@)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.ProcessWithoutBuffer(`0@,`1@)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.Reset" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.SetNaOutput(`1@)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.TransformCore(`0@,Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{`0},System.Int64,`1@)" />
+      <Member Id="P:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.InitialWindowSize" />
+      <Member Id="P:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.RowCounter" />
+      <Member Id="P:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.WindowSize" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransform" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransform">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransform.LoaderSignature" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransform.ShortName" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransform.Summary" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransform.UserName" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransformBase`1.Arguments{System.Single},Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransform.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransformBase`1" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransformBase`1">
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransformBase`1.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,System.String,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransformBase`1.#ctor(Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransformBase`1.Arguments{`0},System.String,Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransformBase`1.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransformBase`1/Arguments" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransformBase`1.Arguments">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransformBase`1.Arguments.Begin" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransformBase`1.Arguments.Lag" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransformBase`1.Arguments.Name" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransformBase`1.Arguments.Source" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransformBase`1.Arguments.WindowSize" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransformBase`1.Arguments.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransformBase`1/BeginOptions" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransformBase`1.BeginOptions">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransformBase`1.BeginOptions.FirstValue" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransformBase`1.BeginOptions.NaNValues" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransformBase`1/StateSlide" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransformBase`1.StateSlide">
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransformBase`1.StateSlide.#ctor" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransformBase`1.StateSlide.InitializeStateCore" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransformBase`1.StateSlide.LearnStateFromDataCore(Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{`0})" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransformBase`1.StateSlide.SetNaOutput(Microsoft.ML.Runtime.Data.VBuffer{`0}@)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransformBase`1.StateSlide.TransformCore(`0@,Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{`0},System.Int64,Microsoft.ML.Runtime.Data.VBuffer{`0}@)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.SsaAnomalyDetectionBase" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaAnomalyDetectionBase">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaAnomalyDetectionBase.DiscountFactor" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaAnomalyDetectionBase.ErrorFunc" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaAnomalyDetectionBase.ErrorFunction" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaAnomalyDetectionBase.IsAdaptive" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaAnomalyDetectionBase.Model" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaAnomalyDetectionBase.SeasonalWindowSize" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaAnomalyDetectionBase.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,System.String)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaAnomalyDetectionBase.#ctor(Microsoft.ML.Runtime.TimeSeriesProcessing.SsaAnomalyDetectionBase.SsaArguments,System.String,Microsoft.ML.Runtime.IHostEnvironment)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaAnomalyDetectionBase.GetOutputSchema(Microsoft.ML.Runtime.Data.Schema)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaAnomalyDetectionBase.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.SsaAnomalyDetectionBase/SsaArguments" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaAnomalyDetectionBase.SsaArguments">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaAnomalyDetectionBase.SsaArguments.DiscountFactor" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaAnomalyDetectionBase.SsaArguments.ErrorFunction" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaAnomalyDetectionBase.SsaArguments.IsAdaptive" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaAnomalyDetectionBase.SsaArguments.SeasonalWindowSize" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaAnomalyDetectionBase.SsaArguments.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.SsaAnomalyDetectionBase/State" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaAnomalyDetectionBase.State">
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaAnomalyDetectionBase.State.#ctor" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaAnomalyDetectionBase.State.ComputeRawAnomalyScore(System.Single@,Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{System.Single},System.Int64)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaAnomalyDetectionBase.State.InitializeAnomalyDetector" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaAnomalyDetectionBase.State.LearnStateFromDataCore(Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{System.Single})" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.SsaChangePointDetector" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaChangePointDetector">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaChangePointDetector.LoaderSignature" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaChangePointDetector.ShortName" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaChangePointDetector.UserName" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaChangePointDetector.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.SsaChangePointDetector/Arguments" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaChangePointDetector.Arguments">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaChangePointDetector.Arguments.ChangeHistoryLength" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaChangePointDetector.Arguments.Confidence" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaChangePointDetector.Arguments.ErrorFunction" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaChangePointDetector.Arguments.Martingale" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaChangePointDetector.Arguments.Name" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaChangePointDetector.Arguments.PowerMartingaleEpsilon" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaChangePointDetector.Arguments.SeasonalWindowSize" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaChangePointDetector.Arguments.Source" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaChangePointDetector.Arguments.TrainingWindowSize" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaChangePointDetector.Arguments.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.SsaChangePointEstimator" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaChangePointEstimator">
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaChangePointEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.TimeSeriesProcessing.SsaChangePointDetector.Arguments)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaChangePointEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,Microsoft.ML.Runtime.TimeSeriesProcessing.ErrorFunctionUtils.ErrorFunction,Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.MartingaleType{System.Single,Microsoft.ML.Runtime.TimeSeriesProcessing.SsaAnomalyDetectionBase.State},System.Double)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaChangePointEstimator.Fit(Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaChangePointEstimator.GetOutputSchema(Microsoft.ML.Core.Data.SchemaShape)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.SsaSpikeDetector" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaSpikeDetector">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaSpikeDetector.LoaderSignature" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaSpikeDetector.ShortName" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaSpikeDetector.UserName" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaSpikeDetector.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.SsaSpikeDetector/Arguments" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaSpikeDetector.Arguments">
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaSpikeDetector.Arguments.Confidence" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaSpikeDetector.Arguments.ErrorFunction" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaSpikeDetector.Arguments.Name" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaSpikeDetector.Arguments.PvalueHistoryLength" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaSpikeDetector.Arguments.SeasonalWindowSize" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaSpikeDetector.Arguments.Side" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaSpikeDetector.Arguments.Source" />
+      <Member Id="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaSpikeDetector.Arguments.TrainingWindowSize" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaSpikeDetector.Arguments.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.SsaSpikeEstimator" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaSpikeEstimator">
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaSpikeEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.TimeSeriesProcessing.SsaSpikeDetector.Arguments)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaSpikeEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.AnomalySide{System.Single,Microsoft.ML.Runtime.TimeSeriesProcessing.SsaAnomalyDetectionBase.State},Microsoft.ML.Runtime.TimeSeriesProcessing.ErrorFunctionUtils.ErrorFunction)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaSpikeEstimator.Fit(Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SsaSpikeEstimator.GetOutputSchema(Microsoft.ML.Core.Data.SchemaShape)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.TimeSeriesProcessing" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.TimeSeriesProcessing">
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.TimeSeriesProcessing.ExponentialAverage(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.TimeSeriesProcessing.ExponentialAverageTransform.Arguments)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.TimeSeriesProcessing.IidChangePointDetector(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.TimeSeriesProcessing.IidChangePointDetector.Arguments)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.TimeSeriesProcessing.IidSpikeDetector(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.TimeSeriesProcessing.IidSpikeDetector.Arguments)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.TimeSeriesProcessing.PercentileThresholdTransform(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.TimeSeriesProcessing.PercentileThresholdTransform.Arguments)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.TimeSeriesProcessing.PValueTransform(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.TimeSeriesProcessing.PValueTransform.Arguments)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.TimeSeriesProcessing.SlidingWindowTransform(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.TimeSeriesProcessing.SlidingWindowTransformBase`1.Arguments{System.Single})" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.TimeSeriesProcessing.SsaChangePointDetector(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.TimeSeriesProcessing.SsaChangePointDetector.Arguments)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.TimeSeriesProcessing.SsaSpikeDetector(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.TimeSeriesProcessing.SsaSpikeDetector.Arguments)" />
+    </Type>
+    <Type Name="Microsoft.ML.Runtime.TimeSeriesProcessing.TrajectoryMatrix" Id="T:Microsoft.ML.Runtime.TimeSeriesProcessing.TrajectoryMatrix">
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.TrajectoryMatrix.#ctor(Microsoft.ML.Runtime.IExceptionContext,System.Single[],System.Int32,System.Int32)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.TrajectoryMatrix.ComputeSvd(System.Single[]@,System.Single[]@)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.TrajectoryMatrix.ComputeUnnormalizedTrajectoryCovarianceMat(System.Single[])" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.TrajectoryMatrix.Multiply(System.Single[],System.Single[],System.Boolean,System.Int32,System.Int32)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.TrajectoryMatrix.MultiplyTranspose(System.Single[],System.Single[],System.Boolean,System.Int32,System.Int32)" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.TrajectoryMatrix.RankOneHankelization(System.Single[],System.Single[],System.Single,System.Single[],System.Boolean,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32})" />
+      <Member Id="M:Microsoft.ML.Runtime.TimeSeriesProcessing.TrajectoryMatrix.SetSeries(System.Single[])" />
+      <Member Id="P:Microsoft.ML.Runtime.TimeSeriesProcessing.TrajectoryMatrix.SeriesLength" />
+      <Member Id="P:Microsoft.ML.Runtime.TimeSeriesProcessing.TrajectoryMatrix.WindowSize" />
+    </Type>
+  </Namespace>
   <Namespace Name="Microsoft.ML.Runtime.Tools">
     <Type Name="Microsoft.ML.Runtime.Tools.ChainCommand" Id="T:Microsoft.ML.Runtime.Tools.ChainCommand">
       <Member Id="M:Microsoft.ML.Runtime.Tools.ChainCommand.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Tools.ChainCommand.Arguments)" />
@@ -18985,6 +19513,33 @@
       <Member Id="F:Microsoft.ML.Transforms.NAReplaceTransform.ReplacementKind.SpecifiedValue" />
       <Member Id="F:Microsoft.ML.Transforms.NAReplaceTransform.ReplacementKind.Val" />
       <Member Id="F:Microsoft.ML.Transforms.NAReplaceTransform.ReplacementKind.Value" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.OnnxScoringEstimator" Id="T:Microsoft.ML.Transforms.OnnxScoringEstimator">
+      <Member Id="M:Microsoft.ML.Transforms.OnnxScoringEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Transforms.OnnxTransform)" />
+      <Member Id="M:Microsoft.ML.Transforms.OnnxScoringEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.Transforms.OnnxScoringEstimator.GetOutputSchema(Microsoft.ML.Core.Data.SchemaShape)" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.OnnxStaticExtensions" Id="T:Microsoft.ML.Transforms.OnnxStaticExtensions">
+      <Member Id="M:Microsoft.ML.Transforms.OnnxStaticExtensions.ApplyOnnxModel(Microsoft.ML.StaticPipe.Vector{System.Single},System.String)" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.OnnxTransform" Id="T:Microsoft.ML.Transforms.OnnxTransform">
+      <Member Id="F:Microsoft.ML.Transforms.OnnxTransform.Input" />
+      <Member Id="F:Microsoft.ML.Transforms.OnnxTransform.Output" />
+      <Member Id="F:Microsoft.ML.Transforms.OnnxTransform.OutputType" />
+      <Member Id="M:Microsoft.ML.Transforms.OnnxTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.Transforms.OnnxTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.Transforms.OnnxTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Transforms.OnnxTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Transforms.OnnxTransform.GetOutputSchema(Microsoft.ML.Runtime.Data.Schema)" />
+      <Member Id="M:Microsoft.ML.Transforms.OnnxTransform.GetRowToRowMapper(Microsoft.ML.Runtime.Data.Schema)" />
+      <Member Id="M:Microsoft.ML.Transforms.OnnxTransform.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+      <Member Id="M:Microsoft.ML.Transforms.OnnxTransform.Transform(Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="P:Microsoft.ML.Transforms.OnnxTransform.IsRowToRowMapper" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.OnnxTransform/Arguments" Id="T:Microsoft.ML.Transforms.OnnxTransform.Arguments">
+      <Member Id="F:Microsoft.ML.Transforms.OnnxTransform.Arguments.InputColumn" />
+      <Member Id="F:Microsoft.ML.Transforms.OnnxTransform.Arguments.ModelFile" />
+      <Member Id="F:Microsoft.ML.Transforms.OnnxTransform.Arguments.OutputColumn" />
+      <Member Id="M:Microsoft.ML.Transforms.OnnxTransform.Arguments.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Transforms.OptionalColumnTransform" Id="T:Microsoft.ML.Transforms.OptionalColumnTransform">
       <Member Id="F:Microsoft.ML.Transforms.OptionalColumnTransform.LoaderSignature" />

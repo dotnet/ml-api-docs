@@ -1,0 +1,463 @@
+﻿<Type Name="AdaptiveSingularSpectrumSequenceModeler" FullName="Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler">
+  <TypeSignature Language="C#" Value="public sealed class AdaptiveSingularSpectrumSequenceModeler : Microsoft.ML.Runtime.Model.ICanSaveModel, Microsoft.ML.Runtime.TimeSeriesProcessing.ISequenceModeler&lt;float,float&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit AdaptiveSingularSpectrumSequenceModeler extends System.Object implements class Microsoft.ML.Runtime.Model.ICanSaveModel, class Microsoft.ML.Runtime.TimeSeriesProcessing.ISequenceModeler`2&lt;float32, float32&gt;" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class AdaptiveSingularSpectrumSequenceModeler&#xA;Implements ICanSaveModel, ISequenceModeler(Of Single, Single)" />
+  <TypeSignature Language="F#" Value="type AdaptiveSingularSpectrumSequenceModeler = class&#xA;    interface ISequenceModeler&lt;single, single&gt;&#xA;    interface ICanSaveModel" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.Model.ICanSaveModel</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.TimeSeriesProcessing.ISequenceModeler&lt;System.Single,System.Single&gt;</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+            This class implements basic Singular Spectrum Analysis (SSA) model for modeling univariate time-series.
+            For the details of the model, refer to http://arxiv.org/pdf/1206.6910.pdf.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public AdaptiveSingularSpectrumSequenceModeler (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Model.ModelLoadContext ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Model.ModelLoadContext ctx) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, ctx As ModelLoadContext)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Model.ModelLoadContext -&gt; Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler" Usage="new Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler (env, ctx)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="ctx" Type="Microsoft.ML.Runtime.Model.ModelLoadContext" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="ctx">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public AdaptiveSingularSpectrumSequenceModeler (Microsoft.ML.Runtime.IHostEnvironment env, int trainSize, int seriesLength, int windowSize, float discountFactor = 1, Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue&lt;float&gt; buffer = null, Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.RankSelectionMethod rankSelectionMethod = Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler+RankSelectionMethod.Exact, Nullable&lt;int&gt; rank = null, Nullable&lt;int&gt; maxRank = null, bool shouldComputeForecastIntervals = true, bool shouldstablize = true, bool shouldMaintainInfo = false, Nullable&lt;Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.GrowthRatio&gt; maxGrowth = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, int32 trainSize, int32 seriesLength, int32 windowSize, float32 discountFactor, class Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue`1&lt;float32&gt; buffer, valuetype Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler/RankSelectionMethod rankSelectionMethod, valuetype System.Nullable`1&lt;int32&gt; rank, valuetype System.Nullable`1&lt;int32&gt; maxRank, bool shouldComputeForecastIntervals, bool shouldstablize, bool shouldMaintainInfo, valuetype System.Nullable`1&lt;valuetype Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler/GrowthRatio&gt; maxGrowth) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.Int32,System.Int32,System.Int32,System.Single,Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{System.Single},Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.RankSelectionMethod,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Boolean,System.Boolean,System.Boolean,System.Nullable{Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.GrowthRatio})" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler : Microsoft.ML.Runtime.IHostEnvironment * int * int * int * single * Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue&lt;single&gt; * Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.RankSelectionMethod * Nullable&lt;int&gt; * Nullable&lt;int&gt; * bool * bool * bool * Nullable&lt;Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.GrowthRatio&gt; -&gt; Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler" Usage="new Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler (env, trainSize, seriesLength, windowSize, discountFactor, buffer, rankSelectionMethod, rank, maxRank, shouldComputeForecastIntervals, shouldstablize, shouldMaintainInfo, maxGrowth)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="trainSize" Type="System.Int32" />
+        <Parameter Name="seriesLength" Type="System.Int32" />
+        <Parameter Name="windowSize" Type="System.Int32" />
+        <Parameter Name="discountFactor" Type="System.Single" />
+        <Parameter Name="buffer" Type="Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue&lt;System.Single&gt;" />
+        <Parameter Name="rankSelectionMethod" Type="Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler+RankSelectionMethod" />
+        <Parameter Name="rank" Type="System.Nullable&lt;System.Int32&gt;" />
+        <Parameter Name="maxRank" Type="System.Nullable&lt;System.Int32&gt;" />
+        <Parameter Name="shouldComputeForecastIntervals" Type="System.Boolean" />
+        <Parameter Name="shouldstablize" Type="System.Boolean" />
+        <Parameter Name="shouldMaintainInfo" Type="System.Boolean" />
+        <Parameter Name="maxGrowth" Type="System.Nullable&lt;Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler+GrowthRatio&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="env">The exception context.</param>
+        <param name="trainSize">The length of series from the begining used for training.</param>
+        <param name="seriesLength">The length of series that is kept in buffer for modeling (parameter N).</param>
+        <param name="windowSize">The length of the window on the series for building the trajectory matrix (parameter L).</param>
+        <param name="discountFactor">The discount factor in [0,1] used for online updates (default = 1).</param>
+        <param name="buffer">The buffer used to keep the series in the memory. If null, an internal buffer is created (default = null).</param>
+        <param name="rankSelectionMethod">The rank selection method (default = Exact).</param>
+        <param name="rank">The desired rank of the subspace used for SSA projection (parameter r). This parameter should be in the range in [1, windowSize].
+            If set to null, the rank is automatically determined based on prediction error minimization. (default = null)</param>
+        <param name="maxRank">The maximum rank considered during the rank selection process. If not provided (i.e. set to null), it is set to windowSize - 1.</param>
+        <param name="shouldComputeForecastIntervals">The flag determining whether the confidence bounds for the point forecasts should be computed. (default = true)</param>
+        <param name="shouldstablize">The flag determining whether the model should be stabilized.</param>
+        <param name="shouldMaintainInfo">The flag determining whether the meta information for the model needs to be maintained.</param>
+        <param name="maxGrowth">The maximum growth on the exponential trend</param>
+        <summary>
+            The constructor for Adaptive SSA model.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Clone">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.TimeSeriesProcessing.ISequenceModeler&lt;float,float&gt; Clone ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.TimeSeriesProcessing.ISequenceModeler`2&lt;float32, float32&gt; Clone() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.Clone" />
+      <MemberSignature Language="VB.NET" Value="Public Function Clone () As ISequenceModeler(Of Single, Single)" />
+      <MemberSignature Language="F#" Value="abstract member Clone : unit -&gt; Microsoft.ML.Runtime.TimeSeriesProcessing.ISequenceModeler&lt;single, single&gt;&#xA;override this.Clone : unit -&gt; Microsoft.ML.Runtime.TimeSeriesProcessing.ISequenceModeler&lt;single, single&gt;" Usage="adaptiveSingularSpectrumSequenceModeler.Clone " />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.TimeSeriesProcessing.ISequenceModeler`2.Clone</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.TimeSeriesProcessing.ISequenceModeler&lt;System.Single,System.Single&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ComputeForecastIntervals">
+      <MemberSignature Language="C#" Value="public static void ComputeForecastIntervals (ref Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.SsaForecastResult forecast, float confidenceLevel = 0.95);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void ComputeForecastIntervals(class Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler/SsaForecastResult&amp; forecast, float32 confidenceLevel) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.ComputeForecastIntervals(Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.SsaForecastResult@,System.Single)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Sub ComputeForecastIntervals (ByRef forecast As AdaptiveSingularSpectrumSequenceModeler.SsaForecastResult, Optional confidenceLevel As Single = 0.95)" />
+      <MemberSignature Language="F#" Value="static member ComputeForecastIntervals :  * single -&gt; unit" Usage="Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.ComputeForecastIntervals (forecast, confidenceLevel)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="forecast" Type="Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler+SsaForecastResult" RefType="ref" />
+        <Parameter Name="confidenceLevel" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="forecast">The input forecast object</param>
+        <param name="confidenceLevel">The confidence level in [0, 1)</param>
+        <summary>
+            Computes the forecast intervals for the input forecast object at the given confidence level. The results are stored in the forecast object.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Consume">
+      <MemberSignature Language="C#" Value="public void Consume (ref float input, bool updateModel = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Consume(float32&amp; input, bool updateModel) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.Consume(System.Single@,System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Consume (ByRef input As Single, Optional updateModel As Boolean = false)" />
+      <MemberSignature Language="F#" Value="abstract member Consume :  * bool -&gt; unit&#xA;override this.Consume :  * bool -&gt; unit" Usage="adaptiveSingularSpectrumSequenceModeler.Consume (input, updateModel)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="System.Single" RefType="ref" />
+        <Parameter Name="updateModel" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="input">The next observation on the series.</param>
+        <param name="updateModel">Determines whether the model parameters also need to be updated upon consuming the new observation (default = false).</param>
+        <summary>
+            Feeds the next observation on the series to the model and as a result changes the state of the model.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Forecast">
+      <MemberSignature Language="C#" Value="public void Forecast (ref Microsoft.ML.Runtime.TimeSeriesProcessing.ForecastResultBase&lt;float&gt; result, int horizon = 1);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Forecast(class Microsoft.ML.Runtime.TimeSeriesProcessing.ForecastResultBase`1&lt;float32&gt;&amp; result, int32 horizon) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.Forecast(Microsoft.ML.Runtime.TimeSeriesProcessing.ForecastResultBase{System.Single}@,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Forecast (ByRef result As ForecastResultBase(Of Single), Optional horizon As Integer = 1)" />
+      <MemberSignature Language="F#" Value="abstract member Forecast :  * int -&gt; unit&#xA;override this.Forecast :  * int -&gt; unit" Usage="adaptiveSingularSpectrumSequenceModeler.Forecast (result, horizon)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="result" Type="Microsoft.ML.Runtime.TimeSeriesProcessing.ForecastResultBase&lt;System.Single&gt;" RefType="ref" />
+        <Parameter Name="horizon" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="result">The forecast result.</param>
+        <param name="horizon">The forecast horizon.</param>
+        <summary>
+            Forecasts the future values of the series up to the given horizon.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Info">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.ModelInfo Info { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler/ModelInfo Info" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.Info" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Info As AdaptiveSingularSpectrumSequenceModeler.ModelInfo" />
+      <MemberSignature Language="F#" Value="member this.Info : Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.ModelInfo" Usage="Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.Info" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler+ModelInfo</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Returns the meta information about the learned model.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitState">
+      <MemberSignature Language="C#" Value="public void InitState ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void InitState() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.InitState" />
+      <MemberSignature Language="VB.NET" Value="Public Sub InitState ()" />
+      <MemberSignature Language="F#" Value="abstract member InitState : unit -&gt; unit&#xA;override this.InitState : unit -&gt; unit" Usage="adaptiveSingularSpectrumSequenceModeler.InitState " />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.TimeSeriesProcessing.ISequenceModeler`2.InitState</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LastSmoothedValue">
+      <MemberSignature Language="C#" Value="public float LastSmoothedValue { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 LastSmoothedValue" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.LastSmoothedValue" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property LastSmoothedValue As Single" />
+      <MemberSignature Language="F#" Value="member this.LastSmoothedValue : single" Usage="Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.LastSmoothedValue" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Returns the smoothed (via SSA projection) version of the last series observation fed to the model.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LastValue">
+      <MemberSignature Language="C#" Value="public float LastValue { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 LastValue" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.LastValue" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property LastValue As Single" />
+      <MemberSignature Language="F#" Value="member this.LastValue : single" Usage="Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.LastValue" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Returns the last series observation fed to the model.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoaderSignature">
+      <MemberSignature Language="C#" Value="public const string LoaderSignature;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal string LoaderSignature" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.LoaderSignature" />
+      <MemberSignature Language="VB.NET" Value="Public Const LoaderSignature As String " />
+      <MemberSignature Language="F#" Value="val mutable LoaderSignature : string" Usage="Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.LoaderSignature" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PredictNext">
+      <MemberSignature Language="C#" Value="public void PredictNext (ref float output);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void PredictNext(float32&amp; output) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.PredictNext(System.Single@)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub PredictNext (ByRef output As Single)" />
+      <MemberSignature Language="F#" Value="abstract member PredictNext :  -&gt; unit&#xA;override this.PredictNext :  -&gt; unit" Usage="adaptiveSingularSpectrumSequenceModeler.PredictNext output" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="output" Type="System.Single" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="output">The prediction result.</param>
+        <summary>
+            Predicts the next value on the series.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Rank">
+      <MemberSignature Language="C#" Value="public int Rank { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Rank" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.Rank" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Rank As Integer" />
+      <MemberSignature Language="F#" Value="member this.Rank : int" Usage="Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.Rank" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Returns the rank of the subspace used for SSA projection (parameter r).
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Save">
+      <MemberSignature Language="C#" Value="public void Save (Microsoft.ML.Runtime.Model.ModelSaveContext ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Save(class Microsoft.ML.Runtime.Model.ModelSaveContext ctx) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Save (ctx As ModelSaveContext)" />
+      <MemberSignature Language="F#" Value="abstract member Save : Microsoft.ML.Runtime.Model.ModelSaveContext -&gt; unit&#xA;override this.Save : Microsoft.ML.Runtime.Model.ModelSaveContext -&gt; unit" Usage="adaptiveSingularSpectrumSequenceModeler.Save ctx" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Model.ICanSaveModel.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ctx" Type="Microsoft.ML.Runtime.Model.ModelSaveContext" />
+      </Parameters>
+      <Docs>
+        <param name="ctx">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShouldComputeForecastIntervals">
+      <MemberSignature Language="C#" Value="public bool ShouldComputeForecastIntervals { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool ShouldComputeForecastIntervals" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.ShouldComputeForecastIntervals" />
+      <MemberSignature Language="VB.NET" Value="Public Property ShouldComputeForecastIntervals As Boolean" />
+      <MemberSignature Language="F#" Value="member this.ShouldComputeForecastIntervals : bool with get, set" Usage="Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.ShouldComputeForecastIntervals" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Determines whether the confidence interval required for forecasting.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Train">
+      <MemberSignature Language="C#" Value="public void Train (Microsoft.ML.Runtime.Data.RoleMappedData data);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Train(class Microsoft.ML.Runtime.Data.RoleMappedData data) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.Train(Microsoft.ML.Runtime.Data.RoleMappedData)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Train (data As RoleMappedData)" />
+      <MemberSignature Language="F#" Value="abstract member Train : Microsoft.ML.Runtime.Data.RoleMappedData -&gt; unit&#xA;override this.Train : Microsoft.ML.Runtime.Data.RoleMappedData -&gt; unit" Usage="adaptiveSingularSpectrumSequenceModeler.Train data" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.TimeSeriesProcessing.ISequenceModeler`2.Train(Microsoft.ML.Runtime.Data.RoleMappedData)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data" Type="Microsoft.ML.Runtime.Data.RoleMappedData" />
+      </Parameters>
+      <Docs>
+        <param name="data">The training time-series.</param>
+        <summary>
+            Train the model parameters based on a training series.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Train">
+      <MemberSignature Language="C#" Value="public void Train (Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue&lt;float&gt; data);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Train(class Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue`1&lt;float32&gt; data) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.TimeSeriesProcessing.AdaptiveSingularSpectrumSequenceModeler.Train(Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{System.Single})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Train (data As FixedSizeQueue(Of Single))" />
+      <MemberSignature Language="F#" Value="abstract member Train : Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue&lt;single&gt; -&gt; unit&#xA;override this.Train : Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue&lt;single&gt; -&gt; unit" Usage="adaptiveSingularSpectrumSequenceModeler.Train data" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.TimeSeriesProcessing.ISequenceModeler`2.Train(Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{`0})</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data" Type="Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue&lt;System.Single&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="data">The training time-series.</param>
+        <summary>
+            Train the model parameters based on a training series.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
