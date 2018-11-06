@@ -1,0 +1,305 @@
+﻿<Type Name="ShuffleTransform" FullName="Microsoft.ML.Transforms.ShuffleTransform">
+  <TypeSignature Language="C#" Value="public sealed class ShuffleTransform : Microsoft.ML.Runtime.Data.RowToRowTransformBase" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit ShuffleTransform extends Microsoft.ML.Runtime.Data.RowToRowTransformBase" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Transforms.ShuffleTransform" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class ShuffleTransform&#xA;Inherits RowToRowTransformBase" />
+  <TypeSignature Language="F#" Value="type ShuffleTransform = class&#xA;    inherit RowToRowTransformBase" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Data</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Microsoft.ML.Runtime.Data.RowToRowTransformBase</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+            This is a transform that, given any input dataview (even an unshufflable one) will,
+            when we construct a randomized cursor attempt to perform a rude version of shuffling
+            using a pool. A pool of a given number of rows will be constructed from the first
+            rows in the input cursor, and then, successively, the output cursor will yield one
+            of these rows and replace it with another row from the input.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ShuffleTransform (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Transforms.ShuffleTransform.Arguments args, Microsoft.ML.Runtime.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Transforms.ShuffleTransform/Arguments args, class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.ShuffleTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Transforms.ShuffleTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, args As ShuffleTransform.Arguments, input As IDataView)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.ShuffleTransform : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Transforms.ShuffleTransform.Arguments * Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Transforms.ShuffleTransform" Usage="new Microsoft.ML.Transforms.ShuffleTransform (env, args, input)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="args" Type="Microsoft.ML.Transforms.ShuffleTransform+Arguments" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="args">To be added.</param>
+        <param name="input">To be added.</param>
+        <summary>
+            Public constructor corresponding to SignatureDataTransform.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ShuffleTransform (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.IDataView input, int poolRows = 1000, bool poolOnly = false, bool forceShuffle = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.IDataView input, int32 poolRows, bool poolOnly, bool forceShuffle) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.ShuffleTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.Int32,System.Boolean,System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, input As IDataView, Optional poolRows As Integer = 1000, Optional poolOnly As Boolean = false, Optional forceShuffle As Boolean = false)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.ShuffleTransform : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.IDataView * int * bool * bool -&gt; Microsoft.ML.Transforms.ShuffleTransform" Usage="new Microsoft.ML.Transforms.ShuffleTransform (env, input, poolRows, poolOnly, forceShuffle)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="poolRows" Type="System.Int32" />
+        <Parameter Name="poolOnly" Type="System.Boolean" />
+        <Parameter Name="forceShuffle" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="env">Host Environment.</param>
+        <param name="input">Input <see cref="T:Microsoft.ML.Runtime.Data.IDataView" />. This is the output from previous transform or loader.</param>
+        <param name="poolRows">The pool will have this many rows</param>
+        <param name="poolOnly">If true, the transform will not attempt to shuffle the input cursor but only shuffle based on the pool. This parameter has no effect if the input data was not itself shufflable.</param>
+        <param name="forceShuffle">If true, the transform will always provide a shuffled view.</param>
+        <summary>
+            Convenience constructor for public facing API.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CanShuffle">
+      <MemberSignature Language="C#" Value="public override bool CanShuffle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool CanShuffle" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Transforms.ShuffleTransform.CanShuffle" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property CanShuffle As Boolean" />
+      <MemberSignature Language="F#" Value="member this.CanShuffle : bool" Usage="Microsoft.ML.Transforms.ShuffleTransform.CanShuffle" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.ShuffleTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Model.ModelLoadContext ctx, Microsoft.ML.Runtime.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.ShuffleTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Model.ModelLoadContext ctx, class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.ShuffleTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, ctx As ModelLoadContext, input As IDataView) As ShuffleTransform" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Model.ModelLoadContext * Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Transforms.ShuffleTransform" Usage="Microsoft.ML.Transforms.ShuffleTransform.Create (env, ctx, input)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Transforms.ShuffleTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="ctx" Type="Microsoft.ML.Runtime.Model.ModelLoadContext" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="ctx">To be added.</param>
+        <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRowCursorCore">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.IRowCursor GetRowCursorCore (Func&lt;int,bool&gt; predicate, Microsoft.ML.Runtime.IRandom rand = null);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.IRowCursor GetRowCursorCore(class System.Func`2&lt;int32, bool&gt; predicate, class Microsoft.ML.Runtime.IRandom rand) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.ShuffleTransform.GetRowCursorCore(System.Func{System.Int32,System.Boolean},Microsoft.ML.Runtime.IRandom)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetRowCursorCore (predicate As Func(Of Integer, Boolean), Optional rand As IRandom = null) As IRowCursor" />
+      <MemberSignature Language="F#" Value="override this.GetRowCursorCore : Func&lt;int, bool&gt; * Microsoft.ML.Runtime.IRandom -&gt; Microsoft.ML.Runtime.Data.IRowCursor" Usage="shuffleTransform.GetRowCursorCore (predicate, rand)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IRowCursor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+        <Parameter Name="rand" Type="Microsoft.ML.Runtime.IRandom" />
+      </Parameters>
+      <Docs>
+        <param name="predicate">To be added.</param>
+        <param name="rand">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRowCursorSet">
+      <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.Data.IRowCursor[] GetRowCursorSet (out Microsoft.ML.Runtime.Data.IRowCursorConsolidator consolidator, Func&lt;int,bool&gt; predicate, int n, Microsoft.ML.Runtime.IRandom rand = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Microsoft.ML.Runtime.Data.IRowCursor[] GetRowCursorSet([out] class Microsoft.ML.Runtime.Data.IRowCursorConsolidator&amp; consolidator, class System.Func`2&lt;int32, bool&gt; predicate, int32 n, class Microsoft.ML.Runtime.IRandom rand) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.ShuffleTransform.GetRowCursorSet(Microsoft.ML.Runtime.Data.IRowCursorConsolidator@,System.Func{System.Int32,System.Boolean},System.Int32,Microsoft.ML.Runtime.IRandom)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function GetRowCursorSet (ByRef consolidator As IRowCursorConsolidator, predicate As Func(Of Integer, Boolean), n As Integer, Optional rand As IRandom = null) As IRowCursor()" />
+      <MemberSignature Language="F#" Value="override this.GetRowCursorSet :  * Func&lt;int, bool&gt; * int * Microsoft.ML.Runtime.IRandom -&gt; Microsoft.ML.Runtime.Data.IRowCursor[]" Usage="shuffleTransform.GetRowCursorSet (consolidator, predicate, n, rand)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IRowCursor[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="consolidator" Type="Microsoft.ML.Runtime.Data.IRowCursorConsolidator" RefType="out" />
+        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+        <Parameter Name="n" Type="System.Int32" />
+        <Parameter Name="rand" Type="Microsoft.ML.Runtime.IRandom" />
+      </Parameters>
+      <Docs>
+        <param name="consolidator">To be added.</param>
+        <param name="predicate">To be added.</param>
+        <param name="n">To be added.</param>
+        <param name="rand">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetShuffledCursor">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IRowCursor GetShuffledCursor (Microsoft.ML.Runtime.IChannelProvider provider, int poolRows, Microsoft.ML.Runtime.Data.IRowCursor cursor, Microsoft.ML.Runtime.IRandom rand);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IRowCursor GetShuffledCursor(class Microsoft.ML.Runtime.IChannelProvider provider, int32 poolRows, class Microsoft.ML.Runtime.Data.IRowCursor cursor, class Microsoft.ML.Runtime.IRandom rand) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.ShuffleTransform.GetShuffledCursor(Microsoft.ML.Runtime.IChannelProvider,System.Int32,Microsoft.ML.Runtime.Data.IRowCursor,Microsoft.ML.Runtime.IRandom)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function GetShuffledCursor (provider As IChannelProvider, poolRows As Integer, cursor As IRowCursor, rand As IRandom) As IRowCursor" />
+      <MemberSignature Language="F#" Value="static member GetShuffledCursor : Microsoft.ML.Runtime.IChannelProvider * int * Microsoft.ML.Runtime.Data.IRowCursor * Microsoft.ML.Runtime.IRandom -&gt; Microsoft.ML.Runtime.Data.IRowCursor" Usage="Microsoft.ML.Transforms.ShuffleTransform.GetShuffledCursor (provider, poolRows, cursor, rand)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IRowCursor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="provider" Type="Microsoft.ML.Runtime.IChannelProvider" />
+        <Parameter Name="poolRows" Type="System.Int32" />
+        <Parameter Name="cursor" Type="Microsoft.ML.Runtime.Data.IRowCursor" />
+        <Parameter Name="rand" Type="Microsoft.ML.Runtime.IRandom" />
+      </Parameters>
+      <Docs>
+        <param name="provider">To be added.</param>
+        <param name="poolRows">To be added.</param>
+        <param name="cursor">To be added.</param>
+        <param name="rand">To be added.</param>
+        <summary>
+            Utility to take a cursor, and get a shuffled version of this cursor.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoaderSignature">
+      <MemberSignature Language="C#" Value="public const string LoaderSignature;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal string LoaderSignature" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.ShuffleTransform.LoaderSignature" />
+      <MemberSignature Language="VB.NET" Value="Public Const LoaderSignature As String " />
+      <MemberSignature Language="F#" Value="val mutable LoaderSignature : string" Usage="Microsoft.ML.Transforms.ShuffleTransform.LoaderSignature" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Save">
+      <MemberSignature Language="C#" Value="public override void Save (Microsoft.ML.Runtime.Model.ModelSaveContext ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Save(class Microsoft.ML.Runtime.Model.ModelSaveContext ctx) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.ShuffleTransform.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Sub Save (ctx As ModelSaveContext)" />
+      <MemberSignature Language="F#" Value="override this.Save : Microsoft.ML.Runtime.Model.ModelSaveContext -&gt; unit" Usage="shuffleTransform.Save ctx" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ctx" Type="Microsoft.ML.Runtime.Model.ModelSaveContext" />
+      </Parameters>
+      <Docs>
+        <param name="ctx">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Schema">
+      <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.Data.Schema Schema { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.Data.Schema Schema" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Transforms.ShuffleTransform.Schema" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property Schema As Schema" />
+      <MemberSignature Language="F#" Value="member this.Schema : Microsoft.ML.Runtime.Data.Schema" Usage="Microsoft.ML.Transforms.ShuffleTransform.Schema" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.Schema</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShouldUseParallelCursors">
+      <MemberSignature Language="C#" Value="protected override Nullable&lt;bool&gt; ShouldUseParallelCursors (Func&lt;int,bool&gt; predicate);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance valuetype System.Nullable`1&lt;bool&gt; ShouldUseParallelCursors(class System.Func`2&lt;int32, bool&gt; predicate) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.ShuffleTransform.ShouldUseParallelCursors(System.Func{System.Int32,System.Boolean})" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function ShouldUseParallelCursors (predicate As Func(Of Integer, Boolean)) As Nullable(Of Boolean)" />
+      <MemberSignature Language="F#" Value="override this.ShouldUseParallelCursors : Func&lt;int, bool&gt; -&gt; Nullable&lt;bool&gt;" Usage="shuffleTransform.ShouldUseParallelCursors predicate" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Nullable&lt;System.Boolean&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="predicate">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
