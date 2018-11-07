@@ -16,6 +16,7 @@
     <Assembly Name="Microsoft.ML.OnnxTransform" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.PCA" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.PipelineInference" Version="1.0.0.0" />
+    <Assembly Name="Microsoft.ML.Recommender" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.ResultProcessor" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.Runtime.ImageAnalytics" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.SamplesUtils" Version="1.0.0.0" />
@@ -16380,6 +16381,9 @@
       <Member Id="M:Microsoft.ML.StaticPipe.LightGbmTrainers.LightGbm``1(Microsoft.ML.MulticlassClassificationContext.MulticlassClassificationTrainers,Microsoft.ML.StaticPipe.Key{System.UInt32,``0},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Double},System.Int32,System.Action{Microsoft.ML.Runtime.LightGBM.LightGbmArguments},System.Action{Microsoft.ML.Runtime.Learners.OvaPredictor})" />
       <Member Id="M:Microsoft.ML.StaticPipe.LightGbmTrainers.LightGbm``1(Microsoft.ML.RankingContext.RankingTrainers,Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Key{System.UInt32,``0},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Double},System.Int32,System.Action{Microsoft.ML.Runtime.LightGBM.LightGbmArguments},System.Action{Microsoft.ML.Runtime.LightGBM.LightGbmRankingPredictor})" />
     </Type>
+    <Type Name="Microsoft.ML.StaticPipe.MatrixFactorizationExtensions" Id="T:Microsoft.ML.StaticPipe.MatrixFactorizationExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.MatrixFactorizationExtensions.MatrixFactorization``1(Microsoft.ML.RegressionContext.RegressionTrainers,Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Key{``0},Microsoft.ML.StaticPipe.Key{``0},System.Single,System.Int32,System.Single,System.Int32,System.Action{Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments},System.Action{Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor})" />
+    </Type>
     <Type Name="Microsoft.ML.StaticPipe.NormVector`1" Id="T:Microsoft.ML.StaticPipe.NormVector`1">
       <Member Id="M:Microsoft.ML.StaticPipe.NormVector`1.#ctor(Microsoft.ML.StaticPipe.Runtime.Reconciler,Microsoft.ML.StaticPipe.PipelineColumn[])" />
       <Member Id="M:Microsoft.ML.StaticPipe.NormVector`1.ToString" />
@@ -18288,6 +18292,30 @@
       <Member Id="P:Microsoft.ML.Trainers.LinearTrainerBase`2.Info" />
       <Member Id="P:Microsoft.ML.Trainers.LinearTrainerBase`2.ShuffleData" />
     </Type>
+    <Type Name="Microsoft.ML.Trainers.MatrixFactorizationTrainer" Id="T:Microsoft.ML.Trainers.MatrixFactorizationTrainer">
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Context" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.LabelColumn" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.LoadNameValue" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.MatrixColumnIndexColumn" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.MatrixRowIndexColumn" />
+      <Member Id="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments)" />
+      <Member Id="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String,Microsoft.ML.Core.Prediction.TrainerEstimatorContext,System.Action{Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments})" />
+      <Member Id="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Fit(Microsoft.ML.Runtime.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.GetOutputSchema(Microsoft.ML.Core.Data.SchemaShape)" />
+      <Member Id="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Train(Microsoft.ML.Runtime.TrainContext)" />
+      <Member Id="P:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Info" />
+      <Member Id="P:Microsoft.ML.Trainers.MatrixFactorizationTrainer.PredictionKind" />
+    </Type>
+    <Type Name="Microsoft.ML.Trainers.MatrixFactorizationTrainer/Arguments" Id="T:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments">
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments.Eta" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments.K" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments.Lambda" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments.NonNegative" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments.NumIterations" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments.NumThreads" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments.Quiet" />
+      <Member Id="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments.#ctor" />
+    </Type>
     <Type Name="Microsoft.ML.Trainers.MultiClassClassificationTrainers" Id="T:Microsoft.ML.Trainers.MultiClassClassificationTrainers">
       <Member Id="M:Microsoft.ML.Trainers.MultiClassClassificationTrainers.MultiClassNaiveBayesTrainer``1(Microsoft.ML.MulticlassClassificationContext.MulticlassClassificationTrainers,Microsoft.ML.StaticPipe.Key{System.UInt32,``0},Microsoft.ML.StaticPipe.Vector{System.Single},System.Action{Microsoft.ML.Trainers.MultiClassNaiveBayesPredictor})" />
     </Type>
@@ -18562,6 +18590,31 @@
       <Member Id="F:Microsoft.ML.Trainers.PCA.RandomizedPcaTrainer.Arguments.Rank" />
       <Member Id="F:Microsoft.ML.Trainers.PCA.RandomizedPcaTrainer.Arguments.Seed" />
       <Member Id="M:Microsoft.ML.Trainers.PCA.RandomizedPcaTrainer.Arguments.#ctor" />
+    </Type>
+  </Namespace>
+  <Namespace Name="Microsoft.ML.Trainers.Recommender">
+    <Type Name="Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer" Id="T:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer">
+      <Member Id="F:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer.LoaderSignature" />
+      <Member Id="M:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext)" />
+      <Member Id="M:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor,Microsoft.ML.Runtime.Data.Schema,System.String,System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer.GetOutputSchema(Microsoft.ML.Runtime.Data.Schema)" />
+      <Member Id="M:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+      <Member Id="P:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer.MatrixColumnIndexColumnName" />
+      <Member Id="P:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer.MatrixColumnIndexColumnType" />
+      <Member Id="P:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer.MatrixRowIndexColumnName" />
+      <Member Id="P:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer.MatrixRowIndexColumnType" />
+      <Member Id="P:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer.Scorer" />
+    </Type>
+    <Type Name="Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor" Id="T:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor">
+      <Member Id="M:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.Bind(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
+      <Member Id="M:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext)" />
+      <Member Id="M:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.GetMapper``3" />
+      <Member Id="M:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+      <Member Id="M:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.SaveAsText(System.IO.TextWriter,Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
+      <Member Id="P:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.MatrixColumnIndexType" />
+      <Member Id="P:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.MatrixRowIndexType" />
+      <Member Id="P:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.OutputType" />
+      <Member Id="P:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.PredictionKind" />
     </Type>
   </Namespace>
   <Namespace Name="Microsoft.ML.Trainers.SymSgd">
