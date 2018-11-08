@@ -1,0 +1,271 @@
+<Type Name="AveragedPerceptronTrainer" FullName="Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer">
+  <TypeSignature Language="C#" Value="public sealed class AveragedPerceptronTrainer : Microsoft.ML.Runtime.Learners.AveragedLinearTrainer&lt;Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.LinearBinaryPredictor&gt;,Microsoft.ML.Runtime.Learners.LinearBinaryPredictor&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit AveragedPerceptronTrainer extends Microsoft.ML.Runtime.Learners.AveragedLinearTrainer`2&lt;class Microsoft.ML.Runtime.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.Runtime.Learners.LinearBinaryPredictor&gt;, class Microsoft.ML.Runtime.Learners.LinearBinaryPredictor&gt;" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class AveragedPerceptronTrainer&#xA;Inherits AveragedLinearTrainer(Of BinaryPredictionTransformer(Of LinearBinaryPredictor), LinearBinaryPredictor)" />
+  <TypeSignature Language="F#" Value="type AveragedPerceptronTrainer = class&#xA;    inherit AveragedLinearTrainer&lt;BinaryPredictionTransformer&lt;LinearBinaryPredictor&gt;, LinearBinaryPredictor&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Microsoft.ML.Runtime.Learners.AveragedLinearTrainer&lt;Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer+Arguments,Microsoft.ML.Runtime.Learners.LinearBinaryPredictor&gt;</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Runtime.Learners.AveragedLinearTrainer&lt;Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.LinearBinaryPredictor&gt;,Microsoft.ML.Runtime.Learners.LinearBinaryPredictor&gt;</BaseTypeName>
+    <BaseTypeArguments>
+      <BaseTypeArgument TypeParamName="TTransformer">Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.LinearBinaryPredictor&gt;</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TModel">Microsoft.ML.Runtime.Learners.LinearBinaryPredictor</BaseTypeArgument>
+    </BaseTypeArguments>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+        Averaged Perceptron Binary Classifier. 
+      </summary>
+    <remarks>
+        Perceptron is a classification algorithm that makes its predictions based on a linear function.
+        I.e., for an instance with feature values f0, f1,..., f_D-1, , the prediction is given by the sign of sigma[0,D-1] ( w_i * f_i), where w_0, w_1,...,w_D-1 are the weights computed by the algorithm.
+        <para>
+          Perceptron is an online algorithm, i.e., it processes the instances in the training set one at a time.
+          The weights are initialized to be 0, or some random values. Then, for each example in the training set, the value of sigma[0, D-1] (w_i * f_i) is computed.
+          If this value has the same sign as the label of the current example, the weights remain the same. If they have opposite signs,
+          the weights vector is updated by either subtracting or adding (if the label is negative or positive, respectively) the feature vector of the current example,
+          multiplied by a factor 0 &lt; a &lt;= 1, called the learning rate. In a generalization of this algorithm, the weights are updated by adding the feature vector multiplied by the learning rate,
+          and by the gradient of some loss function (in the specific case described above, the loss is hinge-loss, whose gradient is 1 when it is non-zero).
+        </para><para>
+          In Averaged Perceptron (AKA voted-perceptron), the weight vectors are stored,
+          together with a weight that counts the number of iterations it survived (this is equivalent to storing the weight vector after every iteration, regardless of whether it was updated or not).
+          The prediction is then calculated by taking the weighted average of all the sums sigma[0, D-1] (w_i * f_i) or the different weight vectors.
+        </para><para> For more information see:</para><para><a href="https://en.wikipedia.org/wiki/Perceptron">Wikipedia entry for Perceptron</a></para><para><a href="https://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.48.8200">Large Margin Classification Using the Perceptron Algorithm</a></para></remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public AveragedPerceptronTrainer (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.Arguments args);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer/Arguments args) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.Arguments)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, args As AveragedPerceptronTrainer.Arguments)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.Arguments -&gt; Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer" Usage="new Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer (env, args)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="args" Type="Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer+Arguments" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="args">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CheckLabel">
+      <MemberSignature Language="C#" Value="protected override void CheckLabel (Microsoft.ML.Runtime.Data.RoleMappedData data);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void CheckLabel(class Microsoft.ML.Runtime.Data.RoleMappedData data) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.CheckLabel(Microsoft.ML.Runtime.Data.RoleMappedData)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Sub CheckLabel (data As RoleMappedData)" />
+      <MemberSignature Language="F#" Value="override this.CheckLabel : Microsoft.ML.Runtime.Data.RoleMappedData -&gt; unit" Usage="averagedPerceptronTrainer.CheckLabel data" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data" Type="Microsoft.ML.Runtime.Data.RoleMappedData" />
+      </Parameters>
+      <Docs>
+        <param name="data">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CheckLabelCompatible">
+      <MemberSignature Language="C#" Value="protected override void CheckLabelCompatible (Microsoft.ML.Core.Data.SchemaShape.Column labelCol);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void CheckLabelCompatible(class Microsoft.ML.Core.Data.SchemaShape/Column labelCol) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.CheckLabelCompatible(Microsoft.ML.Core.Data.SchemaShape.Column)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Sub CheckLabelCompatible (labelCol As SchemaShape.Column)" />
+      <MemberSignature Language="F#" Value="override this.CheckLabelCompatible : Microsoft.ML.Core.Data.SchemaShape.Column -&gt; unit" Usage="averagedPerceptronTrainer.CheckLabelCompatible labelCol" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="labelCol" Type="Microsoft.ML.Core.Data.SchemaShape+Column" />
+      </Parameters>
+      <Docs>
+        <param name="labelCol">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreatePredictor">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Learners.LinearBinaryPredictor CreatePredictor ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Learners.LinearBinaryPredictor CreatePredictor() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.CreatePredictor" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function CreatePredictor () As LinearBinaryPredictor" />
+      <MemberSignature Language="F#" Value="override this.CreatePredictor : unit -&gt; Microsoft.ML.Runtime.Learners.LinearBinaryPredictor" Usage="averagedPerceptronTrainer.CreatePredictor " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Learners.LinearBinaryPredictor</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetOutputColumnsCore">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Core.Data.SchemaShape.Column[] GetOutputColumnsCore (Microsoft.ML.Core.Data.SchemaShape inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Core.Data.SchemaShape/Column[] GetOutputColumnsCore(class Microsoft.ML.Core.Data.SchemaShape inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.GetOutputColumnsCore(Microsoft.ML.Core.Data.SchemaShape)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetOutputColumnsCore (inputSchema As SchemaShape) As SchemaShape.Column()" />
+      <MemberSignature Language="F#" Value="override this.GetOutputColumnsCore : Microsoft.ML.Core.Data.SchemaShape -&gt; Microsoft.ML.Core.Data.SchemaShape.Column[]" Usage="averagedPerceptronTrainer.GetOutputColumnsCore inputSchema" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Core.Data.SchemaShape+Column[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.Core.Data.SchemaShape" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadNameValue">
+      <MemberSignature Language="C#" Value="public const string LoadNameValue;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal string LoadNameValue" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.LoadNameValue" />
+      <MemberSignature Language="VB.NET" Value="Public Const LoadNameValue As String " />
+      <MemberSignature Language="F#" Value="val mutable LoadNameValue : string" Usage="Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.LoadNameValue" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MakeTransformer">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.LinearBinaryPredictor&gt; MakeTransformer (Microsoft.ML.Runtime.Learners.LinearBinaryPredictor model, Microsoft.ML.Runtime.Data.ISchema trainSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.Runtime.Learners.LinearBinaryPredictor&gt; MakeTransformer(class Microsoft.ML.Runtime.Learners.LinearBinaryPredictor model, class Microsoft.ML.Runtime.Data.ISchema trainSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.MakeTransformer(Microsoft.ML.Runtime.Learners.LinearBinaryPredictor,Microsoft.ML.Runtime.Data.ISchema)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function MakeTransformer (model As LinearBinaryPredictor, trainSchema As ISchema) As BinaryPredictionTransformer(Of LinearBinaryPredictor)" />
+      <MemberSignature Language="F#" Value="override this.MakeTransformer : Microsoft.ML.Runtime.Learners.LinearBinaryPredictor * Microsoft.ML.Runtime.Data.ISchema -&gt; Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.LinearBinaryPredictor&gt;" Usage="averagedPerceptronTrainer.MakeTransformer (model, trainSchema)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.LinearBinaryPredictor&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="model" Type="Microsoft.ML.Runtime.Learners.LinearBinaryPredictor" />
+        <Parameter Name="trainSchema" Type="Microsoft.ML.Runtime.Data.ISchema" />
+      </Parameters>
+      <Docs>
+        <param name="model">To be added.</param>
+        <param name="trainSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NeedCalibration">
+      <MemberSignature Language="C#" Value="protected override bool NeedCalibration { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool NeedCalibration" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.NeedCalibration" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides ReadOnly Property NeedCalibration As Boolean" />
+      <MemberSignature Language="F#" Value="member this.NeedCalibration : bool" Usage="Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.NeedCalibration" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PredictionKind">
+      <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.PredictionKind PredictionKind { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.ML.Runtime.PredictionKind PredictionKind" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.PredictionKind" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property PredictionKind As PredictionKind" />
+      <MemberSignature Language="F#" Value="member this.PredictionKind : Microsoft.ML.Runtime.PredictionKind" Usage="Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.PredictionKind" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.PredictionKind</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TrainBinary">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.EntryPoints.CommonOutputs.BinaryClassificationOutput TrainBinary (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.Arguments input);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.EntryPoints.CommonOutputs/BinaryClassificationOutput TrainBinary(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer/Arguments input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.TrainBinary(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.Arguments)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function TrainBinary (env As IHostEnvironment, input As AveragedPerceptronTrainer.Arguments) As CommonOutputs.BinaryClassificationOutput" />
+      <MemberSignature Language="F#" Value="static member TrainBinary : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.Arguments -&gt; Microsoft.ML.Runtime.EntryPoints.CommonOutputs.BinaryClassificationOutput" Usage="Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer.TrainBinary (env, input)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="Averaged Perceptron Binary Classifier.", Name="Trainers.AveragedPerceptronBinaryClassifier", ShortName="ap", UserName="Averaged Perceptron", XmlInclude=new System.String[] { "&lt;include file='../Microsoft.ML.StandardLearners/Standard/Online/doc.xml' path='doc/members/member[@name="AP"]/*' /&gt;", "&lt;include file='../Microsoft.ML.StandardLearners/Standard/Online/doc.xml' path='doc/members/example[@name="AP"]/*' /&gt;" })</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.EntryPoints.CommonOutputs+BinaryClassificationOutput</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Learners.AveragedPerceptronTrainer+Arguments" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

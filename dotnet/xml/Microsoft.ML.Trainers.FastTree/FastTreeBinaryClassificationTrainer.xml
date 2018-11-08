@@ -1,0 +1,333 @@
+﻿<Type Name="FastTreeBinaryClassificationTrainer" FullName="Microsoft.ML.Trainers.FastTree.FastTreeBinaryClassificationTrainer">
+  <TypeSignature Language="C#" Value="public sealed class FastTreeBinaryClassificationTrainer : Microsoft.ML.Trainers.FastTree.BoostingFastTreeTrainerBase&lt;Microsoft.ML.Trainers.FastTree.FastTreeBinaryClassificationTrainer.Arguments,Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt;&gt;,Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt;&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit FastTreeBinaryClassificationTrainer extends Microsoft.ML.Trainers.FastTree.BoostingFastTreeTrainerBase`3&lt;class Microsoft.ML.Trainers.FastTree.FastTreeBinaryClassificationTrainer/Arguments, class Microsoft.ML.Runtime.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt;&gt;, class Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt;&gt;" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Trainers.FastTree.FastTreeBinaryClassificationTrainer" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class FastTreeBinaryClassificationTrainer&#xA;Inherits BoostingFastTreeTrainerBase(Of FastTreeBinaryClassificationTrainer.Arguments, BinaryPredictionTransformer(Of IPredictorWithFeatureWeights(Of Single)), IPredictorWithFeatureWeights(Of Single))" />
+  <TypeSignature Language="F#" Value="type FastTreeBinaryClassificationTrainer = class&#xA;    inherit BoostingFastTreeTrainerBase&lt;FastTreeBinaryClassificationTrainer.Arguments, BinaryPredictionTransformer&lt;IPredictorWithFeatureWeights&lt;single&gt;&gt;, IPredictorWithFeatureWeights&lt;single&gt;&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Microsoft.ML.Trainers.FastTree.BoostingFastTreeTrainerBase&lt;Microsoft.ML.Trainers.FastTree.FastTreeBinaryClassificationTrainer+Arguments,Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;,Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;</BaseTypeName>
+    <BaseTypeArguments>
+      <BaseTypeArgument TypeParamName="TArgs">Microsoft.ML.Trainers.FastTree.FastTreeBinaryClassificationTrainer+Arguments</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TTransformer">Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TModel">Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;</BaseTypeArgument>
+    </BaseTypeArguments>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+        Trains gradient boosted decision trees to the LambdaRank quasi-gradient. 
+      </summary>
+    <remarks>
+      <para>
+          FastTree is an efficient implementation of the <a href="https://arxiv.org/abs/1505.01866">MART</a> gradient boosting algorithm.
+          Gradient boosting is a machine learning technique for regression problems.
+          It builds each regression tree in a step-wise fashion, using a predefined loss function to measure the error for each step and corrects for it in the next.
+          So this prediction model is actually an ensemble of weaker prediction models. In regression problems, boosting builds a series of of such trees in a step-wise fashion and then selects the optimal tree using an arbitrary differentiable loss function.
+        </para>
+      <para>
+          MART learns an ensemble of regression trees, which is a decision tree with scalar values in its leaves.
+          A decision (or regression) tree is a binary tree-like flow chart, where at each interior node one decides which of the two child nodes to continue to based on one of the feature values from the input.
+          At each leaf node, a value is returned. In the interior nodes, the decision is based on the test 'x &lt;= v' where x is the value of the feature in the input sample and v is one of the possible values of this feature.
+          The functions that can be produced by a regression tree are all the piece-wise constant functions.
+        </para>
+      <para>
+          The ensemble of trees is produced by computing, in each step, a regression tree that approximates the gradient of the loss function, and adding it to the previous tree with coefficients that minimize the loss of the new tree.
+          The output of the ensemble produced by MART on a given instance is the sum of the tree outputs.
+        </para>
+      <list type="bullet">
+        <item>
+          <description>In case of a binary classification problem, the output is converted to a probability by using some form of calibration.</description>
+        </item>
+        <item>
+          <description>In case of a regression problem, the output is the predicted value of the function.</description>
+        </item>
+        <item>
+          <description>In case of a ranking problem, the instances are ordered by the output value of the ensemble.</description>
+        </item>
+      </list>
+      <para>For more information see:</para>
+      <list type="bullet">
+        <item>
+          <description>
+            <a href="https://en.wikipedia.org/wiki/Gradient_boosting#Gradient_tree_boosting">Wikipedia: Gradient boosting (Gradient tree boosting).</a>
+          </description>
+        </item>
+        <item>
+          <description>
+            <a href="https://projecteuclid.org/DPubS?service=UI&amp;version=1.0&amp;verb=Display&amp;handle=euclid.aos/1013203451">Greedy function approximation: A gradient boosting machine.</a>
+          </description>
+        </item>
+      </list>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public FastTreeBinaryClassificationTrainer (Microsoft.ML.Runtime.IHostEnvironment env, string labelColumn, string featureColumn, string weightColumn = null, int numLeaves = 20, int numTrees = 100, int minDocumentsInLeafs = 10, double learningRate = 0.2, Action&lt;Microsoft.ML.Trainers.FastTree.FastTreeBinaryClassificationTrainer.Arguments&gt; advancedSettings = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string labelColumn, string featureColumn, string weightColumn, int32 numLeaves, int32 numTrees, int32 minDocumentsInLeafs, float64 learningRate, class System.Action`1&lt;class Microsoft.ML.Trainers.FastTree.FastTreeBinaryClassificationTrainer/Arguments&gt; advancedSettings) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastTreeBinaryClassificationTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Double,System.Action{Microsoft.ML.Trainers.FastTree.FastTreeBinaryClassificationTrainer.Arguments})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, labelColumn As String, featureColumn As String, Optional weightColumn As String = null, Optional numLeaves As Integer = 20, Optional numTrees As Integer = 100, Optional minDocumentsInLeafs As Integer = 10, Optional learningRate As Double = 0.2, Optional advancedSettings As Action(Of FastTreeBinaryClassificationTrainer.Arguments) = null)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Trainers.FastTree.FastTreeBinaryClassificationTrainer : Microsoft.ML.Runtime.IHostEnvironment * string * string * string * int * int * int * double * Action&lt;Microsoft.ML.Trainers.FastTree.FastTreeBinaryClassificationTrainer.Arguments&gt; -&gt; Microsoft.ML.Trainers.FastTree.FastTreeBinaryClassificationTrainer" Usage="new Microsoft.ML.Trainers.FastTree.FastTreeBinaryClassificationTrainer (env, labelColumn, featureColumn, weightColumn, numLeaves, numTrees, minDocumentsInLeafs, learningRate, advancedSettings)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="labelColumn" Type="System.String" />
+        <Parameter Name="featureColumn" Type="System.String" />
+        <Parameter Name="weightColumn" Type="System.String" />
+        <Parameter Name="numLeaves" Type="System.Int32" />
+        <Parameter Name="numTrees" Type="System.Int32" />
+        <Parameter Name="minDocumentsInLeafs" Type="System.Int32" />
+        <Parameter Name="learningRate" Type="System.Double" />
+        <Parameter Name="advancedSettings" Type="System.Action&lt;Microsoft.ML.Trainers.FastTree.FastTreeBinaryClassificationTrainer+Arguments&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="env">The private instance of <see cref="T:Microsoft.ML.Runtime.IHostEnvironment" />.</param>
+        <param name="labelColumn">The name of the label column.</param>
+        <param name="featureColumn">The name of the feature column.</param>
+        <param name="weightColumn">The name for the column containing the initial weight.</param>
+        <param name="numLeaves">The max number of leaves in each regression tree.</param>
+        <param name="numTrees">Total number of decision trees to create in the ensemble.</param>
+        <param name="minDocumentsInLeafs">The minimal number of documents allowed in a leaf of a regression tree, out of the subsampled data.</param>
+        <param name="learningRate">The learning rate.</param>
+        <param name="advancedSettings">A delegate to apply all the advanced arguments to the algorithm.</param>
+        <summary>
+            Initializes a new instance of <see cref="T:Microsoft.ML.Trainers.FastTree.FastTreeBinaryClassificationTrainer" /></summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConstructObjFunc">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Trainers.FastTree.Internal.ObjectiveFunctionBase ConstructObjFunc (Microsoft.ML.Runtime.IChannel ch);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Trainers.FastTree.Internal.ObjectiveFunctionBase ConstructObjFunc(class Microsoft.ML.Runtime.IChannel ch) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastTreeBinaryClassificationTrainer.ConstructObjFunc(Microsoft.ML.Runtime.IChannel)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function ConstructObjFunc (ch As IChannel) As ObjectiveFunctionBase" />
+      <MemberSignature Language="F#" Value="override this.ConstructObjFunc : Microsoft.ML.Runtime.IChannel -&gt; Microsoft.ML.Trainers.FastTree.Internal.ObjectiveFunctionBase" Usage="fastTreeBinaryClassificationTrainer.ConstructObjFunc ch" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Trainers.FastTree.Internal.ObjectiveFunctionBase</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
+      </Parameters>
+      <Docs>
+        <param name="ch">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConstructOptimizationAlgorithm">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Trainers.FastTree.Internal.OptimizationAlgorithm ConstructOptimizationAlgorithm (Microsoft.ML.Runtime.IChannel ch);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Trainers.FastTree.Internal.OptimizationAlgorithm ConstructOptimizationAlgorithm(class Microsoft.ML.Runtime.IChannel ch) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastTreeBinaryClassificationTrainer.ConstructOptimizationAlgorithm(Microsoft.ML.Runtime.IChannel)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function ConstructOptimizationAlgorithm (ch As IChannel) As OptimizationAlgorithm" />
+      <MemberSignature Language="F#" Value="override this.ConstructOptimizationAlgorithm : Microsoft.ML.Runtime.IChannel -&gt; Microsoft.ML.Trainers.FastTree.Internal.OptimizationAlgorithm" Usage="fastTreeBinaryClassificationTrainer.ConstructOptimizationAlgorithm ch" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Trainers.FastTree.Internal.OptimizationAlgorithm</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
+      </Parameters>
+      <Docs>
+        <param name="ch">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConstructTestForTrainingData">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Trainers.FastTree.Internal.Test ConstructTestForTrainingData ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Trainers.FastTree.Internal.Test ConstructTestForTrainingData() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastTreeBinaryClassificationTrainer.ConstructTestForTrainingData" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function ConstructTestForTrainingData () As Test" />
+      <MemberSignature Language="F#" Value="override this.ConstructTestForTrainingData : unit -&gt; Microsoft.ML.Trainers.FastTree.Internal.Test" Usage="fastTreeBinaryClassificationTrainer.ConstructTestForTrainingData " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Trainers.FastTree.Internal.Test</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetOutputColumnsCore">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Core.Data.SchemaShape.Column[] GetOutputColumnsCore (Microsoft.ML.Core.Data.SchemaShape inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Core.Data.SchemaShape/Column[] GetOutputColumnsCore(class Microsoft.ML.Core.Data.SchemaShape inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastTreeBinaryClassificationTrainer.GetOutputColumnsCore(Microsoft.ML.Core.Data.SchemaShape)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetOutputColumnsCore (inputSchema As SchemaShape) As SchemaShape.Column()" />
+      <MemberSignature Language="F#" Value="override this.GetOutputColumnsCore : Microsoft.ML.Core.Data.SchemaShape -&gt; Microsoft.ML.Core.Data.SchemaShape.Column[]" Usage="fastTreeBinaryClassificationTrainer.GetOutputColumnsCore inputSchema" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Core.Data.SchemaShape+Column[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.Core.Data.SchemaShape" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitializeTests">
+      <MemberSignature Language="C#" Value="protected override void InitializeTests ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void InitializeTests() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastTreeBinaryClassificationTrainer.InitializeTests" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Sub InitializeTests ()" />
+      <MemberSignature Language="F#" Value="override this.InitializeTests : unit -&gt; unit" Usage="fastTreeBinaryClassificationTrainer.InitializeTests " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadNameValue">
+      <MemberSignature Language="C#" Value="public const string LoadNameValue;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal string LoadNameValue" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.FastTreeBinaryClassificationTrainer.LoadNameValue" />
+      <MemberSignature Language="VB.NET" Value="Public Const LoadNameValue As String " />
+      <MemberSignature Language="F#" Value="val mutable LoadNameValue : string" Usage="Microsoft.ML.Trainers.FastTree.FastTreeBinaryClassificationTrainer.LoadNameValue" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The LoadName for the assembly containing the trainer.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MakeTransformer">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt;&gt; MakeTransformer (Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt; model, Microsoft.ML.Runtime.Data.Schema trainSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt;&gt; MakeTransformer(class Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt; model, class Microsoft.ML.Runtime.Data.Schema trainSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastTreeBinaryClassificationTrainer.MakeTransformer(Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights{System.Single},Microsoft.ML.Runtime.Data.Schema)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function MakeTransformer (model As IPredictorWithFeatureWeights(Of Single), trainSchema As Schema) As BinaryPredictionTransformer(Of IPredictorWithFeatureWeights(Of Single))" />
+      <MemberSignature Language="F#" Value="override this.MakeTransformer : Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;single&gt; * Microsoft.ML.Runtime.Data.Schema -&gt; Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;single&gt;&gt;" Usage="fastTreeBinaryClassificationTrainer.MakeTransformer (model, trainSchema)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="model" Type="Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;" />
+        <Parameter Name="trainSchema" Type="Microsoft.ML.Runtime.Data.Schema" />
+      </Parameters>
+      <Docs>
+        <param name="model">To be added.</param>
+        <param name="trainSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PredictionKind">
+      <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.PredictionKind PredictionKind { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.ML.Runtime.PredictionKind PredictionKind" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FastTree.FastTreeBinaryClassificationTrainer.PredictionKind" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property PredictionKind As PredictionKind" />
+      <MemberSignature Language="F#" Value="member this.PredictionKind : Microsoft.ML.Runtime.PredictionKind" Usage="Microsoft.ML.Trainers.FastTree.FastTreeBinaryClassificationTrainer.PredictionKind" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.PredictionKind</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PrepareLabels">
+      <MemberSignature Language="C#" Value="protected override void PrepareLabels (Microsoft.ML.Runtime.IChannel ch);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void PrepareLabels(class Microsoft.ML.Runtime.IChannel ch) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastTreeBinaryClassificationTrainer.PrepareLabels(Microsoft.ML.Runtime.IChannel)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Sub PrepareLabels (ch As IChannel)" />
+      <MemberSignature Language="F#" Value="override this.PrepareLabels : Microsoft.ML.Runtime.IChannel -&gt; unit" Usage="fastTreeBinaryClassificationTrainer.PrepareLabels ch" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
+      </Parameters>
+      <Docs>
+        <param name="ch">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TrainModelCore">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt; TrainModelCore (Microsoft.ML.Runtime.TrainContext context);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt; TrainModelCore(class Microsoft.ML.Runtime.TrainContext context) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastTreeBinaryClassificationTrainer.TrainModelCore(Microsoft.ML.Runtime.TrainContext)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function TrainModelCore (context As TrainContext) As IPredictorWithFeatureWeights(Of Single)" />
+      <MemberSignature Language="F#" Value="override this.TrainModelCore : Microsoft.ML.Runtime.TrainContext -&gt; Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;single&gt;" Usage="fastTreeBinaryClassificationTrainer.TrainModelCore context" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="context" Type="Microsoft.ML.Runtime.TrainContext" />
+      </Parameters>
+      <Docs>
+        <param name="context">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

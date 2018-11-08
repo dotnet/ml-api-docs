@@ -1,9 +1,9 @@
-﻿<Type Name="Estimator&lt;TTupleInShape,TTupleOutShape,TTransformer&gt;" FullName="Microsoft.ML.StaticPipe.Estimator&lt;TTupleInShape,TTupleOutShape,TTransformer&gt;">
-  <TypeSignature Language="C#" Value="public sealed class Estimator&lt;TTupleInShape,TTupleOutShape,TTransformer&gt; : Microsoft.ML.StaticPipe.SchemaBearing&lt;TTupleOutShape&gt; where TTransformer : class, ITransformer" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit Estimator`3&lt;TTupleInShape, TTupleOutShape, class (class Microsoft.ML.Core.Data.ITransformer) TTransformer&gt; extends Microsoft.ML.StaticPipe.SchemaBearing`1&lt;!TTupleOutShape&gt;" />
+﻿<Type Name="Estimator&lt;TInShape,TOutShape,TTransformer&gt;" FullName="Microsoft.ML.StaticPipe.Estimator&lt;TInShape,TOutShape,TTransformer&gt;">
+  <TypeSignature Language="C#" Value="public sealed class Estimator&lt;TInShape,TOutShape,TTransformer&gt; : Microsoft.ML.StaticPipe.SchemaBearing&lt;TOutShape&gt; where TTransformer : class, ITransformer" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit Estimator`3&lt;TInShape, TOutShape, class (class Microsoft.ML.Core.Data.ITransformer) TTransformer&gt; extends Microsoft.ML.StaticPipe.SchemaBearing`1&lt;!TOutShape&gt;" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.StaticPipe.Estimator`3" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class Estimator(Of TTupleInShape, TTupleOutShape, TTransformer)&#xA;Inherits SchemaBearing(Of TTupleOutShape)" />
-  <TypeSignature Language="F#" Value="type Estimator&lt;'upleInShape, 'upleOutShape, 'ransformer (requires 'ransformer : null and 'ransformer :&gt; ITransformer)&gt; = class&#xA;    inherit SchemaBearing&lt;'upleOutShape&gt;" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class Estimator(Of TInShape, TOutShape, TTransformer)&#xA;Inherits SchemaBearing(Of TOutShape)" />
+  <TypeSignature Language="F#" Value="type Estimator&lt;'InShape, 'OutShape, 'ransformer (requires 'ransformer : null and 'ransformer :&gt; ITransformer)&gt; = class&#xA;    inherit SchemaBearing&lt;'OutShape&gt;" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.Data</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -20,63 +20,66 @@
   </TypeParameters>
   <Base>
     <BaseTypeName>Microsoft.ML.StaticPipe.SchemaBearing&lt;TTupleOutShape&gt;</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.StaticPipe.SchemaBearing&lt;TOutShape&gt;</BaseTypeName>
     <BaseTypeArguments>
-      <BaseTypeArgument TypeParamName="TTupleShape">TTupleOutShape</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TShape">TOutShape</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
   <Interfaces />
   <Docs>
     <typeparam name="TTupleInShape">To be added.</typeparam>
+    <typeparam name="TInShape">To be added.</typeparam>
+    <typeparam name="TOutShape">To be added.</typeparam>
     <typeparam name="TTupleOutShape">To be added.</typeparam>
     <typeparam name="TTransformer">To be added.</typeparam>
     <summary>To be added.</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName="Append&lt;TTupleNewOutShape&gt;">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.StaticPipe.Estimator&lt;TTupleInShape,TTupleNewOutShape,Microsoft.ML.Core.Data.ITransformer&gt; Append&lt;TTupleNewOutShape&gt; (Microsoft.ML.StaticPipe.Estimator&lt;TTupleOutShape,TTupleNewOutShape,Microsoft.ML.Core.Data.ITransformer&gt; estimator);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.StaticPipe.Estimator`3&lt;!TTupleInShape, !!TTupleNewOutShape, class Microsoft.ML.Core.Data.ITransformer&gt; Append&lt;TTupleNewOutShape&gt;(class Microsoft.ML.StaticPipe.Estimator`3&lt;!TTupleOutShape, !!TTupleNewOutShape, class Microsoft.ML.Core.Data.ITransformer&gt; estimator) cil managed" />
+    <Member MemberName="Append&lt;TNewOutShape&gt;">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.StaticPipe.Estimator&lt;TInShape,TNewOutShape,Microsoft.ML.Core.Data.ITransformer&gt; Append&lt;TNewOutShape&gt; (Microsoft.ML.StaticPipe.Estimator&lt;TOutShape,TNewOutShape,Microsoft.ML.Core.Data.ITransformer&gt; estimator);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.StaticPipe.Estimator`3&lt;!TInShape, !!TNewOutShape, class Microsoft.ML.Core.Data.ITransformer&gt; Append&lt;TNewOutShape&gt;(class Microsoft.ML.StaticPipe.Estimator`3&lt;!TOutShape, !!TNewOutShape, class Microsoft.ML.Core.Data.ITransformer&gt; estimator) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.Estimator`3.Append``1(Microsoft.ML.StaticPipe.Estimator{`1,``0,Microsoft.ML.Core.Data.ITransformer})" />
-      <MemberSignature Language="VB.NET" Value="Public Function Append(Of TTupleNewOutShape) (estimator As Estimator(Of TTupleOutShape, TTupleNewOutShape, ITransformer)) As Estimator(Of TTupleInShape, TTupleNewOutShape, ITransformer)" />
-      <MemberSignature Language="F#" Value="member this.Append : Microsoft.ML.StaticPipe.Estimator&lt;'upleOutShape, 'upleNewOutShape, Microsoft.ML.Core.Data.ITransformer&gt; -&gt; Microsoft.ML.StaticPipe.Estimator&lt;'upleInShape, 'upleNewOutShape, Microsoft.ML.Core.Data.ITransformer&gt;" Usage="estimator.Append estimator" />
+      <MemberSignature Language="VB.NET" Value="Public Function Append(Of TNewOutShape) (estimator As Estimator(Of TOutShape, TNewOutShape, ITransformer)) As Estimator(Of TInShape, TNewOutShape, ITransformer)" />
+      <MemberSignature Language="F#" Value="member this.Append : Microsoft.ML.StaticPipe.Estimator&lt;'OutShape, 'NewOutShape, Microsoft.ML.Core.Data.ITransformer&gt; -&gt; Microsoft.ML.StaticPipe.Estimator&lt;'InShape, 'NewOutShape, Microsoft.ML.Core.Data.ITransformer&gt;" Usage="estimator.Append estimator" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.StaticPipe.Estimator&lt;TTupleInShape,TTupleNewOutShape,Microsoft.ML.Core.Data.ITransformer&gt;</ReturnType>
+        <ReturnType>Microsoft.ML.StaticPipe.Estimator&lt;TInShape,TNewOutShape,Microsoft.ML.Core.Data.ITransformer&gt;</ReturnType>
       </ReturnValue>
       <TypeParameters>
-        <TypeParameter Name="TTupleNewOutShape" />
+        <TypeParameter Name="TNewOutShape" />
       </TypeParameters>
       <Parameters>
-        <Parameter Name="estimator" Type="Microsoft.ML.StaticPipe.Estimator&lt;TTupleOutShape,TTupleNewOutShape,Microsoft.ML.Core.Data.ITransformer&gt;" />
+        <Parameter Name="estimator" Type="Microsoft.ML.StaticPipe.Estimator&lt;TOutShape,TNewOutShape,Microsoft.ML.Core.Data.ITransformer&gt;" />
       </Parameters>
       <Docs>
-        <typeparam name="TTupleNewOutShape">To be added.</typeparam>
+        <typeparam name="TNewOutShape">To be added.</typeparam>
         <param name="estimator">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Append&lt;TTupleNewOutShape&gt;">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.StaticPipe.Estimator&lt;TTupleInShape,TTupleNewOutShape,Microsoft.ML.Core.Data.ITransformer&gt; Append&lt;TTupleNewOutShape&gt; (Func&lt;TTupleOutShape,TTupleNewOutShape&gt; mapper);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.StaticPipe.Estimator`3&lt;!TTupleInShape, !!TTupleNewOutShape, class Microsoft.ML.Core.Data.ITransformer&gt; Append&lt;TTupleNewOutShape&gt;(class System.Func`2&lt;!TTupleOutShape, !!TTupleNewOutShape&gt; mapper) cil managed" />
+    <Member MemberName="Append&lt;TNewOutShape&gt;">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.StaticPipe.Estimator&lt;TInShape,TNewOutShape,Microsoft.ML.Core.Data.ITransformer&gt; Append&lt;TNewOutShape&gt; (Func&lt;TOutShape,TNewOutShape&gt; mapper);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.StaticPipe.Estimator`3&lt;!TInShape, !!TNewOutShape, class Microsoft.ML.Core.Data.ITransformer&gt; Append&lt;TNewOutShape&gt;(class System.Func`2&lt;!TOutShape, !!TNewOutShape&gt; mapper) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.Estimator`3.Append``1(System.Func{`1,``0})" />
-      <MemberSignature Language="VB.NET" Value="Public Function Append(Of TTupleNewOutShape) (mapper As Func(Of TTupleOutShape, TTupleNewOutShape)) As Estimator(Of TTupleInShape, TTupleNewOutShape, ITransformer)" />
-      <MemberSignature Language="F#" Value="member this.Append : Func&lt;'upleOutShape, 'upleNewOutShape&gt; -&gt; Microsoft.ML.StaticPipe.Estimator&lt;'upleInShape, 'upleNewOutShape, Microsoft.ML.Core.Data.ITransformer&gt;" Usage="estimator.Append mapper" />
+      <MemberSignature Language="VB.NET" Value="Public Function Append(Of TNewOutShape) (mapper As Func(Of TOutShape, TNewOutShape)) As Estimator(Of TInShape, TNewOutShape, ITransformer)" />
+      <MemberSignature Language="F#" Value="member this.Append : Func&lt;'OutShape, 'NewOutShape&gt; -&gt; Microsoft.ML.StaticPipe.Estimator&lt;'InShape, 'NewOutShape, Microsoft.ML.Core.Data.ITransformer&gt;" Usage="estimator.Append mapper" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.StaticPipe.Estimator&lt;TTupleInShape,TTupleNewOutShape,Microsoft.ML.Core.Data.ITransformer&gt;</ReturnType>
+        <ReturnType>Microsoft.ML.StaticPipe.Estimator&lt;TInShape,TNewOutShape,Microsoft.ML.Core.Data.ITransformer&gt;</ReturnType>
       </ReturnValue>
       <TypeParameters>
-        <TypeParameter Name="TTupleNewOutShape">
+        <TypeParameter Name="TNewOutShape">
           <Attributes>
             <Attribute>
               <AttributeName>Microsoft.ML.StaticPipe.IsShape</AttributeName>
@@ -85,10 +88,10 @@
         </TypeParameter>
       </TypeParameters>
       <Parameters>
-        <Parameter Name="mapper" Type="System.Func&lt;TTupleOutShape,TTupleNewOutShape&gt;" />
+        <Parameter Name="mapper" Type="System.Func&lt;TOutShape,TNewOutShape&gt;" />
       </Parameters>
       <Docs>
-        <typeparam name="TTupleNewOutShape">To be added.</typeparam>
+        <typeparam name="TNewOutShape">To be added.</typeparam>
         <param name="mapper">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
@@ -100,7 +103,7 @@
       <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Core.Data.IEstimator`1&lt;!TTransformer&gt; AsDynamic" />
       <MemberSignature Language="DocId" Value="P:Microsoft.ML.StaticPipe.Estimator`3.AsDynamic" />
       <MemberSignature Language="VB.NET" Value="Public ReadOnly Property AsDynamic As IEstimator(Of TTransformer)" />
-      <MemberSignature Language="F#" Value="member this.AsDynamic : Microsoft.ML.Core.Data.IEstimator&lt;'ransformer (requires 'ransformer : null and 'ransformer :&gt; Microsoft.ML.Core.Data.ITransformer)&gt;" Usage="Microsoft.ML.StaticPipe.Estimator&lt;'upleInShape, 'upleOutShape, 'ransformer (requires 'ransformer : null and 'ransformer :&gt; Microsoft.ML.Core.Data.ITransformer)&gt;.AsDynamic" />
+      <MemberSignature Language="F#" Value="member this.AsDynamic : Microsoft.ML.Core.Data.IEstimator&lt;'ransformer (requires 'ransformer : null and 'ransformer :&gt; Microsoft.ML.Core.Data.ITransformer)&gt;" Usage="Microsoft.ML.StaticPipe.Estimator&lt;'InShape, 'OutShape, 'ransformer (requires 'ransformer : null and 'ransformer :&gt; Microsoft.ML.Core.Data.ITransformer)&gt;.AsDynamic" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -116,21 +119,21 @@
       </Docs>
     </Member>
     <Member MemberName="Fit">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.StaticPipe.Transformer&lt;TTupleInShape,TTupleOutShape,TTransformer&gt; Fit (Microsoft.ML.StaticPipe.DataView&lt;TTupleInShape&gt; view);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.StaticPipe.Transformer`3&lt;!TTupleInShape, !TTupleOutShape, !TTransformer&gt; Fit(class Microsoft.ML.StaticPipe.DataView`1&lt;!TTupleInShape&gt; view) cil managed" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.StaticPipe.Transformer&lt;TInShape,TOutShape,TTransformer&gt; Fit (Microsoft.ML.StaticPipe.DataView&lt;TInShape&gt; view);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.StaticPipe.Transformer`3&lt;!TInShape, !TOutShape, !TTransformer&gt; Fit(class Microsoft.ML.StaticPipe.DataView`1&lt;!TInShape&gt; view) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.Estimator`3.Fit(Microsoft.ML.StaticPipe.DataView{`0})" />
-      <MemberSignature Language="VB.NET" Value="Public Function Fit (view As DataView(Of TTupleInShape)) As Transformer(Of TTupleInShape, TTupleOutShape, TTransformer)" />
-      <MemberSignature Language="F#" Value="member this.Fit : Microsoft.ML.StaticPipe.DataView&lt;'upleInShape&gt; -&gt; Microsoft.ML.StaticPipe.Transformer&lt;'upleInShape, 'upleOutShape, 'ransformer (requires 'ransformer : null and 'ransformer :&gt; Microsoft.ML.Core.Data.ITransformer)&gt;" Usage="estimator.Fit view" />
+      <MemberSignature Language="VB.NET" Value="Public Function Fit (view As DataView(Of TInShape)) As Transformer(Of TInShape, TOutShape, TTransformer)" />
+      <MemberSignature Language="F#" Value="member this.Fit : Microsoft.ML.StaticPipe.DataView&lt;'InShape&gt; -&gt; Microsoft.ML.StaticPipe.Transformer&lt;'InShape, 'OutShape, 'ransformer (requires 'ransformer : null and 'ransformer :&gt; Microsoft.ML.Core.Data.ITransformer)&gt;" Usage="estimator.Fit view" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.StaticPipe.Transformer&lt;TTupleInShape,TTupleOutShape,TTransformer&gt;</ReturnType>
+        <ReturnType>Microsoft.ML.StaticPipe.Transformer&lt;TInShape,TOutShape,TTransformer&gt;</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="view" Type="Microsoft.ML.StaticPipe.DataView&lt;TTupleInShape&gt;" />
+        <Parameter Name="view" Type="Microsoft.ML.StaticPipe.DataView&lt;TInShape&gt;" />
       </Parameters>
       <Docs>
         <param name="view">To be added.</param>
