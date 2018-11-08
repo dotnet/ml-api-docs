@@ -1,0 +1,172 @@
+﻿<Type Name="WordHashBagEstimator" FullName="Microsoft.ML.Transforms.Text.WordHashBagEstimator">
+  <TypeSignature Language="C#" Value="public sealed class WordHashBagEstimator : Microsoft.ML.Runtime.Data.TrainedWrapperEstimatorBase" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit WordHashBagEstimator extends Microsoft.ML.Runtime.Data.TrainedWrapperEstimatorBase" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Transforms.Text.WordHashBagEstimator" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class WordHashBagEstimator&#xA;Inherits TrainedWrapperEstimatorBase" />
+  <TypeSignature Language="F#" Value="type WordHashBagEstimator = class&#xA;    inherit TrainedWrapperEstimatorBase" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Microsoft.ML.Runtime.Data.TrainedWrapperEstimatorBase</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+            Produces a bag of counts of ngrams (sequences of consecutive words of length 1-n) in a given text.
+            It does so by hashing each ngram and using the hash value as the index in the bag.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public WordHashBagEstimator (Microsoft.ML.Runtime.IHostEnvironment env, ValueTuple&lt;string[],string&gt;[] columns, int hashBits = 16, int ngramLength = 1, int skipLength = 0, bool allLengths = true, uint seed = 314489979, bool ordered = true, int invertHash = 0);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, valuetype System.ValueTuple`2&lt;string[], string&gt;[] columns, int32 hashBits, int32 ngramLength, int32 skipLength, bool allLengths, unsigned int32 seed, bool ordered, int32 invertHash) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Text.WordHashBagEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.ValueTuple{System.String[],System.String}[],System.Int32,System.Int32,System.Int32,System.Boolean,System.UInt32,System.Boolean,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, columns As ValueTuple(Of String(), String)(), Optional hashBits As Integer = 16, Optional ngramLength As Integer = 1, Optional skipLength As Integer = 0, Optional allLengths As Boolean = true, Optional seed As UInteger = 314489979, Optional ordered As Boolean = true, Optional invertHash As Integer = 0)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Text.WordHashBagEstimator : Microsoft.ML.Runtime.IHostEnvironment * ValueTuple&lt;string[], string&gt;[] * int * int * int * bool * uint32 * bool * int -&gt; Microsoft.ML.Transforms.Text.WordHashBagEstimator" Usage="new Microsoft.ML.Transforms.Text.WordHashBagEstimator (env, columns, hashBits, ngramLength, skipLength, allLengths, seed, ordered, invertHash)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="columns" Type="System.ValueTuple&lt;System.String[],System.String&gt;[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.Runtime.CompilerServices.TupleElementNames(new System.String[] { "inputs", "output" })</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+        <Parameter Name="hashBits" Type="System.Int32" />
+        <Parameter Name="ngramLength" Type="System.Int32" />
+        <Parameter Name="skipLength" Type="System.Int32" />
+        <Parameter Name="allLengths" Type="System.Boolean" />
+        <Parameter Name="seed" Type="System.UInt32" />
+        <Parameter Name="ordered" Type="System.Boolean" />
+        <Parameter Name="invertHash" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="env">The environment.</param>
+        <param name="columns">Pairs of columns to compute bag of word vector.</param>
+        <param name="hashBits">Number of bits to hash into. Must be between 1 and 30, inclusive.</param>
+        <param name="ngramLength">Ngram length.</param>
+        <param name="skipLength">Maximum number of tokens to skip when constructing an ngram.</param>
+        <param name="allLengths">Whether to include all ngram lengths up to <paramref name="ngramLength" /> or only <paramref name="ngramLength" />.</param>
+        <param name="seed">Hashing seed.</param>
+        <param name="ordered">Whether the position of each source column should be included in the hash (when there are multiple source columns).</param>
+        <param name="invertHash">Limit the number of keys used to generate the slot name to this many. 0 means no invert hashing, -1 means no limit.</param>
+        <summary>
+            Produces a bag of counts of hashed ngrams in <paramref name="columns.inputs.inputs" />
+            and outputs bag of word vector for each output in <paramref name="columns.output.output" /></summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public WordHashBagEstimator (Microsoft.ML.Runtime.IHostEnvironment env, string inputColumn, string outputColumn = null, int hashBits = 16, int ngramLength = 1, int skipLength = 0, bool allLengths = true, uint seed = 314489979, bool ordered = true, int invertHash = 0);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string inputColumn, string outputColumn, int32 hashBits, int32 ngramLength, int32 skipLength, bool allLengths, unsigned int32 seed, bool ordered, int32 invertHash) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Text.WordHashBagEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Boolean,System.UInt32,System.Boolean,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, inputColumn As String, Optional outputColumn As String = null, Optional hashBits As Integer = 16, Optional ngramLength As Integer = 1, Optional skipLength As Integer = 0, Optional allLengths As Boolean = true, Optional seed As UInteger = 314489979, Optional ordered As Boolean = true, Optional invertHash As Integer = 0)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Text.WordHashBagEstimator : Microsoft.ML.Runtime.IHostEnvironment * string * string * int * int * int * bool * uint32 * bool * int -&gt; Microsoft.ML.Transforms.Text.WordHashBagEstimator" Usage="new Microsoft.ML.Transforms.Text.WordHashBagEstimator (env, inputColumn, outputColumn, hashBits, ngramLength, skipLength, allLengths, seed, ordered, invertHash)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="inputColumn" Type="System.String" />
+        <Parameter Name="outputColumn" Type="System.String" />
+        <Parameter Name="hashBits" Type="System.Int32" />
+        <Parameter Name="ngramLength" Type="System.Int32" />
+        <Parameter Name="skipLength" Type="System.Int32" />
+        <Parameter Name="allLengths" Type="System.Boolean" />
+        <Parameter Name="seed" Type="System.UInt32" />
+        <Parameter Name="ordered" Type="System.Boolean" />
+        <Parameter Name="invertHash" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="env">The environment.</param>
+        <param name="inputColumn">The column containing text to compute bag of word vector.</param>
+        <param name="outputColumn">The column containing bag of word vector. Null means <paramref name="inputColumn" /> is replaced.</param>
+        <param name="hashBits">Number of bits to hash into. Must be between 1 and 30, inclusive.</param>
+        <param name="ngramLength">Ngram length.</param>
+        <param name="skipLength">Maximum number of tokens to skip when constructing an ngram.</param>
+        <param name="allLengths">Whether to include all ngram lengths up to <paramref name="ngramLength" /> or only <paramref name="ngramLength" />.</param>
+        <param name="seed">Hashing seed.</param>
+        <param name="ordered">Whether the position of each source column should be included in the hash (when there are multiple source columns).</param>
+        <param name="invertHash">Limit the number of keys used to generate the slot name to this many. 0 means no invert hashing, -1 means no limit.</param>
+        <summary>
+            Produces a bag of counts of hashed ngrams in <paramref name="inputColumn" />
+            and outputs bag of word vector as <paramref name="outputColumn" /></summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public WordHashBagEstimator (Microsoft.ML.Runtime.IHostEnvironment env, string[] inputColumns, string outputColumn, int hashBits = 16, int ngramLength = 1, int skipLength = 0, bool allLengths = true, uint seed = 314489979, bool ordered = true, int invertHash = 0);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string[] inputColumns, string outputColumn, int32 hashBits, int32 ngramLength, int32 skipLength, bool allLengths, unsigned int32 seed, bool ordered, int32 invertHash) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Text.WordHashBagEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String[],System.String,System.Int32,System.Int32,System.Int32,System.Boolean,System.UInt32,System.Boolean,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, inputColumns As String(), outputColumn As String, Optional hashBits As Integer = 16, Optional ngramLength As Integer = 1, Optional skipLength As Integer = 0, Optional allLengths As Boolean = true, Optional seed As UInteger = 314489979, Optional ordered As Boolean = true, Optional invertHash As Integer = 0)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Text.WordHashBagEstimator : Microsoft.ML.Runtime.IHostEnvironment * string[] * string * int * int * int * bool * uint32 * bool * int -&gt; Microsoft.ML.Transforms.Text.WordHashBagEstimator" Usage="new Microsoft.ML.Transforms.Text.WordHashBagEstimator (env, inputColumns, outputColumn, hashBits, ngramLength, skipLength, allLengths, seed, ordered, invertHash)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="inputColumns" Type="System.String[]" />
+        <Parameter Name="outputColumn" Type="System.String" />
+        <Parameter Name="hashBits" Type="System.Int32" />
+        <Parameter Name="ngramLength" Type="System.Int32" />
+        <Parameter Name="skipLength" Type="System.Int32" />
+        <Parameter Name="allLengths" Type="System.Boolean" />
+        <Parameter Name="seed" Type="System.UInt32" />
+        <Parameter Name="ordered" Type="System.Boolean" />
+        <Parameter Name="invertHash" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="env">The environment.</param>
+        <param name="inputColumns">The columns containing text to compute bag of word vector.</param>
+        <param name="outputColumn">The column containing output tokens.</param>
+        <param name="hashBits">Number of bits to hash into. Must be between 1 and 30, inclusive.</param>
+        <param name="ngramLength">Ngram length.</param>
+        <param name="skipLength">Maximum number of tokens to skip when constructing an ngram.</param>
+        <param name="allLengths">Whether to include all ngram lengths up to <paramref name="ngramLength" /> or only <paramref name="ngramLength" />.</param>
+        <param name="seed">Hashing seed.</param>
+        <param name="ordered">Whether the position of each source column should be included in the hash (when there are multiple source columns).</param>
+        <param name="invertHash">Limit the number of keys used to generate the slot name to this many. 0 means no invert hashing, -1 means no limit.</param>
+        <summary>
+            Produces a bag of counts of hashed ngrams in <paramref name="inputColumns" />
+            and outputs bag of word vector as <paramref name="outputColumn" /></summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Fit">
+      <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.Data.TransformWrapper Fit (Microsoft.ML.Runtime.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Microsoft.ML.Runtime.Data.TransformWrapper Fit(class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Text.WordHashBagEstimator.Fit(Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function Fit (input As IDataView) As TransformWrapper" />
+      <MemberSignature Language="F#" Value="override this.Fit : Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.TransformWrapper" Usage="wordHashBagEstimator.Fit input" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.TransformWrapper</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,363 @@
+<Type Name="MatrixFactorizationTrainer" FullName="Microsoft.ML.Trainers.MatrixFactorizationTrainer">
+  <TypeSignature Language="C#" Value="public sealed class MatrixFactorizationTrainer : Microsoft.ML.Runtime.Training.TrainerBase&lt;Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor&gt;, Microsoft.ML.Core.Data.IEstimator&lt;Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit MatrixFactorizationTrainer extends Microsoft.ML.Runtime.Training.TrainerBase`1&lt;class Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor&gt; implements class Microsoft.ML.Core.Data.IEstimator`1&lt;class Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer&gt;" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Trainers.MatrixFactorizationTrainer" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class MatrixFactorizationTrainer&#xA;Inherits TrainerBase(Of MatrixFactorizationPredictor)&#xA;Implements IEstimator(Of MatrixFactorizationPredictionTransformer)" />
+  <TypeSignature Language="F#" Value="type MatrixFactorizationTrainer = class&#xA;    inherit TrainerBase&lt;MatrixFactorizationPredictor&gt;&#xA;    interface IEstimator&lt;MatrixFactorizationPredictionTransformer&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Microsoft.ML.Runtime.Training.TrainerBase&lt;Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor&gt;</BaseTypeName>
+    <BaseTypeArguments>
+      <BaseTypeArgument TypeParamName="!0">Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor</BaseTypeArgument>
+    </BaseTypeArguments>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Core.Data.IEstimator&lt;Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer&gt;</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+             Train a matrix factorization model. It factorizes the training matrix into the product of two low-rank matrices.
+    </summary>
+    <remarks>
+                 <p>The basic idea of matrix factorization is finding two low-rank factor marcies to apporimate the training matrix.
+             In this module, the expected training data is a list of tuples. Every tuple consists of a column index, a row index,
+             and the value at the location specified by the two indexes. For an example data structure of a tuple, one can use
+             <code language="csharp">
+             // The following variables defines the shape of a m-by-n matrix. The variable firstRowIndex indicates the integer that
+             // would be mapped to the first row index. If user data uses 0-based indices for rows, firstRowIndex can be set to 0.
+             // Similarly, for 1-based indices, firstRowIndex could be 1.
+             const int firstRowIndex = 1;
+             const int firstColumnIndex = 1;
+             const int m = 60;
+             const int n = 100;
+            
+             // A tuple of row index, column index, and rating. It specifies a value in the rating matrix.
+             class MatrixElement
+             {
+                 // Matrix column index starts from firstColumnIndex and is at most firstColumnIndex+n-1.
+                 // Contieuous=true means that all values from firstColumnIndex to firstColumnIndex+n-1 are allowed keys.
+                 // [KeyType(Contiguous = true, Count = n, Min = firstColumnIndex)]
+                 // public uint MatrixColumnIndex;
+                 // Matrix row index starts from firstRowIndex and is at most firstRowIndex+m-1.
+                 // Contieuous=true means that all values from firstRowIndex to firstRowIndex+m-1 are allowed keys.
+                 [KeyType(Contiguous = true, Count = m, Min = firstRowIndex)]
+                 public uint MatrixRowIndex;
+                 // The rating at the MatrixColumnIndex-th column and the MatrixRowIndex-th row.
+                 public float Value;
+             }
+             </code>
+             Notice that it's not necessary to specify all entries in the training matrix, so matrix factorization can be used to fill <i>missing values</i>.
+             This behavior is very helpful when building recommender systems.</p><p>To provide a better understanding on practical uses of matrix factorization, let's consider music recommendation as an example.
+             Assume that user IDs and music IDs are used as row and column indexes, respectively, and matrix's values are ratings provided by those users. That is,
+             rating <i>r</i> at row <i>r</i> and column <i>v</i> means that user <i>u</i> give <i>r</i> to item <i>v</i>.
+             An imcomplete matrix is very common because not all users may provide their feedbacks to all products (for example, no one can rate ten million songs).
+             Assume that<i>R</i> is a m-by-n rating matrix and the rank of the two factor matrices are<i>P</i> (m-by-k matrix) and <i>Q</i> (n-by-k matrix), where k is the approximation rank.
+             The predicted rating at the u-th row and the v-th column in <i>R</i> would be the inner product of the u-th row of P and the v-th row of Q; that is,
+             <i>R</i> is approximated by the product of <i>P</i>'s transpose and <i>Q</i>. This trainer implements
+             <a href="https://www.csie.ntu.edu.tw/~cjlin/papers/libmf/mf_adaptive_pakdd.pdf">a stochastic gradient method</a> for finding <i>P</i>
+             and <i>Q</i> via minimizing the distance between<i> R</i> and the product of <i>P</i>'s transpose and Q.</p>.
+             <p>For users interested in the mathematical details, please see the references below.
+                 <list type="bullet"><item><description><a href="https://www.csie.ntu.edu.tw/~cjlin/papers/libmf/libmf_journal.pdf"> A Fast Parallel Stochastic Gradient Method for Matrix Factorization in Shared Memory Systems</a></description></item><item><description><a href="https://www.csie.ntu.edu.tw/~cjlin/papers/libmf/mf_adaptive_pakdd.pdf"> A Learning-rate Schedule for Stochastic Gradient Methods to Matrix Factorization</a></description></item><item><description><a href="https://www.csie.ntu.edu.tw/~cjlin/papers/libmf/libmf_open_source.pdf"> LIBMF: A Library for Parallel Matrix Factorization in Shared-memory Systems</a></description></item></list></p><p>Example code can be found by searching for <i>MatrixFactorization</i> in <a href="https://github.com/dotnet/machinelearning">ML.NET.</a></p>
+    </remarks>
+    <example>
+      <format type="text/markdown">
+        <![CDATA[
+             [!code-csharp[MF](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/MatrixFactorization.cs?range=5-9,16-114)]
+             ]]>
+      </format>
+      </example>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public MatrixFactorizationTrainer (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments args);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Trainers.MatrixFactorizationTrainer/Arguments args) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, args As MatrixFactorizationTrainer.Arguments)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Trainers.MatrixFactorizationTrainer : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments -&gt; Microsoft.ML.Trainers.MatrixFactorizationTrainer" Usage="new Microsoft.ML.Trainers.MatrixFactorizationTrainer (env, args)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="args" Type="Microsoft.ML.Trainers.MatrixFactorizationTrainer+Arguments" />
+      </Parameters>
+      <Docs>
+        <param name="env">The private instance of <see cref="T:Microsoft.ML.Runtime.IHostEnvironment" />.</param>
+        <param name="args">An instance of the legacy <see cref="T:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments" /> to apply advanced parameters to the algorithm.</param>
+        <summary>
+            Legacy constructor initializing a new instance of <see cref="T:Microsoft.ML.Trainers.MatrixFactorizationTrainer" /> through the legacy
+            <see cref="T:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments" /> class.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public MatrixFactorizationTrainer (Microsoft.ML.Runtime.IHostEnvironment env, string labelColumn, string matrixColumnIndexColumnName, string matrixRowIndexColumnName, Microsoft.ML.Core.Prediction.TrainerEstimatorContext context = null, Action&lt;Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments&gt; advancedSettings = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string labelColumn, string matrixColumnIndexColumnName, string matrixRowIndexColumnName, class Microsoft.ML.Core.Prediction.TrainerEstimatorContext context, class System.Action`1&lt;class Microsoft.ML.Trainers.MatrixFactorizationTrainer/Arguments&gt; advancedSettings) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String,Microsoft.ML.Core.Prediction.TrainerEstimatorContext,System.Action{Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, labelColumn As String, matrixColumnIndexColumnName As String, matrixRowIndexColumnName As String, Optional context As TrainerEstimatorContext = null, Optional advancedSettings As Action(Of MatrixFactorizationTrainer.Arguments) = null)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Trainers.MatrixFactorizationTrainer : Microsoft.ML.Runtime.IHostEnvironment * string * string * string * Microsoft.ML.Core.Prediction.TrainerEstimatorContext * Action&lt;Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments&gt; -&gt; Microsoft.ML.Trainers.MatrixFactorizationTrainer" Usage="new Microsoft.ML.Trainers.MatrixFactorizationTrainer (env, labelColumn, matrixColumnIndexColumnName, matrixRowIndexColumnName, context, advancedSettings)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="labelColumn" Type="System.String" />
+        <Parameter Name="matrixColumnIndexColumnName" Type="System.String" />
+        <Parameter Name="matrixRowIndexColumnName" Type="System.String" />
+        <Parameter Name="context" Type="Microsoft.ML.Core.Prediction.TrainerEstimatorContext" />
+        <Parameter Name="advancedSettings" Type="System.Action&lt;Microsoft.ML.Trainers.MatrixFactorizationTrainer+Arguments&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="env">The private instance of <see cref="T:Microsoft.ML.Runtime.IHostEnvironment" />.</param>
+        <param name="labelColumn">The name of the label column.</param>
+        <param name="matrixColumnIndexColumnName">The name of the column hosting the matrix's column IDs.</param>
+        <param name="matrixRowIndexColumnName">The name of the column hosting the matrix's row IDs.</param>
+        <param name="context">The <see cref="T:Microsoft.ML.Core.Prediction.TrainerEstimatorContext" /> for additional input data to training.</param>
+        <param name="advancedSettings">A delegate to apply all the advanced arguments to the algorithm.</param>
+        <summary>
+            Initializing a new instance of <see cref="T:Microsoft.ML.Trainers.MatrixFactorizationTrainer" />.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Context">
+      <MemberSignature Language="C#" Value="public readonly Microsoft.ML.Core.Prediction.TrainerEstimatorContext Context;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly class Microsoft.ML.Core.Prediction.TrainerEstimatorContext Context" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Context" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Context As TrainerEstimatorContext " />
+      <MemberSignature Language="F#" Value="val mutable Context : Microsoft.ML.Core.Prediction.TrainerEstimatorContext" Usage="Microsoft.ML.Trainers.MatrixFactorizationTrainer.Context" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Core.Prediction.TrainerEstimatorContext</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Extra information the trainer can use. For example, its validation set (if not null) can be use to evaluate the
+            training progress made at each training iteration.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Fit">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer Fit (Microsoft.ML.Runtime.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer Fit(class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Fit(Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Fit (input As IDataView) As MatrixFactorizationPredictionTransformer" />
+      <MemberSignature Language="F#" Value="abstract member Fit : Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer&#xA;override this.Fit : Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer" Usage="matrixFactorizationTrainer.Fit input" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Core.Data.IEstimator`1.Fit(Microsoft.ML.Runtime.Data.IDataView)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="input">The training data set.</param>
+        <summary>
+            Train a matrix factorization model based on the input <see cref="T:Microsoft.ML.Runtime.Data.IDataView" /> using the roles specified by XColumn and YColumn in <see cref="T:Microsoft.ML.Trainers.MatrixFactorizationTrainer" />.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetOutputSchema">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Core.Data.SchemaShape GetOutputSchema (Microsoft.ML.Core.Data.SchemaShape inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Core.Data.SchemaShape GetOutputSchema(class Microsoft.ML.Core.Data.SchemaShape inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.GetOutputSchema(Microsoft.ML.Core.Data.SchemaShape)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetOutputSchema (inputSchema As SchemaShape) As SchemaShape" />
+      <MemberSignature Language="F#" Value="abstract member GetOutputSchema : Microsoft.ML.Core.Data.SchemaShape -&gt; Microsoft.ML.Core.Data.SchemaShape&#xA;override this.GetOutputSchema : Microsoft.ML.Core.Data.SchemaShape -&gt; Microsoft.ML.Core.Data.SchemaShape" Usage="matrixFactorizationTrainer.GetOutputSchema inputSchema" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Core.Data.IEstimator`1.GetOutputSchema(Microsoft.ML.Core.Data.SchemaShape)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Core.Data.SchemaShape</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.Core.Data.SchemaShape" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Info">
+      <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.TrainerInfo Info { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.TrainerInfo Info" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Info" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property Info As TrainerInfo" />
+      <MemberSignature Language="F#" Value="member this.Info : Microsoft.ML.Runtime.TrainerInfo" Usage="Microsoft.ML.Trainers.MatrixFactorizationTrainer.Info" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.TrainerInfo</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The <see cref="T:Microsoft.ML.Runtime.TrainerInfo" /> contains general parameters for this trainer.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LabelColumn">
+      <MemberSignature Language="C#" Value="public readonly Microsoft.ML.Core.Data.SchemaShape.Column LabelColumn;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly class Microsoft.ML.Core.Data.SchemaShape/Column LabelColumn" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.LabelColumn" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly LabelColumn As SchemaShape.Column " />
+      <MemberSignature Language="F#" Value="val mutable LabelColumn : Microsoft.ML.Core.Data.SchemaShape.Column" Usage="Microsoft.ML.Trainers.MatrixFactorizationTrainer.LabelColumn" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Core.Data.SchemaShape+Column</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadNameValue">
+      <MemberSignature Language="C#" Value="public const string LoadNameValue;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal string LoadNameValue" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.LoadNameValue" />
+      <MemberSignature Language="VB.NET" Value="Public Const LoadNameValue As String " />
+      <MemberSignature Language="F#" Value="val mutable LoadNameValue : string" Usage="Microsoft.ML.Trainers.MatrixFactorizationTrainer.LoadNameValue" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MatrixColumnIndexColumn">
+      <MemberSignature Language="C#" Value="public readonly Microsoft.ML.Core.Data.SchemaShape.Column MatrixColumnIndexColumn;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly class Microsoft.ML.Core.Data.SchemaShape/Column MatrixColumnIndexColumn" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.MatrixColumnIndexColumn" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly MatrixColumnIndexColumn As SchemaShape.Column " />
+      <MemberSignature Language="F#" Value="val mutable MatrixColumnIndexColumn : Microsoft.ML.Core.Data.SchemaShape.Column" Usage="Microsoft.ML.Trainers.MatrixFactorizationTrainer.MatrixColumnIndexColumn" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Core.Data.SchemaShape+Column</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The row, column, and label columns that the trainer expects. This module uses tuples of (row index, column index, label value) to specify a matrix.
+            For example, a 2-by-2 matrix
+              [9, 4]
+              [8, 7]
+            can be encoded as tuples (0, 0, 9), (0, 1, 4), (1, 0, 8), and (1, 1, 7). It means that the row/column/label column contains [0, 0, 1, 1]/
+            [0, 1, 0, 1]/[9, 4, 8, 7].
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MatrixRowIndexColumn">
+      <MemberSignature Language="C#" Value="public readonly Microsoft.ML.Core.Data.SchemaShape.Column MatrixRowIndexColumn;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly class Microsoft.ML.Core.Data.SchemaShape/Column MatrixRowIndexColumn" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.MatrixRowIndexColumn" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly MatrixRowIndexColumn As SchemaShape.Column " />
+      <MemberSignature Language="F#" Value="val mutable MatrixRowIndexColumn : Microsoft.ML.Core.Data.SchemaShape.Column" Usage="Microsoft.ML.Trainers.MatrixFactorizationTrainer.MatrixRowIndexColumn" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Core.Data.SchemaShape+Column</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PredictionKind">
+      <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.PredictionKind PredictionKind { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.ML.Runtime.PredictionKind PredictionKind" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.MatrixFactorizationTrainer.PredictionKind" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property PredictionKind As PredictionKind" />
+      <MemberSignature Language="F#" Value="member this.PredictionKind : Microsoft.ML.Runtime.PredictionKind" Usage="Microsoft.ML.Trainers.MatrixFactorizationTrainer.PredictionKind" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.PredictionKind</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Train">
+      <MemberSignature Language="C#" Value="public override Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor Train (Microsoft.ML.Runtime.TrainContext context);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor Train(class Microsoft.ML.Runtime.TrainContext context) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Train(Microsoft.ML.Runtime.TrainContext)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function Train (context As TrainContext) As MatrixFactorizationPredictor" />
+      <MemberSignature Language="F#" Value="override this.Train : Microsoft.ML.Runtime.TrainContext -&gt; Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor" Usage="matrixFactorizationTrainer.Train context" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="context" Type="Microsoft.ML.Runtime.TrainContext" />
+      </Parameters>
+      <Docs>
+        <param name="context">The information collection needed for training. <see cref="T:Microsoft.ML.Runtime.TrainContext" /> for details.</param>
+        <summary>
+            Train a matrix factorization model based on training data, validation data, and so on in the given context.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

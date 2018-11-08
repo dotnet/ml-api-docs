@@ -1,0 +1,217 @@
+﻿<Type Name="WordEmbeddingsExtractorEstimator" FullName="Microsoft.ML.Transforms.Text.WordEmbeddingsExtractorEstimator">
+  <TypeSignature Language="C#" Value="public sealed class WordEmbeddingsExtractorEstimator : Microsoft.ML.Core.Data.IEstimator&lt;Microsoft.ML.Transforms.Text.WordEmbeddingsTransform&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit WordEmbeddingsExtractorEstimator extends System.Object implements class Microsoft.ML.Core.Data.IEstimator`1&lt;class Microsoft.ML.Transforms.Text.WordEmbeddingsTransform&gt;" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Transforms.Text.WordEmbeddingsExtractorEstimator" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class WordEmbeddingsExtractorEstimator&#xA;Implements IEstimator(Of WordEmbeddingsTransform)" />
+  <TypeSignature Language="F#" Value="type WordEmbeddingsExtractorEstimator = class&#xA;    interface IEstimator&lt;WordEmbeddingsTransform&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Core.Data.IEstimator&lt;Microsoft.ML.Transforms.Text.WordEmbeddingsTransform&gt;</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+        Word Embeddings transform is a text featurizer which converts vectors of text tokens into sentence vectors using a pre-trained model.
+      </summary>
+    <remarks>
+      <para>WordEmbeddings wrap different embedding models, such as GloVe. Users can specify which embedding to use. 
+        The available options are various versions of <a href="https://nlp.stanford.edu/projects/glove/">GloVe Models</a>, <a href="https://en.wikipedia.org/wiki/FastText">fastText</a>, and <a href="https://anthology.aclweb.org/P/P14/P14-1146.pdf">SSWE</a>.
+        </para>
+      <para>Note: As WordEmbedding requires a column with text vector, for example, 'this', 'is', 'good', users need to create an input column by
+          using the output_tokens=True for TextTransform to convert a column with sentences like 'This is good' into 'this', 'is', 'good'.
+          The suffix of '_TransformedText' is added to the original column name to create the output token column. For instance if the input column is 'body',
+          the output tokens column is named 'body_TransformedText'.</para>
+      <para>
+          License attributes for pretrained models:
+          <list type="bullet"><item><description>
+                "fastText Wikipedia 300D" by Facebook, Inc. is licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA 3.0</a> based on:
+                P. Bojanowski*, E. Grave*, A. Joulin, T. Mikolov,<a href="https://arxiv.org/abs/1607.04606">Enriching Word Vectors with Subword Information</a>
+                More information can be found <a href="https://github.com/facebookresearch/fastText/blob/master/pretrained-vectors.md">here</a>.
+              </description></item><item><description>
+                GloVe models by Stanford University, or (Jeffrey Pennington, Richard Socher, and Christopher D. Manning. 2014. 
+                <a href="https://nlp.stanford.edu/pubs/glove.pdf">GloVe: Global Vectors for Word Representation</a>) is licensed under <a href="https://opendatacommons.org/licenses/pddl/1.0/">PDDL</a>.
+                More information can be found <a href="https://nlp.stanford.edu/projects/glove/">here</a>. 
+                Repository can be found <a href="https://github.com/stanfordnlp/GloVe">here</a>.
+              </description></item></list></para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public WordEmbeddingsExtractorEstimator (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Transforms.Text.WordEmbeddingsTransform.PretrainedModelKind modelKind = Microsoft.ML.Transforms.Text.WordEmbeddingsTransform+PretrainedModelKind.Sswe, params Microsoft.ML.Transforms.Text.WordEmbeddingsTransform.ColumnInfo[] columns);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, valuetype Microsoft.ML.Transforms.Text.WordEmbeddingsTransform/PretrainedModelKind modelKind, class Microsoft.ML.Transforms.Text.WordEmbeddingsTransform/ColumnInfo[] columns) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Text.WordEmbeddingsExtractorEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Transforms.Text.WordEmbeddingsTransform.PretrainedModelKind,Microsoft.ML.Transforms.Text.WordEmbeddingsTransform.ColumnInfo[])" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, Optional modelKind As WordEmbeddingsTransform.PretrainedModelKind = Microsoft.ML.Transforms.Text.WordEmbeddingsTransform+PretrainedModelKind.Sswe, ParamArray columns As WordEmbeddingsTransform.ColumnInfo())" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Text.WordEmbeddingsExtractorEstimator : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Transforms.Text.WordEmbeddingsTransform.PretrainedModelKind * Microsoft.ML.Transforms.Text.WordEmbeddingsTransform.ColumnInfo[] -&gt; Microsoft.ML.Transforms.Text.WordEmbeddingsExtractorEstimator" Usage="new Microsoft.ML.Transforms.Text.WordEmbeddingsExtractorEstimator (env, modelKind, columns)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="modelKind" Type="Microsoft.ML.Transforms.Text.WordEmbeddingsTransform+PretrainedModelKind" />
+        <Parameter Name="columns" Type="Microsoft.ML.Transforms.Text.WordEmbeddingsTransform+ColumnInfo[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="env">The local instance of <see cref="T:Microsoft.ML.Runtime.IHostEnvironment" /></param>
+        <param name="modelKind">The embeddings <see cref="T:Microsoft.ML.Transforms.Text.WordEmbeddingsTransform.PretrainedModelKind" /> to use. </param>
+        <param name="columns">The array columns, and per-column configurations to extract embeedings from.</param>
+        <summary>
+            Extracts word embeddings.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public WordEmbeddingsExtractorEstimator (Microsoft.ML.Runtime.IHostEnvironment env, string customModelFile, params Microsoft.ML.Transforms.Text.WordEmbeddingsTransform.ColumnInfo[] columns);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string customModelFile, class Microsoft.ML.Transforms.Text.WordEmbeddingsTransform/ColumnInfo[] columns) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Text.WordEmbeddingsExtractorEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,Microsoft.ML.Transforms.Text.WordEmbeddingsTransform.ColumnInfo[])" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, customModelFile As String, ParamArray columns As WordEmbeddingsTransform.ColumnInfo())" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Text.WordEmbeddingsExtractorEstimator : Microsoft.ML.Runtime.IHostEnvironment * string * Microsoft.ML.Transforms.Text.WordEmbeddingsTransform.ColumnInfo[] -&gt; Microsoft.ML.Transforms.Text.WordEmbeddingsExtractorEstimator" Usage="new Microsoft.ML.Transforms.Text.WordEmbeddingsExtractorEstimator (env, customModelFile, columns)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="customModelFile" Type="System.String" />
+        <Parameter Name="columns" Type="Microsoft.ML.Transforms.Text.WordEmbeddingsTransform+ColumnInfo[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="customModelFile">To be added.</param>
+        <param name="columns">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public WordEmbeddingsExtractorEstimator (Microsoft.ML.Runtime.IHostEnvironment env, string inputColumn, string outputColumn = null, Microsoft.ML.Transforms.Text.WordEmbeddingsTransform.PretrainedModelKind modelKind = Microsoft.ML.Transforms.Text.WordEmbeddingsTransform+PretrainedModelKind.Sswe);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string inputColumn, string outputColumn, valuetype Microsoft.ML.Transforms.Text.WordEmbeddingsTransform/PretrainedModelKind modelKind) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Text.WordEmbeddingsExtractorEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,Microsoft.ML.Transforms.Text.WordEmbeddingsTransform.PretrainedModelKind)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, inputColumn As String, Optional outputColumn As String = null, Optional modelKind As WordEmbeddingsTransform.PretrainedModelKind = Microsoft.ML.Transforms.Text.WordEmbeddingsTransform+PretrainedModelKind.Sswe)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Text.WordEmbeddingsExtractorEstimator : Microsoft.ML.Runtime.IHostEnvironment * string * string * Microsoft.ML.Transforms.Text.WordEmbeddingsTransform.PretrainedModelKind -&gt; Microsoft.ML.Transforms.Text.WordEmbeddingsExtractorEstimator" Usage="new Microsoft.ML.Transforms.Text.WordEmbeddingsExtractorEstimator (env, inputColumn, outputColumn, modelKind)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="inputColumn" Type="System.String" />
+        <Parameter Name="outputColumn" Type="System.String" />
+        <Parameter Name="modelKind" Type="Microsoft.ML.Transforms.Text.WordEmbeddingsTransform+PretrainedModelKind" />
+      </Parameters>
+      <Docs>
+        <param name="env">The local instance of <see cref="T:Microsoft.ML.Runtime.IHostEnvironment" /></param>
+        <param name="inputColumn">The input column.</param>
+        <param name="outputColumn">The optional output column. If it is <value>null</value> the input column will be substituted with its value.</param>
+        <param name="modelKind">The embeddings <see cref="T:Microsoft.ML.Transforms.Text.WordEmbeddingsTransform.PretrainedModelKind" /> to use. </param>
+        <summary>
+            Initializes a new instance of <see cref="T:Microsoft.ML.Transforms.Text.WordEmbeddingsExtractorEstimator" /></summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public WordEmbeddingsExtractorEstimator (Microsoft.ML.Runtime.IHostEnvironment env, string inputColumn, string outputColumn, string customModelFile);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string inputColumn, string outputColumn, string customModelFile) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Text.WordEmbeddingsExtractorEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, inputColumn As String, outputColumn As String, customModelFile As String)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Text.WordEmbeddingsExtractorEstimator : Microsoft.ML.Runtime.IHostEnvironment * string * string * string -&gt; Microsoft.ML.Transforms.Text.WordEmbeddingsExtractorEstimator" Usage="new Microsoft.ML.Transforms.Text.WordEmbeddingsExtractorEstimator (env, inputColumn, outputColumn, customModelFile)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="inputColumn" Type="System.String" />
+        <Parameter Name="outputColumn" Type="System.String" />
+        <Parameter Name="customModelFile" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="env">The local instance of <see cref="T:Microsoft.ML.Runtime.IHostEnvironment" /></param>
+        <param name="inputColumn">The input column.</param>
+        <param name="outputColumn">The optional output column. If it is <value>null</value> the input column will be substituted with its value.</param>
+        <param name="customModelFile">The path of the pre-trained embeedings model to use. </param>
+        <summary>
+            Initializes a new instance of <see cref="T:Microsoft.ML.Transforms.Text.WordEmbeddingsExtractorEstimator" /></summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Fit">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Transforms.Text.WordEmbeddingsTransform Fit (Microsoft.ML.Runtime.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Transforms.Text.WordEmbeddingsTransform Fit(class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Text.WordEmbeddingsExtractorEstimator.Fit(Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Fit (input As IDataView) As WordEmbeddingsTransform" />
+      <MemberSignature Language="F#" Value="abstract member Fit : Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Transforms.Text.WordEmbeddingsTransform&#xA;override this.Fit : Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Transforms.Text.WordEmbeddingsTransform" Usage="wordEmbeddingsExtractorEstimator.Fit input" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Core.Data.IEstimator`1.Fit(Microsoft.ML.Runtime.Data.IDataView)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Transforms.Text.WordEmbeddingsTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetOutputSchema">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Core.Data.SchemaShape GetOutputSchema (Microsoft.ML.Core.Data.SchemaShape inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Core.Data.SchemaShape GetOutputSchema(class Microsoft.ML.Core.Data.SchemaShape inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Text.WordEmbeddingsExtractorEstimator.GetOutputSchema(Microsoft.ML.Core.Data.SchemaShape)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetOutputSchema (inputSchema As SchemaShape) As SchemaShape" />
+      <MemberSignature Language="F#" Value="abstract member GetOutputSchema : Microsoft.ML.Core.Data.SchemaShape -&gt; Microsoft.ML.Core.Data.SchemaShape&#xA;override this.GetOutputSchema : Microsoft.ML.Core.Data.SchemaShape -&gt; Microsoft.ML.Core.Data.SchemaShape" Usage="wordEmbeddingsExtractorEstimator.GetOutputSchema inputSchema" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Core.Data.IEstimator`1.GetOutputSchema(Microsoft.ML.Core.Data.SchemaShape)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Core.Data.SchemaShape</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.Core.Data.SchemaShape" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

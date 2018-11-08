@@ -51,9 +51,11 @@
         <Parameter Name="transformer" Type="Microsoft.ML.Core.Data.ITransformer" />
       </Parameters>
       <Docs>
-        <param name="env">To be added.</param>
-        <param name="transformer">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="env">The host environment.</param>
+        <param name="transformer">The model (transformer) to use for prediction.</param>
+        <summary>
+            Create an instance of <see cref="T:Microsoft.ML.Runtime.Data.PredictionFunction`2" />.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -75,9 +77,40 @@
         <Parameter Name="example" Type="TSrc" />
       </Parameters>
       <Docs>
-        <param name="example">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="example">The object that holds values to predict from.</param>
+        <summary>
+            Perform one prediction using the model.
+            </summary>
+        <returns>The object populated with prediction results.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Predict">
+      <MemberSignature Language="C#" Value="public void Predict (TSrc example, ref TDst prediction);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Predict(!TSrc example, !TDst&amp; prediction) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.PredictionFunction`2.Predict(`0,`1@)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Predict (example As TSrc, ByRef prediction As TDst)" />
+      <MemberSignature Language="F#" Value="member this.Predict : 'Src *  -&gt; unit" Usage="predictionFunction.Predict (example, prediction)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Api</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="example" Type="TSrc" />
+        <Parameter Name="prediction" Type="TDst" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="example">The object that holds values to predict from.</param>
+        <param name="prediction">The object to store the predictions in. If it's <c>null</c>, a new object is created,
+            otherwise the provided object is used.</param>
+        <summary>
+            Perform one prediction using the model.
+            Reuses the provided prediction object, which is more efficient in high-load scenarios.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
