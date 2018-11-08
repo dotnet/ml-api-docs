@@ -18,29 +18,39 @@
   </Interfaces>
   <Docs>
     <summary>
-            Wraps a potentially compound path as an IMultiStreamSource. Expands wild cards and supports
-            multiple paths separated by +.
+            Wraps a potentially compound path as an IMultiStreamSource.
             </summary>
-    <remarks>To be added.</remarks>
+    <remarks>Expands wild cards and supports multiple paths separated by +, or loads all the files of a subfolder,
+            if the syntax for the path is 'FolderPath/...' (separator would be OS relevant).
+            </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public MultiFileSource (string path);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string path) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MultiFileSource.#ctor(System.String)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (path As String)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.MultiFileSource : string -&gt; Microsoft.ML.Runtime.Data.MultiFileSource" Usage="new Microsoft.ML.Runtime.Data.MultiFileSource path" />
+      <MemberSignature Language="C#" Value="public MultiFileSource (params string[] paths);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string[] paths) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.MultiFileSource.#ctor(System.String[])" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (ParamArray paths As String())" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.MultiFileSource : string[] -&gt; Microsoft.ML.Runtime.Data.MultiFileSource" Usage="new Microsoft.ML.Runtime.Data.MultiFileSource paths" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="path" Type="System.String" />
+        <Parameter Name="paths" Type="System.String[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
       </Parameters>
       <Docs>
-        <param name="path">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="paths">The paths of the files to load.</param>
+        <summary>
+            Initializes a new instance of <see cref="T:Microsoft.ML.Runtime.Data.MultiFileSource" />.
+            In case of in case of usage from Maml, the paths would be wildcard concatenated in the first string of <paramref name="paths" />.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

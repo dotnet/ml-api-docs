@@ -1,9 +1,9 @@
-﻿<Type Name="Transformer&lt;TTupleInShape,TTupleOutShape,TTransformer&gt;" FullName="Microsoft.ML.StaticPipe.Transformer&lt;TTupleInShape,TTupleOutShape,TTransformer&gt;">
-  <TypeSignature Language="C#" Value="public sealed class Transformer&lt;TTupleInShape,TTupleOutShape,TTransformer&gt; : Microsoft.ML.StaticPipe.SchemaBearing&lt;TTupleOutShape&gt; where TTransformer : class, ITransformer" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit Transformer`3&lt;TTupleInShape, TTupleOutShape, class (class Microsoft.ML.Core.Data.ITransformer) TTransformer&gt; extends Microsoft.ML.StaticPipe.SchemaBearing`1&lt;!TTupleOutShape&gt;" />
+﻿<Type Name="Transformer&lt;TInShape,TOutShape,TTransformer&gt;" FullName="Microsoft.ML.StaticPipe.Transformer&lt;TInShape,TOutShape,TTransformer&gt;">
+  <TypeSignature Language="C#" Value="public sealed class Transformer&lt;TInShape,TOutShape,TTransformer&gt; : Microsoft.ML.StaticPipe.SchemaBearing&lt;TOutShape&gt; where TTransformer : class, ITransformer" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit Transformer`3&lt;TInShape, TOutShape, class (class Microsoft.ML.Core.Data.ITransformer) TTransformer&gt; extends Microsoft.ML.StaticPipe.SchemaBearing`1&lt;!TOutShape&gt;" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.StaticPipe.Transformer`3" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class Transformer(Of TTupleInShape, TTupleOutShape, TTransformer)&#xA;Inherits SchemaBearing(Of TTupleOutShape)" />
-  <TypeSignature Language="F#" Value="type Transformer&lt;'upleInShape, 'upleOutShape, 'ransformer (requires 'ransformer : null and 'ransformer :&gt; ITransformer)&gt; = class&#xA;    inherit SchemaBearing&lt;'upleOutShape&gt;" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class Transformer(Of TInShape, TOutShape, TTransformer)&#xA;Inherits SchemaBearing(Of TOutShape)" />
+  <TypeSignature Language="F#" Value="type Transformer&lt;'InShape, 'OutShape, 'ransformer (requires 'ransformer : null and 'ransformer :&gt; ITransformer)&gt; = class&#xA;    inherit SchemaBearing&lt;'OutShape&gt;" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.Data</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -20,35 +20,38 @@
   </TypeParameters>
   <Base>
     <BaseTypeName>Microsoft.ML.StaticPipe.SchemaBearing&lt;TTupleOutShape&gt;</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.StaticPipe.SchemaBearing&lt;TOutShape&gt;</BaseTypeName>
     <BaseTypeArguments>
-      <BaseTypeArgument TypeParamName="TTupleShape">TTupleOutShape</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TShape">TOutShape</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
   <Interfaces />
   <Docs>
     <typeparam name="TTupleInShape">To be added.</typeparam>
+    <typeparam name="TInShape">To be added.</typeparam>
+    <typeparam name="TOutShape">To be added.</typeparam>
     <typeparam name="TTupleOutShape">To be added.</typeparam>
     <typeparam name="TTransformer">To be added.</typeparam>
     <summary>To be added.</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName="Append&lt;TTupleNewOutShape,TNewTransformer&gt;">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.StaticPipe.Transformer&lt;TTupleInShape,TTupleNewOutShape,Microsoft.ML.Runtime.Data.TransformerChain&lt;TNewTransformer&gt;&gt; Append&lt;TTupleNewOutShape,TNewTransformer&gt; (Microsoft.ML.StaticPipe.Transformer&lt;TTupleOutShape,TTupleNewOutShape,TNewTransformer&gt; transformer) where TNewTransformer : class, Microsoft.ML.Core.Data.ITransformer;" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.StaticPipe.Transformer`3&lt;!TTupleInShape, !!TTupleNewOutShape, class Microsoft.ML.Runtime.Data.TransformerChain`1&lt;!!TNewTransformer&gt;&gt; Append&lt;TTupleNewOutShape, class (class Microsoft.ML.Core.Data.ITransformer) TNewTransformer&gt;(class Microsoft.ML.StaticPipe.Transformer`3&lt;!TTupleOutShape, !!TTupleNewOutShape, !!TNewTransformer&gt; transformer) cil managed" />
+    <Member MemberName="Append&lt;TNewOutShape,TNewTransformer&gt;">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.StaticPipe.Transformer&lt;TInShape,TNewOutShape,Microsoft.ML.Runtime.Data.TransformerChain&lt;TNewTransformer&gt;&gt; Append&lt;TNewOutShape,TNewTransformer&gt; (Microsoft.ML.StaticPipe.Transformer&lt;TOutShape,TNewOutShape,TNewTransformer&gt; transformer) where TNewTransformer : class, Microsoft.ML.Core.Data.ITransformer;" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.StaticPipe.Transformer`3&lt;!TInShape, !!TNewOutShape, class Microsoft.ML.Runtime.Data.TransformerChain`1&lt;!!TNewTransformer&gt;&gt; Append&lt;TNewOutShape, class (class Microsoft.ML.Core.Data.ITransformer) TNewTransformer&gt;(class Microsoft.ML.StaticPipe.Transformer`3&lt;!TOutShape, !!TNewOutShape, !!TNewTransformer&gt; transformer) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.Transformer`3.Append``2(Microsoft.ML.StaticPipe.Transformer{`1,``0,``1})" />
-      <MemberSignature Language="VB.NET" Value="Public Function Append(Of TTupleNewOutShape, TNewTransformer) (transformer As Transformer(Of TTupleOutShape, TTupleNewOutShape, TNewTransformer)) As Transformer(Of TTupleInShape, TTupleNewOutShape, TransformerChain(Of TNewTransformer))" />
-      <MemberSignature Language="F#" Value="member this.Append : Microsoft.ML.StaticPipe.Transformer&lt;'upleOutShape, 'upleNewOutShape, 'NewTransformer (requires 'NewTransformer : null and 'NewTransformer :&gt; Microsoft.ML.Core.Data.ITransformer)&gt; -&gt; Microsoft.ML.StaticPipe.Transformer&lt;'upleInShape, 'upleNewOutShape, Microsoft.ML.Runtime.Data.TransformerChain&lt;'NewTransformer&gt;&gt; (requires 'NewTransformer : null and 'NewTransformer :&gt; Microsoft.ML.Core.Data.ITransformer)" Usage="transformer.Append transformer" />
+      <MemberSignature Language="VB.NET" Value="Public Function Append(Of TNewOutShape, TNewTransformer) (transformer As Transformer(Of TOutShape, TNewOutShape, TNewTransformer)) As Transformer(Of TInShape, TNewOutShape, TransformerChain(Of TNewTransformer))" />
+      <MemberSignature Language="F#" Value="member this.Append : Microsoft.ML.StaticPipe.Transformer&lt;'OutShape, 'NewOutShape, 'NewTransformer (requires 'NewTransformer : null and 'NewTransformer :&gt; Microsoft.ML.Core.Data.ITransformer)&gt; -&gt; Microsoft.ML.StaticPipe.Transformer&lt;'InShape, 'NewOutShape, Microsoft.ML.Runtime.Data.TransformerChain&lt;'NewTransformer&gt;&gt; (requires 'NewTransformer : null and 'NewTransformer :&gt; Microsoft.ML.Core.Data.ITransformer)" Usage="transformer.Append transformer" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.StaticPipe.Transformer&lt;TTupleInShape,TTupleNewOutShape,Microsoft.ML.Runtime.Data.TransformerChain&lt;TNewTransformer&gt;&gt;</ReturnType>
+        <ReturnType>Microsoft.ML.StaticPipe.Transformer&lt;TInShape,TNewOutShape,Microsoft.ML.Runtime.Data.TransformerChain&lt;TNewTransformer&gt;&gt;</ReturnType>
       </ReturnValue>
       <TypeParameters>
-        <TypeParameter Name="TTupleNewOutShape" />
+        <TypeParameter Name="TNewOutShape" />
         <TypeParameter Name="TNewTransformer">
           <Constraints>
             <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
@@ -57,10 +60,10 @@
         </TypeParameter>
       </TypeParameters>
       <Parameters>
-        <Parameter Name="transformer" Type="Microsoft.ML.StaticPipe.Transformer&lt;TTupleOutShape,TTupleNewOutShape,TNewTransformer&gt;" />
+        <Parameter Name="transformer" Type="Microsoft.ML.StaticPipe.Transformer&lt;TOutShape,TNewOutShape,TNewTransformer&gt;" />
       </Parameters>
       <Docs>
-        <typeparam name="TTupleNewOutShape">To be added.</typeparam>
+        <typeparam name="TNewOutShape">To be added.</typeparam>
         <typeparam name="TNewTransformer">To be added.</typeparam>
         <param name="transformer">To be added.</param>
         <summary>To be added.</summary>
@@ -73,7 +76,7 @@
       <MemberSignature Language="ILAsm" Value=".property instance !TTransformer AsDynamic" />
       <MemberSignature Language="DocId" Value="P:Microsoft.ML.StaticPipe.Transformer`3.AsDynamic" />
       <MemberSignature Language="VB.NET" Value="Public ReadOnly Property AsDynamic As TTransformer" />
-      <MemberSignature Language="F#" Value="member this.AsDynamic : 'ransformer" Usage="Microsoft.ML.StaticPipe.Transformer&lt;'upleInShape, 'upleOutShape, 'ransformer (requires 'ransformer : null and 'ransformer :&gt; Microsoft.ML.Core.Data.ITransformer)&gt;.AsDynamic" />
+      <MemberSignature Language="F#" Value="member this.AsDynamic : 'ransformer" Usage="Microsoft.ML.StaticPipe.Transformer&lt;'InShape, 'OutShape, 'ransformer (requires 'ransformer : null and 'ransformer :&gt; Microsoft.ML.Core.Data.ITransformer)&gt;.AsDynamic" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -89,21 +92,21 @@
       </Docs>
     </Member>
     <Member MemberName="Transform">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.StaticPipe.DataView&lt;TTupleOutShape&gt; Transform (Microsoft.ML.StaticPipe.DataView&lt;TTupleInShape&gt; input);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.StaticPipe.DataView`1&lt;!TTupleOutShape&gt; Transform(class Microsoft.ML.StaticPipe.DataView`1&lt;!TTupleInShape&gt; input) cil managed" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.StaticPipe.DataView&lt;TOutShape&gt; Transform (Microsoft.ML.StaticPipe.DataView&lt;TInShape&gt; input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.StaticPipe.DataView`1&lt;!TOutShape&gt; Transform(class Microsoft.ML.StaticPipe.DataView`1&lt;!TInShape&gt; input) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.Transformer`3.Transform(Microsoft.ML.StaticPipe.DataView{`0})" />
-      <MemberSignature Language="VB.NET" Value="Public Function Transform (input As DataView(Of TTupleInShape)) As DataView(Of TTupleOutShape)" />
-      <MemberSignature Language="F#" Value="member this.Transform : Microsoft.ML.StaticPipe.DataView&lt;'upleInShape&gt; -&gt; Microsoft.ML.StaticPipe.DataView&lt;'upleOutShape&gt;" Usage="transformer.Transform input" />
+      <MemberSignature Language="VB.NET" Value="Public Function Transform (input As DataView(Of TInShape)) As DataView(Of TOutShape)" />
+      <MemberSignature Language="F#" Value="member this.Transform : Microsoft.ML.StaticPipe.DataView&lt;'InShape&gt; -&gt; Microsoft.ML.StaticPipe.DataView&lt;'OutShape&gt;" Usage="transformer.Transform input" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.StaticPipe.DataView&lt;TTupleOutShape&gt;</ReturnType>
+        <ReturnType>Microsoft.ML.StaticPipe.DataView&lt;TOutShape&gt;</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="input" Type="Microsoft.ML.StaticPipe.DataView&lt;TTupleInShape&gt;" />
+        <Parameter Name="input" Type="Microsoft.ML.StaticPipe.DataView&lt;TInShape&gt;" />
       </Parameters>
       <Docs>
         <param name="input">To be added.</param>
