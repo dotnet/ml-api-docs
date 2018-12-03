@@ -353,18 +353,18 @@
       </Docs>
     </Member>
     <Member MemberName="Ensemble">
-      <MemberSignature Language="C#" Value="protected Microsoft.ML.Trainers.FastTree.Internal.Ensemble Ensemble;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Microsoft.ML.Trainers.FastTree.Internal.Ensemble Ensemble" />
+      <MemberSignature Language="C#" Value="protected Microsoft.ML.Trainers.FastTree.Internal.TreeEnsemble Ensemble;" />
+      <MemberSignature Language="ILAsm" Value=".field family class Microsoft.ML.Trainers.FastTree.Internal.TreeEnsemble Ensemble" />
       <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.FastTreeTrainerBase`3.Ensemble" />
-      <MemberSignature Language="VB.NET" Value="Protected Ensemble As Ensemble " />
-      <MemberSignature Language="F#" Value="val mutable Ensemble : Microsoft.ML.Trainers.FastTree.Internal.Ensemble" Usage="Microsoft.ML.Trainers.FastTree.FastTreeTrainerBase&lt;'Args, 'ransformer, 'Model (requires 'Args :&gt; Microsoft.ML.Trainers.FastTree.TreeArgs and 'Args : (new : unit -&gt; 'Args) and 'ransformer :&gt; Microsoft.ML.Runtime.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model :&gt; Microsoft.ML.Runtime.IPredictorProducing&lt;System.single&gt;)&gt;.Ensemble" />
+      <MemberSignature Language="VB.NET" Value="Protected Ensemble As TreeEnsemble " />
+      <MemberSignature Language="F#" Value="val mutable Ensemble : Microsoft.ML.Trainers.FastTree.Internal.TreeEnsemble" Usage="Microsoft.ML.Trainers.FastTree.FastTreeTrainerBase&lt;'Args, 'ransformer, 'Model (requires 'Args :&gt; Microsoft.ML.Trainers.FastTree.TreeArgs and 'Args : (new : unit -&gt; 'Args) and 'ransformer :&gt; Microsoft.ML.Runtime.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model :&gt; Microsoft.ML.Runtime.IPredictorProducing&lt;System.single&gt;)&gt;.Ensemble" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Trainers.FastTree.Internal.Ensemble</ReturnType>
+        <ReturnType>Microsoft.ML.Trainers.FastTree.Internal.TreeEnsemble</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1023,6 +1023,28 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="TestData">
+      <MemberSignature Language="C#" Value="protected Microsoft.ML.Runtime.Data.RoleMappedData TestData;" />
+      <MemberSignature Language="ILAsm" Value=".field family class Microsoft.ML.Runtime.Data.RoleMappedData TestData" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.FastTreeTrainerBase`3.TestData" />
+      <MemberSignature Language="VB.NET" Value="Protected TestData As RoleMappedData " />
+      <MemberSignature Language="F#" Value="val mutable TestData : Microsoft.ML.Runtime.Data.RoleMappedData" Usage="Microsoft.ML.Trainers.FastTree.FastTreeTrainerBase&lt;'Args, 'ransformer, 'Model (requires 'Args :&gt; Microsoft.ML.Trainers.FastTree.TreeArgs and 'Args : (new : unit -&gt; 'Args) and 'ransformer :&gt; Microsoft.ML.Runtime.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model :&gt; Microsoft.ML.Runtime.IPredictorProducing&lt;System.single&gt;)&gt;.TestData" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.RoleMappedData</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            If not null, it's a test data set passed in from training context. It will be converted to one element in
+            <see cref="F:Microsoft.ML.Trainers.FastTree.FastTreeTrainerBase`3.Tests" /> by calling <see cref="M:Microsoft.ML.Trainers.FastTree.ExamplesToFastTreeBins.GetCompatibleDataset(Microsoft.ML.Runtime.Data.RoleMappedData,Microsoft.ML.Runtime.PredictionKind,System.Int32[],System.Boolean)" /> in <see cref="M:Microsoft.ML.Trainers.FastTree.FastTreeTrainerBase`3.InitializeTests" />.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Tests">
       <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;Microsoft.ML.Trainers.FastTree.Internal.Test&gt; Tests;" />
       <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;class Microsoft.ML.Trainers.FastTree.Internal.Test&gt; Tests" />
@@ -1038,7 +1060,10 @@
         <ReturnType>System.Collections.Generic.List&lt;Microsoft.ML.Trainers.FastTree.Internal.Test&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            In the training process, <see cref="F:Microsoft.ML.Trainers.FastTree.FastTreeTrainerBase`3.TrainSet" />, <see cref="F:Microsoft.ML.Trainers.FastTree.FastTreeTrainerBase`3.ValidSet" />, <see cref="F:Microsoft.ML.Trainers.FastTree.FastTreeTrainerBase`3.TestSets" /> would be
+            converted into <see cref="F:Microsoft.ML.Trainers.FastTree.FastTreeTrainerBase`3.Tests" /> for efficient model evaluation.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1057,7 +1082,9 @@
         <ReturnType>Microsoft.ML.Trainers.FastTree.Internal.Dataset[]</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Data sets used to evaluate the prediction scores produced the trained model during the triaining process.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1066,7 +1093,7 @@
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void Train(class Microsoft.ML.Runtime.IChannel ch) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastTreeTrainerBase`3.Train(Microsoft.ML.Runtime.IChannel)" />
       <MemberSignature Language="VB.NET" Value="Protected Overridable Sub Train (ch As IChannel)" />
-      <MemberSignature Language="F#" Value="override this.Train : Microsoft.ML.Runtime.IChannel -&gt; unit" Usage="fastTreeTrainerBase.Train ch" />
+      <MemberSignature Language="F#" Value="abstract member Train : Microsoft.ML.Runtime.IChannel -&gt; unit&#xA;override this.Train : Microsoft.ML.Runtime.IChannel -&gt; unit" Usage="fastTreeTrainerBase.Train ch" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
@@ -1108,18 +1135,18 @@
       </Docs>
     </Member>
     <Member MemberName="TrainedEnsemble">
-      <MemberSignature Language="C#" Value="protected Microsoft.ML.Trainers.FastTree.Internal.Ensemble TrainedEnsemble;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Microsoft.ML.Trainers.FastTree.Internal.Ensemble TrainedEnsemble" />
+      <MemberSignature Language="C#" Value="protected Microsoft.ML.Trainers.FastTree.Internal.TreeEnsemble TrainedEnsemble;" />
+      <MemberSignature Language="ILAsm" Value=".field family class Microsoft.ML.Trainers.FastTree.Internal.TreeEnsemble TrainedEnsemble" />
       <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.FastTreeTrainerBase`3.TrainedEnsemble" />
-      <MemberSignature Language="VB.NET" Value="Protected TrainedEnsemble As Ensemble " />
-      <MemberSignature Language="F#" Value="val mutable TrainedEnsemble : Microsoft.ML.Trainers.FastTree.Internal.Ensemble" Usage="Microsoft.ML.Trainers.FastTree.FastTreeTrainerBase&lt;'Args, 'ransformer, 'Model (requires 'Args :&gt; Microsoft.ML.Trainers.FastTree.TreeArgs and 'Args : (new : unit -&gt; 'Args) and 'ransformer :&gt; Microsoft.ML.Runtime.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model :&gt; Microsoft.ML.Runtime.IPredictorProducing&lt;System.single&gt;)&gt;.TrainedEnsemble" />
+      <MemberSignature Language="VB.NET" Value="Protected TrainedEnsemble As TreeEnsemble " />
+      <MemberSignature Language="F#" Value="val mutable TrainedEnsemble : Microsoft.ML.Trainers.FastTree.Internal.TreeEnsemble" Usage="Microsoft.ML.Trainers.FastTree.FastTreeTrainerBase&lt;'Args, 'ransformer, 'Model (requires 'Args :&gt; Microsoft.ML.Trainers.FastTree.TreeArgs and 'Args : (new : unit -&gt; 'Args) and 'ransformer :&gt; Microsoft.ML.Runtime.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model :&gt; Microsoft.ML.Runtime.IPredictorProducing&lt;System.single&gt;)&gt;.TrainedEnsemble" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Trainers.FastTree.Internal.Ensemble</ReturnType>
+        <ReturnType>Microsoft.ML.Trainers.FastTree.Internal.TreeEnsemble</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

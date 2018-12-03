@@ -39,11 +39,11 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public MultiClassNaiveBayesTrainer (Microsoft.ML.Runtime.IHostEnvironment env, string featureColumn, string labelColumn);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string featureColumn, string labelColumn) cil managed" />
+      <MemberSignature Language="C#" Value="public MultiClassNaiveBayesTrainer (Microsoft.ML.Runtime.IHostEnvironment env, string labelColumn = &quot;Label&quot;, string featureColumn = &quot;Features&quot;);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string labelColumn, string featureColumn) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.MultiClassNaiveBayesTrainer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, featureColumn As String, labelColumn As String)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Trainers.MultiClassNaiveBayesTrainer : Microsoft.ML.Runtime.IHostEnvironment * string * string -&gt; Microsoft.ML.Trainers.MultiClassNaiveBayesTrainer" Usage="new Microsoft.ML.Trainers.MultiClassNaiveBayesTrainer (env, featureColumn, labelColumn)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, Optional labelColumn As String = &quot;Label&quot;, Optional featureColumn As String = &quot;Features&quot;)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Trainers.MultiClassNaiveBayesTrainer : Microsoft.ML.Runtime.IHostEnvironment * string * string -&gt; Microsoft.ML.Trainers.MultiClassNaiveBayesTrainer" Usage="new Microsoft.ML.Trainers.MultiClassNaiveBayesTrainer (env, labelColumn, featureColumn)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
@@ -127,11 +127,11 @@
       </Docs>
     </Member>
     <Member MemberName="MakeTransformer">
-      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer&lt;Microsoft.ML.Trainers.MultiClassNaiveBayesPredictor&gt; MakeTransformer (Microsoft.ML.Trainers.MultiClassNaiveBayesPredictor model, Microsoft.ML.Runtime.Data.Schema trainSchema);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer`1&lt;class Microsoft.ML.Trainers.MultiClassNaiveBayesPredictor&gt; MakeTransformer(class Microsoft.ML.Trainers.MultiClassNaiveBayesPredictor model, class Microsoft.ML.Runtime.Data.Schema trainSchema) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.MultiClassNaiveBayesTrainer.MakeTransformer(Microsoft.ML.Trainers.MultiClassNaiveBayesPredictor,Microsoft.ML.Runtime.Data.Schema)" />
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer&lt;Microsoft.ML.Trainers.MultiClassNaiveBayesPredictor&gt; MakeTransformer (Microsoft.ML.Trainers.MultiClassNaiveBayesPredictor model, Microsoft.ML.Data.Schema trainSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer`1&lt;class Microsoft.ML.Trainers.MultiClassNaiveBayesPredictor&gt; MakeTransformer(class Microsoft.ML.Trainers.MultiClassNaiveBayesPredictor model, class Microsoft.ML.Data.Schema trainSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.MultiClassNaiveBayesTrainer.MakeTransformer(Microsoft.ML.Trainers.MultiClassNaiveBayesPredictor,Microsoft.ML.Data.Schema)" />
       <MemberSignature Language="VB.NET" Value="Protected Overrides Function MakeTransformer (model As MultiClassNaiveBayesPredictor, trainSchema As Schema) As MulticlassPredictionTransformer(Of MultiClassNaiveBayesPredictor)" />
-      <MemberSignature Language="F#" Value="override this.MakeTransformer : Microsoft.ML.Trainers.MultiClassNaiveBayesPredictor * Microsoft.ML.Runtime.Data.Schema -&gt; Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer&lt;Microsoft.ML.Trainers.MultiClassNaiveBayesPredictor&gt;" Usage="multiClassNaiveBayesTrainer.MakeTransformer (model, trainSchema)" />
+      <MemberSignature Language="F#" Value="override this.MakeTransformer : Microsoft.ML.Trainers.MultiClassNaiveBayesPredictor * Microsoft.ML.Data.Schema -&gt; Microsoft.ML.Runtime.Data.MulticlassPredictionTransformer&lt;Microsoft.ML.Trainers.MultiClassNaiveBayesPredictor&gt;" Usage="multiClassNaiveBayesTrainer.MakeTransformer (model, trainSchema)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
@@ -142,7 +142,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="model" Type="Microsoft.ML.Trainers.MultiClassNaiveBayesPredictor" />
-        <Parameter Name="trainSchema" Type="Microsoft.ML.Runtime.Data.Schema" />
+        <Parameter Name="trainSchema" Type="Microsoft.ML.Data.Schema" />
       </Parameters>
       <Docs>
         <param name="model">To be added.</param>
@@ -169,30 +169,6 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="TrainModelCore">
-      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Trainers.MultiClassNaiveBayesPredictor TrainModelCore (Microsoft.ML.Runtime.TrainContext context);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Trainers.MultiClassNaiveBayesPredictor TrainModelCore(class Microsoft.ML.Runtime.TrainContext context) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.MultiClassNaiveBayesTrainer.TrainModelCore(Microsoft.ML.Runtime.TrainContext)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function TrainModelCore (context As TrainContext) As MultiClassNaiveBayesPredictor" />
-      <MemberSignature Language="F#" Value="override this.TrainModelCore : Microsoft.ML.Runtime.TrainContext -&gt; Microsoft.ML.Trainers.MultiClassNaiveBayesPredictor" Usage="multiClassNaiveBayesTrainer.TrainModelCore context" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Trainers.MultiClassNaiveBayesPredictor</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="context" Type="Microsoft.ML.Runtime.TrainContext" />
-      </Parameters>
-      <Docs>
-        <param name="context">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

@@ -1,0 +1,151 @@
+<Type Name="MutualInformationFeatureSelector" FullName="Microsoft.ML.Transforms.MutualInformationFeatureSelector">
+  <TypeSignature Language="C#" Value="public sealed class MutualInformationFeatureSelector : Microsoft.ML.Runtime.Data.TrainedWrapperEstimatorBase" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit MutualInformationFeatureSelector extends Microsoft.ML.Runtime.Data.TrainedWrapperEstimatorBase" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Transforms.MutualInformationFeatureSelector" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class MutualInformationFeatureSelector&#xA;Inherits TrainedWrapperEstimatorBase" />
+  <TypeSignature Language="F#" Value="type MutualInformationFeatureSelector = class&#xA;    inherit TrainedWrapperEstimatorBase" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Microsoft.ML.Runtime.Data.TrainedWrapperEstimatorBase</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+        Selects the top k slots across all specified columns ordered by their mutual information with the label column.
+      </summary>
+    <remarks>
+      <para>
+          The mutual information of two random variables X and Y is a measure of the mutual dependence between the variables.
+          Formally, the mutual information can be written as:
+        </para>
+      <para>I(X;Y) = E[log(p(x,y)) - log(p(x)) - log(p(y))]</para>
+      <para>where the expectation is taken over the joint distribution of X and Y. 
+        Here p(x,y) is the joint probability density function of X and Y, p(x) and p(y) are the marginal probability density functions of X and Y respectively. 
+        In general, a higher mutual information between the dependent variable (or label) and an independent variable (or feature) means 
+        that the label has higher mutual dependence over that feature.
+        It keeps the top SlotsInOutput features with the largest mutual information with the label.
+        </para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public MutualInformationFeatureSelector (Microsoft.ML.Runtime.IHostEnvironment env, ValueTuple&lt;string,string&gt;[] columns, string labelColumn = &quot;Label&quot;, int slotsInOutput = 1000, int numBins = 256);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, valuetype System.ValueTuple`2&lt;string, string&gt;[] columns, string labelColumn, int32 slotsInOutput, int32 numBins) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.MutualInformationFeatureSelector.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.ValueTuple{System.String,System.String}[],System.String,System.Int32,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, columns As ValueTuple(Of String, String)(), Optional labelColumn As String = &quot;Label&quot;, Optional slotsInOutput As Integer = 1000, Optional numBins As Integer = 256)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.MutualInformationFeatureSelector : Microsoft.ML.Runtime.IHostEnvironment * ValueTuple&lt;string, string&gt;[] * string * int * int -&gt; Microsoft.ML.Transforms.MutualInformationFeatureSelector" Usage="new Microsoft.ML.Transforms.MutualInformationFeatureSelector (env, columns, labelColumn, slotsInOutput, numBins)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="columns" Type="System.ValueTuple&lt;System.String,System.String&gt;[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.Runtime.CompilerServices.TupleElementNames(new System.String[] { "input", "output" })</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+        <Parameter Name="labelColumn" Type="System.String" />
+        <Parameter Name="slotsInOutput" Type="System.Int32" />
+        <Parameter Name="numBins" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="env">The environment.</param>
+        <param name="columns">Columns to use for feature selection.</param>
+        <param name="labelColumn">Column to use for labels.</param>
+        <param name="slotsInOutput">The maximum number of slots to preserve in output.</param>
+        <param name="numBins">Max number of bins for float/double columns, power of 2 recommended.</param>
+        <summary>
+        Selects the top k slots across all specified columns ordered by their mutual information with the label column.
+      </summary>
+        <remarks>
+          <para>
+          The mutual information of two random variables X and Y is a measure of the mutual dependence between the variables.
+          Formally, the mutual information can be written as:
+        </para>
+          <para>I(X;Y) = E[log(p(x,y)) - log(p(x)) - log(p(y))]</para>
+          <para>where the expectation is taken over the joint distribution of X and Y. 
+        Here p(x,y) is the joint probability density function of X and Y, p(x) and p(y) are the marginal probability density functions of X and Y respectively. 
+        In general, a higher mutual information between the dependent variable (or label) and an independent variable (or feature) means 
+        that the label has higher mutual dependence over that feature.
+        It keeps the top SlotsInOutput features with the largest mutual information with the label.
+        </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public MutualInformationFeatureSelector (Microsoft.ML.Runtime.IHostEnvironment env, string inputColumn, string outputColumn = null, string labelColumn = &quot;Label&quot;, int slotsInOutput = 1000, int numBins = 256);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string inputColumn, string outputColumn, string labelColumn, int32 slotsInOutput, int32 numBins) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.MutualInformationFeatureSelector.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String,System.Int32,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, inputColumn As String, Optional outputColumn As String = null, Optional labelColumn As String = &quot;Label&quot;, Optional slotsInOutput As Integer = 1000, Optional numBins As Integer = 256)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.MutualInformationFeatureSelector : Microsoft.ML.Runtime.IHostEnvironment * string * string * string * int * int -&gt; Microsoft.ML.Transforms.MutualInformationFeatureSelector" Usage="new Microsoft.ML.Transforms.MutualInformationFeatureSelector (env, inputColumn, outputColumn, labelColumn, slotsInOutput, numBins)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="inputColumn" Type="System.String" />
+        <Parameter Name="outputColumn" Type="System.String" />
+        <Parameter Name="labelColumn" Type="System.String" />
+        <Parameter Name="slotsInOutput" Type="System.Int32" />
+        <Parameter Name="numBins" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="env">The environment.</param>
+        <param name="inputColumn">The input column to apply feature selection on.</param>
+        <param name="outputColumn">The output column. Null means <paramref name="inputColumn" /> is used.</param>
+        <param name="labelColumn">Column to use for labels.</param>
+        <param name="slotsInOutput">The maximum number of slots to preserve in output.</param>
+        <param name="numBins">Max number of bins for float/double columns, power of 2 recommended.</param>
+        <summary>
+        Selects the top k slots across all specified columns ordered by their mutual information with the label column.
+      </summary>
+        <remarks>
+          <para>
+          The mutual information of two random variables X and Y is a measure of the mutual dependence between the variables.
+          Formally, the mutual information can be written as:
+        </para>
+          <para>I(X;Y) = E[log(p(x,y)) - log(p(x)) - log(p(y))]</para>
+          <para>where the expectation is taken over the joint distribution of X and Y. 
+        Here p(x,y) is the joint probability density function of X and Y, p(x) and p(y) are the marginal probability density functions of X and Y respectively. 
+        In general, a higher mutual information between the dependent variable (or label) and an independent variable (or feature) means 
+        that the label has higher mutual dependence over that feature.
+        It keeps the top SlotsInOutput features with the largest mutual information with the label.
+        </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Fit">
+      <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.Data.TransformWrapper Fit (Microsoft.ML.Runtime.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Microsoft.ML.Runtime.Data.TransformWrapper Fit(class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.MutualInformationFeatureSelector.Fit(Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function Fit (input As IDataView) As TransformWrapper" />
+      <MemberSignature Language="F#" Value="override this.Fit : Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.TransformWrapper" Usage="mutualInformationFeatureSelector.Fit input" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.TransformWrapper</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

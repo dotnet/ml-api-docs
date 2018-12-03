@@ -1,0 +1,141 @@
+<Type Name="Whitening" FullName="Microsoft.ML.Transforms.Whitening">
+  <TypeSignature Language="C#" Value="public sealed class Whitening : Microsoft.ML.Runtime.Data.TrainedWrapperEstimatorBase" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit Whitening extends Microsoft.ML.Runtime.Data.TrainedWrapperEstimatorBase" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Transforms.Whitening" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class Whitening&#xA;Inherits TrainedWrapperEstimatorBase" />
+  <TypeSignature Language="F#" Value="type Whitening = class&#xA;    inherit TrainedWrapperEstimatorBase" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Microsoft.ML.Runtime.Data.TrainedWrapperEstimatorBase</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+        Implements PCA (Principal Component Analysis) and ZCA (Zero phase Component Analysis) whitening.
+        The whitening process consists of 2 steps:
+            1. Decorrelation of the input data. Input data is assumed to have zero mean.
+            2. Rescale decorrelated features to have unit variance.
+        That is, PCA whitening is essentially just a PCA + rescale.
+        ZCA whitening tries to make resulting data to look more like input data by rotating it back to the
+        original input space.
+        More information: <a href="http://ufldl.stanford.edu/wiki/index.php/Whitening">http://ufldl.stanford.edu/wiki/index.php/Whitening</a></summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Whitening (Microsoft.ML.Runtime.IHostEnvironment env, ValueTuple&lt;string,string&gt;[] columns, Microsoft.ML.Transforms.WhiteningKind kind = Microsoft.ML.Transforms.WhiteningKind.Zca, float eps = 1E-05, int maxRows = 100000, bool saveInverse = false, int pcaNum = 0);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, valuetype System.ValueTuple`2&lt;string, string&gt;[] columns, valuetype Microsoft.ML.Transforms.WhiteningKind kind, float32 eps, int32 maxRows, bool saveInverse, int32 pcaNum) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Whitening.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.ValueTuple{System.String,System.String}[],Microsoft.ML.Transforms.WhiteningKind,System.Single,System.Int32,System.Boolean,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, columns As ValueTuple(Of String, String)(), Optional kind As WhiteningKind = Microsoft.ML.Transforms.WhiteningKind.Zca, Optional eps As Single = 1E-05, Optional maxRows As Integer = 100000, Optional saveInverse As Boolean = false, Optional pcaNum As Integer = 0)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Whitening : Microsoft.ML.Runtime.IHostEnvironment * ValueTuple&lt;string, string&gt;[] * Microsoft.ML.Transforms.WhiteningKind * single * int * bool * int -&gt; Microsoft.ML.Transforms.Whitening" Usage="new Microsoft.ML.Transforms.Whitening (env, columns, kind, eps, maxRows, saveInverse, pcaNum)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="columns" Type="System.ValueTuple&lt;System.String,System.String&gt;[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.Runtime.CompilerServices.TupleElementNames(new System.String[] { "input", "output" })</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+        <Parameter Name="kind" Type="Microsoft.ML.Transforms.WhiteningKind" />
+        <Parameter Name="eps" Type="System.Single" />
+        <Parameter Name="maxRows" Type="System.Int32" />
+        <Parameter Name="saveInverse" Type="System.Boolean" />
+        <Parameter Name="pcaNum" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="env">The environment.</param>
+        <param name="columns">Pairs of columns to run the tokenization on.</param>
+        <param name="kind">Whitening kind (PCA/ZCA).</param>
+        <param name="eps">Scaling regularizer.</param>
+        <param name="maxRows">Max number of rows.</param>
+        <param name="saveInverse">Whether to save inverse (recovery) matrix.</param>
+        <param name="pcaNum">PCA components to retain.</param>
+        <summary>
+        Implements PCA (Principal Component Analysis) and ZCA (Zero phase Component Analysis) whitening.
+        The whitening process consists of 2 steps:
+            1. Decorrelation of the input data. Input data is assumed to have zero mean.
+            2. Rescale decorrelated features to have unit variance.
+        That is, PCA whitening is essentially just a PCA + rescale.
+        ZCA whitening tries to make resulting data to look more like input data by rotating it back to the
+        original input space.
+        More information: <a href="http://ufldl.stanford.edu/wiki/index.php/Whitening">http://ufldl.stanford.edu/wiki/index.php/Whitening</a></summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Whitening (Microsoft.ML.Runtime.IHostEnvironment env, string inputColumn, string outputColumn = null, Microsoft.ML.Transforms.WhiteningKind kind = Microsoft.ML.Transforms.WhiteningKind.Zca, float eps = 1E-05, int maxRows = 100000, bool saveInverse = false, int pcaNum = 0);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string inputColumn, string outputColumn, valuetype Microsoft.ML.Transforms.WhiteningKind kind, float32 eps, int32 maxRows, bool saveInverse, int32 pcaNum) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Whitening.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,Microsoft.ML.Transforms.WhiteningKind,System.Single,System.Int32,System.Boolean,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, inputColumn As String, Optional outputColumn As String = null, Optional kind As WhiteningKind = Microsoft.ML.Transforms.WhiteningKind.Zca, Optional eps As Single = 1E-05, Optional maxRows As Integer = 100000, Optional saveInverse As Boolean = false, Optional pcaNum As Integer = 0)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Whitening : Microsoft.ML.Runtime.IHostEnvironment * string * string * Microsoft.ML.Transforms.WhiteningKind * single * int * bool * int -&gt; Microsoft.ML.Transforms.Whitening" Usage="new Microsoft.ML.Transforms.Whitening (env, inputColumn, outputColumn, kind, eps, maxRows, saveInverse, pcaNum)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="inputColumn" Type="System.String" />
+        <Parameter Name="outputColumn" Type="System.String" />
+        <Parameter Name="kind" Type="Microsoft.ML.Transforms.WhiteningKind" />
+        <Parameter Name="eps" Type="System.Single" />
+        <Parameter Name="maxRows" Type="System.Int32" />
+        <Parameter Name="saveInverse" Type="System.Boolean" />
+        <Parameter Name="pcaNum" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="env">The environment.</param>
+        <param name="inputColumn">The column containing text to tokenize.</param>
+        <param name="outputColumn">The column containing output tokens. Null means <paramref name="inputColumn" /> is replaced.</param>
+        <param name="kind">Whitening kind (PCA/ZCA).</param>
+        <param name="eps">Scaling regularizer.</param>
+        <param name="maxRows">Max number of rows.</param>
+        <param name="saveInverse">Whether to save inverse (recovery) matrix.</param>
+        <param name="pcaNum">PCA components to retain.</param>
+        <summary>
+        Implements PCA (Principal Component Analysis) and ZCA (Zero phase Component Analysis) whitening.
+        The whitening process consists of 2 steps:
+            1. Decorrelation of the input data. Input data is assumed to have zero mean.
+            2. Rescale decorrelated features to have unit variance.
+        That is, PCA whitening is essentially just a PCA + rescale.
+        ZCA whitening tries to make resulting data to look more like input data by rotating it back to the
+        original input space.
+        More information: <a href="http://ufldl.stanford.edu/wiki/index.php/Whitening">http://ufldl.stanford.edu/wiki/index.php/Whitening</a></summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Fit">
+      <MemberSignature Language="C#" Value="public override Microsoft.ML.Runtime.Data.TransformWrapper Fit (Microsoft.ML.Runtime.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Microsoft.ML.Runtime.Data.TransformWrapper Fit(class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Whitening.Fit(Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function Fit (input As IDataView) As TransformWrapper" />
+      <MemberSignature Language="F#" Value="override this.Fit : Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.TransformWrapper" Usage="whitening.Fit input" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.TransformWrapper</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

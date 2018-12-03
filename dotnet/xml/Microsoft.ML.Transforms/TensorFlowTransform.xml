@@ -1,24 +1,18 @@
 ﻿<Type Name="TensorFlowTransform" FullName="Microsoft.ML.Transforms.TensorFlowTransform">
-  <TypeSignature Language="C#" Value="public sealed class TensorFlowTransform : Microsoft.ML.Core.Data.ITransformer, Microsoft.ML.Runtime.Model.ICanSaveModel" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit TensorFlowTransform extends System.Object implements class Microsoft.ML.Core.Data.ITransformer, class Microsoft.ML.Runtime.Model.ICanSaveModel" />
+  <TypeSignature Language="C#" Value="public sealed class TensorFlowTransform : Microsoft.ML.Runtime.Data.RowToRowTransformerBase" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit TensorFlowTransform extends Microsoft.ML.Runtime.Data.RowToRowTransformerBase" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Transforms.TensorFlowTransform" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class TensorFlowTransform&#xA;Implements ICanSaveModel, ITransformer" />
-  <TypeSignature Language="F#" Value="type TensorFlowTransform = class&#xA;    interface ITransformer&#xA;    interface ICanSaveModel" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class TensorFlowTransform&#xA;Inherits RowToRowTransformerBase" />
+  <TypeSignature Language="F#" Value="type TensorFlowTransform = class&#xA;    inherit RowToRowTransformerBase" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.TensorFlow</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Runtime.Data.RowToRowTransformerBase</BaseTypeName>
   </Base>
-  <Interfaces>
-    <Interface>
-      <InterfaceName>Microsoft.ML.Core.Data.ITransformer</InterfaceName>
-    </Interface>
-    <Interface>
-      <InterfaceName>Microsoft.ML.Runtime.Model.ICanSaveModel</InterfaceName>
-    </Interface>
-  </Interfaces>
+  <Interfaces></Interfaces>
   <Docs>
     <summary>
         The <see cref="T:Microsoft.ML.Transforms.TensorFlowTransform" /> is used in following two scenarios.
@@ -64,7 +58,7 @@
         </item>
       </list>
 
-        The inputs and outputs of a TensorFlow model can be obtained using the <see cref="M:Microsoft.ML.Transforms.TensorFlow.TensorFlowUtils.GetModelSchema(Microsoft.ML.Runtime.IExceptionContext,System.String)" /> or <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/tools/graph_transforms/README.md#inspecting-graphs"><code>summarize_graph</code> tools.
+        The inputs and outputs of a TensorFlow model can be obtained using the <see cref="M:Microsoft.ML.Transforms.TensorFlowModelInfo.GetModelSchema" /> or <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/tools/graph_transforms/README.md#inspecting-graphs"><code>summarize_graph</code> tools.
         </a>.
 
       </remarks>
@@ -338,60 +332,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="GetOutputSchema">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.Schema GetOutputSchema (Microsoft.ML.Runtime.Data.Schema inputSchema);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.Schema GetOutputSchema(class Microsoft.ML.Runtime.Data.Schema inputSchema) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.TensorFlowTransform.GetOutputSchema(Microsoft.ML.Runtime.Data.Schema)" />
-      <MemberSignature Language="VB.NET" Value="Public Function GetOutputSchema (inputSchema As Schema) As Schema" />
-      <MemberSignature Language="F#" Value="abstract member GetOutputSchema : Microsoft.ML.Runtime.Data.Schema -&gt; Microsoft.ML.Runtime.Data.Schema&#xA;override this.GetOutputSchema : Microsoft.ML.Runtime.Data.Schema -&gt; Microsoft.ML.Runtime.Data.Schema" Usage="tensorFlowTransform.GetOutputSchema inputSchema" />
-      <MemberType>Method</MemberType>
-      <Implements>
-        <InterfaceMember>M:Microsoft.ML.Core.Data.ITransformer.GetOutputSchema(Microsoft.ML.Runtime.Data.Schema)</InterfaceMember>
-      </Implements>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.TensorFlow</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.Schema</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="inputSchema" Type="Microsoft.ML.Runtime.Data.Schema" />
-      </Parameters>
-      <Docs>
-        <param name="inputSchema">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GetRowToRowMapper">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IRowToRowMapper GetRowToRowMapper (Microsoft.ML.Runtime.Data.Schema inputSchema);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IRowToRowMapper GetRowToRowMapper(class Microsoft.ML.Runtime.Data.Schema inputSchema) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.TensorFlowTransform.GetRowToRowMapper(Microsoft.ML.Runtime.Data.Schema)" />
-      <MemberSignature Language="VB.NET" Value="Public Function GetRowToRowMapper (inputSchema As Schema) As IRowToRowMapper" />
-      <MemberSignature Language="F#" Value="abstract member GetRowToRowMapper : Microsoft.ML.Runtime.Data.Schema -&gt; Microsoft.ML.Runtime.Data.IRowToRowMapper&#xA;override this.GetRowToRowMapper : Microsoft.ML.Runtime.Data.Schema -&gt; Microsoft.ML.Runtime.Data.IRowToRowMapper" Usage="tensorFlowTransform.GetRowToRowMapper inputSchema" />
-      <MemberType>Method</MemberType>
-      <Implements>
-        <InterfaceMember>M:Microsoft.ML.Core.Data.ITransformer.GetRowToRowMapper(Microsoft.ML.Runtime.Data.Schema)</InterfaceMember>
-      </Implements>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.TensorFlow</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.IRowToRowMapper</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="inputSchema" Type="Microsoft.ML.Runtime.Data.Schema" />
-      </Parameters>
-      <Docs>
-        <param name="inputSchema">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Inputs">
       <MemberSignature Language="C#" Value="public readonly string[] Inputs;" />
       <MemberSignature Language="ILAsm" Value=".field public initonly string[] Inputs" />
@@ -411,26 +351,27 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="IsRowToRowMapper">
-      <MemberSignature Language="C#" Value="public bool IsRowToRowMapper { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool IsRowToRowMapper" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Transforms.TensorFlowTransform.IsRowToRowMapper" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property IsRowToRowMapper As Boolean" />
-      <MemberSignature Language="F#" Value="member this.IsRowToRowMapper : bool" Usage="Microsoft.ML.Transforms.TensorFlowTransform.IsRowToRowMapper" />
-      <MemberType>Property</MemberType>
-      <Implements>
-        <InterfaceMember>P:Microsoft.ML.Core.Data.ITransformer.IsRowToRowMapper</InterfaceMember>
-      </Implements>
+    <Member MemberName="MakeRowMapper">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.IRowMapper MakeRowMapper (Microsoft.ML.Data.Schema inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.IRowMapper MakeRowMapper(class Microsoft.ML.Data.Schema inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.TensorFlowTransform.MakeRowMapper(Microsoft.ML.Data.Schema)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function MakeRowMapper (inputSchema As Schema) As IRowMapper" />
+      <MemberSignature Language="F#" Value="override this.MakeRowMapper : Microsoft.ML.Data.Schema -&gt; Microsoft.ML.Runtime.Data.IRowMapper" Usage="tensorFlowTransform.MakeRowMapper inputSchema" />
+      <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.TensorFlow</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
+        <ReturnType>Microsoft.ML.Runtime.Data.IRowMapper</ReturnType>
       </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.Data.Schema" />
+      </Parameters>
       <Docs>
+        <param name="inputSchema">To be added.</param>
         <summary>To be added.</summary>
-        <value>To be added.</value>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -454,15 +395,12 @@
       </Docs>
     </Member>
     <Member MemberName="Save">
-      <MemberSignature Language="C#" Value="public void Save (Microsoft.ML.Runtime.Model.ModelSaveContext ctx);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Save(class Microsoft.ML.Runtime.Model.ModelSaveContext ctx) cil managed" />
+      <MemberSignature Language="C#" Value="public override void Save (Microsoft.ML.Runtime.Model.ModelSaveContext ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Save(class Microsoft.ML.Runtime.Model.ModelSaveContext ctx) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.TensorFlowTransform.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub Save (ctx As ModelSaveContext)" />
-      <MemberSignature Language="F#" Value="abstract member Save : Microsoft.ML.Runtime.Model.ModelSaveContext -&gt; unit&#xA;override this.Save : Microsoft.ML.Runtime.Model.ModelSaveContext -&gt; unit" Usage="tensorFlowTransform.Save ctx" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Sub Save (ctx As ModelSaveContext)" />
+      <MemberSignature Language="F#" Value="override this.Save : Microsoft.ML.Runtime.Model.ModelSaveContext -&gt; unit" Usage="tensorFlowTransform.Save ctx" />
       <MemberType>Method</MemberType>
-      <Implements>
-        <InterfaceMember>M:Microsoft.ML.Runtime.Model.ICanSaveModel.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)</InterfaceMember>
-      </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.TensorFlow</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -492,7 +430,7 @@
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="Transforms the data using the TensorFlow model.", Name="Transforms.TensorFlowScorer", ShortName="TFTransform", UserName="TensorFlowTransform", XmlInclude=new System.String[] { "&lt;include file='../Microsoft.ML.TensorFlow/doc.xml' path='doc/members/member[@name="TensorflowTransform"]/*' /&gt;" })</AttributeName>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="Transforms the data using the TensorFlow model.", Name="Transforms.TensorFlowScorer", ShortName="TFTransform", UserName="TensorFlowTransform", XmlInclude=new System.String[] { "&lt;include file='../Microsoft.ML.TensorFlow/doc.xml' path='doc/members/member[@name="TensorflowTransform"]/*' /&gt;", "&lt;include file='../Microsoft.ML.TensorFlow/doc.xml' path='doc/members/example[@name="TensorflowTransform"]/*' /&gt;" })</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -504,33 +442,6 @@
       </Parameters>
       <Docs>
         <param name="env">To be added.</param>
-        <param name="input">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Transform">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IDataView Transform (Microsoft.ML.Runtime.Data.IDataView input);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IDataView Transform(class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.TensorFlowTransform.Transform(Microsoft.ML.Runtime.Data.IDataView)" />
-      <MemberSignature Language="VB.NET" Value="Public Function Transform (input As IDataView) As IDataView" />
-      <MemberSignature Language="F#" Value="abstract member Transform : Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.IDataView&#xA;override this.Transform : Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.IDataView" Usage="tensorFlowTransform.Transform input" />
-      <MemberType>Method</MemberType>
-      <Implements>
-        <InterfaceMember>M:Microsoft.ML.Core.Data.ITransformer.Transform(Microsoft.ML.Runtime.Data.IDataView)</InterfaceMember>
-      </Implements>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.TensorFlow</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.IDataView</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
-      </Parameters>
-      <Docs>
         <param name="input">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>

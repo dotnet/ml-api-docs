@@ -29,37 +29,46 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected StateBase ();" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.#ctor" />
-      <MemberSignature Language="VB.NET" Value="Protected Sub New ()" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Host">
-      <MemberSignature Language="C#" Value="protected Microsoft.ML.Runtime.IHost Host;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Microsoft.ML.Runtime.IHost Host" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.Host" />
-      <MemberSignature Language="VB.NET" Value="Protected Host As IHost " />
-      <MemberSignature Language="F#" Value="val mutable Host : Microsoft.ML.Runtime.IHost" Usage="Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase&lt;'Input, 'Output, 'State (requires 'State :&gt; Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase&lt;'Input, 'Output, 'State&gt;.StateBase and 'State : (new : unit -&gt; 'State))&gt;.StateBase.Host" />
-      <MemberType>Field</MemberType>
+    <Member MemberName="Clone">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase&lt;TInput,TOutput,TState&gt;.StateBase Clone ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3/StateBase&lt;!TInput, !TOutput, !TState&gt; Clone() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.Clone" />
+      <MemberSignature Language="VB.NET" Value="Public Function Clone () As SequentialTransformerBase(Of TInput, TOutput, TState).StateBase" />
+      <MemberSignature Language="F#" Value="member this.Clone : unit -&gt; Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase&lt;'Input, 'Output, 'State (requires 'State :&gt; Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase&lt;'Input, 'Output, 'State&gt;.StateBase and 'State : (new : unit -&gt; 'State))&gt;.StateBase" Usage="stateBase.Clone " />
+      <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.IHost</ReturnType>
+        <ReturnType>Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase&lt;TInput,TOutput,TState&gt;+StateBase</ReturnType>
       </ReturnValue>
+      <Parameters />
       <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Consume">
+      <MemberSignature Language="C#" Value="public abstract void Consume (TInput value);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Consume(!TInput value) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.Consume(`0)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Sub Consume (value As TInput)" />
+      <MemberSignature Language="F#" Value="abstract member Consume : 'Input -&gt; unit" Usage="stateBase.Consume value" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="value" Type="TInput" />
+      </Parameters>
+      <Docs>
+        <param name="value">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -85,12 +94,12 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="InitializeStateCore">
-      <MemberSignature Language="C#" Value="protected abstract void InitializeStateCore ();" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void InitializeStateCore() cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.InitializeStateCore" />
-      <MemberSignature Language="VB.NET" Value="Protected MustOverride Sub InitializeStateCore ()" />
-      <MemberSignature Language="F#" Value="abstract member InitializeStateCore : unit -&gt; unit" Usage="stateBase.InitializeStateCore " />
+    <Member MemberName="InitState">
+      <MemberSignature Language="C#" Value="public void InitState (Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase&lt;TInput,TOutput,TState&gt; parentTransform, Microsoft.ML.Runtime.IHost host);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void InitState(class Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3&lt;!TInput, !TOutput, !TState&gt; parentTransform, class Microsoft.ML.Runtime.IHost host) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.InitState(Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase{`0,`1,`2},Microsoft.ML.Runtime.IHost)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub InitState (parentTransform As SequentialTransformerBase(Of TInput, TOutput, TState), host As IHost)" />
+      <MemberSignature Language="F#" Value="member this.InitState : Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase&lt;'Input, 'Output, 'State (requires 'State :&gt; Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase&lt;'Input, 'Output, 'State&gt;.StateBase and 'State : (new : unit -&gt; 'State))&gt; * Microsoft.ML.Runtime.IHost -&gt; unit" Usage="stateBase.InitState (parentTransform, host)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
@@ -99,52 +108,14 @@
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
-      <Parameters />
+      <Parameters>
+        <Parameter Name="parentTransform" Type="Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase&lt;TInput,TOutput,TState&gt;" />
+        <Parameter Name="host" Type="Microsoft.ML.Runtime.IHost" />
+      </Parameters>
       <Docs>
-        <summary>
-            The abstract method that realizes the logic for initializing the state object.
-            </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InitialWindowedBuffer">
-      <MemberSignature Language="C#" Value="protected Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue&lt;TInput&gt; InitialWindowedBuffer;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue`1&lt;!TInput&gt; InitialWindowedBuffer" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.InitialWindowedBuffer" />
-      <MemberSignature Language="VB.NET" Value="Protected InitialWindowedBuffer As FixedSizeQueue(Of TInput) " />
-      <MemberSignature Language="F#" Value="val mutable InitialWindowedBuffer : Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue&lt;'Input&gt;" Usage="Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase&lt;'Input, 'Output, 'State (requires 'State :&gt; Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase&lt;'Input, 'Output, 'State&gt;.StateBase and 'State : (new : unit -&gt; 'State))&gt;.StateBase.InitialWindowedBuffer" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue&lt;TInput&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>
-            The buffer used to buffer the training data points.
-            </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InitialWindowSize">
-      <MemberSignature Language="C#" Value="protected int InitialWindowSize { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 InitialWindowSize" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.InitialWindowSize" />
-      <MemberSignature Language="VB.NET" Value="Protected ReadOnly Property InitialWindowSize As Integer" />
-      <MemberSignature Language="F#" Value="member this.InitialWindowSize : int" Usage="Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase&lt;'Input, 'Output, 'State (requires 'State :&gt; Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase&lt;'Input, 'Output, 'State&gt;.StateBase and 'State : (new : unit -&gt; 'State))&gt;.StateBase.InitialWindowSize" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
+        <param name="parentTransform">To be added.</param>
+        <param name="host">To be added.</param>
         <summary>To be added.</summary>
-        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -180,31 +151,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="LearnStateFromDataCore">
-      <MemberSignature Language="C#" Value="protected abstract void LearnStateFromDataCore (Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue&lt;TInput&gt; data);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void LearnStateFromDataCore(class Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue`1&lt;!TInput&gt; data) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.LearnStateFromDataCore(Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{`0})" />
-      <MemberSignature Language="VB.NET" Value="Protected MustOverride Sub LearnStateFromDataCore (data As FixedSizeQueue(Of TInput))" />
-      <MemberSignature Language="F#" Value="abstract member LearnStateFromDataCore : Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue&lt;'Input&gt; -&gt; unit" Usage="stateBase.LearnStateFromDataCore data" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="data" Type="Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue&lt;TInput&gt;" />
-      </Parameters>
-      <Docs>
-        <param name="data">A queue of data points used for training</param>
-        <summary>
-            The abstract method that realizes the logic for learning the parameters and the initial state object from data.
-            </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="ParentTransform">
       <MemberSignature Language="C#" Value="protected Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase&lt;TInput,TOutput,TState&gt; ParentTransform;" />
       <MemberSignature Language="ILAsm" Value=".field family class Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3&lt;!TInput, !TOutput, !TState&gt; ParentTransform" />
@@ -223,6 +169,25 @@
         <summary>
             A reference to the parent transform that operates on the state object.
             </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PreviousPosition">
+      <MemberSignature Language="C#" Value="protected long PreviousPosition;" />
+      <MemberSignature Language="ILAsm" Value=".field family int64 PreviousPosition" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.PreviousPosition" />
+      <MemberSignature Language="VB.NET" Value="Protected PreviousPosition As Long " />
+      <MemberSignature Language="F#" Value="val mutable PreviousPosition : int64" Usage="Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase&lt;'Input, 'Output, 'State (requires 'State :&gt; Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase&lt;'Input, 'Output, 'State&gt;.StateBase and 'State : (new : unit -&gt; 'State))&gt;.StateBase.PreviousPosition" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int64</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -320,38 +285,12 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="SetNaOutput">
-      <MemberSignature Language="C#" Value="protected abstract void SetNaOutput (ref TOutput dst);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void SetNaOutput(!TOutput&amp; dst) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.SetNaOutput(`1@)" />
-      <MemberSignature Language="VB.NET" Value="Protected MustOverride Sub SetNaOutput (ByRef dst As TOutput)" />
-      <MemberSignature Language="F#" Value="abstract member SetNaOutput :  -&gt; unit" Usage="stateBase.SetNaOutput dst" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="dst" Type="TOutput" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <param name="dst">To be added.</param>
-        <summary>
-            The abstract method that specifies the NA value for the dst type.
-            </summary>
-        <returns />
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="TransformCore">
-      <MemberSignature Language="C#" Value="protected abstract void TransformCore (ref TInput input, Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue&lt;TInput&gt; windowedBuffer, long iteration, ref TOutput dst);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void TransformCore(!TInput&amp; input, class Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue`1&lt;!TInput&gt; windowedBuffer, int64 iteration, !TOutput&amp; dst) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.TransformCore(`0@,Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue{`0},System.Int64,`1@)" />
-      <MemberSignature Language="VB.NET" Value="Protected MustOverride Sub TransformCore (ByRef input As TInput, windowedBuffer As FixedSizeQueue(Of TInput), iteration As Long, ByRef dst As TOutput)" />
-      <MemberSignature Language="F#" Value="abstract member TransformCore :  * Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue&lt;'Input&gt; * int64 *  -&gt; unit" Usage="stateBase.TransformCore (input, windowedBuffer, iteration, dst)" />
+    <Member MemberName="UpdateState">
+      <MemberSignature Language="C#" Value="public void UpdateState (ref TInput input, long rowPosition, bool buffer = true);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UpdateState(!TInput&amp; input, int64 rowPosition, bool buffer) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.UpdateState(`0@,System.Int64,System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub UpdateState (ByRef input As TInput, rowPosition As Long, Optional buffer As Boolean = true)" />
+      <MemberSignature Language="F#" Value="member this.UpdateState :  * int64 * bool -&gt; unit" Usage="stateBase.UpdateState (input, rowPosition, buffer)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
@@ -362,59 +301,39 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="input" Type="TInput" RefType="ref" />
-        <Parameter Name="windowedBuffer" Type="Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue&lt;TInput&gt;" />
-        <Parameter Name="iteration" Type="System.Int64" />
-        <Parameter Name="dst" Type="TOutput" RefType="ref" />
+        <Parameter Name="rowPosition" Type="System.Int64" />
+        <Parameter Name="buffer" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="input">A reference to the input object.</param>
-        <param name="windowedBuffer">A reference to the windowed buffer.</param>
-        <param name="iteration">A long number that indicates the number of times TransformCore has been called so far (starting value = 0).</param>
-        <param name="dst">A reference to the dst object.</param>
-        <summary>
-            The abstract method that realizes the main logic for the transform.
-            </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="WindowedBuffer">
-      <MemberSignature Language="C#" Value="protected Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue&lt;TInput&gt; WindowedBuffer;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue`1&lt;!TInput&gt; WindowedBuffer" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.WindowedBuffer" />
-      <MemberSignature Language="VB.NET" Value="Protected WindowedBuffer As FixedSizeQueue(Of TInput) " />
-      <MemberSignature Language="F#" Value="val mutable WindowedBuffer : Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue&lt;'Input&gt;" Usage="Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase&lt;'Input, 'Output, 'State (requires 'State :&gt; Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase&lt;'Input, 'Output, 'State&gt;.StateBase and 'State : (new : unit -&gt; 'State))&gt;.StateBase.WindowedBuffer" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Internal.Utilities.FixedSizeQueue&lt;TInput&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>
-            The internal windowed buffer for buffering the values in the input sequence.
-            </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="WindowSize">
-      <MemberSignature Language="C#" Value="protected int WindowSize { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 WindowSize" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.WindowSize" />
-      <MemberSignature Language="VB.NET" Value="Protected ReadOnly Property WindowSize As Integer" />
-      <MemberSignature Language="F#" Value="member this.WindowSize : int" Usage="Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase&lt;'Input, 'Output, 'State (requires 'State :&gt; Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase&lt;'Input, 'Output, 'State&gt;.StateBase and 'State : (new : unit -&gt; 'State))&gt;.StateBase.WindowSize" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
+        <param name="input">To be added.</param>
+        <param name="rowPosition">To be added.</param>
+        <param name="buffer">To be added.</param>
         <summary>To be added.</summary>
-        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateStateCore">
+      <MemberSignature Language="C#" Value="public void UpdateStateCore (ref TInput input, bool buffer = true);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UpdateStateCore(!TInput&amp; input, bool buffer) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.TimeSeriesProcessing.SequentialTransformerBase`3.StateBase.UpdateStateCore(`0@,System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub UpdateStateCore (ByRef input As TInput, Optional buffer As Boolean = true)" />
+      <MemberSignature Language="F#" Value="member this.UpdateStateCore :  * bool -&gt; unit" Usage="stateBase.UpdateStateCore (input, buffer)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="TInput" RefType="ref" />
+        <Parameter Name="buffer" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="input">To be added.</param>
+        <param name="buffer">To be added.</param>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

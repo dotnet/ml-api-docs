@@ -1,0 +1,535 @@
+<Type Name="OnnxContext" FullName="Microsoft.ML.Runtime.Model.Onnx.OnnxContext">
+  <TypeSignature Language="C#" Value="public abstract class OnnxContext" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit OnnxContext extends System.Object" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Model.Onnx.OnnxContext" />
+  <TypeSignature Language="VB.NET" Value="Public MustInherit Class OnnxContext" />
+  <TypeSignature Language="F#" Value="type OnnxContext = class" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Data</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+            A context for defining a ONNX output. The context internally contains the model-in-progress being built. This
+            same context object is iteratively given to exportable components via the <see cref="T:Microsoft.ML.Runtime.Model.Onnx.ICanSaveOnnx" /> interface
+            and subinterfaces, that attempt to express their operations as ONNX nodes, if they can. At the point that it is
+            given to a component, all other components up to that component have already attempted to express themselves in
+            this context, with their outputs possibly available in the ONNX graph.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected OnnxContext ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.#ctor" />
+      <MemberSignature Language="VB.NET" Value="Protected Sub New ()" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddInitializer">
+      <MemberSignature Language="C#" Value="public abstract string AddInitializer (long value, string name = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string AddInitializer(int64 value, string name) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.AddInitializer(System.Int64,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function AddInitializer (value As Long, Optional name As String = null) As String" />
+      <MemberSignature Language="F#" Value="abstract member AddInitializer : int64 * string -&gt; string" Usage="onnxContext.AddInitializer (value, name)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="value" Type="System.Int64" />
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="value">The long number which is going to be added into the ONNX graph</param>
+        <param name="name">A string used as a seed to generate this initializer's name in the ONNX graph.</param>
+        <summary>
+            Call this function can declare a global long
+            </summary>
+        <returns>The initializer's ONNX name</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddInitializer">
+      <MemberSignature Language="C#" Value="public abstract string AddInitializer (float value, string name = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string AddInitializer(float32 value, string name) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.AddInitializer(System.Single,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function AddInitializer (value As Single, Optional name As String = null) As String" />
+      <MemberSignature Language="F#" Value="abstract member AddInitializer : single * string -&gt; string" Usage="onnxContext.AddInitializer (value, name)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="value" Type="System.Single" />
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="value">The float number which is going to be added</param>
+        <param name="name">A string used as a seed to generate this initializer's name in the ONNX graph.</param>
+        <summary>
+            Call this function can declare a global float
+            </summary>
+        <returns>The initializer's ONNX name</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddInitializer">
+      <MemberSignature Language="C#" Value="public abstract string AddInitializer (string value, string name = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string AddInitializer(string value, string name) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.AddInitializer(System.String,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function AddInitializer (value As String, Optional name As String = null) As String" />
+      <MemberSignature Language="F#" Value="abstract member AddInitializer : string * string -&gt; string" Usage="onnxContext.AddInitializer (value, name)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="value" Type="System.String" />
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="value">The string which is going to be added into the ONNX graph</param>
+        <param name="name">A string used as a seed to generate this initializer's name in the ONNX graph.</param>
+        <summary>
+            Call this function can declare a global string
+            </summary>
+        <returns>The initializer's ONNX name</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddInitializer">
+      <MemberSignature Language="C#" Value="public abstract string AddInitializer (System.Collections.Generic.IEnumerable&lt;long&gt; values, System.Collections.Generic.IEnumerable&lt;long&gt; dims, string name = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string AddInitializer(class System.Collections.Generic.IEnumerable`1&lt;int64&gt; values, class System.Collections.Generic.IEnumerable`1&lt;int64&gt; dims, string name) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.AddInitializer(System.Collections.Generic.IEnumerable{System.Int64},System.Collections.Generic.IEnumerable{System.Int64},System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function AddInitializer (values As IEnumerable(Of Long), dims As IEnumerable(Of Long), Optional name As String = null) As String" />
+      <MemberSignature Language="F#" Value="abstract member AddInitializer : seq&lt;int64&gt; * seq&lt;int64&gt; * string -&gt; string" Usage="onnxContext.AddInitializer (values, dims, name)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="values" Type="System.Collections.Generic.IEnumerable&lt;System.Int64&gt;" />
+        <Parameter Name="dims" Type="System.Collections.Generic.IEnumerable&lt;System.Int64&gt;" />
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="values">The longs which are going to be added into the ONNX graph</param>
+        <param name="dims">The shape that the floats</param>
+        <param name="name">A string used as a seed to generate this initializer's name in the ONNX graph.</param>
+        <summary>
+            Call this function can declare a global long tensor
+            </summary>
+        <returns>The initializer's ONNX name</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddInitializer">
+      <MemberSignature Language="C#" Value="public abstract string AddInitializer (System.Collections.Generic.IEnumerable&lt;float&gt; values, System.Collections.Generic.IEnumerable&lt;long&gt; dims, string name = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string AddInitializer(class System.Collections.Generic.IEnumerable`1&lt;float32&gt; values, class System.Collections.Generic.IEnumerable`1&lt;int64&gt; dims, string name) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.AddInitializer(System.Collections.Generic.IEnumerable{System.Single},System.Collections.Generic.IEnumerable{System.Int64},System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function AddInitializer (values As IEnumerable(Of Single), dims As IEnumerable(Of Long), Optional name As String = null) As String" />
+      <MemberSignature Language="F#" Value="abstract member AddInitializer : seq&lt;single&gt; * seq&lt;int64&gt; * string -&gt; string" Usage="onnxContext.AddInitializer (values, dims, name)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="values" Type="System.Collections.Generic.IEnumerable&lt;System.Single&gt;" />
+        <Parameter Name="dims" Type="System.Collections.Generic.IEnumerable&lt;System.Int64&gt;" />
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="values">The floats which are going to be added into the ONNX graph</param>
+        <param name="dims">The shape that the floats</param>
+        <param name="name">A string used as a seed to generate this initializer's name in the ONNX graph.</param>
+        <summary>
+            Call this function can declare a global float tensor
+            </summary>
+        <returns>The initializer's ONNX name</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddInitializer">
+      <MemberSignature Language="C#" Value="public abstract string AddInitializer (System.Collections.Generic.IEnumerable&lt;string&gt; values, System.Collections.Generic.IEnumerable&lt;long&gt; dims, string name = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string AddInitializer(class System.Collections.Generic.IEnumerable`1&lt;string&gt; values, class System.Collections.Generic.IEnumerable`1&lt;int64&gt; dims, string name) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.AddInitializer(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.Int64},System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function AddInitializer (values As IEnumerable(Of String), dims As IEnumerable(Of Long), Optional name As String = null) As String" />
+      <MemberSignature Language="F#" Value="abstract member AddInitializer : seq&lt;string&gt; * seq&lt;int64&gt; * string -&gt; string" Usage="onnxContext.AddInitializer (values, dims, name)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="values" Type="System.Collections.Generic.IEnumerable&lt;System.String&gt;" />
+        <Parameter Name="dims" Type="System.Collections.Generic.IEnumerable&lt;System.Int64&gt;" />
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="values">The strings which are going to be added into the ONNX graph</param>
+        <param name="dims">The shape that the strings</param>
+        <param name="name">A string used as a seed to generate this initializer's name in the ONNX graph.</param>
+        <summary>
+            Call this function can declare a global string tensor
+            </summary>
+        <returns>The initializer's ONNX name</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddIntermediateVariable">
+      <MemberSignature Language="C#" Value="public abstract string AddIntermediateVariable (Microsoft.ML.Runtime.Data.ColumnType type, string colName, bool skip = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string AddIntermediateVariable(class Microsoft.ML.Runtime.Data.ColumnType type, string colName, bool skip) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.AddIntermediateVariable(Microsoft.ML.Runtime.Data.ColumnType,System.String,System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function AddIntermediateVariable (type As ColumnType, colName As String, Optional skip As Boolean = false) As String" />
+      <MemberSignature Language="F#" Value="abstract member AddIntermediateVariable : Microsoft.ML.Runtime.Data.ColumnType * string * bool -&gt; string" Usage="onnxContext.AddIntermediateVariable (type, colName, skip)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="type" Type="Microsoft.ML.Runtime.Data.ColumnType" />
+        <Parameter Name="colName" Type="System.String" />
+        <Parameter Name="skip" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="type">The data view type associated with this column name</param>
+        <param name="colName">The data view column name</param>
+        <param name="skip">Whether we should skip the process of establishing the mapping from data view column to
+            ONNX variable name.</param>
+        <summary>
+            Establishes a new mapping from an data view column in the context, if necessary generates a unique name, and
+            returns that newly allocated name.
+            </summary>
+        <returns>The returned value is the name of the variable corresponding </returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ContainsColumn">
+      <MemberSignature Language="C#" Value="public abstract bool ContainsColumn (string colName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool ContainsColumn(string colName) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.ContainsColumn(System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function ContainsColumn (colName As String) As Boolean" />
+      <MemberSignature Language="F#" Value="abstract member ContainsColumn : string -&gt; bool" Usage="onnxContext.ContainsColumn colName" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="colName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="colName">The data view column name</param>
+        <summary>
+            Looks up whether a given data view column has a mapping in the ONNX context. Once confirmed, callers can
+            safely call <see cref="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.GetVariableName(System.String)" />.
+            </summary>
+        <returns>Whether the column is mapped in this context</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateNode">
+      <MemberSignature Language="C#" Value="public abstract Microsoft.ML.Runtime.Model.Onnx.OnnxNode CreateNode (string opType, System.Collections.Generic.IEnumerable&lt;string&gt; inputs, System.Collections.Generic.IEnumerable&lt;string&gt; outputs, string name, string domain = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Model.Onnx.OnnxNode CreateNode(string opType, class System.Collections.Generic.IEnumerable`1&lt;string&gt; inputs, class System.Collections.Generic.IEnumerable`1&lt;string&gt; outputs, string name, string domain) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.CreateNode(System.String,System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.String,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function CreateNode (opType As String, inputs As IEnumerable(Of String), outputs As IEnumerable(Of String), name As String, Optional domain As String = null) As OnnxNode" />
+      <MemberSignature Language="F#" Value="abstract member CreateNode : string * seq&lt;string&gt; * seq&lt;string&gt; * string * string -&gt; Microsoft.ML.Runtime.Model.Onnx.OnnxNode" Usage="onnxContext.CreateNode (opType, inputs, outputs, name, domain)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Model.Onnx.OnnxNode</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="opType" Type="System.String" />
+        <Parameter Name="inputs" Type="System.Collections.Generic.IEnumerable&lt;System.String&gt;" />
+        <Parameter Name="outputs" Type="System.Collections.Generic.IEnumerable&lt;System.String&gt;" />
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="domain" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="opType">The name of the ONNX operator to apply</param>
+        <param name="inputs">The names of the variables as inputs</param>
+        <param name="outputs">The names of the variables to create as outputs,
+            which ought to have been something returned from <see cref="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.AddIntermediateVariable(Microsoft.ML.Runtime.Data.ColumnType,System.String,System.Boolean)" /></param>
+        <param name="name">The name of the operator, which ought to be something returned from <see cref="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.GetNodeName(System.String)" /></param>
+        <param name="domain">The domain of the ONNX operator, if non-default</param>
+        <summary>
+            Creates an ONNX node
+            </summary>
+        <returns>A node added to the in-progress ONNX graph, that attributes can be set on</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateNode">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Model.Onnx.OnnxNode CreateNode (string opType, string input, string output, string name, string domain = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Runtime.Model.Onnx.OnnxNode CreateNode(string opType, string input, string output, string name, string domain) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.CreateNode(System.String,System.String,System.String,System.String,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Function CreateNode (opType As String, input As String, output As String, name As String, Optional domain As String = null) As OnnxNode" />
+      <MemberSignature Language="F#" Value="member this.CreateNode : string * string * string * string * string -&gt; Microsoft.ML.Runtime.Model.Onnx.OnnxNode" Usage="onnxContext.CreateNode (opType, input, output, name, domain)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Model.Onnx.OnnxNode</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="opType" Type="System.String" />
+        <Parameter Name="input" Type="System.String" />
+        <Parameter Name="output" Type="System.String" />
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="domain" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="opType">The name of the ONNX operator to apply</param>
+        <param name="input">The name of the variable as input</param>
+        <param name="output">The name of the variable as output,
+            which ought to have been something returned from <see cref="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.AddIntermediateVariable(Microsoft.ML.Runtime.Data.ColumnType,System.String,System.Boolean)" /></param>
+        <param name="name">The name of the operator, which ought to be something returned from <see cref="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.GetNodeName(System.String)" /></param>
+        <param name="domain">The domain of the ONNX operator, if non-default</param>
+        <summary>
+            Convenience alternative to <see cref="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.CreateNode(System.String,System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.String,System.String)" />
+            for the case where there is exactly one input and output.
+            </summary>
+        <returns>A node added to the in-progress ONNX graph, that attributes can be set on</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetNodeName">
+      <MemberSignature Language="C#" Value="public abstract string GetNodeName (string prefix);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string GetNodeName(string prefix) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.GetNodeName(System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function GetNodeName (prefix As String) As String" />
+      <MemberSignature Language="F#" Value="abstract member GetNodeName : string -&gt; string" Usage="onnxContext.GetNodeName prefix" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="prefix" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="prefix">The prefix for the node</param>
+        <summary>
+            Generates a unique name for the node based on a prefix.
+            </summary>
+        <returns>A name that has not yet been returned from this function, starting with <paramref name="prefix" /></returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetOnnxVersion">
+      <MemberSignature Language="C#" Value="public abstract Microsoft.ML.Runtime.Model.Onnx.OnnxVersion GetOnnxVersion ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype Microsoft.ML.Runtime.Model.Onnx.OnnxVersion GetOnnxVersion() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.GetOnnxVersion" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function GetOnnxVersion () As OnnxVersion" />
+      <MemberSignature Language="F#" Value="abstract member GetOnnxVersion : unit -&gt; Microsoft.ML.Runtime.Model.Onnx.OnnxVersion" Usage="onnxContext.GetOnnxVersion " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Model.Onnx.OnnxVersion</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            Get the targeted ONNX version string. Only two values are allowed now: "Stable" and "Experimental".
+            </summary>
+        <returns />
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetVariableName">
+      <MemberSignature Language="C#" Value="public abstract string GetVariableName (string colName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string GetVariableName(string colName) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.GetVariableName(System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function GetVariableName (colName As String) As String" />
+      <MemberSignature Language="F#" Value="abstract member GetVariableName : string -&gt; string" Usage="onnxContext.GetVariableName colName" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="colName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="colName">The data view column name</param>
+        <summary>
+            ONNX variables are referred to by name. At each stage of a ML.NET pipeline, the corresponding
+            <see cref="T:Microsoft.ML.Runtime.Data.IDataView" />'s column names will map to a variable in the ONNX graph if the intermediate steps
+            used to calculate that value are things we knew how to save as ONNX. Retrieves the variable name that maps
+            to the <see cref="T:Microsoft.ML.Runtime.Data.IDataView" /> column name at a given point in the pipeline execution. Callers should
+            probably confirm with <see cref="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.ContainsColumn(System.String)" /> whether a mapping for that data view column
+            already exists.
+            </summary>
+        <returns>The ONNX variable name corresponding to that data view column</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsVariableDefined">
+      <MemberSignature Language="C#" Value="public abstract bool IsVariableDefined (string variableName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool IsVariableDefined(string variableName) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.IsVariableDefined(System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function IsVariableDefined (variableName As String) As Boolean" />
+      <MemberSignature Language="F#" Value="abstract member IsVariableDefined : string -&gt; bool" Usage="onnxContext.IsVariableDefined variableName" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="variableName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="variableName">examined string</param>
+        <summary>
+            Determine if a string has been used as ONNX variable name somewhere.
+            </summary>
+        <returns>True if the input argument has been used to denote an ONNX variable. Otherwise, False.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveColumn">
+      <MemberSignature Language="C#" Value="public abstract void RemoveColumn (string colName, bool removeVariable = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RemoveColumn(string colName, bool removeVariable) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.RemoveColumn(System.String,System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Sub RemoveColumn (colName As String, Optional removeVariable As Boolean = false)" />
+      <MemberSignature Language="F#" Value="abstract member RemoveColumn : string * bool -&gt; unit" Usage="onnxContext.RemoveColumn (colName, removeVariable)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="colName" Type="System.String" />
+        <Parameter Name="removeVariable" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="colName">Column name to stop tracking</param>
+        <param name="removeVariable">Remove associated ONNX variable. This is useful in the event where an output
+            variable is created through <see cref="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.AddIntermediateVariable(Microsoft.ML.Runtime.Data.ColumnType,System.String,System.Boolean)" />before realizing
+            the transform cannot actually save as ONNX.</param>
+        <summary>
+            Stops tracking a column.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveVariable">
+      <MemberSignature Language="C#" Value="public abstract void RemoveVariable (string variableName, bool removeColumn);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RemoveVariable(string variableName, bool removeColumn) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.RemoveVariable(System.String,System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Sub RemoveVariable (variableName As String, removeColumn As Boolean)" />
+      <MemberSignature Language="F#" Value="abstract member RemoveVariable : string * bool -&gt; unit" Usage="onnxContext.RemoveVariable (variableName, removeColumn)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="variableName" Type="System.String" />
+        <Parameter Name="removeColumn" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="variableName">ONNX variable to remove. Note that this is an ONNX variable name, not an <see cref="T:Microsoft.ML.Runtime.Data.IDataView" /> column name</param>
+        <param name="removeColumn">IDataView column to stop tracking</param>
+        <summary>
+            Removes an ONNX variable. If removeColumn is true then it also removes the tracking for the <see cref="T:Microsoft.ML.Runtime.Data.IDataView" /> column associated with it.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RetrieveShapeOrNull">
+      <MemberSignature Language="C#" Value="public abstract System.Collections.Generic.List&lt;long&gt; RetrieveShapeOrNull (string variableName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Collections.Generic.List`1&lt;int64&gt; RetrieveShapeOrNull(string variableName) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Model.Onnx.OnnxContext.RetrieveShapeOrNull(System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function RetrieveShapeOrNull (variableName As String) As List(Of Long)" />
+      <MemberSignature Language="F#" Value="abstract member RetrieveShapeOrNull : string -&gt; System.Collections.Generic.List&lt;int64&gt;" Usage="onnxContext.RetrieveShapeOrNull variableName" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;System.Int64&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="variableName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="variableName">The ONNX name of the returned shape</param>
+        <summary>
+            Retrieve the shape of an ONNX variable. Returns null if no shape for the specified variable can be found.
+            </summary>
+        <returns>The shape of the retrieved variable</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
