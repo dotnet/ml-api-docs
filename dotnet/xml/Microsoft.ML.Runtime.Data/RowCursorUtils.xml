@@ -17,34 +17,6 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName="CloneRow">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IRow CloneRow (Microsoft.ML.Runtime.Data.IRow row);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IRow CloneRow(class Microsoft.ML.Runtime.Data.IRow row) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.RowCursorUtils.CloneRow(Microsoft.ML.Runtime.Data.IRow)" />
-      <MemberSignature Language="VB.NET" Value="Public Shared Function CloneRow (row As IRow) As IRow" />
-      <MemberSignature Language="F#" Value="static member CloneRow : Microsoft.ML.Runtime.Data.IRow -&gt; Microsoft.ML.Runtime.Data.IRow" Usage="Microsoft.ML.Runtime.Data.RowCursorUtils.CloneRow row" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.IRow</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="row" Type="Microsoft.ML.Runtime.Data.IRow" />
-      </Parameters>
-      <Docs>
-        <param name="row">The input row</param>
-        <summary>
-            Returns a row that is a deep in-memory copy of an input row. Note that inactive
-            columns are allowed in this row, and their activity or inactivity will be reflected
-            in the output row. Note that the deep copy includes a copy of the metadata as well.
-            </summary>
-        <returns>A deep in-memory copy of the input row</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Fetch&lt;T&gt;">
       <MemberSignature Language="C#" Value="public static T Fetch&lt;T&gt; (Microsoft.ML.Runtime.IExceptionContext ectx, Microsoft.ML.Runtime.Data.IRow row, string name);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig !!T Fetch&lt;T&gt;(class Microsoft.ML.Runtime.IExceptionContext ectx, class Microsoft.ML.Runtime.Data.IRow row, string name) cil managed" />
@@ -207,32 +179,6 @@
             into the required type. This method can be useful if you want to output a value
             as a string in a generic way, but don't really care how you do it.
             </summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GetIsNewBatchDelegate">
-      <MemberSignature Language="C#" Value="public static Func&lt;bool&gt; GetIsNewBatchDelegate (Microsoft.ML.Runtime.Data.IRow cursor, int batchSize);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Func`1&lt;bool&gt; GetIsNewBatchDelegate(class Microsoft.ML.Runtime.Data.IRow cursor, int32 batchSize) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.RowCursorUtils.GetIsNewBatchDelegate(Microsoft.ML.Runtime.Data.IRow,System.Int32)" />
-      <MemberSignature Language="VB.NET" Value="Public Shared Function GetIsNewBatchDelegate (cursor As IRow, batchSize As Integer) As Func(Of Boolean)" />
-      <MemberSignature Language="F#" Value="static member GetIsNewBatchDelegate : Microsoft.ML.Runtime.Data.IRow * int -&gt; Func&lt;bool&gt;" Usage="Microsoft.ML.Runtime.Data.RowCursorUtils.GetIsNewBatchDelegate (cursor, batchSize)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Func&lt;System.Boolean&gt;</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="cursor" Type="Microsoft.ML.Runtime.Data.IRow" />
-        <Parameter Name="batchSize" Type="System.Int32" />
-      </Parameters>
-      <Docs>
-        <param name="cursor">To be added.</param>
-        <param name="batchSize">To be added.</param>
-        <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -445,8 +391,7 @@
             but want to save it somewhere using a <see cref="T:Microsoft.ML.Runtime.Data.IO.BinarySaver" />.)
             Note that it is not possible for this method to ensure that the input <paramref name="row" /> does not
             change, so users of this convenience must take care of what they do with the input row or the data
-            source it came from, while the returned dataview is potentially being used; if this is somehow
-            difficult it may be wise to use <see cref="M:Microsoft.ML.Runtime.Data.RowCursorUtils.CloneRow(Microsoft.ML.Runtime.Data.IRow)" /> to first have a deep copy of the resulting row.
+            source it came from, while the returned dataview is potentially being used.
             </summary>
         <returns>A single-row data view incorporating that row</returns>
         <remarks>To be added.</remarks>

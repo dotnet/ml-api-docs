@@ -52,16 +52,26 @@
         <Parameter Name="outputSchemaDefinition" Type="Microsoft.ML.Runtime.Api.SchemaDefinition" />
       </Parameters>
       <Docs>
-        <typeparam name="TSrc">To be added.</typeparam>
-        <typeparam name="TDst">To be added.</typeparam>
-        <param name="transformer">To be added.</param>
-        <param name="env">To be added.</param>
-        <param name="ignoreMissingColumns">To be added.</param>
-        <param name="inputSchemaDefinition">To be added.</param>
-        <param name="outputSchemaDefinition">To be added.</param>
-        <summary>To be added.</summary>
+        <typeparam name="TSrc">Class describing input schema to the model.</typeparam>
+        <typeparam name="TDst">Class describing the output schema of the prediction.</typeparam>
+        <param name="transformer">The time series pipeline in the form of a <see cref="T:Microsoft.ML.Core.Data.ITransformer" />.</param>
+        <param name="env">Usually <see cref="T:Microsoft.ML.MLContext" /></param>
+        <param name="ignoreMissingColumns">To ignore missing columns. Default is false.</param>
+        <param name="inputSchemaDefinition">Input schema definition. Default is null.</param>
+        <param name="outputSchemaDefinition">Output schema definition. Default is null.</param>
+        <summary>
+          <see cref="T:Microsoft.ML.TimeSeries.TimeSeriesPredictionFunction`2" /> creates a prediction function/engine for a time series pipeline
+            It updates the state of time series model with observations seen at prediction phase and allows checkpointing the model.
+            </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
+        <p>Example code can be found by searching for <i>TimeSeriesPredictionFunction</i> in <a href="https://github.com/dotnet/machinelearning">ML.NET.</a></p>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[MF](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/IidSpikeDetectorTransform.cs)]
+            [!code-csharp[MF](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/IidChangePointDetectorTransform.cs)]
+            ]]></format>
+        </example>
       </Docs>
     </Member>
   </Members>

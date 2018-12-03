@@ -1,9 +1,9 @@
 ﻿<Type Name="PerGroupTransformBase&lt;TLabel,TScore,TState&gt;" FullName="Microsoft.ML.Runtime.Data.PerGroupTransformBase&lt;TLabel,TScore,TState&gt;">
   <TypeSignature Language="C#" Value="public abstract class PerGroupTransformBase&lt;TLabel,TScore,TState&gt; : Microsoft.ML.Runtime.Data.IDataTransform, Microsoft.ML.Runtime.Data.IDataView where TState : class" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit PerGroupTransformBase`3&lt;TLabel, TScore, class TState&gt; extends System.Object implements class Microsoft.ML.Runtime.Data.IDataTransform, class Microsoft.ML.Runtime.Data.IDataView, class Microsoft.ML.Runtime.Data.ISchematized, class Microsoft.ML.Runtime.Model.ICanSaveModel" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit PerGroupTransformBase`3&lt;TLabel, TScore, class TState&gt; extends System.Object implements class Microsoft.ML.Runtime.Data.IDataTransform, class Microsoft.ML.Runtime.Data.IDataView, class Microsoft.ML.Runtime.Model.ICanSaveModel" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.PerGroupTransformBase`3" />
   <TypeSignature Language="VB.NET" Value="Public MustInherit Class PerGroupTransformBase(Of TLabel, TScore, TState)&#xA;Implements IDataTransform, IDataView" />
-  <TypeSignature Language="F#" Value="type PerGroupTransformBase&lt;'Label, 'Score, 'State (requires 'State : null)&gt; = class&#xA;    interface IDataTransform&#xA;    interface IDataView&#xA;    interface ISchematized&#xA;    interface ICanSaveModel" />
+  <TypeSignature Language="F#" Value="type PerGroupTransformBase&lt;'Label, 'Score, 'State (requires 'State : null)&gt; = class&#xA;    interface IDataTransform&#xA;    interface IDataView&#xA;    interface ICanSaveModel" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.Data</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -26,9 +26,6 @@
     </Interface>
     <Interface>
       <InterfaceName>Microsoft.ML.Runtime.Data.IDataView</InterfaceName>
-    </Interface>
-    <Interface>
-      <InterfaceName>Microsoft.ML.Runtime.Data.ISchematized</InterfaceName>
     </Interface>
     <Interface>
       <InterfaceName>Microsoft.ML.Runtime.Model.ICanSaveModel</InterfaceName>
@@ -228,14 +225,14 @@
       </Docs>
     </Member>
     <Member MemberName="GetRowCursor">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IRowCursor GetRowCursor (Func&lt;int,bool&gt; predicate, Microsoft.ML.Runtime.IRandom rand = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IRowCursor GetRowCursor(class System.Func`2&lt;int32, bool&gt; predicate, class Microsoft.ML.Runtime.IRandom rand) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.PerGroupTransformBase`3.GetRowCursor(System.Func{System.Int32,System.Boolean},Microsoft.ML.Runtime.IRandom)" />
-      <MemberSignature Language="VB.NET" Value="Public Function GetRowCursor (predicate As Func(Of Integer, Boolean), Optional rand As IRandom = null) As IRowCursor" />
-      <MemberSignature Language="F#" Value="abstract member GetRowCursor : Func&lt;int, bool&gt; * Microsoft.ML.Runtime.IRandom -&gt; Microsoft.ML.Runtime.Data.IRowCursor&#xA;override this.GetRowCursor : Func&lt;int, bool&gt; * Microsoft.ML.Runtime.IRandom -&gt; Microsoft.ML.Runtime.Data.IRowCursor" Usage="perGroupTransformBase.GetRowCursor (predicate, rand)" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IRowCursor GetRowCursor (Func&lt;int,bool&gt; predicate, Random rand = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IRowCursor GetRowCursor(class System.Func`2&lt;int32, bool&gt; predicate, class System.Random rand) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.PerGroupTransformBase`3.GetRowCursor(System.Func{System.Int32,System.Boolean},System.Random)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetRowCursor (predicate As Func(Of Integer, Boolean), Optional rand As Random = null) As IRowCursor" />
+      <MemberSignature Language="F#" Value="abstract member GetRowCursor : Func&lt;int, bool&gt; * Random -&gt; Microsoft.ML.Runtime.Data.IRowCursor&#xA;override this.GetRowCursor : Func&lt;int, bool&gt; * Random -&gt; Microsoft.ML.Runtime.Data.IRowCursor" Usage="perGroupTransformBase.GetRowCursor (predicate, rand)" />
       <MemberType>Method</MemberType>
       <Implements>
-        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IDataView.GetRowCursor(System.Func{System.Int32,System.Boolean},Microsoft.ML.Runtime.IRandom)</InterfaceMember>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IDataView.GetRowCursor(System.Func{System.Int32,System.Boolean},System.Random)</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -246,7 +243,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
-        <Parameter Name="rand" Type="Microsoft.ML.Runtime.IRandom" />
+        <Parameter Name="rand" Type="System.Random" />
       </Parameters>
       <Docs>
         <param name="predicate">To be added.</param>
@@ -257,14 +254,14 @@
       </Docs>
     </Member>
     <Member MemberName="GetRowCursorSet">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IRowCursor[] GetRowCursorSet (out Microsoft.ML.Runtime.Data.IRowCursorConsolidator consolidator, Func&lt;int,bool&gt; predicate, int n, Microsoft.ML.Runtime.IRandom rand = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IRowCursor[] GetRowCursorSet([out] class Microsoft.ML.Runtime.Data.IRowCursorConsolidator&amp; consolidator, class System.Func`2&lt;int32, bool&gt; predicate, int32 n, class Microsoft.ML.Runtime.IRandom rand) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.PerGroupTransformBase`3.GetRowCursorSet(Microsoft.ML.Runtime.Data.IRowCursorConsolidator@,System.Func{System.Int32,System.Boolean},System.Int32,Microsoft.ML.Runtime.IRandom)" />
-      <MemberSignature Language="VB.NET" Value="Public Function GetRowCursorSet (ByRef consolidator As IRowCursorConsolidator, predicate As Func(Of Integer, Boolean), n As Integer, Optional rand As IRandom = null) As IRowCursor()" />
-      <MemberSignature Language="F#" Value="abstract member GetRowCursorSet :  * Func&lt;int, bool&gt; * int * Microsoft.ML.Runtime.IRandom -&gt; Microsoft.ML.Runtime.Data.IRowCursor[]&#xA;override this.GetRowCursorSet :  * Func&lt;int, bool&gt; * int * Microsoft.ML.Runtime.IRandom -&gt; Microsoft.ML.Runtime.Data.IRowCursor[]" Usage="perGroupTransformBase.GetRowCursorSet (consolidator, predicate, n, rand)" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IRowCursor[] GetRowCursorSet (out Microsoft.ML.Runtime.Data.IRowCursorConsolidator consolidator, Func&lt;int,bool&gt; predicate, int n, Random rand = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IRowCursor[] GetRowCursorSet([out] class Microsoft.ML.Runtime.Data.IRowCursorConsolidator&amp; consolidator, class System.Func`2&lt;int32, bool&gt; predicate, int32 n, class System.Random rand) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.PerGroupTransformBase`3.GetRowCursorSet(Microsoft.ML.Runtime.Data.IRowCursorConsolidator@,System.Func{System.Int32,System.Boolean},System.Int32,System.Random)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetRowCursorSet (ByRef consolidator As IRowCursorConsolidator, predicate As Func(Of Integer, Boolean), n As Integer, Optional rand As Random = null) As IRowCursor()" />
+      <MemberSignature Language="F#" Value="abstract member GetRowCursorSet :  * Func&lt;int, bool&gt; * int * Random -&gt; Microsoft.ML.Runtime.Data.IRowCursor[]&#xA;override this.GetRowCursorSet :  * Func&lt;int, bool&gt; * int * Random -&gt; Microsoft.ML.Runtime.Data.IRowCursor[]" Usage="perGroupTransformBase.GetRowCursorSet (consolidator, predicate, n, rand)" />
       <MemberType>Method</MemberType>
       <Implements>
-        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IDataView.GetRowCursorSet(Microsoft.ML.Runtime.Data.IRowCursorConsolidator@,System.Func{System.Int32,System.Boolean},System.Int32,Microsoft.ML.Runtime.IRandom)</InterfaceMember>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IDataView.GetRowCursorSet(Microsoft.ML.Runtime.Data.IRowCursorConsolidator@,System.Func{System.Int32,System.Boolean},System.Int32,System.Random)</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -277,7 +274,7 @@
         <Parameter Name="consolidator" Type="Microsoft.ML.Runtime.Data.IRowCursorConsolidator" RefType="out" />
         <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
         <Parameter Name="n" Type="System.Int32" />
-        <Parameter Name="rand" Type="Microsoft.ML.Runtime.IRandom" />
+        <Parameter Name="rand" Type="System.Random" />
       </Parameters>
       <Docs>
         <param name="consolidator">To be added.</param>
@@ -398,6 +395,49 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Microsoft.ML.Runtime.Data.IDataView.Schema">
+      <MemberSignature Language="C#" Value="Microsoft.ML.Data.Schema Microsoft.ML.Runtime.Data.IDataView.Schema { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Data.Schema Microsoft.ML.Runtime.Data.IDataView.Schema" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.PerGroupTransformBase`3.Microsoft#ML#Runtime#Data#IDataView#Schema" />
+      <MemberSignature Language="VB.NET" Value=" ReadOnly Property Schema As Schema Implements IDataView.Schema" />
+      <MemberSignature Language="F#" Usage="Microsoft.ML.Runtime.Data.IDataView.Schema" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Runtime.Data.IDataView.Schema</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.Schema</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OutputSchema">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.Schema OutputSchema { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Data.Schema OutputSchema" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.PerGroupTransformBase`3.OutputSchema" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property OutputSchema As Schema" />
+      <MemberSignature Language="F#" Value="member this.OutputSchema : Microsoft.ML.Data.Schema" Usage="Microsoft.ML.Runtime.Data.PerGroupTransformBase&lt;'Label, 'Score, 'State (requires 'State : null)&gt;.OutputSchema" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.Schema</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ProcessExample">
       <MemberSignature Language="C#" Value="protected abstract void ProcessExample (TState state, TLabel label, TScore score);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void ProcessExample(!TState state, !TLabel label, !TScore score) cil managed" />
@@ -450,29 +490,6 @@
       <Docs>
         <param name="ctx">To be added.</param>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Schema">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.Schema Schema { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Data.Schema Schema" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.PerGroupTransformBase`3.Schema" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Schema As Schema" />
-      <MemberSignature Language="F#" Value="member this.Schema : Microsoft.ML.Data.Schema" Usage="Microsoft.ML.Runtime.Data.PerGroupTransformBase&lt;'Label, 'Score, 'State (requires 'State : null)&gt;.Schema" />
-      <MemberType>Property</MemberType>
-      <Implements>
-        <InterfaceMember>P:Microsoft.ML.Runtime.Data.ISchematized.Schema</InterfaceMember>
-      </Implements>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Data.Schema</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
