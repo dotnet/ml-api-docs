@@ -39,9 +39,31 @@
     <typeparam name="TTransformer">To be added.</typeparam>
     <typeparam name="TPredictor">To be added.</typeparam>
     <summary>
-            Generalized Additive Model Learner.
+            Generalized Additive Model Trainer.
             </summary>
-    <remarks>To be added.</remarks>
+    <remarks>
+      <para>
+            Generalized Additive Models, or GAMs, model the data as a set of linearly independent features
+            similar to a linear model. For each feature, the GAM trainer learns a non-linear function,
+            called a "shape function", that computes the response as a function of the feature's value.
+            (In contrast, a linear model fits a linear response (e.g. a line) to each feature.)
+            To score an example, the outputs of all the shape functions are summed and the score is the total value.
+            </para>
+      <para>
+            This GAM trainer is implemented using shallow gradient boosted trees (e.g. tree stumps) to learn nonparametric
+            shape functions, and is based on the method described in Lou, Caruana, and Gehrke.
+            <a href="http://www.cs.cornell.edu/~yinlou/papers/lou-kdd12.pdf">"Intelligible Models for Classification and Regression."</a> KDD'12, Beijing, China. 2012.
+            After training, an intercept is added to represent the average prediction over the training set,
+            and the shape functions are normalized to represent the deviation from the average prediction. This results
+            in models that are easily interpreted simply by inspecting the intercept and the shape functions.
+            See the sample below for an example of how to train a GAM model and inspect and interpret the results.
+            </para>
+    </remarks>
+    <example>
+      <format type="text/markdown"><![CDATA[
+            [!code-csharp[GAM](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/GeneralizedAdditiveModels.cs)]
+            ]]></format>
+    </example>
   </Docs>
   <Members>
     <Member MemberName="Args">
@@ -275,29 +297,6 @@
         <ReturnType>Microsoft.ML.Trainers.FastTree.Internal.TestHistory</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="TrainBase">
-      <MemberSignature Language="C#" Value="protected void TrainBase (Microsoft.ML.Runtime.TrainContext context);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void TrainBase(class Microsoft.ML.Runtime.TrainContext context) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.GamTrainerBase`3.TrainBase(Microsoft.ML.Runtime.TrainContext)" />
-      <MemberSignature Language="VB.NET" Value="Protected Sub TrainBase (context As TrainContext)" />
-      <MemberSignature Language="F#" Value="member this.TrainBase : Microsoft.ML.Runtime.TrainContext -&gt; unit" Usage="gamTrainerBase.TrainBase context" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="context" Type="Microsoft.ML.Runtime.TrainContext" />
-      </Parameters>
-      <Docs>
-        <param name="context">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
