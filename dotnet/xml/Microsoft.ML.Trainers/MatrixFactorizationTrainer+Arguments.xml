@@ -33,6 +33,81 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Alpha">
+      <MemberSignature Language="C#" Value="public double Alpha;" />
+      <MemberSignature Language="ILAsm" Value=".field public float64 Alpha" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments.Alpha" />
+      <MemberSignature Language="VB.NET" Value="Public Alpha As Double " />
+      <MemberSignature Language="F#" Value="val mutable Alpha : double" Usage="Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments.Alpha" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.CommandLine.Argument(Microsoft.ML.Runtime.CommandLine.ArgumentType.AtMostOnce, HelpText="Importance of unobserved entries' loss in one-class matrix factorization.")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/SweepableDiscreteParam("Alpha", new System.Object[] { Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument }, false)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.Internal.Internallearn.TGUI(SuggestedSweeps="1,0.01,0.0001,0.000001")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Importance of unobserved (i.e., negative) entries' loss in one-class matrix factorization.
+            In general, only a few of matrix entries (e.g., less than 1%) in the training are observed (i.e., positive).
+            To balance the contributions from unobserved and obverved in the overall loss function, this parameter is
+            usually a small value so that the solver is able to find a factorization equally good to unobserved and observed
+            entries. If only 10000 observed entries present in a 200000-by-300000 training matrix, one can try Alpha = 10000 / (200000*300000 - 10000).
+            When most entries in the training matrix are observed, one can use Alpha &gt;&gt; 1; for example, if only 10000 in previous
+            matrix is not observed, one can try Alpha = (200000 * 300000 - 10000) / 10000. Consequently,
+            Alpha = (# of observed entries) / (# of unobserved entries) can make observed and unobserved entries equally important
+            in the minimized loss function. However, the best setting in machine learning is alwasy data-depedent so user still needs to
+            try multiple values.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="C">
+      <MemberSignature Language="C#" Value="public double C;" />
+      <MemberSignature Language="ILAsm" Value=".field public float64 C" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments.C" />
+      <MemberSignature Language="VB.NET" Value="Public C As Double " />
+      <MemberSignature Language="F#" Value="val mutable C : double" Usage="Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments.C" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.CommandLine.Argument(Microsoft.ML.Runtime.CommandLine.ArgumentType.AtMostOnce, HelpText="Desired negative entries' value in one-class matrix factorization")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/SweepableDiscreteParam("C", new System.Object[] { Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument }, false)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.Internal.Internallearn.TGUI(SuggestedSweeps="0.000001,0,0001,0.01")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Desired negative entries value in one-class matrix factorization. In one-class matrix factorization, all matrix values observed are one
+            (which can be viewed as positive cases in binary classification) while unobserved values (which can be viewed as negative cases in binary
+            classification) need to be specified manually using this option.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Eta">
       <MemberSignature Language="C#" Value="public double Eta;" />
       <MemberSignature Language="ILAsm" Value=".field public float64 Eta" />
@@ -46,13 +121,13 @@
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>Microsoft.ML.Runtime.CommandLine.Argument(Microsoft.ML.Runtime.CommandLine.ArgumentType.AtMostOnce, HelpText="Initial learning rate")</AttributeName>
-        </Attribute>
-        <Attribute>
           <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/SweepableDiscreteParam("Eta", new System.Object[] { Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument }, false)</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>Microsoft.ML.Runtime.Internal.Internallearn.TGUI(SuggestedSweeps="0.001,0.01,0.1")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.CommandLine.Argument(Microsoft.ML.Runtime.CommandLine.ArgumentType.AtMostOnce, HelpText="Initial learning rate. It specifies the speed of the training algorithm. Small value may increase the number of iterations needed to achieve a reasonable result. Large value may lead to numerical difficulty such as a infinity value.")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -76,13 +151,13 @@
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>Microsoft.ML.Runtime.CommandLine.Argument(Microsoft.ML.Runtime.CommandLine.ArgumentType.AtMostOnce, HelpText="Latent space dimension")</AttributeName>
-        </Attribute>
-        <Attribute>
           <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/SweepableDiscreteParam("K", new System.Object[] { Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument }, false)</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>Microsoft.ML.Runtime.Internal.Internallearn.TGUI(SuggestedSweeps="8,16,64,128")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.CommandLine.Argument(Microsoft.ML.Runtime.CommandLine.ArgumentType.AtMostOnce, HelpText="Latent space dimension (denoted by k). If the factorized matrix is m-by-n, two factor matrices found by matrix factorization are m-by-k and k-by-n, respectively. This value is also known as the rank of matrix factorization because k is generally much smaller than m and n.")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -106,13 +181,13 @@
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>Microsoft.ML.Runtime.CommandLine.Argument(Microsoft.ML.Runtime.CommandLine.ArgumentType.AtMostOnce, HelpText="Regularization parameter")</AttributeName>
-        </Attribute>
-        <Attribute>
           <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/SweepableDiscreteParam("Lambda", new System.Object[] { Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument }, false)</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>Microsoft.ML.Runtime.Internal.Internallearn.TGUI(SuggestedSweeps="0.01,0.05,0.1,0.5,1")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.CommandLine.Argument(Microsoft.ML.Runtime.CommandLine.ArgumentType.AtMostOnce, HelpText="Regularization parameter. It's the weight of factor matrices' norms in the objective function minimized by matrix factorization's algorithm. A small value could cause over-fitting.")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -120,6 +195,39 @@
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LossFunction">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Trainers.MatrixFactorizationTrainer.LossFunctionType LossFunction;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Microsoft.ML.Trainers.MatrixFactorizationTrainer/LossFunctionType LossFunction" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments.LossFunction" />
+      <MemberSignature Language="VB.NET" Value="Public LossFunction As MatrixFactorizationTrainer.LossFunctionType " />
+      <MemberSignature Language="F#" Value="val mutable LossFunction : Microsoft.ML.Trainers.MatrixFactorizationTrainer.LossFunctionType" Usage="Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments.LossFunction" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.CommandLine.Argument(Microsoft.ML.Runtime.CommandLine.ArgumentType.AtMostOnce, HelpText="Loss function minimized for finding factor matrices.")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/SweepableDiscreteParam("LossFunction", new System.Object[] { Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument }, false)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.Internal.Internallearn.TGUI(SuggestedSweeps="0,12")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Trainers.MatrixFactorizationTrainer+LossFunctionType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Loss function minimized for finding factor matrices.  Two values are allowed, 0 or 12. The values 0 means traditional collaborative filtering
+            problem with squared loss. The value 12 triggers one-class matrix factorization for implicit-feedback recommendation problem.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -136,7 +244,7 @@
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>Microsoft.ML.Runtime.CommandLine.Argument(Microsoft.ML.Runtime.CommandLine.ArgumentType.AtMostOnce, HelpText="Force the matrix factorization P and Q to be non-negative", ShortName="nn")</AttributeName>
+          <AttributeName>Microsoft.ML.Runtime.CommandLine.Argument(Microsoft.ML.Runtime.CommandLine.ArgumentType.AtMostOnce, HelpText="Force the factor matrices to be non-negative.", ShortName="nn")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -160,13 +268,13 @@
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>Microsoft.ML.Runtime.CommandLine.Argument(Microsoft.ML.Runtime.CommandLine.ArgumentType.AtMostOnce, HelpText="Training iterations", ShortName="iter")</AttributeName>
-        </Attribute>
-        <Attribute>
           <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/SweepableDiscreteParam("NumIterations", new System.Object[] { Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument }, false)</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>Microsoft.ML.Runtime.Internal.Internallearn.TGUI(SuggestedSweeps="10,20,40")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.CommandLine.Argument(Microsoft.ML.Runtime.CommandLine.ArgumentType.AtMostOnce, HelpText="Training iterations; that is, the times that the training algorithm iterates through the whole training data once.", ShortName="iter")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -190,7 +298,7 @@
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>Microsoft.ML.Runtime.CommandLine.Argument(Microsoft.ML.Runtime.CommandLine.ArgumentType.AtMostOnce, HelpText="Number of threads", ShortName="t")</AttributeName>
+          <AttributeName>Microsoft.ML.Runtime.CommandLine.Argument(Microsoft.ML.Runtime.CommandLine.ArgumentType.AtMostOnce, HelpText="Number of threads can be used in the training procedure.", ShortName="t")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -214,7 +322,7 @@
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>Microsoft.ML.Runtime.CommandLine.Argument(Microsoft.ML.Runtime.CommandLine.ArgumentType.AtMostOnce, HelpText="Suppress writing additional information to output")</AttributeName>
+          <AttributeName>Microsoft.ML.Runtime.CommandLine.Argument(Microsoft.ML.Runtime.CommandLine.ArgumentType.AtMostOnce, HelpText="Suppress writing additional information to output.")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>

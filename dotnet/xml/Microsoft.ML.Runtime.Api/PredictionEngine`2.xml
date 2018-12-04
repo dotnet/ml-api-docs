@@ -1,9 +1,9 @@
 ﻿<Type Name="PredictionEngine&lt;TSrc,TDst&gt;" FullName="Microsoft.ML.Runtime.Api.PredictionEngine&lt;TSrc,TDst&gt;">
-  <TypeSignature Language="C#" Value="public sealed class PredictionEngine&lt;TSrc,TDst&gt; where TSrc : class where TDst : class, new()" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit PredictionEngine`2&lt;class TSrc, class .ctor TDst&gt; extends System.Object" />
+  <TypeSignature Language="C#" Value="public sealed class PredictionEngine&lt;TSrc,TDst&gt; : Microsoft.ML.Runtime.Api.PredictionEngineBase&lt;TSrc,TDst&gt; where TSrc : class where TDst : class, new()" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit PredictionEngine`2&lt;class TSrc, class .ctor TDst&gt; extends Microsoft.ML.Runtime.Api.PredictionEngineBase`2&lt;!TSrc, !TDst&gt;" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Api.PredictionEngine`2" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class PredictionEngine(Of TSrc, TDst)" />
-  <TypeSignature Language="F#" Value="type PredictionEngine&lt;'Src, 'Dst (requires 'Src : null and 'Dst : null and 'Dst : (new : unit -&gt; 'Dst))&gt; = class" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class PredictionEngine(Of TSrc, TDst)&#xA;Inherits PredictionEngineBase(Of TSrc, TDst)" />
+  <TypeSignature Language="F#" Value="type PredictionEngine&lt;'Src, 'Dst (requires 'Src : null and 'Dst : null and 'Dst : (new : unit -&gt; 'Dst))&gt; = class&#xA;    inherit PredictionEngineBase&lt;'Src, 'Dst (requires 'Src : null and 'Dst : null and 'Dst : (new : unit -&gt; 'Dst))&gt;" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.Api</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -23,6 +23,11 @@
   </TypeParameters>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Runtime.Api.PredictionEngineBase&lt;TSrc,TDst&gt;</BaseTypeName>
+    <BaseTypeArguments>
+      <BaseTypeArgument TypeParamName="TSrc">TSrc</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TDst">TDst</BaseTypeArgument>
+    </BaseTypeArguments>
   </Base>
   <Interfaces />
   <Docs>
@@ -37,58 +42,12 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName="Finalize">
-      <MemberSignature Language="C#" Value="~PredictionEngine ();" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Finalize() cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Api.PredictionEngine`2.Finalize" />
-      <MemberSignature Language="VB.NET" Value="Finalize ()" />
-      <MemberSignature Language="F#" Value="override this.Finalize : unit -&gt; unit" Usage="predictionEngine.Finalize " />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Api</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Predict">
-      <MemberSignature Language="C#" Value="public TDst Predict (TSrc example);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance !TDst Predict(!TSrc example) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Api.PredictionEngine`2.Predict(`0)" />
-      <MemberSignature Language="VB.NET" Value="Public Function Predict (example As TSrc) As TDst" />
-      <MemberSignature Language="F#" Value="member this.Predict : 'Src -&gt; 'Dst" Usage="predictionEngine.Predict example" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Api</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>TDst</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="example" Type="TSrc" />
-      </Parameters>
-      <Docs>
-        <param name="example">The example to run on.</param>
-        <summary>
-            Run prediction pipeline on one example.
-            </summary>
-        <returns>The result of prediction. A new object is created for every call.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Predict">
-      <MemberSignature Language="C#" Value="public void Predict (TSrc example, ref TDst prediction);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Predict(!TSrc example, !TDst&amp; prediction) cil managed" />
+      <MemberSignature Language="C#" Value="public override void Predict (TSrc example, ref TDst prediction);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Predict(!TSrc example, !TDst&amp; prediction) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Api.PredictionEngine`2.Predict(`0,`1@)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub Predict (example As TSrc, ByRef prediction As TDst)" />
-      <MemberSignature Language="F#" Value="member this.Predict : 'Src *  -&gt; unit" Usage="predictionEngine.Predict (example, prediction)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Sub Predict (example As TSrc, ByRef prediction As TDst)" />
+      <MemberSignature Language="F#" Value="override this.Predict : 'Src *  -&gt; unit" Usage="predictionEngine.Predict (example, prediction)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Api</AssemblyName>

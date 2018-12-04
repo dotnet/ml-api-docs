@@ -19,63 +19,13 @@
   <Docs>
     <summary>
             This is a convenience context object for saving models to a repository, for
-            implementors of ICanSaveModel. It is not mandated but designed to reduce the
+            implementors of <see cref="T:Microsoft.ML.Runtime.Model.ICanSaveModel" />. It is not mandated but designed to reduce the
             amount of boiler plate code. It can also be used when saving to a single stream,
-            for implementors of ICanSaveInBinaryFormat.
+            for implementors of <see cref="T:Microsoft.ML.Runtime.Model.ICanSaveInBinaryFormat" />.
             </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public ModelSaveContext (System.IO.BinaryWriter writer, Microsoft.ML.Runtime.IExceptionContext ectx = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.IO.BinaryWriter writer, class Microsoft.ML.Runtime.IExceptionContext ectx) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Model.ModelSaveContext.#ctor(System.IO.BinaryWriter,Microsoft.ML.Runtime.IExceptionContext)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (writer As BinaryWriter, Optional ectx As IExceptionContext = null)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Model.ModelSaveContext : System.IO.BinaryWriter * Microsoft.ML.Runtime.IExceptionContext -&gt; Microsoft.ML.Runtime.Model.ModelSaveContext" Usage="new Microsoft.ML.Runtime.Model.ModelSaveContext (writer, ectx)" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="writer" Type="System.IO.BinaryWriter" />
-        <Parameter Name="ectx" Type="Microsoft.ML.Runtime.IExceptionContext" />
-      </Parameters>
-      <Docs>
-        <param name="writer">To be added.</param>
-        <param name="ectx">To be added.</param>
-        <summary>
-            Create a ModelSaveContext supporting saving to a single-stream, for implementors of ICanSaveInBinaryFormat.
-            </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public ModelSaveContext (Microsoft.ML.Runtime.Model.RepositoryWriter rep, string dir, string name);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.Model.RepositoryWriter rep, string dir, string name) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Model.ModelSaveContext.#ctor(Microsoft.ML.Runtime.Model.RepositoryWriter,System.String,System.String)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (rep As RepositoryWriter, dir As String, name As String)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Model.ModelSaveContext : Microsoft.ML.Runtime.Model.RepositoryWriter * string * string -&gt; Microsoft.ML.Runtime.Model.ModelSaveContext" Usage="new Microsoft.ML.Runtime.Model.ModelSaveContext (rep, dir, name)" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="rep" Type="Microsoft.ML.Runtime.Model.RepositoryWriter" />
-        <Parameter Name="dir" Type="System.String" />
-        <Parameter Name="name" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="rep">To be added.</param>
-        <param name="dir">To be added.</param>
-        <param name="name">To be added.</param>
-        <summary>
-            Create a ModelSaveContext supporting saving to a repository, for implementors of ICanSaveModel.
-            </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="CheckAtModel">
       <MemberSignature Language="C#" Value="public void CheckAtModel ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CheckAtModel() cil managed" />
@@ -161,7 +111,7 @@
       <Docs>
         <summary>
             Commit the save operation. This completes writing of the main stream. When in repository
-            mode, it disposes the Writer (but not the repository).
+            mode, it disposes <see cref="F:Microsoft.ML.Runtime.Model.ModelSaveContext.Writer" /> (but not <see cref="F:Microsoft.ML.Runtime.Model.ModelSaveContext.Repository" />).
             </summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -183,27 +133,6 @@
       <Docs>
         <summary>
             The min file position of the main stream.
-            </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Header">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Model.ModelHeader Header;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype Microsoft.ML.Runtime.Model.ModelHeader Header" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Model.ModelSaveContext.Header" />
-      <MemberSignature Language="VB.NET" Value="Public Header As ModelHeader " />
-      <MemberSignature Language="F#" Value="val mutable Header : Microsoft.ML.Runtime.Model.ModelHeader" Usage="Microsoft.ML.Runtime.Model.ModelSaveContext.Header" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Model.ModelHeader</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>
-            The main stream's model header.
             </summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -573,28 +502,7 @@
         <param name="ver"></param>
         <summary>
             Set the version information in the main stream's header. This should be called before
-            Done is called.
-            </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Strings">
-      <MemberSignature Language="C#" Value="public readonly Microsoft.ML.Runtime.Internal.Utilities.NormStr.Pool Strings;" />
-      <MemberSignature Language="ILAsm" Value=".field public initonly class Microsoft.ML.Runtime.Internal.Utilities.NormStr/Pool Strings" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Model.ModelSaveContext.Strings" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Strings As NormStr.Pool " />
-      <MemberSignature Language="F#" Value="val mutable Strings : Microsoft.ML.Runtime.Internal.Utilities.NormStr.Pool" Usage="Microsoft.ML.Runtime.Model.ModelSaveContext.Strings" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Internal.Utilities.NormStr+Pool</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>
-            The strings that will be saved in the main stream's string table.
+            <see cref="M:Microsoft.ML.Runtime.Model.ModelSaveContext.Done" /> is called.
             </summary>
         <remarks>To be added.</remarks>
       </Docs>

@@ -24,11 +24,11 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public LinearSvm (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Trainers.Online.LinearSvm.Arguments args);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Trainers.Online.LinearSvm/Arguments args) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.Online.LinearSvm.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Trainers.Online.LinearSvm.Arguments)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, args As LinearSvm.Arguments)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Trainers.Online.LinearSvm : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Trainers.Online.LinearSvm.Arguments -&gt; Microsoft.ML.Trainers.Online.LinearSvm" Usage="new Microsoft.ML.Trainers.Online.LinearSvm (env, args)" />
+      <MemberSignature Language="C#" Value="public LinearSvm (Microsoft.ML.Runtime.IHostEnvironment env, string labelColumn = &quot;Label&quot;, string featureColumn = &quot;Features&quot;, string weightsColumn = null, int numIterations = 1, Action&lt;Microsoft.ML.Trainers.Online.LinearSvm.Arguments&gt; advancedSettings = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string labelColumn, string featureColumn, string weightsColumn, int32 numIterations, class System.Action`1&lt;class Microsoft.ML.Trainers.Online.LinearSvm/Arguments&gt; advancedSettings) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.Online.LinearSvm.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String,System.Int32,System.Action{Microsoft.ML.Trainers.Online.LinearSvm.Arguments})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, Optional labelColumn As String = &quot;Label&quot;, Optional featureColumn As String = &quot;Features&quot;, Optional weightsColumn As String = null, Optional numIterations As Integer = 1, Optional advancedSettings As Action(Of LinearSvm.Arguments) = null)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Trainers.Online.LinearSvm : Microsoft.ML.Runtime.IHostEnvironment * string * string * string * int * Action&lt;Microsoft.ML.Trainers.Online.LinearSvm.Arguments&gt; -&gt; Microsoft.ML.Trainers.Online.LinearSvm" Usage="new Microsoft.ML.Trainers.Online.LinearSvm (env, labelColumn, featureColumn, weightsColumn, numIterations, advancedSettings)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
@@ -36,12 +36,22 @@
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
-        <Parameter Name="args" Type="Microsoft.ML.Trainers.Online.LinearSvm+Arguments" />
+        <Parameter Name="labelColumn" Type="System.String" />
+        <Parameter Name="featureColumn" Type="System.String" />
+        <Parameter Name="weightsColumn" Type="System.String" />
+        <Parameter Name="numIterations" Type="System.Int32" />
+        <Parameter Name="advancedSettings" Type="System.Action&lt;Microsoft.ML.Trainers.Online.LinearSvm+Arguments&gt;" />
       </Parameters>
       <Docs>
-        <param name="env">To be added.</param>
-        <param name="args">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="env">The environment to use.</param>
+        <param name="labelColumn">The name of the label column. </param>
+        <param name="featureColumn">The name of the feature column.</param>
+        <param name="weightsColumn">The optional name of the weights column.</param>
+        <param name="numIterations">The number of training iteraitons.</param>
+        <param name="advancedSettings">A delegate to supply more advanced arguments to the algorithm.</param>
+        <summary>
+            Initializes a new instance of <see cref="T:Microsoft.ML.Trainers.Online.LinearSvm" />.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -93,11 +103,11 @@
       </Docs>
     </Member>
     <Member MemberName="MakeTransformer">
-      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.LinearBinaryPredictor&gt; MakeTransformer (Microsoft.ML.Runtime.Learners.LinearBinaryPredictor model, Microsoft.ML.Runtime.Data.Schema trainSchema);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.Runtime.Learners.LinearBinaryPredictor&gt; MakeTransformer(class Microsoft.ML.Runtime.Learners.LinearBinaryPredictor model, class Microsoft.ML.Runtime.Data.Schema trainSchema) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.Online.LinearSvm.MakeTransformer(Microsoft.ML.Runtime.Learners.LinearBinaryPredictor,Microsoft.ML.Runtime.Data.Schema)" />
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.LinearBinaryPredictor&gt; MakeTransformer (Microsoft.ML.Runtime.Learners.LinearBinaryPredictor model, Microsoft.ML.Data.Schema trainSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.Runtime.Learners.LinearBinaryPredictor&gt; MakeTransformer(class Microsoft.ML.Runtime.Learners.LinearBinaryPredictor model, class Microsoft.ML.Data.Schema trainSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.Online.LinearSvm.MakeTransformer(Microsoft.ML.Runtime.Learners.LinearBinaryPredictor,Microsoft.ML.Data.Schema)" />
       <MemberSignature Language="VB.NET" Value="Protected Overrides Function MakeTransformer (model As LinearBinaryPredictor, trainSchema As Schema) As BinaryPredictionTransformer(Of LinearBinaryPredictor)" />
-      <MemberSignature Language="F#" Value="override this.MakeTransformer : Microsoft.ML.Runtime.Learners.LinearBinaryPredictor * Microsoft.ML.Runtime.Data.Schema -&gt; Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.LinearBinaryPredictor&gt;" Usage="linearSvm.MakeTransformer (model, trainSchema)" />
+      <MemberSignature Language="F#" Value="override this.MakeTransformer : Microsoft.ML.Runtime.Learners.LinearBinaryPredictor * Microsoft.ML.Data.Schema -&gt; Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.LinearBinaryPredictor&gt;" Usage="linearSvm.MakeTransformer (model, trainSchema)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
@@ -108,7 +118,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="model" Type="Microsoft.ML.Runtime.Learners.LinearBinaryPredictor" />
-        <Parameter Name="trainSchema" Type="Microsoft.ML.Runtime.Data.Schema" />
+        <Parameter Name="trainSchema" Type="Microsoft.ML.Data.Schema" />
       </Parameters>
       <Docs>
         <param name="model">To be added.</param>

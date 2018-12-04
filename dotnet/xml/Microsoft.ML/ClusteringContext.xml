@@ -41,6 +41,51 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="CrossValidate">
+      <MemberSignature Language="C#" Value="public ValueTuple&lt;Microsoft.ML.Runtime.Data.ClusteringEvaluator.Result,Microsoft.ML.Core.Data.ITransformer,Microsoft.ML.Runtime.Data.IDataView&gt;[] CrossValidate (Microsoft.ML.Runtime.Data.IDataView data, Microsoft.ML.Core.Data.IEstimator&lt;Microsoft.ML.Core.Data.ITransformer&gt; estimator, int numFolds = 5, string labelColumn = null, string featuresColumn = null, string stratificationColumn = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype System.ValueTuple`3&lt;class Microsoft.ML.Runtime.Data.ClusteringEvaluator/Result, class Microsoft.ML.Core.Data.ITransformer, class Microsoft.ML.Runtime.Data.IDataView&gt;[] CrossValidate(class Microsoft.ML.Runtime.Data.IDataView data, class Microsoft.ML.Core.Data.IEstimator`1&lt;class Microsoft.ML.Core.Data.ITransformer&gt; estimator, int32 numFolds, string labelColumn, string featuresColumn, string stratificationColumn) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ClusteringContext.CrossValidate(Microsoft.ML.Runtime.Data.IDataView,Microsoft.ML.Core.Data.IEstimator{Microsoft.ML.Core.Data.ITransformer},System.Int32,System.String,System.String,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Function CrossValidate (data As IDataView, estimator As IEstimator(Of ITransformer), Optional numFolds As Integer = 5, Optional labelColumn As String = null, Optional featuresColumn As String = null, Optional stratificationColumn As String = null) As ValueTuple(Of ClusteringEvaluator.Result, ITransformer, IDataView)()" />
+      <MemberSignature Language="F#" Value="member this.CrossValidate : Microsoft.ML.Runtime.Data.IDataView * Microsoft.ML.Core.Data.IEstimator&lt;Microsoft.ML.Core.Data.ITransformer&gt; * int * string * string * string -&gt; ValueTuple&lt;Microsoft.ML.Runtime.Data.ClusteringEvaluator.Result, Microsoft.ML.Core.Data.ITransformer, Microsoft.ML.Runtime.Data.IDataView&gt;[]" Usage="clusteringContext.CrossValidate (data, estimator, numFolds, labelColumn, featuresColumn, stratificationColumn)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.ValueTuple&lt;Microsoft.ML.Runtime.Data.ClusteringEvaluator+Result,Microsoft.ML.Core.Data.ITransformer,Microsoft.ML.Runtime.Data.IDataView&gt;[]</ReturnType>
+        <Attributes>
+          <Attribute>
+            <AttributeName>System.Runtime.CompilerServices.TupleElementNames(new System.String[] { "metrics", "model", "scoredTestData" })</AttributeName>
+          </Attribute>
+        </Attributes>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="estimator" Type="Microsoft.ML.Core.Data.IEstimator&lt;Microsoft.ML.Core.Data.ITransformer&gt;" />
+        <Parameter Name="numFolds" Type="System.Int32" />
+        <Parameter Name="labelColumn" Type="System.String" />
+        <Parameter Name="featuresColumn" Type="System.String" />
+        <Parameter Name="stratificationColumn" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="data">The data to run cross-validation on.</param>
+        <param name="estimator">The estimator to fit.</param>
+        <param name="numFolds">Number of cross-validation folds.</param>
+        <param name="labelColumn">Optional label column for evaluation (clustering tasks may not always have a label).</param>
+        <param name="featuresColumn">Optional features column for evaluation (needed for calculating Dbi metric)</param>
+        <param name="stratificationColumn">Optional stratification column.</param>
+        <summary>
+            Run cross-validation over <paramref name="numFolds" /> folds of <paramref name="data" />, by fitting <paramref name="estimator" />,
+            and respecting <paramref name="stratificationColumn" /> if provided.
+            Then evaluate each sub-model against <paramref name="labelColumn" /> and return metrics.
+            </summary>
+        <returns>Per-fold results: metrics, models, scored datasets.</returns>
+        <remarks>If two examples share the same value of the <paramref name="stratificationColumn" /> (if provided),
+            they are guaranteed to appear in the same subset (train or test). Use this to make sure there is no label leakage from
+            train to the test set.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Evaluate">
       <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.ClusteringEvaluator.Result Evaluate (Microsoft.ML.Runtime.Data.IDataView data, string label = null, string score = &quot;Score&quot;, string features = null);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Runtime.Data.ClusteringEvaluator/Result Evaluate(class Microsoft.ML.Runtime.Data.IDataView data, string label, string score, string features) cil managed" />
