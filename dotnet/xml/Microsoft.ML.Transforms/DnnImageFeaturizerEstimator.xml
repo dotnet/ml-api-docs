@@ -1,0 +1,119 @@
+﻿<Type Name="DnnImageFeaturizerEstimator" FullName="Microsoft.ML.Transforms.DnnImageFeaturizerEstimator">
+  <TypeSignature Language="C#" Value="public sealed class DnnImageFeaturizerEstimator : Microsoft.ML.Core.Data.IEstimator&lt;Microsoft.ML.Data.TransformerChain&lt;Microsoft.ML.Transforms.ColumnCopyingTransformer&gt;&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit DnnImageFeaturizerEstimator extends System.Object implements class Microsoft.ML.Core.Data.IEstimator`1&lt;class Microsoft.ML.Data.TransformerChain`1&lt;class Microsoft.ML.Transforms.ColumnCopyingTransformer&gt;&gt;" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Transforms.DnnImageFeaturizerEstimator" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class DnnImageFeaturizerEstimator&#xA;Implements IEstimator(Of TransformerChain(Of ColumnCopyingTransformer))" />
+  <TypeSignature Language="F#" Value="type DnnImageFeaturizerEstimator = class&#xA;    interface IEstimator&lt;TransformerChain&lt;ColumnCopyingTransformer&gt;&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.OnnxTransform</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Core.Data.IEstimator&lt;Microsoft.ML.Data.TransformerChain&lt;Microsoft.ML.Transforms.ColumnCopyingTransformer&gt;&gt;</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+            The Dnn Image Featurizer is just a wrapper around two <see cref="T:Microsoft.ML.Transforms.OnnxScoringEstimator" />s and three <see cref="T:Microsoft.ML.Transforms.ColumnCopyingEstimator" />
+            with present pretrained DNN models. The ColumnsCopying are there to allow arbitrary column input and output names, as by default
+            the ONNXTransform requires the names of the columns to be identical to the names of the ONNX model nodes.
+            Note that because of this, it only works on Windows machines as that is a constraint of the OnnxTransform.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public DnnImageFeaturizerEstimator (Microsoft.ML.Runtime.IHostEnvironment env, Func&lt;Microsoft.ML.Transforms.DnnImageFeaturizerInput,Microsoft.ML.Runtime.Data.EstimatorChain&lt;Microsoft.ML.Transforms.ColumnCopyingTransformer&gt;&gt; modelFactory, string inputColumn, string outputColumn);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class System.Func`2&lt;class Microsoft.ML.Transforms.DnnImageFeaturizerInput, class Microsoft.ML.Runtime.Data.EstimatorChain`1&lt;class Microsoft.ML.Transforms.ColumnCopyingTransformer&gt;&gt; modelFactory, string inputColumn, string outputColumn) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.DnnImageFeaturizerEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.Func{Microsoft.ML.Transforms.DnnImageFeaturizerInput,Microsoft.ML.Runtime.Data.EstimatorChain{Microsoft.ML.Transforms.ColumnCopyingTransformer}},System.String,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, modelFactory As Func(Of DnnImageFeaturizerInput, EstimatorChain(Of ColumnCopyingTransformer)), inputColumn As String, outputColumn As String)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.DnnImageFeaturizerEstimator : Microsoft.ML.Runtime.IHostEnvironment * Func&lt;Microsoft.ML.Transforms.DnnImageFeaturizerInput, Microsoft.ML.Runtime.Data.EstimatorChain&lt;Microsoft.ML.Transforms.ColumnCopyingTransformer&gt;&gt; * string * string -&gt; Microsoft.ML.Transforms.DnnImageFeaturizerEstimator" Usage="new Microsoft.ML.Transforms.DnnImageFeaturizerEstimator (env, modelFactory, inputColumn, outputColumn)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.OnnxTransform</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="modelFactory" Type="System.Func&lt;Microsoft.ML.Transforms.DnnImageFeaturizerInput,Microsoft.ML.Runtime.Data.EstimatorChain&lt;Microsoft.ML.Transforms.ColumnCopyingTransformer&gt;&gt;" />
+        <Parameter Name="inputColumn" Type="System.String" />
+        <Parameter Name="outputColumn" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="env">Host environment.</param>
+        <param name="modelFactory">An extension method on the <see cref="T:Microsoft.ML.Transforms.DnnImageModelSelector" /> that creates a chain of two
+            <see cref="T:Microsoft.ML.Transforms.OnnxScoringEstimator" />s (one for preprocessing and one with a pretrained image DNN) with specific models
+            included in a package together with that extension method. It also contains three <see cref="T:Microsoft.ML.Transforms.ColumnCopyingEstimator" />s
+            to allow arbitrary column naming, as the ONNXEstimators require very specific naming based on the models.
+            For an example, see Microsoft.ML.DnnImageFeaturizer.ResNet18 </param>
+        <param name="inputColumn">inputColumn column name.</param>
+        <param name="outputColumn">Output column name.</param>
+        <summary>
+            Constructor for the estimator for a DnnImageFeaturizer transform.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Fit">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.TransformerChain&lt;Microsoft.ML.Transforms.ColumnCopyingTransformer&gt; Fit (Microsoft.ML.Runtime.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Data.TransformerChain`1&lt;class Microsoft.ML.Transforms.ColumnCopyingTransformer&gt; Fit(class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.DnnImageFeaturizerEstimator.Fit(Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Fit (input As IDataView) As TransformerChain(Of ColumnCopyingTransformer)" />
+      <MemberSignature Language="F#" Value="abstract member Fit : Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Data.TransformerChain&lt;Microsoft.ML.Transforms.ColumnCopyingTransformer&gt;&#xA;override this.Fit : Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Data.TransformerChain&lt;Microsoft.ML.Transforms.ColumnCopyingTransformer&gt;" Usage="dnnImageFeaturizerEstimator.Fit input" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Core.Data.IEstimator`1.Fit(Microsoft.ML.Runtime.Data.IDataView)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.OnnxTransform</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.TransformerChain&lt;Microsoft.ML.Transforms.ColumnCopyingTransformer&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="input">To be added.</param>
+        <summary>
+            Note that OnnxEstimator which this is based on is a trivial estimator, so this does not do any actual training,
+            just verifies the schema.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetOutputSchema">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Core.Data.SchemaShape GetOutputSchema (Microsoft.ML.Core.Data.SchemaShape inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Core.Data.SchemaShape GetOutputSchema(class Microsoft.ML.Core.Data.SchemaShape inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.DnnImageFeaturizerEstimator.GetOutputSchema(Microsoft.ML.Core.Data.SchemaShape)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetOutputSchema (inputSchema As SchemaShape) As SchemaShape" />
+      <MemberSignature Language="F#" Value="abstract member GetOutputSchema : Microsoft.ML.Core.Data.SchemaShape -&gt; Microsoft.ML.Core.Data.SchemaShape&#xA;override this.GetOutputSchema : Microsoft.ML.Core.Data.SchemaShape -&gt; Microsoft.ML.Core.Data.SchemaShape" Usage="dnnImageFeaturizerEstimator.GetOutputSchema inputSchema" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Core.Data.IEstimator`1.GetOutputSchema(Microsoft.ML.Core.Data.SchemaShape)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.OnnxTransform</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Core.Data.SchemaShape</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.Core.Data.SchemaShape" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

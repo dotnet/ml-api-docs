@@ -1,0 +1,149 @@
+﻿<Type Name="PermutationFeatureImportanceExtensions" FullName="Microsoft.ML.PermutationFeatureImportanceExtensions">
+  <TypeSignature Language="C#" Value="public static class PermutationFeatureImportanceExtensions" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit PermutationFeatureImportanceExtensions extends System.Object" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.PermutationFeatureImportanceExtensions" />
+  <TypeSignature Language="VB.NET" Value="Public Module PermutationFeatureImportanceExtensions" />
+  <TypeSignature Language="F#" Value="type PermutationFeatureImportanceExtensions = class" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="PermutationFeatureImportance">
+      <MemberSignature Language="C#" Value="public static System.Collections.Immutable.ImmutableArray&lt;Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.Result&gt; PermutationFeatureImportance (this Microsoft.ML.BinaryClassificationContext ctx, Microsoft.ML.Runtime.IPredictionTransformer&lt;Microsoft.ML.Runtime.IPredictor&gt; model, Microsoft.ML.Runtime.Data.IDataView data, string label = &quot;Label&quot;, string features = &quot;Features&quot;, bool useFeatureWeightFilter = false, Nullable&lt;int&gt; topExamples = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype System.Collections.Immutable.ImmutableArray`1&lt;class Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator/Result&gt; PermutationFeatureImportance(class Microsoft.ML.BinaryClassificationContext ctx, class Microsoft.ML.Runtime.IPredictionTransformer`1&lt;class Microsoft.ML.Runtime.IPredictor&gt; model, class Microsoft.ML.Runtime.Data.IDataView data, string label, string features, bool useFeatureWeightFilter, valuetype System.Nullable`1&lt;int32&gt; topExamples) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.PermutationFeatureImportanceExtensions.PermutationFeatureImportance(Microsoft.ML.BinaryClassificationContext,Microsoft.ML.Runtime.IPredictionTransformer{Microsoft.ML.Runtime.IPredictor},Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,System.Boolean,System.Nullable{System.Int32})" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function PermutationFeatureImportance (ctx As BinaryClassificationContext, model As IPredictionTransformer(Of IPredictor), data As IDataView, Optional label As String = &quot;Label&quot;, Optional features As String = &quot;Features&quot;, Optional useFeatureWeightFilter As Boolean = false, Optional topExamples As Nullable(Of Integer) = null) As ImmutableArray(Of BinaryClassifierEvaluator.Result)" />
+      <MemberSignature Language="F#" Value="static member PermutationFeatureImportance : Microsoft.ML.BinaryClassificationContext * Microsoft.ML.Runtime.IPredictionTransformer&lt;Microsoft.ML.Runtime.IPredictor&gt; * Microsoft.ML.Runtime.Data.IDataView * string * string * bool * Nullable&lt;int&gt; -&gt; System.Collections.Immutable.ImmutableArray&lt;Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator.Result&gt;" Usage="Microsoft.ML.PermutationFeatureImportanceExtensions.PermutationFeatureImportance (ctx, model, data, label, features, useFeatureWeightFilter, topExamples)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Immutable.ImmutableArray&lt;Microsoft.ML.Runtime.Data.BinaryClassifierEvaluator+Result&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ctx" Type="Microsoft.ML.BinaryClassificationContext" RefType="this" />
+        <Parameter Name="model" Type="Microsoft.ML.Runtime.IPredictionTransformer&lt;Microsoft.ML.Runtime.IPredictor&gt;" />
+        <Parameter Name="data" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="label" Type="System.String" />
+        <Parameter Name="features" Type="System.String" />
+        <Parameter Name="useFeatureWeightFilter" Type="System.Boolean" />
+        <Parameter Name="topExamples" Type="System.Nullable&lt;System.Int32&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="ctx">The binary classification context.</param>
+        <param name="model">The model to evaluate.</param>
+        <param name="data">The evaluation data set.</param>
+        <param name="label">Label column name.</param>
+        <param name="features">Feature column names.</param>
+        <param name="useFeatureWeightFilter">Use features weight to pre-filter features.</param>
+        <param name="topExamples">Limit the number of examples to evaluate on. null means examples (up to ~ 2 bln) from input will be used.</param>
+        <summary>
+            Permutation Feature Importance (PFI) for Binary Classification
+            </summary>
+        <returns>Array of per-feature 'contributions' to the score.</returns>
+        <remarks>
+          <para>
+            Permutation feature importance (PFI) is a technique to determine the global importance of features in a trained
+            machine learning model. PFI is a simple yet powerful technique motivated by Breiman in his Random Forest paper, section 10
+            (Breiman. <a href="https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf">"Random Forests."</a> Machine Learning, 2001.)
+            The advantage of the PFI method is that it is model agnostic -- it works with any model that can be
+            evaluated -- and it can use any dataset, not just the training set, to compute feature importance metrics.
+            </para>
+          <para>
+            PFI works by taking a labeled dataset, choosing a feature, and permuting the values
+            for that feature across all the examples, so that each example now has a random value for the feature and
+            the original values for all other features. The evalution metric (e.g. AUC or R-squared) is then calculated
+            for this modified dataset, and the change in the evaluation metric from the original dataset is computed.
+            The larger the change in the evaluation metric, the more important the feature is to the model.
+            PFI works by performing this permutation analysis across all the features of a model, one after another.
+            </para>
+          <para>
+            In this implementation, PFI computes the change in all possible binary classification evaluation metrics for each feature, and an
+            <code>ImmutableArray</code> of <code>BinaryClassificationMetrics</code> objects is returned. See the sample below for an
+            example of working with these results to analyze the feature importance of a model.
+            </para>
+        </remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[PFI](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/PermutationFeatureImportance.cs)]
+            ]]></format>
+        </example>
+      </Docs>
+    </Member>
+    <Member MemberName="PermutationFeatureImportance">
+      <MemberSignature Language="C#" Value="public static System.Collections.Immutable.ImmutableArray&lt;Microsoft.ML.Runtime.Data.RegressionEvaluator.Result&gt; PermutationFeatureImportance (this Microsoft.ML.RegressionContext ctx, Microsoft.ML.Runtime.IPredictionTransformer&lt;Microsoft.ML.Runtime.IPredictor&gt; model, Microsoft.ML.Runtime.Data.IDataView data, string label = &quot;Label&quot;, string features = &quot;Features&quot;, bool useFeatureWeightFilter = false, Nullable&lt;int&gt; topExamples = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype System.Collections.Immutable.ImmutableArray`1&lt;class Microsoft.ML.Runtime.Data.RegressionEvaluator/Result&gt; PermutationFeatureImportance(class Microsoft.ML.RegressionContext ctx, class Microsoft.ML.Runtime.IPredictionTransformer`1&lt;class Microsoft.ML.Runtime.IPredictor&gt; model, class Microsoft.ML.Runtime.Data.IDataView data, string label, string features, bool useFeatureWeightFilter, valuetype System.Nullable`1&lt;int32&gt; topExamples) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.PermutationFeatureImportanceExtensions.PermutationFeatureImportance(Microsoft.ML.RegressionContext,Microsoft.ML.Runtime.IPredictionTransformer{Microsoft.ML.Runtime.IPredictor},Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,System.Boolean,System.Nullable{System.Int32})" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function PermutationFeatureImportance (ctx As RegressionContext, model As IPredictionTransformer(Of IPredictor), data As IDataView, Optional label As String = &quot;Label&quot;, Optional features As String = &quot;Features&quot;, Optional useFeatureWeightFilter As Boolean = false, Optional topExamples As Nullable(Of Integer) = null) As ImmutableArray(Of RegressionEvaluator.Result)" />
+      <MemberSignature Language="F#" Value="static member PermutationFeatureImportance : Microsoft.ML.RegressionContext * Microsoft.ML.Runtime.IPredictionTransformer&lt;Microsoft.ML.Runtime.IPredictor&gt; * Microsoft.ML.Runtime.Data.IDataView * string * string * bool * Nullable&lt;int&gt; -&gt; System.Collections.Immutable.ImmutableArray&lt;Microsoft.ML.Runtime.Data.RegressionEvaluator.Result&gt;" Usage="Microsoft.ML.PermutationFeatureImportanceExtensions.PermutationFeatureImportance (ctx, model, data, label, features, useFeatureWeightFilter, topExamples)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Immutable.ImmutableArray&lt;Microsoft.ML.Runtime.Data.RegressionEvaluator+Result&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ctx" Type="Microsoft.ML.RegressionContext" RefType="this" />
+        <Parameter Name="model" Type="Microsoft.ML.Runtime.IPredictionTransformer&lt;Microsoft.ML.Runtime.IPredictor&gt;" />
+        <Parameter Name="data" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="label" Type="System.String" />
+        <Parameter Name="features" Type="System.String" />
+        <Parameter Name="useFeatureWeightFilter" Type="System.Boolean" />
+        <Parameter Name="topExamples" Type="System.Nullable&lt;System.Int32&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="ctx">The regression context.</param>
+        <param name="model">The model to evaluate.</param>
+        <param name="data">The evaluation data set.</param>
+        <param name="label">Label column name.</param>
+        <param name="features">Feature column names.</param>
+        <param name="useFeatureWeightFilter">Use features weight to pre-filter features.</param>
+        <param name="topExamples">Limit the number of examples to evaluate on. null means examples (up to ~ 2 bln) from input will be used.</param>
+        <summary>
+            Permutation Feature Importance (PFI) for Regression
+            </summary>
+        <returns>Array of per-feature 'contributions' to the score.</returns>
+        <remarks>
+          <para>
+            Permutation feature importance (PFI) is a technique to determine the global importance of features in a trained
+            machine learning model. PFI is a simple yet powerful technique motivated by Breiman in his Random Forest paper, section 10
+            (Breiman. <a href="https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf">"Random Forests."</a> Machine Learning, 2001.)
+            The advantage of the PFI method is that it is model agnostic -- it works with any model that can be
+            evaluated -- and it can use any dataset, not just the training set, to compute feature importance metrics.
+            </para>
+          <para>
+            PFI works by taking a labeled dataset, choosing a feature, and permuting the values
+            for that feature across all the examples, so that each example now has a random value for the feature and
+            the original values for all other features. The evalution metric (e.g. AUC or R-squared) is then calculated
+            for this modified dataset, and the change in the evaluation metric from the original dataset is computed.
+            The larger the change in the evaluation metric, the more important the feature is to the model.
+            PFI works by performing this permutation analysis across all the features of a model, one after another.
+            </para>
+          <para>
+            In this implementation, PFI computes the change in all possible regression evaluation metrics for each feature, and an
+            <code>ImmutableArray</code> of <code>RegressionMetrics</code> objects is returned. See the sample below for an
+            example of working with these results to analyze the feature importance of a model.
+            </para>
+        </remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[PFI](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/PermutationFeatureImportance.cs)]
+            ]]></format>
+        </example>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,253 @@
+<Type Name="HashJoinTransform" FullName="Microsoft.ML.Transforms.Conversions.HashJoinTransform">
+  <TypeSignature Language="C#" Value="public sealed class HashJoinTransform : Microsoft.ML.Runtime.Data.OneToOneTransformBase" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit HashJoinTransform extends Microsoft.ML.Runtime.Data.OneToOneTransformBase" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Transforms.Conversions.HashJoinTransform" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class HashJoinTransform&#xA;Inherits OneToOneTransformBase" />
+  <TypeSignature Language="F#" Value="type HashJoinTransform = class&#xA;    inherit OneToOneTransformBase" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Microsoft.ML.Runtime.Data.OneToOneTransformBase</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+            This transform hashes its input columns. Each column is hashed separately, and within each
+            column there is an option to specify which slots should be hashed together into one output slot.
+            This transform can be applied either to single valued columns or to known length vector columns.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public HashJoinTransform (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Transforms.Conversions.HashJoinTransform.Arguments args, Microsoft.ML.Runtime.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Transforms.Conversions.HashJoinTransform/Arguments args, class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Conversions.HashJoinTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Transforms.Conversions.HashJoinTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, args As HashJoinTransform.Arguments, input As IDataView)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Conversions.HashJoinTransform : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Transforms.Conversions.HashJoinTransform.Arguments * Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Transforms.Conversions.HashJoinTransform" Usage="new Microsoft.ML.Transforms.Conversions.HashJoinTransform (env, args, input)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="args" Type="Microsoft.ML.Transforms.Conversions.HashJoinTransform+Arguments" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="args">To be added.</param>
+        <param name="input">To be added.</param>
+        <summary>
+        Converts multiple column values into hashes. 
+        This transform accepts both numeric and text inputs, both single and vector-valued columns. 
+      </summary>
+        <remarks>
+        This transform can be helpful for ranking and cross-validation. In the case of ranking, where the GroupIdColumn column is required,
+        and needs to be of a key type you can use the <see cref="T:Microsoft.ML.Transforms.CategoricalHashOneHotVectorizer" /> to hash the text value of a single GroupID column into a key value.
+        If the GroupID is the combination of the values from multiple columns, you can use the HashConverter to hash multiple text columns into one key column. 
+        Similarly with CrossValidator and the StratificationColumn. 
+      </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public HashJoinTransform (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.IDataView input, string name, string source = null, bool join = true, int hashBits = 31);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.IDataView input, string name, string source, bool join, int32 hashBits) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Conversions.HashJoinTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,System.String,System.Boolean,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, input As IDataView, name As String, Optional source As String = null, Optional join As Boolean = true, Optional hashBits As Integer = 31)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Conversions.HashJoinTransform : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.IDataView * string * string * bool * int -&gt; Microsoft.ML.Transforms.Conversions.HashJoinTransform" Usage="new Microsoft.ML.Transforms.Conversions.HashJoinTransform (env, input, name, source, join, hashBits)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="source" Type="System.String" />
+        <Parameter Name="join" Type="System.Boolean" />
+        <Parameter Name="hashBits" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="env">Host Environment.</param>
+        <param name="input">Input <see cref="T:Microsoft.ML.Runtime.Data.IDataView" />. This is the output from previous transform or loader.</param>
+        <param name="name">Name of the output column.</param>
+        <param name="source">Name of the column to be transformed. If this is null '<paramref name="name" />' will be used.</param>
+        <param name="join">Whether the values need to be combined for a single hash.</param>
+        <param name="hashBits">Number of bits to hash into. Must be between 1 and 31, inclusive.</param>
+        <summary>
+            Convenience constructor for public facing API.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Conversions.HashJoinTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Model.ModelLoadContext ctx, Microsoft.ML.Runtime.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Conversions.HashJoinTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Model.ModelLoadContext ctx, class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Conversions.HashJoinTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext,Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, ctx As ModelLoadContext, input As IDataView) As HashJoinTransform" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Model.ModelLoadContext * Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Transforms.Conversions.HashJoinTransform" Usage="Microsoft.ML.Transforms.Conversions.HashJoinTransform.Create (env, ctx, input)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Transforms.Conversions.HashJoinTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="ctx" Type="Microsoft.ML.Runtime.Model.ModelLoadContext" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="ctx">To be added.</param>
+        <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetColumnTypeCore">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.ColumnType GetColumnTypeCore (int iinfo);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.ColumnType GetColumnTypeCore(int32 iinfo) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Conversions.HashJoinTransform.GetColumnTypeCore(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetColumnTypeCore (iinfo As Integer) As ColumnType" />
+      <MemberSignature Language="F#" Value="override this.GetColumnTypeCore : int -&gt; Microsoft.ML.Runtime.Data.ColumnType" Usage="hashJoinTransform.GetColumnTypeCore iinfo" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ColumnType</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="iinfo" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="iinfo">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetGetterCore">
+      <MemberSignature Language="C#" Value="protected override Delegate GetGetterCore (Microsoft.ML.Runtime.IChannel ch, Microsoft.ML.Runtime.Data.IRow input, int iinfo, out Action disposer);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class System.Delegate GetGetterCore(class Microsoft.ML.Runtime.IChannel ch, class Microsoft.ML.Runtime.Data.IRow input, int32 iinfo, [out] class System.Action&amp; disposer) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Conversions.HashJoinTransform.GetGetterCore(Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Data.IRow,System.Int32,System.Action@)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetGetterCore (ch As IChannel, input As IRow, iinfo As Integer, ByRef disposer As Action) As Delegate" />
+      <MemberSignature Language="F#" Value="override this.GetGetterCore : Microsoft.ML.Runtime.IChannel * Microsoft.ML.Runtime.Data.IRow * int *  -&gt; Delegate" Usage="hashJoinTransform.GetGetterCore (ch, input, iinfo, disposer)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Delegate</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IRow" />
+        <Parameter Name="iinfo" Type="System.Int32" />
+        <Parameter Name="disposer" Type="System.Action" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="ch">To be added.</param>
+        <param name="input">To be added.</param>
+        <param name="iinfo">To be added.</param>
+        <param name="disposer">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoaderSignature">
+      <MemberSignature Language="C#" Value="public const string LoaderSignature;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal string LoaderSignature" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.Conversions.HashJoinTransform.LoaderSignature" />
+      <MemberSignature Language="VB.NET" Value="Public Const LoaderSignature As String " />
+      <MemberSignature Language="F#" Value="val mutable LoaderSignature : string" Usage="Microsoft.ML.Transforms.Conversions.HashJoinTransform.LoaderSignature" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NumBitsLim">
+      <MemberSignature Language="C#" Value="public const int NumBitsLim = 32;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 NumBitsLim = (32)" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.Conversions.HashJoinTransform.NumBitsLim" />
+      <MemberSignature Language="VB.NET" Value="Public Const NumBitsLim As Integer  = 32" />
+      <MemberSignature Language="F#" Value="val mutable NumBitsLim : int" Usage="Microsoft.ML.Transforms.Conversions.HashJoinTransform.NumBitsLim" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>32</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NumBitsMin">
+      <MemberSignature Language="C#" Value="public const int NumBitsMin = 1;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 NumBitsMin = (1)" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.Conversions.HashJoinTransform.NumBitsMin" />
+      <MemberSignature Language="VB.NET" Value="Public Const NumBitsMin As Integer  = 1" />
+      <MemberSignature Language="F#" Value="val mutable NumBitsMin : int" Usage="Microsoft.ML.Transforms.Conversions.HashJoinTransform.NumBitsMin" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>1</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Save">
+      <MemberSignature Language="C#" Value="public override void Save (Microsoft.ML.Runtime.Model.ModelSaveContext ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Save(class Microsoft.ML.Runtime.Model.ModelSaveContext ctx) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Conversions.HashJoinTransform.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Sub Save (ctx As ModelSaveContext)" />
+      <MemberSignature Language="F#" Value="override this.Save : Microsoft.ML.Runtime.Model.ModelSaveContext -&gt; unit" Usage="hashJoinTransform.Save ctx" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ctx" Type="Microsoft.ML.Runtime.Model.ModelSaveContext" />
+      </Parameters>
+      <Docs>
+        <param name="ctx">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
