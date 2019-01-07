@@ -1,0 +1,220 @@
+<Type Name="AppendRowsDataView" FullName="Microsoft.ML.Runtime.Data.AppendRowsDataView">
+  <TypeSignature Language="C#" Value="public sealed class AppendRowsDataView : Microsoft.ML.Runtime.Data.IDataView" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit AppendRowsDataView extends System.Object implements class Microsoft.ML.Runtime.Data.IDataView" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.AppendRowsDataView" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class AppendRowsDataView&#xA;Implements IDataView" />
+  <TypeSignature Language="F#" Value="type AppendRowsDataView = class&#xA;    interface IDataView" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Data</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.Data.IDataView</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+             This class provides the functionality to combine multiple IDataView objects which share the same schema
+             All sources must contain the same number of columns and their column names, sizes, and item types must match.
+             The row count of the resulting IDataView will be the sum over that of each individual.
+            
+             An AppendRowsDataView instance is shuffleable iff all of its sources are shuffleable and their row counts are known.
+             </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="CanShuffle">
+      <MemberSignature Language="C#" Value="public bool CanShuffle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool CanShuffle" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.AppendRowsDataView.CanShuffle" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property CanShuffle As Boolean" />
+      <MemberSignature Language="F#" Value="member this.CanShuffle : bool" Usage="Microsoft.ML.Runtime.Data.AppendRowsDataView.CanShuffle" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Runtime.Data.IDataView.CanShuffle</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IDataView Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Data.Schema schema, params Microsoft.ML.Runtime.Data.IDataView[] sources);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IDataView Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Data.Schema schema, class Microsoft.ML.Runtime.Data.IDataView[] sources) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.AppendRowsDataView.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Data.Schema,Microsoft.ML.Runtime.Data.IDataView[])" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Data.Schema * Microsoft.ML.Runtime.Data.IDataView[] -&gt; Microsoft.ML.Runtime.Data.IDataView" Usage="Microsoft.ML.Runtime.Data.AppendRowsDataView.Create (env, schema, sources)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataView</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="schema" Type="Microsoft.ML.Data.Schema" />
+        <Parameter Name="sources" Type="Microsoft.ML.Runtime.Data.IDataView[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="env">The host environment.</param>
+        <param name="schema">The schema for the result. If this is null, the first source's schema will be used.</param>
+        <param name="sources">The sources to be appended.</param>
+        <summary>
+             Create a dataview by appending the rows of the sources.
+            
+             All sources must be consistent with the passed-in schema in the number of columns, column names,
+             and column types. If schema is null, the first source's schema will be used.
+             </summary>
+        <returns>The resulting IDataView.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRowCount">
+      <MemberSignature Language="C#" Value="public Nullable&lt;long&gt; GetRowCount ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Nullable`1&lt;int64&gt; GetRowCount() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.AppendRowsDataView.GetRowCount" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetRowCount () As Nullable(Of Long)" />
+      <MemberSignature Language="F#" Value="abstract member GetRowCount : unit -&gt; Nullable&lt;int64&gt;&#xA;override this.GetRowCount : unit -&gt; Nullable&lt;int64&gt;" Usage="appendRowsDataView.GetRowCount " />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IDataView.GetRowCount</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Nullable&lt;System.Int64&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRowCursor">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IRowCursor GetRowCursor (Func&lt;int,bool&gt; needCol, Random rand = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IRowCursor GetRowCursor(class System.Func`2&lt;int32, bool&gt; needCol, class System.Random rand) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.AppendRowsDataView.GetRowCursor(System.Func{System.Int32,System.Boolean},System.Random)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetRowCursor (needCol As Func(Of Integer, Boolean), Optional rand As Random = null) As IRowCursor" />
+      <MemberSignature Language="F#" Value="abstract member GetRowCursor : Func&lt;int, bool&gt; * Random -&gt; Microsoft.ML.Runtime.Data.IRowCursor&#xA;override this.GetRowCursor : Func&lt;int, bool&gt; * Random -&gt; Microsoft.ML.Runtime.Data.IRowCursor" Usage="appendRowsDataView.GetRowCursor (needCol, rand)" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IDataView.GetRowCursor(System.Func{System.Int32,System.Boolean},System.Random)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IRowCursor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="needCol" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+        <Parameter Name="rand" Type="System.Random" />
+      </Parameters>
+      <Docs>
+        <param name="needCol">To be added.</param>
+        <param name="rand">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRowCursorSet">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IRowCursor[] GetRowCursorSet (out Microsoft.ML.Runtime.Data.IRowCursorConsolidator consolidator, Func&lt;int,bool&gt; predicate, int n, Random rand = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IRowCursor[] GetRowCursorSet([out] class Microsoft.ML.Runtime.Data.IRowCursorConsolidator&amp; consolidator, class System.Func`2&lt;int32, bool&gt; predicate, int32 n, class System.Random rand) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.AppendRowsDataView.GetRowCursorSet(Microsoft.ML.Runtime.Data.IRowCursorConsolidator@,System.Func{System.Int32,System.Boolean},System.Int32,System.Random)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetRowCursorSet (ByRef consolidator As IRowCursorConsolidator, predicate As Func(Of Integer, Boolean), n As Integer, Optional rand As Random = null) As IRowCursor()" />
+      <MemberSignature Language="F#" Value="abstract member GetRowCursorSet :  * Func&lt;int, bool&gt; * int * Random -&gt; Microsoft.ML.Runtime.Data.IRowCursor[]&#xA;override this.GetRowCursorSet :  * Func&lt;int, bool&gt; * int * Random -&gt; Microsoft.ML.Runtime.Data.IRowCursor[]" Usage="appendRowsDataView.GetRowCursorSet (consolidator, predicate, n, rand)" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IDataView.GetRowCursorSet(Microsoft.ML.Runtime.Data.IRowCursorConsolidator@,System.Func{System.Int32,System.Boolean},System.Int32,System.Random)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IRowCursor[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="consolidator" Type="Microsoft.ML.Runtime.Data.IRowCursorConsolidator" RefType="out" />
+        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+        <Parameter Name="n" Type="System.Int32" />
+        <Parameter Name="rand" Type="System.Random" />
+      </Parameters>
+      <Docs>
+        <param name="consolidator">To be added.</param>
+        <param name="predicate">To be added.</param>
+        <param name="n">To be added.</param>
+        <param name="rand">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegistrationName">
+      <MemberSignature Language="C#" Value="public const string RegistrationName;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal string RegistrationName" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Data.AppendRowsDataView.RegistrationName" />
+      <MemberSignature Language="VB.NET" Value="Public Const RegistrationName As String " />
+      <MemberSignature Language="F#" Value="val mutable RegistrationName : string" Usage="Microsoft.ML.Runtime.Data.AppendRowsDataView.RegistrationName" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Schema">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.Schema Schema { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Data.Schema Schema" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.AppendRowsDataView.Schema" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Schema As Schema" />
+      <MemberSignature Language="F#" Value="member this.Schema : Microsoft.ML.Data.Schema" Usage="Microsoft.ML.Runtime.Data.AppendRowsDataView.Schema" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Runtime.Data.IDataView.Schema</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.Schema</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

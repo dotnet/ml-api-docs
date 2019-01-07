@@ -18,11 +18,11 @@
   </Docs>
   <Members>
     <Member MemberName="GetModelNodes">
-      <MemberSignature Language="C#" Value="public static System.Collections.Generic.IEnumerable&lt;ValueTuple&lt;string,string,Microsoft.ML.Runtime.Data.ColumnType,string[]&gt;&gt; GetModelNodes (string modelFile);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Collections.Generic.IEnumerable`1&lt;valuetype System.ValueTuple`4&lt;string, string, class Microsoft.ML.Runtime.Data.ColumnType, string[]&gt;&gt; GetModelNodes(string modelFile) cil managed" />
+      <MemberSignature Language="C#" Value="public static System.Collections.Generic.IEnumerable&lt;ValueTuple&lt;string,string,Microsoft.ML.Data.ColumnType,string[]&gt;&gt; GetModelNodes (string modelFile);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Collections.Generic.IEnumerable`1&lt;valuetype System.ValueTuple`4&lt;string, string, class Microsoft.ML.Data.ColumnType, string[]&gt;&gt; GetModelNodes(string modelFile) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.TensorFlow.TensorFlowUtils.GetModelNodes(System.String)" />
       <MemberSignature Language="VB.NET" Value="Public Shared Iterator Function GetModelNodes (modelFile As String) As IEnumerable(Of ValueTuple(Of String, String, ColumnType, String()))" />
-      <MemberSignature Language="F#" Value="static member GetModelNodes : string -&gt; seq&lt;ValueTuple&lt;string, string, Microsoft.ML.Runtime.Data.ColumnType, string[]&gt;&gt;" Usage="Microsoft.ML.Transforms.TensorFlow.TensorFlowUtils.GetModelNodes modelFile" />
+      <MemberSignature Language="F#" Value="static member GetModelNodes : string -&gt; seq&lt;ValueTuple&lt;string, string, Microsoft.ML.Data.ColumnType, string[]&gt;&gt;" Usage="Microsoft.ML.Transforms.TensorFlow.TensorFlowUtils.GetModelNodes modelFile" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.TensorFlow</AssemblyName>
@@ -34,7 +34,7 @@
         </Attribute>
       </Attributes>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.IEnumerable&lt;System.ValueTuple&lt;System.String,System.String,Microsoft.ML.Runtime.Data.ColumnType,System.String[]&gt;&gt;</ReturnType>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;System.ValueTuple&lt;System.String,System.String,Microsoft.ML.Data.ColumnType,System.String[]&gt;&gt;</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="modelFile" Type="System.String" />
@@ -43,7 +43,7 @@
         <param name="modelFile"></param>
         <summary>
             This is a convenience method for iterating over the nodes of a TensorFlow model graph. It
-            iterates over the columns of the <see cref="T:Microsoft.ML.Runtime.Data.ISchema" /> returned by <see cref="M:Microsoft.ML.Transforms.TensorFlow.TensorFlowUtils.GetModelSchema(Microsoft.ML.Runtime.IExceptionContext,System.String)" />,
+            iterates over the columns of the <see cref="T:Microsoft.ML.Data.ISchema" /> returned by <see cref="M:Microsoft.ML.Transforms.TensorFlow.TensorFlowUtils.GetModelSchema(Microsoft.ML.IExceptionContext,System.String)" />,
             and for each one it returns a tuple containing the name, operation type, column type and an array of input node names.
             This method is convenient for filtering nodes based on certain criteria, for example, by the operation type.
             </summary>
@@ -52,29 +52,29 @@
       </Docs>
     </Member>
     <Member MemberName="GetModelSchema">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.ISchema GetModelSchema (Microsoft.ML.Runtime.IExceptionContext ectx, string modelFile);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.ISchema GetModelSchema(class Microsoft.ML.Runtime.IExceptionContext ectx, string modelFile) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.TensorFlow.TensorFlowUtils.GetModelSchema(Microsoft.ML.Runtime.IExceptionContext,System.String)" />
-      <MemberSignature Language="VB.NET" Value="Public Shared Function GetModelSchema (ectx As IExceptionContext, modelFile As String) As ISchema" />
-      <MemberSignature Language="F#" Value="static member GetModelSchema : Microsoft.ML.Runtime.IExceptionContext * string -&gt; Microsoft.ML.Runtime.Data.ISchema" Usage="Microsoft.ML.Transforms.TensorFlow.TensorFlowUtils.GetModelSchema (ectx, modelFile)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.Schema GetModelSchema (Microsoft.ML.IExceptionContext ectx, string modelFile);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.Schema GetModelSchema(class Microsoft.ML.IExceptionContext ectx, string modelFile) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.TensorFlow.TensorFlowUtils.GetModelSchema(Microsoft.ML.IExceptionContext,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function GetModelSchema (ectx As IExceptionContext, modelFile As String) As Schema" />
+      <MemberSignature Language="F#" Value="static member GetModelSchema : Microsoft.ML.IExceptionContext * string -&gt; Microsoft.ML.Data.Schema" Usage="Microsoft.ML.Transforms.TensorFlow.TensorFlowUtils.GetModelSchema (ectx, modelFile)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.TensorFlow</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.ISchema</ReturnType>
+        <ReturnType>Microsoft.ML.Data.Schema</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="ectx" Type="Microsoft.ML.Runtime.IExceptionContext" />
+        <Parameter Name="ectx" Type="Microsoft.ML.IExceptionContext" />
         <Parameter Name="modelFile" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="ectx">An <see cref="T:Microsoft.ML.Runtime.IExceptionContext" />.</param>
+        <param name="ectx">An <see cref="T:Microsoft.ML.IExceptionContext" />.</param>
         <param name="modelFile">The name of the file containing the TensorFlow model. Currently only frozen model
             format is supported.</param>
         <summary>
-            This method retrieves the information about the graph nodes of a TensorFlow model as an <see cref="T:Microsoft.ML.Runtime.Data.ISchema" />.
+            This method retrieves the information about the graph nodes of a TensorFlow model as an <see cref="T:Microsoft.ML.Data.ISchema" />.
             For every node in the graph that has an output type that is compatible with the types supported by
             <see cref="T:Microsoft.ML.Transforms.TensorFlowTransform" />, the output schema contains a column with the name of that node, and the
             type of its output (including the item type and the shape, if it is known). Every column also contains metadata
@@ -105,11 +105,11 @@
       </Docs>
     </Member>
     <Member MemberName="LoadTensorFlowModel">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.TensorFlowModelInfo LoadTensorFlowModel (Microsoft.ML.Runtime.IHostEnvironment env, string modelPath);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.TensorFlowModelInfo LoadTensorFlowModel(class Microsoft.ML.Runtime.IHostEnvironment env, string modelPath) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.TensorFlow.TensorFlowUtils.LoadTensorFlowModel(Microsoft.ML.Runtime.IHostEnvironment,System.String)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.TensorFlowModelInfo LoadTensorFlowModel (Microsoft.ML.IHostEnvironment env, string modelPath);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.TensorFlowModelInfo LoadTensorFlowModel(class Microsoft.ML.IHostEnvironment env, string modelPath) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.TensorFlow.TensorFlowUtils.LoadTensorFlowModel(Microsoft.ML.IHostEnvironment,System.String)" />
       <MemberSignature Language="VB.NET" Value="Public Shared Function LoadTensorFlowModel (env As IHostEnvironment, modelPath As String) As TensorFlowModelInfo" />
-      <MemberSignature Language="F#" Value="static member LoadTensorFlowModel : Microsoft.ML.Runtime.IHostEnvironment * string -&gt; Microsoft.ML.Transforms.TensorFlowModelInfo" Usage="Microsoft.ML.Transforms.TensorFlow.TensorFlowUtils.LoadTensorFlowModel (env, modelPath)" />
+      <MemberSignature Language="F#" Value="static member LoadTensorFlowModel : Microsoft.ML.IHostEnvironment * string -&gt; Microsoft.ML.Transforms.TensorFlowModelInfo" Usage="Microsoft.ML.Transforms.TensorFlow.TensorFlowUtils.LoadTensorFlowModel (env, modelPath)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.TensorFlow</AssemblyName>
@@ -119,7 +119,7 @@
         <ReturnType>Microsoft.ML.Transforms.TensorFlowModelInfo</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
         <Parameter Name="modelPath" Type="System.String" />
       </Parameters>
       <Docs>

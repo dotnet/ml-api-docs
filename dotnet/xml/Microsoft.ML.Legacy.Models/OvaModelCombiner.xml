@@ -1,6 +1,6 @@
 ﻿<Type Name="OvaModelCombiner" FullName="Microsoft.ML.Legacy.Models.OvaModelCombiner">
-  <TypeSignature Language="C#" Value="public sealed class OvaModelCombiner : Microsoft.ML.Legacy.ILearningPipelineItem, Microsoft.ML.Runtime.EntryPoints.CommonInputs.ITrainerInputWithWeight" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit OvaModelCombiner extends System.Object implements class Microsoft.ML.Legacy.ILearningPipelineItem, class Microsoft.ML.Runtime.EntryPoints.CommonInputs/ITrainerInput, class Microsoft.ML.Runtime.EntryPoints.CommonInputs/ITrainerInputWithLabel, class Microsoft.ML.Runtime.EntryPoints.CommonInputs/ITrainerInputWithWeight" />
+  <TypeSignature Language="C#" Value="public sealed class OvaModelCombiner : Microsoft.ML.EntryPoints.CommonInputs.ITrainerInputWithWeight, Microsoft.ML.Legacy.ILearningPipelineItem" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit OvaModelCombiner extends System.Object implements class Microsoft.ML.EntryPoints.CommonInputs/ITrainerInput, class Microsoft.ML.EntryPoints.CommonInputs/ITrainerInputWithLabel, class Microsoft.ML.EntryPoints.CommonInputs/ITrainerInputWithWeight, class Microsoft.ML.Legacy.ILearningPipelineItem" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Legacy.Models.OvaModelCombiner" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class OvaModelCombiner&#xA;Implements CommonInputs.ITrainerInputWithWeight, ILearningPipelineItem" />
   <TypeSignature Language="F#" Value="type OvaModelCombiner = class&#xA;    interface CommonInputs.ITrainerInputWithWeight&#xA;    interface CommonInputs.ITrainerInputWithLabel&#xA;    interface CommonInputs.ITrainerInput&#xA;    interface ILearningPipelineItem" />
@@ -13,16 +13,16 @@
   </Base>
   <Interfaces>
     <Interface>
+      <InterfaceName>Microsoft.ML.EntryPoints.CommonInputs+ITrainerInput</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.EntryPoints.CommonInputs+ITrainerInputWithLabel</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.EntryPoints.CommonInputs+ITrainerInputWithWeight</InterfaceName>
+    </Interface>
+    <Interface>
       <InterfaceName>Microsoft.ML.Legacy.ILearningPipelineItem</InterfaceName>
-    </Interface>
-    <Interface>
-      <InterfaceName>Microsoft.ML.Runtime.EntryPoints.CommonInputs+ITrainerInput</InterfaceName>
-    </Interface>
-    <Interface>
-      <InterfaceName>Microsoft.ML.Runtime.EntryPoints.CommonInputs+ITrainerInputWithLabel</InterfaceName>
-    </Interface>
-    <Interface>
-      <InterfaceName>Microsoft.ML.Runtime.EntryPoints.CommonInputs+ITrainerInputWithWeight</InterfaceName>
     </Interface>
   </Interfaces>
   <Attributes>
@@ -54,13 +54,13 @@
       </Docs>
     </Member>
     <Member MemberName="ApplyStep">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Legacy.ILearningPipelineStep ApplyStep (Microsoft.ML.Legacy.ILearningPipelineStep previousStep, Microsoft.ML.Runtime.Experiment experiment);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Legacy.ILearningPipelineStep ApplyStep(class Microsoft.ML.Legacy.ILearningPipelineStep previousStep, class Microsoft.ML.Runtime.Experiment experiment) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Legacy.Models.OvaModelCombiner.ApplyStep(Microsoft.ML.Legacy.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
-      <MemberSignature Language="F#" Value="abstract member ApplyStep : Microsoft.ML.Legacy.ILearningPipelineStep * Microsoft.ML.Runtime.Experiment -&gt; Microsoft.ML.Legacy.ILearningPipelineStep&#xA;override this.ApplyStep : Microsoft.ML.Legacy.ILearningPipelineStep * Microsoft.ML.Runtime.Experiment -&gt; Microsoft.ML.Legacy.ILearningPipelineStep" Usage="ovaModelCombiner.ApplyStep (previousStep, experiment)" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Legacy.ILearningPipelineStep ApplyStep (Microsoft.ML.Legacy.ILearningPipelineStep previousStep, Microsoft.ML.Experiment experiment);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Legacy.ILearningPipelineStep ApplyStep(class Microsoft.ML.Legacy.ILearningPipelineStep previousStep, class Microsoft.ML.Experiment experiment) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Legacy.Models.OvaModelCombiner.ApplyStep(Microsoft.ML.Legacy.ILearningPipelineStep,Microsoft.ML.Experiment)" />
+      <MemberSignature Language="F#" Value="abstract member ApplyStep : Microsoft.ML.Legacy.ILearningPipelineStep * Microsoft.ML.Experiment -&gt; Microsoft.ML.Legacy.ILearningPipelineStep&#xA;override this.ApplyStep : Microsoft.ML.Legacy.ILearningPipelineStep * Microsoft.ML.Experiment -&gt; Microsoft.ML.Legacy.ILearningPipelineStep" Usage="ovaModelCombiner.ApplyStep (previousStep, experiment)" />
       <MemberType>Method</MemberType>
       <Implements>
-        <InterfaceMember>M:Microsoft.ML.Legacy.ILearningPipelineItem.ApplyStep(Microsoft.ML.Legacy.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)</InterfaceMember>
+        <InterfaceMember>M:Microsoft.ML.Legacy.ILearningPipelineItem.ApplyStep(Microsoft.ML.Legacy.ILearningPipelineStep,Microsoft.ML.Experiment)</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
@@ -76,7 +76,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="previousStep" Type="Microsoft.ML.Legacy.ILearningPipelineStep" />
-        <Parameter Name="experiment" Type="Microsoft.ML.Runtime.Experiment" />
+        <Parameter Name="experiment" Type="Microsoft.ML.Experiment" />
       </Parameters>
       <Docs>
         <param name="previousStep">To be added.</param>
@@ -141,11 +141,11 @@
       </Docs>
     </Member>
     <Member MemberName="GetInputData">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt; GetInputData ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.EntryPoints.Var`1&lt;class Microsoft.ML.Runtime.Data.IDataView&gt; GetInputData() cil managed" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.EntryPoints.Var&lt;Microsoft.ML.Data.IDataView&gt; GetInputData ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.EntryPoints.Var`1&lt;class Microsoft.ML.Data.IDataView&gt; GetInputData() cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Legacy.Models.OvaModelCombiner.GetInputData" />
       <MemberSignature Language="VB.NET" Value="Public Function GetInputData () As Var(Of IDataView)" />
-      <MemberSignature Language="F#" Value="abstract member GetInputData : unit -&gt; Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;&#xA;override this.GetInputData : unit -&gt; Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;" Usage="ovaModelCombiner.GetInputData " />
+      <MemberSignature Language="F#" Value="abstract member GetInputData : unit -&gt; Microsoft.ML.EntryPoints.Var&lt;Microsoft.ML.Data.IDataView&gt;&#xA;override this.GetInputData : unit -&gt; Microsoft.ML.EntryPoints.Var&lt;Microsoft.ML.Data.IDataView&gt;" Usage="ovaModelCombiner.GetInputData " />
       <MemberType>Method</MemberType>
       <Implements>
         <InterfaceMember>M:Microsoft.ML.Legacy.ILearningPipelineItem.GetInputData</InterfaceMember>
@@ -160,7 +160,7 @@
         </Attribute>
       </Attributes>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;</ReturnType>
+        <ReturnType>Microsoft.ML.EntryPoints.Var&lt;Microsoft.ML.Data.IDataView&gt;</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -197,11 +197,11 @@
       </Docs>
     </Member>
     <Member MemberName="ModelArray">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.EntryPoints.ArrayVar&lt;Microsoft.ML.Runtime.EntryPoints.IPredictorModel&gt; ModelArray { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.EntryPoints.ArrayVar`1&lt;class Microsoft.ML.Runtime.EntryPoints.IPredictorModel&gt; ModelArray" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.EntryPoints.ArrayVar&lt;Microsoft.ML.EntryPoints.PredictorModel&gt; ModelArray { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.EntryPoints.ArrayVar`1&lt;class Microsoft.ML.EntryPoints.PredictorModel&gt; ModelArray" />
       <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Models.OvaModelCombiner.ModelArray" />
-      <MemberSignature Language="VB.NET" Value="Public Property ModelArray As ArrayVar(Of IPredictorModel)" />
-      <MemberSignature Language="F#" Value="member this.ModelArray : Microsoft.ML.Runtime.EntryPoints.ArrayVar&lt;Microsoft.ML.Runtime.EntryPoints.IPredictorModel&gt; with get, set" Usage="Microsoft.ML.Legacy.Models.OvaModelCombiner.ModelArray" />
+      <MemberSignature Language="VB.NET" Value="Public Property ModelArray As ArrayVar(Of PredictorModel)" />
+      <MemberSignature Language="F#" Value="member this.ModelArray : Microsoft.ML.EntryPoints.ArrayVar&lt;Microsoft.ML.EntryPoints.PredictorModel&gt; with get, set" Usage="Microsoft.ML.Legacy.Models.OvaModelCombiner.ModelArray" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
@@ -213,7 +213,7 @@
         </Attribute>
       </Attributes>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.EntryPoints.ArrayVar&lt;Microsoft.ML.Runtime.EntryPoints.IPredictorModel&gt;</ReturnType>
+        <ReturnType>Microsoft.ML.EntryPoints.ArrayVar&lt;Microsoft.ML.EntryPoints.PredictorModel&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -251,14 +251,14 @@
       </Docs>
     </Member>
     <Member MemberName="TrainingData">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt; TrainingData { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.EntryPoints.Var`1&lt;class Microsoft.ML.Runtime.Data.IDataView&gt; TrainingData" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.EntryPoints.Var&lt;Microsoft.ML.Data.IDataView&gt; TrainingData { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.EntryPoints.Var`1&lt;class Microsoft.ML.Data.IDataView&gt; TrainingData" />
       <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Models.OvaModelCombiner.TrainingData" />
       <MemberSignature Language="VB.NET" Value="Public Property TrainingData As Var(Of IDataView)" />
-      <MemberSignature Language="F#" Value="member this.TrainingData : Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt; with get, set" Usage="Microsoft.ML.Legacy.Models.OvaModelCombiner.TrainingData" />
+      <MemberSignature Language="F#" Value="member this.TrainingData : Microsoft.ML.EntryPoints.Var&lt;Microsoft.ML.Data.IDataView&gt; with get, set" Usage="Microsoft.ML.Legacy.Models.OvaModelCombiner.TrainingData" />
       <MemberType>Property</MemberType>
       <Implements>
-        <InterfaceMember>P:Microsoft.ML.Runtime.EntryPoints.CommonInputs.ITrainerInput.TrainingData</InterfaceMember>
+        <InterfaceMember>P:Microsoft.ML.EntryPoints.CommonInputs.ITrainerInput.TrainingData</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
@@ -270,7 +270,7 @@
         </Attribute>
       </Attributes>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;</ReturnType>
+        <ReturnType>Microsoft.ML.EntryPoints.Var&lt;Microsoft.ML.Data.IDataView&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -308,11 +308,11 @@
       </Docs>
     </Member>
     <Member MemberName="WeightColumn">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.EntryPoints.Optional&lt;string&gt; WeightColumn { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.EntryPoints.Optional`1&lt;string&gt; WeightColumn" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.EntryPoints.Optional&lt;string&gt; WeightColumn { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.EntryPoints.Optional`1&lt;string&gt; WeightColumn" />
       <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Models.OvaModelCombiner.WeightColumn" />
       <MemberSignature Language="VB.NET" Value="Public Property WeightColumn As Optional(Of String)" />
-      <MemberSignature Language="F#" Value="member this.WeightColumn : Microsoft.ML.Runtime.EntryPoints.Optional&lt;string&gt; with get, set" Usage="Microsoft.ML.Legacy.Models.OvaModelCombiner.WeightColumn" />
+      <MemberSignature Language="F#" Value="member this.WeightColumn : Microsoft.ML.EntryPoints.Optional&lt;string&gt; with get, set" Usage="Microsoft.ML.Legacy.Models.OvaModelCombiner.WeightColumn" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
@@ -324,7 +324,7 @@
         </Attribute>
       </Attributes>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.EntryPoints.Optional&lt;System.String&gt;</ReturnType>
+        <ReturnType>Microsoft.ML.EntryPoints.Optional&lt;System.String&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>

@@ -1,0 +1,125 @@
+<Type Name="TransposerUtils" FullName="Microsoft.ML.Runtime.Data.TransposerUtils">
+  <TypeSignature Language="C#" Value="public static class TransposerUtils" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit TransposerUtils extends System.Object" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.TransposerUtils" />
+  <TypeSignature Language="VB.NET" Value="Public Module TransposerUtils" />
+  <TypeSignature Language="F#" Value="type TransposerUtils = class" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Data</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="GetGetterWithVectorType&lt;TValue&gt;">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.ValueGetter&lt;TValue&gt; GetGetterWithVectorType&lt;TValue&gt; (this Microsoft.ML.Runtime.Data.ISlotCursor cursor, Microsoft.ML.Runtime.IExceptionContext ctx = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.ValueGetter`1&lt;!!TValue&gt; GetGetterWithVectorType&lt;TValue&gt;(class Microsoft.ML.Runtime.Data.ISlotCursor cursor, class Microsoft.ML.Runtime.IExceptionContext ctx) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.TransposerUtils.GetGetterWithVectorType``1(Microsoft.ML.Runtime.Data.ISlotCursor,Microsoft.ML.Runtime.IExceptionContext)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function GetGetterWithVectorType(Of TValue) (cursor As ISlotCursor, Optional ctx As IExceptionContext = null) As ValueGetter(Of TValue)" />
+      <MemberSignature Language="F#" Value="static member GetGetterWithVectorType : Microsoft.ML.Runtime.Data.ISlotCursor * Microsoft.ML.Runtime.IExceptionContext -&gt; Microsoft.ML.Runtime.Data.ValueGetter&lt;'Value&gt;" Usage="Microsoft.ML.Runtime.Data.TransposerUtils.GetGetterWithVectorType (cursor, ctx)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ValueGetter&lt;TValue&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TValue" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="cursor" Type="Microsoft.ML.Runtime.Data.ISlotCursor" RefType="this" />
+        <Parameter Name="ctx" Type="Microsoft.ML.Runtime.IExceptionContext" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TValue">The type, must be a <see cref="T:Microsoft.ML.Runtime.Data.VBuffer`1" /> generic type,
+            though enforcement of this has to be done only at runtime for practical reasons</typeparam>
+        <param name="cursor">The cursor to get the getter for</param>
+        <param name="ctx">The exception contxt</param>
+        <summary>
+            The <see cref="M:Microsoft.ML.Runtime.Data.ISlotCursor.GetGetter``1" /> is parameterized by a type that becomes the
+            type parameter for a <see cref="T:Microsoft.ML.Runtime.Data.VBuffer`1" />, and this is generally preferable and more
+            sensible but for various reasons it's often a lot simpler to have a get-getter be over
+            the actual type returned by the getter, that is, parameterize this by the actual
+            <see cref="T:Microsoft.ML.Runtime.Data.VBuffer`1" /> type.
+            </summary>
+        <returns>The value getter</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRowCursorShim">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IRowCursor GetRowCursorShim (Microsoft.ML.Runtime.IChannelProvider provider, Microsoft.ML.Runtime.Data.ISlotCursor cursor);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IRowCursor GetRowCursorShim(class Microsoft.ML.Runtime.IChannelProvider provider, class Microsoft.ML.Runtime.Data.ISlotCursor cursor) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.TransposerUtils.GetRowCursorShim(Microsoft.ML.Runtime.IChannelProvider,Microsoft.ML.Runtime.Data.ISlotCursor)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetRowCursorShim (provider As IChannelProvider, cursor As ISlotCursor) As IRowCursor" />
+      <MemberSignature Language="F#" Value="static member GetRowCursorShim : Microsoft.ML.Runtime.IChannelProvider * Microsoft.ML.Runtime.Data.ISlotCursor -&gt; Microsoft.ML.Runtime.Data.IRowCursor" Usage="Microsoft.ML.Runtime.Data.TransposerUtils.GetRowCursorShim (provider, cursor)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IRowCursor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="provider" Type="Microsoft.ML.Runtime.IChannelProvider" />
+        <Parameter Name="cursor" Type="Microsoft.ML.Runtime.Data.ISlotCursor" />
+      </Parameters>
+      <Docs>
+        <param name="provider">The channel provider used in creating the wrapping row cursor</param>
+        <param name="cursor">The slot cursor to wrap</param>
+        <summary>
+            Given a slot cursor, construct a single-column equivalent row cursor, with the single column
+            active and having the same type. This is useful to exploit the many utility methods that exist
+            to handle <see cref="T:Microsoft.ML.Runtime.Data.IRowCursor" /> and <see cref="T:Microsoft.ML.Runtime.Data.IRow" /> but that know nothing about
+            <see cref="T:Microsoft.ML.Runtime.Data.ISlotCursor" />, without having to rewrite all of them. This is, however, rather
+            something of a hack; whenever possible or reasonable the slot cursor should be used directly.
+            The name of this column is always "Waffles".
+            </summary>
+        <returns>A row cursor with a single active column with the same type as the slot type</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetSingleSlotValue&lt;T&gt;">
+      <MemberSignature Language="C#" Value="public static void GetSingleSlotValue&lt;T&gt; (this Microsoft.ML.Runtime.Data.ITransposeDataView view, int col, ref Microsoft.ML.Runtime.Data.VBuffer&lt;T&gt; dst);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void GetSingleSlotValue&lt;T&gt;(class Microsoft.ML.Runtime.Data.ITransposeDataView view, int32 col, valuetype Microsoft.ML.Runtime.Data.VBuffer`1&lt;!!T&gt;&amp; dst) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.TransposerUtils.GetSingleSlotValue``1(Microsoft.ML.Runtime.Data.ITransposeDataView,System.Int32,Microsoft.ML.Runtime.Data.VBuffer{``0}@)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Sub GetSingleSlotValue(Of T) (view As ITransposeDataView, col As Integer, ByRef dst As VBuffer(Of T))" />
+      <MemberSignature Language="F#" Value="static member GetSingleSlotValue : Microsoft.ML.Runtime.Data.ITransposeDataView * int *  -&gt; unit" Usage="Microsoft.ML.Runtime.Data.TransposerUtils.GetSingleSlotValue (view, col, dst)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="view" Type="Microsoft.ML.Runtime.Data.ITransposeDataView" RefType="this" />
+        <Parameter Name="col" Type="System.Int32" />
+        <Parameter Name="dst" Type="Microsoft.ML.Runtime.Data.VBuffer&lt;T&gt;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T">To be added.</typeparam>
+        <param name="view">To be added.</param>
+        <param name="col">To be added.</param>
+        <param name="dst">To be added.</param>
+        <summary>
+            This is a convenience method that extracts a single slot value's vector,
+            while simultaneously verifying that there is exactly one value.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

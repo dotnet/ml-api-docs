@@ -1,0 +1,547 @@
+﻿<Type Name="CompositeDataLoader" FullName="Microsoft.ML.Data.CompositeDataLoader">
+  <TypeSignature Language="C#" Value="public sealed class CompositeDataLoader : Microsoft.ML.Data.IDataLoader, Microsoft.ML.Data.IDataView" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit CompositeDataLoader extends System.Object implements class Microsoft.ML.Data.IDataLoader, class Microsoft.ML.Data.IDataView, class Microsoft.ML.Model.ICanSaveModel" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Data.CompositeDataLoader" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class CompositeDataLoader&#xA;Implements IDataLoader, IDataView" />
+  <TypeSignature Language="F#" Value="type CompositeDataLoader = class&#xA;    interface IDataLoader&#xA;    interface IDataView&#xA;    interface ICanSaveModel" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Data</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Data.IDataLoader</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Data.IDataView</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Model.ICanSaveModel</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+            A data loader that wraps an underlying loader plus a sequence of transforms.
+            It is not valid to have nested <see cref="T:Microsoft.ML.Data.CompositeDataLoader" />'s: if a <see cref="T:Microsoft.ML.Data.CompositeDataLoader" />
+            is an underlying loader, the resulting loader will 'flatten' the structure.
+            The family of <c>Create</c> methods only instantiate <see cref="T:Microsoft.ML.Data.CompositeDataLoader" />'s
+            when there are transforms to keep, otherwise they just return underlying loaders.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="ApplyTransform">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.IDataLoader ApplyTransform (Microsoft.ML.IHostEnvironment env, Microsoft.ML.Data.IDataLoader srcLoader, string tag, string creationArgs, Func&lt;Microsoft.ML.IHostEnvironment,Microsoft.ML.Data.IDataView,Microsoft.ML.Data.IDataView&gt; createTransform);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.IDataLoader ApplyTransform(class Microsoft.ML.IHostEnvironment env, class Microsoft.ML.Data.IDataLoader srcLoader, string tag, string creationArgs, class System.Func`3&lt;class Microsoft.ML.IHostEnvironment, class Microsoft.ML.Data.IDataView, class Microsoft.ML.Data.IDataView&gt; createTransform) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.CompositeDataLoader.ApplyTransform(Microsoft.ML.IHostEnvironment,Microsoft.ML.Data.IDataLoader,System.String,System.String,System.Func{Microsoft.ML.IHostEnvironment,Microsoft.ML.Data.IDataView,Microsoft.ML.Data.IDataView})" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function ApplyTransform (env As IHostEnvironment, srcLoader As IDataLoader, tag As String, creationArgs As String, createTransform As Func(Of IHostEnvironment, IDataView, IDataView)) As IDataLoader" />
+      <MemberSignature Language="F#" Value="static member ApplyTransform : Microsoft.ML.IHostEnvironment * Microsoft.ML.Data.IDataLoader * string * string * Func&lt;Microsoft.ML.IHostEnvironment, Microsoft.ML.Data.IDataView, Microsoft.ML.Data.IDataView&gt; -&gt; Microsoft.ML.Data.IDataLoader" Usage="Microsoft.ML.Data.CompositeDataLoader.ApplyTransform (env, srcLoader, tag, creationArgs, createTransform)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.IDataLoader</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
+        <Parameter Name="srcLoader" Type="Microsoft.ML.Data.IDataLoader" />
+        <Parameter Name="tag" Type="System.String" />
+        <Parameter Name="creationArgs" Type="System.String" />
+        <Parameter Name="createTransform" Type="System.Func&lt;Microsoft.ML.IHostEnvironment,Microsoft.ML.Data.IDataView,Microsoft.ML.Data.IDataView&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="srcLoader">To be added.</param>
+        <param name="tag">To be added.</param>
+        <param name="creationArgs">To be added.</param>
+        <param name="createTransform">To be added.</param>
+        <summary>
+            Apply one transform to the data loader, and returns a (composite) data loader that contains the result.
+            The transform is created by invoking the lambda for a data source, and it should return an
+            <see cref="T:Microsoft.ML.Data.IDataView" /> that shares the same loader as the provided source.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ApplyTransforms">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.IDataLoader ApplyTransforms (Microsoft.ML.IHostEnvironment env, Microsoft.ML.Data.IDataLoader srcLoader, System.Collections.Generic.KeyValuePair&lt;string,string&gt;[] tagData, Func&lt;Microsoft.ML.IHostEnvironment,int,Microsoft.ML.Data.IDataView,Microsoft.ML.Data.IDataView&gt; createTransform);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.IDataLoader ApplyTransforms(class Microsoft.ML.IHostEnvironment env, class Microsoft.ML.Data.IDataLoader srcLoader, valuetype System.Collections.Generic.KeyValuePair`2&lt;string, string&gt;[] tagData, class System.Func`4&lt;class Microsoft.ML.IHostEnvironment, int32, class Microsoft.ML.Data.IDataView, class Microsoft.ML.Data.IDataView&gt; createTransform) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.CompositeDataLoader.ApplyTransforms(Microsoft.ML.IHostEnvironment,Microsoft.ML.Data.IDataLoader,System.Collections.Generic.KeyValuePair{System.String,System.String}[],System.Func{Microsoft.ML.IHostEnvironment,System.Int32,Microsoft.ML.Data.IDataView,Microsoft.ML.Data.IDataView})" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function ApplyTransforms (env As IHostEnvironment, srcLoader As IDataLoader, tagData As KeyValuePair(Of String, String)(), createTransform As Func(Of IHostEnvironment, Integer, IDataView, IDataView)) As IDataLoader" />
+      <MemberSignature Language="F#" Value="static member ApplyTransforms : Microsoft.ML.IHostEnvironment * Microsoft.ML.Data.IDataLoader * System.Collections.Generic.KeyValuePair&lt;string, string&gt;[] * Func&lt;Microsoft.ML.IHostEnvironment, int, Microsoft.ML.Data.IDataView, Microsoft.ML.Data.IDataView&gt; -&gt; Microsoft.ML.Data.IDataLoader" Usage="Microsoft.ML.Data.CompositeDataLoader.ApplyTransforms (env, srcLoader, tagData, createTransform)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.IDataLoader</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
+        <Parameter Name="srcLoader" Type="Microsoft.ML.Data.IDataLoader" />
+        <Parameter Name="tagData" Type="System.Collections.Generic.KeyValuePair&lt;System.String,System.String&gt;[]" />
+        <Parameter Name="createTransform" Type="System.Func&lt;Microsoft.ML.IHostEnvironment,System.Int32,Microsoft.ML.Data.IDataView,Microsoft.ML.Data.IDataView&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="env">The host environment.</param>
+        <param name="srcLoader">The source loader.</param>
+        <param name="tagData">The array of (tag, creationInfo) pairs. Can be an empty array or null, in which case
+            the function returns <paramref name="srcLoader" />.</param>
+        <param name="createTransform">The delegate to invoke at each transform creation.
+            Delegate parameters are: host environment, transform index (0 to <c>tagData.Length</c>), source data view.
+            It should return the <see cref="T:Microsoft.ML.Data.IDataView" /> that should share the same loader as the source data view.</param>
+        <summary>
+            Appends transforms to the <paramref name="srcLoader" /> and returns a loader that contains these new transforms.
+            If there are no transforms to append, returns <paramref name="srcLoader" /> intact, otherwise creates a
+            <see cref="T:Microsoft.ML.Data.CompositeDataLoader" />. The transforms are created by sequentially invoking the provided lambda,
+            one time for each element of <paramref name="tagData" />.
+            </summary>
+        <returns>The resulting data loader.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CanShuffle">
+      <MemberSignature Language="C#" Value="public bool CanShuffle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool CanShuffle" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Data.CompositeDataLoader.CanShuffle" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property CanShuffle As Boolean" />
+      <MemberSignature Language="F#" Value="member this.CanShuffle : bool" Usage="Microsoft.ML.Data.CompositeDataLoader.CanShuffle" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Data.IDataView.CanShuffle</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.IDataLoader Create (Microsoft.ML.IHostEnvironment env, Microsoft.ML.Data.CompositeDataLoader.Arguments args, Microsoft.ML.Data.IMultiStreamSource files);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.IDataLoader Create(class Microsoft.ML.IHostEnvironment env, class Microsoft.ML.Data.CompositeDataLoader/Arguments args, class Microsoft.ML.Data.IMultiStreamSource files) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.CompositeDataLoader.Create(Microsoft.ML.IHostEnvironment,Microsoft.ML.Data.CompositeDataLoader.Arguments,Microsoft.ML.Data.IMultiStreamSource)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, args As CompositeDataLoader.Arguments, files As IMultiStreamSource) As IDataLoader" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.IHostEnvironment * Microsoft.ML.Data.CompositeDataLoader.Arguments * Microsoft.ML.Data.IMultiStreamSource -&gt; Microsoft.ML.Data.IDataLoader" Usage="Microsoft.ML.Data.CompositeDataLoader.Create (env, args, files)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.IDataLoader</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
+        <Parameter Name="args" Type="Microsoft.ML.Data.CompositeDataLoader+Arguments" />
+        <Parameter Name="files" Type="Microsoft.ML.Data.IMultiStreamSource" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="args">To be added.</param>
+        <param name="files">To be added.</param>
+        <summary>
+            Creates a loader according to the specified <paramref name="args" />.
+            If there are transforms, then the result will be a <see cref="T:Microsoft.ML.Data.CompositeDataLoader" />,
+            otherwise, it'll be whatever <see cref="T:Microsoft.ML.Data.IDataLoader" /> is specified in <c>args.loader</c>.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.IDataLoader Create (Microsoft.ML.IHostEnvironment env, Microsoft.ML.Data.IDataLoader srcLoader, params System.Collections.Generic.KeyValuePair&lt;string,Microsoft.ML.IComponentFactory&lt;Microsoft.ML.Data.IDataView,Microsoft.ML.Data.IDataTransform&gt;&gt;[] transformArgs);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.IDataLoader Create(class Microsoft.ML.IHostEnvironment env, class Microsoft.ML.Data.IDataLoader srcLoader, valuetype System.Collections.Generic.KeyValuePair`2&lt;string, class Microsoft.ML.IComponentFactory`2&lt;class Microsoft.ML.Data.IDataView, class Microsoft.ML.Data.IDataTransform&gt;&gt;[] transformArgs) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.CompositeDataLoader.Create(Microsoft.ML.IHostEnvironment,Microsoft.ML.Data.IDataLoader,System.Collections.Generic.KeyValuePair{System.String,Microsoft.ML.IComponentFactory{Microsoft.ML.Data.IDataView,Microsoft.ML.Data.IDataTransform}}[])" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, srcLoader As IDataLoader, ParamArray transformArgs As KeyValuePair(Of String, IComponentFactory(Of IDataView, IDataTransform))()) As IDataLoader" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.IHostEnvironment * Microsoft.ML.Data.IDataLoader * System.Collections.Generic.KeyValuePair&lt;string, Microsoft.ML.IComponentFactory&lt;Microsoft.ML.Data.IDataView, Microsoft.ML.Data.IDataTransform&gt;&gt;[] -&gt; Microsoft.ML.Data.IDataLoader" Usage="Microsoft.ML.Data.CompositeDataLoader.Create (env, srcLoader, transformArgs)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.IDataLoader</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
+        <Parameter Name="srcLoader" Type="Microsoft.ML.Data.IDataLoader" />
+        <Parameter Name="transformArgs" Type="System.Collections.Generic.KeyValuePair&lt;System.String,Microsoft.ML.IComponentFactory&lt;Microsoft.ML.Data.IDataView,Microsoft.ML.Data.IDataTransform&gt;&gt;[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="srcLoader">To be added.</param>
+        <param name="transformArgs">To be added.</param>
+        <summary>
+            Creates a <see cref="T:Microsoft.ML.Data.CompositeDataLoader" /> that starts with the <paramref name="srcLoader" />,
+            and follows with transforms created from the <paramref name="transformArgs" /> array.
+            If there are no transforms, the <paramref name="srcLoader" /> is returned.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.IDataLoader Create (Microsoft.ML.IHostEnvironment env, Microsoft.ML.Model.ModelLoadContext ctx, Microsoft.ML.Data.IMultiStreamSource files);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.IDataLoader Create(class Microsoft.ML.IHostEnvironment env, class Microsoft.ML.Model.ModelLoadContext ctx, class Microsoft.ML.Data.IMultiStreamSource files) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.CompositeDataLoader.Create(Microsoft.ML.IHostEnvironment,Microsoft.ML.Model.ModelLoadContext,Microsoft.ML.Data.IMultiStreamSource)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, ctx As ModelLoadContext, files As IMultiStreamSource) As IDataLoader" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.IHostEnvironment * Microsoft.ML.Model.ModelLoadContext * Microsoft.ML.Data.IMultiStreamSource -&gt; Microsoft.ML.Data.IDataLoader" Usage="Microsoft.ML.Data.CompositeDataLoader.Create (env, ctx, files)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.IDataLoader</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
+        <Parameter Name="ctx" Type="Microsoft.ML.Model.ModelLoadContext" />
+        <Parameter Name="files" Type="Microsoft.ML.Data.IMultiStreamSource" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="ctx">To be added.</param>
+        <param name="files">To be added.</param>
+        <summary>
+            Loads the entire composite data loader (loader + transforms) from the context.
+            If there are no transforms, the underlying loader is returned.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.IDataLoader Create (Microsoft.ML.IHostEnvironment env, Microsoft.ML.Model.ModelLoadContext ctx, Microsoft.ML.Data.IDataLoader srcLoader, Func&lt;string,bool&gt; isTransformTagAccepted);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.IDataLoader Create(class Microsoft.ML.IHostEnvironment env, class Microsoft.ML.Model.ModelLoadContext ctx, class Microsoft.ML.Data.IDataLoader srcLoader, class System.Func`2&lt;string, bool&gt; isTransformTagAccepted) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.CompositeDataLoader.Create(Microsoft.ML.IHostEnvironment,Microsoft.ML.Model.ModelLoadContext,Microsoft.ML.Data.IDataLoader,System.Func{System.String,System.Boolean})" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, ctx As ModelLoadContext, srcLoader As IDataLoader, isTransformTagAccepted As Func(Of String, Boolean)) As IDataLoader" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.IHostEnvironment * Microsoft.ML.Model.ModelLoadContext * Microsoft.ML.Data.IDataLoader * Func&lt;string, bool&gt; -&gt; Microsoft.ML.Data.IDataLoader" Usage="Microsoft.ML.Data.CompositeDataLoader.Create (env, ctx, srcLoader, isTransformTagAccepted)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.IDataLoader</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
+        <Parameter Name="ctx" Type="Microsoft.ML.Model.ModelLoadContext" />
+        <Parameter Name="srcLoader" Type="Microsoft.ML.Data.IDataLoader" />
+        <Parameter Name="isTransformTagAccepted" Type="System.Func&lt;System.String,System.Boolean&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="ctx">To be added.</param>
+        <param name="srcLoader">To be added.</param>
+        <param name="isTransformTagAccepted">To be added.</param>
+        <summary>
+            Creates a <see cref="T:Microsoft.ML.Data.IDataLoader" /> from the specified source loader, followed by
+            the transforms that are loaded from the <paramref name="ctx" />, tags filtered by
+            by the <paramref name="isTransformTagAccepted" />.
+            If the <paramref name="ctx" /> contains no accepted transforms, the <paramref name="srcLoader" /> is
+            returned intact.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRowCount">
+      <MemberSignature Language="C#" Value="public Nullable&lt;long&gt; GetRowCount ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Nullable`1&lt;int64&gt; GetRowCount() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.CompositeDataLoader.GetRowCount" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetRowCount () As Nullable(Of Long)" />
+      <MemberSignature Language="F#" Value="abstract member GetRowCount : unit -&gt; Nullable&lt;int64&gt;&#xA;override this.GetRowCount : unit -&gt; Nullable&lt;int64&gt;" Usage="compositeDataLoader.GetRowCount " />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Data.IDataView.GetRowCount</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Nullable&lt;System.Int64&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRowCursor">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.RowCursor GetRowCursor (Func&lt;int,bool&gt; predicate, Random rand = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Data.RowCursor GetRowCursor(class System.Func`2&lt;int32, bool&gt; predicate, class System.Random rand) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.CompositeDataLoader.GetRowCursor(System.Func{System.Int32,System.Boolean},System.Random)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetRowCursor (predicate As Func(Of Integer, Boolean), Optional rand As Random = null) As RowCursor" />
+      <MemberSignature Language="F#" Value="abstract member GetRowCursor : Func&lt;int, bool&gt; * Random -&gt; Microsoft.ML.Data.RowCursor&#xA;override this.GetRowCursor : Func&lt;int, bool&gt; * Random -&gt; Microsoft.ML.Data.RowCursor" Usage="compositeDataLoader.GetRowCursor (predicate, rand)" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Data.IDataView.GetRowCursor(System.Func{System.Int32,System.Boolean},System.Random)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.RowCursor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+        <Parameter Name="rand" Type="System.Random" />
+      </Parameters>
+      <Docs>
+        <param name="predicate">To be added.</param>
+        <param name="rand">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRowCursorSet">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.RowCursor[] GetRowCursorSet (Func&lt;int,bool&gt; predicate, int n, Random rand = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Data.RowCursor[] GetRowCursorSet(class System.Func`2&lt;int32, bool&gt; predicate, int32 n, class System.Random rand) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.CompositeDataLoader.GetRowCursorSet(System.Func{System.Int32,System.Boolean},System.Int32,System.Random)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetRowCursorSet (predicate As Func(Of Integer, Boolean), n As Integer, Optional rand As Random = null) As RowCursor()" />
+      <MemberSignature Language="F#" Value="abstract member GetRowCursorSet : Func&lt;int, bool&gt; * int * Random -&gt; Microsoft.ML.Data.RowCursor[]&#xA;override this.GetRowCursorSet : Func&lt;int, bool&gt; * int * Random -&gt; Microsoft.ML.Data.RowCursor[]" Usage="compositeDataLoader.GetRowCursorSet (predicate, n, rand)" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Data.IDataView.GetRowCursorSet(System.Func{System.Int32,System.Boolean},System.Int32,System.Random)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.RowCursor[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+        <Parameter Name="n" Type="System.Int32" />
+        <Parameter Name="rand" Type="System.Random" />
+      </Parameters>
+      <Docs>
+        <param name="predicate">To be added.</param>
+        <param name="n">To be added.</param>
+        <param name="rand">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetSlotCursor">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.SlotCursor GetSlotCursor (int col);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Data.SlotCursor GetSlotCursor(int32 col) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.CompositeDataLoader.GetSlotCursor(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetSlotCursor (col As Integer) As SlotCursor" />
+      <MemberSignature Language="F#" Value="abstract member GetSlotCursor : int -&gt; Microsoft.ML.Data.SlotCursor&#xA;override this.GetSlotCursor : int -&gt; Microsoft.ML.Data.SlotCursor" Usage="compositeDataLoader.GetSlotCursor col" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Data.ITransposeDataView.GetSlotCursor(System.Int32)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.SlotCursor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="col" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="col">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoaderSignature">
+      <MemberSignature Language="C#" Value="public const string LoaderSignature;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal string LoaderSignature" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Data.CompositeDataLoader.LoaderSignature" />
+      <MemberSignature Language="VB.NET" Value="Public Const LoaderSignature As String " />
+      <MemberSignature Language="F#" Value="val mutable LoaderSignature : string" Usage="Microsoft.ML.Data.CompositeDataLoader.LoaderSignature" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadSelectedTransforms">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.IDataView LoadSelectedTransforms (Microsoft.ML.Model.ModelLoadContext ctx, Microsoft.ML.Data.IDataView srcView, Microsoft.ML.IHostEnvironment env, Func&lt;string,bool&gt; isTransformTagAccepted);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.IDataView LoadSelectedTransforms(class Microsoft.ML.Model.ModelLoadContext ctx, class Microsoft.ML.Data.IDataView srcView, class Microsoft.ML.IHostEnvironment env, class System.Func`2&lt;string, bool&gt; isTransformTagAccepted) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.CompositeDataLoader.LoadSelectedTransforms(Microsoft.ML.Model.ModelLoadContext,Microsoft.ML.Data.IDataView,Microsoft.ML.IHostEnvironment,System.Func{System.String,System.Boolean})" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function LoadSelectedTransforms (ctx As ModelLoadContext, srcView As IDataView, env As IHostEnvironment, isTransformTagAccepted As Func(Of String, Boolean)) As IDataView" />
+      <MemberSignature Language="F#" Value="static member LoadSelectedTransforms : Microsoft.ML.Model.ModelLoadContext * Microsoft.ML.Data.IDataView * Microsoft.ML.IHostEnvironment * Func&lt;string, bool&gt; -&gt; Microsoft.ML.Data.IDataView" Usage="Microsoft.ML.Data.CompositeDataLoader.LoadSelectedTransforms (ctx, srcView, env, isTransformTagAccepted)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.IDataView</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ctx" Type="Microsoft.ML.Model.ModelLoadContext" />
+        <Parameter Name="srcView" Type="Microsoft.ML.Data.IDataView" />
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
+        <Parameter Name="isTransformTagAccepted" Type="System.Func&lt;System.String,System.Boolean&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="ctx">To be added.</param>
+        <param name="srcView">To be added.</param>
+        <param name="env">To be added.</param>
+        <param name="isTransformTagAccepted">To be added.</param>
+        <summary>
+            Loads all transforms from the <paramref name="ctx" /> that pass the <paramref name="isTransformTagAccepted" /> test,
+            applies them sequentially to the <paramref name="srcView" />, and returns the resulting data view.
+            If there are no transforms in <paramref name="ctx" /> that are accepted, returns the original <paramref name="srcView" />.
+            The difference from the <c>Create</c> method above is that:
+            - it doesn't wrap the results into a loader, just returns the last transform in the chain.
+            - it accepts <see cref="T:Microsoft.ML.Data.IDataView" /> as input, not necessarily a loader.
+            - it throws away the tag information.
+            - it doesn't throw if the context is not representing a <see cref="T:Microsoft.ML.Data.CompositeDataLoader" />: in this case it's assumed that no transforms
+              meet the test, and the <paramref name="srcView" /> is returned.
+            Essentially, this is a helper method for the LoadTransform class.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Save">
+      <MemberSignature Language="C#" Value="public void Save (Microsoft.ML.Model.ModelSaveContext ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Save(class Microsoft.ML.Model.ModelSaveContext ctx) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.CompositeDataLoader.Save(Microsoft.ML.Model.ModelSaveContext)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Save (ctx As ModelSaveContext)" />
+      <MemberSignature Language="F#" Value="abstract member Save : Microsoft.ML.Model.ModelSaveContext -&gt; unit&#xA;override this.Save : Microsoft.ML.Model.ModelSaveContext -&gt; unit" Usage="compositeDataLoader.Save ctx" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Model.ICanSaveModel.Save(Microsoft.ML.Model.ModelSaveContext)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ctx" Type="Microsoft.ML.Model.ModelSaveContext" />
+      </Parameters>
+      <Docs>
+        <param name="ctx">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SavePipe">
+      <MemberSignature Language="C#" Value="public static void SavePipe (Microsoft.ML.IHostEnvironment env, Microsoft.ML.Model.ModelSaveContext ctx, Action&lt;Microsoft.ML.Model.ModelSaveContext&gt; loaderSaveAction, System.Collections.Generic.IList&lt;Microsoft.ML.Data.IDataTransform&gt; transforms);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SavePipe(class Microsoft.ML.IHostEnvironment env, class Microsoft.ML.Model.ModelSaveContext ctx, class System.Action`1&lt;class Microsoft.ML.Model.ModelSaveContext&gt; loaderSaveAction, class System.Collections.Generic.IList`1&lt;class Microsoft.ML.Data.IDataTransform&gt; transforms) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.CompositeDataLoader.SavePipe(Microsoft.ML.IHostEnvironment,Microsoft.ML.Model.ModelSaveContext,System.Action{Microsoft.ML.Model.ModelSaveContext},System.Collections.Generic.IList{Microsoft.ML.Data.IDataTransform})" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Sub SavePipe (env As IHostEnvironment, ctx As ModelSaveContext, loaderSaveAction As Action(Of ModelSaveContext), transforms As IList(Of IDataTransform))" />
+      <MemberSignature Language="F#" Value="static member SavePipe : Microsoft.ML.IHostEnvironment * Microsoft.ML.Model.ModelSaveContext * Action&lt;Microsoft.ML.Model.ModelSaveContext&gt; * System.Collections.Generic.IList&lt;Microsoft.ML.Data.IDataTransform&gt; -&gt; unit" Usage="Microsoft.ML.Data.CompositeDataLoader.SavePipe (env, ctx, loaderSaveAction, transforms)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
+        <Parameter Name="ctx" Type="Microsoft.ML.Model.ModelSaveContext" />
+        <Parameter Name="loaderSaveAction" Type="System.Action&lt;Microsoft.ML.Model.ModelSaveContext&gt;" />
+        <Parameter Name="transforms" Type="System.Collections.Generic.IList&lt;Microsoft.ML.Data.IDataTransform&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="env">Environment context</param>
+        <param name="ctx">The context to write to.</param>
+        <param name="loaderSaveAction">The code to save the loader.</param>
+        <param name="transforms">The transforms. Empty list and null are both allowed.</param>
+        <summary>
+            Save the loader and transforms (if any) to the repository.
+            This is intended to be used by API, where the components are not part of the same
+            <see cref="T:Microsoft.ML.Data.CompositeDataLoader" />.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Schema">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.Schema Schema { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Data.Schema Schema" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Data.CompositeDataLoader.Schema" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Schema As Schema" />
+      <MemberSignature Language="F#" Value="member this.Schema : Microsoft.ML.Data.Schema" Usage="Microsoft.ML.Data.CompositeDataLoader.Schema" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Data.IDataView.Schema</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.Schema</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="View">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.IDataView View { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Data.IDataView View" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Data.CompositeDataLoader.View" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property View As IDataView" />
+      <MemberSignature Language="F#" Value="member this.View : Microsoft.ML.Data.IDataView" Usage="Microsoft.ML.Data.CompositeDataLoader.View" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.IDataView</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Returns the underlying data view of the composite loader.
+            This can be used to programmatically explore the chain of transforms that's inside the composite loader.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
