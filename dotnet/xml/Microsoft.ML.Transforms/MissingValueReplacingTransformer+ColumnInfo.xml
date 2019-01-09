@@ -1,8 +1,8 @@
 ﻿<Type Name="MissingValueReplacingTransformer+ColumnInfo" FullName="Microsoft.ML.Transforms.MissingValueReplacingTransformer+ColumnInfo">
-  <TypeSignature Language="C#" Value="public class MissingValueReplacingTransformer.ColumnInfo" />
-  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi beforefieldinit MissingValueReplacingTransformer/ColumnInfo extends System.Object" />
+  <TypeSignature Language="C#" Value="public sealed class MissingValueReplacingTransformer.ColumnInfo" />
+  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi sealed beforefieldinit MissingValueReplacingTransformer/ColumnInfo extends System.Object" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Transforms.MissingValueReplacingTransformer.ColumnInfo" />
-  <TypeSignature Language="VB.NET" Value="Public Class MissingValueReplacingTransformer.ColumnInfo" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class MissingValueReplacingTransformer.ColumnInfo" />
   <TypeSignature Language="F#" Value="type MissingValueReplacingTransformer.ColumnInfo = class" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
@@ -13,12 +13,14 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+            Describes how the transformer handles one column pair.
+            </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public ColumnInfo (string input, string output, Microsoft.ML.Transforms.MissingValueReplacingTransformer.ColumnInfo.ReplacementMode replacementMode = Microsoft.ML.Transforms.MissingValueReplacingTransformer+ColumnInfo+ReplacementMode.DefaultValue, bool imputeBySlot = true);" />
+      <MemberSignature Language="C#" Value="public ColumnInfo (string input, string output = null, Microsoft.ML.Transforms.MissingValueReplacingTransformer.ColumnInfo.ReplacementMode replacementMode = Microsoft.ML.Transforms.MissingValueReplacingTransformer+ColumnInfo+ReplacementMode.DefaultValue, bool imputeBySlot = true);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string input, string output, valuetype Microsoft.ML.Transforms.MissingValueReplacingTransformer/ColumnInfo/ReplacementMode replacementMode, bool imputeBySlot) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.MissingValueReplacingTransformer.ColumnInfo.#ctor(System.String,System.String,Microsoft.ML.Transforms.MissingValueReplacingTransformer.ColumnInfo.ReplacementMode,System.Boolean)" />
       <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.MissingValueReplacingTransformer.ColumnInfo : string * string * Microsoft.ML.Transforms.MissingValueReplacingTransformer.ColumnInfo.ReplacementMode * bool -&gt; Microsoft.ML.Transforms.MissingValueReplacingTransformer.ColumnInfo" Usage="new Microsoft.ML.Transforms.MissingValueReplacingTransformer.ColumnInfo (input, output, replacementMode, imputeBySlot)" />
@@ -35,7 +37,7 @@
       </Parameters>
       <Docs>
         <param name="input">Name of input column.</param>
-        <param name="output">Name of output column.</param>
+        <param name="output">Name of the column resulting from the transformation of <paramref name="input" />. Null means <paramref name="input" /> is replaced.</param>
         <param name="replacementMode">What to replace the missing value with.</param>
         <param name="imputeBySlot">If true, per-slot imputation of replacement is performed.
             Otherwise, replacement value is imputed for the entire vector column. This setting is ignored for scalars and variable vectors,

@@ -1,6 +1,6 @@
 ﻿<Type Name="OnnxTransform" FullName="Microsoft.ML.Transforms.OnnxTransform">
-  <TypeSignature Language="C#" Value="public sealed class OnnxTransform : Microsoft.ML.Runtime.Data.RowToRowTransformerBase" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit OnnxTransform extends Microsoft.ML.Runtime.Data.RowToRowTransformerBase" />
+  <TypeSignature Language="C#" Value="public sealed class OnnxTransform : Microsoft.ML.Data.RowToRowTransformerBase" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit OnnxTransform extends Microsoft.ML.Data.RowToRowTransformerBase" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Transforms.OnnxTransform" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class OnnxTransform&#xA;Inherits RowToRowTransformerBase" />
   <TypeSignature Language="F#" Value="type OnnxTransform = class&#xA;    inherit RowToRowTransformerBase" />
@@ -11,83 +11,147 @@
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
     <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Runtime.Data.RowToRowTransformerBase</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Data.RowToRowTransformerBase</BaseTypeName>
   </Base>
   <Interfaces></Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>
+      <p>A transform for scoring ONNX models in the ML.NET framework.</p>
+      <format type="text/markdown"><![CDATA[
+            [!code-csharp[MF](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/OnnxTransform.cs)]
+            ]]></format>
+    </summary>
+    <remarks>
+      <p>Supports inferencing of models in ONNX 1.2 and 1.3 format (opset 7, 8 and 9), using the
+            <a href="https://www.nuget.org/packages/Microsoft.ML.OnnxRuntime.Gpu/">Microsoft.ML.OnnxRuntime.Gpu</a> library.
+            </p>
+      <p>Models are scored on CPU by default. If GPU execution is needed (optional), install
+            <a href="https://developer.nvidia.com/cuda-downloads">CUDA 10.0 Toolkit</a>
+            and
+            <a href="https://developer.nvidia.com/cudnn">cuDNN</a>
+            , and set the parameter 'gpuDeviceId' to a valid non-negative integer. Typical device ID values are 0 or 1.
+            </p>
+      <p>The inputs and outputs of the ONNX models must be Tensor type. Sequence and Maps are not yet supported.</p>
+      <p>OnnxRuntime currently works on Windows 64-bit platforms only. Linux and OSX to be supported soon.</p>
+      <p>Visit https://github.com/onnx/models to see a list of readily available models to get started with.</p>
+      <p>Refer to http://onnx.ai' for more information about ONNX.</p>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public OnnxTransform (Microsoft.ML.Runtime.IHostEnvironment env, string modelFile, string inputColumn, string outputColumn);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string modelFile, string inputColumn, string outputColumn) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.OnnxTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, modelFile As String, inputColumn As String, outputColumn As String)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.OnnxTransform : Microsoft.ML.Runtime.IHostEnvironment * string * string * string -&gt; Microsoft.ML.Transforms.OnnxTransform" Usage="new Microsoft.ML.Transforms.OnnxTransform (env, modelFile, inputColumn, outputColumn)" />
+      <MemberSignature Language="C#" Value="public OnnxTransform (Microsoft.ML.IHostEnvironment env, string modelFile, Nullable&lt;int&gt; gpuDeviceId = null, bool fallbackToCpu = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, string modelFile, valuetype System.Nullable`1&lt;int32&gt; gpuDeviceId, bool fallbackToCpu) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.OnnxTransform.#ctor(Microsoft.ML.IHostEnvironment,System.String,System.Nullable{System.Int32},System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, modelFile As String, Optional gpuDeviceId As Nullable(Of Integer) = null, Optional fallbackToCpu As Boolean = false)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.OnnxTransform : Microsoft.ML.IHostEnvironment * string * Nullable&lt;int&gt; * bool -&gt; Microsoft.ML.Transforms.OnnxTransform" Usage="new Microsoft.ML.Transforms.OnnxTransform (env, modelFile, gpuDeviceId, fallbackToCpu)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.OnnxTransform</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
         <Parameter Name="modelFile" Type="System.String" />
-        <Parameter Name="inputColumn" Type="System.String" />
-        <Parameter Name="outputColumn" Type="System.String" />
+        <Parameter Name="gpuDeviceId" Type="System.Nullable&lt;System.Int32&gt;" />
+        <Parameter Name="fallbackToCpu" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="env">To be added.</param>
-        <param name="modelFile">To be added.</param>
-        <param name="inputColumn">To be added.</param>
-        <param name="outputColumn">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="env">The environment to use.</param>
+        <param name="modelFile">Model file path.</param>
+        <param name="gpuDeviceId">Optional GPU device ID to run execution on. Null for CPU.</param>
+        <param name="fallbackToCpu">If GPU error, raise exception or fallback to CPU.</param>
+        <summary>
+            Transform for scoring ONNX models. Input data column names/types must exactly match
+            all model input names. All possible output columns are generated, with names/types
+            specified by model.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public OnnxTransform (Microsoft.ML.Runtime.IHostEnvironment env, string modelFile, string[] inputColumns, string[] outputColumns);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string modelFile, string[] inputColumns, string[] outputColumns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.OnnxTransform.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String[],System.String[])" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, modelFile As String, inputColumns As String(), outputColumns As String())" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.OnnxTransform : Microsoft.ML.Runtime.IHostEnvironment * string * string[] * string[] -&gt; Microsoft.ML.Transforms.OnnxTransform" Usage="new Microsoft.ML.Transforms.OnnxTransform (env, modelFile, inputColumns, outputColumns)" />
+      <MemberSignature Language="C#" Value="public OnnxTransform (Microsoft.ML.IHostEnvironment env, string modelFile, string inputColumn, string outputColumn, Nullable&lt;int&gt; gpuDeviceId = null, bool fallbackToCpu = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, string modelFile, string inputColumn, string outputColumn, valuetype System.Nullable`1&lt;int32&gt; gpuDeviceId, bool fallbackToCpu) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.OnnxTransform.#ctor(Microsoft.ML.IHostEnvironment,System.String,System.String,System.String,System.Nullable{System.Int32},System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, modelFile As String, inputColumn As String, outputColumn As String, Optional gpuDeviceId As Nullable(Of Integer) = null, Optional fallbackToCpu As Boolean = false)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.OnnxTransform : Microsoft.ML.IHostEnvironment * string * string * string * Nullable&lt;int&gt; * bool -&gt; Microsoft.ML.Transforms.OnnxTransform" Usage="new Microsoft.ML.Transforms.OnnxTransform (env, modelFile, inputColumn, outputColumn, gpuDeviceId, fallbackToCpu)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.OnnxTransform</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
+        <Parameter Name="modelFile" Type="System.String" />
+        <Parameter Name="inputColumn" Type="System.String" />
+        <Parameter Name="outputColumn" Type="System.String" />
+        <Parameter Name="gpuDeviceId" Type="System.Nullable&lt;System.Int32&gt;" />
+        <Parameter Name="fallbackToCpu" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="env">The environment to use.</param>
+        <param name="modelFile">Model file path.</param>
+        <param name="inputColumn">The name of the input data column. Must match model input name.</param>
+        <param name="outputColumn">The output columns to generate. Names must match model specifications. Data types are inferred from model.</param>
+        <param name="gpuDeviceId">Optional GPU device ID to run execution on. Null for CPU.</param>
+        <param name="fallbackToCpu">If GPU error, raise exception or fallback to CPU.</param>
+        <summary>
+            Transform for scoring ONNX models. Input data column name/type must exactly match
+            the model specification. Only 1 output column is generated.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public OnnxTransform (Microsoft.ML.IHostEnvironment env, string modelFile, string[] inputColumns, string[] outputColumns, Nullable&lt;int&gt; gpuDeviceId = null, bool fallbackToCpu = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, string modelFile, string[] inputColumns, string[] outputColumns, valuetype System.Nullable`1&lt;int32&gt; gpuDeviceId, bool fallbackToCpu) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.OnnxTransform.#ctor(Microsoft.ML.IHostEnvironment,System.String,System.String[],System.String[],System.Nullable{System.Int32},System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, modelFile As String, inputColumns As String(), outputColumns As String(), Optional gpuDeviceId As Nullable(Of Integer) = null, Optional fallbackToCpu As Boolean = false)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.OnnxTransform : Microsoft.ML.IHostEnvironment * string * string[] * string[] * Nullable&lt;int&gt; * bool -&gt; Microsoft.ML.Transforms.OnnxTransform" Usage="new Microsoft.ML.Transforms.OnnxTransform (env, modelFile, inputColumns, outputColumns, gpuDeviceId, fallbackToCpu)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.OnnxTransform</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
         <Parameter Name="modelFile" Type="System.String" />
         <Parameter Name="inputColumns" Type="System.String[]" />
         <Parameter Name="outputColumns" Type="System.String[]" />
+        <Parameter Name="gpuDeviceId" Type="System.Nullable&lt;System.Int32&gt;" />
+        <Parameter Name="fallbackToCpu" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="env">To be added.</param>
-        <param name="modelFile">To be added.</param>
-        <param name="inputColumns">To be added.</param>
-        <param name="outputColumns">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="env">The environment to use.</param>
+        <param name="modelFile">Model file path.</param>
+        <param name="inputColumns">The name of the input data columns. Must match model's input names.</param>
+        <param name="outputColumns">The output columns to generate. Names must match model specifications. Data types are inferred from model.</param>
+        <param name="gpuDeviceId">Optional GPU device ID to run execution on. Null for CPU.</param>
+        <param name="fallbackToCpu">If GPU error, raise exception or fallback to CPU.</param>
+        <summary>
+            Transform for scoring ONNX models. Input data column names/types must exactly match
+            all model input names. Only the output columns specified will be generated.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Create">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IDataTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Transforms.OnnxTransform.Arguments args, Microsoft.ML.Runtime.Data.IDataView input);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IDataTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Transforms.OnnxTransform/Arguments args, class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.OnnxTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Transforms.OnnxTransform.Arguments,Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.IDataTransform Create (Microsoft.ML.IHostEnvironment env, Microsoft.ML.Transforms.OnnxTransform.Arguments args, Microsoft.ML.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.IDataTransform Create(class Microsoft.ML.IHostEnvironment env, class Microsoft.ML.Transforms.OnnxTransform/Arguments args, class Microsoft.ML.Data.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.OnnxTransform.Create(Microsoft.ML.IHostEnvironment,Microsoft.ML.Transforms.OnnxTransform.Arguments,Microsoft.ML.Data.IDataView)" />
       <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, args As OnnxTransform.Arguments, input As IDataView) As IDataTransform" />
-      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Transforms.OnnxTransform.Arguments * Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Runtime.Data.IDataTransform" Usage="Microsoft.ML.Transforms.OnnxTransform.Create (env, args, input)" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.IHostEnvironment * Microsoft.ML.Transforms.OnnxTransform.Arguments * Microsoft.ML.Data.IDataView -&gt; Microsoft.ML.Data.IDataTransform" Usage="Microsoft.ML.Transforms.OnnxTransform.Create (env, args, input)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.OnnxTransform</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.IDataTransform</ReturnType>
+        <ReturnType>Microsoft.ML.Data.IDataTransform</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
         <Parameter Name="args" Type="Microsoft.ML.Transforms.OnnxTransform+Arguments" />
-        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="input" Type="Microsoft.ML.Data.IDataView" />
       </Parameters>
       <Docs>
         <param name="env">To be added.</param>
@@ -99,25 +163,59 @@
       </Docs>
     </Member>
     <Member MemberName="Create">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IDataTransform Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.IDataView input, string modelFile, string[] inputColumns, string[] outputColumns);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IDataTransform Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.IDataView input, string modelFile, string[] inputColumns, string[] outputColumns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.OnnxTransform.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.IDataView,System.String,System.String[],System.String[])" />
-      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, input As IDataView, modelFile As String, inputColumns As String(), outputColumns As String()) As IDataTransform" />
-      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.IDataView * string * string[] * string[] -&gt; Microsoft.ML.Runtime.Data.IDataTransform" Usage="Microsoft.ML.Transforms.OnnxTransform.Create (env, input, modelFile, inputColumns, outputColumns)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.IDataTransform Create (Microsoft.ML.IHostEnvironment env, Microsoft.ML.Data.IDataView input, string modelFile, Nullable&lt;int&gt; gpuDeviceId = null, bool fallbackToCpu = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.IDataTransform Create(class Microsoft.ML.IHostEnvironment env, class Microsoft.ML.Data.IDataView input, string modelFile, valuetype System.Nullable`1&lt;int32&gt; gpuDeviceId, bool fallbackToCpu) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.OnnxTransform.Create(Microsoft.ML.IHostEnvironment,Microsoft.ML.Data.IDataView,System.String,System.Nullable{System.Int32},System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, input As IDataView, modelFile As String, Optional gpuDeviceId As Nullable(Of Integer) = null, Optional fallbackToCpu As Boolean = false) As IDataTransform" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.IHostEnvironment * Microsoft.ML.Data.IDataView * string * Nullable&lt;int&gt; * bool -&gt; Microsoft.ML.Data.IDataTransform" Usage="Microsoft.ML.Transforms.OnnxTransform.Create (env, input, modelFile, gpuDeviceId, fallbackToCpu)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.OnnxTransform</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.IDataTransform</ReturnType>
+        <ReturnType>Microsoft.ML.Data.IDataTransform</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
-        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
+        <Parameter Name="input" Type="Microsoft.ML.Data.IDataView" />
+        <Parameter Name="modelFile" Type="System.String" />
+        <Parameter Name="gpuDeviceId" Type="System.Nullable&lt;System.Int32&gt;" />
+        <Parameter Name="fallbackToCpu" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="input">To be added.</param>
+        <param name="modelFile">To be added.</param>
+        <param name="gpuDeviceId">To be added.</param>
+        <param name="fallbackToCpu">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.IDataTransform Create (Microsoft.ML.IHostEnvironment env, Microsoft.ML.Data.IDataView input, string modelFile, string[] inputColumns, string[] outputColumns, Nullable&lt;int&gt; gpuDeviceId = null, bool fallbackToCpu = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.IDataTransform Create(class Microsoft.ML.IHostEnvironment env, class Microsoft.ML.Data.IDataView input, string modelFile, string[] inputColumns, string[] outputColumns, valuetype System.Nullable`1&lt;int32&gt; gpuDeviceId, bool fallbackToCpu) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.OnnxTransform.Create(Microsoft.ML.IHostEnvironment,Microsoft.ML.Data.IDataView,System.String,System.String[],System.String[],System.Nullable{System.Int32},System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, input As IDataView, modelFile As String, inputColumns As String(), outputColumns As String(), Optional gpuDeviceId As Nullable(Of Integer) = null, Optional fallbackToCpu As Boolean = false) As IDataTransform" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.IHostEnvironment * Microsoft.ML.Data.IDataView * string * string[] * string[] * Nullable&lt;int&gt; * bool -&gt; Microsoft.ML.Data.IDataTransform" Usage="Microsoft.ML.Transforms.OnnxTransform.Create (env, input, modelFile, inputColumns, outputColumns, gpuDeviceId, fallbackToCpu)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.OnnxTransform</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.IDataTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
+        <Parameter Name="input" Type="Microsoft.ML.Data.IDataView" />
         <Parameter Name="modelFile" Type="System.String" />
         <Parameter Name="inputColumns" Type="System.String[]" />
         <Parameter Name="outputColumns" Type="System.String[]" />
+        <Parameter Name="gpuDeviceId" Type="System.Nullable&lt;System.Int32&gt;" />
+        <Parameter Name="fallbackToCpu" Type="System.Boolean" />
       </Parameters>
       <Docs>
         <param name="env">To be added.</param>
@@ -125,6 +223,8 @@
         <param name="modelFile">To be added.</param>
         <param name="inputColumns">To be added.</param>
         <param name="outputColumns">To be added.</param>
+        <param name="gpuDeviceId">To be added.</param>
+        <param name="fallbackToCpu">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -149,30 +249,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="MakeRowMapper">
-      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.IRowMapper MakeRowMapper (Microsoft.ML.Data.Schema inputSchema);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.IRowMapper MakeRowMapper(class Microsoft.ML.Data.Schema inputSchema) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.OnnxTransform.MakeRowMapper(Microsoft.ML.Data.Schema)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function MakeRowMapper (inputSchema As Schema) As IRowMapper" />
-      <MemberSignature Language="F#" Value="override this.MakeRowMapper : Microsoft.ML.Data.Schema -&gt; Microsoft.ML.Runtime.Data.IRowMapper" Usage="onnxTransform.MakeRowMapper inputSchema" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.OnnxTransform</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.IRowMapper</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="inputSchema" Type="Microsoft.ML.Data.Schema" />
-      </Parameters>
-      <Docs>
-        <param name="inputSchema">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Outputs">
       <MemberSignature Language="C#" Value="public readonly string[] Outputs;" />
       <MemberSignature Language="ILAsm" Value=".field public initonly string[] Outputs" />
@@ -193,18 +269,18 @@
       </Docs>
     </Member>
     <Member MemberName="OutputTypes">
-      <MemberSignature Language="C#" Value="public readonly Microsoft.ML.Runtime.Data.ColumnType[] OutputTypes;" />
-      <MemberSignature Language="ILAsm" Value=".field public initonly class Microsoft.ML.Runtime.Data.ColumnType[] OutputTypes" />
+      <MemberSignature Language="C#" Value="public readonly Microsoft.ML.Data.ColumnType[] OutputTypes;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly class Microsoft.ML.Data.ColumnType[] OutputTypes" />
       <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.OnnxTransform.OutputTypes" />
       <MemberSignature Language="VB.NET" Value="Public ReadOnly OutputTypes As ColumnType() " />
-      <MemberSignature Language="F#" Value="val mutable OutputTypes : Microsoft.ML.Runtime.Data.ColumnType[]" Usage="Microsoft.ML.Transforms.OnnxTransform.OutputTypes" />
+      <MemberSignature Language="F#" Value="val mutable OutputTypes : Microsoft.ML.Data.ColumnType[]" Usage="Microsoft.ML.Transforms.OnnxTransform.OutputTypes" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.OnnxTransform</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.ColumnType[]</ReturnType>
+        <ReturnType>Microsoft.ML.Data.ColumnType[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -212,11 +288,11 @@
       </Docs>
     </Member>
     <Member MemberName="Save">
-      <MemberSignature Language="C#" Value="public override void Save (Microsoft.ML.Runtime.Model.ModelSaveContext ctx);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Save(class Microsoft.ML.Runtime.Model.ModelSaveContext ctx) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.OnnxTransform.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+      <MemberSignature Language="C#" Value="public override void Save (Microsoft.ML.Model.ModelSaveContext ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Save(class Microsoft.ML.Model.ModelSaveContext ctx) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.OnnxTransform.Save(Microsoft.ML.Model.ModelSaveContext)" />
       <MemberSignature Language="VB.NET" Value="Public Overrides Sub Save (ctx As ModelSaveContext)" />
-      <MemberSignature Language="F#" Value="override this.Save : Microsoft.ML.Runtime.Model.ModelSaveContext -&gt; unit" Usage="onnxTransform.Save ctx" />
+      <MemberSignature Language="F#" Value="override this.Save : Microsoft.ML.Model.ModelSaveContext -&gt; unit" Usage="onnxTransform.Save ctx" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.OnnxTransform</AssemblyName>
@@ -226,7 +302,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="ctx" Type="Microsoft.ML.Runtime.Model.ModelSaveContext" />
+        <Parameter Name="ctx" Type="Microsoft.ML.Model.ModelSaveContext" />
       </Parameters>
       <Docs>
         <param name="ctx">To be added.</param>

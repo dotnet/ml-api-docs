@@ -1,9 +1,9 @@
 ﻿<Type Name="SchemaShape" FullName="Microsoft.ML.Core.Data.SchemaShape">
-  <TypeSignature Language="C#" Value="public sealed class SchemaShape" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit SchemaShape extends System.Object" />
+  <TypeSignature Language="C#" Value="public sealed class SchemaShape : System.Collections.Generic.IEnumerable&lt;Microsoft.ML.Core.Data.SchemaShape.Column&gt;, System.Collections.Generic.IReadOnlyCollection&lt;Microsoft.ML.Core.Data.SchemaShape.Column&gt;, System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.Core.Data.SchemaShape.Column&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit SchemaShape extends System.Object implements class System.Collections.Generic.IEnumerable`1&lt;valuetype Microsoft.ML.Core.Data.SchemaShape/Column&gt;, class System.Collections.Generic.IReadOnlyCollection`1&lt;valuetype Microsoft.ML.Core.Data.SchemaShape/Column&gt;, class System.Collections.Generic.IReadOnlyList`1&lt;valuetype Microsoft.ML.Core.Data.SchemaShape/Column&gt;, class System.Collections.IEnumerable" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Core.Data.SchemaShape" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class SchemaShape" />
-  <TypeSignature Language="F#" Value="type SchemaShape = class" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class SchemaShape&#xA;Implements IEnumerable(Of SchemaShape.Column), IReadOnlyCollection(Of SchemaShape.Column), IReadOnlyList(Of SchemaShape.Column)" />
+  <TypeSignature Language="F#" Value="type SchemaShape = class&#xA;    interface IReadOnlyList&lt;SchemaShape.Column&gt;&#xA;    interface seq&lt;SchemaShape.Column&gt;&#xA;    interface IEnumerable&#xA;    interface IReadOnlyCollection&lt;SchemaShape.Column&gt;" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.Core</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -11,19 +11,38 @@
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
-  <Interfaces />
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.Collections.Generic.IEnumerable&lt;Microsoft.ML.Core.Data.SchemaShape+Column&gt;</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.Collections.Generic.IEnumerable&lt;T&gt;</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.Collections.Generic.IReadOnlyCollection&lt;Microsoft.ML.Core.Data.SchemaShape+Column&gt;</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.Collections.Generic.IReadOnlyCollection&lt;T&gt;</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.Core.Data.SchemaShape+Column&gt;</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.Collections.IEnumerable</InterfaceName>
+    </Interface>
+  </Interfaces>
   <Docs>
     <summary>
             A set of 'requirements' to the incoming schema, as well as a set of 'promises' of the outgoing schema.
-            This is more relaxed than the proper <see cref="T:Microsoft.ML.Runtime.Data.ISchema" />, since it's only a subset of the columns,
-            and also since it doesn't specify exact <see cref="T:Microsoft.ML.Runtime.Data.ColumnType" />'s for vectors and keys.
+            This is more relaxed than the proper <see cref="T:Microsoft.ML.Data.Schema" />, since it's only a subset of the columns,
+            and also since it doesn't specify exact <see cref="T:Microsoft.ML.Data.ColumnType" />'s for vectors and keys.
             </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public SchemaShape (System.Collections.Generic.IEnumerable&lt;Microsoft.ML.Core.Data.SchemaShape.Column&gt; columns);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Collections.Generic.IEnumerable`1&lt;class Microsoft.ML.Core.Data.SchemaShape/Column&gt; columns) cil managed" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Collections.Generic.IEnumerable`1&lt;valuetype Microsoft.ML.Core.Data.SchemaShape/Column&gt; columns) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Core.Data.SchemaShape.#ctor(System.Collections.Generic.IEnumerable{Microsoft.ML.Core.Data.SchemaShape.Column})" />
       <MemberSignature Language="VB.NET" Value="Public Sub New (columns As IEnumerable(Of SchemaShape.Column))" />
       <MemberSignature Language="F#" Value="new Microsoft.ML.Core.Data.SchemaShape : seq&lt;Microsoft.ML.Core.Data.SchemaShape.Column&gt; -&gt; Microsoft.ML.Core.Data.SchemaShape" Usage="new Microsoft.ML.Core.Data.SchemaShape columns" />
@@ -41,74 +60,99 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Columns">
-      <MemberSignature Language="C#" Value="public readonly Microsoft.ML.Core.Data.SchemaShape.Column[] Columns;" />
-      <MemberSignature Language="ILAsm" Value=".field public initonly class Microsoft.ML.Core.Data.SchemaShape/Column[] Columns" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Core.Data.SchemaShape.Columns" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Columns As SchemaShape.Column() " />
-      <MemberSignature Language="F#" Value="val mutable Columns : Microsoft.ML.Core.Data.SchemaShape.Column[]" Usage="Microsoft.ML.Core.Data.SchemaShape.Columns" />
-      <MemberType>Field</MemberType>
+    <Member MemberName="Count">
+      <MemberSignature Language="C#" Value="public int Count { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Count" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Core.Data.SchemaShape.Count" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Count As Integer" />
+      <MemberSignature Language="F#" Value="member this.Count : int" Usage="Microsoft.ML.Core.Data.SchemaShape.Count" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:System.Collections.Generic.IReadOnlyCollection`1.Count</InterfaceMember>
+      </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Core.Data.SchemaShape+Column[]</ReturnType>
+        <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Create">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Core.Data.SchemaShape Create (Microsoft.ML.Data.Schema schema);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Core.Data.SchemaShape Create(class Microsoft.ML.Data.Schema schema) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Core.Data.SchemaShape.Create(Microsoft.ML.Data.Schema)" />
-      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Data.Schema -&gt; Microsoft.ML.Core.Data.SchemaShape" Usage="Microsoft.ML.Core.Data.SchemaShape.Create schema" />
+    <Member MemberName="GetEnumerator">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.IEnumerator&lt;Microsoft.ML.Core.Data.SchemaShape.Column&gt; GetEnumerator ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Collections.Generic.IEnumerator`1&lt;valuetype Microsoft.ML.Core.Data.SchemaShape/Column&gt; GetEnumerator() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Core.Data.SchemaShape.GetEnumerator" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetEnumerator () As IEnumerator(Of SchemaShape.Column)" />
+      <MemberSignature Language="F#" Value="abstract member GetEnumerator : unit -&gt; System.Collections.Generic.IEnumerator&lt;Microsoft.ML.Core.Data.SchemaShape.Column&gt;&#xA;override this.GetEnumerator : unit -&gt; System.Collections.Generic.IEnumerator&lt;Microsoft.ML.Core.Data.SchemaShape.Column&gt;" Usage="schemaShape.GetEnumerator " />
       <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:System.Collections.Generic.IEnumerable`1.GetEnumerator</InterfaceMember>
+      </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Core.Data.SchemaShape</ReturnType>
+        <ReturnType>System.Collections.Generic.IEnumerator&lt;Microsoft.ML.Core.Data.SchemaShape+Column&gt;</ReturnType>
       </ReturnValue>
-      <Parameters>
-        <Parameter Name="schema" Type="Microsoft.ML.Data.Schema" />
-      </Parameters>
+      <Parameters />
       <Docs>
-        <param name="schema">To be added.</param>
-        <summary>
-            Create a schema shape out of the fully defined schema.
-            </summary>
+        <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="TryFindColumn">
-      <MemberSignature Language="C#" Value="public bool TryFindColumn (string name, out Microsoft.ML.Core.Data.SchemaShape.Column column);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool TryFindColumn(string name, [out] class Microsoft.ML.Core.Data.SchemaShape/Column&amp; column) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Core.Data.SchemaShape.TryFindColumn(System.String,Microsoft.ML.Core.Data.SchemaShape.Column@)" />
-      <MemberSignature Language="VB.NET" Value="Public Function TryFindColumn (name As String, ByRef column As SchemaShape.Column) As Boolean" />
-      <MemberSignature Language="F#" Value="member this.TryFindColumn : string *  -&gt; bool" Usage="schemaShape.TryFindColumn (name, column)" />
-      <MemberType>Method</MemberType>
+    <Member MemberName="Item">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Core.Data.SchemaShape.Column this[int index] { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.ML.Core.Data.SchemaShape/Column Item(int32)" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Core.Data.SchemaShape.Item(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Default Public ReadOnly Property Item(index As Integer) As SchemaShape.Column" />
+      <MemberSignature Language="F#" Value="member this.Item(int) : Microsoft.ML.Core.Data.SchemaShape.Column" Usage="Microsoft.ML.Core.Data.SchemaShape.Item" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:System.Collections.Generic.IReadOnlyList`1.Item(System.Int32)</InterfaceMember>
+      </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
+        <ReturnType>Microsoft.ML.Core.Data.SchemaShape+Column</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="name" Type="System.String" />
-        <Parameter Name="column" Type="Microsoft.ML.Core.Data.SchemaShape+Column" RefType="out" />
+        <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="name">To be added.</param>
-        <param name="column">To be added.</param>
-        <summary>
-            Returns if there is a column with a specified <paramref name="name" /> and if so stores it in <paramref name="column" />.
-            </summary>
+        <param name="index">To be added.</param>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="System.Collections.IEnumerable.GetEnumerator">
+      <MemberSignature Language="C#" Value="System.Collections.IEnumerator IEnumerable.GetEnumerator ();" />
+      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Core.Data.SchemaShape.System#Collections#IEnumerable#GetEnumerator" />
+      <MemberSignature Language="VB.NET" Value="Function GetEnumerator () As IEnumerator Implements IEnumerable.GetEnumerator" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:System.Collections.IEnumerable.GetEnumerator</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.IEnumerator</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>

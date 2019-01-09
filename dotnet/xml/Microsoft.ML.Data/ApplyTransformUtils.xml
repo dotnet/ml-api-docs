@@ -1,0 +1,91 @@
+﻿<Type Name="ApplyTransformUtils" FullName="Microsoft.ML.Data.ApplyTransformUtils">
+  <TypeSignature Language="C#" Value="public static class ApplyTransformUtils" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit ApplyTransformUtils extends System.Object" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Data.ApplyTransformUtils" />
+  <TypeSignature Language="VB.NET" Value="Public Class ApplyTransformUtils" />
+  <TypeSignature Language="F#" Value="type ApplyTransformUtils = class" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Data</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+            Utilities to rebind data transforms
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="ApplyAllTransformsToData">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.IDataView ApplyAllTransformsToData (Microsoft.ML.IHostEnvironment env, Microsoft.ML.Data.IDataView chain, Microsoft.ML.Data.IDataView newSource, Microsoft.ML.Data.IDataView oldSource = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.IDataView ApplyAllTransformsToData(class Microsoft.ML.IHostEnvironment env, class Microsoft.ML.Data.IDataView chain, class Microsoft.ML.Data.IDataView newSource, class Microsoft.ML.Data.IDataView oldSource) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.ApplyTransformUtils.ApplyAllTransformsToData(Microsoft.ML.IHostEnvironment,Microsoft.ML.Data.IDataView,Microsoft.ML.Data.IDataView,Microsoft.ML.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function ApplyAllTransformsToData (env As IHostEnvironment, chain As IDataView, newSource As IDataView, Optional oldSource As IDataView = null) As IDataView" />
+      <MemberSignature Language="F#" Value="static member ApplyAllTransformsToData : Microsoft.ML.IHostEnvironment * Microsoft.ML.Data.IDataView * Microsoft.ML.Data.IDataView * Microsoft.ML.Data.IDataView -&gt; Microsoft.ML.Data.IDataView" Usage="Microsoft.ML.Data.ApplyTransformUtils.ApplyAllTransformsToData (env, chain, newSource, oldSource)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.IDataView</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
+        <Parameter Name="chain" Type="Microsoft.ML.Data.IDataView" />
+        <Parameter Name="newSource" Type="Microsoft.ML.Data.IDataView" />
+        <Parameter Name="oldSource" Type="Microsoft.ML.Data.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="env">The environment to use.</param>
+        <param name="chain">The end of the chain.</param>
+        <param name="newSource">The new data to attach the chain to.</param>
+        <param name="oldSource">The 'old source' of the pipe, that doesn't need to be reapplied. If null, all transforms are reapplied.</param>
+        <summary>
+            Walks back the Source chain of the <see cref="T:Microsoft.ML.Data.IDataTransform" /> up to the <paramref name="oldSource" />
+            (or <see cref="T:Microsoft.ML.Data.IDataLoader" /> if <paramref name="oldSource" /> is <c>null</c>),
+            and reapplies all transforms in the chain, to produce the same chain but bound to the different data.
+            It is valid to have no transforms: in this case the result will be equal to <paramref name="newSource" />
+            If <paramref name="oldSource" /> is specified and not found in the pipe, an exception is thrown.
+            </summary>
+        <returns>The resulting data view.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ApplyTransformToData">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.IDataTransform ApplyTransformToData (Microsoft.ML.IHostEnvironment env, Microsoft.ML.Data.IDataTransform transform, Microsoft.ML.Data.IDataView newSource);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.IDataTransform ApplyTransformToData(class Microsoft.ML.IHostEnvironment env, class Microsoft.ML.Data.IDataTransform transform, class Microsoft.ML.Data.IDataView newSource) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.ApplyTransformUtils.ApplyTransformToData(Microsoft.ML.IHostEnvironment,Microsoft.ML.Data.IDataTransform,Microsoft.ML.Data.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function ApplyTransformToData (env As IHostEnvironment, transform As IDataTransform, newSource As IDataView) As IDataTransform" />
+      <MemberSignature Language="F#" Value="static member ApplyTransformToData : Microsoft.ML.IHostEnvironment * Microsoft.ML.Data.IDataTransform * Microsoft.ML.Data.IDataView -&gt; Microsoft.ML.Data.IDataTransform" Usage="Microsoft.ML.Data.ApplyTransformUtils.ApplyTransformToData (env, transform, newSource)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.IDataTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
+        <Parameter Name="transform" Type="Microsoft.ML.Data.IDataTransform" />
+        <Parameter Name="newSource" Type="Microsoft.ML.Data.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="env">The host to use</param>
+        <param name="transform">The transform to apply.</param>
+        <param name="newSource">The data view to apply the transform to.</param>
+        <summary>
+            Attempt to apply the data transform to a different data view source.
+            If the transform in question implements <see cref="T:Microsoft.ML.Data.ITransformTemplate" />, <see cref="M:Microsoft.ML.Data.ITransformTemplate.ApplyToData(Microsoft.ML.IHostEnvironment,Microsoft.ML.Data.IDataView)" />
+            is called. Otherwise, the transform is serialized into a byte array and then deserialized.
+            </summary>
+        <returns>The resulting data view.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

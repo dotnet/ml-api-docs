@@ -1,0 +1,787 @@
+<Type Name="OneToOneTransformBase" FullName="Microsoft.ML.Runtime.Data.OneToOneTransformBase">
+  <TypeSignature Language="C#" Value="public abstract class OneToOneTransformBase : Microsoft.ML.Runtime.Data.RowToRowMapperTransformBase, Microsoft.ML.Runtime.Data.IDataView, Microsoft.ML.Runtime.Data.ITransposeDataView" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit OneToOneTransformBase extends Microsoft.ML.Runtime.Data.RowToRowMapperTransformBase implements class Microsoft.ML.Runtime.Data.IDataTransform, class Microsoft.ML.Runtime.Data.IDataView, class Microsoft.ML.Runtime.Data.ISchematized, class Microsoft.ML.Runtime.Data.ITransposeDataView, class Microsoft.ML.Runtime.Model.ICanSaveModel" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.OneToOneTransformBase" />
+  <TypeSignature Language="VB.NET" Value="Public MustInherit Class OneToOneTransformBase&#xA;Inherits RowToRowMapperTransformBase&#xA;Implements IDataView, ITransposeDataView" />
+  <TypeSignature Language="F#" Value="type OneToOneTransformBase = class&#xA;    inherit RowToRowMapperTransformBase&#xA;    interface ITransposeDataView&#xA;    interface IDataView&#xA;    interface ISchematized&#xA;    interface IDataTransform&#xA;    interface ICanSaveModel" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Data</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Microsoft.ML.Runtime.Data.RowToRowMapperTransformBase</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.Data.IDataTransform</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.Data.IDataView</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.Data.ISchematized</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.Data.ITransposeDataView</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.Model.ICanSaveModel</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+            Base class for transforms that operate row by row with each destination column using one
+            source column. It provides an extension mechanism to allow a destination column to depend
+            on multiple input columns.
+            This class provides the implementation of ISchema and IRowCursor.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="ActivateSourceColumns">
+      <MemberSignature Language="C#" Value="protected virtual void ActivateSourceColumns (int iinfo, bool[] active);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void ActivateSourceColumns(int32 iinfo, bool[] active) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.ActivateSourceColumns(System.Int32,System.Boolean[])" />
+      <MemberSignature Language="VB.NET" Value="Protected Overridable Sub ActivateSourceColumns (iinfo As Integer, active As Boolean())" />
+      <MemberSignature Language="F#" Value="abstract member ActivateSourceColumns : int * bool[] -&gt; unit&#xA;override this.ActivateSourceColumns : int * bool[] -&gt; unit" Usage="oneToOneTransformBase.ActivateSourceColumns (iinfo, active)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="iinfo" Type="System.Int32" />
+        <Parameter Name="active" Type="System.Boolean[]" />
+      </Parameters>
+      <Docs>
+        <param name="iinfo">To be added.</param>
+        <param name="active">To be added.</param>
+        <summary>
+            Activates the source column.
+            Override when you don't need the source column to generate the value for this column or when you need
+            other auxiliary source columns that iinfo destination column depends on.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ColumnIndex">
+      <MemberSignature Language="C#" Value="protected int ColumnIndex (int iinfo);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance int32 ColumnIndex(int32 iinfo) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.ColumnIndex(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected Function ColumnIndex (iinfo As Integer) As Integer" />
+      <MemberSignature Language="F#" Value="member this.ColumnIndex : int -&gt; int" Usage="oneToOneTransformBase.ColumnIndex iinfo" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="iinfo" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="iinfo">To be added.</param>
+        <summary>
+            Return the (destination) column index for the indicated added column.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateGetters">
+      <MemberSignature Language="C#" Value="protected override Delegate[] CreateGetters (Microsoft.ML.Runtime.Data.IRow input, Func&lt;int,bool&gt; active, out Action disposer);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class System.Delegate[] CreateGetters(class Microsoft.ML.Runtime.Data.IRow input, class System.Func`2&lt;int32, bool&gt; active, [out] class System.Action&amp; disposer) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.CreateGetters(Microsoft.ML.Runtime.Data.IRow,System.Func{System.Int32,System.Boolean},System.Action@)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function CreateGetters (input As IRow, active As Func(Of Integer, Boolean), ByRef disposer As Action) As Delegate()" />
+      <MemberSignature Language="F#" Value="override this.CreateGetters : Microsoft.ML.Runtime.Data.IRow * Func&lt;int, bool&gt; *  -&gt; Delegate[]" Usage="oneToOneTransformBase.CreateGetters (input, active, disposer)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Delegate[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IRow" />
+        <Parameter Name="active" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+        <Parameter Name="disposer" Type="System.Action" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="input">To be added.</param>
+        <param name="active">To be added.</param>
+        <param name="disposer">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ExceptGetSlotCursor">
+      <MemberSignature Language="C#" Value="protected Exception ExceptGetSlotCursor (int col);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance class System.Exception ExceptGetSlotCursor(int32 col) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.ExceptGetSlotCursor(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected Function ExceptGetSlotCursor (col As Integer) As Exception" />
+      <MemberSignature Language="F#" Value="member this.ExceptGetSlotCursor : int -&gt; Exception" Usage="oneToOneTransformBase.ExceptGetSlotCursor col" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Exception</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="col" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="col">To be added.</param>
+        <summary>
+            Returns a standard exception for responding to an invalid call to <see cref="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.GetSlotCursor(System.Int32)" />,
+            on a column that is not transposable.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetColumnTypeCore">
+      <MemberSignature Language="C#" Value="protected abstract Microsoft.ML.Runtime.Data.ColumnType GetColumnTypeCore (int iinfo);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.ColumnType GetColumnTypeCore(int32 iinfo) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.GetColumnTypeCore(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected MustOverride Function GetColumnTypeCore (iinfo As Integer) As ColumnType" />
+      <MemberSignature Language="F#" Value="abstract member GetColumnTypeCore : int -&gt; Microsoft.ML.Runtime.Data.ColumnType" Usage="oneToOneTransformBase.GetColumnTypeCore iinfo" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ColumnType</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="iinfo" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="iinfo">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetDependenciesCore">
+      <MemberSignature Language="C#" Value="protected override Func&lt;int,bool&gt; GetDependenciesCore (Func&lt;int,bool&gt; predicate);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class System.Func`2&lt;int32, bool&gt; GetDependenciesCore(class System.Func`2&lt;int32, bool&gt; predicate) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.GetDependenciesCore(System.Func{System.Int32,System.Boolean})" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetDependenciesCore (predicate As Func(Of Integer, Boolean)) As Func(Of Integer, Boolean)" />
+      <MemberSignature Language="F#" Value="override this.GetDependenciesCore : Func&lt;int, bool&gt; -&gt; Func&lt;int, bool&gt;" Usage="oneToOneTransformBase.GetDependenciesCore predicate" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Func&lt;System.Int32,System.Boolean&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="predicate">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetGetterCore">
+      <MemberSignature Language="C#" Value="protected abstract Delegate GetGetterCore (Microsoft.ML.Runtime.IChannel ch, Microsoft.ML.Runtime.Data.IRow input, int iinfo, out Action disposer);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class System.Delegate GetGetterCore(class Microsoft.ML.Runtime.IChannel ch, class Microsoft.ML.Runtime.Data.IRow input, int32 iinfo, [out] class System.Action&amp; disposer) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.GetGetterCore(Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Data.IRow,System.Int32,System.Action@)" />
+      <MemberSignature Language="VB.NET" Value="Protected MustOverride Function GetGetterCore (ch As IChannel, input As IRow, iinfo As Integer, ByRef disposer As Action) As Delegate" />
+      <MemberSignature Language="F#" Value="abstract member GetGetterCore : Microsoft.ML.Runtime.IChannel * Microsoft.ML.Runtime.Data.IRow * int *  -&gt; Delegate" Usage="oneToOneTransformBase.GetGetterCore (ch, input, iinfo, disposer)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Delegate</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IRow" />
+        <Parameter Name="iinfo" Type="System.Int32" />
+        <Parameter Name="disposer" Type="System.Action" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="ch">To be added.</param>
+        <param name="input">To be added.</param>
+        <param name="iinfo">To be added.</param>
+        <param name="disposer">To be added.</param>
+        <summary>
+            Sub-classes implement this to provide, for a cursor, a getter delegate and optional disposer.
+            If no action is needed when the cursor is Disposed, the override should set disposer to null,
+            otherwise it should be set to a delegate to be invoked by the cursor's Dispose method. It's best
+            for this action to be idempotent - calling it multiple times should be equivalent to calling it once.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRowCursorCore">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.IRowCursor GetRowCursorCore (Func&lt;int,bool&gt; predicate, Microsoft.ML.Runtime.IRandom rand = null);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.IRowCursor GetRowCursorCore(class System.Func`2&lt;int32, bool&gt; predicate, class Microsoft.ML.Runtime.IRandom rand) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.GetRowCursorCore(System.Func{System.Int32,System.Boolean},Microsoft.ML.Runtime.IRandom)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetRowCursorCore (predicate As Func(Of Integer, Boolean), Optional rand As IRandom = null) As IRowCursor" />
+      <MemberSignature Language="F#" Value="override this.GetRowCursorCore : Func&lt;int, bool&gt; * Microsoft.ML.Runtime.IRandom -&gt; Microsoft.ML.Runtime.Data.IRowCursor" Usage="oneToOneTransformBase.GetRowCursorCore (predicate, rand)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IRowCursor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+        <Parameter Name="rand" Type="Microsoft.ML.Runtime.IRandom" />
+      </Parameters>
+      <Docs>
+        <param name="predicate">To be added.</param>
+        <param name="rand">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRowCursorSet">
+      <MemberSignature Language="C#" Value="public override sealed Microsoft.ML.Runtime.Data.IRowCursor[] GetRowCursorSet (out Microsoft.ML.Runtime.Data.IRowCursorConsolidator consolidator, Func&lt;int,bool&gt; predicate, int n, Microsoft.ML.Runtime.IRandom rand = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Microsoft.ML.Runtime.Data.IRowCursor[] GetRowCursorSet([out] class Microsoft.ML.Runtime.Data.IRowCursorConsolidator&amp; consolidator, class System.Func`2&lt;int32, bool&gt; predicate, int32 n, class Microsoft.ML.Runtime.IRandom rand) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.GetRowCursorSet(Microsoft.ML.Runtime.Data.IRowCursorConsolidator@,System.Func{System.Int32,System.Boolean},System.Int32,Microsoft.ML.Runtime.IRandom)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides NotOverridable Function GetRowCursorSet (ByRef consolidator As IRowCursorConsolidator, predicate As Func(Of Integer, Boolean), n As Integer, Optional rand As IRandom = null) As IRowCursor()" />
+      <MemberSignature Language="F#" Value="override this.GetRowCursorSet :  * Func&lt;int, bool&gt; * int * Microsoft.ML.Runtime.IRandom -&gt; Microsoft.ML.Runtime.Data.IRowCursor[]" Usage="oneToOneTransformBase.GetRowCursorSet (consolidator, predicate, n, rand)" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.IDataView.GetRowCursorSet(Microsoft.ML.Runtime.Data.IRowCursorConsolidator@,System.Func{System.Int32,System.Boolean},System.Int32,Microsoft.ML.Runtime.IRandom)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IRowCursor[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="consolidator" Type="Microsoft.ML.Runtime.Data.IRowCursorConsolidator" RefType="out" />
+        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+        <Parameter Name="n" Type="System.Int32" />
+        <Parameter Name="rand" Type="Microsoft.ML.Runtime.IRandom" />
+      </Parameters>
+      <Docs>
+        <param name="consolidator">To be added.</param>
+        <param name="predicate">To be added.</param>
+        <param name="n">To be added.</param>
+        <param name="rand">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetSlotCursor">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.ISlotCursor GetSlotCursor (int col);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.ISlotCursor GetSlotCursor(int32 col) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.GetSlotCursor(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetSlotCursor (col As Integer) As ISlotCursor" />
+      <MemberSignature Language="F#" Value="abstract member GetSlotCursor : int -&gt; Microsoft.ML.Runtime.Data.ISlotCursor&#xA;override this.GetSlotCursor : int -&gt; Microsoft.ML.Runtime.Data.ISlotCursor" Usage="oneToOneTransformBase.GetSlotCursor col" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Data.ITransposeDataView.GetSlotCursor(System.Int32)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ISlotCursor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="col" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="col">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetSlotCursorCore">
+      <MemberSignature Language="C#" Value="protected virtual Microsoft.ML.Runtime.Data.ISlotCursor GetSlotCursorCore (int iinfo);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.ISlotCursor GetSlotCursorCore(int32 iinfo) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.GetSlotCursorCore(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overridable Function GetSlotCursorCore (iinfo As Integer) As ISlotCursor" />
+      <MemberSignature Language="F#" Value="abstract member GetSlotCursorCore : int -&gt; Microsoft.ML.Runtime.Data.ISlotCursor&#xA;override this.GetSlotCursorCore : int -&gt; Microsoft.ML.Runtime.Data.ISlotCursor" Usage="oneToOneTransformBase.GetSlotCursorCore iinfo" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ISlotCursor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="iinfo" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="iinfo">To be added.</param>
+        <summary>
+            Implementors should note this only called if <see cref="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.GetSlotTypeCore(System.Int32)" />
+            returns a non-null value for this <paramref name="iinfo" />, so in principle
+            it should always return a valid value, if called. This implementation throws,
+            since the default implementation of <see cref="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.GetSlotTypeCore(System.Int32)" /> will return
+            null for all new columns, and so reaching this is only possible if there is a
+            bug.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetSlotTypeCore">
+      <MemberSignature Language="C#" Value="protected virtual Microsoft.ML.Runtime.Data.VectorType GetSlotTypeCore (int iinfo);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.VectorType GetSlotTypeCore(int32 iinfo) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.GetSlotTypeCore(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overridable Function GetSlotTypeCore (iinfo As Integer) As VectorType" />
+      <MemberSignature Language="F#" Value="abstract member GetSlotTypeCore : int -&gt; Microsoft.ML.Runtime.Data.VectorType&#xA;override this.GetSlotTypeCore : int -&gt; Microsoft.ML.Runtime.Data.VectorType" Usage="oneToOneTransformBase.GetSlotTypeCore iinfo" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.VectorType</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="iinfo" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="iinfo">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetSrcGetter">
+      <MemberSignature Language="C#" Value="protected Delegate GetSrcGetter (Microsoft.ML.Runtime.Data.ColumnType typeDst, Microsoft.ML.Runtime.Data.IRow row, int iinfo);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance class System.Delegate GetSrcGetter(class Microsoft.ML.Runtime.Data.ColumnType typeDst, class Microsoft.ML.Runtime.Data.IRow row, int32 iinfo) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.GetSrcGetter(Microsoft.ML.Runtime.Data.ColumnType,Microsoft.ML.Runtime.Data.IRow,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected Function GetSrcGetter (typeDst As ColumnType, row As IRow, iinfo As Integer) As Delegate" />
+      <MemberSignature Language="F#" Value="member this.GetSrcGetter : Microsoft.ML.Runtime.Data.ColumnType * Microsoft.ML.Runtime.Data.IRow * int -&gt; Delegate" Usage="oneToOneTransformBase.GetSrcGetter (typeDst, row, iinfo)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Delegate</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typeDst" Type="Microsoft.ML.Runtime.Data.ColumnType" />
+        <Parameter Name="row" Type="Microsoft.ML.Runtime.Data.IRow" />
+        <Parameter Name="iinfo" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="typeDst">To be added.</param>
+        <param name="row">To be added.</param>
+        <param name="iinfo">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetSrcGetter&lt;T&gt;">
+      <MemberSignature Language="C#" Value="protected Microsoft.ML.Runtime.Data.ValueGetter&lt;T&gt; GetSrcGetter&lt;T&gt; (Microsoft.ML.Runtime.Data.IRow input, int iinfo);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance class Microsoft.ML.Runtime.Data.ValueGetter`1&lt;!!T&gt; GetSrcGetter&lt;T&gt;(class Microsoft.ML.Runtime.Data.IRow input, int32 iinfo) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.GetSrcGetter``1(Microsoft.ML.Runtime.Data.IRow,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected Function GetSrcGetter(Of T) (input As IRow, iinfo As Integer) As ValueGetter(Of T)" />
+      <MemberSignature Language="F#" Value="member this.GetSrcGetter : Microsoft.ML.Runtime.Data.IRow * int -&gt; Microsoft.ML.Runtime.Data.ValueGetter&lt;'T&gt;" Usage="oneToOneTransformBase.GetSrcGetter (input, iinfo)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ValueGetter&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IRow" />
+        <Parameter Name="iinfo" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T">To be added.</typeparam>
+        <param name="input">To be added.</param>
+        <param name="iinfo">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Infos">
+      <MemberSignature Language="C#" Value="protected readonly Microsoft.ML.Runtime.Data.OneToOneTransformBase.ColInfo[] Infos;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly class Microsoft.ML.Runtime.Data.OneToOneTransformBase/ColInfo[] Infos" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Data.OneToOneTransformBase.Infos" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly Infos As OneToOneTransformBase.ColInfo() " />
+      <MemberSignature Language="F#" Value="val mutable Infos : Microsoft.ML.Runtime.Data.OneToOneTransformBase.ColInfo[]" Usage="Microsoft.ML.Runtime.Data.OneToOneTransformBase.Infos" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.OneToOneTransformBase+ColInfo[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InputTranspose">
+      <MemberSignature Language="C#" Value="protected readonly Microsoft.ML.Runtime.Data.ITransposeDataView InputTranspose;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly class Microsoft.ML.Runtime.Data.ITransposeDataView InputTranspose" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Data.OneToOneTransformBase.InputTranspose" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly InputTranspose As ITransposeDataView " />
+      <MemberSignature Language="F#" Value="val mutable InputTranspose : Microsoft.ML.Runtime.Data.ITransposeDataView" Usage="Microsoft.ML.Runtime.Data.OneToOneTransformBase.InputTranspose" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ITransposeDataView</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InputTransposeSchema">
+      <MemberSignature Language="C#" Value="protected Microsoft.ML.Runtime.Data.ITransposeSchema InputTransposeSchema { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.Data.ITransposeSchema InputTransposeSchema" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.OneToOneTransformBase.InputTransposeSchema" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly Property InputTransposeSchema As ITransposeSchema" />
+      <MemberSignature Language="F#" Value="member this.InputTransposeSchema : Microsoft.ML.Runtime.Data.ITransposeSchema" Usage="Microsoft.ML.Runtime.Data.OneToOneTransformBase.InputTransposeSchema" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ITransposeSchema</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MapColumnIndex">
+      <MemberSignature Language="C#" Value="protected override int MapColumnIndex (out bool isSrc, int col);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance int32 MapColumnIndex([out] bool&amp; isSrc, int32 col) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.MapColumnIndex(System.Boolean@,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function MapColumnIndex (ByRef isSrc As Boolean, col As Integer) As Integer" />
+      <MemberSignature Language="F#" Value="override this.MapColumnIndex :  * int -&gt; int" Usage="oneToOneTransformBase.MapColumnIndex (isSrc, col)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="isSrc" Type="System.Boolean" RefType="out" />
+        <Parameter Name="col" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="isSrc">To be added.</param>
+        <param name="col">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Schema">
+      <MemberSignature Language="C#" Value="public override sealed Microsoft.ML.Data.Schema Schema { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Data.Schema Schema" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.OneToOneTransformBase.Schema" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides NotOverridable ReadOnly Property Schema As Schema" />
+      <MemberSignature Language="F#" Value="member this.Schema : Microsoft.ML.Data.Schema" Usage="Microsoft.ML.Runtime.Data.OneToOneTransformBase.Schema" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Runtime.Data.ISchematized.Schema</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.Schema</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShouldUseParallelCursors">
+      <MemberSignature Language="C#" Value="protected override sealed Nullable&lt;bool&gt; ShouldUseParallelCursors (Func&lt;int,bool&gt; predicate);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance valuetype System.Nullable`1&lt;bool&gt; ShouldUseParallelCursors(class System.Func`2&lt;int32, bool&gt; predicate) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.ShouldUseParallelCursors(System.Func{System.Int32,System.Boolean})" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides NotOverridable Function ShouldUseParallelCursors (predicate As Func(Of Integer, Boolean)) As Nullable(Of Boolean)" />
+      <MemberSignature Language="F#" Value="override this.ShouldUseParallelCursors : Func&lt;int, bool&gt; -&gt; Nullable&lt;bool&gt;" Usage="oneToOneTransformBase.ShouldUseParallelCursors predicate" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Nullable&lt;System.Boolean&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="predicate">To be added.</param>
+        <summary>
+            This produces either "true" or "null" according to whether <see cref="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.WantParallelCursors(System.Func{System.Int32,System.Boolean})" />
+            returns true or false. Note that this will never return false. Any derived class
+            must support (but not necessarily prefer) parallel cursors.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TestIsFloatItem">
+      <MemberSignature Language="C#" Value="protected static string TestIsFloatItem (Microsoft.ML.Runtime.Data.ColumnType type);" />
+      <MemberSignature Language="ILAsm" Value=".method familystatic hidebysig string TestIsFloatItem(class Microsoft.ML.Runtime.Data.ColumnType type) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.TestIsFloatItem(Microsoft.ML.Runtime.Data.ColumnType)" />
+      <MemberSignature Language="VB.NET" Value="Protected Shared Function TestIsFloatItem (type As ColumnType) As String" />
+      <MemberSignature Language="F#" Value="static member TestIsFloatItem : Microsoft.ML.Runtime.Data.ColumnType -&gt; string" Usage="Microsoft.ML.Runtime.Data.OneToOneTransformBase.TestIsFloatItem type" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="type" Type="Microsoft.ML.Runtime.Data.ColumnType" />
+      </Parameters>
+      <Docs>
+        <param name="type">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TestIsFloatVector">
+      <MemberSignature Language="C#" Value="protected static string TestIsFloatVector (Microsoft.ML.Runtime.Data.ColumnType type);" />
+      <MemberSignature Language="ILAsm" Value=".method familystatic hidebysig string TestIsFloatVector(class Microsoft.ML.Runtime.Data.ColumnType type) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.TestIsFloatVector(Microsoft.ML.Runtime.Data.ColumnType)" />
+      <MemberSignature Language="VB.NET" Value="Protected Shared Function TestIsFloatVector (type As ColumnType) As String" />
+      <MemberSignature Language="F#" Value="static member TestIsFloatVector : Microsoft.ML.Runtime.Data.ColumnType -&gt; string" Usage="Microsoft.ML.Runtime.Data.OneToOneTransformBase.TestIsFloatVector type" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="type" Type="Microsoft.ML.Runtime.Data.ColumnType" />
+      </Parameters>
+      <Docs>
+        <param name="type">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TestIsKey">
+      <MemberSignature Language="C#" Value="protected static string TestIsKey (Microsoft.ML.Runtime.Data.ColumnType type);" />
+      <MemberSignature Language="ILAsm" Value=".method familystatic hidebysig string TestIsKey(class Microsoft.ML.Runtime.Data.ColumnType type) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.TestIsKey(Microsoft.ML.Runtime.Data.ColumnType)" />
+      <MemberSignature Language="VB.NET" Value="Protected Shared Function TestIsKey (type As ColumnType) As String" />
+      <MemberSignature Language="F#" Value="static member TestIsKey : Microsoft.ML.Runtime.Data.ColumnType -&gt; string" Usage="Microsoft.ML.Runtime.Data.OneToOneTransformBase.TestIsKey type" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="type" Type="Microsoft.ML.Runtime.Data.ColumnType" />
+      </Parameters>
+      <Docs>
+        <param name="type">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TestIsKnownSizeFloatVector">
+      <MemberSignature Language="C#" Value="protected static string TestIsKnownSizeFloatVector (Microsoft.ML.Runtime.Data.ColumnType type);" />
+      <MemberSignature Language="ILAsm" Value=".method familystatic hidebysig string TestIsKnownSizeFloatVector(class Microsoft.ML.Runtime.Data.ColumnType type) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.TestIsKnownSizeFloatVector(Microsoft.ML.Runtime.Data.ColumnType)" />
+      <MemberSignature Language="VB.NET" Value="Protected Shared Function TestIsKnownSizeFloatVector (type As ColumnType) As String" />
+      <MemberSignature Language="F#" Value="static member TestIsKnownSizeFloatVector : Microsoft.ML.Runtime.Data.ColumnType -&gt; string" Usage="Microsoft.ML.Runtime.Data.OneToOneTransformBase.TestIsKnownSizeFloatVector type" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="type" Type="Microsoft.ML.Runtime.Data.ColumnType" />
+      </Parameters>
+      <Docs>
+        <param name="type">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TestIsText">
+      <MemberSignature Language="C#" Value="protected static string TestIsText (Microsoft.ML.Runtime.Data.ColumnType type);" />
+      <MemberSignature Language="ILAsm" Value=".method familystatic hidebysig string TestIsText(class Microsoft.ML.Runtime.Data.ColumnType type) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.TestIsText(Microsoft.ML.Runtime.Data.ColumnType)" />
+      <MemberSignature Language="VB.NET" Value="Protected Shared Function TestIsText (type As ColumnType) As String" />
+      <MemberSignature Language="F#" Value="static member TestIsText : Microsoft.ML.Runtime.Data.ColumnType -&gt; string" Usage="Microsoft.ML.Runtime.Data.OneToOneTransformBase.TestIsText type" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="type" Type="Microsoft.ML.Runtime.Data.ColumnType" />
+      </Parameters>
+      <Docs>
+        <param name="type">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TestIsTextItem">
+      <MemberSignature Language="C#" Value="protected static string TestIsTextItem (Microsoft.ML.Runtime.Data.ColumnType type);" />
+      <MemberSignature Language="ILAsm" Value=".method familystatic hidebysig string TestIsTextItem(class Microsoft.ML.Runtime.Data.ColumnType type) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.TestIsTextItem(Microsoft.ML.Runtime.Data.ColumnType)" />
+      <MemberSignature Language="VB.NET" Value="Protected Shared Function TestIsTextItem (type As ColumnType) As String" />
+      <MemberSignature Language="F#" Value="static member TestIsTextItem : Microsoft.ML.Runtime.Data.ColumnType -&gt; string" Usage="Microsoft.ML.Runtime.Data.OneToOneTransformBase.TestIsTextItem type" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="type" Type="Microsoft.ML.Runtime.Data.ColumnType" />
+      </Parameters>
+      <Docs>
+        <param name="type">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TestIsTextVector">
+      <MemberSignature Language="C#" Value="protected static string TestIsTextVector (Microsoft.ML.Runtime.Data.ColumnType type);" />
+      <MemberSignature Language="ILAsm" Value=".method familystatic hidebysig string TestIsTextVector(class Microsoft.ML.Runtime.Data.ColumnType type) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.TestIsTextVector(Microsoft.ML.Runtime.Data.ColumnType)" />
+      <MemberSignature Language="VB.NET" Value="Protected Shared Function TestIsTextVector (type As ColumnType) As String" />
+      <MemberSignature Language="F#" Value="static member TestIsTextVector : Microsoft.ML.Runtime.Data.ColumnType -&gt; string" Usage="Microsoft.ML.Runtime.Data.OneToOneTransformBase.TestIsTextVector type" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="type" Type="Microsoft.ML.Runtime.Data.ColumnType" />
+      </Parameters>
+      <Docs>
+        <param name="type">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TransposeSchema">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.ITransposeSchema TransposeSchema { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.Data.ITransposeSchema TransposeSchema" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.OneToOneTransformBase.TransposeSchema" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property TransposeSchema As ITransposeSchema" />
+      <MemberSignature Language="F#" Value="member this.TransposeSchema : Microsoft.ML.Runtime.Data.ITransposeSchema" Usage="Microsoft.ML.Runtime.Data.OneToOneTransformBase.TransposeSchema" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Runtime.Data.ITransposeDataView.TransposeSchema</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ITransposeSchema</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WantParallelCursors">
+      <MemberSignature Language="C#" Value="protected virtual bool WantParallelCursors (Func&lt;int,bool&gt; predicate);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool WantParallelCursors(class System.Func`2&lt;int32, bool&gt; predicate) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.OneToOneTransformBase.WantParallelCursors(System.Func{System.Int32,System.Boolean})" />
+      <MemberSignature Language="VB.NET" Value="Protected Overridable Function WantParallelCursors (predicate As Func(Of Integer, Boolean)) As Boolean" />
+      <MemberSignature Language="F#" Value="abstract member WantParallelCursors : Func&lt;int, bool&gt; -&gt; bool&#xA;override this.WantParallelCursors : Func&lt;int, bool&gt; -&gt; bool" Usage="oneToOneTransformBase.WantParallelCursors predicate" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="predicate">To be added.</param>
+        <summary>
+            This should return true iff parallel cursors are advantageous. The default implementation
+            returns true iff some columns added by this transform are active.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

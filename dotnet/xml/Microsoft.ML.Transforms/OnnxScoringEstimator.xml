@@ -1,6 +1,6 @@
 ﻿<Type Name="OnnxScoringEstimator" FullName="Microsoft.ML.Transforms.OnnxScoringEstimator">
-  <TypeSignature Language="C#" Value="public sealed class OnnxScoringEstimator : Microsoft.ML.Runtime.Data.TrivialEstimator&lt;Microsoft.ML.Transforms.OnnxTransform&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit OnnxScoringEstimator extends Microsoft.ML.Runtime.Data.TrivialEstimator`1&lt;class Microsoft.ML.Transforms.OnnxTransform&gt;" />
+  <TypeSignature Language="C#" Value="public sealed class OnnxScoringEstimator : Microsoft.ML.Data.TrivialEstimator&lt;Microsoft.ML.Transforms.OnnxTransform&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit OnnxScoringEstimator extends Microsoft.ML.Data.TrivialEstimator`1&lt;class Microsoft.ML.Transforms.OnnxTransform&gt;" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Transforms.OnnxScoringEstimator" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class OnnxScoringEstimator&#xA;Inherits TrivialEstimator(Of OnnxTransform)" />
   <TypeSignature Language="F#" Value="type OnnxScoringEstimator = class&#xA;    inherit TrivialEstimator&lt;OnnxTransform&gt;" />
@@ -10,29 +10,32 @@
   </AssemblyInfo>
   <Base>
     <BaseTypeName>Microsoft.ML.Runtime.Data.TrivialEstimator&lt;Microsoft.ML.Transforms.OnnxTransform&gt;</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Data.TrivialEstimator&lt;Microsoft.ML.Transforms.OnnxTransform&gt;</BaseTypeName>
     <BaseTypeArguments>
       <BaseTypeArgument TypeParamName="!0">Microsoft.ML.Transforms.OnnxTransform</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+            A class implementing the estimator interface of the OnnxTransform.
+            </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public OnnxScoringEstimator (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Transforms.OnnxTransform transformer);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Transforms.OnnxTransform transformer) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.OnnxScoringEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Transforms.OnnxTransform)" />
+      <MemberSignature Language="C#" Value="public OnnxScoringEstimator (Microsoft.ML.IHostEnvironment env, Microsoft.ML.Transforms.OnnxTransform transformer);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, class Microsoft.ML.Transforms.OnnxTransform transformer) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.OnnxScoringEstimator.#ctor(Microsoft.ML.IHostEnvironment,Microsoft.ML.Transforms.OnnxTransform)" />
       <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, transformer As OnnxTransform)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.OnnxScoringEstimator : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Transforms.OnnxTransform -&gt; Microsoft.ML.Transforms.OnnxScoringEstimator" Usage="new Microsoft.ML.Transforms.OnnxScoringEstimator (env, transformer)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.OnnxScoringEstimator : Microsoft.ML.IHostEnvironment * Microsoft.ML.Transforms.OnnxTransform -&gt; Microsoft.ML.Transforms.OnnxScoringEstimator" Usage="new Microsoft.ML.Transforms.OnnxScoringEstimator (env, transformer)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.OnnxTransform</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
         <Parameter Name="transformer" Type="Microsoft.ML.Transforms.OnnxTransform" />
       </Parameters>
       <Docs>
@@ -43,28 +46,65 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public OnnxScoringEstimator (Microsoft.ML.Runtime.IHostEnvironment env, string modelFile, string[] inputs, string[] outputs);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string modelFile, string[] inputs, string[] outputs) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.OnnxScoringEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String[],System.String[])" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, modelFile As String, inputs As String(), outputs As String())" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.OnnxScoringEstimator : Microsoft.ML.Runtime.IHostEnvironment * string * string[] * string[] -&gt; Microsoft.ML.Transforms.OnnxScoringEstimator" Usage="new Microsoft.ML.Transforms.OnnxScoringEstimator (env, modelFile, inputs, outputs)" />
+      <MemberSignature Language="C#" Value="public OnnxScoringEstimator (Microsoft.ML.IHostEnvironment env, string modelFile, Nullable&lt;int&gt; gpuDeviceId = null, bool fallbackToCpu = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, string modelFile, valuetype System.Nullable`1&lt;int32&gt; gpuDeviceId, bool fallbackToCpu) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.OnnxScoringEstimator.#ctor(Microsoft.ML.IHostEnvironment,System.String,System.Nullable{System.Int32},System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, modelFile As String, Optional gpuDeviceId As Nullable(Of Integer) = null, Optional fallbackToCpu As Boolean = false)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.OnnxScoringEstimator : Microsoft.ML.IHostEnvironment * string * Nullable&lt;int&gt; * bool -&gt; Microsoft.ML.Transforms.OnnxScoringEstimator" Usage="new Microsoft.ML.Transforms.OnnxScoringEstimator (env, modelFile, gpuDeviceId, fallbackToCpu)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.OnnxTransform</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
         <Parameter Name="modelFile" Type="System.String" />
-        <Parameter Name="inputs" Type="System.String[]" />
-        <Parameter Name="outputs" Type="System.String[]" />
+        <Parameter Name="gpuDeviceId" Type="System.Nullable&lt;System.Int32&gt;" />
+        <Parameter Name="fallbackToCpu" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="env">To be added.</param>
-        <param name="modelFile">To be added.</param>
-        <param name="inputs">To be added.</param>
-        <param name="outputs">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="env">The environment to use.</param>
+        <param name="modelFile">Model file path.</param>
+        <param name="gpuDeviceId">Optional GPU device ID to run execution on. Null for CPU.</param>
+        <param name="fallbackToCpu">If GPU error, raise exception or fallback to CPU.</param>
+        <summary>
+            Transform for scoring ONNX models. Input data column names/types must exactly match
+            all model input names. All possible output columns are generated, with names/types
+            specified by model.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public OnnxScoringEstimator (Microsoft.ML.IHostEnvironment env, string modelFile, string[] inputColumns, string[] outputColumns, Nullable&lt;int&gt; gpuDeviceId = null, bool fallbackToCpu = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, string modelFile, string[] inputColumns, string[] outputColumns, valuetype System.Nullable`1&lt;int32&gt; gpuDeviceId, bool fallbackToCpu) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.OnnxScoringEstimator.#ctor(Microsoft.ML.IHostEnvironment,System.String,System.String[],System.String[],System.Nullable{System.Int32},System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, modelFile As String, inputColumns As String(), outputColumns As String(), Optional gpuDeviceId As Nullable(Of Integer) = null, Optional fallbackToCpu As Boolean = false)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.OnnxScoringEstimator : Microsoft.ML.IHostEnvironment * string * string[] * string[] * Nullable&lt;int&gt; * bool -&gt; Microsoft.ML.Transforms.OnnxScoringEstimator" Usage="new Microsoft.ML.Transforms.OnnxScoringEstimator (env, modelFile, inputColumns, outputColumns, gpuDeviceId, fallbackToCpu)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.OnnxTransform</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
+        <Parameter Name="modelFile" Type="System.String" />
+        <Parameter Name="inputColumns" Type="System.String[]" />
+        <Parameter Name="outputColumns" Type="System.String[]" />
+        <Parameter Name="gpuDeviceId" Type="System.Nullable&lt;System.Int32&gt;" />
+        <Parameter Name="fallbackToCpu" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="env">The environment to use.</param>
+        <param name="modelFile">Model file path.</param>
+        <param name="inputColumns">The name of the input data columns. Must match model's input names.</param>
+        <param name="outputColumns">The output columns to generate. Names must match model specifications. Data types are inferred from model.</param>
+        <param name="gpuDeviceId">Optional GPU device ID to run execution on. Null for CPU.</param>
+        <param name="fallbackToCpu">If GPU error, raise exception or fallback to CPU.</param>
+        <summary>
+            Transform for scoring ONNX models. Input data column names/types must exactly match
+            all model input names. Only the output columns specified will be generated.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

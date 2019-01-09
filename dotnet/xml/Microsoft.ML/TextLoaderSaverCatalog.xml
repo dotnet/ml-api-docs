@@ -17,43 +17,233 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName="ReadFromTextFile">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.IDataView ReadFromTextFile (this Microsoft.ML.Runtime.DataOperations catalog, Microsoft.ML.Runtime.Data.TextLoader.Column[] columns, string path, Action&lt;Microsoft.ML.Runtime.Data.TextLoader.Arguments&gt; advancedSettings = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.IDataView ReadFromTextFile(class Microsoft.ML.Runtime.DataOperations catalog, class Microsoft.ML.Runtime.Data.TextLoader/Column[] columns, string path, class System.Action`1&lt;class Microsoft.ML.Runtime.Data.TextLoader/Arguments&gt; advancedSettings) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TextLoaderSaverCatalog.ReadFromTextFile(Microsoft.ML.Runtime.DataOperations,Microsoft.ML.Runtime.Data.TextLoader.Column[],System.String,System.Action{Microsoft.ML.Runtime.Data.TextLoader.Arguments})" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ReadFromTextFile (catalog As DataOperations, columns As TextLoader.Column(), path As String, Optional advancedSettings As Action(Of TextLoader.Arguments) = null) As IDataView" />
-      <MemberSignature Language="F#" Value="static member ReadFromTextFile : Microsoft.ML.Runtime.DataOperations * Microsoft.ML.Runtime.Data.TextLoader.Column[] * string * Action&lt;Microsoft.ML.Runtime.Data.TextLoader.Arguments&gt; -&gt; Microsoft.ML.Runtime.Data.IDataView" Usage="Microsoft.ML.TextLoaderSaverCatalog.ReadFromTextFile (catalog, columns, path, advancedSettings)" />
+    <Member MemberName="CreateTextReader">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.TextLoader CreateTextReader (this Microsoft.ML.DataOperations catalog, Microsoft.ML.Data.TextLoader.Arguments args, Microsoft.ML.Data.IMultiStreamSource dataSample = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.TextLoader CreateTextReader(class Microsoft.ML.DataOperations catalog, class Microsoft.ML.Data.TextLoader/Arguments args, class Microsoft.ML.Data.IMultiStreamSource dataSample) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TextLoaderSaverCatalog.CreateTextReader(Microsoft.ML.DataOperations,Microsoft.ML.Data.TextLoader.Arguments,Microsoft.ML.Data.IMultiStreamSource)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function CreateTextReader (catalog As DataOperations, args As TextLoader.Arguments, Optional dataSample As IMultiStreamSource = null) As TextLoader" />
+      <MemberSignature Language="F#" Value="static member CreateTextReader : Microsoft.ML.DataOperations * Microsoft.ML.Data.TextLoader.Arguments * Microsoft.ML.Data.IMultiStreamSource -&gt; Microsoft.ML.Data.TextLoader" Usage="Microsoft.ML.TextLoaderSaverCatalog.CreateTextReader (catalog, args, dataSample)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.IDataView</ReturnType>
+        <ReturnType>Microsoft.ML.Data.TextLoader</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="catalog" Type="Microsoft.ML.Runtime.DataOperations" RefType="this" />
-        <Parameter Name="columns" Type="Microsoft.ML.Runtime.Data.TextLoader+Column[]" />
-        <Parameter Name="path" Type="System.String" />
-        <Parameter Name="advancedSettings" Type="System.Action&lt;Microsoft.ML.Runtime.Data.TextLoader+Arguments&gt;" />
+        <Parameter Name="catalog" Type="Microsoft.ML.DataOperations" RefType="this" />
+        <Parameter Name="args" Type="Microsoft.ML.Data.TextLoader+Arguments" />
+        <Parameter Name="dataSample" Type="Microsoft.ML.Data.IMultiStreamSource" />
       </Parameters>
       <Docs>
-        <param name="catalog">The catalog.</param>
-        <param name="columns">The columns of the schema.</param>
-        <param name="path">The path to the file</param>
-        <param name="advancedSettings">The delegate to set additional settings</param>
+        <param name="catalog">The <see cref="T:Microsoft.ML.DataOperations" /> catalog.</param>
+        <param name="args">Defines the settings of the load operation.</param>
+        <param name="dataSample">Allows to expose items that can be used for reading.</param>
         <summary>
-            Read a data view from a text file using <see cref="T:Microsoft.ML.Runtime.Data.TextLoader" />.
+            Create a text reader <see cref="T:Microsoft.ML.Data.TextLoader" />.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateTextReader">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.TextLoader CreateTextReader (this Microsoft.ML.DataOperations catalog, Microsoft.ML.Data.TextLoader.Column[] columns, bool hasHeader = false, char separatorChar = '\t', Microsoft.ML.Data.IMultiStreamSource dataSample = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.TextLoader CreateTextReader(class Microsoft.ML.DataOperations catalog, class Microsoft.ML.Data.TextLoader/Column[] columns, bool hasHeader, char separatorChar, class Microsoft.ML.Data.IMultiStreamSource dataSample) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TextLoaderSaverCatalog.CreateTextReader(Microsoft.ML.DataOperations,Microsoft.ML.Data.TextLoader.Column[],System.Boolean,System.Char,Microsoft.ML.Data.IMultiStreamSource)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function CreateTextReader (catalog As DataOperations, columns As TextLoader.Column(), Optional hasHeader As Boolean = false, Optional separatorChar As Char = '\t', Optional dataSample As IMultiStreamSource = null) As TextLoader" />
+      <MemberSignature Language="F#" Value="static member CreateTextReader : Microsoft.ML.DataOperations * Microsoft.ML.Data.TextLoader.Column[] * bool * char * Microsoft.ML.Data.IMultiStreamSource -&gt; Microsoft.ML.Data.TextLoader" Usage="Microsoft.ML.TextLoaderSaverCatalog.CreateTextReader (catalog, columns, hasHeader, separatorChar, dataSample)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.TextLoader</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="catalog" Type="Microsoft.ML.DataOperations" RefType="this" />
+        <Parameter Name="columns" Type="Microsoft.ML.Data.TextLoader+Column[]" />
+        <Parameter Name="hasHeader" Type="System.Boolean" />
+        <Parameter Name="separatorChar" Type="System.Char" />
+        <Parameter Name="dataSample" Type="Microsoft.ML.Data.IMultiStreamSource" />
+      </Parameters>
+      <Docs>
+        <param name="catalog">The <see cref="T:Microsoft.ML.DataOperations" /> catalog.</param>
+        <param name="columns">The columns of the schema.</param>
+        <param name="hasHeader">Whether the file has a header.</param>
+        <param name="separatorChar">The character used as separator between data points in a row. By default the tab character is used as separator.</param>
+        <param name="dataSample">The optional location of a data sample.</param>
+        <summary>
+            Create a text reader <see cref="T:Microsoft.ML.Data.TextLoader" />.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateTextReader&lt;TInput&gt;">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.TextLoader CreateTextReader&lt;TInput&gt; (this Microsoft.ML.DataOperations catalog, bool hasHeader = false, char separatorChar = '\t', bool allowQuotedStrings = true, bool supportSparse = true, bool trimWhitespace = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.TextLoader CreateTextReader&lt;TInput&gt;(class Microsoft.ML.DataOperations catalog, bool hasHeader, char separatorChar, bool allowQuotedStrings, bool supportSparse, bool trimWhitespace) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TextLoaderSaverCatalog.CreateTextReader``1(Microsoft.ML.DataOperations,System.Boolean,System.Char,System.Boolean,System.Boolean,System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function CreateTextReader(Of TInput) (catalog As DataOperations, Optional hasHeader As Boolean = false, Optional separatorChar As Char = '\t', Optional allowQuotedStrings As Boolean = true, Optional supportSparse As Boolean = true, Optional trimWhitespace As Boolean = false) As TextLoader" />
+      <MemberSignature Language="F#" Value="static member CreateTextReader : Microsoft.ML.DataOperations * bool * char * bool * bool * bool -&gt; Microsoft.ML.Data.TextLoader" Usage="Microsoft.ML.TextLoaderSaverCatalog.CreateTextReader (catalog, hasHeader, separatorChar, allowQuotedStrings, supportSparse, trimWhitespace)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.TextLoader</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TInput" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="catalog" Type="Microsoft.ML.DataOperations" RefType="this" />
+        <Parameter Name="hasHeader" Type="System.Boolean" />
+        <Parameter Name="separatorChar" Type="System.Char" />
+        <Parameter Name="allowQuotedStrings" Type="System.Boolean" />
+        <Parameter Name="supportSparse" Type="System.Boolean" />
+        <Parameter Name="trimWhitespace" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TInput">To be added.</typeparam>
+        <param name="catalog">The <see cref="T:Microsoft.ML.DataOperations" /> catalog.</param>
+        <param name="hasHeader">Does the file contains header?</param>
+        <param name="separatorChar">Column separator character. Default is '\t'</param>
+        <param name="allowQuotedStrings">Whether the input may include quoted values,
+            which can contain separator characters, colons,
+            and distinguish empty values from missing values. When true, consecutive separators
+            denote a missing value and an empty value is denoted by \"\".
+            When false, consecutive separators denote an empty value.</param>
+        <param name="supportSparse">Whether the input may include sparse representations for example,
+            if one of the row contains "5 2:6 4:3" that's mean there are 5 columns all zero
+            except for 3rd and 5th columns which have values 6 and 3</param>
+        <param name="trimWhitespace">Remove trailing whitespace from lines</param>
+        <summary>
+            Create a text reader <see cref="T:Microsoft.ML.Data.TextLoader" /> by inferencing the dataset schema from a data model type.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReadFromTextFile">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.IDataView ReadFromTextFile (this Microsoft.ML.DataOperations catalog, string path, Microsoft.ML.Data.TextLoader.Arguments args = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.IDataView ReadFromTextFile(class Microsoft.ML.DataOperations catalog, string path, class Microsoft.ML.Data.TextLoader/Arguments args) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TextLoaderSaverCatalog.ReadFromTextFile(Microsoft.ML.DataOperations,System.String,Microsoft.ML.Data.TextLoader.Arguments)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ReadFromTextFile (catalog As DataOperations, path As String, Optional args As TextLoader.Arguments = null) As IDataView" />
+      <MemberSignature Language="F#" Value="static member ReadFromTextFile : Microsoft.ML.DataOperations * string * Microsoft.ML.Data.TextLoader.Arguments -&gt; Microsoft.ML.Data.IDataView" Usage="Microsoft.ML.TextLoaderSaverCatalog.ReadFromTextFile (catalog, path, args)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.IDataView</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="catalog" Type="Microsoft.ML.DataOperations" RefType="this" />
+        <Parameter Name="path" Type="System.String" />
+        <Parameter Name="args" Type="Microsoft.ML.Data.TextLoader+Arguments" />
+      </Parameters>
+      <Docs>
+        <param name="catalog">The <see cref="T:Microsoft.ML.DataOperations" /> catalog.</param>
+        <param name="path">Specifies a file from which to read.</param>
+        <param name="args">Defines the settings of the load operation.</param>
+        <summary>
+            Read a data view from a text file using <see cref="T:Microsoft.ML.Data.TextLoader" />.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReadFromTextFile">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.IDataView ReadFromTextFile (this Microsoft.ML.DataOperations catalog, string path, Microsoft.ML.Data.TextLoader.Column[] columns, bool hasHeader = false, char separatorChar = '\t');" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.IDataView ReadFromTextFile(class Microsoft.ML.DataOperations catalog, string path, class Microsoft.ML.Data.TextLoader/Column[] columns, bool hasHeader, char separatorChar) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TextLoaderSaverCatalog.ReadFromTextFile(Microsoft.ML.DataOperations,System.String,Microsoft.ML.Data.TextLoader.Column[],System.Boolean,System.Char)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ReadFromTextFile (catalog As DataOperations, path As String, columns As TextLoader.Column(), Optional hasHeader As Boolean = false, Optional separatorChar As Char = '\t') As IDataView" />
+      <MemberSignature Language="F#" Value="static member ReadFromTextFile : Microsoft.ML.DataOperations * string * Microsoft.ML.Data.TextLoader.Column[] * bool * char -&gt; Microsoft.ML.Data.IDataView" Usage="Microsoft.ML.TextLoaderSaverCatalog.ReadFromTextFile (catalog, path, columns, hasHeader, separatorChar)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.IDataView</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="catalog" Type="Microsoft.ML.DataOperations" RefType="this" />
+        <Parameter Name="path" Type="System.String" />
+        <Parameter Name="columns" Type="Microsoft.ML.Data.TextLoader+Column[]" />
+        <Parameter Name="hasHeader" Type="System.Boolean" />
+        <Parameter Name="separatorChar" Type="System.Char" />
+      </Parameters>
+      <Docs>
+        <param name="catalog">The <see cref="T:Microsoft.ML.DataOperations" /> catalog.</param>
+        <param name="path">The path to the file.</param>
+        <param name="columns">The columns of the schema.</param>
+        <param name="hasHeader">Whether the file has a header.</param>
+        <param name="separatorChar">The character used as separator between data points in a row. By default the tab character is used as separator.</param>
+        <summary>
+            Read a data view from a text file using <see cref="T:Microsoft.ML.Data.TextLoader" />.
+            </summary>
+        <returns>The data view.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReadFromTextFile&lt;TInput&gt;">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.IDataView ReadFromTextFile&lt;TInput&gt; (this Microsoft.ML.DataOperations catalog, string path, bool hasHeader = false, char separatorChar = '\t', bool allowQuotedStrings = true, bool supportSparse = true, bool trimWhitespace = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.IDataView ReadFromTextFile&lt;TInput&gt;(class Microsoft.ML.DataOperations catalog, string path, bool hasHeader, char separatorChar, bool allowQuotedStrings, bool supportSparse, bool trimWhitespace) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TextLoaderSaverCatalog.ReadFromTextFile``1(Microsoft.ML.DataOperations,System.String,System.Boolean,System.Char,System.Boolean,System.Boolean,System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ReadFromTextFile(Of TInput) (catalog As DataOperations, path As String, Optional hasHeader As Boolean = false, Optional separatorChar As Char = '\t', Optional allowQuotedStrings As Boolean = true, Optional supportSparse As Boolean = true, Optional trimWhitespace As Boolean = false) As IDataView" />
+      <MemberSignature Language="F#" Value="static member ReadFromTextFile : Microsoft.ML.DataOperations * string * bool * char * bool * bool * bool -&gt; Microsoft.ML.Data.IDataView" Usage="Microsoft.ML.TextLoaderSaverCatalog.ReadFromTextFile (catalog, path, hasHeader, separatorChar, allowQuotedStrings, supportSparse, trimWhitespace)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.IDataView</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TInput" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="catalog" Type="Microsoft.ML.DataOperations" RefType="this" />
+        <Parameter Name="path" Type="System.String" />
+        <Parameter Name="hasHeader" Type="System.Boolean" />
+        <Parameter Name="separatorChar" Type="System.Char" />
+        <Parameter Name="allowQuotedStrings" Type="System.Boolean" />
+        <Parameter Name="supportSparse" Type="System.Boolean" />
+        <Parameter Name="trimWhitespace" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TInput">To be added.</typeparam>
+        <param name="catalog">The <see cref="T:Microsoft.ML.DataOperations" /> catalog.</param>
+        <param name="path">The path to the file.</param>
+        <param name="hasHeader">Does the file contains header?</param>
+        <param name="separatorChar">Column separator character. Default is '\t'</param>
+        <param name="allowQuotedStrings">Whether the input may include quoted values,
+            which can contain separator characters, colons,
+            and distinguish empty values from missing values. When true, consecutive separators
+            denote a missing value and an empty value is denoted by \"\".
+            When false, consecutive separators denote an empty value.</param>
+        <param name="supportSparse">Whether the input may include sparse representations for example,
+            if one of the row contains "5 2:6 4:3" that's mean there are 5 columns all zero
+            except for 3rd and 5th columns which have values 6 and 3</param>
+        <param name="trimWhitespace">Remove trailing whitespace from lines</param>
+        <summary>
+            Read a data view from a text file using <see cref="T:Microsoft.ML.Data.TextLoader" />.
             </summary>
         <returns>The data view.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="SaveAsText">
-      <MemberSignature Language="C#" Value="public static void SaveAsText (this Microsoft.ML.Runtime.DataOperations catalog, Microsoft.ML.Runtime.Data.IDataView data, System.IO.Stream stream, char separator = '\t', bool headerRow = true, bool schema = true, bool keepHidden = false);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SaveAsText(class Microsoft.ML.Runtime.DataOperations catalog, class Microsoft.ML.Runtime.Data.IDataView data, class System.IO.Stream stream, char separator, bool headerRow, bool schema, bool keepHidden) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TextLoaderSaverCatalog.SaveAsText(Microsoft.ML.Runtime.DataOperations,Microsoft.ML.Runtime.Data.IDataView,System.IO.Stream,System.Char,System.Boolean,System.Boolean,System.Boolean)" />
-      <MemberSignature Language="F#" Value="static member SaveAsText : Microsoft.ML.Runtime.DataOperations * Microsoft.ML.Runtime.Data.IDataView * System.IO.Stream * char * bool * bool * bool -&gt; unit" Usage="Microsoft.ML.TextLoaderSaverCatalog.SaveAsText (catalog, data, stream, separator, headerRow, schema, keepHidden)" />
+      <MemberSignature Language="C#" Value="public static void SaveAsText (this Microsoft.ML.DataOperations catalog, Microsoft.ML.Data.IDataView data, System.IO.Stream stream, char separatorChar = '\t', bool headerRow = false, bool schema = true, bool keepHidden = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SaveAsText(class Microsoft.ML.DataOperations catalog, class Microsoft.ML.Data.IDataView data, class System.IO.Stream stream, char separatorChar, bool headerRow, bool schema, bool keepHidden) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TextLoaderSaverCatalog.SaveAsText(Microsoft.ML.DataOperations,Microsoft.ML.Data.IDataView,System.IO.Stream,System.Char,System.Boolean,System.Boolean,System.Boolean)" />
+      <MemberSignature Language="F#" Value="static member SaveAsText : Microsoft.ML.DataOperations * Microsoft.ML.Data.IDataView * System.IO.Stream * char * bool * bool * bool -&gt; unit" Usage="Microsoft.ML.TextLoaderSaverCatalog.SaveAsText (catalog, data, stream, separatorChar, headerRow, schema, keepHidden)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -63,87 +253,25 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="catalog" Type="Microsoft.ML.Runtime.DataOperations" RefType="this" />
-        <Parameter Name="data" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="catalog" Type="Microsoft.ML.DataOperations" RefType="this" />
+        <Parameter Name="data" Type="Microsoft.ML.Data.IDataView" />
         <Parameter Name="stream" Type="System.IO.Stream" />
-        <Parameter Name="separator" Type="System.Char" />
+        <Parameter Name="separatorChar" Type="System.Char" />
         <Parameter Name="headerRow" Type="System.Boolean" />
         <Parameter Name="schema" Type="System.Boolean" />
         <Parameter Name="keepHidden" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="catalog">The catalog.</param>
+        <param name="catalog">The <see cref="T:Microsoft.ML.DataOperations" /> catalog.</param>
         <param name="data">The data view to save.</param>
         <param name="stream">The stream to write to.</param>
-        <param name="separator">The column separator.</param>
+        <param name="separatorChar">The column separator.</param>
         <param name="headerRow">Whether to write the header row.</param>
         <param name="schema">Whether to write the header comment with the schema.</param>
         <param name="keepHidden">Whether to keep hidden columns in the dataset.</param>
         <summary>
             Save the data view as text.
             </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="TextReader">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.TextLoader TextReader (this Microsoft.ML.Runtime.DataOperations catalog, Microsoft.ML.Runtime.Data.TextLoader.Arguments args, Microsoft.ML.Runtime.Data.IMultiStreamSource dataSample = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.TextLoader TextReader(class Microsoft.ML.Runtime.DataOperations catalog, class Microsoft.ML.Runtime.Data.TextLoader/Arguments args, class Microsoft.ML.Runtime.Data.IMultiStreamSource dataSample) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TextLoaderSaverCatalog.TextReader(Microsoft.ML.Runtime.DataOperations,Microsoft.ML.Runtime.Data.TextLoader.Arguments,Microsoft.ML.Runtime.Data.IMultiStreamSource)" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function TextReader (catalog As DataOperations, args As TextLoader.Arguments, Optional dataSample As IMultiStreamSource = null) As TextLoader" />
-      <MemberSignature Language="F#" Value="static member TextReader : Microsoft.ML.Runtime.DataOperations * Microsoft.ML.Runtime.Data.TextLoader.Arguments * Microsoft.ML.Runtime.Data.IMultiStreamSource -&gt; Microsoft.ML.Runtime.Data.TextLoader" Usage="Microsoft.ML.TextLoaderSaverCatalog.TextReader (catalog, args, dataSample)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.TextLoader</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="catalog" Type="Microsoft.ML.Runtime.DataOperations" RefType="this" />
-        <Parameter Name="args" Type="Microsoft.ML.Runtime.Data.TextLoader+Arguments" />
-        <Parameter Name="dataSample" Type="Microsoft.ML.Runtime.Data.IMultiStreamSource" />
-      </Parameters>
-      <Docs>
-        <param name="catalog">The catalog.</param>
-        <param name="args">The arguments to text reader, describing the data schema.</param>
-        <param name="dataSample">The optional location of a data sample.</param>
-        <summary>
-            Create a text reader.
-            </summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="TextReader">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.Data.TextLoader TextReader (this Microsoft.ML.Runtime.DataOperations catalog, Microsoft.ML.Runtime.Data.TextLoader.Column[] columns, Action&lt;Microsoft.ML.Runtime.Data.TextLoader.Arguments&gt; advancedSettings = null, Microsoft.ML.Runtime.Data.IMultiStreamSource dataSample = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.Data.TextLoader TextReader(class Microsoft.ML.Runtime.DataOperations catalog, class Microsoft.ML.Runtime.Data.TextLoader/Column[] columns, class System.Action`1&lt;class Microsoft.ML.Runtime.Data.TextLoader/Arguments&gt; advancedSettings, class Microsoft.ML.Runtime.Data.IMultiStreamSource dataSample) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TextLoaderSaverCatalog.TextReader(Microsoft.ML.Runtime.DataOperations,Microsoft.ML.Runtime.Data.TextLoader.Column[],System.Action{Microsoft.ML.Runtime.Data.TextLoader.Arguments},Microsoft.ML.Runtime.Data.IMultiStreamSource)" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function TextReader (catalog As DataOperations, columns As TextLoader.Column(), Optional advancedSettings As Action(Of TextLoader.Arguments) = null, Optional dataSample As IMultiStreamSource = null) As TextLoader" />
-      <MemberSignature Language="F#" Value="static member TextReader : Microsoft.ML.Runtime.DataOperations * Microsoft.ML.Runtime.Data.TextLoader.Column[] * Action&lt;Microsoft.ML.Runtime.Data.TextLoader.Arguments&gt; * Microsoft.ML.Runtime.Data.IMultiStreamSource -&gt; Microsoft.ML.Runtime.Data.TextLoader" Usage="Microsoft.ML.TextLoaderSaverCatalog.TextReader (catalog, columns, advancedSettings, dataSample)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.TextLoader</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="catalog" Type="Microsoft.ML.Runtime.DataOperations" RefType="this" />
-        <Parameter Name="columns" Type="Microsoft.ML.Runtime.Data.TextLoader+Column[]" />
-        <Parameter Name="advancedSettings" Type="System.Action&lt;Microsoft.ML.Runtime.Data.TextLoader+Arguments&gt;" />
-        <Parameter Name="dataSample" Type="Microsoft.ML.Runtime.Data.IMultiStreamSource" />
-      </Parameters>
-      <Docs>
-        <param name="catalog">The catalog.</param>
-        <param name="columns">The columns of the schema.</param>
-        <param name="advancedSettings">The delegate to set additional settings.</param>
-        <param name="dataSample">The optional location of a data sample.</param>
-        <summary>
-            Create a text reader.
-            </summary>
-        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

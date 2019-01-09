@@ -1,0 +1,317 @@
+<Type Name="MutualInformationFeatureSelectorExtensions" FullName="Microsoft.ML.StaticPipe.MutualInformationFeatureSelectorExtensions">
+  <TypeSignature Language="C#" Value="public static class MutualInformationFeatureSelectorExtensions" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit MutualInformationFeatureSelectorExtensions extends System.Object" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.StaticPipe.MutualInformationFeatureSelectorExtensions" />
+  <TypeSignature Language="VB.NET" Value="Public Module MutualInformationFeatureSelectorExtensions" />
+  <TypeSignature Language="F#" Value="type MutualInformationFeatureSelectorExtensions = class" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+            Extensions for statically typed <see cref="T:Microsoft.ML.StaticPipe.MutualInformationFeatureSelectorExtensions" />.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="SelectFeaturesBasedOnMutualInformation">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.Vector&lt;bool&gt; SelectFeaturesBasedOnMutualInformation (this Microsoft.ML.StaticPipe.Vector&lt;bool&gt; input, Microsoft.ML.StaticPipe.Scalar&lt;bool&gt; labelColumn, int slotsInOutput = 1000, int numBins = 256);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.Vector`1&lt;bool&gt; SelectFeaturesBasedOnMutualInformation(class Microsoft.ML.StaticPipe.Vector`1&lt;bool&gt; input, class Microsoft.ML.StaticPipe.Scalar`1&lt;bool&gt; labelColumn, int32 slotsInOutput, int32 numBins) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.MutualInformationFeatureSelectorExtensions.SelectFeaturesBasedOnMutualInformation(Microsoft.ML.StaticPipe.Vector{System.Boolean},Microsoft.ML.StaticPipe.Scalar{System.Boolean},System.Int32,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function SelectFeaturesBasedOnMutualInformation (input As Vector(Of Boolean), labelColumn As Scalar(Of Boolean), Optional slotsInOutput As Integer = 1000, Optional numBins As Integer = 256) As Vector(Of Boolean)" />
+      <MemberSignature Language="F#" Value="static member SelectFeaturesBasedOnMutualInformation : Microsoft.ML.StaticPipe.Vector&lt;bool&gt; * Microsoft.ML.StaticPipe.Scalar&lt;bool&gt; * int * int -&gt; Microsoft.ML.StaticPipe.Vector&lt;bool&gt;" Usage="Microsoft.ML.StaticPipe.MutualInformationFeatureSelectorExtensions.SelectFeaturesBasedOnMutualInformation (input, labelColumn, slotsInOutput, numBins)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.StaticPipe.Vector&lt;System.Boolean&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.StaticPipe.Vector&lt;System.Boolean&gt;" RefType="this" />
+        <Parameter Name="labelColumn" Type="Microsoft.ML.StaticPipe.Scalar&lt;System.Boolean&gt;" />
+        <Parameter Name="slotsInOutput" Type="System.Int32" />
+        <Parameter Name="numBins" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="input">Name of the input column.</param>
+        <param name="labelColumn">Name of the column to use for labels.</param>
+        <param name="slotsInOutput">The maximum number of slots to preserve in the output. The number of slots to preserve is taken across all input columns.</param>
+        <param name="numBins">Max number of bins used to approximate mutual information between each input column and the label column. Power of 2 recommended.</param>
+        <summary>
+        Selects the top k slots across all specified columns ordered by their mutual information with the label column.
+      </summary>
+        <returns>To be added.</returns>
+        <remarks>
+          <para>
+          The mutual information of two random variables X and Y is a measure of the mutual dependence between the variables.
+          Formally, the mutual information can be written as:
+        </para>
+          <para>I(X;Y) = E[log(p(x,y)) - log(p(x)) - log(p(y))]</para>
+          <para>where the expectation is taken over the joint distribution of X and Y. 
+        Here p(x,y) is the joint probability density function of X and Y, p(x) and p(y) are the marginal probability density functions of X and Y respectively. 
+        In general, a higher mutual information between the dependent variable (or label) and an independent variable (or feature) means 
+        that the label has higher mutual dependence over that feature.
+        It keeps the top SlotsInOutput features with the largest mutual information with the label.
+        </para>
+        </remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[SelectFeaturesBasedOnMutualInformation](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Static/FeatureSelectionTransform.cs?range=1-5,9-120)]
+            ]]></format>
+        </example>
+      </Docs>
+    </Member>
+    <Member MemberName="SelectFeaturesBasedOnMutualInformation">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.Vector&lt;bool&gt; SelectFeaturesBasedOnMutualInformation (this Microsoft.ML.StaticPipe.Vector&lt;bool&gt; input, Microsoft.ML.StaticPipe.Scalar&lt;float&gt; labelColumn, int slotsInOutput = 1000, int numBins = 256);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.Vector`1&lt;bool&gt; SelectFeaturesBasedOnMutualInformation(class Microsoft.ML.StaticPipe.Vector`1&lt;bool&gt; input, class Microsoft.ML.StaticPipe.Scalar`1&lt;float32&gt; labelColumn, int32 slotsInOutput, int32 numBins) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.MutualInformationFeatureSelectorExtensions.SelectFeaturesBasedOnMutualInformation(Microsoft.ML.StaticPipe.Vector{System.Boolean},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Int32,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function SelectFeaturesBasedOnMutualInformation (input As Vector(Of Boolean), labelColumn As Scalar(Of Single), Optional slotsInOutput As Integer = 1000, Optional numBins As Integer = 256) As Vector(Of Boolean)" />
+      <MemberSignature Language="F#" Value="static member SelectFeaturesBasedOnMutualInformation : Microsoft.ML.StaticPipe.Vector&lt;bool&gt; * Microsoft.ML.StaticPipe.Scalar&lt;single&gt; * int * int -&gt; Microsoft.ML.StaticPipe.Vector&lt;bool&gt;" Usage="Microsoft.ML.StaticPipe.MutualInformationFeatureSelectorExtensions.SelectFeaturesBasedOnMutualInformation (input, labelColumn, slotsInOutput, numBins)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.StaticPipe.Vector&lt;System.Boolean&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.StaticPipe.Vector&lt;System.Boolean&gt;" RefType="this" />
+        <Parameter Name="labelColumn" Type="Microsoft.ML.StaticPipe.Scalar&lt;System.Single&gt;" />
+        <Parameter Name="slotsInOutput" Type="System.Int32" />
+        <Parameter Name="numBins" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="input">Name of the input column.</param>
+        <param name="labelColumn">Name of the column to use for labels.</param>
+        <param name="slotsInOutput">The maximum number of slots to preserve in the output. The number of slots to preserve is taken across all input columns.</param>
+        <param name="numBins">Max number of bins used to approximate mutual information between each input column and the label column. Power of 2 recommended.</param>
+        <summary>
+        Selects the top k slots across all specified columns ordered by their mutual information with the label column.
+      </summary>
+        <returns>To be added.</returns>
+        <remarks>
+          <para>
+          The mutual information of two random variables X and Y is a measure of the mutual dependence between the variables.
+          Formally, the mutual information can be written as:
+        </para>
+          <para>I(X;Y) = E[log(p(x,y)) - log(p(x)) - log(p(y))]</para>
+          <para>where the expectation is taken over the joint distribution of X and Y. 
+        Here p(x,y) is the joint probability density function of X and Y, p(x) and p(y) are the marginal probability density functions of X and Y respectively. 
+        In general, a higher mutual information between the dependent variable (or label) and an independent variable (or feature) means 
+        that the label has higher mutual dependence over that feature.
+        It keeps the top SlotsInOutput features with the largest mutual information with the label.
+        </para>
+        </remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[SelectFeaturesBasedOnMutualInformation](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Static/FeatureSelectionTransform.cs?range=1-5,9-120)]
+            ]]></format>
+        </example>
+      </Docs>
+    </Member>
+    <Member MemberName="SelectFeaturesBasedOnMutualInformation">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.Vector&lt;double&gt; SelectFeaturesBasedOnMutualInformation (this Microsoft.ML.StaticPipe.Vector&lt;double&gt; input, Microsoft.ML.StaticPipe.Scalar&lt;bool&gt; labelColumn, int slotsInOutput = 1000, int numBins = 256);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.Vector`1&lt;float64&gt; SelectFeaturesBasedOnMutualInformation(class Microsoft.ML.StaticPipe.Vector`1&lt;float64&gt; input, class Microsoft.ML.StaticPipe.Scalar`1&lt;bool&gt; labelColumn, int32 slotsInOutput, int32 numBins) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.MutualInformationFeatureSelectorExtensions.SelectFeaturesBasedOnMutualInformation(Microsoft.ML.StaticPipe.Vector{System.Double},Microsoft.ML.StaticPipe.Scalar{System.Boolean},System.Int32,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function SelectFeaturesBasedOnMutualInformation (input As Vector(Of Double), labelColumn As Scalar(Of Boolean), Optional slotsInOutput As Integer = 1000, Optional numBins As Integer = 256) As Vector(Of Double)" />
+      <MemberSignature Language="F#" Value="static member SelectFeaturesBasedOnMutualInformation : Microsoft.ML.StaticPipe.Vector&lt;double&gt; * Microsoft.ML.StaticPipe.Scalar&lt;bool&gt; * int * int -&gt; Microsoft.ML.StaticPipe.Vector&lt;double&gt;" Usage="Microsoft.ML.StaticPipe.MutualInformationFeatureSelectorExtensions.SelectFeaturesBasedOnMutualInformation (input, labelColumn, slotsInOutput, numBins)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.StaticPipe.Vector&lt;System.Double&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.StaticPipe.Vector&lt;System.Double&gt;" RefType="this" />
+        <Parameter Name="labelColumn" Type="Microsoft.ML.StaticPipe.Scalar&lt;System.Boolean&gt;" />
+        <Parameter Name="slotsInOutput" Type="System.Int32" />
+        <Parameter Name="numBins" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="input">Name of the input column.</param>
+        <param name="labelColumn">Name of the column to use for labels.</param>
+        <param name="slotsInOutput">The maximum number of slots to preserve in the output. The number of slots to preserve is taken across all input columns.</param>
+        <param name="numBins">Max number of bins used to approximate mutual information between each input column and the label column. Power of 2 recommended.</param>
+        <summary>
+        Selects the top k slots across all specified columns ordered by their mutual information with the label column.
+      </summary>
+        <returns>To be added.</returns>
+        <remarks>
+          <para>
+          The mutual information of two random variables X and Y is a measure of the mutual dependence between the variables.
+          Formally, the mutual information can be written as:
+        </para>
+          <para>I(X;Y) = E[log(p(x,y)) - log(p(x)) - log(p(y))]</para>
+          <para>where the expectation is taken over the joint distribution of X and Y. 
+        Here p(x,y) is the joint probability density function of X and Y, p(x) and p(y) are the marginal probability density functions of X and Y respectively. 
+        In general, a higher mutual information between the dependent variable (or label) and an independent variable (or feature) means 
+        that the label has higher mutual dependence over that feature.
+        It keeps the top SlotsInOutput features with the largest mutual information with the label.
+        </para>
+        </remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[SelectFeaturesBasedOnMutualInformation](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Static/FeatureSelectionTransform.cs?range=1-5,9-120)]
+            ]]></format>
+        </example>
+      </Docs>
+    </Member>
+    <Member MemberName="SelectFeaturesBasedOnMutualInformation">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.Vector&lt;double&gt; SelectFeaturesBasedOnMutualInformation (this Microsoft.ML.StaticPipe.Vector&lt;double&gt; input, Microsoft.ML.StaticPipe.Scalar&lt;float&gt; labelColumn, int slotsInOutput = 1000, int numBins = 256);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.Vector`1&lt;float64&gt; SelectFeaturesBasedOnMutualInformation(class Microsoft.ML.StaticPipe.Vector`1&lt;float64&gt; input, class Microsoft.ML.StaticPipe.Scalar`1&lt;float32&gt; labelColumn, int32 slotsInOutput, int32 numBins) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.MutualInformationFeatureSelectorExtensions.SelectFeaturesBasedOnMutualInformation(Microsoft.ML.StaticPipe.Vector{System.Double},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Int32,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function SelectFeaturesBasedOnMutualInformation (input As Vector(Of Double), labelColumn As Scalar(Of Single), Optional slotsInOutput As Integer = 1000, Optional numBins As Integer = 256) As Vector(Of Double)" />
+      <MemberSignature Language="F#" Value="static member SelectFeaturesBasedOnMutualInformation : Microsoft.ML.StaticPipe.Vector&lt;double&gt; * Microsoft.ML.StaticPipe.Scalar&lt;single&gt; * int * int -&gt; Microsoft.ML.StaticPipe.Vector&lt;double&gt;" Usage="Microsoft.ML.StaticPipe.MutualInformationFeatureSelectorExtensions.SelectFeaturesBasedOnMutualInformation (input, labelColumn, slotsInOutput, numBins)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.StaticPipe.Vector&lt;System.Double&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.StaticPipe.Vector&lt;System.Double&gt;" RefType="this" />
+        <Parameter Name="labelColumn" Type="Microsoft.ML.StaticPipe.Scalar&lt;System.Single&gt;" />
+        <Parameter Name="slotsInOutput" Type="System.Int32" />
+        <Parameter Name="numBins" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="input">Name of the input column.</param>
+        <param name="labelColumn">Name of the column to use for labels.</param>
+        <param name="slotsInOutput">The maximum number of slots to preserve in the output. The number of slots to preserve is taken across all input columns.</param>
+        <param name="numBins">Max number of bins used to approximate mutual information between each input column and the label column. Power of 2 recommended.</param>
+        <summary>
+        Selects the top k slots across all specified columns ordered by their mutual information with the label column.
+      </summary>
+        <returns>To be added.</returns>
+        <remarks>
+          <para>
+          The mutual information of two random variables X and Y is a measure of the mutual dependence between the variables.
+          Formally, the mutual information can be written as:
+        </para>
+          <para>I(X;Y) = E[log(p(x,y)) - log(p(x)) - log(p(y))]</para>
+          <para>where the expectation is taken over the joint distribution of X and Y. 
+        Here p(x,y) is the joint probability density function of X and Y, p(x) and p(y) are the marginal probability density functions of X and Y respectively. 
+        In general, a higher mutual information between the dependent variable (or label) and an independent variable (or feature) means 
+        that the label has higher mutual dependence over that feature.
+        It keeps the top SlotsInOutput features with the largest mutual information with the label.
+        </para>
+        </remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[SelectFeaturesBasedOnMutualInformation](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Static/FeatureSelectionTransform.cs?range=1-5,9-120)]
+            ]]></format>
+        </example>
+      </Docs>
+    </Member>
+    <Member MemberName="SelectFeaturesBasedOnMutualInformation">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.Vector&lt;float&gt; SelectFeaturesBasedOnMutualInformation (this Microsoft.ML.StaticPipe.Vector&lt;float&gt; input, Microsoft.ML.StaticPipe.Scalar&lt;bool&gt; labelColumn, int slotsInOutput = 1000, int numBins = 256);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.Vector`1&lt;float32&gt; SelectFeaturesBasedOnMutualInformation(class Microsoft.ML.StaticPipe.Vector`1&lt;float32&gt; input, class Microsoft.ML.StaticPipe.Scalar`1&lt;bool&gt; labelColumn, int32 slotsInOutput, int32 numBins) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.MutualInformationFeatureSelectorExtensions.SelectFeaturesBasedOnMutualInformation(Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Boolean},System.Int32,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function SelectFeaturesBasedOnMutualInformation (input As Vector(Of Single), labelColumn As Scalar(Of Boolean), Optional slotsInOutput As Integer = 1000, Optional numBins As Integer = 256) As Vector(Of Single)" />
+      <MemberSignature Language="F#" Value="static member SelectFeaturesBasedOnMutualInformation : Microsoft.ML.StaticPipe.Vector&lt;single&gt; * Microsoft.ML.StaticPipe.Scalar&lt;bool&gt; * int * int -&gt; Microsoft.ML.StaticPipe.Vector&lt;single&gt;" Usage="Microsoft.ML.StaticPipe.MutualInformationFeatureSelectorExtensions.SelectFeaturesBasedOnMutualInformation (input, labelColumn, slotsInOutput, numBins)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.StaticPipe.Vector&lt;System.Single&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.StaticPipe.Vector&lt;System.Single&gt;" RefType="this" />
+        <Parameter Name="labelColumn" Type="Microsoft.ML.StaticPipe.Scalar&lt;System.Boolean&gt;" />
+        <Parameter Name="slotsInOutput" Type="System.Int32" />
+        <Parameter Name="numBins" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="input">Name of the input column.</param>
+        <param name="labelColumn">Name of the column to use for labels.</param>
+        <param name="slotsInOutput">The maximum number of slots to preserve in the output. The number of slots to preserve is taken across all input columns.</param>
+        <param name="numBins">Max number of bins used to approximate mutual information between each input column and the label column. Power of 2 recommended.</param>
+        <summary>
+        Selects the top k slots across all specified columns ordered by their mutual information with the label column.
+      </summary>
+        <returns>To be added.</returns>
+        <remarks>
+          <para>
+          The mutual information of two random variables X and Y is a measure of the mutual dependence between the variables.
+          Formally, the mutual information can be written as:
+        </para>
+          <para>I(X;Y) = E[log(p(x,y)) - log(p(x)) - log(p(y))]</para>
+          <para>where the expectation is taken over the joint distribution of X and Y. 
+        Here p(x,y) is the joint probability density function of X and Y, p(x) and p(y) are the marginal probability density functions of X and Y respectively. 
+        In general, a higher mutual information between the dependent variable (or label) and an independent variable (or feature) means 
+        that the label has higher mutual dependence over that feature.
+        It keeps the top SlotsInOutput features with the largest mutual information with the label.
+        </para>
+        </remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[SelectFeaturesBasedOnMutualInformation](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Static/FeatureSelectionTransform.cs?range=1-5,9-120)]
+            ]]></format>
+        </example>
+      </Docs>
+    </Member>
+    <Member MemberName="SelectFeaturesBasedOnMutualInformation">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.Vector&lt;float&gt; SelectFeaturesBasedOnMutualInformation (this Microsoft.ML.StaticPipe.Vector&lt;float&gt; input, Microsoft.ML.StaticPipe.Scalar&lt;float&gt; labelColumn, int slotsInOutput = 1000, int numBins = 256);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.Vector`1&lt;float32&gt; SelectFeaturesBasedOnMutualInformation(class Microsoft.ML.StaticPipe.Vector`1&lt;float32&gt; input, class Microsoft.ML.StaticPipe.Scalar`1&lt;float32&gt; labelColumn, int32 slotsInOutput, int32 numBins) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.MutualInformationFeatureSelectorExtensions.SelectFeaturesBasedOnMutualInformation(Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Int32,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function SelectFeaturesBasedOnMutualInformation (input As Vector(Of Single), labelColumn As Scalar(Of Single), Optional slotsInOutput As Integer = 1000, Optional numBins As Integer = 256) As Vector(Of Single)" />
+      <MemberSignature Language="F#" Value="static member SelectFeaturesBasedOnMutualInformation : Microsoft.ML.StaticPipe.Vector&lt;single&gt; * Microsoft.ML.StaticPipe.Scalar&lt;single&gt; * int * int -&gt; Microsoft.ML.StaticPipe.Vector&lt;single&gt;" Usage="Microsoft.ML.StaticPipe.MutualInformationFeatureSelectorExtensions.SelectFeaturesBasedOnMutualInformation (input, labelColumn, slotsInOutput, numBins)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.StaticPipe.Vector&lt;System.Single&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.StaticPipe.Vector&lt;System.Single&gt;" RefType="this" />
+        <Parameter Name="labelColumn" Type="Microsoft.ML.StaticPipe.Scalar&lt;System.Single&gt;" />
+        <Parameter Name="slotsInOutput" Type="System.Int32" />
+        <Parameter Name="numBins" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="input">Name of the input column.</param>
+        <param name="labelColumn">Name of the column to use for labels.</param>
+        <param name="slotsInOutput">The maximum number of slots to preserve in the output. The number of slots to preserve is taken across all input columns.</param>
+        <param name="numBins">Max number of bins used to approximate mutual information between each input column and the label column. Power of 2 recommended.</param>
+        <summary>
+        Selects the top k slots across all specified columns ordered by their mutual information with the label column.
+      </summary>
+        <returns>To be added.</returns>
+        <remarks>
+          <para>
+          The mutual information of two random variables X and Y is a measure of the mutual dependence between the variables.
+          Formally, the mutual information can be written as:
+        </para>
+          <para>I(X;Y) = E[log(p(x,y)) - log(p(x)) - log(p(y))]</para>
+          <para>where the expectation is taken over the joint distribution of X and Y. 
+        Here p(x,y) is the joint probability density function of X and Y, p(x) and p(y) are the marginal probability density functions of X and Y respectively. 
+        In general, a higher mutual information between the dependent variable (or label) and an independent variable (or feature) means 
+        that the label has higher mutual dependence over that feature.
+        It keeps the top SlotsInOutput features with the largest mutual information with the label.
+        </para>
+        </remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[SelectFeaturesBasedOnMutualInformation](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Static/FeatureSelectionTransform.cs?range=1-5,9-120)]
+            ]]></format>
+        </example>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

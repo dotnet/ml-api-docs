@@ -1,0 +1,130 @@
+<Type Name="DataOperations" FullName="Microsoft.ML.Runtime.DataOperations">
+  <TypeSignature Language="C#" Value="public sealed class DataOperations" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit DataOperations extends System.Object" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.DataOperations" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class DataOperations" />
+  <TypeSignature Language="F#" Value="type DataOperations = class" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Data</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+            A catalog of operations over data that are not transformers or estimators.
+            This includes data readers, saving, caching, filtering etc.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Cache">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IDataView Cache (Microsoft.ML.Runtime.Data.IDataView input, params string[] columnsToPrefetch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Runtime.Data.IDataView Cache(class Microsoft.ML.Runtime.Data.IDataView input, string[] columnsToPrefetch) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.DataOperations.Cache(Microsoft.ML.Runtime.Data.IDataView,System.String[])" />
+      <MemberSignature Language="VB.NET" Value="Public Function Cache (input As IDataView, ParamArray columnsToPrefetch As String()) As IDataView" />
+      <MemberSignature Language="F#" Value="member this.Cache : Microsoft.ML.Runtime.Data.IDataView * string[] -&gt; Microsoft.ML.Runtime.Data.IDataView" Usage="dataOperations.Cache (input, columnsToPrefetch)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataView</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="columnsToPrefetch" Type="System.String[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="input">The data view to cache.</param>
+        <param name="columnsToPrefetch">The columns that must be cached whenever anything is cached. Empty array or null
+            is acceptable, it means that all columns are only cached at the first access.</param>
+        <summary>
+            Creates a lazy in-memory cache of <paramref name="input" />.
+            Caching happens per-column. A column is only cached when it is first accessed.
+            In addition, <paramref name="columnsToPrefetch" /> are considered 'always needed', so all of them
+            will be cached whenever any data is requested.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FilterByColumn">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IDataView FilterByColumn (Microsoft.ML.Runtime.Data.IDataView input, string columnName, double lowerBound = -∞, double upperBound = ∞);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Runtime.Data.IDataView FilterByColumn(class Microsoft.ML.Runtime.Data.IDataView input, string columnName, float64 lowerBound, float64 upperBound) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.DataOperations.FilterByColumn(Microsoft.ML.Runtime.Data.IDataView,System.String,System.Double,System.Double)" />
+      <MemberSignature Language="VB.NET" Value="Public Function FilterByColumn (input As IDataView, columnName As String, Optional lowerBound As Double = -∞, Optional upperBound As Double = ∞) As IDataView" />
+      <MemberSignature Language="F#" Value="member this.FilterByColumn : Microsoft.ML.Runtime.Data.IDataView * string * double * double -&gt; Microsoft.ML.Runtime.Data.IDataView" Usage="dataOperations.FilterByColumn (input, columnName, lowerBound, upperBound)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataView</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="columnName" Type="System.String" />
+        <Parameter Name="lowerBound" Type="System.Double" />
+        <Parameter Name="upperBound" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="input">The input data.</param>
+        <param name="columnName">The name of a column to use for filtering.</param>
+        <param name="lowerBound">The inclusive lower bound.</param>
+        <param name="upperBound">The exclusive upper bound.</param>
+        <summary>
+            Keep only those rows that satisfy the range condition: the value of column <paramref name="columnName" />
+            must be between <paramref name="lowerBound" /> and <paramref name="upperBound" />, inclusive.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FilterByKeyColumnFraction">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IDataView FilterByKeyColumnFraction (Microsoft.ML.Runtime.Data.IDataView input, string columnName, double lowerBound = 0, double upperBound = 1);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Runtime.Data.IDataView FilterByKeyColumnFraction(class Microsoft.ML.Runtime.Data.IDataView input, string columnName, float64 lowerBound, float64 upperBound) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.DataOperations.FilterByKeyColumnFraction(Microsoft.ML.Runtime.Data.IDataView,System.String,System.Double,System.Double)" />
+      <MemberSignature Language="VB.NET" Value="Public Function FilterByKeyColumnFraction (input As IDataView, columnName As String, Optional lowerBound As Double = 0, Optional upperBound As Double = 1) As IDataView" />
+      <MemberSignature Language="F#" Value="member this.FilterByKeyColumnFraction : Microsoft.ML.Runtime.Data.IDataView * string * double * double -&gt; Microsoft.ML.Runtime.Data.IDataView" Usage="dataOperations.FilterByKeyColumnFraction (input, columnName, lowerBound, upperBound)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataView</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="columnName" Type="System.String" />
+        <Parameter Name="lowerBound" Type="System.Double" />
+        <Parameter Name="upperBound" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="input">The input data.</param>
+        <param name="columnName">The name of a column to use for filtering.</param>
+        <param name="lowerBound">The inclusive lower bound.</param>
+        <param name="upperBound">The exclusive upper bound.</param>
+        <summary>
+            Keep only those rows that satisfy the range condition: the value of a key column <paramref name="columnName" />
+            (treated as a fraction of the entire key range) must be between <paramref name="lowerBound" /> and <paramref name="upperBound" />, inclusive.
+            This filtering is useful if the <paramref name="columnName" /> is a key column obtained by some 'stable randomization'
+            (for example, hashing).
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
