@@ -1,0 +1,982 @@
+<Type Name="LightGbmRegressor" FullName="Microsoft.ML.Legacy.Trainers.LightGbmRegressor">
+  <TypeSignature Language="C#" Value="public sealed class LightGbmRegressor : Microsoft.ML.Legacy.ILearningPipelineItem, Microsoft.ML.Runtime.EntryPoints.CommonInputs.ITrainerInputWithGroupId" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit LightGbmRegressor extends System.Object implements class Microsoft.ML.Legacy.ILearningPipelineItem, class Microsoft.ML.Runtime.EntryPoints.CommonInputs/ITrainerInput, class Microsoft.ML.Runtime.EntryPoints.CommonInputs/ITrainerInputWithGroupId, class Microsoft.ML.Runtime.EntryPoints.CommonInputs/ITrainerInputWithLabel, class Microsoft.ML.Runtime.EntryPoints.CommonInputs/ITrainerInputWithWeight" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Legacy.Trainers.LightGbmRegressor" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class LightGbmRegressor&#xA;Implements CommonInputs.ITrainerInputWithGroupId, ILearningPipelineItem" />
+  <TypeSignature Language="F#" Value="type LightGbmRegressor = class&#xA;    interface CommonInputs.ITrainerInputWithGroupId&#xA;    interface CommonInputs.ITrainerInputWithWeight&#xA;    interface CommonInputs.ITrainerInputWithLabel&#xA;    interface CommonInputs.ITrainerInput&#xA;    interface ILearningPipelineItem" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Legacy.ILearningPipelineItem</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.EntryPoints.CommonInputs+ITrainerInput</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.EntryPoints.CommonInputs+ITrainerInputWithGroupId</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.EntryPoints.CommonInputs+ITrainerInputWithLabel</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.EntryPoints.CommonInputs+ITrainerInputWithWeight</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Obsolete</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>
+        Trains a Light GBM Model.
+      </summary>
+    <remarks>
+        Light GBM is an open source implementation of boosted trees.
+        <a href="https://github.com/Microsoft/LightGBM/wiki">GitHub: LightGBM</a></remarks>
+    <example>
+      <code language="csharp">
+          new LightGbmRegressor
+          {
+            NumBoostRound = 100,
+            LearningRate = 0.5f,
+            NumLeaves = 32,
+            MinDataPerLeaf = 20,
+            Booster = new DartBoosterParameterFunction
+            {
+              XgboostDartMode = true,
+              UniformDrop = true
+            }
+          }
+        </code>
+    </example>
+    <example>
+      <code>
+            pipeline.Add(new LightGbmRegressor() { NumLeaves = 5, NumBoostRound = 5, MinDataPerLeaf = 2 })
+            </code>
+    </example>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public LightGbmRegressor ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.#ctor" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New ()" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ApplyStep">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Legacy.ILearningPipelineStep ApplyStep (Microsoft.ML.Legacy.ILearningPipelineStep previousStep, Microsoft.ML.Runtime.Experiment experiment);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Legacy.ILearningPipelineStep ApplyStep(class Microsoft.ML.Legacy.ILearningPipelineStep previousStep, class Microsoft.ML.Runtime.Experiment experiment) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.ApplyStep(Microsoft.ML.Legacy.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <MemberSignature Language="F#" Value="abstract member ApplyStep : Microsoft.ML.Legacy.ILearningPipelineStep * Microsoft.ML.Runtime.Experiment -&gt; Microsoft.ML.Legacy.ILearningPipelineStep&#xA;override this.ApplyStep : Microsoft.ML.Legacy.ILearningPipelineStep * Microsoft.ML.Runtime.Experiment -&gt; Microsoft.ML.Legacy.ILearningPipelineStep" Usage="lightGbmRegressor.ApplyStep (previousStep, experiment)" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Legacy.ILearningPipelineItem.ApplyStep(Microsoft.ML.Legacy.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Legacy.ILearningPipelineStep</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="previousStep" Type="Microsoft.ML.Legacy.ILearningPipelineStep" />
+        <Parameter Name="experiment" Type="Microsoft.ML.Runtime.Experiment" />
+      </Parameters>
+      <Docs>
+        <param name="previousStep">To be added.</param>
+        <param name="experiment">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BatchSize">
+      <MemberSignature Language="C#" Value="public int BatchSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 BatchSize" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.BatchSize" />
+      <MemberSignature Language="VB.NET" Value="Public Property BatchSize As Integer" />
+      <MemberSignature Language="F#" Value="member this.BatchSize : int with get, set" Usage="Microsoft.ML.Legacy.Trainers.LightGbmRegressor.BatchSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Number of entries in a batch when loading data.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Booster">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.BoosterParameterFunction Booster { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.BoosterParameterFunction Booster" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.Booster" />
+      <MemberSignature Language="VB.NET" Value="Public Property Booster As BoosterParameterFunction" />
+      <MemberSignature Language="F#" Value="member this.Booster : Microsoft.ML.Runtime.BoosterParameterFunction with get, set" Usage="Microsoft.ML.Legacy.Trainers.LightGbmRegressor.Booster" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Newtonsoft.Json.JsonConverter(typeof(Microsoft.ML.Runtime.ComponentSerializer))</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.BoosterParameterFunction</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Which booster to use, can be gbtree, gblinear or dart. gbtree and dart use tree based model while gblinear uses linear function.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Caching">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Legacy.Models.CachingOptions Caching { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.ML.Legacy.Models.CachingOptions Caching" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.Caching" />
+      <MemberSignature Language="VB.NET" Value="Public Property Caching As CachingOptions" />
+      <MemberSignature Language="F#" Value="member this.Caching : Microsoft.ML.Legacy.Models.CachingOptions with get, set" Usage="Microsoft.ML.Legacy.Trainers.LightGbmRegressor.Caching" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Legacy.Models.CachingOptions</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Whether learner should cache input training data
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CatL2">
+      <MemberSignature Language="C#" Value="public double CatL2 { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 CatL2" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.CatL2" />
+      <MemberSignature Language="VB.NET" Value="Public Property CatL2 As Double" />
+      <MemberSignature Language="F#" Value="member this.CatL2 : double with get, set" Usage="Microsoft.ML.Legacy.Trainers.LightGbmRegressor.CatL2" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/Range(Min=Mono.Cecil.CustomAttributeArgument)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/SweepableDiscreteParam("CatL2", new System.Object[] { Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument }, false)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            L2 Regularization for categorical split.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CatSmooth">
+      <MemberSignature Language="C#" Value="public double CatSmooth { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 CatSmooth" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.CatSmooth" />
+      <MemberSignature Language="VB.NET" Value="Public Property CatSmooth As Double" />
+      <MemberSignature Language="F#" Value="member this.CatSmooth : double with get, set" Usage="Microsoft.ML.Legacy.Trainers.LightGbmRegressor.CatSmooth" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/Range(Min=Mono.Cecil.CustomAttributeArgument)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/SweepableDiscreteParam("CatSmooth", new System.Object[] { Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument }, false)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Lapalace smooth term in categorical feature spilt. Avoid the bias of small categories.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CustomGains">
+      <MemberSignature Language="C#" Value="public string CustomGains { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string CustomGains" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.CustomGains" />
+      <MemberSignature Language="VB.NET" Value="Public Property CustomGains As String" />
+      <MemberSignature Language="F#" Value="member this.CustomGains : string with get, set" Usage="Microsoft.ML.Legacy.Trainers.LightGbmRegressor.CustomGains" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Comma seperated list of gains associated to each relevance label.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EarlyStoppingRound">
+      <MemberSignature Language="C#" Value="public int EarlyStoppingRound { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 EarlyStoppingRound" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.EarlyStoppingRound" />
+      <MemberSignature Language="VB.NET" Value="Public Property EarlyStoppingRound As Integer" />
+      <MemberSignature Language="F#" Value="member this.EarlyStoppingRound : int with get, set" Usage="Microsoft.ML.Legacy.Trainers.LightGbmRegressor.EarlyStoppingRound" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Rounds of early stopping, 0 will disable it.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EvalMetric">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Legacy.Trainers.LightGbmArgumentsEvalMetricType EvalMetric { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.ML.Legacy.Trainers.LightGbmArgumentsEvalMetricType EvalMetric" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.EvalMetric" />
+      <MemberSignature Language="VB.NET" Value="Public Property EvalMetric As LightGbmArgumentsEvalMetricType" />
+      <MemberSignature Language="F#" Value="member this.EvalMetric : Microsoft.ML.Legacy.Trainers.LightGbmArgumentsEvalMetricType with get, set" Usage="Microsoft.ML.Legacy.Trainers.LightGbmRegressor.EvalMetric" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Legacy.Trainers.LightGbmArgumentsEvalMetricType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Evaluation metrics.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FeatureColumn">
+      <MemberSignature Language="C#" Value="public string FeatureColumn { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string FeatureColumn" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.FeatureColumn" />
+      <MemberSignature Language="VB.NET" Value="Public Property FeatureColumn As String" />
+      <MemberSignature Language="F#" Value="member this.FeatureColumn : string with get, set" Usage="Microsoft.ML.Legacy.Trainers.LightGbmRegressor.FeatureColumn" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Column to use for features
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetInputData">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt; GetInputData ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.EntryPoints.Var`1&lt;class Microsoft.ML.Runtime.Data.IDataView&gt; GetInputData() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.GetInputData" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetInputData () As Var(Of IDataView)" />
+      <MemberSignature Language="F#" Value="abstract member GetInputData : unit -&gt; Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;&#xA;override this.GetInputData : unit -&gt; Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;" Usage="lightGbmRegressor.GetInputData " />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Legacy.ILearningPipelineItem.GetInputData</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GroupIdColumn">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.EntryPoints.Optional&lt;string&gt; GroupIdColumn { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.EntryPoints.Optional`1&lt;string&gt; GroupIdColumn" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.GroupIdColumn" />
+      <MemberSignature Language="VB.NET" Value="Public Property GroupIdColumn As Optional(Of String)" />
+      <MemberSignature Language="F#" Value="member this.GroupIdColumn : Microsoft.ML.Runtime.EntryPoints.Optional&lt;string&gt; with get, set" Usage="Microsoft.ML.Legacy.Trainers.LightGbmRegressor.GroupIdColumn" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.EntryPoints.Optional&lt;System.String&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Column to use for example groupId
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LabelColumn">
+      <MemberSignature Language="C#" Value="public string LabelColumn { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string LabelColumn" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.LabelColumn" />
+      <MemberSignature Language="VB.NET" Value="Public Property LabelColumn As String" />
+      <MemberSignature Language="F#" Value="member this.LabelColumn : string with get, set" Usage="Microsoft.ML.Legacy.Trainers.LightGbmRegressor.LabelColumn" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Column to use for labels
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LearningRate">
+      <MemberSignature Language="C#" Value="public Nullable&lt;double&gt; LearningRate { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Nullable`1&lt;float64&gt; LearningRate" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.LearningRate" />
+      <MemberSignature Language="VB.NET" Value="Public Property LearningRate As Nullable(Of Double)" />
+      <MemberSignature Language="F#" Value="member this.LearningRate : Nullable&lt;double&gt; with get, set" Usage="Microsoft.ML.Legacy.Trainers.LightGbmRegressor.LearningRate" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/SweepableFloatParam("LearningRate", 0.025, 0.4, -1, -1, true)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Nullable&lt;System.Double&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Shrinkage rate for trees, used to prevent over-fitting. Range: (0,1].
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxBin">
+      <MemberSignature Language="C#" Value="public int MaxBin { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 MaxBin" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.MaxBin" />
+      <MemberSignature Language="VB.NET" Value="Public Property MaxBin As Integer" />
+      <MemberSignature Language="F#" Value="member this.MaxBin : int with get, set" Usage="Microsoft.ML.Legacy.Trainers.LightGbmRegressor.MaxBin" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Max number of bucket bin for features.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxCatThreshold">
+      <MemberSignature Language="C#" Value="public int MaxCatThreshold { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 MaxCatThreshold" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.MaxCatThreshold" />
+      <MemberSignature Language="VB.NET" Value="Public Property MaxCatThreshold As Integer" />
+      <MemberSignature Language="F#" Value="member this.MaxCatThreshold : int with get, set" Usage="Microsoft.ML.Legacy.Trainers.LightGbmRegressor.MaxCatThreshold" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/Range(Inf=Mono.Cecil.CustomAttributeArgument, Max=Mono.Cecil.CustomAttributeArgument)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/SweepableDiscreteParam("MaxCatThreshold", new System.Object[] { Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument }, false)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Max number of categorical thresholds.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MinDataPerGroup">
+      <MemberSignature Language="C#" Value="public int MinDataPerGroup { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 MinDataPerGroup" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.MinDataPerGroup" />
+      <MemberSignature Language="VB.NET" Value="Public Property MinDataPerGroup As Integer" />
+      <MemberSignature Language="F#" Value="member this.MinDataPerGroup : int with get, set" Usage="Microsoft.ML.Legacy.Trainers.LightGbmRegressor.MinDataPerGroup" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/Range(Inf=Mono.Cecil.CustomAttributeArgument, Max=Mono.Cecil.CustomAttributeArgument)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/SweepableDiscreteParam("MinDataPerGroup", new System.Object[] { Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument }, false)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Min number of instances per categorical group.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MinDataPerLeaf">
+      <MemberSignature Language="C#" Value="public Nullable&lt;int&gt; MinDataPerLeaf { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Nullable`1&lt;int32&gt; MinDataPerLeaf" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.MinDataPerLeaf" />
+      <MemberSignature Language="VB.NET" Value="Public Property MinDataPerLeaf As Nullable(Of Integer)" />
+      <MemberSignature Language="F#" Value="member this.MinDataPerLeaf : Nullable&lt;int&gt; with get, set" Usage="Microsoft.ML.Legacy.Trainers.LightGbmRegressor.MinDataPerLeaf" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/SweepableDiscreteParam("MinDataPerLeaf", new System.Object[] { Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument }, false)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Nullable&lt;System.Int32&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Minimum number of instances needed in a child.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NormalizeFeatures">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Legacy.Models.NormalizeOption NormalizeFeatures { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.ML.Legacy.Models.NormalizeOption NormalizeFeatures" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.NormalizeFeatures" />
+      <MemberSignature Language="VB.NET" Value="Public Property NormalizeFeatures As NormalizeOption" />
+      <MemberSignature Language="F#" Value="member this.NormalizeFeatures : Microsoft.ML.Legacy.Models.NormalizeOption with get, set" Usage="Microsoft.ML.Legacy.Trainers.LightGbmRegressor.NormalizeFeatures" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Legacy.Models.NormalizeOption</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Normalize option for the feature column
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NThread">
+      <MemberSignature Language="C#" Value="public Nullable&lt;int&gt; NThread { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Nullable`1&lt;int32&gt; NThread" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.NThread" />
+      <MemberSignature Language="VB.NET" Value="Public Property NThread As Nullable(Of Integer)" />
+      <MemberSignature Language="F#" Value="member this.NThread : Nullable&lt;int&gt; with get, set" Usage="Microsoft.ML.Legacy.Trainers.LightGbmRegressor.NThread" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Nullable&lt;System.Int32&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Number of parallel threads used to run LightGBM.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NumBoostRound">
+      <MemberSignature Language="C#" Value="public int NumBoostRound { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 NumBoostRound" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.NumBoostRound" />
+      <MemberSignature Language="VB.NET" Value="Public Property NumBoostRound As Integer" />
+      <MemberSignature Language="F#" Value="member this.NumBoostRound : int with get, set" Usage="Microsoft.ML.Legacy.Trainers.LightGbmRegressor.NumBoostRound" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/SweepableDiscreteParam("NumBoostRound", new System.Object[] { Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument }, false)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Number of iterations.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NumLeaves">
+      <MemberSignature Language="C#" Value="public Nullable&lt;int&gt; NumLeaves { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Nullable`1&lt;int32&gt; NumLeaves" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.NumLeaves" />
+      <MemberSignature Language="VB.NET" Value="Public Property NumLeaves As Nullable(Of Integer)" />
+      <MemberSignature Language="F#" Value="member this.NumLeaves : Nullable&lt;int&gt; with get, set" Usage="Microsoft.ML.Legacy.Trainers.LightGbmRegressor.NumLeaves" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/SweepableLongParam("NumLeaves", 2, 128, 4, -1, true)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Nullable&lt;System.Int32&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Maximum leaves for trees.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParallelTrainer">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.ParallelLightGBM ParallelTrainer { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.ParallelLightGBM ParallelTrainer" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.ParallelTrainer" />
+      <MemberSignature Language="VB.NET" Value="Public Property ParallelTrainer As ParallelLightGBM" />
+      <MemberSignature Language="F#" Value="member this.ParallelTrainer : Microsoft.ML.Runtime.ParallelLightGBM with get, set" Usage="Microsoft.ML.Legacy.Trainers.LightGbmRegressor.ParallelTrainer" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Newtonsoft.Json.JsonConverter(typeof(Microsoft.ML.Runtime.ComponentSerializer))</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.ParallelLightGBM</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Parallel LightGBM Learning Algorithm
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Sigmoid">
+      <MemberSignature Language="C#" Value="public double Sigmoid { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 Sigmoid" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.Sigmoid" />
+      <MemberSignature Language="VB.NET" Value="Public Property Sigmoid As Double" />
+      <MemberSignature Language="F#" Value="member this.Sigmoid : double with get, set" Usage="Microsoft.ML.Legacy.Trainers.LightGbmRegressor.Sigmoid" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Parameter for the sigmoid function. Used only in LightGbmBinaryTrainer, LightGbmMulticlassTrainer and in LightGbmRankingTrainer.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Silent">
+      <MemberSignature Language="C#" Value="public bool Silent { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Silent" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.Silent" />
+      <MemberSignature Language="VB.NET" Value="Public Property Silent As Boolean" />
+      <MemberSignature Language="F#" Value="member this.Silent : bool with get, set" Usage="Microsoft.ML.Legacy.Trainers.LightGbmRegressor.Silent" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Printing running messages.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TrainingData">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt; TrainingData { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.EntryPoints.Var`1&lt;class Microsoft.ML.Runtime.Data.IDataView&gt; TrainingData" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.TrainingData" />
+      <MemberSignature Language="VB.NET" Value="Public Property TrainingData As Var(Of IDataView)" />
+      <MemberSignature Language="F#" Value="member this.TrainingData : Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt; with get, set" Usage="Microsoft.ML.Legacy.Trainers.LightGbmRegressor.TrainingData" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Runtime.EntryPoints.CommonInputs.ITrainerInput.TrainingData</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The data to be used for training
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UseCat">
+      <MemberSignature Language="C#" Value="public Nullable&lt;bool&gt; UseCat { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Nullable`1&lt;bool&gt; UseCat" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.UseCat" />
+      <MemberSignature Language="VB.NET" Value="Public Property UseCat As Nullable(Of Boolean)" />
+      <MemberSignature Language="F#" Value="member this.UseCat : Nullable&lt;bool&gt; with get, set" Usage="Microsoft.ML.Legacy.Trainers.LightGbmRegressor.UseCat" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/SweepableDiscreteParam("UseCat", new System.Object[] { Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument }, false)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Nullable&lt;System.Boolean&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Enable categorical split or not.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UseMissing">
+      <MemberSignature Language="C#" Value="public bool UseMissing { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool UseMissing" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.UseMissing" />
+      <MemberSignature Language="VB.NET" Value="Public Property UseMissing As Boolean" />
+      <MemberSignature Language="F#" Value="member this.UseMissing : bool with get, set" Usage="Microsoft.ML.Legacy.Trainers.LightGbmRegressor.UseMissing" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/SweepableDiscreteParam("UseMissing", new System.Object[] { Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument }, false)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Enable missing value auto infer or not.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UseSoftmax">
+      <MemberSignature Language="C#" Value="public Nullable&lt;bool&gt; UseSoftmax { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Nullable`1&lt;bool&gt; UseSoftmax" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.UseSoftmax" />
+      <MemberSignature Language="VB.NET" Value="Public Property UseSoftmax As Nullable(Of Boolean)" />
+      <MemberSignature Language="F#" Value="member this.UseSoftmax : Nullable&lt;bool&gt; with get, set" Usage="Microsoft.ML.Legacy.Trainers.LightGbmRegressor.UseSoftmax" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/SweepableDiscreteParam("UseSoftmax", new System.Object[] { Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument }, false)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Nullable&lt;System.Boolean&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Use softmax loss for the multi classification.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VerboseEval">
+      <MemberSignature Language="C#" Value="public bool VerboseEval { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool VerboseEval" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.VerboseEval" />
+      <MemberSignature Language="VB.NET" Value="Public Property VerboseEval As Boolean" />
+      <MemberSignature Language="F#" Value="member this.VerboseEval : bool with get, set" Usage="Microsoft.ML.Legacy.Trainers.LightGbmRegressor.VerboseEval" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Verbose
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WeightColumn">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.EntryPoints.Optional&lt;string&gt; WeightColumn { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.EntryPoints.Optional`1&lt;string&gt; WeightColumn" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.Trainers.LightGbmRegressor.WeightColumn" />
+      <MemberSignature Language="VB.NET" Value="Public Property WeightColumn As Optional(Of String)" />
+      <MemberSignature Language="F#" Value="member this.WeightColumn : Microsoft.ML.Runtime.EntryPoints.Optional&lt;string&gt; with get, set" Usage="Microsoft.ML.Legacy.Trainers.LightGbmRegressor.WeightColumn" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.EntryPoints.Optional&lt;System.String&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Column to use for example weight
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

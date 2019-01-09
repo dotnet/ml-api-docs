@@ -1,0 +1,98 @@
+<Type Name="IEvaluator" FullName="Microsoft.ML.Runtime.Data.IEvaluator">
+  <TypeSignature Language="C#" Value="public interface IEvaluator" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IEvaluator" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.IEvaluator" />
+  <TypeSignature Language="VB.NET" Value="Public Interface IEvaluator" />
+  <TypeSignature Language="F#" Value="type IEvaluator = interface" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Data</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Interfaces />
+  <Docs>
+    <summary>
+            This is an interface for evaluation. It has two methods: <see cref="M:Microsoft.ML.Runtime.Data.IEvaluator.Evaluate(Microsoft.ML.Runtime.Data.RoleMappedData)" /> and <see cref="M:Microsoft.ML.Runtime.Data.IEvaluator.GetPerInstanceMetrics(Microsoft.ML.Runtime.Data.RoleMappedData)" />.
+            Both take a <see cref="T:Microsoft.ML.Runtime.Data.RoleMappedData" /> as input. The <see cref="T:Microsoft.ML.Runtime.Data.RoleMappedData" /> is assumed to contain all the column
+            roles needed for evaluation, including the score column.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Evaluate">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.Dictionary&lt;string,Microsoft.ML.Runtime.Data.IDataView&gt; Evaluate (Microsoft.ML.Runtime.Data.RoleMappedData data);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Collections.Generic.Dictionary`2&lt;string, class Microsoft.ML.Runtime.Data.IDataView&gt; Evaluate(class Microsoft.ML.Runtime.Data.RoleMappedData data) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.IEvaluator.Evaluate(Microsoft.ML.Runtime.Data.RoleMappedData)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Evaluate (data As RoleMappedData) As Dictionary(Of String, IDataView)" />
+      <MemberSignature Language="F#" Value="abstract member Evaluate : Microsoft.ML.Runtime.Data.RoleMappedData -&gt; System.Collections.Generic.Dictionary&lt;string, Microsoft.ML.Runtime.Data.IDataView&gt;" Usage="iEvaluator.Evaluate data" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.Dictionary&lt;System.String,Microsoft.ML.Runtime.Data.IDataView&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data" Type="Microsoft.ML.Runtime.Data.RoleMappedData" />
+      </Parameters>
+      <Docs>
+        <param name="data">To be added.</param>
+        <summary>
+            Compute the aggregate metrics. Return a dictionary from the metric kind
+            (overal/per-fold/confusion matrix/PR-curves etc.), to a data view containing the metric.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetOverallMetricColumns">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.IEnumerable&lt;Microsoft.ML.Runtime.Data.MetricColumn&gt; GetOverallMetricColumns ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Collections.Generic.IEnumerable`1&lt;class Microsoft.ML.Runtime.Data.MetricColumn&gt; GetOverallMetricColumns() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.IEvaluator.GetOverallMetricColumns" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetOverallMetricColumns () As IEnumerable(Of MetricColumn)" />
+      <MemberSignature Language="F#" Value="abstract member GetOverallMetricColumns : unit -&gt; seq&lt;Microsoft.ML.Runtime.Data.MetricColumn&gt;" Usage="iEvaluator.GetOverallMetricColumns " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;Microsoft.ML.Runtime.Data.MetricColumn&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            Get all the overall metrics returned by this evaluator.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetPerInstanceMetrics">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IDataTransform GetPerInstanceMetrics (Microsoft.ML.Runtime.Data.RoleMappedData data);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IDataTransform GetPerInstanceMetrics(class Microsoft.ML.Runtime.Data.RoleMappedData data) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.IEvaluator.GetPerInstanceMetrics(Microsoft.ML.Runtime.Data.RoleMappedData)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetPerInstanceMetrics (data As RoleMappedData) As IDataTransform" />
+      <MemberSignature Language="F#" Value="abstract member GetPerInstanceMetrics : Microsoft.ML.Runtime.Data.RoleMappedData -&gt; Microsoft.ML.Runtime.Data.IDataTransform" Usage="iEvaluator.GetPerInstanceMetrics data" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data" Type="Microsoft.ML.Runtime.Data.RoleMappedData" />
+      </Parameters>
+      <Docs>
+        <param name="data">To be added.</param>
+        <summary>
+            Return an <see cref="T:Microsoft.ML.Runtime.Data.IDataTransform" /> containing the per-instance results.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

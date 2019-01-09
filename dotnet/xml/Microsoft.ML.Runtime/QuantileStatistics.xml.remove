@@ -1,0 +1,233 @@
+<Type Name="QuantileStatistics" FullName="Microsoft.ML.Runtime.QuantileStatistics">
+  <TypeSignature Language="C#" Value="public sealed class QuantileStatistics : Microsoft.ML.Runtime.Internal.Internallearn.IDistribution&lt;float&gt;, Microsoft.ML.Runtime.Internal.Internallearn.IQuantileDistribution&lt;float&gt;, Microsoft.ML.Runtime.Internal.Internallearn.ISampleableDistribution&lt;float&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit QuantileStatistics extends System.Object implements class Microsoft.ML.Runtime.Internal.Internallearn.IDistribution`1&lt;float32&gt;, class Microsoft.ML.Runtime.Internal.Internallearn.IQuantileDistribution`1&lt;float32&gt;, class Microsoft.ML.Runtime.Internal.Internallearn.ISampleableDistribution`1&lt;float32&gt;" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.QuantileStatistics" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class QuantileStatistics&#xA;Implements IDistribution(Of Single), IQuantileDistribution(Of Single), ISampleableDistribution(Of Single)" />
+  <TypeSignature Language="F#" Value="type QuantileStatistics = class&#xA;    interface IQuantileDistribution&lt;single&gt;&#xA;    interface IDistribution&lt;single&gt;&#xA;    interface ISampleableDistribution&lt;single&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.Internal.Internallearn.IDistribution&lt;System.Single&gt;</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.Internal.Internallearn.IDistribution&lt;TResult&gt;</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.Internal.Internallearn.IQuantileDistribution&lt;System.Single&gt;</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.Internal.Internallearn.ISampleableDistribution&lt;System.Single&gt;</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.Internal.Internallearn.ISampleableDistribution&lt;TResult&gt;</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public QuantileStatistics (float[] data, float[] weights = null, bool isSorted = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32[] data, float32[] weights, bool isSorted) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.QuantileStatistics.#ctor(System.Single[],System.Single[],System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (data As Single(), Optional weights As Single() = null, Optional isSorted As Boolean = false)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.QuantileStatistics : single[] * single[] * bool -&gt; Microsoft.ML.Runtime.QuantileStatistics" Usage="new Microsoft.ML.Runtime.QuantileStatistics (data, weights, isSorted)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="data" Type="System.Single[]" />
+        <Parameter Name="weights" Type="System.Single[]" />
+        <Parameter Name="isSorted" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="data">To be added.</param>
+        <param name="weights">To be added.</param>
+        <param name="isSorted">To be added.</param>
+        <summary>
+            data array will be modified because of sorting if it is not already sorted yet and this class owns the data.
+            Modifying the data outside will lead to erroneous output by this class
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetQuantile">
+      <MemberSignature Language="C#" Value="public float GetQuantile (float p);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance float32 GetQuantile(float32 p) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.QuantileStatistics.GetQuantile(System.Single)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetQuantile (p As Single) As Single" />
+      <MemberSignature Language="F#" Value="abstract member GetQuantile : single -&gt; single&#xA;override this.GetQuantile : single -&gt; single" Usage="quantileStatistics.GetQuantile p" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.Internal.Internallearn.IQuantileDistribution`1.GetQuantile(System.Single)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="p">To be added.</param>
+        <summary>
+            There are many ways to estimate quantile. This implementations is based on R-8, SciPy-(1/3,1/3)
+            https://en.wikipedia.org/wiki/Quantile#Estimating_the_quantiles_of_a_population
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetSupportSample">
+      <MemberSignature Language="C#" Value="public float[] GetSupportSample (out float[] weights);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance float32[] GetSupportSample([out] float32[]&amp; weights) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.QuantileStatistics.GetSupportSample(System.Single[]@)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetSupportSample (ByRef weights As Single()) As Single()" />
+      <MemberSignature Language="F#" Value="abstract member GetSupportSample :  -&gt; single[]&#xA;override this.GetSupportSample :  -&gt; single[]" Usage="quantileStatistics.GetSupportSample weights" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="weights" Type="System.Single[]" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="weights">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Maximum">
+      <MemberSignature Language="C#" Value="public float Maximum { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 Maximum" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.QuantileStatistics.Maximum" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Maximum As Single" />
+      <MemberSignature Language="F#" Value="member this.Maximum : single" Usage="Microsoft.ML.Runtime.QuantileStatistics.Maximum" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Runtime.Internal.Internallearn.IDistribution`1.Maximum</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Mean">
+      <MemberSignature Language="C#" Value="public float Mean { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 Mean" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.QuantileStatistics.Mean" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Mean As Single" />
+      <MemberSignature Language="F#" Value="member this.Mean : single" Usage="Microsoft.ML.Runtime.QuantileStatistics.Mean" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Runtime.Internal.Internallearn.IDistribution`1.Mean</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Median">
+      <MemberSignature Language="C#" Value="public float Median { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 Median" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.QuantileStatistics.Median" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Median As Single" />
+      <MemberSignature Language="F#" Value="member this.Median : single" Usage="Microsoft.ML.Runtime.QuantileStatistics.Median" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Runtime.Internal.Internallearn.IQuantileDistribution`1.Median</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Minimum">
+      <MemberSignature Language="C#" Value="public float Minimum { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 Minimum" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.QuantileStatistics.Minimum" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Minimum As Single" />
+      <MemberSignature Language="F#" Value="member this.Minimum : single" Usage="Microsoft.ML.Runtime.QuantileStatistics.Minimum" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Runtime.Internal.Internallearn.IDistribution`1.Minimum</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StandardDeviation">
+      <MemberSignature Language="C#" Value="public float StandardDeviation { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 StandardDeviation" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.QuantileStatistics.StandardDeviation" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property StandardDeviation As Single" />
+      <MemberSignature Language="F#" Value="member this.StandardDeviation : single" Usage="Microsoft.ML.Runtime.QuantileStatistics.StandardDeviation" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Runtime.Internal.Internallearn.IDistribution`1.StandardDeviation</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

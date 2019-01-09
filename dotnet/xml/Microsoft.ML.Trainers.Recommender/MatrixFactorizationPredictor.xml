@@ -1,9 +1,9 @@
 ﻿<Type Name="MatrixFactorizationPredictor" FullName="Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor">
-  <TypeSignature Language="C#" Value="public sealed class MatrixFactorizationPredictor : Microsoft.ML.Runtime.Data.ISchemaBindableMapper, Microsoft.ML.Runtime.Internal.Internallearn.ICanSaveInTextFormat, Microsoft.ML.Runtime.IPredictor, Microsoft.ML.Runtime.Model.ICanSaveModel" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit MatrixFactorizationPredictor extends System.Object implements class Microsoft.ML.Runtime.Data.ISchemaBindableMapper, class Microsoft.ML.Runtime.Internal.Internallearn.ICanSaveInTextFormat, class Microsoft.ML.Runtime.IPredictor, class Microsoft.ML.Runtime.Model.ICanSaveModel" />
+  <TypeSignature Language="C#" Value="public sealed class MatrixFactorizationPredictor : Microsoft.ML.IPredictor, Microsoft.ML.Model.ICanSaveModel" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit MatrixFactorizationPredictor extends System.Object implements class Microsoft.ML.IPredictor, class Microsoft.ML.Model.ICanSaveModel" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class MatrixFactorizationPredictor&#xA;Implements ICanSaveInTextFormat, ICanSaveModel, IPredictor, ISchemaBindableMapper" />
-  <TypeSignature Language="F#" Value="type MatrixFactorizationPredictor = class&#xA;    interface IPredictor&#xA;    interface ICanSaveModel&#xA;    interface ICanSaveInTextFormat&#xA;    interface ISchemaBindableMapper" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class MatrixFactorizationPredictor&#xA;Implements ICanSaveModel, IPredictor" />
+  <TypeSignature Language="F#" Value="type MatrixFactorizationPredictor = class&#xA;    interface IPredictor&#xA;    interface ICanSaveModel" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -13,16 +13,10 @@
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>Microsoft.ML.Runtime.Data.ISchemaBindableMapper</InterfaceName>
+      <InterfaceName>Microsoft.ML.IPredictor</InterfaceName>
     </Interface>
     <Interface>
-      <InterfaceName>Microsoft.ML.Runtime.Internal.Internallearn.ICanSaveInTextFormat</InterfaceName>
-    </Interface>
-    <Interface>
-      <InterfaceName>Microsoft.ML.Runtime.IPredictor</InterfaceName>
-    </Interface>
-    <Interface>
-      <InterfaceName>Microsoft.ML.Runtime.Model.ICanSaveModel</InterfaceName>
+      <InterfaceName>Microsoft.ML.Model.ICanSaveModel</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -35,44 +29,12 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName="Bind">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.ISchemaBoundMapper Bind (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Data.RoleMappedSchema schema);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.ISchemaBoundMapper Bind(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Data.RoleMappedSchema schema) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.Bind(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
-      <MemberSignature Language="VB.NET" Value="Public Function Bind (env As IHostEnvironment, schema As RoleMappedSchema) As ISchemaBoundMapper" />
-      <MemberSignature Language="F#" Value="abstract member Bind : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.RoleMappedSchema -&gt; Microsoft.ML.Runtime.Data.ISchemaBoundMapper&#xA;override this.Bind : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Data.RoleMappedSchema -&gt; Microsoft.ML.Runtime.Data.ISchemaBoundMapper" Usage="matrixFactorizationPredictor.Bind (env, schema)" />
-      <MemberType>Method</MemberType>
-      <Implements>
-        <InterfaceMember>M:Microsoft.ML.Runtime.Data.ISchemaBindableMapper.Bind(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Data.RoleMappedSchema)</InterfaceMember>
-      </Implements>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.ISchemaBoundMapper</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
-        <Parameter Name="schema" Type="Microsoft.ML.Runtime.Data.RoleMappedSchema" />
-      </Parameters>
-      <Docs>
-        <param name="env">To be added.</param>
-        <param name="schema">To be added.</param>
-        <summary>
-            Create a row mapper based on regression scorer. Because matrix factorization predictor maps a tuple of a row ID (u) and a column ID (v)
-            to the expected numerical value at the u-th row and the v-th column in the considered matrix, it is essentially a regressor.
-            </summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Create">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor Create (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.Model.ModelLoadContext ctx);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor Create(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.Model.ModelLoadContext ctx) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.Create(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.Model.ModelLoadContext)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor Create (Microsoft.ML.IHostEnvironment env, Microsoft.ML.Model.ModelLoadContext ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor Create(class Microsoft.ML.IHostEnvironment env, class Microsoft.ML.Model.ModelLoadContext ctx) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.Create(Microsoft.ML.IHostEnvironment,Microsoft.ML.Model.ModelLoadContext)" />
       <MemberSignature Language="VB.NET" Value="Public Shared Function Create (env As IHostEnvironment, ctx As ModelLoadContext) As MatrixFactorizationPredictor" />
-      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.Model.ModelLoadContext -&gt; Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor" Usage="Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.Create (env, ctx)" />
+      <MemberSignature Language="F#" Value="static member Create : Microsoft.ML.IHostEnvironment * Microsoft.ML.Model.ModelLoadContext -&gt; Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor" Usage="Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.Create (env, ctx)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
@@ -82,8 +44,8 @@
         <ReturnType>Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
-        <Parameter Name="ctx" Type="Microsoft.ML.Runtime.Model.ModelLoadContext" />
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
+        <Parameter Name="ctx" Type="Microsoft.ML.Model.ModelLoadContext" />
       </Parameters>
       <Docs>
         <param name="env">To be added.</param>
@@ -95,54 +57,19 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="GetMapper&lt;TMatrixColumnIndexIn,TMatrixRowIndexIn,TOut&gt;">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.ValueMapper&lt;TMatrixColumnIndexIn,TMatrixRowIndexIn,TOut&gt; GetMapper&lt;TMatrixColumnIndexIn,TMatrixRowIndexIn,TOut&gt; ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Runtime.Data.ValueMapper`3&lt;!!TMatrixColumnIndexIn, !!TMatrixRowIndexIn, !!TOut&gt; GetMapper&lt;TMatrixColumnIndexIn, TMatrixRowIndexIn, TOut&gt;() cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.GetMapper``3" />
-      <MemberSignature Language="VB.NET" Value="Public Function GetMapper(Of TMatrixColumnIndexIn, TMatrixRowIndexIn, TOut) () As ValueMapper(Of TMatrixColumnIndexIn, TMatrixRowIndexIn, TOut)" />
-      <MemberSignature Language="F#" Value="member this.GetMapper : unit -&gt; Microsoft.ML.Runtime.Data.ValueMapper&lt;'MatrixColumnIndexIn, 'MatrixRowIndexIn, 'Out&gt;" Usage="matrixFactorizationPredictor.GetMapper " />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.ValueMapper&lt;TMatrixColumnIndexIn,TMatrixRowIndexIn,TOut&gt;</ReturnType>
-      </ReturnValue>
-      <TypeParameters>
-        <TypeParameter Name="TMatrixColumnIndexIn" />
-        <TypeParameter Name="TMatrixRowIndexIn" />
-        <TypeParameter Name="TOut" />
-      </TypeParameters>
-      <Parameters />
-      <Docs>
-        <typeparam name="TMatrixColumnIndexIn">To be added.</typeparam>
-        <typeparam name="TMatrixRowIndexIn">To be added.</typeparam>
-        <typeparam name="TOut">To be added.</typeparam>
-        <summary>
-            Create the mapper required by matrix factorization's predictor. That mapper maps two
-            index inputs (e.g., row index and column index) to an approximated value located by the
-            two indexes in the training matrix. In recommender system where the training matrix stores
-            ratings from users to items, the mappers maps user ID and item ID to the rating of that
-            item given by the user.
-            </summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="MatrixColumnIndexType">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.ColumnType MatrixColumnIndexType { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.Data.ColumnType MatrixColumnIndexType" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.ColumnType MatrixColumnIndexType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Data.ColumnType MatrixColumnIndexType" />
       <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.MatrixColumnIndexType" />
       <MemberSignature Language="VB.NET" Value="Public ReadOnly Property MatrixColumnIndexType As ColumnType" />
-      <MemberSignature Language="F#" Value="member this.MatrixColumnIndexType : Microsoft.ML.Runtime.Data.ColumnType" Usage="Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.MatrixColumnIndexType" />
+      <MemberSignature Language="F#" Value="member this.MatrixColumnIndexType : Microsoft.ML.Data.ColumnType" Usage="Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.MatrixColumnIndexType" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.ColumnType</ReturnType>
+        <ReturnType>Microsoft.ML.Data.ColumnType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -151,18 +78,18 @@
       </Docs>
     </Member>
     <Member MemberName="MatrixRowIndexType">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.ColumnType MatrixRowIndexType { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.Data.ColumnType MatrixRowIndexType" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.ColumnType MatrixRowIndexType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Data.ColumnType MatrixRowIndexType" />
       <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.MatrixRowIndexType" />
       <MemberSignature Language="VB.NET" Value="Public ReadOnly Property MatrixRowIndexType As ColumnType" />
-      <MemberSignature Language="F#" Value="member this.MatrixRowIndexType : Microsoft.ML.Runtime.Data.ColumnType" Usage="Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.MatrixRowIndexType" />
+      <MemberSignature Language="F#" Value="member this.MatrixRowIndexType : Microsoft.ML.Data.ColumnType" Usage="Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.MatrixRowIndexType" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.ColumnType</ReturnType>
+        <ReturnType>Microsoft.ML.Data.ColumnType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -171,18 +98,18 @@
       </Docs>
     </Member>
     <Member MemberName="OutputType">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.ColumnType OutputType { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.Data.ColumnType OutputType" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.ColumnType OutputType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Data.ColumnType OutputType" />
       <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.OutputType" />
       <MemberSignature Language="VB.NET" Value="Public ReadOnly Property OutputType As ColumnType" />
-      <MemberSignature Language="F#" Value="member this.OutputType : Microsoft.ML.Runtime.Data.ColumnType" Usage="Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.OutputType" />
+      <MemberSignature Language="F#" Value="member this.OutputType : Microsoft.ML.Data.ColumnType" Usage="Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.OutputType" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.Data.ColumnType</ReturnType>
+        <ReturnType>Microsoft.ML.Data.ColumnType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -191,21 +118,21 @@
       </Docs>
     </Member>
     <Member MemberName="PredictionKind">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.PredictionKind PredictionKind { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.ML.Runtime.PredictionKind PredictionKind" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.PredictionKind PredictionKind { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.ML.PredictionKind PredictionKind" />
       <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.PredictionKind" />
       <MemberSignature Language="VB.NET" Value="Public ReadOnly Property PredictionKind As PredictionKind" />
-      <MemberSignature Language="F#" Value="member this.PredictionKind : Microsoft.ML.Runtime.PredictionKind" Usage="Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.PredictionKind" />
+      <MemberSignature Language="F#" Value="member this.PredictionKind : Microsoft.ML.PredictionKind" Usage="Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.PredictionKind" />
       <MemberType>Property</MemberType>
       <Implements>
-        <InterfaceMember>P:Microsoft.ML.Runtime.IPredictor.PredictionKind</InterfaceMember>
+        <InterfaceMember>P:Microsoft.ML.IPredictor.PredictionKind</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Runtime.PredictionKind</ReturnType>
+        <ReturnType>Microsoft.ML.PredictionKind</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -214,14 +141,14 @@
       </Docs>
     </Member>
     <Member MemberName="Save">
-      <MemberSignature Language="C#" Value="public void Save (Microsoft.ML.Runtime.Model.ModelSaveContext ctx);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Save(class Microsoft.ML.Runtime.Model.ModelSaveContext ctx) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+      <MemberSignature Language="C#" Value="public void Save (Microsoft.ML.Model.ModelSaveContext ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Save(class Microsoft.ML.Model.ModelSaveContext ctx) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.Save(Microsoft.ML.Model.ModelSaveContext)" />
       <MemberSignature Language="VB.NET" Value="Public Sub Save (ctx As ModelSaveContext)" />
-      <MemberSignature Language="F#" Value="abstract member Save : Microsoft.ML.Runtime.Model.ModelSaveContext -&gt; unit&#xA;override this.Save : Microsoft.ML.Runtime.Model.ModelSaveContext -&gt; unit" Usage="matrixFactorizationPredictor.Save ctx" />
+      <MemberSignature Language="F#" Value="abstract member Save : Microsoft.ML.Model.ModelSaveContext -&gt; unit&#xA;override this.Save : Microsoft.ML.Model.ModelSaveContext -&gt; unit" Usage="matrixFactorizationPredictor.Save ctx" />
       <MemberType>Method</MemberType>
       <Implements>
-        <InterfaceMember>M:Microsoft.ML.Runtime.Model.ICanSaveModel.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)</InterfaceMember>
+        <InterfaceMember>M:Microsoft.ML.Model.ICanSaveModel.Save(Microsoft.ML.Model.ModelSaveContext)</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
@@ -231,42 +158,12 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="ctx" Type="Microsoft.ML.Runtime.Model.ModelSaveContext" />
+        <Parameter Name="ctx" Type="Microsoft.ML.Model.ModelSaveContext" />
       </Parameters>
       <Docs>
         <param name="ctx">To be added.</param>
         <summary>
             Save model to the given context
-            </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SaveAsText">
-      <MemberSignature Language="C#" Value="public void SaveAsText (System.IO.TextWriter writer, Microsoft.ML.Runtime.Data.RoleMappedSchema schema);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SaveAsText(class System.IO.TextWriter writer, class Microsoft.ML.Runtime.Data.RoleMappedSchema schema) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor.SaveAsText(System.IO.TextWriter,Microsoft.ML.Runtime.Data.RoleMappedSchema)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub SaveAsText (writer As TextWriter, schema As RoleMappedSchema)" />
-      <MemberSignature Language="F#" Value="abstract member SaveAsText : System.IO.TextWriter * Microsoft.ML.Runtime.Data.RoleMappedSchema -&gt; unit&#xA;override this.SaveAsText : System.IO.TextWriter * Microsoft.ML.Runtime.Data.RoleMappedSchema -&gt; unit" Usage="matrixFactorizationPredictor.SaveAsText (writer, schema)" />
-      <MemberType>Method</MemberType>
-      <Implements>
-        <InterfaceMember>M:Microsoft.ML.Runtime.Internal.Internallearn.ICanSaveInTextFormat.SaveAsText(System.IO.TextWriter,Microsoft.ML.Runtime.Data.RoleMappedSchema)</InterfaceMember>
-      </Implements>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="writer" Type="System.IO.TextWriter" />
-        <Parameter Name="schema" Type="Microsoft.ML.Runtime.Data.RoleMappedSchema" />
-      </Parameters>
-      <Docs>
-        <param name="writer">To be added.</param>
-        <param name="schema">To be added.</param>
-        <summary>
-            Save the trained matrix factorization model (two factor matrices) in text format
             </summary>
         <remarks>To be added.</remarks>
       </Docs>
