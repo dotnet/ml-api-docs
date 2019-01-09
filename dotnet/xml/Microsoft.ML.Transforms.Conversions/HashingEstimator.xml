@@ -23,18 +23,18 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public HashingEstimator (Microsoft.ML.Runtime.IHostEnvironment env, params Microsoft.ML.Transforms.Conversions.HashingTransformer.ColumnInfo[] columns);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Transforms.Conversions.HashingTransformer/ColumnInfo[] columns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Conversions.HashingEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Transforms.Conversions.HashingTransformer.ColumnInfo[])" />
+      <MemberSignature Language="C#" Value="public HashingEstimator (Microsoft.ML.IHostEnvironment env, params Microsoft.ML.Transforms.Conversions.HashingTransformer.ColumnInfo[] columns);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, class Microsoft.ML.Transforms.Conversions.HashingTransformer/ColumnInfo[] columns) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Conversions.HashingEstimator.#ctor(Microsoft.ML.IHostEnvironment,Microsoft.ML.Transforms.Conversions.HashingTransformer.ColumnInfo[])" />
       <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, ParamArray columns As HashingTransformer.ColumnInfo())" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Conversions.HashingEstimator : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Transforms.Conversions.HashingTransformer.ColumnInfo[] -&gt; Microsoft.ML.Transforms.Conversions.HashingEstimator" Usage="new Microsoft.ML.Transforms.Conversions.HashingEstimator (env, columns)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Conversions.HashingEstimator : Microsoft.ML.IHostEnvironment * Microsoft.ML.Transforms.Conversions.HashingTransformer.ColumnInfo[] -&gt; Microsoft.ML.Transforms.Conversions.HashingEstimator" Usage="new Microsoft.ML.Transforms.Conversions.HashingEstimator (env, columns)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
         <Parameter Name="columns" Type="Microsoft.ML.Transforms.Conversions.HashingTransformer+ColumnInfo[]">
           <Attributes>
             <Attribute>
@@ -53,18 +53,18 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public HashingEstimator (Microsoft.ML.Runtime.IHostEnvironment env, string inputColumn, string outputColumn = null, int hashBits = 31, int invertHash = 0);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string inputColumn, string outputColumn, int32 hashBits, int32 invertHash) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Conversions.HashingEstimator.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.Int32,System.Int32)" />
+      <MemberSignature Language="C#" Value="public HashingEstimator (Microsoft.ML.IHostEnvironment env, string inputColumn, string outputColumn = null, int hashBits = 31, int invertHash = 0);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, string inputColumn, string outputColumn, int32 hashBits, int32 invertHash) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Conversions.HashingEstimator.#ctor(Microsoft.ML.IHostEnvironment,System.String,System.String,System.Int32,System.Int32)" />
       <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, inputColumn As String, Optional outputColumn As String = null, Optional hashBits As Integer = 31, Optional invertHash As Integer = 0)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Conversions.HashingEstimator : Microsoft.ML.Runtime.IHostEnvironment * string * string * int * int -&gt; Microsoft.ML.Transforms.Conversions.HashingEstimator" Usage="new Microsoft.ML.Transforms.Conversions.HashingEstimator (env, inputColumn, outputColumn, hashBits, invertHash)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Conversions.HashingEstimator : Microsoft.ML.IHostEnvironment * string * string * int * int -&gt; Microsoft.ML.Transforms.Conversions.HashingEstimator" Usage="new Microsoft.ML.Transforms.Conversions.HashingEstimator (env, inputColumn, outputColumn, hashBits, invertHash)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
         <Parameter Name="inputColumn" Type="System.String" />
         <Parameter Name="outputColumn" Type="System.String" />
         <Parameter Name="hashBits" Type="System.Int32" />
@@ -75,7 +75,10 @@
         <param name="inputColumn">Name of the column to be transformed.</param>
         <param name="outputColumn">Name of the output column. If this is null '<paramref name="inputColumn" />' will be used.</param>
         <param name="hashBits">Number of bits to hash into. Must be between 1 and 31, inclusive.</param>
-        <param name="invertHash">Limit the number of keys used to generate the slot name to this many. 0 means no invert hashing, -1 means no limit.</param>
+        <param name="invertHash">During hashing we constuct mappings between original values and the produced hash values.
+            Text representation of original values are stored in the slot names of the  metadata for the new column.Hashing, as such, can map many initial values to one.
+            <paramref name="invertHash" /> specifies the upper bound of the number of distinct input values mapping to a hash that should be retained.
+            <value>0</value> does not retain any input values. <value>-1</value> retains all input values mapping to each hash.</param>
         <summary>
             Initializes a new instance of <see cref="T:Microsoft.ML.Transforms.Conversions.HashingEstimator" />.
             </summary>
@@ -83,14 +86,14 @@
       </Docs>
     </Member>
     <Member MemberName="Fit">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Transforms.Conversions.HashingTransformer Fit (Microsoft.ML.Runtime.Data.IDataView input);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Transforms.Conversions.HashingTransformer Fit(class Microsoft.ML.Runtime.Data.IDataView input) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Conversions.HashingEstimator.Fit(Microsoft.ML.Runtime.Data.IDataView)" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Transforms.Conversions.HashingTransformer Fit (Microsoft.ML.Data.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Transforms.Conversions.HashingTransformer Fit(class Microsoft.ML.Data.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Conversions.HashingEstimator.Fit(Microsoft.ML.Data.IDataView)" />
       <MemberSignature Language="VB.NET" Value="Public Function Fit (input As IDataView) As HashingTransformer" />
-      <MemberSignature Language="F#" Value="abstract member Fit : Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Transforms.Conversions.HashingTransformer&#xA;override this.Fit : Microsoft.ML.Runtime.Data.IDataView -&gt; Microsoft.ML.Transforms.Conversions.HashingTransformer" Usage="hashingEstimator.Fit input" />
+      <MemberSignature Language="F#" Value="abstract member Fit : Microsoft.ML.Data.IDataView -&gt; Microsoft.ML.Transforms.Conversions.HashingTransformer&#xA;override this.Fit : Microsoft.ML.Data.IDataView -&gt; Microsoft.ML.Transforms.Conversions.HashingTransformer" Usage="hashingEstimator.Fit input" />
       <MemberType>Method</MemberType>
       <Implements>
-        <InterfaceMember>M:Microsoft.ML.Core.Data.IEstimator`1.Fit(Microsoft.ML.Runtime.Data.IDataView)</InterfaceMember>
+        <InterfaceMember>M:Microsoft.ML.Core.Data.IEstimator`1.Fit(Microsoft.ML.Data.IDataView)</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -100,7 +103,7 @@
         <ReturnType>Microsoft.ML.Transforms.Conversions.HashingTransformer</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="input" Type="Microsoft.ML.Runtime.Data.IDataView" />
+        <Parameter Name="input" Type="Microsoft.ML.Data.IDataView" />
       </Parameters>
       <Docs>
         <param name="input">To be added.</param>

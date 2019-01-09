@@ -1,0 +1,356 @@
+<Type Name="ScorerBindingsBase" FullName="Microsoft.ML.Runtime.Data.ScorerBindingsBase">
+  <TypeSignature Language="C#" Value="public abstract class ScorerBindingsBase : Microsoft.ML.Runtime.Data.ColumnBindingsBase" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit ScorerBindingsBase extends Microsoft.ML.Runtime.Data.ColumnBindingsBase" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.ScorerBindingsBase" />
+  <TypeSignature Language="VB.NET" Value="Public MustInherit Class ScorerBindingsBase&#xA;Inherits ColumnBindingsBase" />
+  <TypeSignature Language="F#" Value="type ScorerBindingsBase = class&#xA;    inherit ColumnBindingsBase" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Data</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Microsoft.ML.Runtime.Data.ColumnBindingsBase</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+            Base bindings for a scorer based on an ISchemaBoundMapper. This assumes that input schema columns
+            are echoed, followed by zero or more derived columns, followed by the mapper generated columns.
+            The names of the derived columns and mapper generated columns have an optional suffix appended.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected ScorerBindingsBase (Microsoft.ML.Data.Schema input, Microsoft.ML.Runtime.Data.ISchemaBoundMapper mapper, string suffix, bool user, params string[] namesDerived);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Data.Schema input, class Microsoft.ML.Runtime.Data.ISchemaBoundMapper mapper, string suffix, bool user, string[] namesDerived) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ScorerBindingsBase.#ctor(Microsoft.ML.Data.Schema,Microsoft.ML.Runtime.Data.ISchemaBoundMapper,System.String,System.Boolean,System.String[])" />
+      <MemberSignature Language="VB.NET" Value="Protected Sub New (input As Schema, mapper As ISchemaBoundMapper, suffix As String, user As Boolean, ParamArray namesDerived As String())" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Data.ScorerBindingsBase : Microsoft.ML.Data.Schema * Microsoft.ML.Runtime.Data.ISchemaBoundMapper * string * bool * string[] -&gt; Microsoft.ML.Runtime.Data.ScorerBindingsBase" Usage="new Microsoft.ML.Runtime.Data.ScorerBindingsBase (input, mapper, suffix, user, namesDerived)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.Data.Schema" />
+        <Parameter Name="mapper" Type="Microsoft.ML.Runtime.Data.ISchemaBoundMapper" />
+        <Parameter Name="suffix" Type="System.String" />
+        <Parameter Name="user" Type="System.Boolean" />
+        <Parameter Name="namesDerived" Type="System.String[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="input">To be added.</param>
+        <param name="mapper">To be added.</param>
+        <param name="suffix">To be added.</param>
+        <param name="user">To be added.</param>
+        <param name="namesDerived">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DerivedColumnCount">
+      <MemberSignature Language="C#" Value="public readonly int DerivedColumnCount;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly int32 DerivedColumnCount" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Data.ScorerBindingsBase.DerivedColumnCount" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly DerivedColumnCount As Integer " />
+      <MemberSignature Language="F#" Value="val mutable DerivedColumnCount : int" Usage="Microsoft.ML.Runtime.Data.ScorerBindingsBase.DerivedColumnCount" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The number of derived columns. InfoCount == DerivedColumnCount + Mapper.OutputSchema.ColumnCount.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetActiveMapperColumns">
+      <MemberSignature Language="C#" Value="public virtual Func&lt;int,bool&gt; GetActiveMapperColumns (bool[] active);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Func`2&lt;int32, bool&gt; GetActiveMapperColumns(bool[] active) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ScorerBindingsBase.GetActiveMapperColumns(System.Boolean[])" />
+      <MemberSignature Language="VB.NET" Value="Public Overridable Function GetActiveMapperColumns (active As Boolean()) As Func(Of Integer, Boolean)" />
+      <MemberSignature Language="F#" Value="abstract member GetActiveMapperColumns : bool[] -&gt; Func&lt;int, bool&gt;&#xA;override this.GetActiveMapperColumns : bool[] -&gt; Func&lt;int, bool&gt;" Usage="scorerBindingsBase.GetActiveMapperColumns active" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Func&lt;System.Int32,System.Boolean&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="active" Type="System.Boolean[]" />
+      </Parameters>
+      <Docs>
+        <param name="active">To be added.</param>
+        <summary>
+            Returns a predicate indicating which Mapper columns are active based on the active scorer columns.
+            This is virtual so scorers with computed columns can do the right thing.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetColumnTypeCore">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.ColumnType GetColumnTypeCore (int iinfo);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.ColumnType GetColumnTypeCore(int32 iinfo) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ScorerBindingsBase.GetColumnTypeCore(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetColumnTypeCore (iinfo As Integer) As ColumnType" />
+      <MemberSignature Language="F#" Value="override this.GetColumnTypeCore : int -&gt; Microsoft.ML.Runtime.Data.ColumnType" Usage="scorerBindingsBase.GetColumnTypeCore iinfo" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ColumnType</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="iinfo" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="iinfo">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetMetadataCore&lt;TValue&gt;">
+      <MemberSignature Language="C#" Value="protected override void GetMetadataCore&lt;TValue&gt; (string kind, int iinfo, ref TValue value);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void GetMetadataCore&lt;TValue&gt;(string kind, int32 iinfo, !!TValue&amp; value) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ScorerBindingsBase.GetMetadataCore``1(System.String,System.Int32,``0@)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Sub GetMetadataCore(Of TValue) (kind As String, iinfo As Integer, ByRef value As TValue)" />
+      <MemberSignature Language="F#" Value="override this.GetMetadataCore : string * int *  -&gt; unit" Usage="scorerBindingsBase.GetMetadataCore (kind, iinfo, value)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TValue" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="kind" Type="System.String" />
+        <Parameter Name="iinfo" Type="System.Int32" />
+        <Parameter Name="value" Type="TValue" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TValue">To be added.</typeparam>
+        <param name="kind">To be added.</param>
+        <param name="iinfo">To be added.</param>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetMetadataTypeCore">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Runtime.Data.ColumnType GetMetadataTypeCore (string kind, int iinfo);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Runtime.Data.ColumnType GetMetadataTypeCore(string kind, int32 iinfo) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ScorerBindingsBase.GetMetadataTypeCore(System.String,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetMetadataTypeCore (kind As String, iinfo As Integer) As ColumnType" />
+      <MemberSignature Language="F#" Value="override this.GetMetadataTypeCore : string * int -&gt; Microsoft.ML.Runtime.Data.ColumnType" Usage="scorerBindingsBase.GetMetadataTypeCore (kind, iinfo)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ColumnType</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="kind" Type="System.String" />
+        <Parameter Name="iinfo" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="kind">To be added.</param>
+        <param name="iinfo">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetMetadataTypesCore">
+      <MemberSignature Language="C#" Value="protected override System.Collections.Generic.IEnumerable&lt;System.Collections.Generic.KeyValuePair&lt;string,Microsoft.ML.Runtime.Data.ColumnType&gt;&gt; GetMetadataTypesCore (int iinfo);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class System.Collections.Generic.IEnumerable`1&lt;valuetype System.Collections.Generic.KeyValuePair`2&lt;string, class Microsoft.ML.Runtime.Data.ColumnType&gt;&gt; GetMetadataTypesCore(int32 iinfo) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ScorerBindingsBase.GetMetadataTypesCore(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected Iterator Overrides Function GetMetadataTypesCore (iinfo As Integer) As IEnumerable(Of KeyValuePair(Of String, ColumnType))" />
+      <MemberSignature Language="F#" Value="override this.GetMetadataTypesCore : int -&gt; seq&lt;System.Collections.Generic.KeyValuePair&lt;string, Microsoft.ML.Runtime.Data.ColumnType&gt;&gt;" Usage="scorerBindingsBase.GetMetadataTypesCore iinfo" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.CompilerServices.IteratorStateMachine(typeof(Microsoft.ML.Runtime.Data.ScorerBindingsBase/&lt;GetMetadataTypesCore&gt;d__11))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;System.Collections.Generic.KeyValuePair&lt;System.String,Microsoft.ML.Runtime.Data.ColumnType&gt;&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="iinfo" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="iinfo">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetScoreColumnSetId">
+      <MemberSignature Language="C#" Value="protected void GetScoreColumnSetId (int iinfo, ref uint dst);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void GetScoreColumnSetId(int32 iinfo, unsigned int32&amp; dst) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ScorerBindingsBase.GetScoreColumnSetId(System.Int32,System.UInt32@)" />
+      <MemberSignature Language="VB.NET" Value="Protected Sub GetScoreColumnSetId (iinfo As Integer, ByRef dst As UInteger)" />
+      <MemberSignature Language="F#" Value="member this.GetScoreColumnSetId : int *  -&gt; unit" Usage="scorerBindingsBase.GetScoreColumnSetId (iinfo, dst)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="iinfo" Type="System.Int32" />
+        <Parameter Name="dst" Type="System.UInt32" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="iinfo">To be added.</param>
+        <param name="dst">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadBaseInfo">
+      <MemberSignature Language="C#" Value="protected static System.Collections.Generic.KeyValuePair&lt;Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole,string&gt;[] LoadBaseInfo (Microsoft.ML.Runtime.Model.ModelLoadContext ctx, out string suffix);" />
+      <MemberSignature Language="ILAsm" Value=".method familystatic hidebysig valuetype System.Collections.Generic.KeyValuePair`2&lt;valuetype Microsoft.ML.Runtime.Data.RoleMappedSchema/ColumnRole, string&gt;[] LoadBaseInfo(class Microsoft.ML.Runtime.Model.ModelLoadContext ctx, [out] string&amp; suffix) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ScorerBindingsBase.LoadBaseInfo(Microsoft.ML.Runtime.Model.ModelLoadContext,System.String@)" />
+      <MemberSignature Language="VB.NET" Value="Protected Shared Function LoadBaseInfo (ctx As ModelLoadContext, ByRef suffix As String) As KeyValuePair(Of RoleMappedSchema.ColumnRole, String)()" />
+      <MemberSignature Language="F#" Value="static member LoadBaseInfo : Microsoft.ML.Runtime.Model.ModelLoadContext *  -&gt; System.Collections.Generic.KeyValuePair&lt;Microsoft.ML.Runtime.Data.RoleMappedSchema.ColumnRole, string&gt;[]" Usage="Microsoft.ML.Runtime.Data.ScorerBindingsBase.LoadBaseInfo (ctx, suffix)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.KeyValuePair&lt;Microsoft.ML.Runtime.Data.RoleMappedSchema+ColumnRole,System.String&gt;[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ctx" Type="Microsoft.ML.Runtime.Model.ModelLoadContext" />
+        <Parameter Name="suffix" Type="System.String" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="ctx">To be added.</param>
+        <param name="suffix">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Mapper">
+      <MemberSignature Language="C#" Value="public readonly Microsoft.ML.Runtime.Data.ISchemaBoundMapper Mapper;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly class Microsoft.ML.Runtime.Data.ISchemaBoundMapper Mapper" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Data.ScorerBindingsBase.Mapper" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Mapper As ISchemaBoundMapper " />
+      <MemberSignature Language="F#" Value="val mutable Mapper : Microsoft.ML.Runtime.Data.ISchemaBoundMapper" Usage="Microsoft.ML.Runtime.Data.ScorerBindingsBase.Mapper" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.ISchemaBoundMapper</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The schema bound mapper.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Save">
+      <MemberSignature Language="C#" Value="public abstract void Save (Microsoft.ML.Runtime.Model.ModelSaveContext ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Save(class Microsoft.ML.Runtime.Model.ModelSaveContext ctx) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ScorerBindingsBase.Save(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Sub Save (ctx As ModelSaveContext)" />
+      <MemberSignature Language="F#" Value="abstract member Save : Microsoft.ML.Runtime.Model.ModelSaveContext -&gt; unit" Usage="scorerBindingsBase.Save ctx" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ctx" Type="Microsoft.ML.Runtime.Model.ModelSaveContext" />
+      </Parameters>
+      <Docs>
+        <param name="ctx">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SaveBase">
+      <MemberSignature Language="C#" Value="protected void SaveBase (Microsoft.ML.Runtime.Model.ModelSaveContext ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void SaveBase(class Microsoft.ML.Runtime.Model.ModelSaveContext ctx) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.ScorerBindingsBase.SaveBase(Microsoft.ML.Runtime.Model.ModelSaveContext)" />
+      <MemberSignature Language="VB.NET" Value="Protected Sub SaveBase (ctx As ModelSaveContext)" />
+      <MemberSignature Language="F#" Value="member this.SaveBase : Microsoft.ML.Runtime.Model.ModelSaveContext -&gt; unit" Usage="scorerBindingsBase.SaveBase ctx" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ctx" Type="Microsoft.ML.Runtime.Model.ModelSaveContext" />
+      </Parameters>
+      <Docs>
+        <param name="ctx">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Suffix">
+      <MemberSignature Language="C#" Value="public readonly string Suffix;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly string Suffix" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.Data.ScorerBindingsBase.Suffix" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Suffix As String " />
+      <MemberSignature Language="F#" Value="val mutable Suffix : string" Usage="Microsoft.ML.Runtime.Data.ScorerBindingsBase.Suffix" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The column name suffix. Non-null, but may be empty.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

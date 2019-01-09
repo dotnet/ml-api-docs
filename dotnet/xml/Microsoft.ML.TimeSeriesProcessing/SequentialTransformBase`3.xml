@@ -1,0 +1,279 @@
+﻿<Type Name="SequentialTransformBase&lt;TInput,TOutput,TState&gt;" FullName="Microsoft.ML.TimeSeriesProcessing.SequentialTransformBase&lt;TInput,TOutput,TState&gt;">
+  <TypeSignature Language="C#" Value="public abstract class SequentialTransformBase&lt;TInput,TOutput,TState&gt; : Microsoft.ML.Data.TransformBase where TState : SequentialTransformBase&lt;TInput,TOutput,TState&gt;.StateBasenew()" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit SequentialTransformBase`3&lt;TInput, TOutput, .ctor (class Microsoft.ML.TimeSeriesProcessing.SequentialTransformBase`3/StateBase&lt;!TInput, !TOutput, !TState&gt;) TState&gt; extends Microsoft.ML.Data.TransformBase" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.TimeSeriesProcessing.SequentialTransformBase`3" />
+  <TypeSignature Language="VB.NET" Value="Public MustInherit Class SequentialTransformBase(Of TInput, TOutput, TState)&#xA;Inherits TransformBase" />
+  <TypeSignature Language="F#" Value="type SequentialTransformBase&lt;'Input, 'Output, 'State (requires 'State :&gt; SequentialTransformBase&lt;'Input, 'Output, 'State&gt;.StateBase and 'State : (new : unit -&gt; 'State))&gt; = class&#xA;    inherit TransformBase" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <TypeParameters>
+    <TypeParameter Name="TInput" />
+    <TypeParameter Name="TOutput" />
+    <TypeParameter Name="TState">
+      <Constraints>
+        <ParameterAttribute>DefaultConstructorConstraint</ParameterAttribute>
+        <BaseTypeName>Microsoft.ML.TimeSeriesProcessing.SequentialTransformBase&lt;TInput,TOutput,TState&gt;+StateBase</BaseTypeName>
+      </Constraints>
+    </TypeParameter>
+  </TypeParameters>
+  <Base>
+    <BaseTypeName>Microsoft.ML.Data.TransformBase</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <typeparam name="TInput">The input type of the sequential processing.</typeparam>
+    <typeparam name="TOutput">The dst type of the sequential processing.</typeparam>
+    <typeparam name="TState">The state type of the sequential processing. Must be a class inherited from StateBase </typeparam>
+    <summary>
+            The base class for sequential processing transforms. This class implements the basic sliding window buffering. The derived classes need to specify the transform logic,
+            the initialization logic and the learning logic via implementing the abstract methods TransformCore(), InitializeStateCore() and LearnStateFromDataCore(), respectively
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="CanShuffle">
+      <MemberSignature Language="C#" Value="public override bool CanShuffle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool CanShuffle" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.TimeSeriesProcessing.SequentialTransformBase`3.CanShuffle" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property CanShuffle As Boolean" />
+      <MemberSignature Language="F#" Value="member this.CanShuffle : bool" Usage="Microsoft.ML.TimeSeriesProcessing.SequentialTransformBase&lt;'Input, 'Output, 'State (requires 'State :&gt; Microsoft.ML.TimeSeriesProcessing.SequentialTransformBase&lt;'Input, 'Output, 'State&gt;.StateBase and 'State : (new : unit -&gt; 'State))&gt;.CanShuffle" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRowCount">
+      <MemberSignature Language="C#" Value="public override Nullable&lt;long&gt; GetRowCount ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance valuetype System.Nullable`1&lt;int64&gt; GetRowCount() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TimeSeriesProcessing.SequentialTransformBase`3.GetRowCount" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function GetRowCount () As Nullable(Of Long)" />
+      <MemberSignature Language="F#" Value="override this.GetRowCount : unit -&gt; Nullable&lt;int64&gt;" Usage="sequentialTransformBase.GetRowCount " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Nullable&lt;System.Int64&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRowCursorCore">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Data.RowCursor GetRowCursorCore (Func&lt;int,bool&gt; predicate, Random rand = null);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Data.RowCursor GetRowCursorCore(class System.Func`2&lt;int32, bool&gt; predicate, class System.Random rand) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TimeSeriesProcessing.SequentialTransformBase`3.GetRowCursorCore(System.Func{System.Int32,System.Boolean},System.Random)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetRowCursorCore (predicate As Func(Of Integer, Boolean), Optional rand As Random = null) As RowCursor" />
+      <MemberSignature Language="F#" Value="override this.GetRowCursorCore : Func&lt;int, bool&gt; * Random -&gt; Microsoft.ML.Data.RowCursor" Usage="sequentialTransformBase.GetRowCursorCore (predicate, rand)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.RowCursor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+        <Parameter Name="rand" Type="System.Random" />
+      </Parameters>
+      <Docs>
+        <param name="predicate">To be added.</param>
+        <param name="rand">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRowCursorSet">
+      <MemberSignature Language="C#" Value="public override Microsoft.ML.Data.RowCursor[] GetRowCursorSet (Func&lt;int,bool&gt; predicate, int n, Random rand = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Microsoft.ML.Data.RowCursor[] GetRowCursorSet(class System.Func`2&lt;int32, bool&gt; predicate, int32 n, class System.Random rand) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TimeSeriesProcessing.SequentialTransformBase`3.GetRowCursorSet(System.Func{System.Int32,System.Boolean},System.Int32,System.Random)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function GetRowCursorSet (predicate As Func(Of Integer, Boolean), n As Integer, Optional rand As Random = null) As RowCursor()" />
+      <MemberSignature Language="F#" Value="override this.GetRowCursorSet : Func&lt;int, bool&gt; * int * Random -&gt; Microsoft.ML.Data.RowCursor[]" Usage="sequentialTransformBase.GetRowCursorSet (predicate, n, rand)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.RowCursor[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+        <Parameter Name="n" Type="System.Int32" />
+        <Parameter Name="rand" Type="System.Random" />
+      </Parameters>
+      <Docs>
+        <param name="predicate">To be added.</param>
+        <param name="n">To be added.</param>
+        <param name="rand">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitialWindowSize">
+      <MemberSignature Language="C#" Value="protected int InitialWindowSize;" />
+      <MemberSignature Language="ILAsm" Value=".field family int32 InitialWindowSize" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.TimeSeriesProcessing.SequentialTransformBase`3.InitialWindowSize" />
+      <MemberSignature Language="VB.NET" Value="Protected InitialWindowSize As Integer " />
+      <MemberSignature Language="F#" Value="val mutable InitialWindowSize : int" Usage="Microsoft.ML.TimeSeriesProcessing.SequentialTransformBase&lt;'Input, 'Output, 'State (requires 'State :&gt; Microsoft.ML.TimeSeriesProcessing.SequentialTransformBase&lt;'Input, 'Output, 'State&gt;.StateBase and 'State : (new : unit -&gt; 'State))&gt;.InitialWindowSize" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The number of datapoints from the beginning of the sequence that are used for learning the initial state.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InputColumnName">
+      <MemberSignature Language="C#" Value="protected string InputColumnName;" />
+      <MemberSignature Language="ILAsm" Value=".field family string InputColumnName" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.TimeSeriesProcessing.SequentialTransformBase`3.InputColumnName" />
+      <MemberSignature Language="VB.NET" Value="Protected InputColumnName As String " />
+      <MemberSignature Language="F#" Value="val mutable InputColumnName : string" Usage="Microsoft.ML.TimeSeriesProcessing.SequentialTransformBase&lt;'Input, 'Output, 'State (requires 'State :&gt; Microsoft.ML.TimeSeriesProcessing.SequentialTransformBase&lt;'Input, 'Output, 'State&gt;.StateBase and 'State : (new : unit -&gt; 'State))&gt;.InputColumnName" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OutputColumnName">
+      <MemberSignature Language="C#" Value="protected string OutputColumnName;" />
+      <MemberSignature Language="ILAsm" Value=".field family string OutputColumnName" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.TimeSeriesProcessing.SequentialTransformBase`3.OutputColumnName" />
+      <MemberSignature Language="VB.NET" Value="Protected OutputColumnName As String " />
+      <MemberSignature Language="F#" Value="val mutable OutputColumnName : string" Usage="Microsoft.ML.TimeSeriesProcessing.SequentialTransformBase&lt;'Input, 'Output, 'State (requires 'State :&gt; Microsoft.ML.TimeSeriesProcessing.SequentialTransformBase&lt;'Input, 'Output, 'State&gt;.StateBase and 'State : (new : unit -&gt; 'State))&gt;.OutputColumnName" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OutputSchema">
+      <MemberSignature Language="C#" Value="public override Microsoft.ML.Data.Schema OutputSchema { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Data.Schema OutputSchema" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.TimeSeriesProcessing.SequentialTransformBase`3.OutputSchema" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property OutputSchema As Schema" />
+      <MemberSignature Language="F#" Value="member this.OutputSchema : Microsoft.ML.Data.Schema" Usage="Microsoft.ML.TimeSeriesProcessing.SequentialTransformBase&lt;'Input, 'Output, 'State (requires 'State :&gt; Microsoft.ML.TimeSeriesProcessing.SequentialTransformBase&lt;'Input, 'Output, 'State&gt;.StateBase and 'State : (new : unit -&gt; 'State))&gt;.OutputSchema" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.Schema</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Save">
+      <MemberSignature Language="C#" Value="public override void Save (Microsoft.ML.Model.ModelSaveContext ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Save(class Microsoft.ML.Model.ModelSaveContext ctx) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TimeSeriesProcessing.SequentialTransformBase`3.Save(Microsoft.ML.Model.ModelSaveContext)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Sub Save (ctx As ModelSaveContext)" />
+      <MemberSignature Language="F#" Value="override this.Save : Microsoft.ML.Model.ModelSaveContext -&gt; unit" Usage="sequentialTransformBase.Save ctx" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ctx" Type="Microsoft.ML.Model.ModelSaveContext" />
+      </Parameters>
+      <Docs>
+        <param name="ctx">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShouldUseParallelCursors">
+      <MemberSignature Language="C#" Value="protected override Nullable&lt;bool&gt; ShouldUseParallelCursors (Func&lt;int,bool&gt; predicate);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance valuetype System.Nullable`1&lt;bool&gt; ShouldUseParallelCursors(class System.Func`2&lt;int32, bool&gt; predicate) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TimeSeriesProcessing.SequentialTransformBase`3.ShouldUseParallelCursors(System.Func{System.Int32,System.Boolean})" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function ShouldUseParallelCursors (predicate As Func(Of Integer, Boolean)) As Nullable(Of Boolean)" />
+      <MemberSignature Language="F#" Value="override this.ShouldUseParallelCursors : Func&lt;int, bool&gt; -&gt; Nullable&lt;bool&gt;" Usage="sequentialTransformBase.ShouldUseParallelCursors predicate" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Nullable&lt;System.Boolean&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="predicate">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WindowSize">
+      <MemberSignature Language="C#" Value="protected readonly int WindowSize;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly int32 WindowSize" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.TimeSeriesProcessing.SequentialTransformBase`3.WindowSize" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly WindowSize As Integer " />
+      <MemberSignature Language="F#" Value="val mutable WindowSize : int" Usage="Microsoft.ML.TimeSeriesProcessing.SequentialTransformBase&lt;'Input, 'Output, 'State (requires 'State :&gt; Microsoft.ML.TimeSeriesProcessing.SequentialTransformBase&lt;'Input, 'Output, 'State&gt;.StateBase and 'State : (new : unit -&gt; 'State))&gt;.WindowSize" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The window size for buffering.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

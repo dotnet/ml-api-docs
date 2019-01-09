@@ -1,0 +1,288 @@
+<Type Name="EnsembleCreator" FullName="Microsoft.ML.Runtime.EntryPoints.EnsembleCreator">
+  <TypeSignature Language="C#" Value="public static class EnsembleCreator" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit EnsembleCreator extends System.Object" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.EntryPoints.EnsembleCreator" />
+  <TypeSignature Language="VB.NET" Value="Public Class EnsembleCreator" />
+  <TypeSignature Language="F#" Value="type EnsembleCreator = class" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Ensemble</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+            A component to combine given models into an ensemble model.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="CheckSamePipeline">
+      <MemberSignature Language="C#" Value="public static void CheckSamePipeline (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.IChannel ch, Microsoft.ML.Runtime.Data.RoleMappedData dataToCompare, byte[][] dataSerialized, string[] dataZipEntryNames);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void CheckSamePipeline(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.IChannel ch, class Microsoft.ML.Runtime.Data.RoleMappedData dataToCompare, unsigned int8[][] dataSerialized, string[] dataZipEntryNames) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.CheckSamePipeline(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Data.RoleMappedData,System.Byte[][],System.String[])" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Sub CheckSamePipeline (env As IHostEnvironment, ch As IChannel, dataToCompare As RoleMappedData, dataSerialized As Byte()(), dataZipEntryNames As String())" />
+      <MemberSignature Language="F#" Value="static member CheckSamePipeline : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.IChannel * Microsoft.ML.Runtime.Data.RoleMappedData * byte[][] * string[] -&gt; unit" Usage="Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.CheckSamePipeline (env, ch, dataToCompare, dataSerialized, dataZipEntryNames)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Ensemble</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
+        <Parameter Name="dataToCompare" Type="Microsoft.ML.Runtime.Data.RoleMappedData" />
+        <Parameter Name="dataSerialized" Type="System.Byte[][]" />
+        <Parameter Name="dataZipEntryNames" Type="System.String[]" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="ch">To be added.</param>
+        <param name="dataToCompare">To be added.</param>
+        <param name="dataSerialized">To be added.</param>
+        <param name="dataZipEntryNames">To be added.</param>
+        <summary>
+            This method compares two pipelines to make sure they are identical. The first pipeline is passed
+            as a <see cref="T:Microsoft.ML.Runtime.Data.RoleMappedData" />, and the second as a double byte array and a string array. The double
+            byte array and the string array are obtained by calling <see cref="M:Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.SerializeRoleMappedData(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Data.RoleMappedData,System.Byte[][]@,System.String[]@)" /> on the
+            second pipeline.
+            The comparison is done by saving <see ref="dataToCompare" /> as an in-memory <see cref="T:System.IO.Compression.ZipArchive" />,
+            and for each entry in it, comparing its name, and the byte sequence to the corresponding entries in
+            <see ref="dataZipEntryNames" /> and <see ref="dataSerialized" />.
+            This method throws if for any of the entries the name/byte sequence are not identical.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateAnomalyPipelineEnsemble">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.EntryPoints.CommonOutputs.AnomalyDetectionOutput CreateAnomalyPipelineEnsemble (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.PipelineAnomalyInput input);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.EntryPoints.CommonOutputs/AnomalyDetectionOutput CreateAnomalyPipelineEnsemble(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.EntryPoints.EnsembleCreator/PipelineAnomalyInput input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.CreateAnomalyPipelineEnsemble(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.PipelineAnomalyInput)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function CreateAnomalyPipelineEnsemble (env As IHostEnvironment, input As EnsembleCreator.PipelineAnomalyInput) As CommonOutputs.AnomalyDetectionOutput" />
+      <MemberSignature Language="F#" Value="static member CreateAnomalyPipelineEnsemble : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.PipelineAnomalyInput -&gt; Microsoft.ML.Runtime.EntryPoints.CommonOutputs.AnomalyDetectionOutput" Usage="Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.CreateAnomalyPipelineEnsemble (env, input)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Ensemble</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="Combine anomaly detection models into an ensemble", Name="Models.AnomalyPipelineEnsemble")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.EntryPoints.CommonOutputs+AnomalyDetectionOutput</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.EntryPoints.EnsembleCreator+PipelineAnomalyInput" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateBinaryEnsemble">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.EntryPoints.CommonOutputs.BinaryClassificationOutput CreateBinaryEnsemble (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.ClassifierInput input);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.EntryPoints.CommonOutputs/BinaryClassificationOutput CreateBinaryEnsemble(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.EntryPoints.EnsembleCreator/ClassifierInput input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.CreateBinaryEnsemble(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.ClassifierInput)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function CreateBinaryEnsemble (env As IHostEnvironment, input As EnsembleCreator.ClassifierInput) As CommonOutputs.BinaryClassificationOutput" />
+      <MemberSignature Language="F#" Value="static member CreateBinaryEnsemble : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.ClassifierInput -&gt; Microsoft.ML.Runtime.EntryPoints.CommonOutputs.BinaryClassificationOutput" Usage="Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.CreateBinaryEnsemble (env, input)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Ensemble</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="Combine binary classifiers into an ensemble", Name="Models.BinaryEnsemble", UserName="Parallel Ensemble (bagging, stacking, etc)")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.EntryPoints.CommonOutputs+BinaryClassificationOutput</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.EntryPoints.EnsembleCreator+ClassifierInput" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateBinaryPipelineEnsemble">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.EntryPoints.CommonOutputs.BinaryClassificationOutput CreateBinaryPipelineEnsemble (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.PipelineClassifierInput input);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.EntryPoints.CommonOutputs/BinaryClassificationOutput CreateBinaryPipelineEnsemble(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.EntryPoints.EnsembleCreator/PipelineClassifierInput input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.CreateBinaryPipelineEnsemble(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.PipelineClassifierInput)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function CreateBinaryPipelineEnsemble (env As IHostEnvironment, input As EnsembleCreator.PipelineClassifierInput) As CommonOutputs.BinaryClassificationOutput" />
+      <MemberSignature Language="F#" Value="static member CreateBinaryPipelineEnsemble : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.PipelineClassifierInput -&gt; Microsoft.ML.Runtime.EntryPoints.CommonOutputs.BinaryClassificationOutput" Usage="Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.CreateBinaryPipelineEnsemble (env, input)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Ensemble</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="Combine binary classification models into an ensemble", Name="Models.BinaryPipelineEnsemble")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.EntryPoints.CommonOutputs+BinaryClassificationOutput</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.EntryPoints.EnsembleCreator+PipelineClassifierInput" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateMultiClassPipelineEnsemble">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.EntryPoints.CommonOutputs.MulticlassClassificationOutput CreateMultiClassPipelineEnsemble (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.PipelineClassifierInput input);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.EntryPoints.CommonOutputs/MulticlassClassificationOutput CreateMultiClassPipelineEnsemble(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.EntryPoints.EnsembleCreator/PipelineClassifierInput input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.CreateMultiClassPipelineEnsemble(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.PipelineClassifierInput)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function CreateMultiClassPipelineEnsemble (env As IHostEnvironment, input As EnsembleCreator.PipelineClassifierInput) As CommonOutputs.MulticlassClassificationOutput" />
+      <MemberSignature Language="F#" Value="static member CreateMultiClassPipelineEnsemble : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.PipelineClassifierInput -&gt; Microsoft.ML.Runtime.EntryPoints.CommonOutputs.MulticlassClassificationOutput" Usage="Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.CreateMultiClassPipelineEnsemble (env, input)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Ensemble</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="Combine multiclass classifiers into an ensemble", Name="Models.MultiClassPipelineEnsemble")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.EntryPoints.CommonOutputs+MulticlassClassificationOutput</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.EntryPoints.EnsembleCreator+PipelineClassifierInput" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateRegressionEnsemble">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.EntryPoints.CommonOutputs.RegressionOutput CreateRegressionEnsemble (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.RegressionInput input);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.EntryPoints.CommonOutputs/RegressionOutput CreateRegressionEnsemble(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.EntryPoints.EnsembleCreator/RegressionInput input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.CreateRegressionEnsemble(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.RegressionInput)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function CreateRegressionEnsemble (env As IHostEnvironment, input As EnsembleCreator.RegressionInput) As CommonOutputs.RegressionOutput" />
+      <MemberSignature Language="F#" Value="static member CreateRegressionEnsemble : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.RegressionInput -&gt; Microsoft.ML.Runtime.EntryPoints.CommonOutputs.RegressionOutput" Usage="Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.CreateRegressionEnsemble (env, input)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Ensemble</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="Combine regression models into an ensemble", Name="Models.RegressionEnsemble", UserName="Regression Ensemble (bagging, stacking, etc)")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.EntryPoints.CommonOutputs+RegressionOutput</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.EntryPoints.EnsembleCreator+RegressionInput" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateRegressionPipelineEnsemble">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Runtime.EntryPoints.CommonOutputs.RegressionOutput CreateRegressionPipelineEnsemble (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.PipelineRegressionInput input);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Runtime.EntryPoints.CommonOutputs/RegressionOutput CreateRegressionPipelineEnsemble(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.EntryPoints.EnsembleCreator/PipelineRegressionInput input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.CreateRegressionPipelineEnsemble(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.PipelineRegressionInput)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function CreateRegressionPipelineEnsemble (env As IHostEnvironment, input As EnsembleCreator.PipelineRegressionInput) As CommonOutputs.RegressionOutput" />
+      <MemberSignature Language="F#" Value="static member CreateRegressionPipelineEnsemble : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.PipelineRegressionInput -&gt; Microsoft.ML.Runtime.EntryPoints.CommonOutputs.RegressionOutput" Usage="Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.CreateRegressionPipelineEnsemble (env, input)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Ensemble</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Runtime.EntryPoints.TlcModule/EntryPoint(Desc="Combine regression models into an ensemble", Name="Models.RegressionPipelineEnsemble")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.EntryPoints.CommonOutputs+RegressionOutput</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="input" Type="Microsoft.ML.Runtime.EntryPoints.EnsembleCreator+PipelineRegressionInput" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SerializeRoleMappedData">
+      <MemberSignature Language="C#" Value="public static void SerializeRoleMappedData (Microsoft.ML.Runtime.IHostEnvironment env, Microsoft.ML.Runtime.IChannel ch, Microsoft.ML.Runtime.Data.RoleMappedData data, out byte[][] dataSerialized, out string[] dataZipEntryNames);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SerializeRoleMappedData(class Microsoft.ML.Runtime.IHostEnvironment env, class Microsoft.ML.Runtime.IChannel ch, class Microsoft.ML.Runtime.Data.RoleMappedData data, [out] unsigned int8[][]&amp; dataSerialized, [out] string[]&amp; dataZipEntryNames) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.SerializeRoleMappedData(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Data.RoleMappedData,System.Byte[][]@,System.String[]@)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Sub SerializeRoleMappedData (env As IHostEnvironment, ch As IChannel, data As RoleMappedData, ByRef dataSerialized As Byte()(), ByRef dataZipEntryNames As String())" />
+      <MemberSignature Language="F#" Value="static member SerializeRoleMappedData : Microsoft.ML.Runtime.IHostEnvironment * Microsoft.ML.Runtime.IChannel * Microsoft.ML.Runtime.Data.RoleMappedData *  *  -&gt; unit" Usage="Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.SerializeRoleMappedData (env, ch, data, dataSerialized, dataZipEntryNames)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Ensemble</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
+        <Parameter Name="data" Type="Microsoft.ML.Runtime.Data.RoleMappedData" />
+        <Parameter Name="dataSerialized" Type="System.Byte[][]" RefType="out" />
+        <Parameter Name="dataZipEntryNames" Type="System.String[]" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="ch">To be added.</param>
+        <param name="data">To be added.</param>
+        <param name="dataSerialized">To be added.</param>
+        <param name="dataZipEntryNames">To be added.</param>
+        <summary>
+             This method takes a <see cref="T:Microsoft.ML.Runtime.Data.RoleMappedData" /> as input, saves it as an in-memory <see cref="T:System.IO.Compression.ZipArchive" />
+             and returns two arrays indexed by the entries in the zip:
+             1. An array of byte arrays, containing the byte sequences of each entry.
+             2. An array of strings, containing the name of each entry.
+            
+             This method is used for comparing pipelines. Its outputs can be passed to <see cref="M:Microsoft.ML.Runtime.EntryPoints.EnsembleCreator.CheckSamePipeline(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.IChannel,Microsoft.ML.Runtime.Data.RoleMappedData,System.Byte[][],System.String[])" />
+             to check if this pipeline is identical to another pipeline.
+             </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

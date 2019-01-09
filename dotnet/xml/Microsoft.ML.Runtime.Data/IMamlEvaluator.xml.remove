@@ -1,0 +1,149 @@
+<Type Name="IMamlEvaluator" FullName="Microsoft.ML.Runtime.Data.IMamlEvaluator">
+  <TypeSignature Language="C#" Value="public interface IMamlEvaluator : Microsoft.ML.Runtime.Data.IEvaluator" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IMamlEvaluator implements class Microsoft.ML.Runtime.Data.IEvaluator" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.IMamlEvaluator" />
+  <TypeSignature Language="VB.NET" Value="Public Interface IMamlEvaluator&#xA;Implements IEvaluator" />
+  <TypeSignature Language="F#" Value="type IMamlEvaluator = interface&#xA;    interface IEvaluator" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Data</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.Data.IEvaluator</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+            This interface is used by Maml components (the <see cref="T:Microsoft.ML.Runtime.Data.EvaluateCommand" />, the <see cref="T:Microsoft.ML.Runtime.Data.CrossValidationCommand" />
+            and the <see cref="T:Microsoft.ML.Runtime.Data.EvaluateTransform" /> to evaluate, print and save the results.
+            The input <see cref="T:Microsoft.ML.Runtime.Data.RoleMappedData" /> to the <see cref="M:Microsoft.ML.Runtime.Data.IEvaluator.Evaluate(Microsoft.ML.Runtime.Data.RoleMappedData)" /> and the <see cref="M:Microsoft.ML.Runtime.Data.IEvaluator.GetPerInstanceMetrics(Microsoft.ML.Runtime.Data.RoleMappedData)" /> methods
+            should be assumed to contain only the following column roles: label, group, weight and name. Any other columns needed for
+            evaluation should be searched for by name in the <see cref="T:Microsoft.ML.Runtime.Data.ISchema" />.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="GetOverallResults">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IDataView GetOverallResults (params Microsoft.ML.Runtime.Data.IDataView[] metrics);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IDataView GetOverallResults(class Microsoft.ML.Runtime.Data.IDataView[] metrics) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.IMamlEvaluator.GetOverallResults(Microsoft.ML.Runtime.Data.IDataView[])" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetOverallResults (ParamArray metrics As IDataView()) As IDataView" />
+      <MemberSignature Language="F#" Value="abstract member GetOverallResults : Microsoft.ML.Runtime.Data.IDataView[] -&gt; Microsoft.ML.Runtime.Data.IDataView" Usage="iMamlEvaluator.GetOverallResults metrics" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataView</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="metrics" Type="Microsoft.ML.Runtime.Data.IDataView[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="metrics">
+        </param>
+        <summary>
+            Combine the overall metrics from multiple folds into a single data view.
+            </summary>
+        <returns />
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetPerInstanceDataViewToSave">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IDataView GetPerInstanceDataViewToSave (Microsoft.ML.Runtime.Data.RoleMappedData perInstance);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IDataView GetPerInstanceDataViewToSave(class Microsoft.ML.Runtime.Data.RoleMappedData perInstance) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.IMamlEvaluator.GetPerInstanceDataViewToSave(Microsoft.ML.Runtime.Data.RoleMappedData)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetPerInstanceDataViewToSave (perInstance As RoleMappedData) As IDataView" />
+      <MemberSignature Language="F#" Value="abstract member GetPerInstanceDataViewToSave : Microsoft.ML.Runtime.Data.RoleMappedData -&gt; Microsoft.ML.Runtime.Data.IDataView" Usage="iMamlEvaluator.GetPerInstanceDataViewToSave perInstance" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IDataView</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="perInstance" Type="Microsoft.ML.Runtime.Data.RoleMappedData" />
+      </Parameters>
+      <Docs>
+        <param name="perInstance">To be added.</param>
+        <summary>
+            Create a data view containing only the columns that are saved as per-instance results by Maml commands.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PrintAdditionalMetrics">
+      <MemberSignature Language="C#" Value="public void PrintAdditionalMetrics (Microsoft.ML.Runtime.IChannel ch, params System.Collections.Generic.Dictionary&lt;string,Microsoft.ML.Runtime.Data.IDataView&gt;[] metrics);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void PrintAdditionalMetrics(class Microsoft.ML.Runtime.IChannel ch, class System.Collections.Generic.Dictionary`2&lt;string, class Microsoft.ML.Runtime.Data.IDataView&gt;[] metrics) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.IMamlEvaluator.PrintAdditionalMetrics(Microsoft.ML.Runtime.IChannel,System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView}[])" />
+      <MemberSignature Language="VB.NET" Value="Public Sub PrintAdditionalMetrics (ch As IChannel, ParamArray metrics As Dictionary(Of String, IDataView)())" />
+      <MemberSignature Language="F#" Value="abstract member PrintAdditionalMetrics : Microsoft.ML.Runtime.IChannel * System.Collections.Generic.Dictionary&lt;string, Microsoft.ML.Runtime.Data.IDataView&gt;[] -&gt; unit" Usage="iMamlEvaluator.PrintAdditionalMetrics (ch, metrics)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
+        <Parameter Name="metrics" Type="System.Collections.Generic.Dictionary&lt;System.String,Microsoft.ML.Runtime.Data.IDataView&gt;[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="ch">To be added.</param>
+        <param name="metrics">To be added.</param>
+        <summary>
+            Handles custom metrics (such as p/r curves for binary classification, or group summary results for ranking) from one
+            or more folds. Implementations of this method typically creates a single data view for the custom metric and saves it
+            to a user specified file.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PrintFoldResults">
+      <MemberSignature Language="C#" Value="public void PrintFoldResults (Microsoft.ML.Runtime.IChannel ch, System.Collections.Generic.Dictionary&lt;string,Microsoft.ML.Runtime.Data.IDataView&gt; metrics);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void PrintFoldResults(class Microsoft.ML.Runtime.IChannel ch, class System.Collections.Generic.Dictionary`2&lt;string, class Microsoft.ML.Runtime.Data.IDataView&gt; metrics) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.IMamlEvaluator.PrintFoldResults(Microsoft.ML.Runtime.IChannel,System.Collections.Generic.Dictionary{System.String,Microsoft.ML.Runtime.Data.IDataView})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub PrintFoldResults (ch As IChannel, metrics As Dictionary(Of String, IDataView))" />
+      <MemberSignature Language="F#" Value="abstract member PrintFoldResults : Microsoft.ML.Runtime.IChannel * System.Collections.Generic.Dictionary&lt;string, Microsoft.ML.Runtime.Data.IDataView&gt; -&gt; unit" Usage="iMamlEvaluator.PrintFoldResults (ch, metrics)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ch" Type="Microsoft.ML.Runtime.IChannel" />
+        <Parameter Name="metrics" Type="System.Collections.Generic.Dictionary&lt;System.String,Microsoft.ML.Runtime.Data.IDataView&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="ch">To be added.</param>
+        <param name="metrics">To be added.</param>
+        <summary>
+            Print the aggregate metrics to the console.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

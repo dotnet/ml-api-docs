@@ -1,0 +1,152 @@
+<Type Name="IDataView" FullName="Microsoft.ML.Runtime.Data.IDataView">
+  <TypeSignature Language="C#" Value="public interface IDataView : Microsoft.ML.Runtime.Data.ISchematized" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IDataView implements class Microsoft.ML.Runtime.Data.ISchematized" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Data.IDataView" />
+  <TypeSignature Language="VB.NET" Value="Public Interface IDataView&#xA;Implements ISchematized" />
+  <TypeSignature Language="F#" Value="type IDataView = interface&#xA;    interface ISchematized" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Core</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.Data.ISchematized</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+            The input and output of Query Operators (Transforms). This is the fundamental data pipeline
+            type, comparable to IEnumerable for LINQ.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="CanShuffle">
+      <MemberSignature Language="C#" Value="public bool CanShuffle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool CanShuffle" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Data.IDataView.CanShuffle" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property CanShuffle As Boolean" />
+      <MemberSignature Language="F#" Value="member this.CanShuffle : bool" Usage="Microsoft.ML.Runtime.Data.IDataView.CanShuffle" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Whether this IDataView supports shuffling of rows, to any degree.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRowCount">
+      <MemberSignature Language="C#" Value="public Nullable&lt;long&gt; GetRowCount ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Nullable`1&lt;int64&gt; GetRowCount() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.IDataView.GetRowCount" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetRowCount () As Nullable(Of Long)" />
+      <MemberSignature Language="F#" Value="abstract member GetRowCount : unit -&gt; Nullable&lt;int64&gt;" Usage="iDataView.GetRowCount " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Nullable&lt;System.Int64&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+             Returns the number of rows if known. Returning null means that the row count is unknown but
+             it might return a non-null value on a subsequent call. This indicates, that the transform does
+             not YET know the number of rows, but may in the future. Its implementation's computation
+             complexity should be O(1).
+            
+             Most implementation will return the same answer every time. Some, like a cache, might
+             return null until the cache is fully populated.
+             </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRowCursor">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IRowCursor GetRowCursor (Func&lt;int,bool&gt; needCol, Microsoft.ML.Runtime.IRandom rand = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IRowCursor GetRowCursor(class System.Func`2&lt;int32, bool&gt; needCol, class Microsoft.ML.Runtime.IRandom rand) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.IDataView.GetRowCursor(System.Func{System.Int32,System.Boolean},Microsoft.ML.Runtime.IRandom)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetRowCursor (needCol As Func(Of Integer, Boolean), Optional rand As IRandom = null) As IRowCursor" />
+      <MemberSignature Language="F#" Value="abstract member GetRowCursor : Func&lt;int, bool&gt; * Microsoft.ML.Runtime.IRandom -&gt; Microsoft.ML.Runtime.Data.IRowCursor" Usage="iDataView.GetRowCursor (needCol, rand)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IRowCursor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="needCol" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+        <Parameter Name="rand" Type="Microsoft.ML.Runtime.IRandom" />
+      </Parameters>
+      <Docs>
+        <param name="needCol">To be added.</param>
+        <param name="rand">To be added.</param>
+        <summary>
+            Get a row cursor. The active column indices are those for which needCol(col) returns true.
+            The schema of the returned cursor will be the same as the schema of the IDataView, but getting
+            a getter for an inactive columns will throw. The <paramref name="needCol" /> predicate must be
+            non-null. To activate all columns, pass "col =&gt; true".
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRowCursorSet">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.Data.IRowCursor[] GetRowCursorSet (out Microsoft.ML.Runtime.Data.IRowCursorConsolidator consolidator, Func&lt;int,bool&gt; needCol, int n, Microsoft.ML.Runtime.IRandom rand = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.Data.IRowCursor[] GetRowCursorSet([out] class Microsoft.ML.Runtime.Data.IRowCursorConsolidator&amp; consolidator, class System.Func`2&lt;int32, bool&gt; needCol, int32 n, class Microsoft.ML.Runtime.IRandom rand) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Data.IDataView.GetRowCursorSet(Microsoft.ML.Runtime.Data.IRowCursorConsolidator@,System.Func{System.Int32,System.Boolean},System.Int32,Microsoft.ML.Runtime.IRandom)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetRowCursorSet (ByRef consolidator As IRowCursorConsolidator, needCol As Func(Of Integer, Boolean), n As Integer, Optional rand As IRandom = null) As IRowCursor()" />
+      <MemberSignature Language="F#" Value="abstract member GetRowCursorSet :  * Func&lt;int, bool&gt; * int * Microsoft.ML.Runtime.IRandom -&gt; Microsoft.ML.Runtime.Data.IRowCursor[]" Usage="iDataView.GetRowCursorSet (consolidator, needCol, n, rand)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.Data.IRowCursor[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="consolidator" Type="Microsoft.ML.Runtime.Data.IRowCursorConsolidator" RefType="out" />
+        <Parameter Name="needCol" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+        <Parameter Name="n" Type="System.Int32" />
+        <Parameter Name="rand" Type="Microsoft.ML.Runtime.IRandom" />
+      </Parameters>
+      <Docs>
+        <param name="consolidator">This is an object that can be used to reconcile the
+             returned array of cursors. When the array of cursors is of length 1, it is legal,
+             indeed expected, that this parameter should be null.</param>
+        <param name="needCol">The predicate, where a column is active if this returns true.</param>
+        <param name="n">The suggested degree of parallelism.</param>
+        <param name="rand">An instance </param>
+        <summary>
+             This constructs a set of parallel batch cursors. The value n is a recommended limit
+             on cardinality. If <paramref name="n" /> is non-positive, this indicates that the caller
+             has no recommendation, and the implementation should have some default behavior to cover
+             this case. Note that this is strictly a recommendation: it is entirely possible that
+             an implementation can return a different number of cursors.
+            
+             The cursors should return the same data as returned through
+             <see cref="M:Microsoft.ML.Runtime.Data.IDataView.GetRowCursor(System.Func{System.Int32,System.Boolean},Microsoft.ML.Runtime.IRandom)" />, except partitioned: no two cursors
+             should return the "same" row as would have been returned through the regular serial cursor,
+             but all rows should be returned by exactly one of the cursors returned from this cursor.
+             The cursors can have their values reconciled downstream through the use of the
+             <see cref="P:Microsoft.ML.Runtime.Data.ICounted.Batch" /> property.
+             </summary>
+        <returns />
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
