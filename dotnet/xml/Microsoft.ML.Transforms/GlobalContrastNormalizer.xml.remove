@@ -1,0 +1,147 @@
+<Type Name="GlobalContrastNormalizer" FullName="Microsoft.ML.Transforms.GlobalContrastNormalizer">
+  <TypeSignature Language="C#" Value="public sealed class GlobalContrastNormalizer : Microsoft.ML.Runtime.Data.TrivialWrapperEstimator" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit GlobalContrastNormalizer extends Microsoft.ML.Runtime.Data.TrivialWrapperEstimator" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Transforms.GlobalContrastNormalizer" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class GlobalContrastNormalizer&#xA;Inherits TrivialWrapperEstimator" />
+  <TypeSignature Language="F#" Value="type GlobalContrastNormalizer = class&#xA;    inherit TrivialWrapperEstimator" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Runtime.Data.TrivialWrapperEstimator</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>
+      <para>Performs a global contrast normalization on input values:</para>
+      <para>Y = (s * X - M) / D</para>
+      <para>where s is a scale, M is mean and D is either the L2 norm or standard deviation.</para>
+    </summary>
+    <remarks>
+        Scaling inputs to unit norms is a common operation for text classification or clustering.
+        For more information see: 
+        <a href="https://www.cs.stanford.edu/~acoates/papers/coatesleeng_aistats_2011.pdf">An Analysis of Single-Layer Networks in Unsupervised Feature Learning</a></remarks>
+    <altmember cref="T:Microsoft.ML.Transforms.LpNormalizer" />
+    <example>
+      <code language="csharp">
+          pipeline.Add(new GlobalContrastNormalizer("FeatureCol")
+          { 
+            SubMean= false
+          });
+        </code>
+    </example>
+    <example>
+      <code language="csharp">
+          pipeline.Add(new GlobalContrastNormalizer("FeatureCol")
+          { 
+              SubMean= false
+          });
+        </code>
+    </example>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public GlobalContrastNormalizer (Microsoft.ML.Runtime.IHostEnvironment env, ValueTuple&lt;string,string&gt;[] columns, bool subMean = true, bool useStdDev = false, float scale = 1);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, valuetype System.ValueTuple`2&lt;string, string&gt;[] columns, bool subMean, bool useStdDev, float32 scale) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.GlobalContrastNormalizer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.ValueTuple{System.String,System.String}[],System.Boolean,System.Boolean,System.Single)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, columns As ValueTuple(Of String, String)(), Optional subMean As Boolean = true, Optional useStdDev As Boolean = false, Optional scale As Single = 1)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.GlobalContrastNormalizer : Microsoft.ML.Runtime.IHostEnvironment * ValueTuple&lt;string, string&gt;[] * bool * bool * single -&gt; Microsoft.ML.Transforms.GlobalContrastNormalizer" Usage="new Microsoft.ML.Transforms.GlobalContrastNormalizer (env, columns, subMean, useStdDev, scale)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="columns" Type="System.ValueTuple&lt;System.String,System.String&gt;[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.Runtime.CompilerServices.TupleElementNames(new System.String[] { "input", "output" })</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+        <Parameter Name="subMean" Type="System.Boolean" />
+        <Parameter Name="useStdDev" Type="System.Boolean" />
+        <Parameter Name="scale" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="env">The environment.</param>
+        <param name="columns">Pairs of columns to run the tokenization on.</param>
+        <param name="subMean">Subtract mean from each value before normalizing.</param>
+        <param name="useStdDev">Normalize by standard deviation rather than L2 norm.</param>
+        <param name="scale">Scale features by this value.</param>
+        <summary>
+          <para>Performs a global contrast normalization on input values:</para>
+          <para>Y = (s * X - M) / D</para>
+          <para>where s is a scale, M is mean and D is either the L2 norm or standard deviation.</para>
+        </summary>
+        <remarks>
+        Scaling inputs to unit norms is a common operation for text classification or clustering.
+        For more information see: 
+        <a href="https://www.cs.stanford.edu/~acoates/papers/coatesleeng_aistats_2011.pdf">An Analysis of Single-Layer Networks in Unsupervised Feature Learning</a></remarks>
+        <altmember cref="T:Microsoft.ML.Transforms.LpNormalizer" />
+        <example>
+          <code language="csharp">
+          pipeline.Add(new GlobalContrastNormalizer("FeatureCol")
+          { 
+              SubMean= false
+          });
+        </code>
+        </example>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public GlobalContrastNormalizer (Microsoft.ML.Runtime.IHostEnvironment env, string inputColumn, string outputColumn = null, bool subMean = true, bool useStdDev = false, float scale = 1);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.Runtime.IHostEnvironment env, string inputColumn, string outputColumn, bool subMean, bool useStdDev, float32 scale) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.GlobalContrastNormalizer.#ctor(Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.Boolean,System.Boolean,System.Single)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, inputColumn As String, Optional outputColumn As String = null, Optional subMean As Boolean = true, Optional useStdDev As Boolean = false, Optional scale As Single = 1)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.GlobalContrastNormalizer : Microsoft.ML.Runtime.IHostEnvironment * string * string * bool * bool * single -&gt; Microsoft.ML.Transforms.GlobalContrastNormalizer" Usage="new Microsoft.ML.Transforms.GlobalContrastNormalizer (env, inputColumn, outputColumn, subMean, useStdDev, scale)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
+        <Parameter Name="inputColumn" Type="System.String" />
+        <Parameter Name="outputColumn" Type="System.String" />
+        <Parameter Name="subMean" Type="System.Boolean" />
+        <Parameter Name="useStdDev" Type="System.Boolean" />
+        <Parameter Name="scale" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="env">The environment.</param>
+        <param name="inputColumn">The column containing text to tokenize.</param>
+        <param name="outputColumn">The column containing output tokens. Null means <paramref name="inputColumn" /> is replaced.</param>
+        <param name="subMean">Subtract mean from each value before normalizing.</param>
+        <param name="useStdDev">Normalize by standard deviation rather than L2 norm.</param>
+        <param name="scale">Scale features by this value.</param>
+        <summary>
+          <para>Performs a global contrast normalization on input values:</para>
+          <para>Y = (s * X - M) / D</para>
+          <para>where s is a scale, M is mean and D is either the L2 norm or standard deviation.</para>
+        </summary>
+        <remarks>
+        Scaling inputs to unit norms is a common operation for text classification or clustering.
+        For more information see: 
+        <a href="https://www.cs.stanford.edu/~acoates/papers/coatesleeng_aistats_2011.pdf">An Analysis of Single-Layer Networks in Unsupervised Feature Learning</a></remarks>
+        <altmember cref="T:Microsoft.ML.Transforms.LpNormalizer" />
+        <example>
+          <code language="csharp">
+          pipeline.Add(new GlobalContrastNormalizer("FeatureCol")
+          { 
+              SubMean= false
+          });
+        </code>
+        </example>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

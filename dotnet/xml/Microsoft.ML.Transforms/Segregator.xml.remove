@@ -1,0 +1,202 @@
+<Type Name="Segregator" FullName="Microsoft.ML.Transforms.Segregator">
+  <TypeSignature Language="C#" Value="public sealed class Segregator : Microsoft.ML.ILearningPipelineItem, Microsoft.ML.Runtime.EntryPoints.CommonInputs.ITransformInput" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit Segregator extends System.Object implements class Microsoft.ML.ILearningPipelineItem, class Microsoft.ML.Runtime.EntryPoints.CommonInputs/ITransformInput" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Transforms.Segregator" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class Segregator&#xA;Implements CommonInputs.ITransformInput, ILearningPipelineItem" />
+  <TypeSignature Language="F#" Value="type Segregator = class&#xA;    interface CommonInputs.ITransformInput&#xA;    interface ILearningPipelineItem" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.ILearningPipelineItem</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.EntryPoints.CommonInputs+ITransformInput</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+        Un-groups vector columns into sequences of rows, inverse of Group transform.
+       </summary>
+    <remarks>
+      <para>This can be thought of as an inverse of the <see cref="T:Microsoft.ML.Transforms.CombinerByContiguousGroupId" />.  
+        For all specified vector columns ("pivot" columns), performs the "ungroup" (or "unroll") operation as outlined below.
+        </para>
+      <para>If the only pivot column is called P, and has size K, then for every row of the input we will produce 
+         K rows, that are identical in all columns except P. The column P will become a scalar column, and this 
+         column will hold all the original values of input's P, one value per row, in order. The order of columns 
+         will remain the same.
+        </para>
+      <para>Variable-length pivot columns are supported (including zero, which will eliminate the row from the result).</para>
+      <para>Multiple pivot columns are also supported:</para>
+      <list type="bullet">
+        <item>
+          <description>A number of output rows is controlled by the 'mode' parameter. 
+            <list type="bullet"><item><term>outer</term><description> it is equal to the maximum length of pivot columns</description></item><item><term>inner</term><description> it is equal to the minimum length of pivot columns</description></item><item><term>first</term><description> it is equal to the length of the first pivot column</description></item></list></description>
+        </item>
+        <item>
+          <description>
+              If a particular pivot column has size that is different than the number of output rows, the extra slots will
+              be ignored, and the missing slots will be 'padded' with default values.
+            </description>
+        </item>
+      </list>
+      <para>All metadata are preserved for the retained columns. For 'unrolled' columns, all known metadata
+        except slot names are preserved.
+        </para>
+    </remarks>
+    <example>
+      <code language="csharp">
+          pipeline.Add(new Segregator
+          { 
+              Column = new[]{"Column1" },
+              Mode = UngroupTransformUngroupMode.First
+          });
+        </code>
+    </example>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Segregator ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Segregator.#ctor" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New ()" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ApplyStep">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.ILearningPipelineStep ApplyStep (Microsoft.ML.ILearningPipelineStep previousStep, Microsoft.ML.Runtime.Experiment experiment);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.ILearningPipelineStep ApplyStep(class Microsoft.ML.ILearningPipelineStep previousStep, class Microsoft.ML.Runtime.Experiment experiment) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Segregator.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)" />
+      <MemberSignature Language="F#" Value="abstract member ApplyStep : Microsoft.ML.ILearningPipelineStep * Microsoft.ML.Runtime.Experiment -&gt; Microsoft.ML.ILearningPipelineStep&#xA;override this.ApplyStep : Microsoft.ML.ILearningPipelineStep * Microsoft.ML.Runtime.Experiment -&gt; Microsoft.ML.ILearningPipelineStep" Usage="segregator.ApplyStep (previousStep, experiment)" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.ILearningPipelineItem.ApplyStep(Microsoft.ML.ILearningPipelineStep,Microsoft.ML.Runtime.Experiment)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.ILearningPipelineStep</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="previousStep" Type="Microsoft.ML.ILearningPipelineStep" />
+        <Parameter Name="experiment" Type="Microsoft.ML.Runtime.Experiment" />
+      </Parameters>
+      <Docs>
+        <param name="previousStep">To be added.</param>
+        <param name="experiment">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Column">
+      <MemberSignature Language="C#" Value="public string[] Column { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string[] Column" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Transforms.Segregator.Column" />
+      <MemberSignature Language="VB.NET" Value="Public Property Column As String()" />
+      <MemberSignature Language="F#" Value="member this.Column : string[] with get, set" Usage="Microsoft.ML.Transforms.Segregator.Column" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Columns to unroll, or 'pivot'
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Data">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt; Data { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.EntryPoints.Var`1&lt;class Microsoft.ML.Runtime.Data.IDataView&gt; Data" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Transforms.Segregator.Data" />
+      <MemberSignature Language="VB.NET" Value="Public Property Data As Var(Of IDataView)" />
+      <MemberSignature Language="F#" Value="member this.Data : Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt; with get, set" Usage="Microsoft.ML.Transforms.Segregator.Data" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Runtime.EntryPoints.CommonInputs.ITransformInput.Data</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Input dataset
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetInputData">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt; GetInputData ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Runtime.EntryPoints.Var`1&lt;class Microsoft.ML.Runtime.Data.IDataView&gt; GetInputData() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Segregator.GetInputData" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetInputData () As Var(Of IDataView)" />
+      <MemberSignature Language="F#" Value="abstract member GetInputData : unit -&gt; Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;&#xA;override this.GetInputData : unit -&gt; Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;" Usage="segregator.GetInputData " />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.ILearningPipelineItem.GetInputData</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.EntryPoints.Var&lt;Microsoft.ML.Runtime.Data.IDataView&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Mode">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Transforms.UngroupTransformUngroupMode Mode { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.ML.Transforms.UngroupTransformUngroupMode Mode" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Transforms.Segregator.Mode" />
+      <MemberSignature Language="VB.NET" Value="Public Property Mode As UngroupTransformUngroupMode" />
+      <MemberSignature Language="F#" Value="member this.Mode : Microsoft.ML.Transforms.UngroupTransformUngroupMode with get, set" Usage="Microsoft.ML.Transforms.Segregator.Mode" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Transforms.UngroupTransformUngroupMode</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Specifies how to unroll multiple pivot columns of different size.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

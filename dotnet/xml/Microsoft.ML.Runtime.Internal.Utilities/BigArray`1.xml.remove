@@ -1,0 +1,377 @@
+<Type Name="BigArray&lt;T&gt;" FullName="Microsoft.ML.Runtime.Internal.Utilities.BigArray&lt;T&gt;">
+  <TypeSignature Language="C#" Value="public sealed class BigArray&lt;T&gt; : System.Collections.Generic.IEnumerable&lt;T&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit BigArray`1&lt;T&gt; extends System.Object implements class System.Collections.Generic.IEnumerable`1&lt;!T&gt;, class System.Collections.IEnumerable" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class BigArray(Of T)&#xA;Implements IEnumerable(Of T)" />
+  <TypeSignature Language="F#" Value="type BigArray&lt;'T&gt; = class&#xA;    interface seq&lt;'T&gt;&#xA;    interface IEnumerable" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Core</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <TypeParameters>
+    <TypeParameter Name="T" />
+  </TypeParameters>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.Collections.Generic.IEnumerable&lt;T&gt;</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.Collections.IEnumerable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <typeparam name="T">The type of entries.</typeparam>
+    <summary>
+            An array-like data structure that supports storing more than
+            <see cref="F:Microsoft.ML.Runtime.Internal.Utilities.Utils.ArrayMaxSize" /> many entries, up to 0x7FEFFFFF00000L.
+            The entries are indexed by 64-bit integers, and a single entry can be accessed by
+            the indexer if no modifications to the entries is desired, or the <see cref="M:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1.ApplyAt(System.Int64,Microsoft.ML.Runtime.Internal.Utilities.BigArray{`0}.Visitor)" />
+            method. Efficient looping can be accomplished by calling the <see cref="M:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1.ApplyRange(System.Int64,System.Int64,Microsoft.ML.Runtime.Internal.Utilities.BigArray{`0}.Visitor)" /> method.
+            This data structure employs the "length and capacity" pattern. The logical length
+            can be retrieved from the <see cref="P:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1.Length" /> property, which can possibly be strictly less
+            than the total capacity.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public BigArray (long size = 0);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int64 size) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1.#ctor(System.Int64)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (Optional size As Long = 0)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Internal.Utilities.BigArray&lt;'T&gt; : int64 -&gt; Microsoft.ML.Runtime.Internal.Utilities.BigArray&lt;'T&gt;" Usage="new Microsoft.ML.Runtime.Internal.Utilities.BigArray&lt;'T&gt; size" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="size" Type="System.Int64" />
+      </Parameters>
+      <Docs>
+        <param name="size">To be added.</param>
+        <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1" /> class with a specified size.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddRange">
+      <MemberSignature Language="C#" Value="public void AddRange (T[] src, int length);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddRange(!T[] src, int32 length) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1.AddRange(`0[],System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub AddRange (src As T(), length As Integer)" />
+      <MemberSignature Language="F#" Value="member this.AddRange : 'T[] * int -&gt; unit" Usage="bigArray.AddRange (src, length)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="src" Type="T[]" />
+        <Parameter Name="length" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="src">To be added.</param>
+        <param name="length">To be added.</param>
+        <summary>
+            Appends the first <paramref name="length" /> elements of <paramref name="src" /> to the end.
+            This method is thread safe related to calls to <see cref="M:CopyTo" /> (assuming those copy operations
+            are happening over ranges already added), but concurrent calls to
+            <see cref="M:AddRange" /> should not be attempted. Intended usage is that
+            one thread will call this method, while multiple threads may access
+            previously added ranges from <see cref="M:CopyTo" />, concurrently with
+            this method or themselves.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ApplyAt">
+      <MemberSignature Language="C#" Value="public void ApplyAt (long index, Microsoft.ML.Runtime.Internal.Utilities.BigArray&lt;T&gt;.Visitor manip);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ApplyAt(int64 index, class Microsoft.ML.Runtime.Internal.Utilities.BigArray`1/Visitor&lt;!T&gt; manip) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1.ApplyAt(System.Int64,Microsoft.ML.Runtime.Internal.Utilities.BigArray`1.Visitor{`0})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub ApplyAt (index As Long, manip As BigArray(Of T).Visitor)" />
+      <MemberSignature Language="F#" Value="member this.ApplyAt : int64 * Microsoft.ML.Runtime.Internal.Utilities.BigArray&lt;'T&gt;.Visitor -&gt; unit" Usage="bigArray.ApplyAt (index, manip)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="index" Type="System.Int64" />
+        <Parameter Name="manip" Type="Microsoft.ML.Runtime.Internal.Utilities.BigArray&lt;T&gt;+Visitor" />
+      </Parameters>
+      <Docs>
+        <param name="index">To be added.</param>
+        <param name="manip">To be added.</param>
+        <summary>
+            Applies a <see cref="T:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1.Visitor" /> method at a given <paramref name="index" />.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ApplyRange">
+      <MemberSignature Language="C#" Value="public void ApplyRange (long min, long lim, Microsoft.ML.Runtime.Internal.Utilities.BigArray&lt;T&gt;.Visitor manip);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ApplyRange(int64 min, int64 lim, class Microsoft.ML.Runtime.Internal.Utilities.BigArray`1/Visitor&lt;!T&gt; manip) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1.ApplyRange(System.Int64,System.Int64,Microsoft.ML.Runtime.Internal.Utilities.BigArray`1.Visitor{`0})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub ApplyRange (min As Long, lim As Long, manip As BigArray(Of T).Visitor)" />
+      <MemberSignature Language="F#" Value="member this.ApplyRange : int64 * int64 * Microsoft.ML.Runtime.Internal.Utilities.BigArray&lt;'T&gt;.Visitor -&gt; unit" Usage="bigArray.ApplyRange (min, lim, manip)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="min" Type="System.Int64" />
+        <Parameter Name="lim" Type="System.Int64" />
+        <Parameter Name="manip" Type="Microsoft.ML.Runtime.Internal.Utilities.BigArray&lt;T&gt;+Visitor" />
+      </Parameters>
+      <Docs>
+        <param name="min">To be added.</param>
+        <param name="lim">To be added.</param>
+        <param name="manip">To be added.</param>
+        <summary>
+            Implements a more efficient way to loop over index range in [min, lim) and apply
+            the specified method delegate.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CopyTo">
+      <MemberSignature Language="C#" Value="public void CopyTo (long idx, T[] dst, int length);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CopyTo(int64 idx, !T[] dst, int32 length) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1.CopyTo(System.Int64,`0[],System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub CopyTo (idx As Long, dst As T(), length As Integer)" />
+      <MemberSignature Language="F#" Value="member this.CopyTo : int64 * 'T[] * int -&gt; unit" Usage="bigArray.CopyTo (idx, dst, length)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="idx" Type="System.Int64" />
+        <Parameter Name="dst" Type="T[]" />
+        <Parameter Name="length" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="idx">To be added.</param>
+        <param name="dst">To be added.</param>
+        <param name="length">To be added.</param>
+        <summary>
+            Copies the subarray starting from index <paramref name="idx" /> of length
+            <paramref name="length" /> to the destination array <paramref name="dst" />.
+            Concurrent calls to this method is valid even with one single concurrent call
+            to <see cref="M:AddRange" />.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FillRange">
+      <MemberSignature Language="C#" Value="public void FillRange (long min, long lim, T value);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void FillRange(int64 min, int64 lim, !T value) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1.FillRange(System.Int64,System.Int64,`0)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub FillRange (min As Long, lim As Long, value As T)" />
+      <MemberSignature Language="F#" Value="member this.FillRange : int64 * int64 * 'T -&gt; unit" Usage="bigArray.FillRange (min, lim, value)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="min" Type="System.Int64" />
+        <Parameter Name="lim" Type="System.Int64" />
+        <Parameter Name="value" Type="T" />
+      </Parameters>
+      <Docs>
+        <param name="min">To be added.</param>
+        <param name="lim">To be added.</param>
+        <param name="value">To be added.</param>
+        <summary>
+            Fills the entries with index in [min, lim) with the given value.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetEnumerator">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.IEnumerator&lt;T&gt; GetEnumerator ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Collections.Generic.IEnumerator`1&lt;!T&gt; GetEnumerator() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1.GetEnumerator" />
+      <MemberSignature Language="VB.NET" Value="Public Iterator Overridable NotOverridable Function GetEnumerator () As IEnumerator(Of T)" />
+      <MemberSignature Language="F#" Value="abstract member GetEnumerator : unit -&gt; System.Collections.Generic.IEnumerator&lt;'T&gt;&#xA;override this.GetEnumerator : unit -&gt; System.Collections.Generic.IEnumerator&lt;'T&gt;" Usage="bigArray.GetEnumerator " />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:System.Collections.Generic.IEnumerable`1.GetEnumerator</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.CompilerServices.IteratorStateMachine(typeof(Microsoft.ML.Runtime.Internal.Utilities.BigArray`1/&lt;GetEnumerator&gt;d__23))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerator&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Item">
+      <MemberSignature Language="C#" Value="public T this[long index] { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance !T Item(int64)" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1.Item(System.Int64)" />
+      <MemberSignature Language="VB.NET" Value="Default Public Property Item(index As Long) As T" />
+      <MemberSignature Language="F#" Value="member this.Item(int64) : 'T with get, set" Usage="Microsoft.ML.Runtime.Internal.Utilities.BigArray&lt;'T&gt;.Item" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>T</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="index" Type="System.Int64" />
+      </Parameters>
+      <Docs>
+        <param name="index">To be added.</param>
+        <summary>
+            Gets or sets the entry at <paramref name="index" />.
+            </summary>
+        <value>To be added.</value>
+        <remarks>
+            This indexer is not efficient for looping. If looping access to entries is desired,
+            use the <see cref="M:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1.ApplyRange(System.Int64,System.Int64,Microsoft.ML.Runtime.Internal.Utilities.BigArray{`0}.Visitor)" /> method instead.
+            Note that unlike a normal array, the value returned from this indexer getter cannot be modified
+            (for example, by ++ operator or passing into a method as a ref parameter). To modify an entry, use
+            the <see cref="M:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1.ApplyAt(System.Int64,Microsoft.ML.Runtime.Internal.Utilities.BigArray{`0}.Visitor)" /> method instead.
+            </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Length">
+      <MemberSignature Language="C#" Value="public long Length { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int64 Length" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1.Length" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Length As Long" />
+      <MemberSignature Language="F#" Value="member this.Length : int64" Usage="Microsoft.ML.Runtime.Internal.Utilities.BigArray&lt;'T&gt;.Length" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int64</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Gets the logical length of the big array.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Resize">
+      <MemberSignature Language="C#" Value="public void Resize (long newLength);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Resize(int64 newLength) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1.Resize(System.Int64)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Resize (newLength As Long)" />
+      <MemberSignature Language="F#" Value="member this.Resize : int64 -&gt; unit" Usage="bigArray.Resize newLength" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="newLength" Type="System.Int64" />
+      </Parameters>
+      <Docs>
+        <param name="newLength">To be added.</param>
+        <summary>
+            Resizes the array so that its logical length equals <paramref name="newLength" />. This method
+            is more efficient than initialize another array and copy the entries because it preserves
+            existing blocks. The actual capacity of the array may become larger than <paramref name="newLength" />.
+            If <paramref name="newLength" /> equals <see cref="P:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1.Length" />, then no operation is done.
+            If <paramref name="newLength" /> is less than <see cref="P:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1.Length" />, the array shrinks in size
+            so that both its length and its capacity equal <paramref name="newLength" />.
+            If <paramref name="newLength" /> is larger than <see cref="P:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1.Length" />, the array capacity grows
+            to the smallest integral multiple of <see cref="F:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1.BlockSize" /> that is larger than <paramref name="newLength" />,
+            unless <paramref name="newLength" /> is less than <see cref="F:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1.BlockSize" />, in which case the capacity
+            grows to double its current capacity or <paramref name="newLength" />, which ever is larger,
+            but up to <see cref="F:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1.BlockSize" />.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="System.Collections.IEnumerable.GetEnumerator">
+      <MemberSignature Language="C#" Value="System.Collections.IEnumerator IEnumerable.GetEnumerator ();" />
+      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1.System#Collections#IEnumerable#GetEnumerator" />
+      <MemberSignature Language="VB.NET" Value="Function GetEnumerator () As IEnumerator Implements IEnumerable.GetEnumerator" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:System.Collections.IEnumerable.GetEnumerator</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.IEnumerator</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TrimCapacity">
+      <MemberSignature Language="C#" Value="public void TrimCapacity ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void TrimCapacity() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.BigArray`1.TrimCapacity" />
+      <MemberSignature Language="VB.NET" Value="Public Sub TrimCapacity ()" />
+      <MemberSignature Language="F#" Value="member this.TrimCapacity : unit -&gt; unit" Usage="bigArray.TrimCapacity " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            Trims the capacity to logical length.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

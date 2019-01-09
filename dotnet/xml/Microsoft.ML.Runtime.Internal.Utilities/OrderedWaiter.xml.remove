@@ -1,0 +1,181 @@
+<Type Name="OrderedWaiter" FullName="Microsoft.ML.Runtime.Internal.Utilities.OrderedWaiter">
+  <TypeSignature Language="C#" Value="public sealed class OrderedWaiter" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit OrderedWaiter extends System.Object" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.Internal.Utilities.OrderedWaiter" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class OrderedWaiter" />
+  <TypeSignature Language="F#" Value="type OrderedWaiter = class" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Core</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+             The primary use case for this structure is to impose ordering among
+             multiple producer threads, in case one is producing output that one
+             wishes to have ordered.
+            
+             More specifically, the ordered waiter allows a thread to wait on a
+             particular position. So if three threads wait on 0, 1, then 2 (in
+             any order), the first thread to clear the wait will be 0, then 1 will
+             be cleared once incremented, then 2 will be cleared once incremented.
+             </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public OrderedWaiter (bool firstCleared = true);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(bool firstCleared) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.OrderedWaiter.#ctor(System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (Optional firstCleared As Boolean = true)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Internal.Utilities.OrderedWaiter : bool -&gt; Microsoft.ML.Runtime.Internal.Utilities.OrderedWaiter" Usage="new Microsoft.ML.Runtime.Internal.Utilities.OrderedWaiter firstCleared" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="firstCleared" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="firstCleared">If true, then the first position (that is,
+            position 0) will be considered already free to proceed. If not something
+            will need to hit increment.</param>
+        <summary>
+            Creates an ordered waiter.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public OrderedWaiter (long startPos);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int64 startPos) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.OrderedWaiter.#ctor(System.Int64)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (startPos As Long)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.Internal.Utilities.OrderedWaiter : int64 -&gt; Microsoft.ML.Runtime.Internal.Utilities.OrderedWaiter" Usage="new Microsoft.ML.Runtime.Internal.Utilities.OrderedWaiter startPos" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="startPos" Type="System.Int64" />
+      </Parameters>
+      <Docs>
+        <param name="startPos">If startPos is &gt;= 0 then waiter starts from that position.
+            If not something will need to hit increment |startPos| times.</param>
+        <summary>
+            Creates an ordered waiter.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Increment">
+      <MemberSignature Language="C#" Value="public long Increment ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int64 Increment() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.OrderedWaiter.Increment" />
+      <MemberSignature Language="VB.NET" Value="Public Function Increment () As Long" />
+      <MemberSignature Language="F#" Value="member this.Increment : unit -&gt; int64" Usage="orderedWaiter.Increment " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int64</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            Moves the waiter to the next position, and signals any waiters waiting at
+            or before that position.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IncrementAll">
+      <MemberSignature Language="C#" Value="public long IncrementAll ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int64 IncrementAll() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.OrderedWaiter.IncrementAll" />
+      <MemberSignature Language="VB.NET" Value="Public Function IncrementAll () As Long" />
+      <MemberSignature Language="F#" Value="member this.IncrementAll : unit -&gt; int64" Usage="orderedWaiter.IncrementAll " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int64</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            Signals all waiters. No more calls to <see cref="M:Microsoft.ML.Runtime.Internal.Utilities.OrderedWaiter.Increment" /> should be
+            attempted.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SignalException">
+      <MemberSignature Language="C#" Value="public void SignalException (Exception ex);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SignalException(class System.Exception ex) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.OrderedWaiter.SignalException(System.Exception)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub SignalException (ex As Exception)" />
+      <MemberSignature Language="F#" Value="member this.SignalException : Exception -&gt; unit" Usage="orderedWaiter.SignalException ex" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ex" Type="System.Exception" />
+      </Parameters>
+      <Docs>
+        <param name="ex">The exception that will be the inner exception, of an
+            exception that will throw for all current and subsequent waiters.</param>
+        <summary>
+            This will signal all the waiters, but cause them to throw an exception.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Wait">
+      <MemberSignature Language="C#" Value="public void Wait (long position, System.Threading.CancellationToken token = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Wait(int64 position, valuetype System.Threading.CancellationToken token) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.Internal.Utilities.OrderedWaiter.Wait(System.Int64,System.Threading.CancellationToken)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Wait (position As Long, Optional token As CancellationToken = null)" />
+      <MemberSignature Language="F#" Value="member this.Wait : int64 * System.Threading.CancellationToken -&gt; unit" Usage="orderedWaiter.Wait (position, token)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="position" Type="System.Int64" />
+        <Parameter Name="token" Type="System.Threading.CancellationToken" />
+      </Parameters>
+      <Docs>
+        <param name="position">To be added.</param>
+        <param name="token">To be added.</param>
+        <summary>
+            Wait on a given position. This will block, until this object has
+            <see cref="M:Microsoft.ML.Runtime.Internal.Utilities.OrderedWaiter.Increment" /> called up to the position indicated. This
+            accepts cancellation tokens, but the default cancellation token also
+            works.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
