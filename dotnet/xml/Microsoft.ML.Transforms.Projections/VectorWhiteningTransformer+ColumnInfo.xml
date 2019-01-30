@@ -18,27 +18,27 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public ColumnInfo (string input, string output = null, Microsoft.ML.Transforms.Projections.WhiteningKind kind = Microsoft.ML.Transforms.Projections.WhiteningKind.Zca, float eps = 1E-05, int maxRows = 100000, int pcaNum = 0);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string input, string output, valuetype Microsoft.ML.Transforms.Projections.WhiteningKind kind, float32 eps, int32 maxRows, int32 pcaNum) cil managed" />
+      <MemberSignature Language="C#" Value="public ColumnInfo (string name, string inputColumnName = null, Microsoft.ML.Transforms.Projections.WhiteningKind kind = Microsoft.ML.Transforms.Projections.WhiteningKind.Zca, float eps = 1E-05, int maxRows = 100000, int pcaNum = 0);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string name, string inputColumnName, valuetype Microsoft.ML.Transforms.Projections.WhiteningKind kind, float32 eps, int32 maxRows, int32 pcaNum) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Projections.VectorWhiteningTransformer.ColumnInfo.#ctor(System.String,System.String,Microsoft.ML.Transforms.Projections.WhiteningKind,System.Single,System.Int32,System.Int32)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (input As String, Optional output As String = null, Optional kind As WhiteningKind = Microsoft.ML.Transforms.Projections.WhiteningKind.Zca, Optional eps As Single = 1E-05, Optional maxRows As Integer = 100000, Optional pcaNum As Integer = 0)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Projections.VectorWhiteningTransformer.ColumnInfo : string * string * Microsoft.ML.Transforms.Projections.WhiteningKind * single * int * int -&gt; Microsoft.ML.Transforms.Projections.VectorWhiteningTransformer.ColumnInfo" Usage="new Microsoft.ML.Transforms.Projections.VectorWhiteningTransformer.ColumnInfo (input, output, kind, eps, maxRows, pcaNum)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (name As String, Optional inputColumnName As String = null, Optional kind As WhiteningKind = Microsoft.ML.Transforms.Projections.WhiteningKind.Zca, Optional eps As Single = 1E-05, Optional maxRows As Integer = 100000, Optional pcaNum As Integer = 0)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Projections.VectorWhiteningTransformer.ColumnInfo : string * string * Microsoft.ML.Transforms.Projections.WhiteningKind * single * int * int -&gt; Microsoft.ML.Transforms.Projections.VectorWhiteningTransformer.ColumnInfo" Usage="new Microsoft.ML.Transforms.Projections.VectorWhiteningTransformer.ColumnInfo (name, inputColumnName, kind, eps, maxRows, pcaNum)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.HalLearners</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="input" Type="System.String" />
-        <Parameter Name="output" Type="System.String" />
-        <Parameter Name="kind" Type="Microsoft.ML.Transforms.Projections.WhiteningKind" />
-        <Parameter Name="eps" Type="System.Single" />
-        <Parameter Name="maxRows" Type="System.Int32" />
-        <Parameter Name="pcaNum" Type="System.Int32" />
+        <Parameter Name="name" Type="System.String" Index="0" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="inputColumnName" Type="System.String" Index="1" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="kind" Type="Microsoft.ML.Transforms.Projections.WhiteningKind" Index="2" />
+        <Parameter Name="eps" Type="System.Single" Index="3" />
+        <Parameter Name="maxRows" Type="System.Int32" Index="4" />
+        <Parameter Name="pcaNum" Type="System.Int32" Index="5" />
       </Parameters>
       <Docs>
-        <param name="input">Name of the input column.</param>
-        <param name="output">Name of the column resulting from the transformation of <paramref name="input" />. Null means <paramref name="input" /> is replaced.</param>
+        <param name="name">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
+        <param name="inputColumnName">Name of column to transform. If set to <see langword="null" />, the value of the <paramref name="name" /> will be used as source.</param>
         <param name="kind">Whitening kind (PCA/ZCA).</param>
         <param name="eps">Whitening constant, prevents division by zero.</param>
         <param name="maxRows">Maximum number of rows used to train the transform.</param>
@@ -68,12 +68,12 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Input">
-      <MemberSignature Language="C#" Value="public readonly string Input;" />
-      <MemberSignature Language="ILAsm" Value=".field public initonly string Input" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.Projections.VectorWhiteningTransformer.ColumnInfo.Input" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Input As String " />
-      <MemberSignature Language="F#" Value="val mutable Input : string" Usage="Microsoft.ML.Transforms.Projections.VectorWhiteningTransformer.ColumnInfo.Input" />
+    <Member MemberName="InputColumnName">
+      <MemberSignature Language="C#" Value="public readonly string InputColumnName;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly string InputColumnName" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.Projections.VectorWhiteningTransformer.ColumnInfo.InputColumnName" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly InputColumnName As String " />
+      <MemberSignature Language="F#" Value="val mutable InputColumnName : string" Usage="Microsoft.ML.Transforms.Projections.VectorWhiteningTransformer.ColumnInfo.InputColumnName" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.HalLearners</AssemblyName>
@@ -125,12 +125,12 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Output">
-      <MemberSignature Language="C#" Value="public readonly string Output;" />
-      <MemberSignature Language="ILAsm" Value=".field public initonly string Output" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.Projections.VectorWhiteningTransformer.ColumnInfo.Output" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Output As String " />
-      <MemberSignature Language="F#" Value="val mutable Output : string" Usage="Microsoft.ML.Transforms.Projections.VectorWhiteningTransformer.ColumnInfo.Output" />
+    <Member MemberName="Name">
+      <MemberSignature Language="C#" Value="public readonly string Name;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly string Name" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.Projections.VectorWhiteningTransformer.ColumnInfo.Name" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Name As String " />
+      <MemberSignature Language="F#" Value="val mutable Name : string" Usage="Microsoft.ML.Transforms.Projections.VectorWhiteningTransformer.ColumnInfo.Name" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.HalLearners</AssemblyName>

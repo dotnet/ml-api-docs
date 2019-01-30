@@ -60,30 +60,31 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public PrincipalComponentAnalysisEstimator (Microsoft.ML.IHostEnvironment env, string inputColumn, string outputColumn = null, string weightColumn = null, int rank = 20, int overSampling = 20, bool center = true, Nullable&lt;int&gt; seed = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, string inputColumn, string outputColumn, string weightColumn, int32 rank, int32 overSampling, bool center, valuetype System.Nullable`1&lt;int32&gt; seed) cil managed" />
+      <MemberSignature Language="C#" Value="public PrincipalComponentAnalysisEstimator (Microsoft.ML.IHostEnvironment env, string outputColumnName, string inputColumnName = null, string weightColumn = null, int rank = 20, int overSampling = 20, bool center = true, Nullable&lt;int&gt; seed = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, string outputColumnName, string inputColumnName, string weightColumn, int32 rank, int32 overSampling, bool center, valuetype System.Nullable`1&lt;int32&gt; seed) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator.#ctor(Microsoft.ML.IHostEnvironment,System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean,System.Nullable{System.Int32})" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, inputColumn As String, Optional outputColumn As String = null, Optional weightColumn As String = null, Optional rank As Integer = 20, Optional overSampling As Integer = 20, Optional center As Boolean = true, Optional seed As Nullable(Of Integer) = null)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator : Microsoft.ML.IHostEnvironment * string * string * string * int * int * bool * Nullable&lt;int&gt; -&gt; Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator" Usage="new Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator (env, inputColumn, outputColumn, weightColumn, rank, overSampling, center, seed)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, outputColumnName As String, Optional inputColumnName As String = null, Optional weightColumn As String = null, Optional rank As Integer = 20, Optional overSampling As Integer = 20, Optional center As Boolean = true, Optional seed As Nullable(Of Integer) = null)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator : Microsoft.ML.IHostEnvironment * string * string * string * int * int * bool * Nullable&lt;int&gt; -&gt; Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator" Usage="new Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator (env, outputColumnName, inputColumnName, weightColumn, rank, overSampling, center, seed)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.PCA</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
-        <Parameter Name="inputColumn" Type="System.String" />
-        <Parameter Name="outputColumn" Type="System.String" />
-        <Parameter Name="weightColumn" Type="System.String" />
-        <Parameter Name="rank" Type="System.Int32" />
-        <Parameter Name="overSampling" Type="System.Int32" />
-        <Parameter Name="center" Type="System.Boolean" />
-        <Parameter Name="seed" Type="System.Nullable&lt;System.Int32&gt;" />
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" Index="0" />
+        <Parameter Name="outputColumnName" Type="System.String" Index="1" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="inputColumnName" Type="System.String" Index="2" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="weightColumn" Type="System.String" Index="3" />
+        <Parameter Name="rank" Type="System.Int32" Index="4" />
+        <Parameter Name="overSampling" Type="System.Int32" Index="5" />
+        <Parameter Name="center" Type="System.Boolean" Index="6" />
+        <Parameter Name="seed" Type="System.Nullable&lt;System.Int32&gt;" Index="7" />
       </Parameters>
       <Docs>
         <param name="env">The environment to use.</param>
-        <param name="inputColumn">Input column to project to Principal Component.</param>
-        <param name="outputColumn">Output column. Null means <paramref name="inputColumn" /> is replaced.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
+        <param name="inputColumnName">Name of the column to transform.
+            If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
         <param name="weightColumn">The name of the weight column.</param>
         <param name="rank">The number of components in the PCA.</param>
         <param name="overSampling">Oversampling parameter for randomized PCA training.</param>

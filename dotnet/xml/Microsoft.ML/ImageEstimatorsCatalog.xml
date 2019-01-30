@@ -93,11 +93,11 @@
       </Docs>
     </Member>
     <Member MemberName="ExtractPixels">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.ImageAnalytics.ImagePixelExtractingEstimator ExtractPixels (this Microsoft.ML.TransformsCatalog catalog, string inputColumn, string outputColumn, Microsoft.ML.ImageAnalytics.ImagePixelExtractorTransformer.ColorBits colors = Microsoft.ML.ImageAnalytics.ImagePixelExtractorTransformer+ColorBits.Rgb, bool interleave = false);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.ImageAnalytics.ImagePixelExtractingEstimator ExtractPixels(class Microsoft.ML.TransformsCatalog catalog, string inputColumn, string outputColumn, valuetype Microsoft.ML.ImageAnalytics.ImagePixelExtractorTransformer/ColorBits colors, bool interleave) cil managed" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.ImageAnalytics.ImagePixelExtractingEstimator ExtractPixels (this Microsoft.ML.TransformsCatalog catalog, string outputColumnName, string inputColumnName = null, Microsoft.ML.ImageAnalytics.ImagePixelExtractorTransformer.ColorBits colors = Microsoft.ML.ImageAnalytics.ImagePixelExtractorTransformer+ColorBits.Rgb, bool interleave = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.ImageAnalytics.ImagePixelExtractingEstimator ExtractPixels(class Microsoft.ML.TransformsCatalog catalog, string outputColumnName, string inputColumnName, valuetype Microsoft.ML.ImageAnalytics.ImagePixelExtractorTransformer/ColorBits colors, bool interleave) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.ImageEstimatorsCatalog.ExtractPixels(Microsoft.ML.TransformsCatalog,System.String,System.String,Microsoft.ML.ImageAnalytics.ImagePixelExtractorTransformer.ColorBits,System.Boolean)" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ExtractPixels (catalog As TransformsCatalog, inputColumn As String, outputColumn As String, Optional colors As ImagePixelExtractorTransformer.ColorBits = Microsoft.ML.ImageAnalytics.ImagePixelExtractorTransformer+ColorBits.Rgb, Optional interleave As Boolean = false) As ImagePixelExtractingEstimator" />
-      <MemberSignature Language="F#" Value="static member ExtractPixels : Microsoft.ML.TransformsCatalog * string * string * Microsoft.ML.ImageAnalytics.ImagePixelExtractorTransformer.ColorBits * bool -&gt; Microsoft.ML.ImageAnalytics.ImagePixelExtractingEstimator" Usage="Microsoft.ML.ImageEstimatorsCatalog.ExtractPixels (catalog, inputColumn, outputColumn, colors, interleave)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ExtractPixels (catalog As TransformsCatalog, outputColumnName As String, Optional inputColumnName As String = null, Optional colors As ImagePixelExtractorTransformer.ColorBits = Microsoft.ML.ImageAnalytics.ImagePixelExtractorTransformer+ColorBits.Rgb, Optional interleave As Boolean = false) As ImagePixelExtractingEstimator" />
+      <MemberSignature Language="F#" Value="static member ExtractPixels : Microsoft.ML.TransformsCatalog * string * string * Microsoft.ML.ImageAnalytics.ImagePixelExtractorTransformer.ColorBits * bool -&gt; Microsoft.ML.ImageAnalytics.ImagePixelExtractingEstimator" Usage="Microsoft.ML.ImageEstimatorsCatalog.ExtractPixels (catalog, outputColumnName, inputColumnName, colors, interleave)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.ImageAnalytics</AssemblyName>
@@ -107,16 +107,16 @@
         <ReturnType>Microsoft.ML.ImageAnalytics.ImagePixelExtractingEstimator</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog" RefType="this" />
-        <Parameter Name="inputColumn" Type="System.String" />
-        <Parameter Name="outputColumn" Type="System.String" />
-        <Parameter Name="colors" Type="Microsoft.ML.ImageAnalytics.ImagePixelExtractorTransformer+ColorBits" />
-        <Parameter Name="interleave" Type="System.Boolean" />
+        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog" RefType="this" Index="0" />
+        <Parameter Name="outputColumnName" Type="System.String" Index="1" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="inputColumnName" Type="System.String" Index="2" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="colors" Type="Microsoft.ML.ImageAnalytics.ImagePixelExtractorTransformer+ColorBits" Index="3" />
+        <Parameter Name="interleave" Type="System.Boolean" Index="4" />
       </Parameters>
       <Docs>
         <param name="catalog">The transform's catalog.</param>
-        <param name="inputColumn">The name of the input column.</param>
-        <param name="outputColumn">The name of the output column generated from the estimator.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
+        <param name="inputColumnName">Name of column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
         <param name="colors">The color schema as defined in <see cref="T:Microsoft.ML.ImageAnalytics.ImagePixelExtractorTransformer.ColorBits" />.</param>
         <param name="interleave"></param>
         <summary>
@@ -200,11 +200,11 @@
       </Docs>
     </Member>
     <Member MemberName="Resize">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.ImageAnalytics.ImageResizingEstimator Resize (this Microsoft.ML.TransformsCatalog catalog, string inputColumn, string outputColumn, int imageWidth, int imageHeight, Microsoft.ML.ImageAnalytics.ImageResizerTransformer.ResizingKind resizing = Microsoft.ML.ImageAnalytics.ImageResizerTransformer+ResizingKind.IsoCrop, Microsoft.ML.ImageAnalytics.ImageResizerTransformer.Anchor cropAnchor = Microsoft.ML.ImageAnalytics.ImageResizerTransformer+Anchor.Center);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.ImageAnalytics.ImageResizingEstimator Resize(class Microsoft.ML.TransformsCatalog catalog, string inputColumn, string outputColumn, int32 imageWidth, int32 imageHeight, valuetype Microsoft.ML.ImageAnalytics.ImageResizerTransformer/ResizingKind resizing, valuetype Microsoft.ML.ImageAnalytics.ImageResizerTransformer/Anchor cropAnchor) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ImageEstimatorsCatalog.Resize(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Int32,System.Int32,Microsoft.ML.ImageAnalytics.ImageResizerTransformer.ResizingKind,Microsoft.ML.ImageAnalytics.ImageResizerTransformer.Anchor)" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function Resize (catalog As TransformsCatalog, inputColumn As String, outputColumn As String, imageWidth As Integer, imageHeight As Integer, Optional resizing As ImageResizerTransformer.ResizingKind = Microsoft.ML.ImageAnalytics.ImageResizerTransformer+ResizingKind.IsoCrop, Optional cropAnchor As ImageResizerTransformer.Anchor = Microsoft.ML.ImageAnalytics.ImageResizerTransformer+Anchor.Center) As ImageResizingEstimator" />
-      <MemberSignature Language="F#" Value="static member Resize : Microsoft.ML.TransformsCatalog * string * string * int * int * Microsoft.ML.ImageAnalytics.ImageResizerTransformer.ResizingKind * Microsoft.ML.ImageAnalytics.ImageResizerTransformer.Anchor -&gt; Microsoft.ML.ImageAnalytics.ImageResizingEstimator" Usage="Microsoft.ML.ImageEstimatorsCatalog.Resize (catalog, inputColumn, outputColumn, imageWidth, imageHeight, resizing, cropAnchor)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.ImageAnalytics.ImageResizingEstimator Resize (this Microsoft.ML.TransformsCatalog catalog, string outputColumnName, int imageWidth, int imageHeight, string inputColumnName = null, Microsoft.ML.ImageAnalytics.ImageResizerTransformer.ResizingKind resizing = Microsoft.ML.ImageAnalytics.ImageResizerTransformer+ResizingKind.IsoCrop, Microsoft.ML.ImageAnalytics.ImageResizerTransformer.Anchor cropAnchor = Microsoft.ML.ImageAnalytics.ImageResizerTransformer+Anchor.Center);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.ImageAnalytics.ImageResizingEstimator Resize(class Microsoft.ML.TransformsCatalog catalog, string outputColumnName, int32 imageWidth, int32 imageHeight, string inputColumnName, valuetype Microsoft.ML.ImageAnalytics.ImageResizerTransformer/ResizingKind resizing, valuetype Microsoft.ML.ImageAnalytics.ImageResizerTransformer/Anchor cropAnchor) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ImageEstimatorsCatalog.Resize(Microsoft.ML.TransformsCatalog,System.String,System.Int32,System.Int32,System.String,Microsoft.ML.ImageAnalytics.ImageResizerTransformer.ResizingKind,Microsoft.ML.ImageAnalytics.ImageResizerTransformer.Anchor)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function Resize (catalog As TransformsCatalog, outputColumnName As String, imageWidth As Integer, imageHeight As Integer, Optional inputColumnName As String = null, Optional resizing As ImageResizerTransformer.ResizingKind = Microsoft.ML.ImageAnalytics.ImageResizerTransformer+ResizingKind.IsoCrop, Optional cropAnchor As ImageResizerTransformer.Anchor = Microsoft.ML.ImageAnalytics.ImageResizerTransformer+Anchor.Center) As ImageResizingEstimator" />
+      <MemberSignature Language="F#" Value="static member Resize : Microsoft.ML.TransformsCatalog * string * int * int * string * Microsoft.ML.ImageAnalytics.ImageResizerTransformer.ResizingKind * Microsoft.ML.ImageAnalytics.ImageResizerTransformer.Anchor -&gt; Microsoft.ML.ImageAnalytics.ImageResizingEstimator" Usage="Microsoft.ML.ImageEstimatorsCatalog.Resize (catalog, outputColumnName, imageWidth, imageHeight, inputColumnName, resizing, cropAnchor)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.ImageAnalytics</AssemblyName>
@@ -215,19 +215,19 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog" RefType="this" />
-        <Parameter Name="inputColumn" Type="System.String" />
-        <Parameter Name="outputColumn" Type="System.String" />
+        <Parameter Name="outputColumnName" Type="System.String" />
         <Parameter Name="imageWidth" Type="System.Int32" />
         <Parameter Name="imageHeight" Type="System.Int32" />
+        <Parameter Name="inputColumnName" Type="System.String" />
         <Parameter Name="resizing" Type="Microsoft.ML.ImageAnalytics.ImageResizerTransformer+ResizingKind" />
         <Parameter Name="cropAnchor" Type="Microsoft.ML.ImageAnalytics.ImageResizerTransformer+Anchor" />
       </Parameters>
       <Docs>
         <param name="catalog">The transform's catalog.</param>
-        <param name="inputColumn">Name of the input column.</param>
-        <param name="outputColumn">Name of the resulting output column.</param>
+        <param name="outputColumnName">Name of the resulting output column.</param>
         <param name="imageWidth">The image width.</param>
         <param name="imageHeight">The image height.</param>
+        <param name="inputColumnName">Name of the input column.</param>
         <param name="resizing">The type of image resizing as specified in <see cref="T:Microsoft.ML.ImageAnalytics.ImageResizerTransformer.ResizingKind" />.</param>
         <param name="cropAnchor">Where to place the anchor, to start cropping. Options defined in <see cref="T:Microsoft.ML.ImageAnalytics.ImageResizerTransformer.Anchor" /></param>
         <summary>

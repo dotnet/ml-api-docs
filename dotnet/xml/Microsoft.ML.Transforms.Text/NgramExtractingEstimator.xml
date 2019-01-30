@@ -95,38 +95,38 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public NgramExtractingEstimator (Microsoft.ML.IHostEnvironment env, string inputColumn, string outputColumn = null, int ngramLength = 2, int skipLength = 0, bool allLengths = true, int maxNumTerms = 10000000, Microsoft.ML.Transforms.Text.NgramExtractingEstimator.WeightingCriteria weighting = Microsoft.ML.Transforms.Text.NgramExtractingEstimator+WeightingCriteria.Tf);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, string inputColumn, string outputColumn, int32 ngramLength, int32 skipLength, bool allLengths, int32 maxNumTerms, valuetype Microsoft.ML.Transforms.Text.NgramExtractingEstimator/WeightingCriteria weighting) cil managed" />
+      <MemberSignature Language="C#" Value="public NgramExtractingEstimator (Microsoft.ML.IHostEnvironment env, string outputColumnName, string inputColumnName = null, int ngramLength = 2, int skipLength = 0, bool allLengths = true, int maxNumTerms = 10000000, Microsoft.ML.Transforms.Text.NgramExtractingEstimator.WeightingCriteria weighting = Microsoft.ML.Transforms.Text.NgramExtractingEstimator+WeightingCriteria.Tf);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, string outputColumnName, string inputColumnName, int32 ngramLength, int32 skipLength, bool allLengths, int32 maxNumTerms, valuetype Microsoft.ML.Transforms.Text.NgramExtractingEstimator/WeightingCriteria weighting) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Text.NgramExtractingEstimator.#ctor(Microsoft.ML.IHostEnvironment,System.String,System.String,System.Int32,System.Int32,System.Boolean,System.Int32,Microsoft.ML.Transforms.Text.NgramExtractingEstimator.WeightingCriteria)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, inputColumn As String, Optional outputColumn As String = null, Optional ngramLength As Integer = 2, Optional skipLength As Integer = 0, Optional allLengths As Boolean = true, Optional maxNumTerms As Integer = 10000000, Optional weighting As NgramExtractingEstimator.WeightingCriteria = Microsoft.ML.Transforms.Text.NgramExtractingEstimator+WeightingCriteria.Tf)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Text.NgramExtractingEstimator : Microsoft.ML.IHostEnvironment * string * string * int * int * bool * int * Microsoft.ML.Transforms.Text.NgramExtractingEstimator.WeightingCriteria -&gt; Microsoft.ML.Transforms.Text.NgramExtractingEstimator" Usage="new Microsoft.ML.Transforms.Text.NgramExtractingEstimator (env, inputColumn, outputColumn, ngramLength, skipLength, allLengths, maxNumTerms, weighting)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, outputColumnName As String, Optional inputColumnName As String = null, Optional ngramLength As Integer = 2, Optional skipLength As Integer = 0, Optional allLengths As Boolean = true, Optional maxNumTerms As Integer = 10000000, Optional weighting As NgramExtractingEstimator.WeightingCriteria = Microsoft.ML.Transforms.Text.NgramExtractingEstimator+WeightingCriteria.Tf)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Text.NgramExtractingEstimator : Microsoft.ML.IHostEnvironment * string * string * int * int * bool * int * Microsoft.ML.Transforms.Text.NgramExtractingEstimator.WeightingCriteria -&gt; Microsoft.ML.Transforms.Text.NgramExtractingEstimator" Usage="new Microsoft.ML.Transforms.Text.NgramExtractingEstimator (env, outputColumnName, inputColumnName, ngramLength, skipLength, allLengths, maxNumTerms, weighting)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
-        <Parameter Name="inputColumn" Type="System.String" />
-        <Parameter Name="outputColumn" Type="System.String" />
-        <Parameter Name="ngramLength" Type="System.Int32" />
-        <Parameter Name="skipLength" Type="System.Int32" />
-        <Parameter Name="allLengths" Type="System.Boolean" />
-        <Parameter Name="maxNumTerms" Type="System.Int32" />
-        <Parameter Name="weighting" Type="Microsoft.ML.Transforms.Text.NgramExtractingEstimator+WeightingCriteria" />
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" Index="0" />
+        <Parameter Name="outputColumnName" Type="System.String" Index="1" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="inputColumnName" Type="System.String" Index="2" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="ngramLength" Type="System.Int32" Index="3" />
+        <Parameter Name="skipLength" Type="System.Int32" Index="4" />
+        <Parameter Name="allLengths" Type="System.Boolean" Index="5" />
+        <Parameter Name="maxNumTerms" Type="System.Int32" Index="6" />
+        <Parameter Name="weighting" Type="Microsoft.ML.Transforms.Text.NgramExtractingEstimator+WeightingCriteria" Index="7" />
       </Parameters>
       <Docs>
         <param name="env">The environment.</param>
-        <param name="inputColumn">The column containing text to compute bag of word vector.</param>
-        <param name="outputColumn">The column containing bag of word vector. Null means <paramref name="inputColumn" /> is replaced.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
+        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
         <param name="ngramLength">Ngram length.</param>
         <param name="skipLength">Maximum number of tokens to skip when constructing an ngram.</param>
         <param name="allLengths">Whether to include all ngram lengths up to <paramref name="ngramLength" /> or only <paramref name="ngramLength" />.</param>
         <param name="maxNumTerms">Maximum number of ngrams to store in the dictionary.</param>
         <param name="weighting">Statistical measure used to evaluate how important a word is to a document in a corpus.</param>
         <summary>
-            Produces a bag of counts of ngrams (sequences of consecutive words) in <paramref name="inputColumn" />
-            and outputs bag of word vector as <paramref name="outputColumn" /></summary>
+            Produces a bag of counts of ngrams (sequences of consecutive words) in <paramref name="inputColumnName" />
+            and outputs bag of word vector as <paramref name="outputColumnName" /></summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

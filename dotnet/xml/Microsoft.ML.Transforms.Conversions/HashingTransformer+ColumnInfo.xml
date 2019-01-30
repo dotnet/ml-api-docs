@@ -18,27 +18,27 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public ColumnInfo (string input, string output = null, int hashBits = 31, uint seed = 314489979, bool ordered = false, int invertHash = 0);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string input, string output, int32 hashBits, unsigned int32 seed, bool ordered, int32 invertHash) cil managed" />
+      <MemberSignature Language="C#" Value="public ColumnInfo (string name, string inputColumnName = null, int hashBits = 31, uint seed = 314489979, bool ordered = false, int invertHash = 0);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string name, string inputColumnName, int32 hashBits, unsigned int32 seed, bool ordered, int32 invertHash) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Conversions.HashingTransformer.ColumnInfo.#ctor(System.String,System.String,System.Int32,System.UInt32,System.Boolean,System.Int32)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (input As String, Optional output As String = null, Optional hashBits As Integer = 31, Optional seed As UInteger = 314489979, Optional ordered As Boolean = false, Optional invertHash As Integer = 0)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Conversions.HashingTransformer.ColumnInfo : string * string * int * uint32 * bool * int -&gt; Microsoft.ML.Transforms.Conversions.HashingTransformer.ColumnInfo" Usage="new Microsoft.ML.Transforms.Conversions.HashingTransformer.ColumnInfo (input, output, hashBits, seed, ordered, invertHash)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (name As String, Optional inputColumnName As String = null, Optional hashBits As Integer = 31, Optional seed As UInteger = 314489979, Optional ordered As Boolean = false, Optional invertHash As Integer = 0)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Conversions.HashingTransformer.ColumnInfo : string * string * int * uint32 * bool * int -&gt; Microsoft.ML.Transforms.Conversions.HashingTransformer.ColumnInfo" Usage="new Microsoft.ML.Transforms.Conversions.HashingTransformer.ColumnInfo (name, inputColumnName, hashBits, seed, ordered, invertHash)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="input" Type="System.String" />
-        <Parameter Name="output" Type="System.String" />
-        <Parameter Name="hashBits" Type="System.Int32" />
-        <Parameter Name="seed" Type="System.UInt32" />
-        <Parameter Name="ordered" Type="System.Boolean" />
-        <Parameter Name="invertHash" Type="System.Int32" />
+        <Parameter Name="name" Type="System.String" Index="0" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="inputColumnName" Type="System.String" Index="1" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="hashBits" Type="System.Int32" Index="2" />
+        <Parameter Name="seed" Type="System.UInt32" Index="3" />
+        <Parameter Name="ordered" Type="System.Boolean" Index="4" />
+        <Parameter Name="invertHash" Type="System.Int32" Index="5" />
       </Parameters>
       <Docs>
-        <param name="input">Name of input column.</param>
-        <param name="output">Name of the column resulting from the transformation of <paramref name="input" />. Null means <paramref name="input" /> is replaced.</param>
+        <param name="name">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
+        <param name="inputColumnName">Name of column to transform. If set to <see langword="null" />, the value of the <paramref name="name" /> will be used as source.</param>
         <param name="hashBits">Number of bits to hash into. Must be between 1 and 31, inclusive.</param>
         <param name="seed">Hashing seed.</param>
         <param name="ordered">Whether the position of each term should be included in the hash.</param>
@@ -71,12 +71,12 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Input">
-      <MemberSignature Language="C#" Value="public readonly string Input;" />
-      <MemberSignature Language="ILAsm" Value=".field public initonly string Input" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.Conversions.HashingTransformer.ColumnInfo.Input" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Input As String " />
-      <MemberSignature Language="F#" Value="val mutable Input : string" Usage="Microsoft.ML.Transforms.Conversions.HashingTransformer.ColumnInfo.Input" />
+    <Member MemberName="InputColumnName">
+      <MemberSignature Language="C#" Value="public readonly string InputColumnName;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly string InputColumnName" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.Conversions.HashingTransformer.ColumnInfo.InputColumnName" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly InputColumnName As String " />
+      <MemberSignature Language="F#" Value="val mutable InputColumnName : string" Usage="Microsoft.ML.Transforms.Conversions.HashingTransformer.ColumnInfo.InputColumnName" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -109,6 +109,25 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Name">
+      <MemberSignature Language="C#" Value="public readonly string Name;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly string Name" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.Conversions.HashingTransformer.ColumnInfo.Name" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Name As String " />
+      <MemberSignature Language="F#" Value="val mutable Name : string" Usage="Microsoft.ML.Transforms.Conversions.HashingTransformer.ColumnInfo.Name" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Ordered">
       <MemberSignature Language="C#" Value="public readonly bool Ordered;" />
       <MemberSignature Language="ILAsm" Value=".field public initonly bool Ordered" />
@@ -122,25 +141,6 @@
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Output">
-      <MemberSignature Language="C#" Value="public readonly string Output;" />
-      <MemberSignature Language="ILAsm" Value=".field public initonly string Output" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.Conversions.HashingTransformer.ColumnInfo.Output" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Output As String " />
-      <MemberSignature Language="F#" Value="val mutable Output : string" Usage="Microsoft.ML.Transforms.Conversions.HashingTransformer.ColumnInfo.Output" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

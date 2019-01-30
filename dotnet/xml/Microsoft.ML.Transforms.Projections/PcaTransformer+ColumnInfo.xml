@@ -18,28 +18,29 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public ColumnInfo (string input, string output, string weightColumn = null, int rank = 20, int overSampling = 20, bool center = true, Nullable&lt;int&gt; seed = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string input, string output, string weightColumn, int32 rank, int32 overSampling, bool center, valuetype System.Nullable`1&lt;int32&gt; seed) cil managed" />
+      <MemberSignature Language="C#" Value="public ColumnInfo (string name, string inputColumnName = null, string weightColumn = null, int rank = 20, int overSampling = 20, bool center = true, Nullable&lt;int&gt; seed = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string name, string inputColumnName, string weightColumn, int32 rank, int32 overSampling, bool center, valuetype System.Nullable`1&lt;int32&gt; seed) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Projections.PcaTransformer.ColumnInfo.#ctor(System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean,System.Nullable{System.Int32})" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (input As String, output As String, Optional weightColumn As String = null, Optional rank As Integer = 20, Optional overSampling As Integer = 20, Optional center As Boolean = true, Optional seed As Nullable(Of Integer) = null)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Projections.PcaTransformer.ColumnInfo : string * string * string * int * int * bool * Nullable&lt;int&gt; -&gt; Microsoft.ML.Transforms.Projections.PcaTransformer.ColumnInfo" Usage="new Microsoft.ML.Transforms.Projections.PcaTransformer.ColumnInfo (input, output, weightColumn, rank, overSampling, center, seed)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (name As String, Optional inputColumnName As String = null, Optional weightColumn As String = null, Optional rank As Integer = 20, Optional overSampling As Integer = 20, Optional center As Boolean = true, Optional seed As Nullable(Of Integer) = null)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Projections.PcaTransformer.ColumnInfo : string * string * string * int * int * bool * Nullable&lt;int&gt; -&gt; Microsoft.ML.Transforms.Projections.PcaTransformer.ColumnInfo" Usage="new Microsoft.ML.Transforms.Projections.PcaTransformer.ColumnInfo (name, inputColumnName, weightColumn, rank, overSampling, center, seed)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.PCA</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="input" Type="System.String" />
-        <Parameter Name="output" Type="System.String" />
-        <Parameter Name="weightColumn" Type="System.String" />
-        <Parameter Name="rank" Type="System.Int32" />
-        <Parameter Name="overSampling" Type="System.Int32" />
-        <Parameter Name="center" Type="System.Boolean" />
-        <Parameter Name="seed" Type="System.Nullable&lt;System.Int32&gt;" />
+        <Parameter Name="name" Type="System.String" Index="0" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="inputColumnName" Type="System.String" Index="1" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="weightColumn" Type="System.String" Index="2" />
+        <Parameter Name="rank" Type="System.Int32" Index="3" />
+        <Parameter Name="overSampling" Type="System.Int32" Index="4" />
+        <Parameter Name="center" Type="System.Boolean" Index="5" />
+        <Parameter Name="seed" Type="System.Nullable&lt;System.Int32&gt;" Index="6" />
       </Parameters>
       <Docs>
-        <param name="input">The column to apply PCA to.</param>
-        <param name="output">The output column that contains PCA values.</param>
+        <param name="name">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
+        <param name="inputColumnName">Name of column to transform.
+            If set to <see langword="null" />, the value of the <paramref name="name" /> will be used as source.</param>
         <param name="weightColumn">The name of the weight column.</param>
         <param name="rank">The number of components in the PCA.</param>
         <param name="overSampling">Oversampling parameter for randomized PCA training.</param>
@@ -70,12 +71,12 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Input">
-      <MemberSignature Language="C#" Value="public readonly string Input;" />
-      <MemberSignature Language="ILAsm" Value=".field public initonly string Input" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.Projections.PcaTransformer.ColumnInfo.Input" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Input As String " />
-      <MemberSignature Language="F#" Value="val mutable Input : string" Usage="Microsoft.ML.Transforms.Projections.PcaTransformer.ColumnInfo.Input" />
+    <Member MemberName="InputColumnName">
+      <MemberSignature Language="C#" Value="public readonly string InputColumnName;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly string InputColumnName" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.Projections.PcaTransformer.ColumnInfo.InputColumnName" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly InputColumnName As String " />
+      <MemberSignature Language="F#" Value="val mutable InputColumnName : string" Usage="Microsoft.ML.Transforms.Projections.PcaTransformer.ColumnInfo.InputColumnName" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.PCA</AssemblyName>
@@ -89,12 +90,12 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Output">
-      <MemberSignature Language="C#" Value="public readonly string Output;" />
-      <MemberSignature Language="ILAsm" Value=".field public initonly string Output" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.Projections.PcaTransformer.ColumnInfo.Output" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Output As String " />
-      <MemberSignature Language="F#" Value="val mutable Output : string" Usage="Microsoft.ML.Transforms.Projections.PcaTransformer.ColumnInfo.Output" />
+    <Member MemberName="Name">
+      <MemberSignature Language="C#" Value="public readonly string Name;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly string Name" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.Projections.PcaTransformer.ColumnInfo.Name" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Name As String " />
+      <MemberSignature Language="F#" Value="val mutable Name : string" Usage="Microsoft.ML.Transforms.Projections.PcaTransformer.ColumnInfo.Name" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.PCA</AssemblyName>

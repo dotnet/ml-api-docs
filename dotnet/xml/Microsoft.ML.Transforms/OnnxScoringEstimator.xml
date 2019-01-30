@@ -77,11 +77,11 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public OnnxScoringEstimator (Microsoft.ML.IHostEnvironment env, string modelFile, string[] inputColumns, string[] outputColumns, Nullable&lt;int&gt; gpuDeviceId = null, bool fallbackToCpu = false);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, string modelFile, string[] inputColumns, string[] outputColumns, valuetype System.Nullable`1&lt;int32&gt; gpuDeviceId, bool fallbackToCpu) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.OnnxScoringEstimator.#ctor(Microsoft.ML.IHostEnvironment,System.String,System.String[],System.String[],System.Nullable{System.Int32},System.Boolean)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, modelFile As String, inputColumns As String(), outputColumns As String(), Optional gpuDeviceId As Nullable(Of Integer) = null, Optional fallbackToCpu As Boolean = false)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.OnnxScoringEstimator : Microsoft.ML.IHostEnvironment * string * string[] * string[] * Nullable&lt;int&gt; * bool -&gt; Microsoft.ML.Transforms.OnnxScoringEstimator" Usage="new Microsoft.ML.Transforms.OnnxScoringEstimator (env, modelFile, inputColumns, outputColumns, gpuDeviceId, fallbackToCpu)" />
+      <MemberSignature Language="C#" Value="public OnnxScoringEstimator (Microsoft.ML.IHostEnvironment env, string[] outputColumnNames, string[] inputColumnNames, string modelFile, Nullable&lt;int&gt; gpuDeviceId = null, bool fallbackToCpu = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, string[] outputColumnNames, string[] inputColumnNames, string modelFile, valuetype System.Nullable`1&lt;int32&gt; gpuDeviceId, bool fallbackToCpu) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.OnnxScoringEstimator.#ctor(Microsoft.ML.IHostEnvironment,System.String[],System.String[],System.String,System.Nullable{System.Int32},System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, outputColumnNames As String(), inputColumnNames As String(), modelFile As String, Optional gpuDeviceId As Nullable(Of Integer) = null, Optional fallbackToCpu As Boolean = false)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.OnnxScoringEstimator : Microsoft.ML.IHostEnvironment * string[] * string[] * string * Nullable&lt;int&gt; * bool -&gt; Microsoft.ML.Transforms.OnnxScoringEstimator" Usage="new Microsoft.ML.Transforms.OnnxScoringEstimator (env, outputColumnNames, inputColumnNames, modelFile, gpuDeviceId, fallbackToCpu)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.OnnxTransform</AssemblyName>
@@ -89,17 +89,17 @@
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
+        <Parameter Name="outputColumnNames" Type="System.String[]" />
+        <Parameter Name="inputColumnNames" Type="System.String[]" />
         <Parameter Name="modelFile" Type="System.String" />
-        <Parameter Name="inputColumns" Type="System.String[]" />
-        <Parameter Name="outputColumns" Type="System.String[]" />
         <Parameter Name="gpuDeviceId" Type="System.Nullable&lt;System.Int32&gt;" />
         <Parameter Name="fallbackToCpu" Type="System.Boolean" />
       </Parameters>
       <Docs>
         <param name="env">The environment to use.</param>
+        <param name="outputColumnNames">The output columns to generate. Names must match model specifications. Data types are inferred from model.</param>
+        <param name="inputColumnNames">The name of the input data columns. Must match model's input names.</param>
         <param name="modelFile">Model file path.</param>
-        <param name="inputColumns">The name of the input data columns. Must match model's input names.</param>
-        <param name="outputColumns">The output columns to generate. Names must match model specifications. Data types are inferred from model.</param>
         <param name="gpuDeviceId">Optional GPU device ID to run execution on. Null for CPU.</param>
         <param name="fallbackToCpu">If GPU error, raise exception or fallback to CPU.</param>
         <summary>

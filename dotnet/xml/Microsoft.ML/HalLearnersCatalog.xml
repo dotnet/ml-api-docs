@@ -171,11 +171,11 @@
       </Docs>
     </Member>
     <Member MemberName="VectorWhiten">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Projections.VectorWhiteningEstimator VectorWhiten (this Microsoft.ML.TransformsCatalog.ProjectionTransforms catalog, string inputColumn, string outputColumn = null, Microsoft.ML.Transforms.Projections.WhiteningKind kind = Microsoft.ML.Transforms.Projections.WhiteningKind.Zca, float eps = 1E-05, int maxRows = 100000, int pcaNum = 0);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Projections.VectorWhiteningEstimator VectorWhiten(class Microsoft.ML.TransformsCatalog/ProjectionTransforms catalog, string inputColumn, string outputColumn, valuetype Microsoft.ML.Transforms.Projections.WhiteningKind kind, float32 eps, int32 maxRows, int32 pcaNum) cil managed" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Projections.VectorWhiteningEstimator VectorWhiten (this Microsoft.ML.TransformsCatalog.ProjectionTransforms catalog, string outputColumnName, string inputColumnName = null, Microsoft.ML.Transforms.Projections.WhiteningKind kind = Microsoft.ML.Transforms.Projections.WhiteningKind.Zca, float eps = 1E-05, int maxRows = 100000, int pcaNum = 0);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Projections.VectorWhiteningEstimator VectorWhiten(class Microsoft.ML.TransformsCatalog/ProjectionTransforms catalog, string outputColumnName, string inputColumnName, valuetype Microsoft.ML.Transforms.Projections.WhiteningKind kind, float32 eps, int32 maxRows, int32 pcaNum) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.HalLearnersCatalog.VectorWhiten(Microsoft.ML.TransformsCatalog.ProjectionTransforms,System.String,System.String,Microsoft.ML.Transforms.Projections.WhiteningKind,System.Single,System.Int32,System.Int32)" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function VectorWhiten (catalog As TransformsCatalog.ProjectionTransforms, inputColumn As String, Optional outputColumn As String = null, Optional kind As WhiteningKind = Microsoft.ML.Transforms.Projections.WhiteningKind.Zca, Optional eps As Single = 1E-05, Optional maxRows As Integer = 100000, Optional pcaNum As Integer = 0) As VectorWhiteningEstimator" />
-      <MemberSignature Language="F#" Value="static member VectorWhiten : Microsoft.ML.TransformsCatalog.ProjectionTransforms * string * string * Microsoft.ML.Transforms.Projections.WhiteningKind * single * int * int -&gt; Microsoft.ML.Transforms.Projections.VectorWhiteningEstimator" Usage="Microsoft.ML.HalLearnersCatalog.VectorWhiten (catalog, inputColumn, outputColumn, kind, eps, maxRows, pcaNum)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function VectorWhiten (catalog As TransformsCatalog.ProjectionTransforms, outputColumnName As String, Optional inputColumnName As String = null, Optional kind As WhiteningKind = Microsoft.ML.Transforms.Projections.WhiteningKind.Zca, Optional eps As Single = 1E-05, Optional maxRows As Integer = 100000, Optional pcaNum As Integer = 0) As VectorWhiteningEstimator" />
+      <MemberSignature Language="F#" Value="static member VectorWhiten : Microsoft.ML.TransformsCatalog.ProjectionTransforms * string * string * Microsoft.ML.Transforms.Projections.WhiteningKind * single * int * int -&gt; Microsoft.ML.Transforms.Projections.VectorWhiteningEstimator" Usage="Microsoft.ML.HalLearnersCatalog.VectorWhiten (catalog, outputColumnName, inputColumnName, kind, eps, maxRows, pcaNum)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.HalLearners</AssemblyName>
@@ -185,19 +185,18 @@
         <ReturnType>Microsoft.ML.Transforms.Projections.VectorWhiteningEstimator</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+ProjectionTransforms" RefType="this" />
-        <Parameter Name="inputColumn" Type="System.String" />
-        <Parameter Name="outputColumn" Type="System.String" />
-        <Parameter Name="kind" Type="Microsoft.ML.Transforms.Projections.WhiteningKind" />
-        <Parameter Name="eps" Type="System.Single" />
-        <Parameter Name="maxRows" Type="System.Int32" />
-        <Parameter Name="pcaNum" Type="System.Int32" />
+        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+ProjectionTransforms" RefType="this" Index="0" />
+        <Parameter Name="outputColumnName" Type="System.String" Index="1" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="inputColumnName" Type="System.String" Index="2" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="kind" Type="Microsoft.ML.Transforms.Projections.WhiteningKind" Index="3" />
+        <Parameter Name="eps" Type="System.Single" Index="4" />
+        <Parameter Name="maxRows" Type="System.Int32" Index="5" />
+        <Parameter Name="pcaNum" Type="System.Int32" Index="6" />
       </Parameters>
       <Docs>
         <param name="catalog">The transform's catalog.</param>
-        <param name="inputColumn">Name of the input column.</param>
-        <param name="outputColumn">Name of the column resulting from the transformation of <paramref name="inputColumn" />.
-            Null means <paramref name="inputColumn" /> is replaced. </param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
+        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
         <param name="kind">Whitening kind (PCA/ZCA).</param>
         <param name="eps">Whitening constant, prevents division by zero.</param>
         <param name="maxRows">Maximum number of rows used to train the transform.</param>
