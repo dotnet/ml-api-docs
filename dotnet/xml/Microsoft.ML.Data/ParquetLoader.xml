@@ -1,6 +1,6 @@
 ﻿<Type Name="ParquetLoader" FullName="Microsoft.ML.Data.ParquetLoader">
-  <TypeSignature Language="C#" Value="public sealed class ParquetLoader : IDisposable, Microsoft.ML.Data.IDataLoader, Microsoft.ML.Data.IDataView" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit ParquetLoader extends System.Object implements class Microsoft.ML.Data.IDataLoader, class Microsoft.ML.Data.IDataView, class Microsoft.ML.Model.ICanSaveModel, class System.IDisposable" />
+  <TypeSignature Language="C#" Value="public sealed class ParquetLoader : IDisposable, Microsoft.Data.DataView.IDataView, Microsoft.ML.Data.IDataLoader" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit ParquetLoader extends System.Object implements class Microsoft.Data.DataView.IDataView, class Microsoft.ML.Data.IDataLoader, class Microsoft.ML.Model.ICanSaveModel, class System.IDisposable" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Data.ParquetLoader" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class ParquetLoader&#xA;Implements IDataLoader, IDataView, IDisposable" />
   <TypeSignature Language="F#" Value="type ParquetLoader = class&#xA;    interface IDataLoader&#xA;    interface IDataView&#xA;    interface ICanSaveModel&#xA;    interface IDisposable" />
@@ -13,10 +13,10 @@
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>Microsoft.ML.Data.IDataLoader</InterfaceName>
+      <InterfaceName>Microsoft.Data.DataView.IDataView</InterfaceName>
     </Interface>
     <Interface>
-      <InterfaceName>Microsoft.ML.Data.IDataView</InterfaceName>
+      <InterfaceName>Microsoft.ML.Data.IDataLoader</InterfaceName>
     </Interface>
     <Interface>
       <InterfaceName>Microsoft.ML.Model.ICanSaveModel</InterfaceName>
@@ -111,7 +111,7 @@
       <MemberSignature Language="F#" Value="member this.CanShuffle : bool" Usage="Microsoft.ML.Data.ParquetLoader.CanShuffle" />
       <MemberType>Property</MemberType>
       <Implements>
-        <InterfaceMember>P:Microsoft.ML.Data.IDataView.CanShuffle</InterfaceMember>
+        <InterfaceMember>P:Microsoft.Data.DataView.IDataView.CanShuffle</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Parquet</AssemblyName>
@@ -205,7 +205,7 @@
       <MemberSignature Language="F#" Value="abstract member GetRowCount : unit -&gt; Nullable&lt;int64&gt;&#xA;override this.GetRowCount : unit -&gt; Nullable&lt;int64&gt;" Usage="parquetLoader.GetRowCount " />
       <MemberType>Method</MemberType>
       <Implements>
-        <InterfaceMember>M:Microsoft.ML.Data.IDataView.GetRowCount</InterfaceMember>
+        <InterfaceMember>M:Microsoft.Data.DataView.IDataView.GetRowCount</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Parquet</AssemblyName>
@@ -222,28 +222,28 @@
       </Docs>
     </Member>
     <Member MemberName="GetRowCursor">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.RowCursor GetRowCursor (Func&lt;int,bool&gt; predicate, Random rand = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Data.RowCursor GetRowCursor(class System.Func`2&lt;int32, bool&gt; predicate, class System.Random rand) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.ParquetLoader.GetRowCursor(System.Func{System.Int32,System.Boolean},System.Random)" />
-      <MemberSignature Language="VB.NET" Value="Public Function GetRowCursor (predicate As Func(Of Integer, Boolean), Optional rand As Random = null) As RowCursor" />
-      <MemberSignature Language="F#" Value="abstract member GetRowCursor : Func&lt;int, bool&gt; * Random -&gt; Microsoft.ML.Data.RowCursor&#xA;override this.GetRowCursor : Func&lt;int, bool&gt; * Random -&gt; Microsoft.ML.Data.RowCursor" Usage="parquetLoader.GetRowCursor (predicate, rand)" />
+      <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.RowCursor GetRowCursor (System.Collections.Generic.IEnumerable&lt;Microsoft.Data.DataView.Schema.Column&gt; columnsNeeded, Random rand = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.Data.DataView.RowCursor GetRowCursor(class System.Collections.Generic.IEnumerable`1&lt;valuetype Microsoft.Data.DataView.Schema/Column&gt; columnsNeeded, class System.Random rand) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.ParquetLoader.GetRowCursor(System.Collections.Generic.IEnumerable{Microsoft.Data.DataView.Schema.Column},System.Random)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetRowCursor (columnsNeeded As IEnumerable(Of Schema.Column), Optional rand As Random = null) As RowCursor" />
+      <MemberSignature Language="F#" Value="abstract member GetRowCursor : seq&lt;Microsoft.Data.DataView.Schema.Column&gt; * Random -&gt; Microsoft.Data.DataView.RowCursor&#xA;override this.GetRowCursor : seq&lt;Microsoft.Data.DataView.Schema.Column&gt; * Random -&gt; Microsoft.Data.DataView.RowCursor" Usage="parquetLoader.GetRowCursor (columnsNeeded, rand)" />
       <MemberType>Method</MemberType>
       <Implements>
-        <InterfaceMember>M:Microsoft.ML.Data.IDataView.GetRowCursor(System.Func{System.Int32,System.Boolean},System.Random)</InterfaceMember>
+        <InterfaceMember>M:Microsoft.Data.DataView.IDataView.GetRowCursor(System.Collections.Generic.IEnumerable{Microsoft.Data.DataView.Schema.Column},System.Random)</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Parquet</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Data.RowCursor</ReturnType>
+        <ReturnType>Microsoft.Data.DataView.RowCursor</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+        <Parameter Name="columnsNeeded" Type="System.Collections.Generic.IEnumerable&lt;Microsoft.Data.DataView.Schema+Column&gt;" />
         <Parameter Name="rand" Type="System.Random" />
       </Parameters>
       <Docs>
-        <param name="predicate">To be added.</param>
+        <param name="columnsNeeded">To be added.</param>
         <param name="rand">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
@@ -251,29 +251,29 @@
       </Docs>
     </Member>
     <Member MemberName="GetRowCursorSet">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.RowCursor[] GetRowCursorSet (Func&lt;int,bool&gt; predicate, int n, Random rand = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Data.RowCursor[] GetRowCursorSet(class System.Func`2&lt;int32, bool&gt; predicate, int32 n, class System.Random rand) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.ParquetLoader.GetRowCursorSet(System.Func{System.Int32,System.Boolean},System.Int32,System.Random)" />
-      <MemberSignature Language="VB.NET" Value="Public Function GetRowCursorSet (predicate As Func(Of Integer, Boolean), n As Integer, Optional rand As Random = null) As RowCursor()" />
-      <MemberSignature Language="F#" Value="abstract member GetRowCursorSet : Func&lt;int, bool&gt; * int * Random -&gt; Microsoft.ML.Data.RowCursor[]&#xA;override this.GetRowCursorSet : Func&lt;int, bool&gt; * int * Random -&gt; Microsoft.ML.Data.RowCursor[]" Usage="parquetLoader.GetRowCursorSet (predicate, n, rand)" />
+      <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.RowCursor[] GetRowCursorSet (System.Collections.Generic.IEnumerable&lt;Microsoft.Data.DataView.Schema.Column&gt; columnsNeeded, int n, Random rand = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.Data.DataView.RowCursor[] GetRowCursorSet(class System.Collections.Generic.IEnumerable`1&lt;valuetype Microsoft.Data.DataView.Schema/Column&gt; columnsNeeded, int32 n, class System.Random rand) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.ParquetLoader.GetRowCursorSet(System.Collections.Generic.IEnumerable{Microsoft.Data.DataView.Schema.Column},System.Int32,System.Random)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetRowCursorSet (columnsNeeded As IEnumerable(Of Schema.Column), n As Integer, Optional rand As Random = null) As RowCursor()" />
+      <MemberSignature Language="F#" Value="abstract member GetRowCursorSet : seq&lt;Microsoft.Data.DataView.Schema.Column&gt; * int * Random -&gt; Microsoft.Data.DataView.RowCursor[]&#xA;override this.GetRowCursorSet : seq&lt;Microsoft.Data.DataView.Schema.Column&gt; * int * Random -&gt; Microsoft.Data.DataView.RowCursor[]" Usage="parquetLoader.GetRowCursorSet (columnsNeeded, n, rand)" />
       <MemberType>Method</MemberType>
       <Implements>
-        <InterfaceMember>M:Microsoft.ML.Data.IDataView.GetRowCursorSet(System.Func{System.Int32,System.Boolean},System.Int32,System.Random)</InterfaceMember>
+        <InterfaceMember>M:Microsoft.Data.DataView.IDataView.GetRowCursorSet(System.Collections.Generic.IEnumerable{Microsoft.Data.DataView.Schema.Column},System.Int32,System.Random)</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Parquet</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Data.RowCursor[]</ReturnType>
+        <ReturnType>Microsoft.Data.DataView.RowCursor[]</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+        <Parameter Name="columnsNeeded" Type="System.Collections.Generic.IEnumerable&lt;Microsoft.Data.DataView.Schema+Column&gt;" />
         <Parameter Name="n" Type="System.Int32" />
         <Parameter Name="rand" Type="System.Random" />
       </Parameters>
       <Docs>
-        <param name="predicate">To be added.</param>
+        <param name="columnsNeeded">To be added.</param>
         <param name="n">To be added.</param>
         <param name="rand">To be added.</param>
         <summary>To be added.</summary>
@@ -308,21 +308,21 @@
       </Docs>
     </Member>
     <Member MemberName="Schema">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.Schema Schema { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Data.Schema Schema" />
+      <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.Schema Schema { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.Data.DataView.Schema Schema" />
       <MemberSignature Language="DocId" Value="P:Microsoft.ML.Data.ParquetLoader.Schema" />
       <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Schema As Schema" />
-      <MemberSignature Language="F#" Value="member this.Schema : Microsoft.ML.Data.Schema" Usage="Microsoft.ML.Data.ParquetLoader.Schema" />
+      <MemberSignature Language="F#" Value="member this.Schema : Microsoft.Data.DataView.Schema" Usage="Microsoft.ML.Data.ParquetLoader.Schema" />
       <MemberType>Property</MemberType>
       <Implements>
-        <InterfaceMember>P:Microsoft.ML.Data.IDataView.Schema</InterfaceMember>
+        <InterfaceMember>P:Microsoft.Data.DataView.IDataView.Schema</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Parquet</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Data.Schema</ReturnType>
+        <ReturnType>Microsoft.Data.DataView.Schema</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

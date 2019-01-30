@@ -1,6 +1,6 @@
 ﻿<Type Name="OneToOneTransformBase" FullName="Microsoft.ML.Data.OneToOneTransformBase">
-  <TypeSignature Language="C#" Value="public abstract class OneToOneTransformBase : Microsoft.ML.Data.RowToRowMapperTransformBase, Microsoft.ML.Data.IDataView" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit OneToOneTransformBase extends Microsoft.ML.Data.RowToRowMapperTransformBase implements class Microsoft.ML.Data.IDataTransform, class Microsoft.ML.Data.IDataView, class Microsoft.ML.Model.ICanSaveModel" />
+  <TypeSignature Language="C#" Value="public abstract class OneToOneTransformBase : Microsoft.ML.Data.RowToRowMapperTransformBase, Microsoft.Data.DataView.IDataView" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit OneToOneTransformBase extends Microsoft.ML.Data.RowToRowMapperTransformBase implements class Microsoft.Data.DataView.IDataView, class Microsoft.ML.Data.IDataTransform, class Microsoft.ML.Model.ICanSaveModel" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Data.OneToOneTransformBase" />
   <TypeSignature Language="VB.NET" Value="Public MustInherit Class OneToOneTransformBase&#xA;Inherits RowToRowMapperTransformBase&#xA;Implements IDataView" />
   <TypeSignature Language="F#" Value="type OneToOneTransformBase = class&#xA;    inherit RowToRowMapperTransformBase&#xA;    interface IDataView&#xA;    interface IDataTransform&#xA;    interface ICanSaveModel" />
@@ -13,10 +13,10 @@
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>Microsoft.ML.Data.IDataTransform</InterfaceName>
+      <InterfaceName>Microsoft.Data.DataView.IDataView</InterfaceName>
     </Interface>
     <Interface>
-      <InterfaceName>Microsoft.ML.Data.IDataView</InterfaceName>
+      <InterfaceName>Microsoft.ML.Data.IDataTransform</InterfaceName>
     </Interface>
     <Interface>
       <InterfaceName>Microsoft.ML.Model.ICanSaveModel</InterfaceName>
@@ -88,11 +88,11 @@
       </Docs>
     </Member>
     <Member MemberName="CreateGetters">
-      <MemberSignature Language="C#" Value="protected override Delegate[] CreateGetters (Microsoft.ML.Data.Row input, Func&lt;int,bool&gt; active, out Action disposer);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class System.Delegate[] CreateGetters(class Microsoft.ML.Data.Row input, class System.Func`2&lt;int32, bool&gt; active, [out] class System.Action&amp; disposer) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.OneToOneTransformBase.CreateGetters(Microsoft.ML.Data.Row,System.Func{System.Int32,System.Boolean},System.Action@)" />
+      <MemberSignature Language="C#" Value="protected override Delegate[] CreateGetters (Microsoft.Data.DataView.Row input, Func&lt;int,bool&gt; active, out Action disposer);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class System.Delegate[] CreateGetters(class Microsoft.Data.DataView.Row input, class System.Func`2&lt;int32, bool&gt; active, [out] class System.Action&amp; disposer) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.OneToOneTransformBase.CreateGetters(Microsoft.Data.DataView.Row,System.Func{System.Int32,System.Boolean},System.Action@)" />
       <MemberSignature Language="VB.NET" Value="Protected Overrides Function CreateGetters (input As Row, active As Func(Of Integer, Boolean), ByRef disposer As Action) As Delegate()" />
-      <MemberSignature Language="F#" Value="override this.CreateGetters : Microsoft.ML.Data.Row * Func&lt;int, bool&gt; *  -&gt; Delegate[]" Usage="oneToOneTransformBase.CreateGetters (input, active, disposer)" />
+      <MemberSignature Language="F#" Value="override this.CreateGetters : Microsoft.Data.DataView.Row * Func&lt;int, bool&gt; *  -&gt; Delegate[]" Usage="oneToOneTransformBase.CreateGetters (input, active, disposer)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -102,7 +102,7 @@
         <ReturnType>System.Delegate[]</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="input" Type="Microsoft.ML.Data.Row" />
+        <Parameter Name="input" Type="Microsoft.Data.DataView.Row" />
         <Parameter Name="active" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
         <Parameter Name="disposer" Type="System.Action" RefType="out" />
       </Parameters>
@@ -135,26 +135,26 @@
       <Docs>
         <param name="col">To be added.</param>
         <summary>
-            Returns a standard exception for responding to an invalid call to <see cref="M:Microsoft.ML.Data.OneToOneTransformBase.GetSlotCursor(System.Int32)" />,
-            on a column that is not transposable.
+            Returns a standard exception for responding to an invalid call to <see cref="M:Microsoft.ML.Data.ITransposeDataView.GetSlotCursor(System.Int32)" />
+            implementation in <see langword="this" /> on a column that is not transposable.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetColumnTypeCore">
-      <MemberSignature Language="C#" Value="protected abstract Microsoft.ML.Data.ColumnType GetColumnTypeCore (int iinfo);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Microsoft.ML.Data.ColumnType GetColumnTypeCore(int32 iinfo) cil managed" />
+      <MemberSignature Language="C#" Value="protected abstract Microsoft.Data.DataView.ColumnType GetColumnTypeCore (int iinfo);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Microsoft.Data.DataView.ColumnType GetColumnTypeCore(int32 iinfo) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.OneToOneTransformBase.GetColumnTypeCore(System.Int32)" />
       <MemberSignature Language="VB.NET" Value="Protected MustOverride Function GetColumnTypeCore (iinfo As Integer) As ColumnType" />
-      <MemberSignature Language="F#" Value="abstract member GetColumnTypeCore : int -&gt; Microsoft.ML.Data.ColumnType" Usage="oneToOneTransformBase.GetColumnTypeCore iinfo" />
+      <MemberSignature Language="F#" Value="abstract member GetColumnTypeCore : int -&gt; Microsoft.Data.DataView.ColumnType" Usage="oneToOneTransformBase.GetColumnTypeCore iinfo" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Data.ColumnType</ReturnType>
+        <ReturnType>Microsoft.Data.DataView.ColumnType</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="iinfo" Type="System.Int32" />
@@ -191,11 +191,11 @@
       </Docs>
     </Member>
     <Member MemberName="GetGetterCore">
-      <MemberSignature Language="C#" Value="protected abstract Delegate GetGetterCore (Microsoft.ML.IChannel ch, Microsoft.ML.Data.Row input, int iinfo, out Action disposer);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class System.Delegate GetGetterCore(class Microsoft.ML.IChannel ch, class Microsoft.ML.Data.Row input, int32 iinfo, [out] class System.Action&amp; disposer) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.OneToOneTransformBase.GetGetterCore(Microsoft.ML.IChannel,Microsoft.ML.Data.Row,System.Int32,System.Action@)" />
+      <MemberSignature Language="C#" Value="protected abstract Delegate GetGetterCore (Microsoft.ML.IChannel ch, Microsoft.Data.DataView.Row input, int iinfo, out Action disposer);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class System.Delegate GetGetterCore(class Microsoft.ML.IChannel ch, class Microsoft.Data.DataView.Row input, int32 iinfo, [out] class System.Action&amp; disposer) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.OneToOneTransformBase.GetGetterCore(Microsoft.ML.IChannel,Microsoft.Data.DataView.Row,System.Int32,System.Action@)" />
       <MemberSignature Language="VB.NET" Value="Protected MustOverride Function GetGetterCore (ch As IChannel, input As Row, iinfo As Integer, ByRef disposer As Action) As Delegate" />
-      <MemberSignature Language="F#" Value="abstract member GetGetterCore : Microsoft.ML.IChannel * Microsoft.ML.Data.Row * int *  -&gt; Delegate" Usage="oneToOneTransformBase.GetGetterCore (ch, input, iinfo, disposer)" />
+      <MemberSignature Language="F#" Value="abstract member GetGetterCore : Microsoft.ML.IChannel * Microsoft.Data.DataView.Row * int *  -&gt; Delegate" Usage="oneToOneTransformBase.GetGetterCore (ch, input, iinfo, disposer)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -206,7 +206,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="ch" Type="Microsoft.ML.IChannel" />
-        <Parameter Name="input" Type="Microsoft.ML.Data.Row" />
+        <Parameter Name="input" Type="Microsoft.Data.DataView.Row" />
         <Parameter Name="iinfo" Type="System.Int32" />
         <Parameter Name="disposer" Type="System.Action" RefType="out" />
       </Parameters>
@@ -226,25 +226,25 @@
       </Docs>
     </Member>
     <Member MemberName="GetRowCursorCore">
-      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Data.RowCursor GetRowCursorCore (Func&lt;int,bool&gt; predicate, Random rand = null);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Data.RowCursor GetRowCursorCore(class System.Func`2&lt;int32, bool&gt; predicate, class System.Random rand) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.OneToOneTransformBase.GetRowCursorCore(System.Func{System.Int32,System.Boolean},System.Random)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetRowCursorCore (predicate As Func(Of Integer, Boolean), Optional rand As Random = null) As RowCursor" />
-      <MemberSignature Language="F#" Value="override this.GetRowCursorCore : Func&lt;int, bool&gt; * Random -&gt; Microsoft.ML.Data.RowCursor" Usage="oneToOneTransformBase.GetRowCursorCore (predicate, rand)" />
+      <MemberSignature Language="C#" Value="protected override Microsoft.Data.DataView.RowCursor GetRowCursorCore (System.Collections.Generic.IEnumerable&lt;Microsoft.Data.DataView.Schema.Column&gt; columnsNeeded, Random rand = null);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.Data.DataView.RowCursor GetRowCursorCore(class System.Collections.Generic.IEnumerable`1&lt;valuetype Microsoft.Data.DataView.Schema/Column&gt; columnsNeeded, class System.Random rand) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.OneToOneTransformBase.GetRowCursorCore(System.Collections.Generic.IEnumerable{Microsoft.Data.DataView.Schema.Column},System.Random)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetRowCursorCore (columnsNeeded As IEnumerable(Of Schema.Column), Optional rand As Random = null) As RowCursor" />
+      <MemberSignature Language="F#" Value="override this.GetRowCursorCore : seq&lt;Microsoft.Data.DataView.Schema.Column&gt; * Random -&gt; Microsoft.Data.DataView.RowCursor" Usage="oneToOneTransformBase.GetRowCursorCore (columnsNeeded, rand)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Data.RowCursor</ReturnType>
+        <ReturnType>Microsoft.Data.DataView.RowCursor</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+        <Parameter Name="columnsNeeded" Type="System.Collections.Generic.IEnumerable&lt;Microsoft.Data.DataView.Schema+Column&gt;" />
         <Parameter Name="rand" Type="System.Random" />
       </Parameters>
       <Docs>
-        <param name="predicate">To be added.</param>
+        <param name="columnsNeeded">To be added.</param>
         <param name="rand">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
@@ -252,90 +252,32 @@
       </Docs>
     </Member>
     <Member MemberName="GetRowCursorSet">
-      <MemberSignature Language="C#" Value="public override sealed Microsoft.ML.Data.RowCursor[] GetRowCursorSet (Func&lt;int,bool&gt; predicate, int n, Random rand = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Microsoft.ML.Data.RowCursor[] GetRowCursorSet(class System.Func`2&lt;int32, bool&gt; predicate, int32 n, class System.Random rand) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.OneToOneTransformBase.GetRowCursorSet(System.Func{System.Int32,System.Boolean},System.Int32,System.Random)" />
-      <MemberSignature Language="VB.NET" Value="Public Overrides NotOverridable Function GetRowCursorSet (predicate As Func(Of Integer, Boolean), n As Integer, Optional rand As Random = null) As RowCursor()" />
-      <MemberSignature Language="F#" Value="override this.GetRowCursorSet : Func&lt;int, bool&gt; * int * Random -&gt; Microsoft.ML.Data.RowCursor[]" Usage="oneToOneTransformBase.GetRowCursorSet (predicate, n, rand)" />
+      <MemberSignature Language="C#" Value="public override sealed Microsoft.Data.DataView.RowCursor[] GetRowCursorSet (System.Collections.Generic.IEnumerable&lt;Microsoft.Data.DataView.Schema.Column&gt; columnsNeeded, int n, Random rand = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Microsoft.Data.DataView.RowCursor[] GetRowCursorSet(class System.Collections.Generic.IEnumerable`1&lt;valuetype Microsoft.Data.DataView.Schema/Column&gt; columnsNeeded, int32 n, class System.Random rand) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.OneToOneTransformBase.GetRowCursorSet(System.Collections.Generic.IEnumerable{Microsoft.Data.DataView.Schema.Column},System.Int32,System.Random)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides NotOverridable Function GetRowCursorSet (columnsNeeded As IEnumerable(Of Schema.Column), n As Integer, Optional rand As Random = null) As RowCursor()" />
+      <MemberSignature Language="F#" Value="override this.GetRowCursorSet : seq&lt;Microsoft.Data.DataView.Schema.Column&gt; * int * Random -&gt; Microsoft.Data.DataView.RowCursor[]" Usage="oneToOneTransformBase.GetRowCursorSet (columnsNeeded, n, rand)" />
       <MemberType>Method</MemberType>
       <Implements>
-        <InterfaceMember>M:Microsoft.ML.Data.IDataView.GetRowCursorSet(System.Func{System.Int32,System.Boolean},System.Int32,System.Random)</InterfaceMember>
+        <InterfaceMember>M:Microsoft.Data.DataView.IDataView.GetRowCursorSet(System.Collections.Generic.IEnumerable{Microsoft.Data.DataView.Schema.Column},System.Int32,System.Random)</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Data.RowCursor[]</ReturnType>
+        <ReturnType>Microsoft.Data.DataView.RowCursor[]</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+        <Parameter Name="columnsNeeded" Type="System.Collections.Generic.IEnumerable&lt;Microsoft.Data.DataView.Schema+Column&gt;" />
         <Parameter Name="n" Type="System.Int32" />
         <Parameter Name="rand" Type="System.Random" />
       </Parameters>
       <Docs>
-        <param name="predicate">To be added.</param>
+        <param name="columnsNeeded">To be added.</param>
         <param name="n">To be added.</param>
         <param name="rand">To be added.</param>
         <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GetSlotCursor">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.SlotCursor GetSlotCursor (int col);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Data.SlotCursor GetSlotCursor(int32 col) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.OneToOneTransformBase.GetSlotCursor(System.Int32)" />
-      <MemberSignature Language="VB.NET" Value="Public Function GetSlotCursor (col As Integer) As SlotCursor" />
-      <MemberSignature Language="F#" Value="abstract member GetSlotCursor : int -&gt; Microsoft.ML.Data.SlotCursor&#xA;override this.GetSlotCursor : int -&gt; Microsoft.ML.Data.SlotCursor" Usage="oneToOneTransformBase.GetSlotCursor col" />
-      <MemberType>Method</MemberType>
-      <Implements>
-        <InterfaceMember>M:Microsoft.ML.Data.ITransposeDataView.GetSlotCursor(System.Int32)</InterfaceMember>
-      </Implements>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Data.SlotCursor</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="col" Type="System.Int32" />
-      </Parameters>
-      <Docs>
-        <param name="col">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GetSlotCursorCore">
-      <MemberSignature Language="C#" Value="protected virtual Microsoft.ML.Data.SlotCursor GetSlotCursorCore (int iinfo);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Microsoft.ML.Data.SlotCursor GetSlotCursorCore(int32 iinfo) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.OneToOneTransformBase.GetSlotCursorCore(System.Int32)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overridable Function GetSlotCursorCore (iinfo As Integer) As SlotCursor" />
-      <MemberSignature Language="F#" Value="abstract member GetSlotCursorCore : int -&gt; Microsoft.ML.Data.SlotCursor&#xA;override this.GetSlotCursorCore : int -&gt; Microsoft.ML.Data.SlotCursor" Usage="oneToOneTransformBase.GetSlotCursorCore iinfo" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Data.SlotCursor</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="iinfo" Type="System.Int32" />
-      </Parameters>
-      <Docs>
-        <param name="iinfo">To be added.</param>
-        <summary>
-            Implementors should note this only called if <see cref="M:Microsoft.ML.Data.OneToOneTransformBase.GetSlotTypeCore(System.Int32)" />
-            returns a non-null value for this <paramref name="iinfo" />, so in principle
-            it should always return a valid value, if called. This implementation throws,
-            since the default implementation of <see cref="M:Microsoft.ML.Data.OneToOneTransformBase.GetSlotTypeCore(System.Int32)" /> will return
-            null for all new columns, and so reaching this is only possible if there is a
-            bug.
-            </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -365,10 +307,10 @@
       </Docs>
     </Member>
     <Member MemberName="GetSrcGetter">
-      <MemberSignature Language="C#" Value="protected Delegate GetSrcGetter (Microsoft.ML.Data.ColumnType typeDst, Microsoft.ML.Data.Row row, int iinfo);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance class System.Delegate GetSrcGetter(class Microsoft.ML.Data.ColumnType typeDst, class Microsoft.ML.Data.Row row, int32 iinfo) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.OneToOneTransformBase.GetSrcGetter(Microsoft.ML.Data.ColumnType,Microsoft.ML.Data.Row,System.Int32)" />
-      <MemberSignature Language="F#" Value="member this.GetSrcGetter : Microsoft.ML.Data.ColumnType * Microsoft.ML.Data.Row * int -&gt; Delegate" Usage="oneToOneTransformBase.GetSrcGetter (typeDst, row, iinfo)" />
+      <MemberSignature Language="C#" Value="protected Delegate GetSrcGetter (Microsoft.Data.DataView.ColumnType typeDst, Microsoft.Data.DataView.Row row, int iinfo);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance class System.Delegate GetSrcGetter(class Microsoft.Data.DataView.ColumnType typeDst, class Microsoft.Data.DataView.Row row, int32 iinfo) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.OneToOneTransformBase.GetSrcGetter(Microsoft.Data.DataView.ColumnType,Microsoft.Data.DataView.Row,System.Int32)" />
+      <MemberSignature Language="F#" Value="member this.GetSrcGetter : Microsoft.Data.DataView.ColumnType * Microsoft.Data.DataView.Row * int -&gt; Delegate" Usage="oneToOneTransformBase.GetSrcGetter (typeDst, row, iinfo)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -378,8 +320,8 @@
         <ReturnType>System.Delegate</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="typeDst" Type="Microsoft.ML.Data.ColumnType" />
-        <Parameter Name="row" Type="Microsoft.ML.Data.Row" />
+        <Parameter Name="typeDst" Type="Microsoft.Data.DataView.ColumnType" />
+        <Parameter Name="row" Type="Microsoft.Data.DataView.Row" />
         <Parameter Name="iinfo" Type="System.Int32" />
       </Parameters>
       <Docs>
@@ -392,24 +334,24 @@
       </Docs>
     </Member>
     <Member MemberName="GetSrcGetter&lt;T&gt;">
-      <MemberSignature Language="C#" Value="protected Microsoft.ML.Data.ValueGetter&lt;T&gt; GetSrcGetter&lt;T&gt; (Microsoft.ML.Data.Row input, int iinfo);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance class Microsoft.ML.Data.ValueGetter`1&lt;!!T&gt; GetSrcGetter&lt;T&gt;(class Microsoft.ML.Data.Row input, int32 iinfo) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.OneToOneTransformBase.GetSrcGetter``1(Microsoft.ML.Data.Row,System.Int32)" />
+      <MemberSignature Language="C#" Value="protected Microsoft.Data.DataView.ValueGetter&lt;T&gt; GetSrcGetter&lt;T&gt; (Microsoft.Data.DataView.Row input, int iinfo);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance class Microsoft.Data.DataView.ValueGetter`1&lt;!!T&gt; GetSrcGetter&lt;T&gt;(class Microsoft.Data.DataView.Row input, int32 iinfo) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.OneToOneTransformBase.GetSrcGetter``1(Microsoft.Data.DataView.Row,System.Int32)" />
       <MemberSignature Language="VB.NET" Value="Protected Function GetSrcGetter(Of T) (input As Row, iinfo As Integer) As ValueGetter(Of T)" />
-      <MemberSignature Language="F#" Value="member this.GetSrcGetter : Microsoft.ML.Data.Row * int -&gt; Microsoft.ML.Data.ValueGetter&lt;'T&gt;" Usage="oneToOneTransformBase.GetSrcGetter (input, iinfo)" />
+      <MemberSignature Language="F#" Value="member this.GetSrcGetter : Microsoft.Data.DataView.Row * int -&gt; Microsoft.Data.DataView.ValueGetter&lt;'T&gt;" Usage="oneToOneTransformBase.GetSrcGetter (input, iinfo)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Data.ValueGetter&lt;T&gt;</ReturnType>
+        <ReturnType>Microsoft.Data.DataView.ValueGetter&lt;T&gt;</ReturnType>
       </ReturnValue>
       <TypeParameters>
         <TypeParameter Name="T" />
       </TypeParameters>
       <Parameters>
-        <Parameter Name="input" Type="Microsoft.ML.Data.Row" />
+        <Parameter Name="input" Type="Microsoft.Data.DataView.Row" />
         <Parameter Name="iinfo" Type="System.Int32" />
       </Parameters>
       <Docs>
@@ -467,18 +409,18 @@
       </Docs>
     </Member>
     <Member MemberName="OutputSchema">
-      <MemberSignature Language="C#" Value="public override sealed Microsoft.ML.Data.Schema OutputSchema { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Data.Schema OutputSchema" />
+      <MemberSignature Language="C#" Value="public override sealed Microsoft.Data.DataView.Schema OutputSchema { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.Data.DataView.Schema OutputSchema" />
       <MemberSignature Language="DocId" Value="P:Microsoft.ML.Data.OneToOneTransformBase.OutputSchema" />
       <MemberSignature Language="VB.NET" Value="Public Overrides NotOverridable ReadOnly Property OutputSchema As Schema" />
-      <MemberSignature Language="F#" Value="member this.OutputSchema : Microsoft.ML.Data.Schema" Usage="Microsoft.ML.Data.OneToOneTransformBase.OutputSchema" />
+      <MemberSignature Language="F#" Value="member this.OutputSchema : Microsoft.Data.DataView.Schema" Usage="Microsoft.ML.Data.OneToOneTransformBase.OutputSchema" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Data.Schema</ReturnType>
+        <ReturnType>Microsoft.Data.DataView.Schema</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -515,11 +457,11 @@
       </Docs>
     </Member>
     <Member MemberName="TestIsFloatItem">
-      <MemberSignature Language="C#" Value="protected static string TestIsFloatItem (Microsoft.ML.Data.ColumnType type);" />
-      <MemberSignature Language="ILAsm" Value=".method familystatic hidebysig string TestIsFloatItem(class Microsoft.ML.Data.ColumnType type) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.OneToOneTransformBase.TestIsFloatItem(Microsoft.ML.Data.ColumnType)" />
+      <MemberSignature Language="C#" Value="protected static string TestIsFloatItem (Microsoft.Data.DataView.ColumnType type);" />
+      <MemberSignature Language="ILAsm" Value=".method familystatic hidebysig string TestIsFloatItem(class Microsoft.Data.DataView.ColumnType type) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.OneToOneTransformBase.TestIsFloatItem(Microsoft.Data.DataView.ColumnType)" />
       <MemberSignature Language="VB.NET" Value="Protected Shared Function TestIsFloatItem (type As ColumnType) As String" />
-      <MemberSignature Language="F#" Value="static member TestIsFloatItem : Microsoft.ML.Data.ColumnType -&gt; string" Usage="Microsoft.ML.Data.OneToOneTransformBase.TestIsFloatItem type" />
+      <MemberSignature Language="F#" Value="static member TestIsFloatItem : Microsoft.Data.DataView.ColumnType -&gt; string" Usage="Microsoft.ML.Data.OneToOneTransformBase.TestIsFloatItem type" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -529,7 +471,7 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="type" Type="Microsoft.ML.Data.ColumnType" />
+        <Parameter Name="type" Type="Microsoft.Data.DataView.ColumnType" />
       </Parameters>
       <Docs>
         <param name="type">To be added.</param>
@@ -539,11 +481,11 @@
       </Docs>
     </Member>
     <Member MemberName="TestIsFloatVector">
-      <MemberSignature Language="C#" Value="protected static string TestIsFloatVector (Microsoft.ML.Data.ColumnType type);" />
-      <MemberSignature Language="ILAsm" Value=".method familystatic hidebysig string TestIsFloatVector(class Microsoft.ML.Data.ColumnType type) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.OneToOneTransformBase.TestIsFloatVector(Microsoft.ML.Data.ColumnType)" />
+      <MemberSignature Language="C#" Value="protected static string TestIsFloatVector (Microsoft.Data.DataView.ColumnType type);" />
+      <MemberSignature Language="ILAsm" Value=".method familystatic hidebysig string TestIsFloatVector(class Microsoft.Data.DataView.ColumnType type) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.OneToOneTransformBase.TestIsFloatVector(Microsoft.Data.DataView.ColumnType)" />
       <MemberSignature Language="VB.NET" Value="Protected Shared Function TestIsFloatVector (type As ColumnType) As String" />
-      <MemberSignature Language="F#" Value="static member TestIsFloatVector : Microsoft.ML.Data.ColumnType -&gt; string" Usage="Microsoft.ML.Data.OneToOneTransformBase.TestIsFloatVector type" />
+      <MemberSignature Language="F#" Value="static member TestIsFloatVector : Microsoft.Data.DataView.ColumnType -&gt; string" Usage="Microsoft.ML.Data.OneToOneTransformBase.TestIsFloatVector type" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -553,7 +495,7 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="type" Type="Microsoft.ML.Data.ColumnType" />
+        <Parameter Name="type" Type="Microsoft.Data.DataView.ColumnType" />
       </Parameters>
       <Docs>
         <param name="type">To be added.</param>
@@ -563,11 +505,11 @@
       </Docs>
     </Member>
     <Member MemberName="TestIsKey">
-      <MemberSignature Language="C#" Value="protected static string TestIsKey (Microsoft.ML.Data.ColumnType type);" />
-      <MemberSignature Language="ILAsm" Value=".method familystatic hidebysig string TestIsKey(class Microsoft.ML.Data.ColumnType type) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.OneToOneTransformBase.TestIsKey(Microsoft.ML.Data.ColumnType)" />
+      <MemberSignature Language="C#" Value="protected static string TestIsKey (Microsoft.Data.DataView.ColumnType type);" />
+      <MemberSignature Language="ILAsm" Value=".method familystatic hidebysig string TestIsKey(class Microsoft.Data.DataView.ColumnType type) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.OneToOneTransformBase.TestIsKey(Microsoft.Data.DataView.ColumnType)" />
       <MemberSignature Language="VB.NET" Value="Protected Shared Function TestIsKey (type As ColumnType) As String" />
-      <MemberSignature Language="F#" Value="static member TestIsKey : Microsoft.ML.Data.ColumnType -&gt; string" Usage="Microsoft.ML.Data.OneToOneTransformBase.TestIsKey type" />
+      <MemberSignature Language="F#" Value="static member TestIsKey : Microsoft.Data.DataView.ColumnType -&gt; string" Usage="Microsoft.ML.Data.OneToOneTransformBase.TestIsKey type" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -577,7 +519,7 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="type" Type="Microsoft.ML.Data.ColumnType" />
+        <Parameter Name="type" Type="Microsoft.Data.DataView.ColumnType" />
       </Parameters>
       <Docs>
         <param name="type">To be added.</param>
@@ -587,11 +529,11 @@
       </Docs>
     </Member>
     <Member MemberName="TestIsKnownSizeFloatVector">
-      <MemberSignature Language="C#" Value="protected static string TestIsKnownSizeFloatVector (Microsoft.ML.Data.ColumnType type);" />
-      <MemberSignature Language="ILAsm" Value=".method familystatic hidebysig string TestIsKnownSizeFloatVector(class Microsoft.ML.Data.ColumnType type) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.OneToOneTransformBase.TestIsKnownSizeFloatVector(Microsoft.ML.Data.ColumnType)" />
+      <MemberSignature Language="C#" Value="protected static string TestIsKnownSizeFloatVector (Microsoft.Data.DataView.ColumnType type);" />
+      <MemberSignature Language="ILAsm" Value=".method familystatic hidebysig string TestIsKnownSizeFloatVector(class Microsoft.Data.DataView.ColumnType type) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.OneToOneTransformBase.TestIsKnownSizeFloatVector(Microsoft.Data.DataView.ColumnType)" />
       <MemberSignature Language="VB.NET" Value="Protected Shared Function TestIsKnownSizeFloatVector (type As ColumnType) As String" />
-      <MemberSignature Language="F#" Value="static member TestIsKnownSizeFloatVector : Microsoft.ML.Data.ColumnType -&gt; string" Usage="Microsoft.ML.Data.OneToOneTransformBase.TestIsKnownSizeFloatVector type" />
+      <MemberSignature Language="F#" Value="static member TestIsKnownSizeFloatVector : Microsoft.Data.DataView.ColumnType -&gt; string" Usage="Microsoft.ML.Data.OneToOneTransformBase.TestIsKnownSizeFloatVector type" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -601,7 +543,7 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="type" Type="Microsoft.ML.Data.ColumnType" />
+        <Parameter Name="type" Type="Microsoft.Data.DataView.ColumnType" />
       </Parameters>
       <Docs>
         <param name="type">To be added.</param>
@@ -611,11 +553,11 @@
       </Docs>
     </Member>
     <Member MemberName="TestIsText">
-      <MemberSignature Language="C#" Value="protected static string TestIsText (Microsoft.ML.Data.ColumnType type);" />
-      <MemberSignature Language="ILAsm" Value=".method familystatic hidebysig string TestIsText(class Microsoft.ML.Data.ColumnType type) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.OneToOneTransformBase.TestIsText(Microsoft.ML.Data.ColumnType)" />
+      <MemberSignature Language="C#" Value="protected static string TestIsText (Microsoft.Data.DataView.ColumnType type);" />
+      <MemberSignature Language="ILAsm" Value=".method familystatic hidebysig string TestIsText(class Microsoft.Data.DataView.ColumnType type) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.OneToOneTransformBase.TestIsText(Microsoft.Data.DataView.ColumnType)" />
       <MemberSignature Language="VB.NET" Value="Protected Shared Function TestIsText (type As ColumnType) As String" />
-      <MemberSignature Language="F#" Value="static member TestIsText : Microsoft.ML.Data.ColumnType -&gt; string" Usage="Microsoft.ML.Data.OneToOneTransformBase.TestIsText type" />
+      <MemberSignature Language="F#" Value="static member TestIsText : Microsoft.Data.DataView.ColumnType -&gt; string" Usage="Microsoft.ML.Data.OneToOneTransformBase.TestIsText type" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -625,7 +567,7 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="type" Type="Microsoft.ML.Data.ColumnType" />
+        <Parameter Name="type" Type="Microsoft.Data.DataView.ColumnType" />
       </Parameters>
       <Docs>
         <param name="type">To be added.</param>
@@ -635,11 +577,11 @@
       </Docs>
     </Member>
     <Member MemberName="TestIsTextItem">
-      <MemberSignature Language="C#" Value="protected static string TestIsTextItem (Microsoft.ML.Data.ColumnType type);" />
-      <MemberSignature Language="ILAsm" Value=".method familystatic hidebysig string TestIsTextItem(class Microsoft.ML.Data.ColumnType type) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.OneToOneTransformBase.TestIsTextItem(Microsoft.ML.Data.ColumnType)" />
+      <MemberSignature Language="C#" Value="protected static string TestIsTextItem (Microsoft.Data.DataView.ColumnType type);" />
+      <MemberSignature Language="ILAsm" Value=".method familystatic hidebysig string TestIsTextItem(class Microsoft.Data.DataView.ColumnType type) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.OneToOneTransformBase.TestIsTextItem(Microsoft.Data.DataView.ColumnType)" />
       <MemberSignature Language="VB.NET" Value="Protected Shared Function TestIsTextItem (type As ColumnType) As String" />
-      <MemberSignature Language="F#" Value="static member TestIsTextItem : Microsoft.ML.Data.ColumnType -&gt; string" Usage="Microsoft.ML.Data.OneToOneTransformBase.TestIsTextItem type" />
+      <MemberSignature Language="F#" Value="static member TestIsTextItem : Microsoft.Data.DataView.ColumnType -&gt; string" Usage="Microsoft.ML.Data.OneToOneTransformBase.TestIsTextItem type" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -649,7 +591,7 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="type" Type="Microsoft.ML.Data.ColumnType" />
+        <Parameter Name="type" Type="Microsoft.Data.DataView.ColumnType" />
       </Parameters>
       <Docs>
         <param name="type">To be added.</param>
@@ -659,11 +601,11 @@
       </Docs>
     </Member>
     <Member MemberName="TestIsTextVector">
-      <MemberSignature Language="C#" Value="protected static string TestIsTextVector (Microsoft.ML.Data.ColumnType type);" />
-      <MemberSignature Language="ILAsm" Value=".method familystatic hidebysig string TestIsTextVector(class Microsoft.ML.Data.ColumnType type) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.OneToOneTransformBase.TestIsTextVector(Microsoft.ML.Data.ColumnType)" />
+      <MemberSignature Language="C#" Value="protected static string TestIsTextVector (Microsoft.Data.DataView.ColumnType type);" />
+      <MemberSignature Language="ILAsm" Value=".method familystatic hidebysig string TestIsTextVector(class Microsoft.Data.DataView.ColumnType type) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.OneToOneTransformBase.TestIsTextVector(Microsoft.Data.DataView.ColumnType)" />
       <MemberSignature Language="VB.NET" Value="Protected Shared Function TestIsTextVector (type As ColumnType) As String" />
-      <MemberSignature Language="F#" Value="static member TestIsTextVector : Microsoft.ML.Data.ColumnType -&gt; string" Usage="Microsoft.ML.Data.OneToOneTransformBase.TestIsTextVector type" />
+      <MemberSignature Language="F#" Value="static member TestIsTextVector : Microsoft.Data.DataView.ColumnType -&gt; string" Usage="Microsoft.ML.Data.OneToOneTransformBase.TestIsTextVector type" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -673,7 +615,7 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="type" Type="Microsoft.ML.Data.ColumnType" />
+        <Parameter Name="type" Type="Microsoft.Data.DataView.ColumnType" />
       </Parameters>
       <Docs>
         <param name="type">To be added.</param>

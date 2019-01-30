@@ -36,7 +36,7 @@
             Base class for CalibratorEstimators.
             </summary>
     <remarks>
-            CalibratorEstimators take an <see cref="T:Microsoft.ML.Data.IDataView" /> (the output of a <see cref="T:Microsoft.ML.Data.BinaryClassifierScorer" />)
+            CalibratorEstimators take an <see cref="T:Microsoft.Data.DataView.IDataView" /> (the output of a <see cref="T:Microsoft.ML.Data.BinaryClassifierScorer" />)
             that contains a "Score" column, and converts the scores to probabilities(through binning, interpolation etc.), based on the <typeparamref name="TICalibrator" /> type.
             They are used in pipelines where the binary classifier produces non-calibrated scores.
             </remarks>
@@ -144,14 +144,14 @@
       </Docs>
     </Member>
     <Member MemberName="Fit">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Calibrator.CalibratorTransformer&lt;TICalibrator&gt; Fit (Microsoft.ML.Data.IDataView input);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Calibrator.CalibratorTransformer`1&lt;!TICalibrator&gt; Fit(class Microsoft.ML.Data.IDataView input) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Calibrator.CalibratorEstimatorBase`2.Fit(Microsoft.ML.Data.IDataView)" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Calibrator.CalibratorTransformer&lt;TICalibrator&gt; Fit (Microsoft.Data.DataView.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Calibrator.CalibratorTransformer`1&lt;!TICalibrator&gt; Fit(class Microsoft.Data.DataView.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Calibrator.CalibratorEstimatorBase`2.Fit(Microsoft.Data.DataView.IDataView)" />
       <MemberSignature Language="VB.NET" Value="Public Function Fit (input As IDataView) As CalibratorTransformer(Of TICalibrator)" />
-      <MemberSignature Language="F#" Value="abstract member Fit : Microsoft.ML.Data.IDataView -&gt; Microsoft.ML.Calibrator.CalibratorTransformer&lt;'ICalibrator (requires 'ICalibrator : null and 'ICalibrator :&gt; Microsoft.ML.Calibrator.ICalibrator)&gt;&#xA;override this.Fit : Microsoft.ML.Data.IDataView -&gt; Microsoft.ML.Calibrator.CalibratorTransformer&lt;'ICalibrator (requires 'ICalibrator : null and 'ICalibrator :&gt; Microsoft.ML.Calibrator.ICalibrator)&gt;" Usage="calibratorEstimatorBase.Fit input" />
+      <MemberSignature Language="F#" Value="abstract member Fit : Microsoft.Data.DataView.IDataView -&gt; Microsoft.ML.Calibrator.CalibratorTransformer&lt;'ICalibrator (requires 'ICalibrator : null and 'ICalibrator :&gt; Microsoft.ML.Calibrator.ICalibrator)&gt;&#xA;override this.Fit : Microsoft.Data.DataView.IDataView -&gt; Microsoft.ML.Calibrator.CalibratorTransformer&lt;'ICalibrator (requires 'ICalibrator : null and 'ICalibrator :&gt; Microsoft.ML.Calibrator.ICalibrator)&gt;" Usage="calibratorEstimatorBase.Fit input" />
       <MemberType>Method</MemberType>
       <Implements>
-        <InterfaceMember>M:Microsoft.ML.Core.Data.IEstimator`1.Fit(Microsoft.ML.Data.IDataView)</InterfaceMember>
+        <InterfaceMember>M:Microsoft.ML.Core.Data.IEstimator`1.Fit(Microsoft.Data.DataView.IDataView)</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -161,12 +161,16 @@
         <ReturnType>Microsoft.ML.Calibrator.CalibratorTransformer&lt;TICalibrator&gt;</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="input" Type="Microsoft.ML.Data.IDataView" />
+        <Parameter Name="input" Type="Microsoft.Data.DataView.IDataView" />
       </Parameters>
       <Docs>
-        <param name="input">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="input"></param>
+        <summary>
+            Fits the scored <see cref="T:Microsoft.Data.DataView.IDataView" /> creating a <see cref="T:Microsoft.ML.Calibrator.CalibratorTransformer`1" /> that can transform the data by adding a
+            <see cref="F:Microsoft.ML.Data.DefaultColumnNames.Probability" /> column containing the calibrated <see cref="F:Microsoft.ML.Data.DefaultColumnNames.Score" />.
+            </summary>
+        <returns>A trained <see cref="T:Microsoft.ML.Calibrator.CalibratorTransformer`1" /> that will transform the data by adding the
+            <see cref="F:Microsoft.ML.Data.DefaultColumnNames.Probability" /> column.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -230,7 +234,7 @@
       <Docs>
         <param name="inputSchema">The input <see cref="T:Microsoft.ML.Core.Data.SchemaShape" />.</param>
         <summary>
-            Gets the output <see cref="T:Microsoft.ML.Core.Data.SchemaShape" /> of the <see cref="T:Microsoft.ML.Data.IDataView" /> after fitting the calibrator.
+            Gets the output <see cref="T:Microsoft.ML.Core.Data.SchemaShape" /> of the <see cref="T:Microsoft.Data.DataView.IDataView" /> after fitting the calibrator.
             Fitting the calibrator will add a column named "Probability" to the schema. If you already had such a column, a new one will be added.
             </summary>
         <returns>To be added.</returns>

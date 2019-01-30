@@ -23,7 +23,9 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+            The base class for GAM Model Parameters.
+            </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -51,15 +53,15 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="FeatureContributionClaculator">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Internal.Internallearn.FeatureContributionCalculator FeatureContributionClaculator { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Internal.Internallearn.FeatureContributionCalculator FeatureContributionClaculator" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FastTree.GamModelParametersBase.FeatureContributionClaculator" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property FeatureContributionClaculator As FeatureContributionCalculator" />
-      <MemberSignature Language="F#" Value="member this.FeatureContributionClaculator : Microsoft.ML.Internal.Internallearn.FeatureContributionCalculator" Usage="Microsoft.ML.Trainers.FastTree.GamModelParametersBase.FeatureContributionClaculator" />
+    <Member MemberName="FeatureContributionCalculator">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Internal.Internallearn.FeatureContributionCalculator FeatureContributionCalculator { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Internal.Internallearn.FeatureContributionCalculator FeatureContributionCalculator" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FastTree.GamModelParametersBase.FeatureContributionCalculator" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property FeatureContributionCalculator As FeatureContributionCalculator" />
+      <MemberSignature Language="F#" Value="member this.FeatureContributionCalculator : Microsoft.ML.Internal.Internallearn.FeatureContributionCalculator" Usage="Microsoft.ML.Trainers.FastTree.GamModelParametersBase.FeatureContributionCalculator" />
       <MemberType>Property</MemberType>
       <Implements>
-        <InterfaceMember>P:Microsoft.ML.Internal.Internallearn.ICalculateFeatureContribution.FeatureContributionClaculator</InterfaceMember>
+        <InterfaceMember>P:Microsoft.ML.Internal.Internallearn.ICalculateFeatureContribution.FeatureContributionCalculator</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
@@ -69,43 +71,44 @@
         <ReturnType>Microsoft.ML.Internal.Internallearn.FeatureContributionCalculator</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Used to determine the contribution of each feature to the score of an example by <see cref="T:Microsoft.ML.Data.FeatureContributionCalculatingTransformer" />.
+            For Generalized Additive Models (GAM), the contribution of a feature is equal to the shape function for the given feature evaluated at
+            the feature value.
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="GetFeatureBinUpperBounds">
-      <MemberSignature Language="C#" Value="public double[] GetFeatureBinUpperBounds (int featureIndex);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float64[] GetFeatureBinUpperBounds(int32 featureIndex) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.GamModelParametersBase.GetFeatureBinUpperBounds(System.Int32)" />
-      <MemberSignature Language="VB.NET" Value="Public Function GetFeatureBinUpperBounds (featureIndex As Integer) As Double()" />
-      <MemberSignature Language="F#" Value="member this.GetFeatureBinUpperBounds : int -&gt; double[]" Usage="gamModelParametersBase.GetFeatureBinUpperBounds featureIndex" />
+    <Member MemberName="GetBinEffects">
+      <MemberSignature Language="C#" Value="public double[][] GetBinEffects ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float64[][] GetBinEffects() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.GamModelParametersBase.GetBinEffects" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetBinEffects () As Double()()" />
+      <MemberSignature Language="F#" Value="member this.GetBinEffects : unit -&gt; double[][]" Usage="gamModelParametersBase.GetBinEffects " />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Double[]</ReturnType>
+        <ReturnType>System.Double[][]</ReturnType>
       </ReturnValue>
-      <Parameters>
-        <Parameter Name="featureIndex" Type="System.Int32" />
-      </Parameters>
+      <Parameters />
       <Docs>
-        <param name="featureIndex">The index of the feature (in the training vector) to get.</param>
         <summary>
-            Get the bin upper bounds for each feature.
+            Get all the binned effects.
             </summary>
-        <returns>The bin upper bounds. May be null if this feature has no bins.</returns>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="GetFeatureWeights">
-      <MemberSignature Language="C#" Value="public double[] GetFeatureWeights (int featureIndex);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float64[] GetFeatureWeights(int32 featureIndex) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.GamModelParametersBase.GetFeatureWeights(System.Int32)" />
-      <MemberSignature Language="VB.NET" Value="Public Function GetFeatureWeights (featureIndex As Integer) As Double()" />
-      <MemberSignature Language="F#" Value="member this.GetFeatureWeights : int -&gt; double[]" Usage="gamModelParametersBase.GetFeatureWeights featureIndex" />
+    <Member MemberName="GetBinEffects">
+      <MemberSignature Language="C#" Value="public double[] GetBinEffects (int featureIndex);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float64[] GetBinEffects(int32 featureIndex) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.GamModelParametersBase.GetBinEffects(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetBinEffects (featureIndex As Integer) As Double()" />
+      <MemberSignature Language="F#" Value="member this.GetBinEffects : int -&gt; double[]" Usage="gamModelParametersBase.GetBinEffects featureIndex" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
@@ -122,7 +125,56 @@
         <summary>
             Get the binned weights for each feature.
             </summary>
-        <returns>The binned weights for each feature.</returns>
+        <returns>The binned effects for each feature. May be zero length if this feature has no bins.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetBinUpperBounds">
+      <MemberSignature Language="C#" Value="public double[][] GetBinUpperBounds ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float64[][] GetBinUpperBounds() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.GamModelParametersBase.GetBinUpperBounds" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetBinUpperBounds () As Double()()" />
+      <MemberSignature Language="F#" Value="member this.GetBinUpperBounds : unit -&gt; double[][]" Usage="gamModelParametersBase.GetBinUpperBounds " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double[][]</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            Get all the bin upper bounds.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetBinUpperBounds">
+      <MemberSignature Language="C#" Value="public double[] GetBinUpperBounds (int featureIndex);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float64[] GetBinUpperBounds(int32 featureIndex) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.GamModelParametersBase.GetBinUpperBounds(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetBinUpperBounds (featureIndex As Integer) As Double()" />
+      <MemberSignature Language="F#" Value="member this.GetBinUpperBounds : int -&gt; double[]" Usage="gamModelParametersBase.GetBinUpperBounds featureIndex" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureIndex" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="featureIndex">The index of the feature (in the training vector) to get.</param>
+        <summary>
+            Get the bin upper bounds for each feature.
+            </summary>
+        <returns>The bin upper bounds. May be zero length if this feature has no bins.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -141,7 +193,30 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            The model intercept. Also known as bias or mean effect.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NumShapeFunctions">
+      <MemberSignature Language="C#" Value="public readonly int NumShapeFunctions;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly int32 NumShapeFunctions" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.GamModelParametersBase.NumShapeFunctions" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly NumShapeFunctions As Integer " />
+      <MemberSignature Language="F#" Value="val mutable NumShapeFunctions : int" Usage="Microsoft.ML.Trainers.FastTree.GamModelParametersBase.NumShapeFunctions" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The number of shape functions used in the model.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

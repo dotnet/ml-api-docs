@@ -21,11 +21,11 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected MapperBase (Microsoft.ML.IHost host, Microsoft.ML.Data.Schema inputSchema);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHost host, class Microsoft.ML.Data.Schema inputSchema) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.RowToRowTransformerBase.MapperBase.#ctor(Microsoft.ML.IHost,Microsoft.ML.Data.Schema)" />
-      <MemberSignature Language="VB.NET" Value="Protected Sub New (host As IHost, inputSchema As Schema)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Data.RowToRowTransformerBase.MapperBase : Microsoft.ML.IHost * Microsoft.ML.Data.Schema -&gt; Microsoft.ML.Data.RowToRowTransformerBase.MapperBase" Usage="new Microsoft.ML.Data.RowToRowTransformerBase.MapperBase (host, inputSchema)" />
+      <MemberSignature Language="C#" Value="protected MapperBase (Microsoft.ML.IHost host, Microsoft.Data.DataView.Schema inputSchema, Microsoft.ML.Data.RowToRowTransformerBase parent);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHost host, class Microsoft.Data.DataView.Schema inputSchema, class Microsoft.ML.Data.RowToRowTransformerBase parent) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.RowToRowTransformerBase.MapperBase.#ctor(Microsoft.ML.IHost,Microsoft.Data.DataView.Schema,Microsoft.ML.Data.RowToRowTransformerBase)" />
+      <MemberSignature Language="VB.NET" Value="Protected Sub New (host As IHost, inputSchema As Schema, parent As RowToRowTransformerBase)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Data.RowToRowTransformerBase.MapperBase : Microsoft.ML.IHost * Microsoft.Data.DataView.Schema * Microsoft.ML.Data.RowToRowTransformerBase -&gt; Microsoft.ML.Data.RowToRowTransformerBase.MapperBase" Usage="new Microsoft.ML.Data.RowToRowTransformerBase.MapperBase (host, inputSchema, parent)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -33,28 +33,54 @@
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="host" Type="Microsoft.ML.IHost" />
-        <Parameter Name="inputSchema" Type="Microsoft.ML.Data.Schema" />
+        <Parameter Name="inputSchema" Type="Microsoft.Data.DataView.Schema" />
+        <Parameter Name="parent" Type="Microsoft.ML.Data.RowToRowTransformerBase" />
       </Parameters>
       <Docs>
         <param name="host">To be added.</param>
         <param name="inputSchema">To be added.</param>
+        <param name="parent">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetOutputColumnsCore">
-      <MemberSignature Language="C#" Value="protected abstract Microsoft.ML.Data.Schema.DetachedColumn[] GetOutputColumnsCore ();" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype Microsoft.ML.Data.Schema/DetachedColumn[] GetOutputColumnsCore() cil managed" />
+      <MemberSignature Language="C#" Value="protected abstract Microsoft.Data.DataView.Schema.DetachedColumn[] GetOutputColumnsCore ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype Microsoft.Data.DataView.Schema/DetachedColumn[] GetOutputColumnsCore() cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.RowToRowTransformerBase.MapperBase.GetOutputColumnsCore" />
       <MemberSignature Language="VB.NET" Value="Protected MustOverride Function GetOutputColumnsCore () As Schema.DetachedColumn()" />
-      <MemberSignature Language="F#" Value="abstract member GetOutputColumnsCore : unit -&gt; Microsoft.ML.Data.Schema.DetachedColumn[]" Usage="mapperBase.GetOutputColumnsCore " />
+      <MemberSignature Language="F#" Value="abstract member GetOutputColumnsCore : unit -&gt; Microsoft.Data.DataView.Schema.DetachedColumn[]" Usage="mapperBase.GetOutputColumnsCore " />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Data.Schema+DetachedColumn[]</ReturnType>
+        <ReturnType>Microsoft.Data.DataView.Schema+DetachedColumn[]</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetTransformer">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Core.Data.ITransformer GetTransformer ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Core.Data.ITransformer GetTransformer() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.RowToRowTransformerBase.MapperBase.GetTransformer" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetTransformer () As ITransformer" />
+      <MemberSignature Language="F#" Value="abstract member GetTransformer : unit -&gt; Microsoft.ML.Core.Data.ITransformer&#xA;override this.GetTransformer : unit -&gt; Microsoft.ML.Core.Data.ITransformer" Usage="mapperBase.GetTransformer " />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Data.IRowMapper.GetTransformer</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Core.Data.ITransformer</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -83,18 +109,18 @@
       </Docs>
     </Member>
     <Member MemberName="InputSchema">
-      <MemberSignature Language="C#" Value="protected readonly Microsoft.ML.Data.Schema InputSchema;" />
-      <MemberSignature Language="ILAsm" Value=".field family initonly class Microsoft.ML.Data.Schema InputSchema" />
+      <MemberSignature Language="C#" Value="protected readonly Microsoft.Data.DataView.Schema InputSchema;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly class Microsoft.Data.DataView.Schema InputSchema" />
       <MemberSignature Language="DocId" Value="F:Microsoft.ML.Data.RowToRowTransformerBase.MapperBase.InputSchema" />
       <MemberSignature Language="VB.NET" Value="Protected ReadOnly InputSchema As Schema " />
-      <MemberSignature Language="F#" Value="val mutable InputSchema : Microsoft.ML.Data.Schema" Usage="Microsoft.ML.Data.RowToRowTransformerBase.MapperBase.InputSchema" />
+      <MemberSignature Language="F#" Value="val mutable InputSchema : Microsoft.Data.DataView.Schema" Usage="Microsoft.ML.Data.RowToRowTransformerBase.MapperBase.InputSchema" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Data.Schema</ReturnType>
+        <ReturnType>Microsoft.Data.DataView.Schema</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -102,11 +128,11 @@
       </Docs>
     </Member>
     <Member MemberName="MakeGetter">
-      <MemberSignature Language="C#" Value="protected abstract Delegate MakeGetter (Microsoft.ML.Data.Row input, int iinfo, Func&lt;int,bool&gt; activeOutput, out Action disposer);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class System.Delegate MakeGetter(class Microsoft.ML.Data.Row input, int32 iinfo, class System.Func`2&lt;int32, bool&gt; activeOutput, [out] class System.Action&amp; disposer) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.RowToRowTransformerBase.MapperBase.MakeGetter(Microsoft.ML.Data.Row,System.Int32,System.Func{System.Int32,System.Boolean},System.Action@)" />
+      <MemberSignature Language="C#" Value="protected abstract Delegate MakeGetter (Microsoft.Data.DataView.Row input, int iinfo, Func&lt;int,bool&gt; activeOutput, out Action disposer);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class System.Delegate MakeGetter(class Microsoft.Data.DataView.Row input, int32 iinfo, class System.Func`2&lt;int32, bool&gt; activeOutput, [out] class System.Action&amp; disposer) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.RowToRowTransformerBase.MapperBase.MakeGetter(Microsoft.Data.DataView.Row,System.Int32,System.Func{System.Int32,System.Boolean},System.Action@)" />
       <MemberSignature Language="VB.NET" Value="Protected MustOverride Function MakeGetter (input As Row, iinfo As Integer, activeOutput As Func(Of Integer, Boolean), ByRef disposer As Action) As Delegate" />
-      <MemberSignature Language="F#" Value="abstract member MakeGetter : Microsoft.ML.Data.Row * int * Func&lt;int, bool&gt; *  -&gt; Delegate" Usage="mapperBase.MakeGetter (input, iinfo, activeOutput, disposer)" />
+      <MemberSignature Language="F#" Value="abstract member MakeGetter : Microsoft.Data.DataView.Row * int * Func&lt;int, bool&gt; *  -&gt; Delegate" Usage="mapperBase.MakeGetter (input, iinfo, activeOutput, disposer)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -116,7 +142,7 @@
         <ReturnType>System.Delegate</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="input" Type="Microsoft.ML.Data.Row" />
+        <Parameter Name="input" Type="Microsoft.Data.DataView.Row" />
         <Parameter Name="iinfo" Type="System.Int32" />
         <Parameter Name="activeOutput" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
         <Parameter Name="disposer" Type="System.Action" RefType="out" />

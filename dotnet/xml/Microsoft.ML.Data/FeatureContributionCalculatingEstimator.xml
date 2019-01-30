@@ -24,32 +24,32 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public FeatureContributionCalculatingEstimator (Microsoft.ML.IHostEnvironment env, Microsoft.ML.Internal.Internallearn.ICalculateFeatureContribution modelParameters, string featureColumn = &quot;Features&quot;, int top = 10, int bottom = 10, bool normalize = true);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, class Microsoft.ML.Internal.Internallearn.ICalculateFeatureContribution modelParameters, string featureColumn, int32 top, int32 bottom, bool normalize) cil managed" />
+      <MemberSignature Language="C#" Value="public FeatureContributionCalculatingEstimator (Microsoft.ML.IHostEnvironment env, Microsoft.ML.Internal.Internallearn.ICalculateFeatureContribution modelParameters, string featureColumn = &quot;Features&quot;, int numPositiveContributions = 10, int numNegativeContributions = 10, bool normalize = true);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, class Microsoft.ML.Internal.Internallearn.ICalculateFeatureContribution modelParameters, string featureColumn, int32 numPositiveContributions, int32 numNegativeContributions, bool normalize) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.FeatureContributionCalculatingEstimator.#ctor(Microsoft.ML.IHostEnvironment,Microsoft.ML.Internal.Internallearn.ICalculateFeatureContribution,System.String,System.Int32,System.Int32,System.Boolean)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, modelParameters As ICalculateFeatureContribution, Optional featureColumn As String = &quot;Features&quot;, Optional top As Integer = 10, Optional bottom As Integer = 10, Optional normalize As Boolean = true)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Data.FeatureContributionCalculatingEstimator : Microsoft.ML.IHostEnvironment * Microsoft.ML.Internal.Internallearn.ICalculateFeatureContribution * string * int * int * bool -&gt; Microsoft.ML.Data.FeatureContributionCalculatingEstimator" Usage="new Microsoft.ML.Data.FeatureContributionCalculatingEstimator (env, modelParameters, featureColumn, top, bottom, normalize)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, modelParameters As ICalculateFeatureContribution, Optional featureColumn As String = &quot;Features&quot;, Optional numPositiveContributions As Integer = 10, Optional numNegativeContributions As Integer = 10, Optional normalize As Boolean = true)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Data.FeatureContributionCalculatingEstimator : Microsoft.ML.IHostEnvironment * Microsoft.ML.Internal.Internallearn.ICalculateFeatureContribution * string * int * int * bool -&gt; Microsoft.ML.Data.FeatureContributionCalculatingEstimator" Usage="new Microsoft.ML.Data.FeatureContributionCalculatingEstimator (env, modelParameters, featureColumn, numPositiveContributions, numNegativeContributions, normalize)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
-        <Parameter Name="modelParameters" Type="Microsoft.ML.Internal.Internallearn.ICalculateFeatureContribution" />
-        <Parameter Name="featureColumn" Type="System.String" />
-        <Parameter Name="top" Type="System.Int32" />
-        <Parameter Name="bottom" Type="System.Int32" />
-        <Parameter Name="normalize" Type="System.Boolean" />
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" Index="0" />
+        <Parameter Name="modelParameters" Type="Microsoft.ML.Internal.Internallearn.ICalculateFeatureContribution" Index="1" />
+        <Parameter Name="featureColumn" Type="System.String" Index="2" />
+        <Parameter Name="numPositiveContributions" Type="System.Int32" Index="3" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="numNegativeContributions" Type="System.Int32" Index="4" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="normalize" Type="System.Boolean" Index="5" />
       </Parameters>
       <Docs>
         <param name="env">The environment to use.</param>
         <param name="modelParameters">Trained model parameters that support Feature Contribution Calculation and which will be used for scoring.</param>
         <param name="featureColumn">The name of the feature column that will be used as input.</param>
-        <param name="top">The number of features with highest positive contributions for each data sample that will be retained in the FeatureContribution column.
-            Note that if there are fewer features with positive contributions than <paramref name="top" />, the rest will be returned as zeros.</param>
-        <param name="bottom">The number of features with least negative contributions for each data sample that will be retained in the FeatureContribution column.
-            Note that if there are fewer features with negative contributions than <paramref name="bottom" />, the rest will be returned as zeros.</param>
+        <param name="numPositiveContributions">The number of positive contributions to report, sorted from highest magnitude to lowest magnitude.
+            Note that if there are fewer features with positive contributions than <paramref name="numPositiveContributions" />, the rest will be returned as zeros.</param>
+        <param name="numNegativeContributions">The number of negative contributions to report, sorted from highest magnitude to lowest magnitude.
+            Note that if there are fewer features with negative contributions than <paramref name="numNegativeContributions" />, the rest will be returned as zeros.</param>
         <param name="normalize">Whether the feature contributions should be normalized to the [-1, 1] interval.</param>
         <summary>
             Feature Contribution Calculation computes model-specific contribution scores for each feature.

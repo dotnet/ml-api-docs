@@ -1,0 +1,400 @@
+<Type Name="LearningPipeline" FullName="Microsoft.ML.Legacy.LearningPipeline">
+  <TypeSignature Language="C#" Value="public class LearningPipeline : System.Collections.Generic.ICollection&lt;Microsoft.ML.Legacy.ILearningPipelineItem&gt;, System.Collections.Generic.IEnumerable&lt;Microsoft.ML.Legacy.ILearningPipelineItem&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit LearningPipeline extends System.Object implements class System.Collections.Generic.ICollection`1&lt;class Microsoft.ML.Legacy.ILearningPipelineItem&gt;, class System.Collections.Generic.IEnumerable`1&lt;class Microsoft.ML.Legacy.ILearningPipelineItem&gt;, class System.Collections.IEnumerable" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Legacy.LearningPipeline" />
+  <TypeSignature Language="VB.NET" Value="Public Class LearningPipeline&#xA;Implements ICollection(Of ILearningPipelineItem), IEnumerable(Of ILearningPipelineItem)" />
+  <TypeSignature Language="F#" Value="type LearningPipeline = class&#xA;    interface ICollection&lt;ILearningPipelineItem&gt;&#xA;    interface seq&lt;ILearningPipelineItem&gt;&#xA;    interface IEnumerable" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.Collections.Generic.ICollection&lt;Microsoft.ML.Legacy.ILearningPipelineItem&gt;</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.Collections.Generic.IEnumerable&lt;Microsoft.ML.Legacy.ILearningPipelineItem&gt;</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.Collections.Generic.IEnumerable&lt;T&gt;</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.Collections.IEnumerable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Diagnostics.DebuggerTypeProxy(typeof(Microsoft.ML.Legacy.LearningPipelineDebugProxy))</AttributeName>
+    </Attribute>
+    <Attribute>
+      <AttributeName>System.Obsolete</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>
+             The <see cref="T:Microsoft.ML.Legacy.LearningPipeline" /> class is used to define the steps needed to perform a desired machine learning task.<para />
+             The steps are defined by adding a data loader (for example, <see cref="T:Microsoft.ML.Data.TextLoader" />) followed by zero or more transforms (for example, <see cref="T:Microsoft.ML.Legacy.Transforms.TextFeaturizer" />)
+             and at most one trainer/learner (for example, <see cref="T:Microsoft.ML.Legacy.Trainers.FastTreeBinaryClassifier" />) in the pipeline.
+            
+             </summary>
+    <remarks>To be added.</remarks>
+    <example>
+      <para />
+             For example,<para /><code>
+             var pipeline = new LearningPipeline();
+             pipeline.Add(new TextLoader &lt;SentimentData&gt; (dataPath, separator: ","));
+             pipeline.Add(new TextFeaturizer("Features", "SentimentText"));
+             pipeline.Add(new FastTreeBinaryClassifier());
+            
+             var model = pipeline.Train&lt;SentimentData, SentimentPrediction&gt;();
+             </code></example>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public LearningPipeline ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Legacy.LearningPipeline.#ctor" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New ()" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>
+            Construct an empty <see cref="T:Microsoft.ML.Legacy.LearningPipeline" /> object.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Add">
+      <MemberSignature Language="C#" Value="public void Add (Microsoft.ML.Legacy.ILearningPipelineItem item);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Add(class Microsoft.ML.Legacy.ILearningPipelineItem item) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Legacy.LearningPipeline.Add(Microsoft.ML.Legacy.ILearningPipelineItem)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Add (item As ILearningPipelineItem)" />
+      <MemberSignature Language="F#" Value="abstract member Add : Microsoft.ML.Legacy.ILearningPipelineItem -&gt; unit&#xA;override this.Add : Microsoft.ML.Legacy.ILearningPipelineItem -&gt; unit" Usage="learningPipeline.Add item" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:System.Collections.Generic.ICollection`1.Add(`0)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="item" Type="Microsoft.ML.Legacy.ILearningPipelineItem" />
+      </Parameters>
+      <Docs>
+        <param name="item">Any ML component (data loader, transform or trainer) defined as <see cref="T:Microsoft.ML.Legacy.ILearningPipelineItem" />.</param>
+        <summary>
+            Add a data loader, transform or trainer into the pipeline.
+            Possible data loader(s), transforms and trainers options are
+            <para>
+            Data Loader:
+                <see cref="T:Microsoft.ML.Legacy.Data.TextLoader" />
+                etc.
+            </para><para>
+            Transforms:
+                <see cref="T:Microsoft.ML.Legacy.Transforms.Dictionarizer" />,
+                <see cref="T:Microsoft.ML.Legacy.Transforms.CategoricalOneHotVectorizer" /><see cref="T:Microsoft.ML.Legacy.Transforms.MinMaxNormalizer" />,
+                <see cref="T:Microsoft.ML.Legacy.Transforms.ColumnCopier" />,
+                <see cref="T:Microsoft.ML.Legacy.Transforms.ColumnConcatenator" />,
+                <see cref="T:Microsoft.ML.Legacy.Transforms.TextFeaturizer" />,
+                etc.
+            </para><para>
+            Trainers:
+                <see cref="T:Microsoft.ML.Legacy.Trainers.AveragedPerceptronBinaryClassifier" />,
+                <see cref="T:Microsoft.ML.Legacy.Trainers.LogisticRegressionClassifier" />,
+                <see cref="T:Microsoft.ML.Legacy.Trainers.StochasticDualCoordinateAscentClassifier" />,
+                <see cref="T:Microsoft.ML.Legacy.Trainers.FastTreeRegressor" />,
+                etc.
+            </para>
+            For a complete list of transforms and trainers, please see "Microsoft.ML.Transforms" and "Microsoft.ML.Trainers" namespaces.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Append">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Legacy.LearningPipeline Append (Microsoft.ML.Legacy.ILearningPipelineItem item);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Legacy.LearningPipeline Append(class Microsoft.ML.Legacy.ILearningPipelineItem item) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Legacy.LearningPipeline.Append(Microsoft.ML.Legacy.ILearningPipelineItem)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Append (item As ILearningPipelineItem) As LearningPipeline" />
+      <MemberSignature Language="F#" Value="member this.Append : Microsoft.ML.Legacy.ILearningPipelineItem -&gt; Microsoft.ML.Legacy.LearningPipeline" Usage="learningPipeline.Append item" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Legacy.LearningPipeline</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="item" Type="Microsoft.ML.Legacy.ILearningPipelineItem" />
+      </Parameters>
+      <Docs>
+        <param name="item">Any ML component (data loader, transform or trainer) defined as <see cref="T:Microsoft.ML.Legacy.ILearningPipelineItem" />.</param>
+        <summary>
+            Add a data loader, transform or trainer into the pipeline.
+            </summary>
+        <returns>Pipeline with added item</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Clear">
+      <MemberSignature Language="C#" Value="public void Clear ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Clear() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Legacy.LearningPipeline.Clear" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Clear ()" />
+      <MemberSignature Language="F#" Value="abstract member Clear : unit -&gt; unit&#xA;override this.Clear : unit -&gt; unit" Usage="learningPipeline.Clear " />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:System.Collections.Generic.ICollection`1.Clear</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            Remove all the loaders/transforms/trainers from the pipeline.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Contains">
+      <MemberSignature Language="C#" Value="public bool Contains (Microsoft.ML.Legacy.ILearningPipelineItem item);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool Contains(class Microsoft.ML.Legacy.ILearningPipelineItem item) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Legacy.LearningPipeline.Contains(Microsoft.ML.Legacy.ILearningPipelineItem)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Contains (item As ILearningPipelineItem) As Boolean" />
+      <MemberSignature Language="F#" Value="abstract member Contains : Microsoft.ML.Legacy.ILearningPipelineItem -&gt; bool&#xA;override this.Contains : Microsoft.ML.Legacy.ILearningPipelineItem -&gt; bool" Usage="learningPipeline.Contains item" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:System.Collections.Generic.ICollection`1.Contains(`0)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="item" Type="Microsoft.ML.Legacy.ILearningPipelineItem" />
+      </Parameters>
+      <Docs>
+        <param name="item">Any ML component (data loader, transform or trainer) defined as <see cref="T:Microsoft.ML.Legacy.ILearningPipelineItem" />.</param>
+        <summary>
+            Check if a specific loader/transform/trainer is in the pipeline?
+            </summary>
+        <returns>true if item is found in the pipeline; otherwise, false.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CopyTo">
+      <MemberSignature Language="C#" Value="public void CopyTo (Microsoft.ML.Legacy.ILearningPipelineItem[] array, int arrayIndex);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void CopyTo(class Microsoft.ML.Legacy.ILearningPipelineItem[] array, int32 arrayIndex) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Legacy.LearningPipeline.CopyTo(Microsoft.ML.Legacy.ILearningPipelineItem[],System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub CopyTo (array As ILearningPipelineItem(), arrayIndex As Integer)" />
+      <MemberSignature Language="F#" Value="abstract member CopyTo : Microsoft.ML.Legacy.ILearningPipelineItem[] * int -&gt; unit&#xA;override this.CopyTo : Microsoft.ML.Legacy.ILearningPipelineItem[] * int -&gt; unit" Usage="learningPipeline.CopyTo (array, arrayIndex)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="array" Type="Microsoft.ML.Legacy.ILearningPipelineItem[]" />
+        <Parameter Name="arrayIndex" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="array">The one-dimensional Array that is the destination of the elements copied from.</param>
+        <param name="arrayIndex">The zero-based index in <paramref name="array" /> at which copying begins.</param>
+        <summary>
+            Copy the pipeline items into an array.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Count">
+      <MemberSignature Language="C#" Value="public int Count { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Count" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.LearningPipeline.Count" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Count As Integer" />
+      <MemberSignature Language="F#" Value="member this.Count : int" Usage="Microsoft.ML.Legacy.LearningPipeline.Count" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:System.Collections.Generic.ICollection`1.Count</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Get the count of ML components in the <see cref="T:Microsoft.ML.Legacy.LearningPipeline" /> object
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetEnumerator">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.IEnumerator&lt;Microsoft.ML.Legacy.ILearningPipelineItem&gt; GetEnumerator ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Collections.Generic.IEnumerator`1&lt;class Microsoft.ML.Legacy.ILearningPipelineItem&gt; GetEnumerator() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Legacy.LearningPipeline.GetEnumerator" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetEnumerator () As IEnumerator(Of ILearningPipelineItem)" />
+      <MemberSignature Language="F#" Value="abstract member GetEnumerator : unit -&gt; System.Collections.Generic.IEnumerator&lt;Microsoft.ML.Legacy.ILearningPipelineItem&gt;&#xA;override this.GetEnumerator : unit -&gt; System.Collections.Generic.IEnumerator&lt;Microsoft.ML.Legacy.ILearningPipelineItem&gt;" Usage="learningPipeline.GetEnumerator " />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:System.Collections.Generic.IEnumerable`1.GetEnumerator</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerator&lt;Microsoft.ML.Legacy.ILearningPipelineItem&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsReadOnly">
+      <MemberSignature Language="C#" Value="public bool IsReadOnly { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsReadOnly" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Legacy.LearningPipeline.IsReadOnly" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property IsReadOnly As Boolean" />
+      <MemberSignature Language="F#" Value="member this.IsReadOnly : bool" Usage="Microsoft.ML.Legacy.LearningPipeline.IsReadOnly" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:System.Collections.Generic.ICollection`1.IsReadOnly</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Remove">
+      <MemberSignature Language="C#" Value="public bool Remove (Microsoft.ML.Legacy.ILearningPipelineItem item);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool Remove(class Microsoft.ML.Legacy.ILearningPipelineItem item) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Legacy.LearningPipeline.Remove(Microsoft.ML.Legacy.ILearningPipelineItem)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Remove (item As ILearningPipelineItem) As Boolean" />
+      <MemberSignature Language="F#" Value="abstract member Remove : Microsoft.ML.Legacy.ILearningPipelineItem -&gt; bool&#xA;override this.Remove : Microsoft.ML.Legacy.ILearningPipelineItem -&gt; bool" Usage="learningPipeline.Remove item" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:System.Collections.Generic.ICollection`1.Remove(`0)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="item" Type="Microsoft.ML.Legacy.ILearningPipelineItem" />
+      </Parameters>
+      <Docs>
+        <param name="item">
+          <see cref="T:Microsoft.ML.Legacy.ILearningPipelineItem" /> to remove.</param>
+        <summary>
+            Remove an item from the pipeline.
+            </summary>
+        <returns>true if item was removed from the pipeline; otherwise, false.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="System.Collections.IEnumerable.GetEnumerator">
+      <MemberSignature Language="C#" Value="System.Collections.IEnumerator IEnumerable.GetEnumerator ();" />
+      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Legacy.LearningPipeline.System#Collections#IEnumerable#GetEnumerator" />
+      <MemberSignature Language="VB.NET" Value="Function GetEnumerator () As IEnumerator Implements IEnumerable.GetEnumerator" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:System.Collections.IEnumerable.GetEnumerator</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.IEnumerator</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Train&lt;TInput,TOutput&gt;">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Legacy.PredictionModel&lt;TInput,TOutput&gt; Train&lt;TInput,TOutput&gt; () where TInput : class where TOutput : class, new();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Legacy.PredictionModel`2&lt;!!TInput, !!TOutput&gt; Train&lt;class TInput, class .ctor TOutput&gt;() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Legacy.LearningPipeline.Train``2" />
+      <MemberSignature Language="VB.NET" Value="Public Function Train(Of TInput As Class, TOutput As Class) () As PredictionModel(Of TInput, TOutput)" />
+      <MemberSignature Language="F#" Value="member this.Train : unit -&gt; Microsoft.ML.Legacy.PredictionModel&lt;'Input, 'Output (requires 'Input : null and 'Output : null and 'Output : (new : unit -&gt; 'Output))&gt; (requires 'Input : null and 'Output : null and 'Output : (new : unit -&gt; 'Output))" Usage="learningPipeline.Train " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Legacy</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Legacy.PredictionModel&lt;TInput,TOutput&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TInput">
+          <Constraints>
+            <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
+          </Constraints>
+        </TypeParameter>
+        <TypeParameter Name="TOutput">
+          <Constraints>
+            <ParameterAttribute>DefaultConstructorConstraint</ParameterAttribute>
+            <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters />
+      <Docs>
+        <typeparam name="TInput">Type of data instances the model will be trained on. It's a custom type defined by the user according to the structure of data.
+            <para />
+            Please see https://www.microsoft.com/net/learn/apps/machine-learning-and-ai/ml-dotnet/get-started/windows for more details on input type.
+            </typeparam>
+        <typeparam name="TOutput">Ouput type. The prediction will be return based on this type.
+            Please see https://www.microsoft.com/net/learn/apps/machine-learning-and-ai/ml-dotnet/get-started/windows for more details on output type.
+            </typeparam>
+        <summary>
+            Train the model using the ML components in the pipeline.
+            </summary>
+        <returns>PredictionModel object. This is the model object used for prediction on new instances. </returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
