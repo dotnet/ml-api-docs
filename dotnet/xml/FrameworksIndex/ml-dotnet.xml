@@ -660,14 +660,15 @@
       <Member Id="P:Microsoft.ML.RankingCatalog.Trainers" />
     </Type>
     <Type Name="Microsoft.ML.RankingCatalog/RankingTrainers" Id="T:Microsoft.ML.RankingCatalog.RankingTrainers" />
-    <Type Name="Microsoft.ML.RecommendationContext" Id="T:Microsoft.ML.RecommendationContext">
-      <Member Id="M:Microsoft.ML.RecommendationContext.#ctor(Microsoft.ML.IHostEnvironment)" />
-      <Member Id="M:Microsoft.ML.RecommendationContext.CrossValidate(Microsoft.ML.Data.IDataView,Microsoft.ML.Core.Data.IEstimator{Microsoft.ML.Core.Data.ITransformer},System.Int32,System.String,System.String,System.Nullable{System.UInt32})" />
-      <Member Id="M:Microsoft.ML.RecommendationContext.Evaluate(Microsoft.ML.Data.IDataView,System.String,System.String)" />
-      <Member Id="P:Microsoft.ML.RecommendationContext.Trainers" />
+    <Type Name="Microsoft.ML.RecommendationCatalog" Id="T:Microsoft.ML.RecommendationCatalog">
+      <Member Id="M:Microsoft.ML.RecommendationCatalog.#ctor(Microsoft.ML.IHostEnvironment)" />
+      <Member Id="M:Microsoft.ML.RecommendationCatalog.CrossValidate(Microsoft.Data.DataView.IDataView,Microsoft.ML.Core.Data.IEstimator{Microsoft.ML.Core.Data.ITransformer},System.Int32,System.String,System.String,System.Nullable{System.UInt32})" />
+      <Member Id="M:Microsoft.ML.RecommendationCatalog.Evaluate(Microsoft.Data.DataView.IDataView,System.String,System.String)" />
+      <Member Id="P:Microsoft.ML.RecommendationCatalog.Trainers" />
     </Type>
-    <Type Name="Microsoft.ML.RecommendationContext/RecommendationTrainers" Id="T:Microsoft.ML.RecommendationContext.RecommendationTrainers">
-      <Member Id="M:Microsoft.ML.RecommendationContext.RecommendationTrainers.MatrixFactorization(System.String,System.String,System.String,System.Action{Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments})" />
+    <Type Name="Microsoft.ML.RecommendationCatalog/RecommendationTrainers" Id="T:Microsoft.ML.RecommendationCatalog.RecommendationTrainers">
+      <Member Id="M:Microsoft.ML.RecommendationCatalog.RecommendationTrainers.MatrixFactorization(Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options)" />
+      <Member Id="M:Microsoft.ML.RecommendationCatalog.RecommendationTrainers.MatrixFactorization(System.String,System.String,System.String)" />
     </Type>
     <Type Name="Microsoft.ML.RecommenderCatalog" Id="T:Microsoft.ML.RecommenderCatalog">
       <Member Id="M:Microsoft.ML.RecommenderCatalog.Recommendation(Microsoft.ML.MLContext)" />
@@ -7011,33 +7012,32 @@
       <Member Id="P:Microsoft.ML.Trainers.LinearTrainerBase`2.ShuffleData" />
     </Type>
     <Type Name="Microsoft.ML.Trainers.MatrixFactorizationTrainer" Id="T:Microsoft.ML.Trainers.MatrixFactorizationTrainer">
-      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.LabelName" />
       <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.LoadNameValue" />
-      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.MatrixColumnIndexName" />
-      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.MatrixRowIndexName" />
-      <Member Id="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.#ctor(Microsoft.ML.IHostEnvironment,System.String,System.String,System.String,System.Action{Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments})" />
-      <Member Id="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Fit(Microsoft.ML.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Fit(Microsoft.Data.DataView.IDataView)" />
       <Member Id="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.GetOutputSchema(Microsoft.ML.Core.Data.SchemaShape)" />
-      <Member Id="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Train(Microsoft.ML.Data.IDataView,Microsoft.ML.Data.IDataView)" />
+      <Member Id="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Train(Microsoft.Data.DataView.IDataView,Microsoft.Data.DataView.IDataView)" />
       <Member Id="P:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Info" />
       <Member Id="P:Microsoft.ML.Trainers.MatrixFactorizationTrainer.PredictionKind" />
-    </Type>
-    <Type Name="Microsoft.ML.Trainers.MatrixFactorizationTrainer/Arguments" Id="T:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments">
-      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments.Alpha" />
-      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments.C" />
-      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments.Eta" />
-      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments.K" />
-      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments.Lambda" />
-      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments.LossFunction" />
-      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments.NonNegative" />
-      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments.NumIterations" />
-      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments.NumThreads" />
-      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments.Quiet" />
-      <Member Id="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Arguments.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Trainers.MatrixFactorizationTrainer/LossFunctionType" Id="T:Microsoft.ML.Trainers.MatrixFactorizationTrainer.LossFunctionType">
       <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.LossFunctionType.SquareLossOneClass" />
       <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.LossFunctionType.SquareLossRegression" />
+    </Type>
+    <Type Name="Microsoft.ML.Trainers.MatrixFactorizationTrainer/Options" Id="T:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options">
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.Alpha" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.C" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.Eta" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.K" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.LabelColumnName" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.Lambda" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.LossFunction" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.MatrixColumnIndexColumnName" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.MatrixRowIndexColumnName" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.NonNegative" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.NumIterations" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.NumThreads" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.Quiet" />
+      <Member Id="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Trainers.MultiClassNaiveBayesModelParameters" Id="T:Microsoft.ML.Trainers.MultiClassNaiveBayesModelParameters">
       <Member Id="M:Microsoft.ML.Trainers.MultiClassNaiveBayesModelParameters.#ctor(Microsoft.ML.IHostEnvironment,System.Int32[],System.Int32[][],System.Int32)" />
@@ -7331,8 +7331,8 @@
     <Type Name="Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer" Id="T:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer">
       <Member Id="F:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer.LoaderSignature" />
       <Member Id="M:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer.#ctor(Microsoft.ML.IHostEnvironment,Microsoft.ML.Model.ModelLoadContext)" />
-      <Member Id="M:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer.#ctor(Microsoft.ML.IHostEnvironment,Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor,Microsoft.ML.Data.Schema,System.String,System.String,System.String)" />
-      <Member Id="M:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer.GetOutputSchema(Microsoft.ML.Data.Schema)" />
+      <Member Id="M:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer.#ctor(Microsoft.ML.IHostEnvironment,Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor,Microsoft.Data.DataView.Schema,System.String,System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer.GetOutputSchema(Microsoft.Data.DataView.Schema)" />
       <Member Id="M:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer.Save(Microsoft.ML.Model.ModelSaveContext)" />
       <Member Id="P:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer.MatrixColumnIndexColumnName" />
       <Member Id="P:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer.MatrixColumnIndexColumnType" />
