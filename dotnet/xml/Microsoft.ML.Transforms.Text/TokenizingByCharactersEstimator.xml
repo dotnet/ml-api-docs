@@ -59,29 +59,29 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public TokenizingByCharactersEstimator (Microsoft.ML.IHostEnvironment env, string inputColumn, string outputColumn = null, bool useMarkerCharacters = true);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, string inputColumn, string outputColumn, bool useMarkerCharacters) cil managed" />
+      <MemberSignature Language="C#" Value="public TokenizingByCharactersEstimator (Microsoft.ML.IHostEnvironment env, string outputColumnName, string inputColumnName = null, bool useMarkerCharacters = true);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, string outputColumnName, string inputColumnName, bool useMarkerCharacters) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Text.TokenizingByCharactersEstimator.#ctor(Microsoft.ML.IHostEnvironment,System.String,System.String,System.Boolean)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, inputColumn As String, Optional outputColumn As String = null, Optional useMarkerCharacters As Boolean = true)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Text.TokenizingByCharactersEstimator : Microsoft.ML.IHostEnvironment * string * string * bool -&gt; Microsoft.ML.Transforms.Text.TokenizingByCharactersEstimator" Usage="new Microsoft.ML.Transforms.Text.TokenizingByCharactersEstimator (env, inputColumn, outputColumn, useMarkerCharacters)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, outputColumnName As String, Optional inputColumnName As String = null, Optional useMarkerCharacters As Boolean = true)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Text.TokenizingByCharactersEstimator : Microsoft.ML.IHostEnvironment * string * string * bool -&gt; Microsoft.ML.Transforms.Text.TokenizingByCharactersEstimator" Usage="new Microsoft.ML.Transforms.Text.TokenizingByCharactersEstimator (env, outputColumnName, inputColumnName, useMarkerCharacters)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
-        <Parameter Name="inputColumn" Type="System.String" />
-        <Parameter Name="outputColumn" Type="System.String" />
-        <Parameter Name="useMarkerCharacters" Type="System.Boolean" />
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" Index="0" />
+        <Parameter Name="outputColumnName" Type="System.String" Index="1" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="inputColumnName" Type="System.String" Index="2" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="useMarkerCharacters" Type="System.Boolean" Index="3" />
       </Parameters>
       <Docs>
         <param name="env">The environment.</param>
-        <param name="inputColumn">The column containing text to tokenize.</param>
-        <param name="outputColumn">The column containing output tokens. Null means <paramref name="inputColumn" /> is replaced.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
+        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
         <param name="useMarkerCharacters">Whether to use marker characters to separate words.</param>
         <summary>
-            Tokenize incoming text in <paramref name="inputColumn" /> and output the tokens as <paramref name="outputColumn" />.
+            Tokenize incoming text in <paramref name="inputColumnName" /> and output the tokens as <paramref name="outputColumnName" />.
             </summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -111,11 +111,11 @@
       </Docs>
     </Member>
     <Member MemberName="IsColumnTypeValid">
-      <MemberSignature Language="C#" Value="public static bool IsColumnTypeValid (Microsoft.ML.Data.ColumnType type);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool IsColumnTypeValid(class Microsoft.ML.Data.ColumnType type) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Text.TokenizingByCharactersEstimator.IsColumnTypeValid(Microsoft.ML.Data.ColumnType)" />
+      <MemberSignature Language="C#" Value="public static bool IsColumnTypeValid (Microsoft.Data.DataView.ColumnType type);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool IsColumnTypeValid(class Microsoft.Data.DataView.ColumnType type) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Text.TokenizingByCharactersEstimator.IsColumnTypeValid(Microsoft.Data.DataView.ColumnType)" />
       <MemberSignature Language="VB.NET" Value="Public Shared Function IsColumnTypeValid (type As ColumnType) As Boolean" />
-      <MemberSignature Language="F#" Value="static member IsColumnTypeValid : Microsoft.ML.Data.ColumnType -&gt; bool" Usage="Microsoft.ML.Transforms.Text.TokenizingByCharactersEstimator.IsColumnTypeValid type" />
+      <MemberSignature Language="F#" Value="static member IsColumnTypeValid : Microsoft.Data.DataView.ColumnType -&gt; bool" Usage="Microsoft.ML.Transforms.Text.TokenizingByCharactersEstimator.IsColumnTypeValid type" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
@@ -125,7 +125,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="type" Type="Microsoft.ML.Data.ColumnType" />
+        <Parameter Name="type" Type="Microsoft.Data.DataView.ColumnType" />
       </Parameters>
       <Docs>
         <param name="type">To be added.</param>

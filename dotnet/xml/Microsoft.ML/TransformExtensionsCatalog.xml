@@ -20,11 +20,11 @@
   </Docs>
   <Members>
     <Member MemberName="Concatenate">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.ColumnConcatenatingEstimator Concatenate (this Microsoft.ML.TransformsCatalog catalog, string outputColumn, params string[] inputColumns);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.ColumnConcatenatingEstimator Concatenate(class Microsoft.ML.TransformsCatalog catalog, string outputColumn, string[] inputColumns) cil managed" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.ColumnConcatenatingEstimator Concatenate (this Microsoft.ML.TransformsCatalog catalog, string outputColumnName, params string[] inputColumnNames);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.ColumnConcatenatingEstimator Concatenate(class Microsoft.ML.TransformsCatalog catalog, string outputColumnName, string[] inputColumnNames) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.TransformExtensionsCatalog.Concatenate(Microsoft.ML.TransformsCatalog,System.String,System.String[])" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function Concatenate (catalog As TransformsCatalog, outputColumn As String, ParamArray inputColumns As String()) As ColumnConcatenatingEstimator" />
-      <MemberSignature Language="F#" Value="static member Concatenate : Microsoft.ML.TransformsCatalog * string * string[] -&gt; Microsoft.ML.Transforms.ColumnConcatenatingEstimator" Usage="Microsoft.ML.TransformExtensionsCatalog.Concatenate (catalog, outputColumn, inputColumns)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function Concatenate (catalog As TransformsCatalog, outputColumnName As String, ParamArray inputColumnNames As String()) As ColumnConcatenatingEstimator" />
+      <MemberSignature Language="F#" Value="static member Concatenate : Microsoft.ML.TransformsCatalog * string * string[] -&gt; Microsoft.ML.Transforms.ColumnConcatenatingEstimator" Usage="Microsoft.ML.TransformExtensionsCatalog.Concatenate (catalog, outputColumnName, inputColumnNames)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -34,9 +34,9 @@
         <ReturnType>Microsoft.ML.Transforms.ColumnConcatenatingEstimator</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog" RefType="this" />
-        <Parameter Name="outputColumn" Type="System.String" />
-        <Parameter Name="inputColumns" Type="System.String[]">
+        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog" RefType="this" Index="0" />
+        <Parameter Name="outputColumnName" Type="System.String" Index="1" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="inputColumnNames" Type="System.String[]" Index="2" FrameworkAlternate="ml-dotnet">
           <Attributes>
             <Attribute>
               <AttributeName>System.ParamArray</AttributeName>
@@ -46,8 +46,8 @@
       </Parameters>
       <Docs>
         <param name="catalog">The transform's catalog.</param>
-        <param name="outputColumn">The name of the output column.</param>
-        <param name="inputColumns">The names of the columns to concatenate together.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnNames" />.</param>
+        <param name="inputColumnNames">Name of the columns to transform.</param>
         <summary>
             Concatenates two columns together.
             </summary>
@@ -94,11 +94,11 @@
       </Docs>
     </Member>
     <Member MemberName="CopyColumns">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.ColumnCopyingEstimator CopyColumns (this Microsoft.ML.TransformsCatalog catalog, string inputColumn, string outputColumn);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.ColumnCopyingEstimator CopyColumns(class Microsoft.ML.TransformsCatalog catalog, string inputColumn, string outputColumn) cil managed" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.ColumnCopyingEstimator CopyColumns (this Microsoft.ML.TransformsCatalog catalog, string outputColumnName, string inputColumnName);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.ColumnCopyingEstimator CopyColumns(class Microsoft.ML.TransformsCatalog catalog, string outputColumnName, string inputColumnName) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.TransformExtensionsCatalog.CopyColumns(Microsoft.ML.TransformsCatalog,System.String,System.String)" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function CopyColumns (catalog As TransformsCatalog, inputColumn As String, outputColumn As String) As ColumnCopyingEstimator" />
-      <MemberSignature Language="F#" Value="static member CopyColumns : Microsoft.ML.TransformsCatalog * string * string -&gt; Microsoft.ML.Transforms.ColumnCopyingEstimator" Usage="Microsoft.ML.TransformExtensionsCatalog.CopyColumns (catalog, inputColumn, outputColumn)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function CopyColumns (catalog As TransformsCatalog, outputColumnName As String, inputColumnName As String) As ColumnCopyingEstimator" />
+      <MemberSignature Language="F#" Value="static member CopyColumns : Microsoft.ML.TransformsCatalog * string * string -&gt; Microsoft.ML.Transforms.ColumnCopyingEstimator" Usage="Microsoft.ML.TransformExtensionsCatalog.CopyColumns (catalog, outputColumnName, inputColumnName)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -108,16 +108,16 @@
         <ReturnType>Microsoft.ML.Transforms.ColumnCopyingEstimator</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog" RefType="this" />
-        <Parameter Name="inputColumn" Type="System.String" />
-        <Parameter Name="outputColumn" Type="System.String" />
+        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog" RefType="this" Index="0" />
+        <Parameter Name="outputColumnName" Type="System.String" Index="1" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="inputColumnName" Type="System.String" Index="2" FrameworkAlternate="ml-dotnet" />
       </Parameters>
       <Docs>
         <param name="catalog">The transform's catalog.</param>
-        <param name="inputColumn">Name of the input column.</param>
-        <param name="outputColumn">Name of the new column, resulting from copying.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
+        <param name="inputColumnName">Name of the columns to transform.</param>
         <summary>
-            Copies the input column to another column named as specified in <paramref name="outputColumn" />.
+            Copies the input column to another column named as specified in <paramref name="outputColumnName" />.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

@@ -20,20 +20,20 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public ColumnInfo (string input, string output = null, params ValueTuple&lt;int,Nullable&lt;int&gt;&gt;[] slots);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string input, string output, valuetype System.ValueTuple`2&lt;int32, valuetype System.Nullable`1&lt;int32&gt;&gt;[] slots) cil managed" />
+      <MemberSignature Language="C#" Value="public ColumnInfo (string name, string inputColumnName = null, params ValueTuple&lt;int,Nullable&lt;int&gt;&gt;[] slots);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string name, string inputColumnName, valuetype System.ValueTuple`2&lt;int32, valuetype System.Nullable`1&lt;int32&gt;&gt;[] slots) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.FeatureSelection.SlotsDroppingTransformer.ColumnInfo.#ctor(System.String,System.String,System.ValueTuple{System.Int32,System.Nullable{System.Int32}}[])" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (input As String, Optional output As String = null, ParamArray slots As ValueTuple(Of Integer, Nullable(Of Integer))())" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.FeatureSelection.SlotsDroppingTransformer.ColumnInfo : string * string * ValueTuple&lt;int, Nullable&lt;int&gt;&gt;[] -&gt; Microsoft.ML.Transforms.FeatureSelection.SlotsDroppingTransformer.ColumnInfo" Usage="new Microsoft.ML.Transforms.FeatureSelection.SlotsDroppingTransformer.ColumnInfo (input, output, slots)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (name As String, Optional inputColumnName As String = null, ParamArray slots As ValueTuple(Of Integer, Nullable(Of Integer))())" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.FeatureSelection.SlotsDroppingTransformer.ColumnInfo : string * string * ValueTuple&lt;int, Nullable&lt;int&gt;&gt;[] -&gt; Microsoft.ML.Transforms.FeatureSelection.SlotsDroppingTransformer.ColumnInfo" Usage="new Microsoft.ML.Transforms.FeatureSelection.SlotsDroppingTransformer.ColumnInfo (name, inputColumnName, slots)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="input" Type="System.String" />
-        <Parameter Name="output" Type="System.String" />
-        <Parameter Name="slots" Type="System.ValueTuple&lt;System.Int32,System.Nullable&lt;System.Int32&gt;&gt;[]">
+        <Parameter Name="name" Type="System.String" Index="0" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="inputColumnName" Type="System.String" Index="1" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="slots" Type="System.ValueTuple&lt;System.Int32,System.Nullable&lt;System.Int32&gt;&gt;[]" Index="2">
           <Attributes>
             <Attribute>
               <AttributeName>System.ParamArray</AttributeName>
@@ -45,8 +45,9 @@
         </Parameter>
       </Parameters>
       <Docs>
-        <param name="input">Name of the input column.</param>
-        <param name="output">Name of the column resulting from the transformation of <paramref name="input" />. Null means <paramref name="input" /> is replaced.</param>
+        <param name="name">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
+        <param name="inputColumnName">Name of the column to transform.
+            If set to <see langword="null" />, the value of the <paramref name="name" /> will be used as source.</param>
         <param name="slots">Ranges of indices in the input column to be dropped. Setting max in <paramref name="slots" /> to null sets max to int.MaxValue.</param>
         <summary>
             Describes how the transformer handles one input-output column pair.
@@ -54,12 +55,12 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Input">
-      <MemberSignature Language="C#" Value="public readonly string Input;" />
-      <MemberSignature Language="ILAsm" Value=".field public initonly string Input" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.FeatureSelection.SlotsDroppingTransformer.ColumnInfo.Input" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Input As String " />
-      <MemberSignature Language="F#" Value="val mutable Input : string" Usage="Microsoft.ML.Transforms.FeatureSelection.SlotsDroppingTransformer.ColumnInfo.Input" />
+    <Member MemberName="InputColumnName">
+      <MemberSignature Language="C#" Value="public readonly string InputColumnName;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly string InputColumnName" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.FeatureSelection.SlotsDroppingTransformer.ColumnInfo.InputColumnName" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly InputColumnName As String " />
+      <MemberSignature Language="F#" Value="val mutable InputColumnName : string" Usage="Microsoft.ML.Transforms.FeatureSelection.SlotsDroppingTransformer.ColumnInfo.InputColumnName" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -73,12 +74,12 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Output">
-      <MemberSignature Language="C#" Value="public readonly string Output;" />
-      <MemberSignature Language="ILAsm" Value=".field public initonly string Output" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.FeatureSelection.SlotsDroppingTransformer.ColumnInfo.Output" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Output As String " />
-      <MemberSignature Language="F#" Value="val mutable Output : string" Usage="Microsoft.ML.Transforms.FeatureSelection.SlotsDroppingTransformer.ColumnInfo.Output" />
+    <Member MemberName="Name">
+      <MemberSignature Language="C#" Value="public readonly string Name;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly string Name" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.FeatureSelection.SlotsDroppingTransformer.ColumnInfo.Name" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Name As String " />
+      <MemberSignature Language="F#" Value="val mutable Name : string" Usage="Microsoft.ML.Transforms.FeatureSelection.SlotsDroppingTransformer.ColumnInfo.Name" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>

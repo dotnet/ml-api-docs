@@ -79,7 +79,7 @@
       <Docs>
         <param name="env">The private instance of <see cref="T:Microsoft.ML.IHostEnvironment" />.</param>
         <param name="mode">The <see cref="T:Microsoft.ML.Transforms.Normalizers.NormalizingEstimator.NormalizerMode" /> indicating how to the old values are mapped to the new values.</param>
-        <param name="columns">An array of (inputColumn, outputColumn) tuples.</param>
+        <param name="columns">An array of (outputColumnName, inputColumnName) tuples.</param>
         <summary>
             Initializes a new instance of <see cref="T:Microsoft.ML.Transforms.Normalizers.NormalizingEstimator" />.
             </summary>
@@ -87,26 +87,27 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public NormalizingEstimator (Microsoft.ML.IHostEnvironment env, string inputColumn, string outputColumn = null, Microsoft.ML.Transforms.Normalizers.NormalizingEstimator.NormalizerMode mode = Microsoft.ML.Transforms.Normalizers.NormalizingEstimator+NormalizerMode.MinMax);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, string inputColumn, string outputColumn, valuetype Microsoft.ML.Transforms.Normalizers.NormalizingEstimator/NormalizerMode mode) cil managed" />
+      <MemberSignature Language="C#" Value="public NormalizingEstimator (Microsoft.ML.IHostEnvironment env, string outputColumnName, string inputColumnName = null, Microsoft.ML.Transforms.Normalizers.NormalizingEstimator.NormalizerMode mode = Microsoft.ML.Transforms.Normalizers.NormalizingEstimator+NormalizerMode.MinMax);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, string outputColumnName, string inputColumnName, valuetype Microsoft.ML.Transforms.Normalizers.NormalizingEstimator/NormalizerMode mode) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Normalizers.NormalizingEstimator.#ctor(Microsoft.ML.IHostEnvironment,System.String,System.String,Microsoft.ML.Transforms.Normalizers.NormalizingEstimator.NormalizerMode)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, inputColumn As String, Optional outputColumn As String = null, Optional mode As NormalizingEstimator.NormalizerMode = Microsoft.ML.Transforms.Normalizers.NormalizingEstimator+NormalizerMode.MinMax)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Normalizers.NormalizingEstimator : Microsoft.ML.IHostEnvironment * string * string * Microsoft.ML.Transforms.Normalizers.NormalizingEstimator.NormalizerMode -&gt; Microsoft.ML.Transforms.Normalizers.NormalizingEstimator" Usage="new Microsoft.ML.Transforms.Normalizers.NormalizingEstimator (env, inputColumn, outputColumn, mode)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, outputColumnName As String, Optional inputColumnName As String = null, Optional mode As NormalizingEstimator.NormalizerMode = Microsoft.ML.Transforms.Normalizers.NormalizingEstimator+NormalizerMode.MinMax)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Normalizers.NormalizingEstimator : Microsoft.ML.IHostEnvironment * string * string * Microsoft.ML.Transforms.Normalizers.NormalizingEstimator.NormalizerMode -&gt; Microsoft.ML.Transforms.Normalizers.NormalizingEstimator" Usage="new Microsoft.ML.Transforms.Normalizers.NormalizingEstimator (env, outputColumnName, inputColumnName, mode)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
-        <Parameter Name="inputColumn" Type="System.String" />
-        <Parameter Name="outputColumn" Type="System.String" />
-        <Parameter Name="mode" Type="Microsoft.ML.Transforms.Normalizers.NormalizingEstimator+NormalizerMode" />
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" Index="0" />
+        <Parameter Name="outputColumnName" Type="System.String" Index="1" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="inputColumnName" Type="System.String" Index="2" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="mode" Type="Microsoft.ML.Transforms.Normalizers.NormalizingEstimator+NormalizerMode" Index="3" />
       </Parameters>
       <Docs>
         <param name="env">Host Environment.</param>
-        <param name="inputColumn">Name of the output column.</param>
-        <param name="outputColumn">Name of the column to be transformed. If this is null '<paramref name="inputColumn" />' will be used.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
+        <param name="inputColumnName">Name of the column to transform.
+            If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
         <param name="mode">The <see cref="T:Microsoft.ML.Transforms.Normalizers.NormalizingEstimator.NormalizerMode" /> indicating how to the old values are mapped to the new values.</param>
         <summary>
             Initializes a new instance of <see cref="T:Microsoft.ML.Transforms.Normalizers.NormalizingEstimator" />.
@@ -115,14 +116,14 @@
       </Docs>
     </Member>
     <Member MemberName="Fit">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Transforms.Normalizers.NormalizingTransformer Fit (Microsoft.ML.Data.IDataView input);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Transforms.Normalizers.NormalizingTransformer Fit(class Microsoft.ML.Data.IDataView input) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Normalizers.NormalizingEstimator.Fit(Microsoft.ML.Data.IDataView)" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Transforms.Normalizers.NormalizingTransformer Fit (Microsoft.Data.DataView.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Transforms.Normalizers.NormalizingTransformer Fit(class Microsoft.Data.DataView.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Normalizers.NormalizingEstimator.Fit(Microsoft.Data.DataView.IDataView)" />
       <MemberSignature Language="VB.NET" Value="Public Function Fit (input As IDataView) As NormalizingTransformer" />
-      <MemberSignature Language="F#" Value="abstract member Fit : Microsoft.ML.Data.IDataView -&gt; Microsoft.ML.Transforms.Normalizers.NormalizingTransformer&#xA;override this.Fit : Microsoft.ML.Data.IDataView -&gt; Microsoft.ML.Transforms.Normalizers.NormalizingTransformer" Usage="normalizingEstimator.Fit input" />
+      <MemberSignature Language="F#" Value="abstract member Fit : Microsoft.Data.DataView.IDataView -&gt; Microsoft.ML.Transforms.Normalizers.NormalizingTransformer&#xA;override this.Fit : Microsoft.Data.DataView.IDataView -&gt; Microsoft.ML.Transforms.Normalizers.NormalizingTransformer" Usage="normalizingEstimator.Fit input" />
       <MemberType>Method</MemberType>
       <Implements>
-        <InterfaceMember>M:Microsoft.ML.Core.Data.IEstimator`1.Fit(Microsoft.ML.Data.IDataView)</InterfaceMember>
+        <InterfaceMember>M:Microsoft.ML.Core.Data.IEstimator`1.Fit(Microsoft.Data.DataView.IDataView)</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -132,7 +133,7 @@
         <ReturnType>Microsoft.ML.Transforms.Normalizers.NormalizingTransformer</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="input" Type="Microsoft.ML.Data.IDataView" />
+        <Parameter Name="input" Type="Microsoft.Data.DataView.IDataView" />
       </Parameters>
       <Docs>
         <param name="input">To be added.</param>
