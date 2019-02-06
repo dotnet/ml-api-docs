@@ -1,9 +1,9 @@
 ﻿<Type Name="PrincipalComponentAnalysisEstimator" FullName="Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator">
-  <TypeSignature Language="C#" Value="public sealed class PrincipalComponentAnalysisEstimator : Microsoft.ML.Core.Data.IEstimator&lt;Microsoft.ML.Transforms.Projections.PcaTransform&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit PrincipalComponentAnalysisEstimator extends System.Object implements class Microsoft.ML.Core.Data.IEstimator`1&lt;class Microsoft.ML.Transforms.Projections.PcaTransform&gt;" />
+  <TypeSignature Language="C#" Value="public sealed class PrincipalComponentAnalysisEstimator : Microsoft.ML.Core.Data.IEstimator&lt;Microsoft.ML.Transforms.Projections.PcaTransformer&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit PrincipalComponentAnalysisEstimator extends System.Object implements class Microsoft.ML.Core.Data.IEstimator`1&lt;class Microsoft.ML.Transforms.Projections.PcaTransformer&gt;" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class PrincipalComponentAnalysisEstimator&#xA;Implements IEstimator(Of PcaTransform)" />
-  <TypeSignature Language="F#" Value="type PrincipalComponentAnalysisEstimator = class&#xA;    interface IEstimator&lt;PcaTransform&gt;" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class PrincipalComponentAnalysisEstimator&#xA;Implements IEstimator(Of PcaTransformer)" />
+  <TypeSignature Language="F#" Value="type PrincipalComponentAnalysisEstimator = class&#xA;    interface IEstimator&lt;PcaTransformer&gt;" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.PCA</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -13,7 +13,7 @@
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>Microsoft.ML.Core.Data.IEstimator&lt;Microsoft.ML.Transforms.Projections.PcaTransform&gt;</InterfaceName>
+      <InterfaceName>Microsoft.ML.Core.Data.IEstimator&lt;Microsoft.ML.Transforms.Projections.PcaTransformer&gt;</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -27,11 +27,11 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public PrincipalComponentAnalysisEstimator (Microsoft.ML.IHostEnvironment env, params Microsoft.ML.Transforms.Projections.PcaTransform.ColumnInfo[] columns);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, class Microsoft.ML.Transforms.Projections.PcaTransform/ColumnInfo[] columns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator.#ctor(Microsoft.ML.IHostEnvironment,Microsoft.ML.Transforms.Projections.PcaTransform.ColumnInfo[])" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, ParamArray columns As PcaTransform.ColumnInfo())" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator : Microsoft.ML.IHostEnvironment * Microsoft.ML.Transforms.Projections.PcaTransform.ColumnInfo[] -&gt; Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator" Usage="new Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator (env, columns)" />
+      <MemberSignature Language="C#" Value="public PrincipalComponentAnalysisEstimator (Microsoft.ML.IHostEnvironment env, params Microsoft.ML.Transforms.Projections.PcaTransformer.ColumnInfo[] columns);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, class Microsoft.ML.Transforms.Projections.PcaTransformer/ColumnInfo[] columns) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator.#ctor(Microsoft.ML.IHostEnvironment,Microsoft.ML.Transforms.Projections.PcaTransformer.ColumnInfo[])" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, ParamArray columns As PcaTransformer.ColumnInfo())" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator : Microsoft.ML.IHostEnvironment * Microsoft.ML.Transforms.Projections.PcaTransformer.ColumnInfo[] -&gt; Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator" Usage="new Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator (env, columns)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.PCA</AssemblyName>
@@ -39,7 +39,7 @@
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
-        <Parameter Name="columns" Type="Microsoft.ML.Transforms.Projections.PcaTransform+ColumnInfo[]">
+        <Parameter Name="columns" Type="Microsoft.ML.Transforms.Projections.PcaTransformer+ColumnInfo[]">
           <Attributes>
             <Attribute>
               <AttributeName>System.ParamArray</AttributeName>
@@ -60,30 +60,31 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public PrincipalComponentAnalysisEstimator (Microsoft.ML.IHostEnvironment env, string inputColumn, string outputColumn = null, string weightColumn = null, int rank = 20, int overSampling = 20, bool center = true, Nullable&lt;int&gt; seed = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, string inputColumn, string outputColumn, string weightColumn, int32 rank, int32 overSampling, bool center, valuetype System.Nullable`1&lt;int32&gt; seed) cil managed" />
+      <MemberSignature Language="C#" Value="public PrincipalComponentAnalysisEstimator (Microsoft.ML.IHostEnvironment env, string outputColumnName, string inputColumnName = null, string weightColumn = null, int rank = 20, int overSampling = 20, bool center = true, Nullable&lt;int&gt; seed = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, string outputColumnName, string inputColumnName, string weightColumn, int32 rank, int32 overSampling, bool center, valuetype System.Nullable`1&lt;int32&gt; seed) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator.#ctor(Microsoft.ML.IHostEnvironment,System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean,System.Nullable{System.Int32})" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, inputColumn As String, Optional outputColumn As String = null, Optional weightColumn As String = null, Optional rank As Integer = 20, Optional overSampling As Integer = 20, Optional center As Boolean = true, Optional seed As Nullable(Of Integer) = null)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator : Microsoft.ML.IHostEnvironment * string * string * string * int * int * bool * Nullable&lt;int&gt; -&gt; Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator" Usage="new Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator (env, inputColumn, outputColumn, weightColumn, rank, overSampling, center, seed)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, outputColumnName As String, Optional inputColumnName As String = null, Optional weightColumn As String = null, Optional rank As Integer = 20, Optional overSampling As Integer = 20, Optional center As Boolean = true, Optional seed As Nullable(Of Integer) = null)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator : Microsoft.ML.IHostEnvironment * string * string * string * int * int * bool * Nullable&lt;int&gt; -&gt; Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator" Usage="new Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator (env, outputColumnName, inputColumnName, weightColumn, rank, overSampling, center, seed)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.PCA</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
-        <Parameter Name="inputColumn" Type="System.String" />
-        <Parameter Name="outputColumn" Type="System.String" />
-        <Parameter Name="weightColumn" Type="System.String" />
-        <Parameter Name="rank" Type="System.Int32" />
-        <Parameter Name="overSampling" Type="System.Int32" />
-        <Parameter Name="center" Type="System.Boolean" />
-        <Parameter Name="seed" Type="System.Nullable&lt;System.Int32&gt;" />
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" Index="0" />
+        <Parameter Name="outputColumnName" Type="System.String" Index="1" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="inputColumnName" Type="System.String" Index="2" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="weightColumn" Type="System.String" Index="3" />
+        <Parameter Name="rank" Type="System.Int32" Index="4" />
+        <Parameter Name="overSampling" Type="System.Int32" Index="5" />
+        <Parameter Name="center" Type="System.Boolean" Index="6" />
+        <Parameter Name="seed" Type="System.Nullable&lt;System.Int32&gt;" Index="7" />
       </Parameters>
       <Docs>
         <param name="env">The environment to use.</param>
-        <param name="inputColumn">Input column to project to Principal Component.</param>
-        <param name="outputColumn">Output column. Null means <paramref name="inputColumn" /> is replaced.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
+        <param name="inputColumnName">Name of the column to transform.
+            If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
         <param name="weightColumn">The name of the weight column.</param>
         <param name="rank">The number of components in the PCA.</param>
         <param name="overSampling">Oversampling parameter for randomized PCA training.</param>
@@ -99,24 +100,24 @@
       </Docs>
     </Member>
     <Member MemberName="Fit">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Transforms.Projections.PcaTransform Fit (Microsoft.ML.Data.IDataView input);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Transforms.Projections.PcaTransform Fit(class Microsoft.ML.Data.IDataView input) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator.Fit(Microsoft.ML.Data.IDataView)" />
-      <MemberSignature Language="VB.NET" Value="Public Function Fit (input As IDataView) As PcaTransform" />
-      <MemberSignature Language="F#" Value="abstract member Fit : Microsoft.ML.Data.IDataView -&gt; Microsoft.ML.Transforms.Projections.PcaTransform&#xA;override this.Fit : Microsoft.ML.Data.IDataView -&gt; Microsoft.ML.Transforms.Projections.PcaTransform" Usage="principalComponentAnalysisEstimator.Fit input" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Transforms.Projections.PcaTransformer Fit (Microsoft.Data.DataView.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Transforms.Projections.PcaTransformer Fit(class Microsoft.Data.DataView.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator.Fit(Microsoft.Data.DataView.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Fit (input As IDataView) As PcaTransformer" />
+      <MemberSignature Language="F#" Value="abstract member Fit : Microsoft.Data.DataView.IDataView -&gt; Microsoft.ML.Transforms.Projections.PcaTransformer&#xA;override this.Fit : Microsoft.Data.DataView.IDataView -&gt; Microsoft.ML.Transforms.Projections.PcaTransformer" Usage="principalComponentAnalysisEstimator.Fit input" />
       <MemberType>Method</MemberType>
       <Implements>
-        <InterfaceMember>M:Microsoft.ML.Core.Data.IEstimator`1.Fit(Microsoft.ML.Data.IDataView)</InterfaceMember>
+        <InterfaceMember>M:Microsoft.ML.Core.Data.IEstimator`1.Fit(Microsoft.Data.DataView.IDataView)</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.PCA</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Transforms.Projections.PcaTransform</ReturnType>
+        <ReturnType>Microsoft.ML.Transforms.Projections.PcaTransformer</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="input" Type="Microsoft.ML.Data.IDataView" />
+        <Parameter Name="input" Type="Microsoft.Data.DataView.IDataView" />
       </Parameters>
       <Docs>
         <param name="input">To be added.</param>

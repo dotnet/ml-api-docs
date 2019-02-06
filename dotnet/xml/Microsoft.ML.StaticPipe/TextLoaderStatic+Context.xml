@@ -190,11 +190,11 @@
       </Docs>
     </Member>
     <Member MemberName="LoadKey">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.StaticPipe.Key&lt;uint&gt; LoadKey (int ordinal, ulong minKeyValue, Nullable&lt;ulong&gt; maxKeyValue);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.StaticPipe.Key`1&lt;unsigned int32&gt; LoadKey(int32 ordinal, unsigned int64 minKeyValue, valuetype System.Nullable`1&lt;unsigned int64&gt; maxKeyValue) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.TextLoaderStatic.Context.LoadKey(System.Int32,System.UInt64,System.Nullable{System.UInt64})" />
-      <MemberSignature Language="VB.NET" Value="Public Function LoadKey (ordinal As Integer, minKeyValue As ULong, maxKeyValue As Nullable(Of ULong)) As Key(Of UInteger)" />
-      <MemberSignature Language="F#" Value="member this.LoadKey : int * uint64 * Nullable&lt;uint64&gt; -&gt; Microsoft.ML.StaticPipe.Key&lt;uint32&gt;" Usage="context.LoadKey (ordinal, minKeyValue, maxKeyValue)" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.StaticPipe.Key&lt;uint&gt; LoadKey (int ordinal, Nullable&lt;ulong&gt; keyCount);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.StaticPipe.Key`1&lt;unsigned int32&gt; LoadKey(int32 ordinal, valuetype System.Nullable`1&lt;unsigned int64&gt; keyCount) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.TextLoaderStatic.Context.LoadKey(System.Int32,System.Nullable{System.UInt64})" />
+      <MemberSignature Language="VB.NET" Value="Public Function LoadKey (ordinal As Integer, keyCount As Nullable(Of ULong)) As Key(Of UInteger)" />
+      <MemberSignature Language="F#" Value="member this.LoadKey : int * Nullable&lt;uint64&gt; -&gt; Microsoft.ML.StaticPipe.Key&lt;uint32&gt;" Usage="context.LoadKey (ordinal, keyCount)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StaticPipe</AssemblyName>
@@ -205,13 +205,12 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="ordinal" Type="System.Int32" />
-        <Parameter Name="minKeyValue" Type="System.UInt64" />
-        <Parameter Name="maxKeyValue" Type="System.Nullable&lt;System.UInt64&gt;" />
+        <Parameter Name="keyCount" Type="System.Nullable&lt;System.UInt64&gt;" />
       </Parameters>
       <Docs>
         <param name="ordinal">The zero-based index of the field to read from.</param>
-        <param name="minKeyValue">smallest value of the loaded key values</param>
-        <param name="maxKeyValue">If specified, it's the largest allowed value of the loaded key values. Use null if key is unbounded.</param>
+        <param name="keyCount">If specified, it's the count or cardinality of valid key values.
+            Using null initalizes <paramref name="keyCount" /> to uint.MaxValue</param>
         <summary>
             Create a representation for a key loaded from TextLoader as an unsigned integer (32 bits).
             </summary>
