@@ -20,19 +20,19 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public ColumnInfo (string[] inputs, string output, int ngramLength = 2, int skipLength = 0, bool allLengths = true, int hashBits = 16, uint seed = 314489979, bool ordered = true, int invertHash = 0, bool rehashUnigrams = false);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string[] inputs, string output, int32 ngramLength, int32 skipLength, bool allLengths, int32 hashBits, unsigned int32 seed, bool ordered, int32 invertHash, bool rehashUnigrams) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Text.NgramHashingTransformer.ColumnInfo.#ctor(System.String[],System.String,System.Int32,System.Int32,System.Boolean,System.Int32,System.UInt32,System.Boolean,System.Int32,System.Boolean)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (inputs As String(), output As String, Optional ngramLength As Integer = 2, Optional skipLength As Integer = 0, Optional allLengths As Boolean = true, Optional hashBits As Integer = 16, Optional seed As UInteger = 314489979, Optional ordered As Boolean = true, Optional invertHash As Integer = 0, Optional rehashUnigrams As Boolean = false)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Text.NgramHashingTransformer.ColumnInfo : string[] * string * int * int * bool * int * uint32 * bool * int * bool -&gt; Microsoft.ML.Transforms.Text.NgramHashingTransformer.ColumnInfo" Usage="new Microsoft.ML.Transforms.Text.NgramHashingTransformer.ColumnInfo (inputs, output, ngramLength, skipLength, allLengths, hashBits, seed, ordered, invertHash, rehashUnigrams)" />
+      <MemberSignature Language="C#" Value="public ColumnInfo (string name, string[] inputColumnNames, int ngramLength = 2, int skipLength = 0, bool allLengths = true, int hashBits = 16, uint seed = 314489979, bool ordered = true, int invertHash = 0, bool rehashUnigrams = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string name, string[] inputColumnNames, int32 ngramLength, int32 skipLength, bool allLengths, int32 hashBits, unsigned int32 seed, bool ordered, int32 invertHash, bool rehashUnigrams) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Text.NgramHashingTransformer.ColumnInfo.#ctor(System.String,System.String[],System.Int32,System.Int32,System.Boolean,System.Int32,System.UInt32,System.Boolean,System.Int32,System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (name As String, inputColumnNames As String(), Optional ngramLength As Integer = 2, Optional skipLength As Integer = 0, Optional allLengths As Boolean = true, Optional hashBits As Integer = 16, Optional seed As UInteger = 314489979, Optional ordered As Boolean = true, Optional invertHash As Integer = 0, Optional rehashUnigrams As Boolean = false)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Text.NgramHashingTransformer.ColumnInfo : string * string[] * int * int * bool * int * uint32 * bool * int * bool -&gt; Microsoft.ML.Transforms.Text.NgramHashingTransformer.ColumnInfo" Usage="new Microsoft.ML.Transforms.Text.NgramHashingTransformer.ColumnInfo (name, inputColumnNames, ngramLength, skipLength, allLengths, hashBits, seed, ordered, invertHash, rehashUnigrams)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="inputs" Type="System.String[]" />
-        <Parameter Name="output" Type="System.String" />
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="inputColumnNames" Type="System.String[]" />
         <Parameter Name="ngramLength" Type="System.Int32" />
         <Parameter Name="skipLength" Type="System.Int32" />
         <Parameter Name="allLengths" Type="System.Boolean" />
@@ -43,8 +43,8 @@
         <Parameter Name="rehashUnigrams" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="inputs">Name of input columns.</param>
-        <param name="output">Name of output column.</param>
+        <param name="name">Name of the column resulting from the transformation of <paramref name="inputColumnNames" />.</param>
+        <param name="inputColumnNames">Name of the columns to transform. </param>
         <param name="ngramLength">Maximum ngram length.</param>
         <param name="skipLength">Maximum number of tokens to skip when constructing an ngram.</param>
         <param name="allLengths">"Whether to store all ngram lengths up to ngramLength, or only ngramLength.</param>
@@ -100,12 +100,12 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Inputs">
-      <MemberSignature Language="C#" Value="public readonly string[] Inputs;" />
-      <MemberSignature Language="ILAsm" Value=".field public initonly string[] Inputs" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.Text.NgramHashingTransformer.ColumnInfo.Inputs" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Inputs As String() " />
-      <MemberSignature Language="F#" Value="val mutable Inputs : string[]" Usage="Microsoft.ML.Transforms.Text.NgramHashingTransformer.ColumnInfo.Inputs" />
+    <Member MemberName="InputColumnNames">
+      <MemberSignature Language="C#" Value="public readonly string[] InputColumnNames;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly string[] InputColumnNames" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.Text.NgramHashingTransformer.ColumnInfo.InputColumnNames" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly InputColumnNames As String() " />
+      <MemberSignature Language="F#" Value="val mutable InputColumnNames : string[]" Usage="Microsoft.ML.Transforms.Text.NgramHashingTransformer.ColumnInfo.InputColumnNames" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
@@ -132,6 +132,25 @@
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Name">
+      <MemberSignature Language="C#" Value="public readonly string Name;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly string Name" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.Text.NgramHashingTransformer.ColumnInfo.Name" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Name As String " />
+      <MemberSignature Language="F#" Value="val mutable Name : string" Usage="Microsoft.ML.Transforms.Text.NgramHashingTransformer.ColumnInfo.Name" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -170,25 +189,6 @@
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Output">
-      <MemberSignature Language="C#" Value="public readonly string Output;" />
-      <MemberSignature Language="ILAsm" Value=".field public initonly string Output" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.Text.NgramHashingTransformer.ColumnInfo.Output" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Output As String " />
-      <MemberSignature Language="F#" Value="val mutable Output : string" Usage="Microsoft.ML.Transforms.Text.NgramHashingTransformer.ColumnInfo.Output" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

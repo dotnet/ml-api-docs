@@ -11,12 +11,12 @@
   <Interfaces />
   <Docs>
     <summary>
-            This interface maps an input <see cref="T:Microsoft.ML.Data.Row" /> to an output <see cref="T:Microsoft.ML.Data.Row" />. Typically, the output contains
+            This interface maps an input <see cref="T:Microsoft.Data.DataView.Row" /> to an output <see cref="T:Microsoft.Data.DataView.Row" />. Typically, the output contains
             both the input columns and new columns added by the implementing class, although some implementations may
             return a subset of the input columns.
             This interface is similar to <see cref="T:Microsoft.ML.Data.ISchemaBoundRowMapper" />, except it does not have any input role mappings,
             so to rebind, the same input column names must be used.
-            Implementations of this interface are typically created over defined input <see cref="T:Microsoft.ML.Data.Schema" />.
+            Implementations of this interface are typically created over defined input <see cref="T:Microsoft.Data.DataView.Schema" />.
             </summary>
     <remarks>To be added.</remarks>
   </Docs>
@@ -42,7 +42,7 @@
         <param name="predicate">To be added.</param>
         <summary>
             Given a predicate specifying which columns are needed, return a predicate indicating which input columns are
-            needed. The domain of the function is defined over the indices of the columns of <see cref="P:Microsoft.ML.Data.Schema.Count" />
+            needed. The domain of the function is defined over the indices of the columns of <see cref="P:Microsoft.Data.DataView.Schema.Count" />
             for <see cref="P:Microsoft.ML.Data.IRowToRowMapper.InputSchema" />.
             </summary>
         <returns>To be added.</returns>
@@ -50,57 +50,57 @@
       </Docs>
     </Member>
     <Member MemberName="GetRow">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.Row GetRow (Microsoft.ML.Data.Row input, Func&lt;int,bool&gt; active);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Data.Row GetRow(class Microsoft.ML.Data.Row input, class System.Func`2&lt;int32, bool&gt; active) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.IRowToRowMapper.GetRow(Microsoft.ML.Data.Row,System.Func{System.Int32,System.Boolean})" />
+      <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.Row GetRow (Microsoft.Data.DataView.Row input, Func&lt;int,bool&gt; active);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.Data.DataView.Row GetRow(class Microsoft.Data.DataView.Row input, class System.Func`2&lt;int32, bool&gt; active) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.IRowToRowMapper.GetRow(Microsoft.Data.DataView.Row,System.Func{System.Int32,System.Boolean})" />
       <MemberSignature Language="VB.NET" Value="Public Function GetRow (input As Row, active As Func(Of Integer, Boolean)) As Row" />
-      <MemberSignature Language="F#" Value="abstract member GetRow : Microsoft.ML.Data.Row * Func&lt;int, bool&gt; -&gt; Microsoft.ML.Data.Row" Usage="iRowToRowMapper.GetRow (input, active)" />
+      <MemberSignature Language="F#" Value="abstract member GetRow : Microsoft.Data.DataView.Row * Func&lt;int, bool&gt; -&gt; Microsoft.Data.DataView.Row" Usage="iRowToRowMapper.GetRow (input, active)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Data.Row</ReturnType>
+        <ReturnType>Microsoft.Data.DataView.Row</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="input" Type="Microsoft.ML.Data.Row" />
+        <Parameter Name="input" Type="Microsoft.Data.DataView.Row" />
         <Parameter Name="active" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
       </Parameters>
       <Docs>
         <param name="input">To be added.</param>
         <param name="active">To be added.</param>
         <summary>
-             Get an <see cref="T:Microsoft.ML.Data.Row" /> with the indicated active columns, based on the input <paramref name="input" />.
+             Get an <see cref="T:Microsoft.Data.DataView.Row" /> with the indicated active columns, based on the input <paramref name="input" />.
              The active columns are those for which <paramref name="active" /> returns true. Getting values on inactive
              columns of the returned row will throw. Null predicates are disallowed.
             
-             The <see cref="P:Microsoft.ML.Data.Row.Schema" /> of <paramref name="input" /> should be the same object as
+             The <see cref="P:Microsoft.Data.DataView.Row.Schema" /> of <paramref name="input" /> should be the same object as
              <see cref="P:Microsoft.ML.Data.IRowToRowMapper.InputSchema" />. Implementors of this method should throw if that is not the case. Conversely,
              the returned value must have the same schema as <see cref="P:Microsoft.ML.Data.IRowToRowMapper.OutputSchema" />.
             
-             This method creates a live connection between the input <see cref="T:Microsoft.ML.Data.Row" /> and the output <see cref="T:Microsoft.ML.Data.Row" />. In particular, when the getters of the output <see cref="T:Microsoft.ML.Data.Row" /> are invoked, they invoke the
-             getters of the input row and base the output values on the current values of the input <see cref="T:Microsoft.ML.Data.Row" />.
-             The output <see cref="T:Microsoft.ML.Data.Row" /> values are re-computed when requested through the getters. Also, the returned
-             <see cref="T:Microsoft.ML.Data.Row" /> will dispose <paramref name="input" /> when it is disposed.
+             This method creates a live connection between the input <see cref="T:Microsoft.Data.DataView.Row" /> and the output <see cref="T:Microsoft.Data.DataView.Row" />. In particular, when the getters of the output <see cref="T:Microsoft.Data.DataView.Row" /> are invoked, they invoke the
+             getters of the input row and base the output values on the current values of the input <see cref="T:Microsoft.Data.DataView.Row" />.
+             The output <see cref="T:Microsoft.Data.DataView.Row" /> values are re-computed when requested through the getters. Also, the returned
+             <see cref="T:Microsoft.Data.DataView.Row" /> will dispose <paramref name="input" /> when it is disposed.
              </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="InputSchema">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.Schema InputSchema { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Data.Schema InputSchema" />
+      <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.Schema InputSchema { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.Data.DataView.Schema InputSchema" />
       <MemberSignature Language="DocId" Value="P:Microsoft.ML.Data.IRowToRowMapper.InputSchema" />
       <MemberSignature Language="VB.NET" Value="Public ReadOnly Property InputSchema As Schema" />
-      <MemberSignature Language="F#" Value="member this.InputSchema : Microsoft.ML.Data.Schema" Usage="Microsoft.ML.Data.IRowToRowMapper.InputSchema" />
+      <MemberSignature Language="F#" Value="member this.InputSchema : Microsoft.Data.DataView.Schema" Usage="Microsoft.ML.Data.IRowToRowMapper.InputSchema" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Data.Schema</ReturnType>
+        <ReturnType>Microsoft.Data.DataView.Schema</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -111,22 +111,22 @@
       </Docs>
     </Member>
     <Member MemberName="OutputSchema">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.Schema OutputSchema { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Data.Schema OutputSchema" />
+      <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.Schema OutputSchema { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.Data.DataView.Schema OutputSchema" />
       <MemberSignature Language="DocId" Value="P:Microsoft.ML.Data.IRowToRowMapper.OutputSchema" />
       <MemberSignature Language="VB.NET" Value="Public ReadOnly Property OutputSchema As Schema" />
-      <MemberSignature Language="F#" Value="member this.OutputSchema : Microsoft.ML.Data.Schema" Usage="Microsoft.ML.Data.IRowToRowMapper.OutputSchema" />
+      <MemberSignature Language="F#" Value="member this.OutputSchema : Microsoft.Data.DataView.Schema" Usage="Microsoft.ML.Data.IRowToRowMapper.OutputSchema" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Data.Schema</ReturnType>
+        <ReturnType>Microsoft.Data.DataView.Schema</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
-            Gets an instance of <see cref="T:Microsoft.ML.Data.Schema" /> which describes the columns' names and types in the output generated by this mapper.
+            Gets an instance of <see cref="T:Microsoft.Data.DataView.Schema" /> which describes the columns' names and types in the output generated by this mapper.
             </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>

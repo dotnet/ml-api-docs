@@ -50,11 +50,11 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public IidChangePointEstimator (Microsoft.ML.IHostEnvironment env, string inputColumn, string outputColumn, int confidence, int changeHistoryLength, Microsoft.ML.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase&lt;float,Microsoft.ML.TimeSeriesProcessing.IidAnomalyDetectionBase.State&gt;.MartingaleType martingale = Microsoft.ML.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase&lt;System.Single,Microsoft.ML.TimeSeriesProcessing.IidAnomalyDetectionBase+State&gt;+MartingaleType.Power, double eps = 0.1);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, string inputColumn, string outputColumn, int32 confidence, int32 changeHistoryLength, valuetype Microsoft.ML.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2/MartingaleType&lt;float32, class Microsoft.ML.TimeSeriesProcessing.IidAnomalyDetectionBase/State&gt; martingale, float64 eps) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TimeSeriesProcessing.IidChangePointEstimator.#ctor(Microsoft.ML.IHostEnvironment,System.String,System.String,System.Int32,System.Int32,Microsoft.ML.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.MartingaleType{System.Single,Microsoft.ML.TimeSeriesProcessing.IidAnomalyDetectionBase.State},System.Double)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, inputColumn As String, outputColumn As String, confidence As Integer, changeHistoryLength As Integer, Optional martingale As SequentialAnomalyDetectionTransformBase(Of Single, IidAnomalyDetectionBase.State).MartingaleType = Microsoft.ML.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase&lt;System.Single,Microsoft.ML.TimeSeriesProcessing.IidAnomalyDetectionBase+State&gt;+MartingaleType.Power, Optional eps As Double = 0.1)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.TimeSeriesProcessing.IidChangePointEstimator : Microsoft.ML.IHostEnvironment * string * string * int * int * Microsoft.ML.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase&lt;single, Microsoft.ML.TimeSeriesProcessing.IidAnomalyDetectionBase.State&gt;.MartingaleType * double -&gt; Microsoft.ML.TimeSeriesProcessing.IidChangePointEstimator" Usage="new Microsoft.ML.TimeSeriesProcessing.IidChangePointEstimator (env, inputColumn, outputColumn, confidence, changeHistoryLength, martingale, eps)" />
+      <MemberSignature Language="C#" Value="public IidChangePointEstimator (Microsoft.ML.IHostEnvironment env, string outputColumnName, int confidence, int changeHistoryLength, string inputColumnName, Microsoft.ML.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase&lt;float,Microsoft.ML.TimeSeriesProcessing.IidAnomalyDetectionBase.State&gt;.MartingaleType martingale = Microsoft.ML.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase&lt;System.Single,Microsoft.ML.TimeSeriesProcessing.IidAnomalyDetectionBase+State&gt;+MartingaleType.Power, double eps = 0.1);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, string outputColumnName, int32 confidence, int32 changeHistoryLength, string inputColumnName, valuetype Microsoft.ML.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2/MartingaleType&lt;float32, class Microsoft.ML.TimeSeriesProcessing.IidAnomalyDetectionBase/State&gt; martingale, float64 eps) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TimeSeriesProcessing.IidChangePointEstimator.#ctor(Microsoft.ML.IHostEnvironment,System.String,System.Int32,System.Int32,System.String,Microsoft.ML.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.MartingaleType{System.Single,Microsoft.ML.TimeSeriesProcessing.IidAnomalyDetectionBase.State},System.Double)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, outputColumnName As String, confidence As Integer, changeHistoryLength As Integer, inputColumnName As String, Optional martingale As SequentialAnomalyDetectionTransformBase(Of Single, IidAnomalyDetectionBase.State).MartingaleType = Microsoft.ML.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase&lt;System.Single,Microsoft.ML.TimeSeriesProcessing.IidAnomalyDetectionBase+State&gt;+MartingaleType.Power, Optional eps As Double = 0.1)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.TimeSeriesProcessing.IidChangePointEstimator : Microsoft.ML.IHostEnvironment * string * int * int * string * Microsoft.ML.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase&lt;single, Microsoft.ML.TimeSeriesProcessing.IidAnomalyDetectionBase.State&gt;.MartingaleType * double -&gt; Microsoft.ML.TimeSeriesProcessing.IidChangePointEstimator" Usage="new Microsoft.ML.TimeSeriesProcessing.IidChangePointEstimator (env, outputColumnName, confidence, changeHistoryLength, inputColumnName, martingale, eps)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
@@ -62,20 +62,20 @@
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
-        <Parameter Name="inputColumn" Type="System.String" />
-        <Parameter Name="outputColumn" Type="System.String" />
+        <Parameter Name="outputColumnName" Type="System.String" />
         <Parameter Name="confidence" Type="System.Int32" />
         <Parameter Name="changeHistoryLength" Type="System.Int32" />
+        <Parameter Name="inputColumnName" Type="System.String" />
         <Parameter Name="martingale" Type="Microsoft.ML.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase&lt;System.Single,Microsoft.ML.TimeSeriesProcessing.IidAnomalyDetectionBase+State&gt;+MartingaleType" />
         <Parameter Name="eps" Type="System.Double" />
       </Parameters>
       <Docs>
         <param name="env">Host Environment.</param>
-        <param name="inputColumn">Name of the input column.</param>
-        <param name="outputColumn">Name of the output column. Column is a vector of type double and size 4.
-            The vector contains Alert, Raw Score, P-Value and Martingale score as first four values.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.
+            Column is a vector of type double and size 4. The vector contains Alert, Raw Score, P-Value and Martingale score as first four values.</param>
         <param name="confidence">The confidence for change point detection in the range [0, 100].</param>
         <param name="changeHistoryLength">The length of the sliding window on p-values for computing the martingale score.</param>
+        <param name="inputColumnName">Name of column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
         <param name="martingale">The martingale used for scoring.</param>
         <param name="eps">The epsilon parameter for the Power martingale.</param>
         <summary>

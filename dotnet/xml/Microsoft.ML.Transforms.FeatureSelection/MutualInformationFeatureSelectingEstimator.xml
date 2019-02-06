@@ -92,28 +92,28 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public MutualInformationFeatureSelectingEstimator (Microsoft.ML.IHostEnvironment env, string inputColumn, string outputColumn = null, string labelColumn = &quot;Label&quot;, int slotsInOutput = 1000, int numBins = 256);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, string inputColumn, string outputColumn, string labelColumn, int32 slotsInOutput, int32 numBins) cil managed" />
+      <MemberSignature Language="C#" Value="public MutualInformationFeatureSelectingEstimator (Microsoft.ML.IHostEnvironment env, string outputColumnName, string inputColumnName = null, string labelColumn = &quot;Label&quot;, int slotsInOutput = 1000, int numBins = 256);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, string outputColumnName, string inputColumnName, string labelColumn, int32 slotsInOutput, int32 numBins) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.FeatureSelection.MutualInformationFeatureSelectingEstimator.#ctor(Microsoft.ML.IHostEnvironment,System.String,System.String,System.String,System.Int32,System.Int32)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, inputColumn As String, Optional outputColumn As String = null, Optional labelColumn As String = &quot;Label&quot;, Optional slotsInOutput As Integer = 1000, Optional numBins As Integer = 256)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.FeatureSelection.MutualInformationFeatureSelectingEstimator : Microsoft.ML.IHostEnvironment * string * string * string * int * int -&gt; Microsoft.ML.Transforms.FeatureSelection.MutualInformationFeatureSelectingEstimator" Usage="new Microsoft.ML.Transforms.FeatureSelection.MutualInformationFeatureSelectingEstimator (env, inputColumn, outputColumn, labelColumn, slotsInOutput, numBins)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, outputColumnName As String, Optional inputColumnName As String = null, Optional labelColumn As String = &quot;Label&quot;, Optional slotsInOutput As Integer = 1000, Optional numBins As Integer = 256)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.FeatureSelection.MutualInformationFeatureSelectingEstimator : Microsoft.ML.IHostEnvironment * string * string * string * int * int -&gt; Microsoft.ML.Transforms.FeatureSelection.MutualInformationFeatureSelectingEstimator" Usage="new Microsoft.ML.Transforms.FeatureSelection.MutualInformationFeatureSelectingEstimator (env, outputColumnName, inputColumnName, labelColumn, slotsInOutput, numBins)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
-        <Parameter Name="inputColumn" Type="System.String" />
-        <Parameter Name="outputColumn" Type="System.String" />
-        <Parameter Name="labelColumn" Type="System.String" />
-        <Parameter Name="slotsInOutput" Type="System.Int32" />
-        <Parameter Name="numBins" Type="System.Int32" />
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" Index="0" />
+        <Parameter Name="outputColumnName" Type="System.String" Index="1" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="inputColumnName" Type="System.String" Index="2" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="labelColumn" Type="System.String" Index="3" />
+        <Parameter Name="slotsInOutput" Type="System.Int32" Index="4" />
+        <Parameter Name="numBins" Type="System.Int32" Index="5" />
       </Parameters>
       <Docs>
         <param name="env">The environment to use.</param>
-        <param name="inputColumn">Name of the input column.</param>
-        <param name="outputColumn">Name of the column resulting from the transformation of <paramref name="inputColumn" />. Null means <paramref name="inputColumn" /> is replaced. </param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
+        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
         <param name="labelColumn">Name of the column to use for labels.</param>
         <param name="slotsInOutput">The maximum number of slots to preserve in the output. The number of slots to preserve is taken across all input columns.</param>
         <param name="numBins">Max number of bins used to approximate mutual information between each input column and the label column. Power of 2 recommended.</param>
@@ -141,14 +141,14 @@
       </Docs>
     </Member>
     <Member MemberName="Fit">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Core.Data.ITransformer Fit (Microsoft.ML.Data.IDataView input);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Core.Data.ITransformer Fit(class Microsoft.ML.Data.IDataView input) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.FeatureSelection.MutualInformationFeatureSelectingEstimator.Fit(Microsoft.ML.Data.IDataView)" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Core.Data.ITransformer Fit (Microsoft.Data.DataView.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Core.Data.ITransformer Fit(class Microsoft.Data.DataView.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.FeatureSelection.MutualInformationFeatureSelectingEstimator.Fit(Microsoft.Data.DataView.IDataView)" />
       <MemberSignature Language="VB.NET" Value="Public Function Fit (input As IDataView) As ITransformer" />
-      <MemberSignature Language="F#" Value="abstract member Fit : Microsoft.ML.Data.IDataView -&gt; Microsoft.ML.Core.Data.ITransformer&#xA;override this.Fit : Microsoft.ML.Data.IDataView -&gt; Microsoft.ML.Core.Data.ITransformer" Usage="mutualInformationFeatureSelectingEstimator.Fit input" />
+      <MemberSignature Language="F#" Value="abstract member Fit : Microsoft.Data.DataView.IDataView -&gt; Microsoft.ML.Core.Data.ITransformer&#xA;override this.Fit : Microsoft.Data.DataView.IDataView -&gt; Microsoft.ML.Core.Data.ITransformer" Usage="mutualInformationFeatureSelectingEstimator.Fit input" />
       <MemberType>Method</MemberType>
       <Implements>
-        <InterfaceMember>M:Microsoft.ML.Core.Data.IEstimator`1.Fit(Microsoft.ML.Data.IDataView)</InterfaceMember>
+        <InterfaceMember>M:Microsoft.ML.Core.Data.IEstimator`1.Fit(Microsoft.Data.DataView.IDataView)</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
@@ -158,7 +158,7 @@
         <ReturnType>Microsoft.ML.Core.Data.ITransformer</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="input" Type="Microsoft.ML.Data.IDataView" />
+        <Parameter Name="input" Type="Microsoft.Data.DataView.IDataView" />
       </Parameters>
       <Docs>
         <param name="input">To be added.</param>

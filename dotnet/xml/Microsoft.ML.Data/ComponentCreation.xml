@@ -20,52 +20,6 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName="CreateDataView&lt;TRow&gt;">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.IDataView CreateDataView&lt;TRow&gt; (this Microsoft.ML.IHostEnvironment env, System.Collections.Generic.IList&lt;TRow&gt; data, Microsoft.ML.Data.SchemaDefinition schemaDefinition = null) where TRow : class;" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.IDataView CreateDataView&lt;class TRow&gt;(class Microsoft.ML.IHostEnvironment env, class System.Collections.Generic.IList`1&lt;!!TRow&gt; data, class Microsoft.ML.Data.SchemaDefinition schemaDefinition) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.ComponentCreation.CreateDataView``1(Microsoft.ML.IHostEnvironment,System.Collections.Generic.IList{``0},Microsoft.ML.Data.SchemaDefinition)" />
-      <MemberSignature Language="F#" Value="static member CreateDataView : Microsoft.ML.IHostEnvironment * System.Collections.Generic.IList&lt;'Row (requires 'Row : null)&gt; * Microsoft.ML.Data.SchemaDefinition -&gt; Microsoft.ML.Data.IDataView (requires 'Row : null)" Usage="Microsoft.ML.Data.ComponentCreation.CreateDataView (env, data, schemaDefinition)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Data.IDataView</ReturnType>
-      </ReturnValue>
-      <TypeParameters>
-        <TypeParameter Name="TRow">
-          <Constraints>
-            <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
-          </Constraints>
-        </TypeParameter>
-      </TypeParameters>
-      <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" RefType="this" />
-        <Parameter Name="data" Type="System.Collections.Generic.IList&lt;TRow&gt;" />
-        <Parameter Name="schemaDefinition" Type="Microsoft.ML.Data.SchemaDefinition" />
-      </Parameters>
-      <Docs>
-        <typeparam name="TRow">The user-defined item type.</typeparam>
-        <param name="env">The host environment to use for data view creation.</param>
-        <param name="data">The data to wrap around.</param>
-        <param name="schemaDefinition">The optional schema definition of the data view to create. If <c>null</c>,
-             the schema definition is inferred from <typeparamref name="TRow" />.</param>
-        <summary>
-             Create a new <see cref="T:Microsoft.ML.Data.IDataView" /> over an in-memory collection of the items of user-defined type.
-             The user maintains ownership of the <paramref name="data" /> and the resulting data view will
-             never alter the contents of the <paramref name="data" />.
-             Since <see cref="T:Microsoft.ML.Data.IDataView" /> is assumed to be immutable, the user is expected to not
-             modify the contents of <paramref name="data" /> while the data view is being actively cursored.
-            
-             One typical usage for in-memory data view could be: create the data view, train a predictor.
-             Once the predictor is fully trained, modify the contents of the underlying collection and
-             train another predictor.
-             </summary>
-        <returns>The constructed <see cref="T:Microsoft.ML.Data.IDataView" />.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="CreateLoader">
       <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.IDataLoader CreateLoader (this Microsoft.ML.IHostEnvironment env, string settings, Microsoft.ML.Data.IMultiStreamSource files);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.IDataLoader CreateLoader(class Microsoft.ML.IHostEnvironment env, string settings, class Microsoft.ML.Data.IMultiStreamSource files) cil managed" />
@@ -200,59 +154,12 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="CreateStreamingDataView&lt;TRow&gt;">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.IDataView CreateStreamingDataView&lt;TRow&gt; (this Microsoft.ML.IHostEnvironment env, System.Collections.Generic.IEnumerable&lt;TRow&gt; data, Microsoft.ML.Data.SchemaDefinition schemaDefinition = null) where TRow : class;" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.IDataView CreateStreamingDataView&lt;class TRow&gt;(class Microsoft.ML.IHostEnvironment env, class System.Collections.Generic.IEnumerable`1&lt;!!TRow&gt; data, class Microsoft.ML.Data.SchemaDefinition schemaDefinition) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.ComponentCreation.CreateStreamingDataView``1(Microsoft.ML.IHostEnvironment,System.Collections.Generic.IEnumerable{``0},Microsoft.ML.Data.SchemaDefinition)" />
-      <MemberSignature Language="F#" Value="static member CreateStreamingDataView : Microsoft.ML.IHostEnvironment * seq&lt;'Row (requires 'Row : null)&gt; * Microsoft.ML.Data.SchemaDefinition -&gt; Microsoft.ML.Data.IDataView (requires 'Row : null)" Usage="Microsoft.ML.Data.ComponentCreation.CreateStreamingDataView (env, data, schemaDefinition)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Data.IDataView</ReturnType>
-      </ReturnValue>
-      <TypeParameters>
-        <TypeParameter Name="TRow">
-          <Constraints>
-            <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
-          </Constraints>
-        </TypeParameter>
-      </TypeParameters>
-      <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" RefType="this" />
-        <Parameter Name="data" Type="System.Collections.Generic.IEnumerable&lt;TRow&gt;" />
-        <Parameter Name="schemaDefinition" Type="Microsoft.ML.Data.SchemaDefinition" />
-      </Parameters>
-      <Docs>
-        <typeparam name="TRow">The user-defined item type.</typeparam>
-        <param name="env">The host environment to use for data view creation.</param>
-        <param name="data">The data to wrap around.</param>
-        <param name="schemaDefinition">The optional schema definition of the data view to create. If <c>null</c>,
-             the schema definition is inferred from <typeparamref name="TRow" />.</param>
-        <summary>
-             Create a new <see cref="T:Microsoft.ML.Data.IDataView" /> over an enumerable of the items of user-defined type.
-             The user maintains ownership of the <paramref name="data" /> and the resulting data view will
-             never alter the contents of the <paramref name="data" />.
-             Since <see cref="T:Microsoft.ML.Data.IDataView" /> is assumed to be immutable, the user is expected to support
-             multiple enumeration of the <paramref name="data" /> that would return the same results, unless
-             the user knows that the data will only be cursored once.
-            
-             One typical usage for streaming data view could be: create the data view that lazily loads data
-             as needed, then apply pre-trained transformations to it and cursor through it for transformation
-             results.
-             </summary>
-        <returns>The constructed <see cref="T:Microsoft.ML.Data.IDataView" />.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="CreateTransform">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.IDataTransform CreateTransform (this Microsoft.ML.IHostEnvironment env, string settings, Microsoft.ML.Data.IDataView source);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.IDataTransform CreateTransform(class Microsoft.ML.IHostEnvironment env, string settings, class Microsoft.ML.Data.IDataView source) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.ComponentCreation.CreateTransform(Microsoft.ML.IHostEnvironment,System.String,Microsoft.ML.Data.IDataView)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.IDataTransform CreateTransform (this Microsoft.ML.IHostEnvironment env, string settings, Microsoft.Data.DataView.IDataView source);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.IDataTransform CreateTransform(class Microsoft.ML.IHostEnvironment env, string settings, class Microsoft.Data.DataView.IDataView source) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.ComponentCreation.CreateTransform(Microsoft.ML.IHostEnvironment,System.String,Microsoft.Data.DataView.IDataView)" />
       <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function CreateTransform (env As IHostEnvironment, settings As String, source As IDataView) As IDataTransform" />
-      <MemberSignature Language="F#" Value="static member CreateTransform : Microsoft.ML.IHostEnvironment * string * Microsoft.ML.Data.IDataView -&gt; Microsoft.ML.Data.IDataTransform" Usage="Microsoft.ML.Data.ComponentCreation.CreateTransform (env, settings, source)" />
+      <MemberSignature Language="F#" Value="static member CreateTransform : Microsoft.ML.IHostEnvironment * string * Microsoft.Data.DataView.IDataView -&gt; Microsoft.ML.Data.IDataTransform" Usage="Microsoft.ML.Data.ComponentCreation.CreateTransform (env, settings, source)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -264,7 +171,7 @@
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" RefType="this" />
         <Parameter Name="settings" Type="System.String" />
-        <Parameter Name="source" Type="Microsoft.ML.Data.IDataView" />
+        <Parameter Name="source" Type="Microsoft.Data.DataView.IDataView" />
       </Parameters>
       <Docs>
         <param name="env">To be added.</param>
@@ -278,11 +185,11 @@
       </Docs>
     </Member>
     <Member MemberName="CreateTransform&lt;TArgs&gt;">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.IDataTransform CreateTransform&lt;TArgs&gt; (this Microsoft.ML.IHostEnvironment env, TArgs arguments, Microsoft.ML.Data.IDataView source) where TArgs : class, new();" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.IDataTransform CreateTransform&lt;class .ctor TArgs&gt;(class Microsoft.ML.IHostEnvironment env, !!TArgs arguments, class Microsoft.ML.Data.IDataView source) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.ComponentCreation.CreateTransform``1(Microsoft.ML.IHostEnvironment,``0,Microsoft.ML.Data.IDataView)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.IDataTransform CreateTransform&lt;TArgs&gt; (this Microsoft.ML.IHostEnvironment env, TArgs arguments, Microsoft.Data.DataView.IDataView source) where TArgs : class, new();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.IDataTransform CreateTransform&lt;class .ctor TArgs&gt;(class Microsoft.ML.IHostEnvironment env, !!TArgs arguments, class Microsoft.Data.DataView.IDataView source) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.ComponentCreation.CreateTransform``1(Microsoft.ML.IHostEnvironment,``0,Microsoft.Data.DataView.IDataView)" />
       <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function CreateTransform(Of TArgs As {Class, New}) (env As IHostEnvironment, arguments As TArgs, source As IDataView) As IDataTransform" />
-      <MemberSignature Language="F#" Value="static member CreateTransform : Microsoft.ML.IHostEnvironment * 'Args * Microsoft.ML.Data.IDataView -&gt; Microsoft.ML.Data.IDataTransform (requires 'Args : null and 'Args : (new : unit -&gt; 'Args))" Usage="Microsoft.ML.Data.ComponentCreation.CreateTransform (env, arguments, source)" />
+      <MemberSignature Language="F#" Value="static member CreateTransform : Microsoft.ML.IHostEnvironment * 'Args * Microsoft.Data.DataView.IDataView -&gt; Microsoft.ML.Data.IDataTransform (requires 'Args : null and 'Args : (new : unit -&gt; 'Args))" Usage="Microsoft.ML.Data.ComponentCreation.CreateTransform (env, arguments, source)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -302,7 +209,7 @@
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" RefType="this" />
         <Parameter Name="arguments" Type="TArgs" />
-        <Parameter Name="source" Type="Microsoft.ML.Data.IDataView" />
+        <Parameter Name="source" Type="Microsoft.Data.DataView.IDataView" />
       </Parameters>
       <Docs>
         <typeparam name="TArgs">To be added.</typeparam>
@@ -345,23 +252,23 @@
       </Docs>
     </Member>
     <Member MemberName="LoadTransforms">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.IDataView LoadTransforms (this Microsoft.ML.IHostEnvironment env, System.IO.Stream modelStream, Microsoft.ML.Data.IDataView data);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.IDataView LoadTransforms(class Microsoft.ML.IHostEnvironment env, class System.IO.Stream modelStream, class Microsoft.ML.Data.IDataView data) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.ComponentCreation.LoadTransforms(Microsoft.ML.IHostEnvironment,System.IO.Stream,Microsoft.ML.Data.IDataView)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.Data.DataView.IDataView LoadTransforms (this Microsoft.ML.IHostEnvironment env, System.IO.Stream modelStream, Microsoft.Data.DataView.IDataView data);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.Data.DataView.IDataView LoadTransforms(class Microsoft.ML.IHostEnvironment env, class System.IO.Stream modelStream, class Microsoft.Data.DataView.IDataView data) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.ComponentCreation.LoadTransforms(Microsoft.ML.IHostEnvironment,System.IO.Stream,Microsoft.Data.DataView.IDataView)" />
       <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function LoadTransforms (env As IHostEnvironment, modelStream As Stream, data As IDataView) As IDataView" />
-      <MemberSignature Language="F#" Value="static member LoadTransforms : Microsoft.ML.IHostEnvironment * System.IO.Stream * Microsoft.ML.Data.IDataView -&gt; Microsoft.ML.Data.IDataView" Usage="Microsoft.ML.Data.ComponentCreation.LoadTransforms (env, modelStream, data)" />
+      <MemberSignature Language="F#" Value="static member LoadTransforms : Microsoft.ML.IHostEnvironment * System.IO.Stream * Microsoft.Data.DataView.IDataView -&gt; Microsoft.Data.DataView.IDataView" Usage="Microsoft.ML.Data.ComponentCreation.LoadTransforms (env, modelStream, data)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Data.IDataView</ReturnType>
+        <ReturnType>Microsoft.Data.DataView.IDataView</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" RefType="this" />
         <Parameter Name="modelStream" Type="System.IO.Stream" />
-        <Parameter Name="data" Type="Microsoft.ML.Data.IDataView" />
+        <Parameter Name="data" Type="Microsoft.Data.DataView.IDataView" />
       </Parameters>
       <Docs>
         <param name="env">The host environment to use.</param>
@@ -376,23 +283,70 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Zip">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.IDataView Zip (this Microsoft.ML.IHostEnvironment env, System.Collections.Generic.IEnumerable&lt;Microsoft.ML.Data.IDataView&gt; sources);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.IDataView Zip(class Microsoft.ML.IHostEnvironment env, class System.Collections.Generic.IEnumerable`1&lt;class Microsoft.ML.Data.IDataView&gt; sources) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.ComponentCreation.Zip(Microsoft.ML.IHostEnvironment,System.Collections.Generic.IEnumerable{Microsoft.ML.Data.IDataView})" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function Zip (env As IHostEnvironment, sources As IEnumerable(Of IDataView)) As IDataView" />
-      <MemberSignature Language="F#" Value="static member Zip : Microsoft.ML.IHostEnvironment * seq&lt;Microsoft.ML.Data.IDataView&gt; -&gt; Microsoft.ML.Data.IDataView" Usage="Microsoft.ML.Data.ComponentCreation.Zip (env, sources)" />
+    <Member MemberName="ReadFromEnumerable&lt;TRow&gt;">
+      <MemberSignature Language="C#" Value="public static Microsoft.Data.DataView.IDataView ReadFromEnumerable&lt;TRow&gt; (this Microsoft.ML.DataOperationsCatalog catalog, System.Collections.Generic.IEnumerable&lt;TRow&gt; data, Microsoft.ML.Data.SchemaDefinition schemaDefinition = null) where TRow : class;" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.Data.DataView.IDataView ReadFromEnumerable&lt;class TRow&gt;(class Microsoft.ML.DataOperationsCatalog catalog, class System.Collections.Generic.IEnumerable`1&lt;!!TRow&gt; data, class Microsoft.ML.Data.SchemaDefinition schemaDefinition) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.ComponentCreation.ReadFromEnumerable``1(Microsoft.ML.DataOperationsCatalog,System.Collections.Generic.IEnumerable{``0},Microsoft.ML.Data.SchemaDefinition)" />
+      <MemberSignature Language="F#" Value="static member ReadFromEnumerable : Microsoft.ML.DataOperationsCatalog * seq&lt;'Row (requires 'Row : null)&gt; * Microsoft.ML.Data.SchemaDefinition -&gt; Microsoft.Data.DataView.IDataView (requires 'Row : null)" Usage="Microsoft.ML.Data.ComponentCreation.ReadFromEnumerable (catalog, data, schemaDefinition)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Data.IDataView</ReturnType>
+        <ReturnType>Microsoft.Data.DataView.IDataView</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TRow">
+          <Constraints>
+            <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="catalog" Type="Microsoft.ML.DataOperationsCatalog" RefType="this" />
+        <Parameter Name="data" Type="System.Collections.Generic.IEnumerable&lt;TRow&gt;" />
+        <Parameter Name="schemaDefinition" Type="Microsoft.ML.Data.SchemaDefinition" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TRow">The user-defined item type.</typeparam>
+        <param name="catalog">The context to use for data view creation.</param>
+        <param name="data">The data to wrap around.</param>
+        <param name="schemaDefinition">The optional schema definition of the data view to create. If <c>null</c>,
+             the schema definition is inferred from <typeparamref name="TRow" />.</param>
+        <summary>
+             Create a new <see cref="T:Microsoft.Data.DataView.IDataView" /> over an enumerable of the items of user-defined type.
+             The user maintains ownership of the <paramref name="data" /> and the resulting data view will
+             never alter the contents of the <paramref name="data" />.
+             Since <see cref="T:Microsoft.Data.DataView.IDataView" /> is assumed to be immutable, the user is expected to support
+             multiple enumeration of the <paramref name="data" /> that would return the same results, unless
+             the user knows that the data will only be cursored once.
+            
+             One typical usage for streaming data view could be: create the data view that lazily loads data
+             as needed, then apply pre-trained transformations to it and cursor through it for transformation
+             results.
+             </summary>
+        <returns>The constructed <see cref="T:Microsoft.Data.DataView.IDataView" />.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Zip">
+      <MemberSignature Language="C#" Value="public static Microsoft.Data.DataView.IDataView Zip (this Microsoft.ML.IHostEnvironment env, System.Collections.Generic.IEnumerable&lt;Microsoft.Data.DataView.IDataView&gt; sources);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.Data.DataView.IDataView Zip(class Microsoft.ML.IHostEnvironment env, class System.Collections.Generic.IEnumerable`1&lt;class Microsoft.Data.DataView.IDataView&gt; sources) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.ComponentCreation.Zip(Microsoft.ML.IHostEnvironment,System.Collections.Generic.IEnumerable{Microsoft.Data.DataView.IDataView})" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function Zip (env As IHostEnvironment, sources As IEnumerable(Of IDataView)) As IDataView" />
+      <MemberSignature Language="F#" Value="static member Zip : Microsoft.ML.IHostEnvironment * seq&lt;Microsoft.Data.DataView.IDataView&gt; -&gt; Microsoft.Data.DataView.IDataView" Usage="Microsoft.ML.Data.ComponentCreation.Zip (env, sources)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.Data.DataView.IDataView</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" RefType="this" />
-        <Parameter Name="sources" Type="System.Collections.Generic.IEnumerable&lt;Microsoft.ML.Data.IDataView&gt;" />
+        <Parameter Name="sources" Type="System.Collections.Generic.IEnumerable&lt;Microsoft.Data.DataView.IDataView&gt;" />
       </Parameters>
       <Docs>
         <param name="env">The host environment to use.</param>

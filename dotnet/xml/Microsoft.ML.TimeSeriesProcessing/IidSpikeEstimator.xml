@@ -50,11 +50,11 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public IidSpikeEstimator (Microsoft.ML.IHostEnvironment env, string inputColumn, string outputColumn, int confidence, int pvalueHistoryLength, Microsoft.ML.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase&lt;float,Microsoft.ML.TimeSeriesProcessing.IidAnomalyDetectionBase.State&gt;.AnomalySide side = Microsoft.ML.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase&lt;System.Single,Microsoft.ML.TimeSeriesProcessing.IidAnomalyDetectionBase+State&gt;+AnomalySide.TwoSided);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, string inputColumn, string outputColumn, int32 confidence, int32 pvalueHistoryLength, valuetype Microsoft.ML.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2/AnomalySide&lt;float32, class Microsoft.ML.TimeSeriesProcessing.IidAnomalyDetectionBase/State&gt; side) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TimeSeriesProcessing.IidSpikeEstimator.#ctor(Microsoft.ML.IHostEnvironment,System.String,System.String,System.Int32,System.Int32,Microsoft.ML.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.AnomalySide{System.Single,Microsoft.ML.TimeSeriesProcessing.IidAnomalyDetectionBase.State})" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, inputColumn As String, outputColumn As String, confidence As Integer, pvalueHistoryLength As Integer, Optional side As SequentialAnomalyDetectionTransformBase(Of Single, IidAnomalyDetectionBase.State).AnomalySide = Microsoft.ML.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase&lt;System.Single,Microsoft.ML.TimeSeriesProcessing.IidAnomalyDetectionBase+State&gt;+AnomalySide.TwoSided)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.TimeSeriesProcessing.IidSpikeEstimator : Microsoft.ML.IHostEnvironment * string * string * int * int * Microsoft.ML.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase&lt;single, Microsoft.ML.TimeSeriesProcessing.IidAnomalyDetectionBase.State&gt;.AnomalySide -&gt; Microsoft.ML.TimeSeriesProcessing.IidSpikeEstimator" Usage="new Microsoft.ML.TimeSeriesProcessing.IidSpikeEstimator (env, inputColumn, outputColumn, confidence, pvalueHistoryLength, side)" />
+      <MemberSignature Language="C#" Value="public IidSpikeEstimator (Microsoft.ML.IHostEnvironment env, string outputColumnName, int confidence, int pvalueHistoryLength, string inputColumnName, Microsoft.ML.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase&lt;float,Microsoft.ML.TimeSeriesProcessing.IidAnomalyDetectionBase.State&gt;.AnomalySide side = Microsoft.ML.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase&lt;System.Single,Microsoft.ML.TimeSeriesProcessing.IidAnomalyDetectionBase+State&gt;+AnomalySide.TwoSided);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, string outputColumnName, int32 confidence, int32 pvalueHistoryLength, string inputColumnName, valuetype Microsoft.ML.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2/AnomalySide&lt;float32, class Microsoft.ML.TimeSeriesProcessing.IidAnomalyDetectionBase/State&gt; side) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TimeSeriesProcessing.IidSpikeEstimator.#ctor(Microsoft.ML.IHostEnvironment,System.String,System.Int32,System.Int32,System.String,Microsoft.ML.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase`2.AnomalySide{System.Single,Microsoft.ML.TimeSeriesProcessing.IidAnomalyDetectionBase.State})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, outputColumnName As String, confidence As Integer, pvalueHistoryLength As Integer, inputColumnName As String, Optional side As SequentialAnomalyDetectionTransformBase(Of Single, IidAnomalyDetectionBase.State).AnomalySide = Microsoft.ML.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase&lt;System.Single,Microsoft.ML.TimeSeriesProcessing.IidAnomalyDetectionBase+State&gt;+AnomalySide.TwoSided)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.TimeSeriesProcessing.IidSpikeEstimator : Microsoft.ML.IHostEnvironment * string * int * int * string * Microsoft.ML.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase&lt;single, Microsoft.ML.TimeSeriesProcessing.IidAnomalyDetectionBase.State&gt;.AnomalySide -&gt; Microsoft.ML.TimeSeriesProcessing.IidSpikeEstimator" Usage="new Microsoft.ML.TimeSeriesProcessing.IidSpikeEstimator (env, outputColumnName, confidence, pvalueHistoryLength, inputColumnName, side)" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
@@ -62,19 +62,19 @@
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
-        <Parameter Name="inputColumn" Type="System.String" />
-        <Parameter Name="outputColumn" Type="System.String" />
+        <Parameter Name="outputColumnName" Type="System.String" />
         <Parameter Name="confidence" Type="System.Int32" />
         <Parameter Name="pvalueHistoryLength" Type="System.Int32" />
+        <Parameter Name="inputColumnName" Type="System.String" />
         <Parameter Name="side" Type="Microsoft.ML.TimeSeriesProcessing.SequentialAnomalyDetectionTransformBase&lt;System.Single,Microsoft.ML.TimeSeriesProcessing.IidAnomalyDetectionBase+State&gt;+AnomalySide" />
       </Parameters>
       <Docs>
         <param name="env">Host Environment.</param>
-        <param name="inputColumn">Name of the input column.</param>
-        <param name="outputColumn">Name of the output column. Column is a vector of type double and size 3.
-            The vector contains Alert, Raw Score, P-Value as first three values.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.
+            Column is a vector of type double and size 4. The vector contains Alert, Raw Score, P-Value as first three values.</param>
         <param name="confidence">The confidence for spike detection in the range [0, 100].</param>
         <param name="pvalueHistoryLength">The size of the sliding window for computing the p-value.</param>
+        <param name="inputColumnName">Name of column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
         <param name="side">The argument that determines whether to detect positive or negative anomalies, or both.</param>
         <summary>
             Create a new instance of <see cref="T:Microsoft.ML.TimeSeriesProcessing.IidSpikeEstimator" /></summary>
