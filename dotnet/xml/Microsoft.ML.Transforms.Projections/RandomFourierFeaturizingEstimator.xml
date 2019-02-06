@@ -18,69 +18,11 @@
   </Interfaces>
   <Docs>
     <summary>
-            Estimator which takes set of vector columns and maps its input to a random low-dimensional feature space.
+            Maps vector columns to a low -dimensional feature space.
             </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public RandomFourierFeaturizingEstimator (Microsoft.ML.IHostEnvironment env, params Microsoft.ML.Transforms.Projections.RandomFourierFeaturizingTransformer.ColumnInfo[] columns);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, class Microsoft.ML.Transforms.Projections.RandomFourierFeaturizingTransformer/ColumnInfo[] columns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Projections.RandomFourierFeaturizingEstimator.#ctor(Microsoft.ML.IHostEnvironment,Microsoft.ML.Transforms.Projections.RandomFourierFeaturizingTransformer.ColumnInfo[])" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, ParamArray columns As RandomFourierFeaturizingTransformer.ColumnInfo())" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Projections.RandomFourierFeaturizingEstimator : Microsoft.ML.IHostEnvironment * Microsoft.ML.Transforms.Projections.RandomFourierFeaturizingTransformer.ColumnInfo[] -&gt; Microsoft.ML.Transforms.Projections.RandomFourierFeaturizingEstimator" Usage="new Microsoft.ML.Transforms.Projections.RandomFourierFeaturizingEstimator (env, columns)" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
-        <Parameter Name="columns" Type="Microsoft.ML.Transforms.Projections.RandomFourierFeaturizingTransformer+ColumnInfo[]">
-          <Attributes>
-            <Attribute>
-              <AttributeName>System.ParamArray</AttributeName>
-            </Attribute>
-          </Attributes>
-        </Parameter>
-      </Parameters>
-      <Docs>
-        <param name="env">To be added.</param>
-        <param name="columns">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public RandomFourierFeaturizingEstimator (Microsoft.ML.IHostEnvironment env, string outputColumnName, string inputColumnName = null, int newDim = 1000, bool useSin = false);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, string outputColumnName, string inputColumnName, int32 newDim, bool useSin) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Projections.RandomFourierFeaturizingEstimator.#ctor(Microsoft.ML.IHostEnvironment,System.String,System.String,System.Int32,System.Boolean)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, outputColumnName As String, Optional inputColumnName As String = null, Optional newDim As Integer = 1000, Optional useSin As Boolean = false)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.Projections.RandomFourierFeaturizingEstimator : Microsoft.ML.IHostEnvironment * string * string * int * bool -&gt; Microsoft.ML.Transforms.Projections.RandomFourierFeaturizingEstimator" Usage="new Microsoft.ML.Transforms.Projections.RandomFourierFeaturizingEstimator (env, outputColumnName, inputColumnName, newDim, useSin)" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" Index="0" />
-        <Parameter Name="outputColumnName" Type="System.String" Index="1" FrameworkAlternate="ml-dotnet" />
-        <Parameter Name="inputColumnName" Type="System.String" Index="2" FrameworkAlternate="ml-dotnet" />
-        <Parameter Name="newDim" Type="System.Int32" Index="3" />
-        <Parameter Name="useSin" Type="System.Boolean" Index="4" />
-      </Parameters>
-      <Docs>
-        <param name="env">Host Environment.</param>
-        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
-        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
-        <param name="newDim">The number of random Fourier features to create.</param>
-        <param name="useSin">Create two features for every random Fourier frequency? (one for cos and one for sin).</param>
-        <summary>
-            Convinence constructor for simple one column case
-            </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Fit">
       <MemberSignature Language="C#" Value="public Microsoft.ML.Transforms.Projections.RandomFourierFeaturizingTransformer Fit (Microsoft.Data.DataView.IDataView input);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Transforms.Projections.RandomFourierFeaturizingTransformer Fit(class Microsoft.Data.DataView.IDataView input) cil managed" />
@@ -103,7 +45,9 @@
       </Parameters>
       <Docs>
         <param name="input">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>
+            Trains and returns a <see cref="T:Microsoft.ML.Transforms.Projections.RandomFourierFeaturizingTransformer" />.
+            </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -130,7 +74,10 @@
       </Parameters>
       <Docs>
         <param name="inputSchema">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>
+            Returns the <see cref="T:Microsoft.ML.Core.Data.SchemaShape" /> of the schema which will be produced by the transformer.
+            Used for schema propagation and verification in a pipeline.
+            </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>

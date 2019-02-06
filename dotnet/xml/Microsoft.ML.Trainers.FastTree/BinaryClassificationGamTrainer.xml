@@ -1,9 +1,9 @@
 ﻿<Type Name="BinaryClassificationGamTrainer" FullName="Microsoft.ML.Trainers.FastTree.BinaryClassificationGamTrainer">
-  <TypeSignature Language="C#" Value="public sealed class BinaryClassificationGamTrainer : Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;Microsoft.ML.Trainers.FastTree.BinaryClassificationGamTrainer.Options,Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.IPredictorProducing&lt;float&gt;&gt;,Microsoft.ML.IPredictorProducing&lt;float&gt;&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit BinaryClassificationGamTrainer extends Microsoft.ML.Trainers.FastTree.GamTrainerBase`3&lt;class Microsoft.ML.Trainers.FastTree.BinaryClassificationGamTrainer/Options, class Microsoft.ML.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.IPredictorProducing`1&lt;float32&gt;&gt;, class Microsoft.ML.IPredictorProducing`1&lt;float32&gt;&gt;" />
+  <TypeSignature Language="C#" Value="public sealed class BinaryClassificationGamTrainer : Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;Microsoft.ML.Trainers.FastTree.BinaryClassificationGamTrainer.Options,Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Internal.Calibration.CalibratedPredictorBase&gt;,Microsoft.ML.Internal.Calibration.CalibratedPredictorBase&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit BinaryClassificationGamTrainer extends Microsoft.ML.Trainers.FastTree.GamTrainerBase`3&lt;class Microsoft.ML.Trainers.FastTree.BinaryClassificationGamTrainer/Options, class Microsoft.ML.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.Internal.Calibration.CalibratedPredictorBase&gt;, class Microsoft.ML.Internal.Calibration.CalibratedPredictorBase&gt;" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Trainers.FastTree.BinaryClassificationGamTrainer" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class BinaryClassificationGamTrainer&#xA;Inherits GamTrainerBase(Of BinaryClassificationGamTrainer.Options, BinaryPredictionTransformer(Of IPredictorProducing(Of Single)), IPredictorProducing(Of Single))" />
-  <TypeSignature Language="F#" Value="type BinaryClassificationGamTrainer = class&#xA;    inherit GamTrainerBase&lt;BinaryClassificationGamTrainer.Options, BinaryPredictionTransformer&lt;IPredictorProducing&lt;single&gt;&gt;, IPredictorProducing&lt;single&gt;&gt;" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class BinaryClassificationGamTrainer&#xA;Inherits GamTrainerBase(Of BinaryClassificationGamTrainer.Options, BinaryPredictionTransformer(Of CalibratedPredictorBase), CalibratedPredictorBase)" />
+  <TypeSignature Language="F#" Value="type BinaryClassificationGamTrainer = class&#xA;    inherit GamTrainerBase&lt;BinaryClassificationGamTrainer.Options, BinaryPredictionTransformer&lt;CalibratedPredictorBase&gt;, CalibratedPredictorBase&gt;" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -12,10 +12,11 @@
     <BaseTypeName>Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;Microsoft.ML.Trainers.FastTree.BinaryClassificationGamTrainer+Arguments,Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.IPredictorProducing&lt;System.Single&gt;&gt;,Microsoft.ML.Runtime.IPredictorProducing&lt;System.Single&gt;&gt;</BaseTypeName>
     <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;Microsoft.ML.Trainers.FastTree.BinaryClassificationGamTrainer+Arguments,Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.IPredictorProducing&lt;System.Single&gt;&gt;,Microsoft.ML.IPredictorProducing&lt;System.Single&gt;&gt;</BaseTypeName>
     <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;Microsoft.ML.Trainers.FastTree.BinaryClassificationGamTrainer+Options,Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.IPredictorProducing&lt;System.Single&gt;&gt;,Microsoft.ML.IPredictorProducing&lt;System.Single&gt;&gt;</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;Microsoft.ML.Trainers.FastTree.BinaryClassificationGamTrainer+Options,Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Internal.Calibration.CalibratedPredictorBase&gt;,Microsoft.ML.Internal.Calibration.CalibratedPredictorBase&gt;</BaseTypeName>
     <BaseTypeArguments>
       <BaseTypeArgument TypeParamName="TArgs">Microsoft.ML.Trainers.FastTree.BinaryClassificationGamTrainer+Options</BaseTypeArgument>
-      <BaseTypeArgument TypeParamName="TTransformer">Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.IPredictorProducing&lt;System.Single&gt;&gt;</BaseTypeArgument>
-      <BaseTypeArgument TypeParamName="TPredictor">Microsoft.ML.IPredictorProducing&lt;System.Single&gt;</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TTransformer">Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Internal.Calibration.CalibratedPredictorBase&gt;</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TPredictor">Microsoft.ML.Internal.Calibration.CalibratedPredictorBase</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
   <Interfaces />
@@ -90,21 +91,21 @@
       </Docs>
     </Member>
     <Member MemberName="MakeTransformer">
-      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.IPredictorProducing&lt;float&gt;&gt; MakeTransformer (Microsoft.ML.IPredictorProducing&lt;float&gt; model, Microsoft.Data.DataView.Schema trainSchema);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.IPredictorProducing`1&lt;float32&gt;&gt; MakeTransformer(class Microsoft.ML.IPredictorProducing`1&lt;float32&gt; model, class Microsoft.Data.DataView.Schema trainSchema) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.BinaryClassificationGamTrainer.MakeTransformer(Microsoft.ML.IPredictorProducing{System.Single},Microsoft.Data.DataView.Schema)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function MakeTransformer (model As IPredictorProducing(Of Single), trainSchema As Schema) As BinaryPredictionTransformer(Of IPredictorProducing(Of Single))" />
-      <MemberSignature Language="F#" Value="override this.MakeTransformer : Microsoft.ML.IPredictorProducing&lt;single&gt; * Microsoft.Data.DataView.Schema -&gt; Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.IPredictorProducing&lt;single&gt;&gt;" Usage="binaryClassificationGamTrainer.MakeTransformer (model, trainSchema)" />
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Internal.Calibration.CalibratedPredictorBase&gt; MakeTransformer (Microsoft.ML.Internal.Calibration.CalibratedPredictorBase model, Microsoft.Data.DataView.Schema trainSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.Internal.Calibration.CalibratedPredictorBase&gt; MakeTransformer(class Microsoft.ML.Internal.Calibration.CalibratedPredictorBase model, class Microsoft.Data.DataView.Schema trainSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.BinaryClassificationGamTrainer.MakeTransformer(Microsoft.ML.Internal.Calibration.CalibratedPredictorBase,Microsoft.Data.DataView.Schema)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function MakeTransformer (model As CalibratedPredictorBase, trainSchema As Schema) As BinaryPredictionTransformer(Of CalibratedPredictorBase)" />
+      <MemberSignature Language="F#" Value="override this.MakeTransformer : Microsoft.ML.Internal.Calibration.CalibratedPredictorBase * Microsoft.Data.DataView.Schema -&gt; Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Internal.Calibration.CalibratedPredictorBase&gt;" Usage="binaryClassificationGamTrainer.MakeTransformer (model, trainSchema)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.IPredictorProducing&lt;System.Single&gt;&gt;</ReturnType>
+        <ReturnType>Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Internal.Calibration.CalibratedPredictorBase&gt;</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="model" Type="Microsoft.ML.IPredictorProducing&lt;System.Single&gt;" />
+        <Parameter Name="model" Type="Microsoft.ML.Internal.Calibration.CalibratedPredictorBase" />
         <Parameter Name="trainSchema" Type="Microsoft.Data.DataView.Schema" />
       </Parameters>
       <Docs>
@@ -136,18 +137,18 @@
       </Docs>
     </Member>
     <Member MemberName="Train">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.IPredictorProducing&lt;float&gt;&gt; Train (Microsoft.Data.DataView.IDataView trainData, Microsoft.Data.DataView.IDataView validationData = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.IPredictorProducing`1&lt;float32&gt;&gt; Train(class Microsoft.Data.DataView.IDataView trainData, class Microsoft.Data.DataView.IDataView validationData) cil managed" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Internal.Calibration.CalibratedPredictorBase&gt; Train (Microsoft.Data.DataView.IDataView trainData, Microsoft.Data.DataView.IDataView validationData = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.Internal.Calibration.CalibratedPredictorBase&gt; Train(class Microsoft.Data.DataView.IDataView trainData, class Microsoft.Data.DataView.IDataView validationData) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.BinaryClassificationGamTrainer.Train(Microsoft.Data.DataView.IDataView,Microsoft.Data.DataView.IDataView)" />
-      <MemberSignature Language="VB.NET" Value="Public Function Train (trainData As IDataView, Optional validationData As IDataView = null) As BinaryPredictionTransformer(Of IPredictorProducing(Of Single))" />
-      <MemberSignature Language="F#" Value="member this.Train : Microsoft.Data.DataView.IDataView * Microsoft.Data.DataView.IDataView -&gt; Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.IPredictorProducing&lt;single&gt;&gt;" Usage="binaryClassificationGamTrainer.Train (trainData, validationData)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Train (trainData As IDataView, Optional validationData As IDataView = null) As BinaryPredictionTransformer(Of CalibratedPredictorBase)" />
+      <MemberSignature Language="F#" Value="member this.Train : Microsoft.Data.DataView.IDataView * Microsoft.Data.DataView.IDataView -&gt; Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Internal.Calibration.CalibratedPredictorBase&gt;" Usage="binaryClassificationGamTrainer.Train (trainData, validationData)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.IPredictorProducing&lt;System.Single&gt;&gt;</ReturnType>
+        <ReturnType>Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Internal.Calibration.CalibratedPredictorBase&gt;</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="trainData" Type="Microsoft.Data.DataView.IDataView" />

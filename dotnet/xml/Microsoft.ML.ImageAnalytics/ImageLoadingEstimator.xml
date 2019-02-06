@@ -1,9 +1,9 @@
 ﻿<Type Name="ImageLoadingEstimator" FullName="Microsoft.ML.ImageAnalytics.ImageLoadingEstimator">
-  <TypeSignature Language="C#" Value="public sealed class ImageLoadingEstimator : Microsoft.ML.Data.TrivialEstimator&lt;Microsoft.ML.ImageAnalytics.ImageLoaderTransformer&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit ImageLoadingEstimator extends Microsoft.ML.Data.TrivialEstimator`1&lt;class Microsoft.ML.ImageAnalytics.ImageLoaderTransformer&gt;" />
+  <TypeSignature Language="C#" Value="public sealed class ImageLoadingEstimator : Microsoft.ML.Data.TrivialEstimator&lt;Microsoft.ML.ImageAnalytics.ImageLoadingTransformer&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit ImageLoadingEstimator extends Microsoft.ML.Data.TrivialEstimator`1&lt;class Microsoft.ML.ImageAnalytics.ImageLoadingTransformer&gt;" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.ImageAnalytics.ImageLoadingEstimator" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class ImageLoadingEstimator&#xA;Inherits TrivialEstimator(Of ImageLoaderTransformer)" />
-  <TypeSignature Language="F#" Value="type ImageLoadingEstimator = class&#xA;    inherit TrivialEstimator&lt;ImageLoaderTransformer&gt;" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class ImageLoadingEstimator&#xA;Inherits TrivialEstimator(Of ImageLoadingTransformer)" />
+  <TypeSignature Language="F#" Value="type ImageLoadingEstimator = class&#xA;    inherit TrivialEstimator&lt;ImageLoadingTransformer&gt;" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.ImageAnalytics</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -11,53 +11,24 @@
   <Base>
     <BaseTypeName>Microsoft.ML.Data.TrivialEstimator&lt;Microsoft.ML.ImageAnalytics.ImageLoaderTransform&gt;</BaseTypeName>
     <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Data.TrivialEstimator&lt;Microsoft.ML.ImageAnalytics.ImageLoaderTransformer&gt;</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Data.TrivialEstimator&lt;Microsoft.ML.ImageAnalytics.ImageLoadingTransformer&gt;</BaseTypeName>
     <BaseTypeArguments>
-      <BaseTypeArgument TypeParamName="!0">Microsoft.ML.ImageAnalytics.ImageLoaderTransformer</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="!0">Microsoft.ML.ImageAnalytics.ImageLoadingTransformer</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
   <Interfaces />
   <Docs>
     <summary>
-            Load images in memory.
+      <see cref="T:Microsoft.ML.Core.Data.IEstimator`1" /> that loads images from the disk.
             </summary>
-    <remarks>To be added.</remarks>
+    <remarks>
+            Calling <see cref="M:Microsoft.ML.Core.Data.IEstimator`1.Fit(Microsoft.Data.DataView.IDataView)" /> in this estimator, produces an <see cref="T:Microsoft.ML.ImageAnalytics.ImageLoadingTransformer" />.
+            Loading is the first step of almost every pipeline that does image processing, and further analysis on images.
+            The images to load need to be in the formats supported by <see cref="T:System.Drawing.Bitmap" />.
+            For end-to-end image processing pipelines, and scenarios in your applications, see the
+            <a href="https://github.com/dotnet/machinelearning-samples/tree/master/samples/csharp/getting-started"> examples in the machinelearning-samples github repository.</a><seealso cref="T:Microsoft.ML.ImageEstimatorsCatalog" /></remarks>
   </Docs>
   <Members>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public ImageLoadingEstimator (Microsoft.ML.IHostEnvironment env, string imageFolder, params ValueTuple&lt;string,string&gt;[] columns);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, string imageFolder, valuetype System.ValueTuple`2&lt;string, string&gt;[] columns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ImageAnalytics.ImageLoadingEstimator.#ctor(Microsoft.ML.IHostEnvironment,System.String,System.ValueTuple{System.String,System.String}[])" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, imageFolder As String, ParamArray columns As ValueTuple(Of String, String)())" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.ImageAnalytics.ImageLoadingEstimator : Microsoft.ML.IHostEnvironment * string * ValueTuple&lt;string, string&gt;[] -&gt; Microsoft.ML.ImageAnalytics.ImageLoadingEstimator" Usage="new Microsoft.ML.ImageAnalytics.ImageLoadingEstimator (env, imageFolder, columns)" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.ImageAnalytics</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
-        <Parameter Name="imageFolder" Type="System.String" />
-        <Parameter Name="columns" Type="System.ValueTuple&lt;System.String,System.String&gt;[]">
-          <Attributes>
-            <Attribute>
-              <AttributeName>System.ParamArray</AttributeName>
-            </Attribute>
-            <Attribute>
-              <AttributeName>System.Runtime.CompilerServices.TupleElementNames(new System.String[] { "input", "output" })</AttributeName>
-            </Attribute>
-          </Attributes>
-        </Parameter>
-      </Parameters>
-      <Docs>
-        <param name="env">The host environment.</param>
-        <param name="imageFolder">Folder where to look for images.</param>
-        <param name="columns">Names of input and output columns.</param>
-        <summary>
-            Load images in memory.
-            </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="GetOutputSchema">
       <MemberSignature Language="C#" Value="public override Microsoft.ML.Core.Data.SchemaShape GetOutputSchema (Microsoft.ML.Core.Data.SchemaShape inputSchema);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Microsoft.ML.Core.Data.SchemaShape GetOutputSchema(class Microsoft.ML.Core.Data.SchemaShape inputSchema) cil managed" />
@@ -77,7 +48,10 @@
       </Parameters>
       <Docs>
         <param name="inputSchema">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>
+            Returns the <see cref="T:Microsoft.ML.Core.Data.SchemaShape" /> of the schema which will be produced by the transformer.
+            Used for schema propagation and verification in a pipeline.
+            </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>

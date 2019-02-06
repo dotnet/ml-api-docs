@@ -20,6 +20,48 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
+    <Member MemberName="BootstrapSample">
+      <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.IDataView BootstrapSample (Microsoft.Data.DataView.IDataView input, Nullable&lt;uint&gt; seed = null, bool complement = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.Data.DataView.IDataView BootstrapSample(class Microsoft.Data.DataView.IDataView input, valuetype System.Nullable`1&lt;unsigned int32&gt; seed, bool complement) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.DataOperationsCatalog.BootstrapSample(Microsoft.Data.DataView.IDataView,System.Nullable{System.UInt32},System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public Function BootstrapSample (input As IDataView, Optional seed As Nullable(Of UInteger) = null, Optional complement As Boolean = false) As IDataView" />
+      <MemberSignature Language="F#" Value="member this.BootstrapSample : Microsoft.Data.DataView.IDataView * Nullable&lt;uint32&gt; * bool -&gt; Microsoft.Data.DataView.IDataView" Usage="dataOperationsCatalog.BootstrapSample (input, seed, complement)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.Data.DataView.IDataView</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.Data.DataView.IDataView" />
+        <Parameter Name="seed" Type="System.Nullable&lt;System.UInt32&gt;" />
+        <Parameter Name="complement" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="input">The input data.</param>
+        <param name="seed">The random seed. If unspecified random state will be instead derived from the <see cref="T:Microsoft.ML.MLContext" />.</param>
+        <param name="complement">Whether this is the out-of-bag sample, that is, all those rows that are not selected by the transform.
+            Can be used to create a complementary pair of samples by using the same seed.</param>
+        <summary>
+            Take an approximate bootstrap sample of <paramref name="input" />.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>
+            This sampler is a streaming version of <a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">bootstrap resampling</a>.
+            Instead of taking the whole dataset into memory and resampling, <see cref="M:Microsoft.ML.DataOperationsCatalog.BootstrapSample(Microsoft.Data.DataView.IDataView,System.Nullable{System.UInt32},System.Boolean)" /> streams through the dataset and
+            uses a <a href="https://en.wikipedia.org/wiki/Poisson_distribution">Poisson</a>(1) distribution to select the number of times a
+            given row will be added to the sample. The <paramref name="complement" /> parameter allows for the creation of a bootstap sample
+            and complementary out-of-bag sample by using the same <paramref name="seed" />.
+            </remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[BootstrapSample](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/DataOperations/BootstrapSample.cs)]
+            ]]></format>
+        </example>
+      </Docs>
+    </Member>
     <Member MemberName="Cache">
       <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.IDataView Cache (Microsoft.Data.DataView.IDataView input, params string[] columnsToPrefetch);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.Data.DataView.IDataView Cache(class Microsoft.Data.DataView.IDataView input, string[] columnsToPrefetch) cil managed" />
@@ -50,12 +92,13 @@
             is acceptable, it means that all columns are only cached at the first access.</param>
         <summary>
             Creates a lazy in-memory cache of <paramref name="input" />.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>
             Caching happens per-column. A column is only cached when it is first accessed.
             In addition, <paramref name="columnsToPrefetch" /> are considered 'always needed', so all of them
             will be cached whenever any data is requested.
-            </summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+            </remarks>
       </Docs>
     </Member>
     <Member MemberName="FilterByColumn">
@@ -84,11 +127,18 @@
         <param name="lowerBound">The inclusive lower bound.</param>
         <param name="upperBound">The exclusive upper bound.</param>
         <summary>
-            Keep only those rows that satisfy the range condition: the value of column <paramref name="columnName" />
-            must be between <paramref name="lowerBound" /> and <paramref name="upperBound" />, inclusive.
+            Filter the dataset by the values of a numeric column.
             </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>
+            Keep only those rows that satisfy the range condition: the value of column <paramref name="columnName" />
+            must be between <paramref name="lowerBound" /> (inclusive) and <paramref name="upperBound" /> (exclusive).
+            </remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[FilterByColumn](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/DataOperations/FilterByColumn.cs)]
+            ]]></format>
+        </example>
       </Docs>
     </Member>
     <Member MemberName="FilterByKeyColumnFraction">
@@ -117,13 +167,60 @@
         <param name="lowerBound">The inclusive lower bound.</param>
         <param name="upperBound">The exclusive upper bound.</param>
         <summary>
+            Filter the dataset by the values of a <see cref="T:Microsoft.ML.Data.KeyType" /> column.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>
             Keep only those rows that satisfy the range condition: the value of a key column <paramref name="columnName" />
-            (treated as a fraction of the entire key range) must be between <paramref name="lowerBound" /> and <paramref name="upperBound" />, inclusive.
-            This filtering is useful if the <paramref name="columnName" /> is a key column obtained by some 'stable randomization'
-            (for example, hashing).
+            (treated as a fraction of the entire key range) must be between <paramref name="lowerBound" /> (inclusive) and <paramref name="upperBound" /> (exclusive).
+            This filtering is useful if the <paramref name="columnName" /> is a key column obtained by some 'stable randomization',
+            for example, hashing.
+            </remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[FilterByKeyColumnFraction](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/DataOperations/FilterByKeyColumnFraction.cs)]
+            ]]></format>
+        </example>
+      </Docs>
+    </Member>
+    <Member MemberName="FilterByMissingValues">
+      <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.IDataView FilterByMissingValues (Microsoft.Data.DataView.IDataView input, params string[] columns);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.Data.DataView.IDataView FilterByMissingValues(class Microsoft.Data.DataView.IDataView input, string[] columns) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.DataOperationsCatalog.FilterByMissingValues(Microsoft.Data.DataView.IDataView,System.String[])" />
+      <MemberSignature Language="VB.NET" Value="Public Function FilterByMissingValues (input As IDataView, ParamArray columns As String()) As IDataView" />
+      <MemberSignature Language="F#" Value="member this.FilterByMissingValues : Microsoft.Data.DataView.IDataView * string[] -&gt; Microsoft.Data.DataView.IDataView" Usage="dataOperationsCatalog.FilterByMissingValues (input, columns)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.Data.DataView.IDataView</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.Data.DataView.IDataView" />
+        <Parameter Name="columns" Type="System.String[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="input">The input data.</param>
+        <param name="columns">Name of the columns to filter on. If a row is has a missing value in any of
+            these columns, it will be dropped from the dataset.</param>
+        <summary>
+            Drop rows where any column in <paramref name="columns" /> contains a missing value.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[FilterByMissingValues](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/DataOperations/FilterByMissingValues.cs)]
+            ]]></format>
+        </example>
       </Docs>
     </Member>
   </Members>
