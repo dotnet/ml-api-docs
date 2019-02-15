@@ -14,7 +14,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+            Arguments class for online linear trainers.
+            </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -34,12 +36,12 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="InitialWeights">
-      <MemberSignature Language="C#" Value="public string InitialWeights;" />
-      <MemberSignature Language="ILAsm" Value=".field public string InitialWeights" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.Online.OnlineLinearArguments.InitialWeights" />
-      <MemberSignature Language="VB.NET" Value="Public InitialWeights As String " />
-      <MemberSignature Language="F#" Value="val mutable InitialWeights : string" Usage="Microsoft.ML.Trainers.Online.OnlineLinearArguments.InitialWeights" />
+    <Member MemberName="InitialWeightsDiameter">
+      <MemberSignature Language="C#" Value="public float InitialWeightsDiameter;" />
+      <MemberSignature Language="ILAsm" Value=".field public float32 InitialWeightsDiameter" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.Online.OnlineLinearArguments.InitialWeightsDiameter" />
+      <MemberSignature Language="VB.NET" Value="Public InitialWeightsDiameter As Single " />
+      <MemberSignature Language="F#" Value="val mutable InitialWeightsDiameter : single" Usage="Microsoft.ML.Trainers.Online.OnlineLinearArguments.InitialWeightsDiameter" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
@@ -47,34 +49,7 @@
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Initial Weights and bias, comma-separated", ShortName="initweights")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>Microsoft.ML.Internal.Internallearn.TGUI(NoSweep=true)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InitWtsDiameter">
-      <MemberSignature Language="C#" Value="public float InitWtsDiameter;" />
-      <MemberSignature Language="ILAsm" Value=".field public float32 InitWtsDiameter" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.Online.OnlineLinearArguments.InitWtsDiameter" />
-      <MemberSignature Language="VB.NET" Value="Public InitWtsDiameter As Single " />
-      <MemberSignature Language="F#" Value="val mutable InitWtsDiameter : single" Usage="Microsoft.ML.Trainers.Online.OnlineLinearArguments.InitWtsDiameter" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Init weights diameter", ShortName="initwts", SortOrder=140)</AttributeName>
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Init weights diameter", ShortName="initwts, initWtsDiameter", SortOrder=140)</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>Microsoft.ML.EntryPoints.TlcModule/SweepableFloatParam("InitWtsDiameter", 0, 1, -1, 5, false)</AttributeName>
@@ -87,16 +62,22 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Initial weights and bias scale.
+            </summary>
+        <returns>
+            This property is only used if the provided value is positive and <see cref="F:Microsoft.ML.Trainers.Online.OnlineLinearArguments.InitialWeights" /> is not specified.
+            The weights and bias will be randomly selected from InitialWeights * [-0.5,0.5] interval with uniform distribution.
+            </returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NumIterations">
-      <MemberSignature Language="C#" Value="public int NumIterations;" />
-      <MemberSignature Language="ILAsm" Value=".field public int32 NumIterations" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.Online.OnlineLinearArguments.NumIterations" />
-      <MemberSignature Language="VB.NET" Value="Public NumIterations As Integer " />
-      <MemberSignature Language="F#" Value="val mutable NumIterations : int" Usage="Microsoft.ML.Trainers.Online.OnlineLinearArguments.NumIterations" />
+    <Member MemberName="NumberOfIterations">
+      <MemberSignature Language="C#" Value="public int NumberOfIterations;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 NumberOfIterations" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.Online.OnlineLinearArguments.NumberOfIterations" />
+      <MemberSignature Language="VB.NET" Value="Public NumberOfIterations As Integer " />
+      <MemberSignature Language="F#" Value="val mutable NumberOfIterations : int" Usage="Microsoft.ML.Trainers.Online.OnlineLinearArguments.NumberOfIterations" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
@@ -104,7 +85,7 @@
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Number of iterations", ShortName="iter", SortOrder=50)</AttributeName>
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Number of iterations", ShortName="iter, numIterations", SortOrder=50)</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>Microsoft.ML.EntryPoints.TlcModule/SweepableLongParam("NumIterations", 1, 100, 10, -1, true)</AttributeName>
@@ -117,7 +98,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Number of passes through the training dataset.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -144,31 +127,13 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="StreamingCacheSize">
-      <MemberSignature Language="C#" Value="public int StreamingCacheSize;" />
-      <MemberSignature Language="ILAsm" Value=".field public int32 StreamingCacheSize" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.Online.OnlineLinearArguments.StreamingCacheSize" />
-      <MemberSignature Language="VB.NET" Value="Public StreamingCacheSize As Integer " />
-      <MemberSignature Language="F#" Value="val mutable StreamingCacheSize : int" Usage="Microsoft.ML.Trainers.Online.OnlineLinearArguments.StreamingCacheSize" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Size of cache when trained in Scope", ShortName="cache")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Determines whether to shuffle data for each training iteration.
+            </summary>
+        <returns>
+          <see langword="true" /> to shuffle data for each training iteration; otherwise, <see langword="false" />.
+            Default is <see langword="true" />.
+            </returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

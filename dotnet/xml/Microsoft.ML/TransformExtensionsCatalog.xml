@@ -173,9 +173,9 @@
         <remarks>
           <see cref="M:Microsoft.ML.TransformExtensionsCatalog.DropColumns(Microsoft.ML.TransformsCatalog,System.String[])" /> is commonly used to remove unwanted columns from the schema if the dataset is going to be serialized or
             written out to a file. It is not actually necessary to drop unused columns before training or
-            performing transforms, as IDataView's lazy evaluation won't actually materialize those columns.
+            performing transforms, as <see cref="T:Microsoft.Data.DataView.IDataView" />'s lazy evaluation won't actually materialize those columns.
             In the case of serialization, every column in the schema will be written out. If you have columns
-            that you don't want to save, you can use DropColumns to remove them from the schema.
+            that you don't want to save, you can use <see cref="M:Microsoft.ML.TransformExtensionsCatalog.DropColumns(Microsoft.ML.TransformsCatalog,System.String[])" /> to remove them from the schema.
             </remarks>
         <example>
           <format type="text/markdown"><![CDATA[
@@ -185,10 +185,54 @@
       </Docs>
     </Member>
     <Member MemberName="SelectColumns">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.ColumnSelectingEstimator SelectColumns (this Microsoft.ML.TransformsCatalog catalog, string[] keepColumns, bool keepHidden = false);" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.ColumnSelectingEstimator SelectColumns (this Microsoft.ML.TransformsCatalog catalog, params string[] keepColumns);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.ColumnSelectingEstimator SelectColumns(class Microsoft.ML.TransformsCatalog catalog, string[] keepColumns) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TransformExtensionsCatalog.SelectColumns(Microsoft.ML.TransformsCatalog,System.String[])" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function SelectColumns (catalog As TransformsCatalog, ParamArray keepColumns As String()) As ColumnSelectingEstimator" />
+      <MemberSignature Language="F#" Value="static member SelectColumns : Microsoft.ML.TransformsCatalog * string[] -&gt; Microsoft.ML.Transforms.ColumnSelectingEstimator" Usage="Microsoft.ML.TransformExtensionsCatalog.SelectColumns (catalog, keepColumns)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Transforms.ColumnSelectingEstimator</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog" RefType="this" />
+        <Parameter Name="keepColumns" Type="System.String[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="catalog">The transform's catalog.</param>
+        <param name="keepColumns">The array of column names to keep.</param>
+        <summary>
+            Select a list of columns to keep in a given <see cref="T:Microsoft.Data.DataView.IDataView" />.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+            <xref:Microsoft.ML.SelectColumns(Microsoft.ML.TransformsCatalog, string[])> operates on the schema of an input <xref:Microsoft.Data.DataView.IDataView>,
+            dropping unselected columns from the schema.
+            ]]></format>
+        </remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[SelectColumns](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/SelectColumns.cs)]
+            ]]></format>
+        </example>
+      </Docs>
+    </Member>
+    <Member MemberName="SelectColumns">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.ColumnSelectingEstimator SelectColumns (this Microsoft.ML.TransformsCatalog catalog, string[] keepColumns, bool keepHidden);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.ColumnSelectingEstimator SelectColumns(class Microsoft.ML.TransformsCatalog catalog, string[] keepColumns, bool keepHidden) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.TransformExtensionsCatalog.SelectColumns(Microsoft.ML.TransformsCatalog,System.String[],System.Boolean)" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function SelectColumns (catalog As TransformsCatalog, keepColumns As String(), Optional keepHidden As Boolean = false) As ColumnSelectingEstimator" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function SelectColumns (catalog As TransformsCatalog, keepColumns As String(), keepHidden As Boolean) As ColumnSelectingEstimator" />
       <MemberSignature Language="F#" Value="static member SelectColumns : Microsoft.ML.TransformsCatalog * string[] * bool -&gt; Microsoft.ML.Transforms.ColumnSelectingEstimator" Usage="Microsoft.ML.TransformExtensionsCatalog.SelectColumns (catalog, keepColumns, keepHidden)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
@@ -206,14 +250,14 @@
       <Docs>
         <param name="catalog">The transform's catalog.</param>
         <param name="keepColumns">The array of column names to keep.</param>
-        <param name="keepHidden">If true will keep hidden columns and false will remove hidden columns.</param>
+        <param name="keepHidden">If <see langword="true" /> will keep hidden columns and <see langword="false" /> will remove hidden columns.</param>
         <summary>
-            ColumnSelectingEstimator is used to select a list of columns that user wants to keep from a given input.
+            Select a list of columns to keep in a given <see cref="T:Microsoft.Data.DataView.IDataView" />.
             </summary>
         <returns>To be added.</returns>
         <remarks>
           <format type="text/markdown">
-            <see cref="M:Microsoft.ML.TransformExtensionsCatalog.SelectColumns(Microsoft.ML.TransformsCatalog,System.String[],System.Boolean)" /> operates on the schema of an input IDataView,
+            <see cref="M:Microsoft.ML.TransformExtensionsCatalog.SelectColumns(Microsoft.ML.TransformsCatalog,System.String[],System.Boolean)" /> operates on the schema of an input <see cref="T:Microsoft.Data.DataView.IDataView" />,
             either dropping unselected columns from the schema or keeping them but marking them as hidden in the schema. Keeping columns hidden
             is recommended when it is necessary to understand how the inputs of a pipeline map to outputs of the pipeline. This feature
             is useful, for example, in debugging a pipeline of transforms by allowing you to print out results from the middle of the pipeline.

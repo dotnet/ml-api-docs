@@ -27,11 +27,11 @@
   </Docs>
   <Members>
     <Member MemberName="CheckLabelCompatible">
-      <MemberSignature Language="C#" Value="protected override void CheckLabelCompatible (Microsoft.ML.Core.Data.SchemaShape.Column labelCol);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void CheckLabelCompatible(valuetype Microsoft.ML.Core.Data.SchemaShape/Column labelCol) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.LightGBM.LightGbmRankingTrainer.CheckLabelCompatible(Microsoft.ML.Core.Data.SchemaShape.Column)" />
+      <MemberSignature Language="C#" Value="protected override void CheckLabelCompatible (Microsoft.ML.SchemaShape.Column labelCol);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void CheckLabelCompatible(valuetype Microsoft.ML.SchemaShape/Column labelCol) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.LightGBM.LightGbmRankingTrainer.CheckLabelCompatible(Microsoft.ML.SchemaShape.Column)" />
       <MemberSignature Language="VB.NET" Value="Protected Overrides Sub CheckLabelCompatible (labelCol As SchemaShape.Column)" />
-      <MemberSignature Language="F#" Value="override this.CheckLabelCompatible : Microsoft.ML.Core.Data.SchemaShape.Column -&gt; unit" Usage="lightGbmRankingTrainer.CheckLabelCompatible labelCol" />
+      <MemberSignature Language="F#" Value="override this.CheckLabelCompatible : Microsoft.ML.SchemaShape.Column -&gt; unit" Usage="lightGbmRankingTrainer.CheckLabelCompatible labelCol" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.LightGBM</AssemblyName>
@@ -41,7 +41,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="labelCol" Type="Microsoft.ML.Core.Data.SchemaShape+Column" />
+        <Parameter Name="labelCol" Type="Microsoft.ML.SchemaShape+Column" />
       </Parameters>
       <Docs>
         <param name="labelCol">To be added.</param>
@@ -49,22 +49,51 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="GetOutputColumnsCore">
-      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Core.Data.SchemaShape.Column[] GetOutputColumnsCore (Microsoft.ML.Core.Data.SchemaShape inputSchema);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance valuetype Microsoft.ML.Core.Data.SchemaShape/Column[] GetOutputColumnsCore(class Microsoft.ML.Core.Data.SchemaShape inputSchema) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.LightGBM.LightGbmRankingTrainer.GetOutputColumnsCore(Microsoft.ML.Core.Data.SchemaShape)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetOutputColumnsCore (inputSchema As SchemaShape) As SchemaShape.Column()" />
-      <MemberSignature Language="F#" Value="override this.GetOutputColumnsCore : Microsoft.ML.Core.Data.SchemaShape -&gt; Microsoft.ML.Core.Data.SchemaShape.Column[]" Usage="lightGbmRankingTrainer.GetOutputColumnsCore inputSchema" />
+    <Member MemberName="Fit">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.RankingPredictionTransformer&lt;Microsoft.ML.LightGBM.LightGbmRankingModelParameters&gt; Fit (Microsoft.Data.DataView.IDataView trainData, Microsoft.Data.DataView.IDataView validationData);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Data.RankingPredictionTransformer`1&lt;class Microsoft.ML.LightGBM.LightGbmRankingModelParameters&gt; Fit(class Microsoft.Data.DataView.IDataView trainData, class Microsoft.Data.DataView.IDataView validationData) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.LightGBM.LightGbmRankingTrainer.Fit(Microsoft.Data.DataView.IDataView,Microsoft.Data.DataView.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Fit (trainData As IDataView, validationData As IDataView) As RankingPredictionTransformer(Of LightGbmRankingModelParameters)" />
+      <MemberSignature Language="F#" Value="override this.Fit : Microsoft.Data.DataView.IDataView * Microsoft.Data.DataView.IDataView -&gt; Microsoft.ML.Data.RankingPredictionTransformer&lt;Microsoft.ML.LightGBM.LightGbmRankingModelParameters&gt;" Usage="lightGbmRankingTrainer.Fit (trainData, validationData)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.LightGBM</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Core.Data.SchemaShape+Column[]</ReturnType>
+        <ReturnType>Microsoft.ML.Data.RankingPredictionTransformer&lt;Microsoft.ML.LightGBM.LightGbmRankingModelParameters&gt;</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="inputSchema" Type="Microsoft.ML.Core.Data.SchemaShape" />
+        <Parameter Name="trainData" Type="Microsoft.Data.DataView.IDataView" />
+        <Parameter Name="validationData" Type="Microsoft.Data.DataView.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="trainData">To be added.</param>
+        <param name="validationData">To be added.</param>
+        <summary>
+            Trains a <see cref="T:Microsoft.ML.LightGBM.LightGbmRankingTrainer" /> using both training and validation data, returns
+            a <see cref="T:Microsoft.ML.Data.RankingPredictionTransformer`1" />.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetOutputColumnsCore">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.SchemaShape.Column[] GetOutputColumnsCore (Microsoft.ML.SchemaShape inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance valuetype Microsoft.ML.SchemaShape/Column[] GetOutputColumnsCore(class Microsoft.ML.SchemaShape inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.LightGBM.LightGbmRankingTrainer.GetOutputColumnsCore(Microsoft.ML.SchemaShape)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetOutputColumnsCore (inputSchema As SchemaShape) As SchemaShape.Column()" />
+      <MemberSignature Language="F#" Value="override this.GetOutputColumnsCore : Microsoft.ML.SchemaShape -&gt; Microsoft.ML.SchemaShape.Column[]" Usage="lightGbmRankingTrainer.GetOutputColumnsCore inputSchema" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.LightGBM</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.SchemaShape+Column[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.SchemaShape" />
       </Parameters>
       <Docs>
         <param name="inputSchema">To be added.</param>
@@ -73,31 +102,12 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="LoadNameValue">
-      <MemberSignature Language="C#" Value="public const string LoadNameValue;" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal string LoadNameValue" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.LightGBM.LightGbmRankingTrainer.LoadNameValue" />
-      <MemberSignature Language="VB.NET" Value="Public Const LoadNameValue As String " />
-      <MemberSignature Language="F#" Value="val mutable LoadNameValue : string" Usage="Microsoft.ML.LightGBM.LightGbmRankingTrainer.LoadNameValue" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.LightGBM</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="MakeTransformer">
-      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Data.RankingPredictionTransformer&lt;Microsoft.ML.LightGBM.LightGbmRankingModelParameters&gt; MakeTransformer (Microsoft.ML.LightGBM.LightGbmRankingModelParameters model, Microsoft.Data.DataView.Schema trainSchema);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Data.RankingPredictionTransformer`1&lt;class Microsoft.ML.LightGBM.LightGbmRankingModelParameters&gt; MakeTransformer(class Microsoft.ML.LightGBM.LightGbmRankingModelParameters model, class Microsoft.Data.DataView.Schema trainSchema) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.LightGBM.LightGbmRankingTrainer.MakeTransformer(Microsoft.ML.LightGBM.LightGbmRankingModelParameters,Microsoft.Data.DataView.Schema)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function MakeTransformer (model As LightGbmRankingModelParameters, trainSchema As Schema) As RankingPredictionTransformer(Of LightGbmRankingModelParameters)" />
-      <MemberSignature Language="F#" Value="override this.MakeTransformer : Microsoft.ML.LightGBM.LightGbmRankingModelParameters * Microsoft.Data.DataView.Schema -&gt; Microsoft.ML.Data.RankingPredictionTransformer&lt;Microsoft.ML.LightGBM.LightGbmRankingModelParameters&gt;" Usage="lightGbmRankingTrainer.MakeTransformer (model, trainSchema)" />
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Data.RankingPredictionTransformer&lt;Microsoft.ML.LightGBM.LightGbmRankingModelParameters&gt; MakeTransformer (Microsoft.ML.LightGBM.LightGbmRankingModelParameters model, Microsoft.Data.DataView.DataViewSchema trainSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Data.RankingPredictionTransformer`1&lt;class Microsoft.ML.LightGBM.LightGbmRankingModelParameters&gt; MakeTransformer(class Microsoft.ML.LightGBM.LightGbmRankingModelParameters model, class Microsoft.Data.DataView.DataViewSchema trainSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.LightGBM.LightGbmRankingTrainer.MakeTransformer(Microsoft.ML.LightGBM.LightGbmRankingModelParameters,Microsoft.Data.DataView.DataViewSchema)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function MakeTransformer (model As LightGbmRankingModelParameters, trainSchema As DataViewSchema) As RankingPredictionTransformer(Of LightGbmRankingModelParameters)" />
+      <MemberSignature Language="F#" Value="override this.MakeTransformer : Microsoft.ML.LightGBM.LightGbmRankingModelParameters * Microsoft.Data.DataView.DataViewSchema -&gt; Microsoft.ML.Data.RankingPredictionTransformer&lt;Microsoft.ML.LightGBM.LightGbmRankingModelParameters&gt;" Usage="lightGbmRankingTrainer.MakeTransformer (model, trainSchema)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.LightGBM</AssemblyName>
@@ -108,7 +118,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="model" Type="Microsoft.ML.LightGBM.LightGbmRankingModelParameters" />
-        <Parameter Name="trainSchema" Type="Microsoft.Data.DataView.Schema" />
+        <Parameter Name="trainSchema" Type="Microsoft.Data.DataView.DataViewSchema" />
       </Parameters>
       <Docs>
         <param name="model">To be added.</param>
@@ -135,70 +145,6 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ShortName">
-      <MemberSignature Language="C#" Value="public const string ShortName;" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal string ShortName" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.LightGBM.LightGbmRankingTrainer.ShortName" />
-      <MemberSignature Language="VB.NET" Value="Public Const ShortName As String " />
-      <MemberSignature Language="F#" Value="val mutable ShortName : string" Usage="Microsoft.ML.LightGBM.LightGbmRankingTrainer.ShortName" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.LightGBM</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Train">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.RankingPredictionTransformer&lt;Microsoft.ML.LightGBM.LightGbmRankingModelParameters&gt; Train (Microsoft.Data.DataView.IDataView trainData, Microsoft.Data.DataView.IDataView validationData = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Data.RankingPredictionTransformer`1&lt;class Microsoft.ML.LightGBM.LightGbmRankingModelParameters&gt; Train(class Microsoft.Data.DataView.IDataView trainData, class Microsoft.Data.DataView.IDataView validationData) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.LightGBM.LightGbmRankingTrainer.Train(Microsoft.Data.DataView.IDataView,Microsoft.Data.DataView.IDataView)" />
-      <MemberSignature Language="VB.NET" Value="Public Function Train (trainData As IDataView, Optional validationData As IDataView = null) As RankingPredictionTransformer(Of LightGbmRankingModelParameters)" />
-      <MemberSignature Language="F#" Value="member this.Train : Microsoft.Data.DataView.IDataView * Microsoft.Data.DataView.IDataView -&gt; Microsoft.ML.Data.RankingPredictionTransformer&lt;Microsoft.ML.LightGBM.LightGbmRankingModelParameters&gt;" Usage="lightGbmRankingTrainer.Train (trainData, validationData)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.LightGBM</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Data.RankingPredictionTransformer&lt;Microsoft.ML.LightGBM.LightGbmRankingModelParameters&gt;</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="trainData" Type="Microsoft.Data.DataView.IDataView" />
-        <Parameter Name="validationData" Type="Microsoft.Data.DataView.IDataView" />
-      </Parameters>
-      <Docs>
-        <param name="trainData">To be added.</param>
-        <param name="validationData">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="UserName">
-      <MemberSignature Language="C#" Value="public const string UserName;" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal string UserName" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.LightGBM.LightGbmRankingTrainer.UserName" />
-      <MemberSignature Language="VB.NET" Value="Public Const UserName As String " />
-      <MemberSignature Language="F#" Value="val mutable UserName : string" Usage="Microsoft.ML.LightGBM.LightGbmRankingTrainer.UserName" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.LightGBM</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

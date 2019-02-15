@@ -21,11 +21,11 @@
   </Docs>
   <Members>
     <Member MemberName="BootstrapSample">
-      <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.IDataView BootstrapSample (Microsoft.Data.DataView.IDataView input, Nullable&lt;uint&gt; seed = null, bool complement = false);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.Data.DataView.IDataView BootstrapSample(class Microsoft.Data.DataView.IDataView input, valuetype System.Nullable`1&lt;unsigned int32&gt; seed, bool complement) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.DataOperationsCatalog.BootstrapSample(Microsoft.Data.DataView.IDataView,System.Nullable{System.UInt32},System.Boolean)" />
-      <MemberSignature Language="VB.NET" Value="Public Function BootstrapSample (input As IDataView, Optional seed As Nullable(Of UInteger) = null, Optional complement As Boolean = false) As IDataView" />
-      <MemberSignature Language="F#" Value="member this.BootstrapSample : Microsoft.Data.DataView.IDataView * Nullable&lt;uint32&gt; * bool -&gt; Microsoft.Data.DataView.IDataView" Usage="dataOperationsCatalog.BootstrapSample (input, seed, complement)" />
+      <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.IDataView BootstrapSample (Microsoft.Data.DataView.IDataView input, Nullable&lt;int&gt; seed = null, bool complement = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.Data.DataView.IDataView BootstrapSample(class Microsoft.Data.DataView.IDataView input, valuetype System.Nullable`1&lt;int32&gt; seed, bool complement) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.DataOperationsCatalog.BootstrapSample(Microsoft.Data.DataView.IDataView,System.Nullable{System.Int32},System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public Function BootstrapSample (input As IDataView, Optional seed As Nullable(Of Integer) = null, Optional complement As Boolean = false) As IDataView" />
+      <MemberSignature Language="F#" Value="member this.BootstrapSample : Microsoft.Data.DataView.IDataView * Nullable&lt;int&gt; * bool -&gt; Microsoft.Data.DataView.IDataView" Usage="dataOperationsCatalog.BootstrapSample (input, seed, complement)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -36,12 +36,12 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="input" Type="Microsoft.Data.DataView.IDataView" />
-        <Parameter Name="seed" Type="System.Nullable&lt;System.UInt32&gt;" />
+        <Parameter Name="seed" Type="System.Nullable&lt;System.Int32&gt;" />
         <Parameter Name="complement" Type="System.Boolean" />
       </Parameters>
       <Docs>
         <param name="input">The input data.</param>
-        <param name="seed">The random seed. If unspecified random state will be instead derived from the <see cref="T:Microsoft.ML.MLContext" />.</param>
+        <param name="seed">The random seed. If unspecified, the random state will be instead derived from the <see cref="T:Microsoft.ML.MLContext" />.</param>
         <param name="complement">Whether this is the out-of-bag sample, that is, all those rows that are not selected by the transform.
             Can be used to create a complementary pair of samples by using the same seed.</param>
         <summary>
@@ -50,7 +50,7 @@
         <returns>To be added.</returns>
         <remarks>
             This sampler is a streaming version of <a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">bootstrap resampling</a>.
-            Instead of taking the whole dataset into memory and resampling, <see cref="M:Microsoft.ML.DataOperationsCatalog.BootstrapSample(Microsoft.Data.DataView.IDataView,System.Nullable{System.UInt32},System.Boolean)" /> streams through the dataset and
+            Instead of taking the whole dataset into memory and resampling, <see cref="M:Microsoft.ML.DataOperationsCatalog.BootstrapSample(Microsoft.Data.DataView.IDataView,System.Nullable{System.Int32},System.Boolean)" /> streams through the dataset and
             uses a <a href="https://en.wikipedia.org/wiki/Poisson_distribution">Poisson</a>(1) distribution to select the number of times a
             given row will be added to the sample. The <paramref name="complement" /> parameter allows for the creation of a bootstap sample
             and complementary out-of-bag sample by using the same <paramref name="seed" />.
@@ -87,26 +87,31 @@
         </Parameter>
       </Parameters>
       <Docs>
-        <param name="input">The data view to cache.</param>
-        <param name="columnsToPrefetch">The columns that must be cached whenever anything is cached. Empty array or null
-            is acceptable, it means that all columns are only cached at the first access.</param>
+        <param name="input">The input data.</param>
+        <param name="columnsToPrefetch">The columns that must be cached whenever anything is cached. An empty array or null
+            value means that columns are cached upon their first access.</param>
         <summary>
             Creates a lazy in-memory cache of <paramref name="input" />.
             </summary>
         <returns>To be added.</returns>
         <remarks>
             Caching happens per-column. A column is only cached when it is first accessed.
-            In addition, <paramref name="columnsToPrefetch" /> are considered 'always needed', so all of them
-            will be cached whenever any data is requested.
+            In addition, <paramref name="columnsToPrefetch" /> are considered 'always needed', so these columns
+            will be cached the first time any data is requested.
             </remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[Cache](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/DataOperations/Cache.cs)]
+            ]]></format>
+        </example>
       </Docs>
     </Member>
-    <Member MemberName="FilterByColumn">
-      <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.IDataView FilterByColumn (Microsoft.Data.DataView.IDataView input, string columnName, double lowerBound = -∞, double upperBound = ∞);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.Data.DataView.IDataView FilterByColumn(class Microsoft.Data.DataView.IDataView input, string columnName, float64 lowerBound, float64 upperBound) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.DataOperationsCatalog.FilterByColumn(Microsoft.Data.DataView.IDataView,System.String,System.Double,System.Double)" />
-      <MemberSignature Language="VB.NET" Value="Public Function FilterByColumn (input As IDataView, columnName As String, Optional lowerBound As Double = -∞, Optional upperBound As Double = ∞) As IDataView" />
-      <MemberSignature Language="F#" Value="member this.FilterByColumn : Microsoft.Data.DataView.IDataView * string * double * double -&gt; Microsoft.Data.DataView.IDataView" Usage="dataOperationsCatalog.FilterByColumn (input, columnName, lowerBound, upperBound)" />
+    <Member MemberName="FilterRowsByColumn">
+      <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.IDataView FilterRowsByColumn (Microsoft.Data.DataView.IDataView input, string columnName, double lowerBound = -∞, double upperBound = ∞);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.Data.DataView.IDataView FilterRowsByColumn(class Microsoft.Data.DataView.IDataView input, string columnName, float64 lowerBound, float64 upperBound) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.DataOperationsCatalog.FilterRowsByColumn(Microsoft.Data.DataView.IDataView,System.String,System.Double,System.Double)" />
+      <MemberSignature Language="VB.NET" Value="Public Function FilterRowsByColumn (input As IDataView, columnName As String, Optional lowerBound As Double = -∞, Optional upperBound As Double = ∞) As IDataView" />
+      <MemberSignature Language="F#" Value="member this.FilterRowsByColumn : Microsoft.Data.DataView.IDataView * string * double * double -&gt; Microsoft.Data.DataView.IDataView" Usage="dataOperationsCatalog.FilterRowsByColumn (input, columnName, lowerBound, upperBound)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -136,17 +141,17 @@
             </remarks>
         <example>
           <format type="text/markdown"><![CDATA[
-            [!code-csharp[FilterByColumn](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/DataOperations/FilterByColumn.cs)]
+            [!code-csharp[FilterRowsByColumn](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/DataOperations/FilterRowsByColumn.cs)]
             ]]></format>
         </example>
       </Docs>
     </Member>
-    <Member MemberName="FilterByKeyColumnFraction">
-      <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.IDataView FilterByKeyColumnFraction (Microsoft.Data.DataView.IDataView input, string columnName, double lowerBound = 0, double upperBound = 1);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.Data.DataView.IDataView FilterByKeyColumnFraction(class Microsoft.Data.DataView.IDataView input, string columnName, float64 lowerBound, float64 upperBound) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.DataOperationsCatalog.FilterByKeyColumnFraction(Microsoft.Data.DataView.IDataView,System.String,System.Double,System.Double)" />
-      <MemberSignature Language="VB.NET" Value="Public Function FilterByKeyColumnFraction (input As IDataView, columnName As String, Optional lowerBound As Double = 0, Optional upperBound As Double = 1) As IDataView" />
-      <MemberSignature Language="F#" Value="member this.FilterByKeyColumnFraction : Microsoft.Data.DataView.IDataView * string * double * double -&gt; Microsoft.Data.DataView.IDataView" Usage="dataOperationsCatalog.FilterByKeyColumnFraction (input, columnName, lowerBound, upperBound)" />
+    <Member MemberName="FilterRowsByKeyColumnFraction">
+      <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.IDataView FilterRowsByKeyColumnFraction (Microsoft.Data.DataView.IDataView input, string columnName, double lowerBound = 0, double upperBound = 1);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.Data.DataView.IDataView FilterRowsByKeyColumnFraction(class Microsoft.Data.DataView.IDataView input, string columnName, float64 lowerBound, float64 upperBound) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.DataOperationsCatalog.FilterRowsByKeyColumnFraction(Microsoft.Data.DataView.IDataView,System.String,System.Double,System.Double)" />
+      <MemberSignature Language="VB.NET" Value="Public Function FilterRowsByKeyColumnFraction (input As IDataView, columnName As String, Optional lowerBound As Double = 0, Optional upperBound As Double = 1) As IDataView" />
+      <MemberSignature Language="F#" Value="member this.FilterRowsByKeyColumnFraction : Microsoft.Data.DataView.IDataView * string * double * double -&gt; Microsoft.Data.DataView.IDataView" Usage="dataOperationsCatalog.FilterRowsByKeyColumnFraction (input, columnName, lowerBound, upperBound)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -178,17 +183,17 @@
             </remarks>
         <example>
           <format type="text/markdown"><![CDATA[
-            [!code-csharp[FilterByKeyColumnFraction](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/DataOperations/FilterByKeyColumnFraction.cs)]
+            [!code-csharp[FilterRowsByKeyColumnFraction](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/DataOperations/FilterRowsByKeyColumnFraction.cs)]
             ]]></format>
         </example>
       </Docs>
     </Member>
-    <Member MemberName="FilterByMissingValues">
-      <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.IDataView FilterByMissingValues (Microsoft.Data.DataView.IDataView input, params string[] columns);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.Data.DataView.IDataView FilterByMissingValues(class Microsoft.Data.DataView.IDataView input, string[] columns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.DataOperationsCatalog.FilterByMissingValues(Microsoft.Data.DataView.IDataView,System.String[])" />
-      <MemberSignature Language="VB.NET" Value="Public Function FilterByMissingValues (input As IDataView, ParamArray columns As String()) As IDataView" />
-      <MemberSignature Language="F#" Value="member this.FilterByMissingValues : Microsoft.Data.DataView.IDataView * string[] -&gt; Microsoft.Data.DataView.IDataView" Usage="dataOperationsCatalog.FilterByMissingValues (input, columns)" />
+    <Member MemberName="FilterRowsByMissingValues">
+      <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.IDataView FilterRowsByMissingValues (Microsoft.Data.DataView.IDataView input, params string[] columns);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.Data.DataView.IDataView FilterRowsByMissingValues(class Microsoft.Data.DataView.IDataView input, string[] columns) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.DataOperationsCatalog.FilterRowsByMissingValues(Microsoft.Data.DataView.IDataView,System.String[])" />
+      <MemberSignature Language="VB.NET" Value="Public Function FilterRowsByMissingValues (input As IDataView, ParamArray columns As String()) As IDataView" />
+      <MemberSignature Language="F#" Value="member this.FilterRowsByMissingValues : Microsoft.Data.DataView.IDataView * string[] -&gt; Microsoft.Data.DataView.IDataView" Usage="dataOperationsCatalog.FilterRowsByMissingValues (input, columns)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -218,7 +223,126 @@
         <remarks>To be added.</remarks>
         <example>
           <format type="text/markdown"><![CDATA[
-            [!code-csharp[FilterByMissingValues](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/DataOperations/FilterByMissingValues.cs)]
+            [!code-csharp[FilterRowsByMissingValues](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/DataOperations/FilterRowsByMissingValues.cs)]
+            ]]></format>
+        </example>
+      </Docs>
+    </Member>
+    <Member MemberName="ShuffleRows">
+      <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.IDataView ShuffleRows (Microsoft.Data.DataView.IDataView input, Nullable&lt;int&gt; seed = null, int shufflePoolSize = 1000, bool shuffleSource = true);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.Data.DataView.IDataView ShuffleRows(class Microsoft.Data.DataView.IDataView input, valuetype System.Nullable`1&lt;int32&gt; seed, int32 shufflePoolSize, bool shuffleSource) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.DataOperationsCatalog.ShuffleRows(Microsoft.Data.DataView.IDataView,System.Nullable{System.Int32},System.Int32,System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public Function ShuffleRows (input As IDataView, Optional seed As Nullable(Of Integer) = null, Optional shufflePoolSize As Integer = 1000, Optional shuffleSource As Boolean = true) As IDataView" />
+      <MemberSignature Language="F#" Value="member this.ShuffleRows : Microsoft.Data.DataView.IDataView * Nullable&lt;int&gt; * int * bool -&gt; Microsoft.Data.DataView.IDataView" Usage="dataOperationsCatalog.ShuffleRows (input, seed, shufflePoolSize, shuffleSource)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.Data.DataView.IDataView</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.Data.DataView.IDataView" />
+        <Parameter Name="seed" Type="System.Nullable&lt;System.Int32&gt;" />
+        <Parameter Name="shufflePoolSize" Type="System.Int32" />
+        <Parameter Name="shuffleSource" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="input">The input data.</param>
+        <param name="seed">The random seed. If unspecified, the random state will be instead derived from the <see cref="T:Microsoft.ML.MLContext" />.</param>
+        <param name="shufflePoolSize">The number of rows to hold in the pool. Setting this to 1 will turn off pool shuffling and
+            <see cref="M:Microsoft.ML.DataOperationsCatalog.ShuffleRows(Microsoft.Data.DataView.IDataView,System.Nullable{System.Int32},System.Int32,System.Boolean)" /> will only perform a shuffle by reading <paramref name="input" /> in a random order.</param>
+        <param name="shuffleSource">If <see langword="false" />, the transform will not attempt to read <paramref name="input" /> in a random order and only use
+            pooling to shuffle. This parameter has no effect if the <see cref="P:Microsoft.Data.DataView.IDataView.CanShuffle" /> property of <paramref name="input" /> is <see langword="false" />.
+            </param>
+        <summary>
+            Shuffle the rows of <paramref name="input" />.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>
+          <see cref="M:Microsoft.ML.DataOperationsCatalog.ShuffleRows(Microsoft.Data.DataView.IDataView,System.Nullable{System.Int32},System.Int32,System.Boolean)" /> will shuffle the rows of any input <see cref="T:Microsoft.Data.DataView.IDataView" /> using a streaming approach.
+            In order to not load the entire dataset in memory, a pool of <paramref name="shufflePoolSize" /> rows will be used
+            to randomly select rows to output. The pool is constructed from the first <paramref name="shufflePoolSize" /> rows
+            in <paramref name="input" />. Rows will then be randomly yielded from the pool and replaced with the next row from <paramref name="input" />
+            until all the rows have been yielded, resulting in a new <see cref="T:Microsoft.Data.DataView.IDataView" /> of the same size as <paramref name="input" />
+            but with the rows in a randomized order.
+            If the <see cref="P:Microsoft.Data.DataView.IDataView.CanShuffle" /> property of <paramref name="input" /> is true, then it will also be read into the
+            pool in a random order, offering two sources of randomness.
+            </remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[ShuffleRows](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/DataOperations/ShuffleRows.cs)]
+            ]]></format>
+        </example>
+      </Docs>
+    </Member>
+    <Member MemberName="SkipRows">
+      <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.IDataView SkipRows (Microsoft.Data.DataView.IDataView input, long count);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.Data.DataView.IDataView SkipRows(class Microsoft.Data.DataView.IDataView input, int64 count) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.DataOperationsCatalog.SkipRows(Microsoft.Data.DataView.IDataView,System.Int64)" />
+      <MemberSignature Language="VB.NET" Value="Public Function SkipRows (input As IDataView, count As Long) As IDataView" />
+      <MemberSignature Language="F#" Value="member this.SkipRows : Microsoft.Data.DataView.IDataView * int64 -&gt; Microsoft.Data.DataView.IDataView" Usage="dataOperationsCatalog.SkipRows (input, count)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.Data.DataView.IDataView</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.Data.DataView.IDataView" />
+        <Parameter Name="count" Type="System.Int64" />
+      </Parameters>
+      <Docs>
+        <param name="input">The input data.</param>
+        <param name="count">Number of rows to skip.</param>
+        <summary>
+            Skip <paramref name="count" /> rows in <paramref name="input" />.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>
+            Skips the first <paramref name="count" /> rows from <paramref name="input" /> and returns an <see cref="T:Microsoft.Data.DataView.IDataView" /> with all other rows.
+            </remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[SkipRows](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/DataOperations/SkipRows.cs)]
+            ]]></format>
+        </example>
+      </Docs>
+    </Member>
+    <Member MemberName="TakeRows">
+      <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.IDataView TakeRows (Microsoft.Data.DataView.IDataView input, long count);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.Data.DataView.IDataView TakeRows(class Microsoft.Data.DataView.IDataView input, int64 count) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.DataOperationsCatalog.TakeRows(Microsoft.Data.DataView.IDataView,System.Int64)" />
+      <MemberSignature Language="VB.NET" Value="Public Function TakeRows (input As IDataView, count As Long) As IDataView" />
+      <MemberSignature Language="F#" Value="member this.TakeRows : Microsoft.Data.DataView.IDataView * int64 -&gt; Microsoft.Data.DataView.IDataView" Usage="dataOperationsCatalog.TakeRows (input, count)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.Data.DataView.IDataView</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.Data.DataView.IDataView" />
+        <Parameter Name="count" Type="System.Int64" />
+      </Parameters>
+      <Docs>
+        <param name="input">The input data.</param>
+        <param name="count">Number of rows to take.</param>
+        <summary>
+            Take <paramref name="count" /> rows from <paramref name="input" />.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>
+            Returns returns an <see cref="T:Microsoft.Data.DataView.IDataView" /> with the first <paramref name="count" /> rows from <paramref name="input" />.
+            </remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[TakeRows](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/DataOperations/TakeRows.cs)]
             ]]></format>
         </example>
       </Docs>

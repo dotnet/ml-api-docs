@@ -1,9 +1,9 @@
 ﻿<Type Name="FastForestClassification" FullName="Microsoft.ML.Trainers.FastTree.FastForestClassification">
-  <TypeSignature Language="C#" Value="public sealed class FastForestClassification : Microsoft.ML.Trainers.FastTree.RandomForestTrainerBase&lt;Microsoft.ML.Trainers.FastTree.FastForestClassification.Options,Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt;&gt;,Microsoft.ML.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt;&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit FastForestClassification extends Microsoft.ML.Trainers.FastTree.RandomForestTrainerBase`3&lt;class Microsoft.ML.Trainers.FastTree.FastForestClassification/Options, class Microsoft.ML.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt;&gt;, class Microsoft.ML.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt;&gt;" />
+  <TypeSignature Language="C#" Value="public sealed class FastForestClassification : Microsoft.ML.Trainers.FastTree.RandomForestTrainerBase&lt;Microsoft.ML.Trainers.FastTree.FastForestClassification.Options,Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Trainers.FastTree.FastForestClassificationModelParameters&gt;,Microsoft.ML.Trainers.FastTree.FastForestClassificationModelParameters&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit FastForestClassification extends Microsoft.ML.Trainers.FastTree.RandomForestTrainerBase`3&lt;class Microsoft.ML.Trainers.FastTree.FastForestClassification/Options, class Microsoft.ML.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.Trainers.FastTree.FastForestClassificationModelParameters&gt;, class Microsoft.ML.Trainers.FastTree.FastForestClassificationModelParameters&gt;" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Trainers.FastTree.FastForestClassification" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class FastForestClassification&#xA;Inherits RandomForestTrainerBase(Of FastForestClassification.Options, BinaryPredictionTransformer(Of IPredictorWithFeatureWeights(Of Single)), IPredictorWithFeatureWeights(Of Single))" />
-  <TypeSignature Language="F#" Value="type FastForestClassification = class&#xA;    inherit RandomForestTrainerBase&lt;FastForestClassification.Options, BinaryPredictionTransformer&lt;IPredictorWithFeatureWeights&lt;single&gt;&gt;, IPredictorWithFeatureWeights&lt;single&gt;&gt;" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class FastForestClassification&#xA;Inherits RandomForestTrainerBase(Of FastForestClassification.Options, BinaryPredictionTransformer(Of FastForestClassificationModelParameters), FastForestClassificationModelParameters)" />
+  <TypeSignature Language="F#" Value="type FastForestClassification = class&#xA;    inherit RandomForestTrainerBase&lt;FastForestClassification.Options, BinaryPredictionTransformer&lt;FastForestClassificationModelParameters&gt;, FastForestClassificationModelParameters&gt;" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -12,10 +12,11 @@
     <BaseTypeName>Microsoft.ML.Trainers.FastTree.RandomForestTrainerBase&lt;Microsoft.ML.Trainers.FastTree.FastForestClassification+Arguments,Microsoft.ML.Runtime.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;,Microsoft.ML.Runtime.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;</BaseTypeName>
     <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Trainers.FastTree.RandomForestTrainerBase&lt;Microsoft.ML.Trainers.FastTree.FastForestClassification+Arguments,Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;,Microsoft.ML.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;</BaseTypeName>
     <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Trainers.FastTree.RandomForestTrainerBase&lt;Microsoft.ML.Trainers.FastTree.FastForestClassification+Options,Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;,Microsoft.ML.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Trainers.FastTree.RandomForestTrainerBase&lt;Microsoft.ML.Trainers.FastTree.FastForestClassification+Options,Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Trainers.FastTree.FastForestClassificationModelParameters&gt;,Microsoft.ML.Trainers.FastTree.FastForestClassificationModelParameters&gt;</BaseTypeName>
     <BaseTypeArguments>
       <BaseTypeArgument TypeParamName="TArgs">Microsoft.ML.Trainers.FastTree.FastForestClassification+Options</BaseTypeArgument>
-      <BaseTypeArgument TypeParamName="TTransformer">Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;</BaseTypeArgument>
-      <BaseTypeArgument TypeParamName="TModel">Microsoft.ML.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TTransformer">Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Trainers.FastTree.FastForestClassificationModelParameters&gt;</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TModel">Microsoft.ML.Trainers.FastTree.FastForestClassificationModelParameters</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
   <Interfaces />
@@ -35,18 +36,18 @@
   </Docs>
   <Members>
     <Member MemberName="ConstructObjFunc">
-      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Trainers.FastTree.Internal.ObjectiveFunctionBase ConstructObjFunc (Microsoft.ML.IChannel ch);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Trainers.FastTree.Internal.ObjectiveFunctionBase ConstructObjFunc(class Microsoft.ML.IChannel ch) cil managed" />
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Trainers.FastTree.ObjectiveFunctionBase ConstructObjFunc (Microsoft.ML.IChannel ch);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Trainers.FastTree.ObjectiveFunctionBase ConstructObjFunc(class Microsoft.ML.IChannel ch) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastForestClassification.ConstructObjFunc(Microsoft.ML.IChannel)" />
       <MemberSignature Language="VB.NET" Value="Protected Overrides Function ConstructObjFunc (ch As IChannel) As ObjectiveFunctionBase" />
-      <MemberSignature Language="F#" Value="override this.ConstructObjFunc : Microsoft.ML.IChannel -&gt; Microsoft.ML.Trainers.FastTree.Internal.ObjectiveFunctionBase" Usage="fastForestClassification.ConstructObjFunc ch" />
+      <MemberSignature Language="F#" Value="override this.ConstructObjFunc : Microsoft.ML.IChannel -&gt; Microsoft.ML.Trainers.FastTree.ObjectiveFunctionBase" Usage="fastForestClassification.ConstructObjFunc ch" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Trainers.FastTree.Internal.ObjectiveFunctionBase</ReturnType>
+        <ReturnType>Microsoft.ML.Trainers.FastTree.ObjectiveFunctionBase</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="ch" Type="Microsoft.ML.IChannel" />
@@ -59,18 +60,18 @@
       </Docs>
     </Member>
     <Member MemberName="ConstructTestForTrainingData">
-      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Trainers.FastTree.Internal.Test ConstructTestForTrainingData ();" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Trainers.FastTree.Internal.Test ConstructTestForTrainingData() cil managed" />
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Trainers.FastTree.Test ConstructTestForTrainingData ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Trainers.FastTree.Test ConstructTestForTrainingData() cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastForestClassification.ConstructTestForTrainingData" />
       <MemberSignature Language="VB.NET" Value="Protected Overrides Function ConstructTestForTrainingData () As Test" />
-      <MemberSignature Language="F#" Value="override this.ConstructTestForTrainingData : unit -&gt; Microsoft.ML.Trainers.FastTree.Internal.Test" Usage="fastForestClassification.ConstructTestForTrainingData " />
+      <MemberSignature Language="F#" Value="override this.ConstructTestForTrainingData : unit -&gt; Microsoft.ML.Trainers.FastTree.Test" Usage="fastForestClassification.ConstructTestForTrainingData " />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Trainers.FastTree.Internal.Test</ReturnType>
+        <ReturnType>Microsoft.ML.Trainers.FastTree.Test</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -79,22 +80,51 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="GetOutputColumnsCore">
-      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Core.Data.SchemaShape.Column[] GetOutputColumnsCore (Microsoft.ML.Core.Data.SchemaShape inputSchema);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance valuetype Microsoft.ML.Core.Data.SchemaShape/Column[] GetOutputColumnsCore(class Microsoft.ML.Core.Data.SchemaShape inputSchema) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastForestClassification.GetOutputColumnsCore(Microsoft.ML.Core.Data.SchemaShape)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetOutputColumnsCore (inputSchema As SchemaShape) As SchemaShape.Column()" />
-      <MemberSignature Language="F#" Value="override this.GetOutputColumnsCore : Microsoft.ML.Core.Data.SchemaShape -&gt; Microsoft.ML.Core.Data.SchemaShape.Column[]" Usage="fastForestClassification.GetOutputColumnsCore inputSchema" />
+    <Member MemberName="Fit">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Trainers.FastTree.FastForestClassificationModelParameters&gt; Fit (Microsoft.Data.DataView.IDataView trainData, Microsoft.Data.DataView.IDataView validationData);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.Trainers.FastTree.FastForestClassificationModelParameters&gt; Fit(class Microsoft.Data.DataView.IDataView trainData, class Microsoft.Data.DataView.IDataView validationData) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastForestClassification.Fit(Microsoft.Data.DataView.IDataView,Microsoft.Data.DataView.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Fit (trainData As IDataView, validationData As IDataView) As BinaryPredictionTransformer(Of FastForestClassificationModelParameters)" />
+      <MemberSignature Language="F#" Value="override this.Fit : Microsoft.Data.DataView.IDataView * Microsoft.Data.DataView.IDataView -&gt; Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Trainers.FastTree.FastForestClassificationModelParameters&gt;" Usage="fastForestClassification.Fit (trainData, validationData)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Core.Data.SchemaShape+Column[]</ReturnType>
+        <ReturnType>Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Trainers.FastTree.FastForestClassificationModelParameters&gt;</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="inputSchema" Type="Microsoft.ML.Core.Data.SchemaShape" />
+        <Parameter Name="trainData" Type="Microsoft.Data.DataView.IDataView" />
+        <Parameter Name="validationData" Type="Microsoft.Data.DataView.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="trainData">To be added.</param>
+        <param name="validationData">To be added.</param>
+        <summary>
+            Trains a <see cref="T:Microsoft.ML.Trainers.FastTree.FastForestClassification" /> using both training and validation data, returns
+            a <see cref="T:Microsoft.ML.Data.BinaryPredictionTransformer`1" />.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetOutputColumnsCore">
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.SchemaShape.Column[] GetOutputColumnsCore (Microsoft.ML.SchemaShape inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance valuetype Microsoft.ML.SchemaShape/Column[] GetOutputColumnsCore(class Microsoft.ML.SchemaShape inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastForestClassification.GetOutputColumnsCore(Microsoft.ML.SchemaShape)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetOutputColumnsCore (inputSchema As SchemaShape) As SchemaShape.Column()" />
+      <MemberSignature Language="F#" Value="override this.GetOutputColumnsCore : Microsoft.ML.SchemaShape -&gt; Microsoft.ML.SchemaShape.Column[]" Usage="fastForestClassification.GetOutputColumnsCore inputSchema" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.SchemaShape+Column[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.SchemaShape" />
       </Parameters>
       <Docs>
         <param name="inputSchema">To be added.</param>
@@ -104,22 +134,22 @@
       </Docs>
     </Member>
     <Member MemberName="MakeTransformer">
-      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt;&gt; MakeTransformer (Microsoft.ML.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt; model, Microsoft.Data.DataView.Schema trainSchema);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt;&gt; MakeTransformer(class Microsoft.ML.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt; model, class Microsoft.Data.DataView.Schema trainSchema) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastForestClassification.MakeTransformer(Microsoft.ML.Internal.Internallearn.IPredictorWithFeatureWeights{System.Single},Microsoft.Data.DataView.Schema)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function MakeTransformer (model As IPredictorWithFeatureWeights(Of Single), trainSchema As Schema) As BinaryPredictionTransformer(Of IPredictorWithFeatureWeights(Of Single))" />
-      <MemberSignature Language="F#" Value="override this.MakeTransformer : Microsoft.ML.Internal.Internallearn.IPredictorWithFeatureWeights&lt;single&gt; * Microsoft.Data.DataView.Schema -&gt; Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Internal.Internallearn.IPredictorWithFeatureWeights&lt;single&gt;&gt;" Usage="fastForestClassification.MakeTransformer (model, trainSchema)" />
+      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Trainers.FastTree.FastForestClassificationModelParameters&gt; MakeTransformer (Microsoft.ML.Trainers.FastTree.FastForestClassificationModelParameters model, Microsoft.Data.DataView.DataViewSchema trainSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.Trainers.FastTree.FastForestClassificationModelParameters&gt; MakeTransformer(class Microsoft.ML.Trainers.FastTree.FastForestClassificationModelParameters model, class Microsoft.Data.DataView.DataViewSchema trainSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastForestClassification.MakeTransformer(Microsoft.ML.Trainers.FastTree.FastForestClassificationModelParameters,Microsoft.Data.DataView.DataViewSchema)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function MakeTransformer (model As FastForestClassificationModelParameters, trainSchema As DataViewSchema) As BinaryPredictionTransformer(Of FastForestClassificationModelParameters)" />
+      <MemberSignature Language="F#" Value="override this.MakeTransformer : Microsoft.ML.Trainers.FastTree.FastForestClassificationModelParameters * Microsoft.Data.DataView.DataViewSchema -&gt; Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Trainers.FastTree.FastForestClassificationModelParameters&gt;" Usage="fastForestClassification.MakeTransformer (model, trainSchema)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;</ReturnType>
+        <ReturnType>Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Trainers.FastTree.FastForestClassificationModelParameters&gt;</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="model" Type="Microsoft.ML.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;" />
-        <Parameter Name="trainSchema" Type="Microsoft.Data.DataView.Schema" />
+        <Parameter Name="model" Type="Microsoft.ML.Trainers.FastTree.FastForestClassificationModelParameters" />
+        <Parameter Name="trainSchema" Type="Microsoft.Data.DataView.DataViewSchema" />
       </Parameters>
       <Docs>
         <param name="model">To be added.</param>
@@ -169,32 +199,6 @@
       <Docs>
         <param name="ch">To be added.</param>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Train">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Internal.Internallearn.IPredictorWithFeatureWeights&lt;float&gt;&gt; Train (Microsoft.Data.DataView.IDataView trainData, Microsoft.Data.DataView.IDataView validationData = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Data.BinaryPredictionTransformer`1&lt;class Microsoft.ML.Internal.Internallearn.IPredictorWithFeatureWeights`1&lt;float32&gt;&gt; Train(class Microsoft.Data.DataView.IDataView trainData, class Microsoft.Data.DataView.IDataView validationData) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastForestClassification.Train(Microsoft.Data.DataView.IDataView,Microsoft.Data.DataView.IDataView)" />
-      <MemberSignature Language="VB.NET" Value="Public Function Train (trainData As IDataView, Optional validationData As IDataView = null) As BinaryPredictionTransformer(Of IPredictorWithFeatureWeights(Of Single))" />
-      <MemberSignature Language="F#" Value="override this.Train : Microsoft.Data.DataView.IDataView * Microsoft.Data.DataView.IDataView -&gt; Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Internal.Internallearn.IPredictorWithFeatureWeights&lt;single&gt;&gt;" Usage="fastForestClassification.Train (trainData, validationData)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Data.BinaryPredictionTransformer&lt;Microsoft.ML.Internal.Internallearn.IPredictorWithFeatureWeights&lt;System.Single&gt;&gt;</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="trainData" Type="Microsoft.Data.DataView.IDataView" />
-        <Parameter Name="validationData" Type="Microsoft.Data.DataView.IDataView" />
-      </Parameters>
-      <Docs>
-        <param name="trainData">To be added.</param>
-        <param name="validationData">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

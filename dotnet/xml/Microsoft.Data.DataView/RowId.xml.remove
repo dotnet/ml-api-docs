@@ -1,0 +1,526 @@
+<Type Name="RowId" FullName="Microsoft.Data.DataView.RowId">
+  <TypeSignature Language="C#" Value="public struct RowId : IComparable&lt;Microsoft.Data.DataView.RowId&gt;, IEquatable&lt;Microsoft.Data.DataView.RowId&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit RowId extends System.ValueType implements class System.IComparable`1&lt;valuetype Microsoft.Data.DataView.RowId&gt;, class System.IEquatable`1&lt;valuetype Microsoft.Data.DataView.RowId&gt;" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.Data.DataView.RowId" />
+  <TypeSignature Language="VB.NET" Value="Public Structure RowId&#xA;Implements IComparable(Of RowId), IEquatable(Of RowId)" />
+  <TypeSignature Language="F#" Value="type RowId = struct" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.ValueType</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.IComparable&lt;Microsoft.Data.DataView.RowId&gt;</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.IEquatable&lt;Microsoft.Data.DataView.RowId&gt;</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+            A structure serving as a sixteen-byte unsigned integer. It is used as the row id of <see cref="T:Microsoft.Data.DataView.IDataView" />.
+            For datasets with millions of records, those IDs need to be unique, therefore the need for such a large structure to hold the values.
+            Those Ids are derived from other Ids of the previous components of the pipelines, and dividing the structure in two: high order and low order of bits,
+            and reduces the changes of those collisions even further.
+            </summary>
+    <remarks>To be added.</remarks>
+    <altmember cref="M:Microsoft.Data.DataView.Row.GetIdGetter" />
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public RowId (ulong low, ulong high);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(unsigned int64 low, unsigned int64 high) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.DataView.RowId.#ctor(System.UInt64,System.UInt64)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (low As ULong, high As ULong)" />
+      <MemberSignature Language="F#" Value="new Microsoft.Data.DataView.RowId : uint64 * uint64 -&gt; Microsoft.Data.DataView.RowId" Usage="new Microsoft.Data.DataView.RowId (low, high)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="low" Type="System.UInt64" />
+        <Parameter Name="high" Type="System.UInt64" />
+      </Parameters>
+      <Docs>
+        <param name="low">The low order <langword>ulong</langword>.</param>
+        <param name="high">The high order <langword>ulong</langword>.</param>
+        <summary>
+            Initializes a new instance of <see cref="T:Microsoft.Data.DataView.RowId" /></summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Combine">
+      <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.RowId Combine (Microsoft.Data.DataView.RowId other);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Microsoft.Data.DataView.RowId Combine(valuetype Microsoft.Data.DataView.RowId other) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.DataView.RowId.Combine(Microsoft.Data.DataView.RowId)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Combine (other As RowId) As RowId" />
+      <MemberSignature Language="F#" Value="member this.Combine : Microsoft.Data.DataView.RowId -&gt; Microsoft.Data.DataView.RowId" Usage="rowId.Combine other" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.Data.DataView.RowId</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="other" Type="Microsoft.Data.DataView.RowId" />
+      </Parameters>
+      <Docs>
+        <param name="other">
+        </param>
+        <summary>
+            An operation that treats the value as an unmixed Murmur3 128-bit hash state,
+            and returns the hash state that would result if we took <paramref name="other" />,
+            scrambled it using <see cref="M:Microsoft.Data.DataView.RowId.Fork" />, then hashed the result of that.
+            </summary>
+        <returns />
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CompareTo">
+      <MemberSignature Language="C#" Value="public int CompareTo (Microsoft.Data.DataView.RowId other);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance int32 CompareTo(valuetype Microsoft.Data.DataView.RowId other) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.DataView.RowId.CompareTo(Microsoft.Data.DataView.RowId)" />
+      <MemberSignature Language="VB.NET" Value="Public Function CompareTo (other As RowId) As Integer" />
+      <MemberSignature Language="F#" Value="abstract member CompareTo : Microsoft.Data.DataView.RowId -&gt; int&#xA;override this.CompareTo : Microsoft.Data.DataView.RowId -&gt; int" Usage="rowId.CompareTo other" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:System.IComparable`1.CompareTo(`0)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="other" Type="Microsoft.Data.DataView.RowId" />
+      </Parameters>
+      <Docs>
+        <param name="other">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Equals">
+      <MemberSignature Language="C#" Value="public bool Equals (Microsoft.Data.DataView.RowId other);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool Equals(valuetype Microsoft.Data.DataView.RowId other) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.DataView.RowId.Equals(Microsoft.Data.DataView.RowId)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Equals (other As RowId) As Boolean" />
+      <MemberSignature Language="F#" Value="override this.Equals : Microsoft.Data.DataView.RowId -&gt; bool" Usage="rowId.Equals other" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:System.IEquatable`1.Equals(`0)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="other" Type="Microsoft.Data.DataView.RowId" />
+      </Parameters>
+      <Docs>
+        <param name="other">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Equals">
+      <MemberSignature Language="C#" Value="public override bool Equals (object obj);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Equals(object obj) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.DataView.RowId.Equals(System.Object)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function Equals (obj As Object) As Boolean" />
+      <MemberSignature Language="F#" Value="override this.Equals : obj -&gt; bool" Usage="rowId.Equals obj" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="obj" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="obj">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Fork">
+      <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.RowId Fork ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Microsoft.Data.DataView.RowId Fork() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.DataView.RowId.Fork" />
+      <MemberSignature Language="VB.NET" Value="Public Function Fork () As RowId" />
+      <MemberSignature Language="F#" Value="member this.Fork : unit -&gt; Microsoft.Data.DataView.RowId" Usage="rowId.Fork " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.Data.DataView.RowId</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            An operation that treats the value as an unmixed Murmur3 128-bit hash state,
+            and returns the hash state that would result if we hashed an addition 16 bytes
+            that were all zeros, except for the last bit which is one.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetHashCode">
+      <MemberSignature Language="C#" Value="public override int GetHashCode ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 GetHashCode() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.DataView.RowId.GetHashCode" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function GetHashCode () As Integer" />
+      <MemberSignature Language="F#" Value="override this.GetHashCode : unit -&gt; int" Usage="rowId.GetHashCode " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="High">
+      <MemberSignature Language="C#" Value="public readonly ulong High;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly unsigned int64 High" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.Data.DataView.RowId.High" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly High As ULong " />
+      <MemberSignature Language="F#" Value="val mutable High : uint64" Usage="Microsoft.Data.DataView.RowId.High" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt64</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary> The high order bits. Corresponds to H2 in the Murmur algorithms.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Low">
+      <MemberSignature Language="C#" Value="public readonly ulong Low;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly unsigned int64 Low" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.Data.DataView.RowId.Low" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Low As ULong " />
+      <MemberSignature Language="F#" Value="val mutable Low : uint64" Usage="Microsoft.Data.DataView.RowId.Low" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt64</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The low order bits. Corresponds to H1 in the Murmur algorithms.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Next">
+      <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.RowId Next ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Microsoft.Data.DataView.RowId Next() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.DataView.RowId.Next" />
+      <MemberSignature Language="VB.NET" Value="Public Function Next () As RowId" />
+      <MemberSignature Language="F#" Value="member this.Next : unit -&gt; Microsoft.Data.DataView.RowId" Usage="rowId.Next " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.Data.DataView.RowId</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            An operation that treats the value as an unmixed Murmur3 128-bit hash state,
+            and returns the hash state that would result if we hashed an addition 16 bytes
+            that were all zeros.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Addition">
+      <MemberSignature Language="C#" Value="public static Microsoft.Data.DataView.RowId operator + (Microsoft.Data.DataView.RowId first, ulong second);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype Microsoft.Data.DataView.RowId op_Addition(valuetype Microsoft.Data.DataView.RowId first, unsigned int64 second) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.DataView.RowId.op_Addition(Microsoft.Data.DataView.RowId,System.UInt64)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Operator + (first As RowId, second As ULong) As RowId" />
+      <MemberSignature Language="F#" Value="static member ( + ) : Microsoft.Data.DataView.RowId * uint64 -&gt; Microsoft.Data.DataView.RowId" Usage="first + second" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.Data.DataView.RowId</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="first" Type="Microsoft.Data.DataView.RowId" />
+        <Parameter Name="second" Type="System.UInt64" />
+      </Parameters>
+      <Docs>
+        <param name="first">To be added.</param>
+        <param name="second">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Equality">
+      <MemberSignature Language="C#" Value="public static bool operator == (Microsoft.Data.DataView.RowId first, ulong second);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Equality(valuetype Microsoft.Data.DataView.RowId first, unsigned int64 second) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.DataView.RowId.op_Equality(Microsoft.Data.DataView.RowId,System.UInt64)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Operator == (first As RowId, second As ULong) As Boolean" />
+      <MemberSignature Language="F#" Value="static member ( = ) : Microsoft.Data.DataView.RowId * uint64 -&gt; bool" Usage="first = second" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="first" Type="Microsoft.Data.DataView.RowId" />
+        <Parameter Name="second" Type="System.UInt64" />
+      </Parameters>
+      <Docs>
+        <param name="first">To be added.</param>
+        <param name="second">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Explicit">
+      <MemberSignature Language="C#" Value="public static explicit operator double (Microsoft.Data.DataView.RowId x);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname float64 op_Explicit(valuetype Microsoft.Data.DataView.RowId x) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.DataView.RowId.op_Explicit(Microsoft.Data.DataView.RowId)~System.Double" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Narrowing Operator CType (x As RowId) As Double" />
+      <MemberSignature Language="F#" Value="static member op_Explicit : Microsoft.Data.DataView.RowId -&gt; double" Usage="Microsoft.Data.DataView.RowId.op_Explicit x" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="x" Type="Microsoft.Data.DataView.RowId" />
+      </Parameters>
+      <Docs>
+        <param name="x">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_GreaterThan">
+      <MemberSignature Language="C#" Value="public static bool operator &gt; (Microsoft.Data.DataView.RowId first, ulong second);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_GreaterThan(valuetype Microsoft.Data.DataView.RowId first, unsigned int64 second) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.DataView.RowId.op_GreaterThan(Microsoft.Data.DataView.RowId,System.UInt64)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Operator &gt; (first As RowId, second As ULong) As Boolean" />
+      <MemberSignature Language="F#" Value="static member ( &gt; ) : Microsoft.Data.DataView.RowId * uint64 -&gt; bool" Usage="first &gt; second" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="first" Type="Microsoft.Data.DataView.RowId" />
+        <Parameter Name="second" Type="System.UInt64" />
+      </Parameters>
+      <Docs>
+        <param name="first">To be added.</param>
+        <param name="second">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_GreaterThanOrEqual">
+      <MemberSignature Language="C#" Value="public static bool operator &gt;= (Microsoft.Data.DataView.RowId first, ulong second);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_GreaterThanOrEqual(valuetype Microsoft.Data.DataView.RowId first, unsigned int64 second) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.DataView.RowId.op_GreaterThanOrEqual(Microsoft.Data.DataView.RowId,System.UInt64)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Operator &gt;= (first As RowId, second As ULong) As Boolean" />
+      <MemberSignature Language="F#" Value="static member ( &gt;= ) : Microsoft.Data.DataView.RowId * uint64 -&gt; bool" Usage="first &gt;= second" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="first" Type="Microsoft.Data.DataView.RowId" />
+        <Parameter Name="second" Type="System.UInt64" />
+      </Parameters>
+      <Docs>
+        <param name="first">To be added.</param>
+        <param name="second">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Inequality">
+      <MemberSignature Language="C#" Value="public static bool operator != (Microsoft.Data.DataView.RowId first, ulong second);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Inequality(valuetype Microsoft.Data.DataView.RowId first, unsigned int64 second) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.DataView.RowId.op_Inequality(Microsoft.Data.DataView.RowId,System.UInt64)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Operator != (first As RowId, second As ULong) As Boolean" />
+      <MemberSignature Language="F#" Value="static member op_Inequality : Microsoft.Data.DataView.RowId * uint64 -&gt; bool" Usage="Microsoft.Data.DataView.RowId.op_Inequality (first, second)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="first" Type="Microsoft.Data.DataView.RowId" />
+        <Parameter Name="second" Type="System.UInt64" />
+      </Parameters>
+      <Docs>
+        <param name="first">To be added.</param>
+        <param name="second">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_LessThan">
+      <MemberSignature Language="C#" Value="public static bool operator &lt; (Microsoft.Data.DataView.RowId first, ulong second);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_LessThan(valuetype Microsoft.Data.DataView.RowId first, unsigned int64 second) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.DataView.RowId.op_LessThan(Microsoft.Data.DataView.RowId,System.UInt64)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Operator &lt; (first As RowId, second As ULong) As Boolean" />
+      <MemberSignature Language="F#" Value="static member ( &lt; ) : Microsoft.Data.DataView.RowId * uint64 -&gt; bool" Usage="first &lt; second" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="first" Type="Microsoft.Data.DataView.RowId" />
+        <Parameter Name="second" Type="System.UInt64" />
+      </Parameters>
+      <Docs>
+        <param name="first">To be added.</param>
+        <param name="second">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_LessThanOrEqual">
+      <MemberSignature Language="C#" Value="public static bool operator &lt;= (Microsoft.Data.DataView.RowId first, ulong second);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_LessThanOrEqual(valuetype Microsoft.Data.DataView.RowId first, unsigned int64 second) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.DataView.RowId.op_LessThanOrEqual(Microsoft.Data.DataView.RowId,System.UInt64)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Operator &lt;= (first As RowId, second As ULong) As Boolean" />
+      <MemberSignature Language="F#" Value="static member ( &lt;= ) : Microsoft.Data.DataView.RowId * uint64 -&gt; bool" Usage="first &lt;= second" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="first" Type="Microsoft.Data.DataView.RowId" />
+        <Parameter Name="second" Type="System.UInt64" />
+      </Parameters>
+      <Docs>
+        <param name="first">To be added.</param>
+        <param name="second">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Subtraction">
+      <MemberSignature Language="C#" Value="public static Microsoft.Data.DataView.RowId operator - (Microsoft.Data.DataView.RowId first, ulong second);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype Microsoft.Data.DataView.RowId op_Subtraction(valuetype Microsoft.Data.DataView.RowId first, unsigned int64 second) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.DataView.RowId.op_Subtraction(Microsoft.Data.DataView.RowId,System.UInt64)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Operator - (first As RowId, second As ULong) As RowId" />
+      <MemberSignature Language="F#" Value="static member ( - ) : Microsoft.Data.DataView.RowId * uint64 -&gt; Microsoft.Data.DataView.RowId" Usage="first - second" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.Data.DataView.RowId</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="first" Type="Microsoft.Data.DataView.RowId" />
+        <Parameter Name="second" Type="System.UInt64" />
+      </Parameters>
+      <Docs>
+        <param name="first">To be added.</param>
+        <param name="second">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.DataView.RowId.ToString" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function ToString () As String" />
+      <MemberSignature Language="F#" Value="override this.ToString : unit -&gt; string" Usage="rowId.ToString " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,9 +1,9 @@
 ﻿<Type Name="ISingleFeaturePredictionTransformer&lt;TModel&gt;" FullName="Microsoft.ML.ISingleFeaturePredictionTransformer&lt;TModel&gt;">
-  <TypeSignature Language="C#" Value="public interface ISingleFeaturePredictionTransformer&lt;out TModel&gt; : Microsoft.ML.Core.Data.ITransformer, Microsoft.ML.IPredictionTransformer&lt;out TModel&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ISingleFeaturePredictionTransformer`1&lt;+ TModel&gt; implements class Microsoft.ML.Core.Data.ITransformer, class Microsoft.ML.IPredictionTransformer`1&lt;!TModel&gt;" />
+  <TypeSignature Language="C#" Value="public interface ISingleFeaturePredictionTransformer&lt;out TModel&gt; : Microsoft.ML.IPredictionTransformer&lt;out TModel&gt;, Microsoft.ML.ITransformer" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ISingleFeaturePredictionTransformer`1&lt;+ TModel&gt; implements class Microsoft.ML.IPredictionTransformer`1&lt;!TModel&gt;, class Microsoft.ML.ITransformer, class Microsoft.ML.Model.ICanSaveModel" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.ISingleFeaturePredictionTransformer`1" />
   <TypeSignature Language="VB.NET" Value="Public Interface ISingleFeaturePredictionTransformer(Of Out TModel)&#xA;Implements IPredictionTransformer(Of Out TModel), ITransformer" />
-  <TypeSignature Language="F#" Value="type ISingleFeaturePredictionTransformer&lt;'Model&gt; = interface&#xA;    interface IPredictionTransformer&lt;'Model&gt;&#xA;    interface ITransformer" />
+  <TypeSignature Language="F#" Value="type ISingleFeaturePredictionTransformer&lt;'Model&gt; = interface&#xA;    interface IPredictionTransformer&lt;'Model&gt;&#xA;    interface ITransformer&#xA;    interface ICanSaveModel" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.Data</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -17,10 +17,13 @@
   </TypeParameters>
   <Interfaces>
     <Interface>
-      <InterfaceName>Microsoft.ML.Core.Data.ITransformer</InterfaceName>
+      <InterfaceName>Microsoft.ML.IPredictionTransformer&lt;TModel&gt;</InterfaceName>
     </Interface>
     <Interface>
-      <InterfaceName>Microsoft.ML.IPredictionTransformer&lt;TModel&gt;</InterfaceName>
+      <InterfaceName>Microsoft.ML.ITransformer</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Model.ICanSaveModel</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -28,7 +31,7 @@
     <summary>
             An ISingleFeaturePredictionTransformer contains the name of the <see cref="P:Microsoft.ML.ISingleFeaturePredictionTransformer`1.FeatureColumn" />
             and its type, <see cref="P:Microsoft.ML.ISingleFeaturePredictionTransformer`1.FeatureColumnType" />. Implementations of this interface, have the ability
-            to score the data of an input <see cref="T:Microsoft.Data.DataView.IDataView" /> through the <see cref="M:Microsoft.ML.Core.Data.ITransformer.Transform(Microsoft.Data.DataView.IDataView)" /></summary>
+            to score the data of an input <see cref="T:Microsoft.Data.DataView.IDataView" /> through the <see cref="M:Microsoft.ML.ITransformer.Transform(Microsoft.Data.DataView.IDataView)" /></summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -53,18 +56,18 @@
       </Docs>
     </Member>
     <Member MemberName="FeatureColumnType">
-      <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.ColumnType FeatureColumnType { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.Data.DataView.ColumnType FeatureColumnType" />
+      <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.DataViewType FeatureColumnType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.Data.DataView.DataViewType FeatureColumnType" />
       <MemberSignature Language="DocId" Value="P:Microsoft.ML.ISingleFeaturePredictionTransformer`1.FeatureColumnType" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property FeatureColumnType As ColumnType" />
-      <MemberSignature Language="F#" Value="member this.FeatureColumnType : Microsoft.Data.DataView.ColumnType" Usage="Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Model&gt;.FeatureColumnType" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property FeatureColumnType As DataViewType" />
+      <MemberSignature Language="F#" Value="member this.FeatureColumnType : Microsoft.Data.DataView.DataViewType" Usage="Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Model&gt;.FeatureColumnType" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.Data.DataView.ColumnType</ReturnType>
+        <ReturnType>Microsoft.Data.DataView.DataViewType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds information about the type of the feature column.</summary>
