@@ -50,11 +50,11 @@
       </Docs>
     </Member>
     <Member MemberName="ProjectToPrincipalComponents">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator ProjectToPrincipalComponents (this Microsoft.ML.TransformsCatalog.ProjectionTransforms catalog, string outputColumnName, string inputColumnName = null, string weightColumn = null, int rank = 20, int overSampling = 20, bool center = true, Nullable&lt;int&gt; seed = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator ProjectToPrincipalComponents(class Microsoft.ML.TransformsCatalog/ProjectionTransforms catalog, string outputColumnName, string inputColumnName, string weightColumn, int32 rank, int32 overSampling, bool center, valuetype System.Nullable`1&lt;int32&gt; seed) cil managed" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator ProjectToPrincipalComponents (this Microsoft.ML.TransformsCatalog.ProjectionTransforms catalog, string outputColumnName, string inputColumnName = null, string exampleWeightColumnName = null, int rank = 20, int overSampling = 20, bool center = true, Nullable&lt;int&gt; seed = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator ProjectToPrincipalComponents(class Microsoft.ML.TransformsCatalog/ProjectionTransforms catalog, string outputColumnName, string inputColumnName, string exampleWeightColumnName, int32 rank, int32 overSampling, bool center, valuetype System.Nullable`1&lt;int32&gt; seed) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.PcaCatalog.ProjectToPrincipalComponents(Microsoft.ML.TransformsCatalog.ProjectionTransforms,System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean,System.Nullable{System.Int32})" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ProjectToPrincipalComponents (catalog As TransformsCatalog.ProjectionTransforms, outputColumnName As String, Optional inputColumnName As String = null, Optional weightColumn As String = null, Optional rank As Integer = 20, Optional overSampling As Integer = 20, Optional center As Boolean = true, Optional seed As Nullable(Of Integer) = null) As PrincipalComponentAnalysisEstimator" />
-      <MemberSignature Language="F#" Value="static member ProjectToPrincipalComponents : Microsoft.ML.TransformsCatalog.ProjectionTransforms * string * string * string * int * int * bool * Nullable&lt;int&gt; -&gt; Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator" Usage="Microsoft.ML.PcaCatalog.ProjectToPrincipalComponents (catalog, outputColumnName, inputColumnName, weightColumn, rank, overSampling, center, seed)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ProjectToPrincipalComponents (catalog As TransformsCatalog.ProjectionTransforms, outputColumnName As String, Optional inputColumnName As String = null, Optional exampleWeightColumnName As String = null, Optional rank As Integer = 20, Optional overSampling As Integer = 20, Optional center As Boolean = true, Optional seed As Nullable(Of Integer) = null) As PrincipalComponentAnalysisEstimator" />
+      <MemberSignature Language="F#" Value="static member ProjectToPrincipalComponents : Microsoft.ML.TransformsCatalog.ProjectionTransforms * string * string * string * int * int * bool * Nullable&lt;int&gt; -&gt; Microsoft.ML.Transforms.Projections.PrincipalComponentAnalysisEstimator" Usage="Microsoft.ML.PcaCatalog.ProjectToPrincipalComponents (catalog, outputColumnName, inputColumnName, exampleWeightColumnName, rank, overSampling, center, seed)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.PCA</AssemblyName>
@@ -67,7 +67,7 @@
         <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+ProjectionTransforms" RefType="this" Index="0" />
         <Parameter Name="outputColumnName" Type="System.String" Index="1" FrameworkAlternate="ml-dotnet" />
         <Parameter Name="inputColumnName" Type="System.String" Index="2" FrameworkAlternate="ml-dotnet" />
-        <Parameter Name="weightColumn" Type="System.String" Index="3" />
+        <Parameter Name="exampleWeightColumnName" Type="System.String" Index="3" FrameworkAlternate="ml-dotnet" />
         <Parameter Name="rank" Type="System.Int32" Index="4" />
         <Parameter Name="overSampling" Type="System.Int32" Index="5" />
         <Parameter Name="center" Type="System.Boolean" Index="6" />
@@ -77,7 +77,7 @@
         <param name="catalog">The transform's catalog.</param>
         <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
         <param name="inputColumnName">Name of column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
-        <param name="weightColumn">The name of the weight column.</param>
+        <param name="exampleWeightColumnName">The name of the example weight column (optional).</param>
         <param name="rank">The number of principal components.</param>
         <param name="overSampling">Oversampling parameter for randomized PrincipalComponentAnalysis training.</param>
         <param name="center">If enabled, data is centered to be zero mean.</param>
@@ -115,11 +115,11 @@
       </Docs>
     </Member>
     <Member MemberName="RandomizedPca">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Trainers.PCA.RandomizedPcaTrainer RandomizedPca (this Microsoft.ML.AnomalyDetectionCatalog.AnomalyDetectionTrainers catalog, string featureColumn = &quot;Features&quot;, string weights = null, int rank = 20, int oversampling = 20, bool center = true, Nullable&lt;int&gt; seed = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Trainers.PCA.RandomizedPcaTrainer RandomizedPca(class Microsoft.ML.AnomalyDetectionCatalog/AnomalyDetectionTrainers catalog, string featureColumn, string weights, int32 rank, int32 oversampling, bool center, valuetype System.Nullable`1&lt;int32&gt; seed) cil managed" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Trainers.PCA.RandomizedPcaTrainer RandomizedPca (this Microsoft.ML.AnomalyDetectionCatalog.AnomalyDetectionTrainers catalog, string featureColumnName = &quot;Features&quot;, string exampleWeightColumnName = null, int rank = 20, int oversampling = 20, bool center = true, Nullable&lt;int&gt; seed = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Trainers.PCA.RandomizedPcaTrainer RandomizedPca(class Microsoft.ML.AnomalyDetectionCatalog/AnomalyDetectionTrainers catalog, string featureColumnName, string exampleWeightColumnName, int32 rank, int32 oversampling, bool center, valuetype System.Nullable`1&lt;int32&gt; seed) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.PcaCatalog.RandomizedPca(Microsoft.ML.AnomalyDetectionCatalog.AnomalyDetectionTrainers,System.String,System.String,System.Int32,System.Int32,System.Boolean,System.Nullable{System.Int32})" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function RandomizedPca (catalog As AnomalyDetectionCatalog.AnomalyDetectionTrainers, Optional featureColumn As String = &quot;Features&quot;, Optional weights As String = null, Optional rank As Integer = 20, Optional oversampling As Integer = 20, Optional center As Boolean = true, Optional seed As Nullable(Of Integer) = null) As RandomizedPcaTrainer" />
-      <MemberSignature Language="F#" Value="static member RandomizedPca : Microsoft.ML.AnomalyDetectionCatalog.AnomalyDetectionTrainers * string * string * int * int * bool * Nullable&lt;int&gt; -&gt; Microsoft.ML.Trainers.PCA.RandomizedPcaTrainer" Usage="Microsoft.ML.PcaCatalog.RandomizedPca (catalog, featureColumn, weights, rank, oversampling, center, seed)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function RandomizedPca (catalog As AnomalyDetectionCatalog.AnomalyDetectionTrainers, Optional featureColumnName As String = &quot;Features&quot;, Optional exampleWeightColumnName As String = null, Optional rank As Integer = 20, Optional oversampling As Integer = 20, Optional center As Boolean = true, Optional seed As Nullable(Of Integer) = null) As RandomizedPcaTrainer" />
+      <MemberSignature Language="F#" Value="static member RandomizedPca : Microsoft.ML.AnomalyDetectionCatalog.AnomalyDetectionTrainers * string * string * int * int * bool * Nullable&lt;int&gt; -&gt; Microsoft.ML.Trainers.PCA.RandomizedPcaTrainer" Usage="Microsoft.ML.PcaCatalog.RandomizedPca (catalog, featureColumnName, exampleWeightColumnName, rank, oversampling, center, seed)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.PCA</AssemblyName>
@@ -129,18 +129,18 @@
         <ReturnType>Microsoft.ML.Trainers.PCA.RandomizedPcaTrainer</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="catalog" Type="Microsoft.ML.AnomalyDetectionCatalog+AnomalyDetectionTrainers" RefType="this" />
-        <Parameter Name="featureColumn" Type="System.String" />
-        <Parameter Name="weights" Type="System.String" />
-        <Parameter Name="rank" Type="System.Int32" />
-        <Parameter Name="oversampling" Type="System.Int32" />
-        <Parameter Name="center" Type="System.Boolean" />
-        <Parameter Name="seed" Type="System.Nullable&lt;System.Int32&gt;" />
+        <Parameter Name="catalog" Type="Microsoft.ML.AnomalyDetectionCatalog+AnomalyDetectionTrainers" RefType="this" Index="0" />
+        <Parameter Name="featureColumnName" Type="System.String" Index="1" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="exampleWeightColumnName" Type="System.String" Index="2" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="rank" Type="System.Int32" Index="3" />
+        <Parameter Name="oversampling" Type="System.Int32" Index="4" />
+        <Parameter Name="center" Type="System.Boolean" Index="5" />
+        <Parameter Name="seed" Type="System.Nullable&lt;System.Int32&gt;" Index="6" />
       </Parameters>
       <Docs>
         <param name="catalog">The anomaly detection catalog trainer object.</param>
-        <param name="featureColumn">The features, or independent variables.</param>
-        <param name="weights">The optional example weights.</param>
+        <param name="featureColumnName">The name of the feature column.</param>
+        <param name="exampleWeightColumnName">The name of the example weight column (optional).</param>
         <param name="rank">The number of components in the PCA.</param>
         <param name="oversampling">Oversampling parameter for randomized PCA training.</param>
         <param name="center">If enabled, data is centered to be zero mean.</param>

@@ -54,10 +54,10 @@
       </Docs>
     </Member>
     <Member MemberName="ConvertType">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Conversions.TypeConvertingEstimator ConvertType (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, string outputColumnName, string inputColumnName = null, Microsoft.ML.Data.DataKind outputKind = Microsoft.ML.Data.DataKind.Num);" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Conversions.TypeConvertingEstimator ConvertType (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, string outputColumnName, string inputColumnName = null, Microsoft.ML.Data.DataKind outputKind = Microsoft.ML.Data.DataKind.Single);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Conversions.TypeConvertingEstimator ConvertType(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, string outputColumnName, string inputColumnName, valuetype Microsoft.ML.Data.DataKind outputKind) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.ConvertType(Microsoft.ML.TransformsCatalog.ConversionTransforms,System.String,System.String,Microsoft.ML.Data.DataKind)" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ConvertType (catalog As TransformsCatalog.ConversionTransforms, outputColumnName As String, Optional inputColumnName As String = null, Optional outputKind As DataKind = Microsoft.ML.Data.DataKind.Num) As TypeConvertingEstimator" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ConvertType (catalog As TransformsCatalog.ConversionTransforms, outputColumnName As String, Optional inputColumnName As String = null, Optional outputKind As DataKind = Microsoft.ML.Data.DataKind.Single) As TypeConvertingEstimator" />
       <MemberSignature Language="F#" Value="static member ConvertType : Microsoft.ML.TransformsCatalog.ConversionTransforms * string * string * Microsoft.ML.Data.DataKind -&gt; Microsoft.ML.Transforms.Conversions.TypeConvertingEstimator" Usage="Microsoft.ML.ConversionsExtensionsCatalog.ConvertType (catalog, outputColumnName, inputColumnName, outputKind)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
@@ -77,7 +77,7 @@
         <param name="catalog">The transform's catalog.</param>
         <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
         <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
-        <param name="outputKind">Number of bits to hash into. Must be between 1 and 31, inclusive.</param>
+        <param name="outputKind">The expected kind of the output column.</param>
         <summary>
             Changes column type of the input column.
             </summary>
@@ -157,11 +157,11 @@
       </Docs>
     </Member>
     <Member MemberName="MapKeyToValue">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Conversions.KeyToValueMappingEstimator MapKeyToValue (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, params ValueTuple&lt;string,string&gt;[] columns);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Conversions.KeyToValueMappingEstimator MapKeyToValue(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, valuetype System.ValueTuple`2&lt;string, string&gt;[] columns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.MapKeyToValue(Microsoft.ML.TransformsCatalog.ConversionTransforms,System.ValueTuple{System.String,System.String}[])" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function MapKeyToValue (catalog As TransformsCatalog.ConversionTransforms, ParamArray columns As ValueTuple(Of String, String)()) As KeyToValueMappingEstimator" />
-      <MemberSignature Language="F#" Value="static member MapKeyToValue : Microsoft.ML.TransformsCatalog.ConversionTransforms * ValueTuple&lt;string, string&gt;[] -&gt; Microsoft.ML.Transforms.Conversions.KeyToValueMappingEstimator" Usage="Microsoft.ML.ConversionsExtensionsCatalog.MapKeyToValue (catalog, columns)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Conversions.KeyToValueMappingEstimator MapKeyToValue (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, params Microsoft.ML.SimpleColumnInfo[] columns);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Conversions.KeyToValueMappingEstimator MapKeyToValue(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, class Microsoft.ML.SimpleColumnInfo[] columns) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.MapKeyToValue(Microsoft.ML.TransformsCatalog.ConversionTransforms,Microsoft.ML.SimpleColumnInfo[])" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function MapKeyToValue (catalog As TransformsCatalog.ConversionTransforms, ParamArray columns As SimpleColumnInfo()) As KeyToValueMappingEstimator" />
+      <MemberSignature Language="F#" Value="static member MapKeyToValue : Microsoft.ML.TransformsCatalog.ConversionTransforms * Microsoft.ML.SimpleColumnInfo[] -&gt; Microsoft.ML.Transforms.Conversions.KeyToValueMappingEstimator" Usage="Microsoft.ML.ConversionsExtensionsCatalog.MapKeyToValue (catalog, columns)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -172,13 +172,10 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+ConversionTransforms" RefType="this" />
-        <Parameter Name="columns" Type="System.ValueTuple&lt;System.String,System.String&gt;[]">
+        <Parameter Name="columns" Type="Microsoft.ML.SimpleColumnInfo[]">
           <Attributes>
             <Attribute>
               <AttributeName>System.ParamArray</AttributeName>
-            </Attribute>
-            <Attribute>
-              <AttributeName>System.Runtime.CompilerServices.TupleElementNames(new System.String[] { "input", "output" })</AttributeName>
             </Attribute>
           </Attributes>
         </Parameter>
@@ -378,11 +375,11 @@
       </Docs>
     </Member>
     <Member MemberName="ValueMap">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Conversions.ValueMappingEstimator ValueMap (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, Microsoft.Data.DataView.IDataView lookupMap, string keyColumn, string valueColumn, params ValueTuple&lt;string,string&gt;[] columns);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Conversions.ValueMappingEstimator ValueMap(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, class Microsoft.Data.DataView.IDataView lookupMap, string keyColumn, string valueColumn, valuetype System.ValueTuple`2&lt;string, string&gt;[] columns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.ValueMap(Microsoft.ML.TransformsCatalog.ConversionTransforms,Microsoft.Data.DataView.IDataView,System.String,System.String,System.ValueTuple{System.String,System.String}[])" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ValueMap (catalog As TransformsCatalog.ConversionTransforms, lookupMap As IDataView, keyColumn As String, valueColumn As String, ParamArray columns As ValueTuple(Of String, String)()) As ValueMappingEstimator" />
-      <MemberSignature Language="F#" Value="static member ValueMap : Microsoft.ML.TransformsCatalog.ConversionTransforms * Microsoft.Data.DataView.IDataView * string * string * ValueTuple&lt;string, string&gt;[] -&gt; Microsoft.ML.Transforms.Conversions.ValueMappingEstimator" Usage="Microsoft.ML.ConversionsExtensionsCatalog.ValueMap (catalog, lookupMap, keyColumn, valueColumn, columns)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Conversions.ValueMappingEstimator ValueMap (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, Microsoft.Data.DataView.IDataView lookupMap, string keyColumn, string valueColumn, params Microsoft.ML.SimpleColumnInfo[] columns);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Conversions.ValueMappingEstimator ValueMap(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, class Microsoft.Data.DataView.IDataView lookupMap, string keyColumn, string valueColumn, class Microsoft.ML.SimpleColumnInfo[] columns) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.ValueMap(Microsoft.ML.TransformsCatalog.ConversionTransforms,Microsoft.Data.DataView.IDataView,System.String,System.String,Microsoft.ML.SimpleColumnInfo[])" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ValueMap (catalog As TransformsCatalog.ConversionTransforms, lookupMap As IDataView, keyColumn As String, valueColumn As String, ParamArray columns As SimpleColumnInfo()) As ValueMappingEstimator" />
+      <MemberSignature Language="F#" Value="static member ValueMap : Microsoft.ML.TransformsCatalog.ConversionTransforms * Microsoft.Data.DataView.IDataView * string * string * Microsoft.ML.SimpleColumnInfo[] -&gt; Microsoft.ML.Transforms.Conversions.ValueMappingEstimator" Usage="Microsoft.ML.ConversionsExtensionsCatalog.ValueMap (catalog, lookupMap, keyColumn, valueColumn, columns)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -396,13 +393,10 @@
         <Parameter Name="lookupMap" Type="Microsoft.Data.DataView.IDataView" />
         <Parameter Name="keyColumn" Type="System.String" />
         <Parameter Name="valueColumn" Type="System.String" />
-        <Parameter Name="columns" Type="System.ValueTuple&lt;System.String,System.String&gt;[]">
+        <Parameter Name="columns" Type="Microsoft.ML.SimpleColumnInfo[]">
           <Attributes>
             <Attribute>
               <AttributeName>System.ParamArray</AttributeName>
-            </Attribute>
-            <Attribute>
-              <AttributeName>System.Runtime.CompilerServices.TupleElementNames(new System.String[] { "outputColumnName", "inputColumnName" })</AttributeName>
             </Attribute>
           </Attributes>
         </Parameter>
@@ -429,11 +423,11 @@
       </Docs>
     </Member>
     <Member MemberName="ValueMap&lt;TInputType,TOutputType&gt;">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Conversions.ValueMappingEstimator&lt;TInputType,TOutputType&gt; ValueMap&lt;TInputType,TOutputType&gt; (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, System.Collections.Generic.IEnumerable&lt;TInputType&gt; keys, System.Collections.Generic.IEnumerable&lt;TOutputType[]&gt; values, params ValueTuple&lt;string,string&gt;[] columns);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Conversions.ValueMappingEstimator`2&lt;!!TInputType, !!TOutputType&gt; ValueMap&lt;TInputType, TOutputType&gt;(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, class System.Collections.Generic.IEnumerable`1&lt;!!TInputType&gt; keys, class System.Collections.Generic.IEnumerable`1&lt;!!TOutputType[]&gt; values, valuetype System.ValueTuple`2&lt;string, string&gt;[] columns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.ValueMap``2(Microsoft.ML.TransformsCatalog.ConversionTransforms,System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1[]},System.ValueTuple{System.String,System.String}[])" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ValueMap(Of TInputType, TOutputType) (catalog As TransformsCatalog.ConversionTransforms, keys As IEnumerable(Of TInputType), values As IEnumerable(Of TOutputType()), ParamArray columns As ValueTuple(Of String, String)()) As ValueMappingEstimator(Of TInputType, TOutputType)" />
-      <MemberSignature Language="F#" Value="static member ValueMap : Microsoft.ML.TransformsCatalog.ConversionTransforms * seq&lt;'InputType&gt; * seq&lt;'OutputType[]&gt; * ValueTuple&lt;string, string&gt;[] -&gt; Microsoft.ML.Transforms.Conversions.ValueMappingEstimator&lt;'InputType, 'OutputType&gt;" Usage="Microsoft.ML.ConversionsExtensionsCatalog.ValueMap (catalog, keys, values, columns)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Conversions.ValueMappingEstimator&lt;TInputType,TOutputType&gt; ValueMap&lt;TInputType,TOutputType&gt; (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, System.Collections.Generic.IEnumerable&lt;TInputType&gt; keys, System.Collections.Generic.IEnumerable&lt;TOutputType[]&gt; values, params Microsoft.ML.SimpleColumnInfo[] columns);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Conversions.ValueMappingEstimator`2&lt;!!TInputType, !!TOutputType&gt; ValueMap&lt;TInputType, TOutputType&gt;(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, class System.Collections.Generic.IEnumerable`1&lt;!!TInputType&gt; keys, class System.Collections.Generic.IEnumerable`1&lt;!!TOutputType[]&gt; values, class Microsoft.ML.SimpleColumnInfo[] columns) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.ValueMap``2(Microsoft.ML.TransformsCatalog.ConversionTransforms,System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1[]},Microsoft.ML.SimpleColumnInfo[])" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ValueMap(Of TInputType, TOutputType) (catalog As TransformsCatalog.ConversionTransforms, keys As IEnumerable(Of TInputType), values As IEnumerable(Of TOutputType()), ParamArray columns As SimpleColumnInfo()) As ValueMappingEstimator(Of TInputType, TOutputType)" />
+      <MemberSignature Language="F#" Value="static member ValueMap : Microsoft.ML.TransformsCatalog.ConversionTransforms * seq&lt;'InputType&gt; * seq&lt;'OutputType[]&gt; * Microsoft.ML.SimpleColumnInfo[] -&gt; Microsoft.ML.Transforms.Conversions.ValueMappingEstimator&lt;'InputType, 'OutputType&gt;" Usage="Microsoft.ML.ConversionsExtensionsCatalog.ValueMap (catalog, keys, values, columns)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -450,13 +444,10 @@
         <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+ConversionTransforms" RefType="this" />
         <Parameter Name="keys" Type="System.Collections.Generic.IEnumerable&lt;TInputType&gt;" />
         <Parameter Name="values" Type="System.Collections.Generic.IEnumerable&lt;TOutputType[]&gt;" />
-        <Parameter Name="columns" Type="System.ValueTuple&lt;System.String,System.String&gt;[]">
+        <Parameter Name="columns" Type="Microsoft.ML.SimpleColumnInfo[]">
           <Attributes>
             <Attribute>
               <AttributeName>System.ParamArray</AttributeName>
-            </Attribute>
-            <Attribute>
-              <AttributeName>System.Runtime.CompilerServices.TupleElementNames(new System.String[] { "outputColumnName", "inputColumnName" })</AttributeName>
             </Attribute>
           </Attributes>
         </Parameter>
@@ -485,11 +476,11 @@
       </Docs>
     </Member>
     <Member MemberName="ValueMap&lt;TInputType,TOutputType&gt;">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Conversions.ValueMappingEstimator&lt;TInputType,TOutputType&gt; ValueMap&lt;TInputType,TOutputType&gt; (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, System.Collections.Generic.IEnumerable&lt;TInputType&gt; keys, System.Collections.Generic.IEnumerable&lt;TOutputType&gt; values, params ValueTuple&lt;string,string&gt;[] columns);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Conversions.ValueMappingEstimator`2&lt;!!TInputType, !!TOutputType&gt; ValueMap&lt;TInputType, TOutputType&gt;(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, class System.Collections.Generic.IEnumerable`1&lt;!!TInputType&gt; keys, class System.Collections.Generic.IEnumerable`1&lt;!!TOutputType&gt; values, valuetype System.ValueTuple`2&lt;string, string&gt;[] columns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.ValueMap``2(Microsoft.ML.TransformsCatalog.ConversionTransforms,System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.ValueTuple{System.String,System.String}[])" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ValueMap(Of TInputType, TOutputType) (catalog As TransformsCatalog.ConversionTransforms, keys As IEnumerable(Of TInputType), values As IEnumerable(Of TOutputType), ParamArray columns As ValueTuple(Of String, String)()) As ValueMappingEstimator(Of TInputType, TOutputType)" />
-      <MemberSignature Language="F#" Value="static member ValueMap : Microsoft.ML.TransformsCatalog.ConversionTransforms * seq&lt;'InputType&gt; * seq&lt;'OutputType&gt; * ValueTuple&lt;string, string&gt;[] -&gt; Microsoft.ML.Transforms.Conversions.ValueMappingEstimator&lt;'InputType, 'OutputType&gt;" Usage="Microsoft.ML.ConversionsExtensionsCatalog.ValueMap (catalog, keys, values, columns)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Conversions.ValueMappingEstimator&lt;TInputType,TOutputType&gt; ValueMap&lt;TInputType,TOutputType&gt; (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, System.Collections.Generic.IEnumerable&lt;TInputType&gt; keys, System.Collections.Generic.IEnumerable&lt;TOutputType&gt; values, params Microsoft.ML.SimpleColumnInfo[] columns);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Conversions.ValueMappingEstimator`2&lt;!!TInputType, !!TOutputType&gt; ValueMap&lt;TInputType, TOutputType&gt;(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, class System.Collections.Generic.IEnumerable`1&lt;!!TInputType&gt; keys, class System.Collections.Generic.IEnumerable`1&lt;!!TOutputType&gt; values, class Microsoft.ML.SimpleColumnInfo[] columns) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.ValueMap``2(Microsoft.ML.TransformsCatalog.ConversionTransforms,System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},Microsoft.ML.SimpleColumnInfo[])" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ValueMap(Of TInputType, TOutputType) (catalog As TransformsCatalog.ConversionTransforms, keys As IEnumerable(Of TInputType), values As IEnumerable(Of TOutputType), ParamArray columns As SimpleColumnInfo()) As ValueMappingEstimator(Of TInputType, TOutputType)" />
+      <MemberSignature Language="F#" Value="static member ValueMap : Microsoft.ML.TransformsCatalog.ConversionTransforms * seq&lt;'InputType&gt; * seq&lt;'OutputType&gt; * Microsoft.ML.SimpleColumnInfo[] -&gt; Microsoft.ML.Transforms.Conversions.ValueMappingEstimator&lt;'InputType, 'OutputType&gt;" Usage="Microsoft.ML.ConversionsExtensionsCatalog.ValueMap (catalog, keys, values, columns)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -506,13 +497,10 @@
         <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+ConversionTransforms" RefType="this" />
         <Parameter Name="keys" Type="System.Collections.Generic.IEnumerable&lt;TInputType&gt;" />
         <Parameter Name="values" Type="System.Collections.Generic.IEnumerable&lt;TOutputType&gt;" />
-        <Parameter Name="columns" Type="System.ValueTuple&lt;System.String,System.String&gt;[]">
+        <Parameter Name="columns" Type="Microsoft.ML.SimpleColumnInfo[]">
           <Attributes>
             <Attribute>
               <AttributeName>System.ParamArray</AttributeName>
-            </Attribute>
-            <Attribute>
-              <AttributeName>System.Runtime.CompilerServices.TupleElementNames(new System.String[] { "source", "name" })</AttributeName>
             </Attribute>
           </Attributes>
         </Parameter>
@@ -541,11 +529,11 @@
       </Docs>
     </Member>
     <Member MemberName="ValueMap&lt;TInputType,TOutputType&gt;">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Conversions.ValueMappingEstimator&lt;TInputType,TOutputType&gt; ValueMap&lt;TInputType,TOutputType&gt; (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, System.Collections.Generic.IEnumerable&lt;TInputType&gt; keys, System.Collections.Generic.IEnumerable&lt;TOutputType&gt; values, bool treatValuesAsKeyType, params ValueTuple&lt;string,string&gt;[] columns);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Conversions.ValueMappingEstimator`2&lt;!!TInputType, !!TOutputType&gt; ValueMap&lt;TInputType, TOutputType&gt;(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, class System.Collections.Generic.IEnumerable`1&lt;!!TInputType&gt; keys, class System.Collections.Generic.IEnumerable`1&lt;!!TOutputType&gt; values, bool treatValuesAsKeyType, valuetype System.ValueTuple`2&lt;string, string&gt;[] columns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.ValueMap``2(Microsoft.ML.TransformsCatalog.ConversionTransforms,System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Boolean,System.ValueTuple{System.String,System.String}[])" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ValueMap(Of TInputType, TOutputType) (catalog As TransformsCatalog.ConversionTransforms, keys As IEnumerable(Of TInputType), values As IEnumerable(Of TOutputType), treatValuesAsKeyType As Boolean, ParamArray columns As ValueTuple(Of String, String)()) As ValueMappingEstimator(Of TInputType, TOutputType)" />
-      <MemberSignature Language="F#" Value="static member ValueMap : Microsoft.ML.TransformsCatalog.ConversionTransforms * seq&lt;'InputType&gt; * seq&lt;'OutputType&gt; * bool * ValueTuple&lt;string, string&gt;[] -&gt; Microsoft.ML.Transforms.Conversions.ValueMappingEstimator&lt;'InputType, 'OutputType&gt;" Usage="Microsoft.ML.ConversionsExtensionsCatalog.ValueMap (catalog, keys, values, treatValuesAsKeyType, columns)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Conversions.ValueMappingEstimator&lt;TInputType,TOutputType&gt; ValueMap&lt;TInputType,TOutputType&gt; (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, System.Collections.Generic.IEnumerable&lt;TInputType&gt; keys, System.Collections.Generic.IEnumerable&lt;TOutputType&gt; values, bool treatValuesAsKeyType, params Microsoft.ML.SimpleColumnInfo[] columns);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Conversions.ValueMappingEstimator`2&lt;!!TInputType, !!TOutputType&gt; ValueMap&lt;TInputType, TOutputType&gt;(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, class System.Collections.Generic.IEnumerable`1&lt;!!TInputType&gt; keys, class System.Collections.Generic.IEnumerable`1&lt;!!TOutputType&gt; values, bool treatValuesAsKeyType, class Microsoft.ML.SimpleColumnInfo[] columns) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.ValueMap``2(Microsoft.ML.TransformsCatalog.ConversionTransforms,System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Boolean,Microsoft.ML.SimpleColumnInfo[])" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ValueMap(Of TInputType, TOutputType) (catalog As TransformsCatalog.ConversionTransforms, keys As IEnumerable(Of TInputType), values As IEnumerable(Of TOutputType), treatValuesAsKeyType As Boolean, ParamArray columns As SimpleColumnInfo()) As ValueMappingEstimator(Of TInputType, TOutputType)" />
+      <MemberSignature Language="F#" Value="static member ValueMap : Microsoft.ML.TransformsCatalog.ConversionTransforms * seq&lt;'InputType&gt; * seq&lt;'OutputType&gt; * bool * Microsoft.ML.SimpleColumnInfo[] -&gt; Microsoft.ML.Transforms.Conversions.ValueMappingEstimator&lt;'InputType, 'OutputType&gt;" Usage="Microsoft.ML.ConversionsExtensionsCatalog.ValueMap (catalog, keys, values, treatValuesAsKeyType, columns)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -563,13 +551,10 @@
         <Parameter Name="keys" Type="System.Collections.Generic.IEnumerable&lt;TInputType&gt;" />
         <Parameter Name="values" Type="System.Collections.Generic.IEnumerable&lt;TOutputType&gt;" />
         <Parameter Name="treatValuesAsKeyType" Type="System.Boolean" />
-        <Parameter Name="columns" Type="System.ValueTuple&lt;System.String,System.String&gt;[]">
+        <Parameter Name="columns" Type="Microsoft.ML.SimpleColumnInfo[]">
           <Attributes>
             <Attribute>
               <AttributeName>System.ParamArray</AttributeName>
-            </Attribute>
-            <Attribute>
-              <AttributeName>System.Runtime.CompilerServices.TupleElementNames(new System.String[] { "outputColumnName", "inputColumnName" })</AttributeName>
             </Attribute>
           </Attributes>
         </Parameter>

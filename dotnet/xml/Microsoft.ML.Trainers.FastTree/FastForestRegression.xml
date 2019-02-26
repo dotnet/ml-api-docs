@@ -13,7 +13,7 @@
     <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Trainers.FastTree.RandomForestTrainerBase&lt;Microsoft.ML.Trainers.FastTree.FastForestRegression+Arguments,Microsoft.ML.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Trainers.FastTree.FastForestRegressionModelParameters&gt;,Microsoft.ML.Trainers.FastTree.FastForestRegressionModelParameters&gt;</BaseTypeName>
     <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Trainers.FastTree.RandomForestTrainerBase&lt;Microsoft.ML.Trainers.FastTree.FastForestRegression+Options,Microsoft.ML.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Trainers.FastTree.FastForestRegressionModelParameters&gt;,Microsoft.ML.Trainers.FastTree.FastForestRegressionModelParameters&gt;</BaseTypeName>
     <BaseTypeArguments>
-      <BaseTypeArgument TypeParamName="TArgs">Microsoft.ML.Trainers.FastTree.FastForestRegression+Options</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TOptions">Microsoft.ML.Trainers.FastTree.FastForestRegression+Options</BaseTypeArgument>
       <BaseTypeArgument TypeParamName="TTransformer">Microsoft.ML.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Trainers.FastTree.FastForestRegressionModelParameters&gt;</BaseTypeArgument>
       <BaseTypeArgument TypeParamName="TModel">Microsoft.ML.Trainers.FastTree.FastForestRegressionModelParameters</BaseTypeArgument>
     </BaseTypeArguments>
@@ -34,51 +34,6 @@
          Each tree in a decision forest outputs a Gaussian distribution.</para><para>For more see: </para><list type="bullet"><item><description><a href="https://en.wikipedia.org/wiki/Random_forest">Wikipedia: Random forest</a></description></item><item><description><a href="http://jmlr.org/papers/volume7/meinshausen06a/meinshausen06a.pdf">Quantile regression forest</a></description></item><item><description><a href="https://blogs.technet.microsoft.com/machinelearning/2014/09/10/from-stumps-to-trees-to-forests/">From Stumps to Trees to Forests</a></description></item></list></remarks>
   </Docs>
   <Members>
-    <Member MemberName="ConstructObjFunc">
-      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Trainers.FastTree.ObjectiveFunctionBase ConstructObjFunc (Microsoft.ML.IChannel ch);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Trainers.FastTree.ObjectiveFunctionBase ConstructObjFunc(class Microsoft.ML.IChannel ch) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastForestRegression.ConstructObjFunc(Microsoft.ML.IChannel)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function ConstructObjFunc (ch As IChannel) As ObjectiveFunctionBase" />
-      <MemberSignature Language="F#" Value="override this.ConstructObjFunc : Microsoft.ML.IChannel -&gt; Microsoft.ML.Trainers.FastTree.ObjectiveFunctionBase" Usage="fastForestRegression.ConstructObjFunc ch" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Trainers.FastTree.ObjectiveFunctionBase</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="ch" Type="Microsoft.ML.IChannel" />
-      </Parameters>
-      <Docs>
-        <param name="ch">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ConstructTestForTrainingData">
-      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Trainers.FastTree.Test ConstructTestForTrainingData ();" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Trainers.FastTree.Test ConstructTestForTrainingData() cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastForestRegression.ConstructTestForTrainingData" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function ConstructTestForTrainingData () As Test" />
-      <MemberSignature Language="F#" Value="override this.ConstructTestForTrainingData : unit -&gt; Microsoft.ML.Trainers.FastTree.Test" Usage="fastForestRegression.ConstructTestForTrainingData " />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Trainers.FastTree.Test</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Fit">
       <MemberSignature Language="C#" Value="public Microsoft.ML.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Trainers.FastTree.FastForestRegressionModelParameters&gt; Fit (Microsoft.Data.DataView.IDataView trainData, Microsoft.Data.DataView.IDataView validationData);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Data.RegressionPredictionTransformer`1&lt;class Microsoft.ML.Trainers.FastTree.FastForestRegressionModelParameters&gt; Fit(class Microsoft.Data.DataView.IDataView trainData, class Microsoft.Data.DataView.IDataView validationData) cil managed" />
@@ -105,99 +60,6 @@
             a <see cref="T:Microsoft.ML.Data.RegressionPredictionTransformer`1" />.
             </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GetOutputColumnsCore">
-      <MemberSignature Language="C#" Value="protected override Microsoft.ML.SchemaShape.Column[] GetOutputColumnsCore (Microsoft.ML.SchemaShape inputSchema);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance valuetype Microsoft.ML.SchemaShape/Column[] GetOutputColumnsCore(class Microsoft.ML.SchemaShape inputSchema) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastForestRegression.GetOutputColumnsCore(Microsoft.ML.SchemaShape)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetOutputColumnsCore (inputSchema As SchemaShape) As SchemaShape.Column()" />
-      <MemberSignature Language="F#" Value="override this.GetOutputColumnsCore : Microsoft.ML.SchemaShape -&gt; Microsoft.ML.SchemaShape.Column[]" Usage="fastForestRegression.GetOutputColumnsCore inputSchema" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.SchemaShape+Column[]</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="inputSchema" Type="Microsoft.ML.SchemaShape" />
-      </Parameters>
-      <Docs>
-        <param name="inputSchema">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="MakeTransformer">
-      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Trainers.FastTree.FastForestRegressionModelParameters&gt; MakeTransformer (Microsoft.ML.Trainers.FastTree.FastForestRegressionModelParameters model, Microsoft.Data.DataView.DataViewSchema trainSchema);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Data.RegressionPredictionTransformer`1&lt;class Microsoft.ML.Trainers.FastTree.FastForestRegressionModelParameters&gt; MakeTransformer(class Microsoft.ML.Trainers.FastTree.FastForestRegressionModelParameters model, class Microsoft.Data.DataView.DataViewSchema trainSchema) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastForestRegression.MakeTransformer(Microsoft.ML.Trainers.FastTree.FastForestRegressionModelParameters,Microsoft.Data.DataView.DataViewSchema)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function MakeTransformer (model As FastForestRegressionModelParameters, trainSchema As DataViewSchema) As RegressionPredictionTransformer(Of FastForestRegressionModelParameters)" />
-      <MemberSignature Language="F#" Value="override this.MakeTransformer : Microsoft.ML.Trainers.FastTree.FastForestRegressionModelParameters * Microsoft.Data.DataView.DataViewSchema -&gt; Microsoft.ML.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Trainers.FastTree.FastForestRegressionModelParameters&gt;" Usage="fastForestRegression.MakeTransformer (model, trainSchema)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Trainers.FastTree.FastForestRegressionModelParameters&gt;</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="model" Type="Microsoft.ML.Trainers.FastTree.FastForestRegressionModelParameters" />
-        <Parameter Name="trainSchema" Type="Microsoft.Data.DataView.DataViewSchema" />
-      </Parameters>
-      <Docs>
-        <param name="model">To be added.</param>
-        <param name="trainSchema">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="PredictionKind">
-      <MemberSignature Language="C#" Value="public override Microsoft.ML.PredictionKind PredictionKind { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.ML.PredictionKind PredictionKind" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FastTree.FastForestRegression.PredictionKind" />
-      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property PredictionKind As PredictionKind" />
-      <MemberSignature Language="F#" Value="member this.PredictionKind : Microsoft.ML.PredictionKind" Usage="Microsoft.ML.Trainers.FastTree.FastForestRegression.PredictionKind" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.PredictionKind</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="PrepareLabels">
-      <MemberSignature Language="C#" Value="protected override void PrepareLabels (Microsoft.ML.IChannel ch);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void PrepareLabels(class Microsoft.ML.IChannel ch) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastForestRegression.PrepareLabels(Microsoft.ML.IChannel)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Sub PrepareLabels (ch As IChannel)" />
-      <MemberSignature Language="F#" Value="override this.PrepareLabels : Microsoft.ML.IChannel -&gt; unit" Usage="fastForestRegression.PrepareLabels ch" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="ch" Type="Microsoft.ML.IChannel" />
-      </Parameters>
-      <Docs>
-        <param name="ch">To be added.</param>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

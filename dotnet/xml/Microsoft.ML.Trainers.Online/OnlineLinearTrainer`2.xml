@@ -1,6 +1,6 @@
 ﻿<Type Name="OnlineLinearTrainer&lt;TTransformer,TModel&gt;" FullName="Microsoft.ML.Trainers.Online.OnlineLinearTrainer&lt;TTransformer,TModel&gt;">
-  <TypeSignature Language="C#" Value="public abstract class OnlineLinearTrainer&lt;TTransformer,TModel&gt; : Microsoft.ML.Training.TrainerEstimatorBase&lt;TTransformer,TModel&gt; where TTransformer : ISingleFeaturePredictionTransformer&lt;TModel&gt; where TModel : class" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit OnlineLinearTrainer`2&lt;(class Microsoft.ML.ISingleFeaturePredictionTransformer`1&lt;!TModel&gt;) TTransformer, class TModel&gt; extends Microsoft.ML.Training.TrainerEstimatorBase`2&lt;!TTransformer, !TModel&gt;" />
+  <TypeSignature Language="C#" Value="public abstract class OnlineLinearTrainer&lt;TTransformer,TModel&gt; : Microsoft.ML.Trainers.TrainerEstimatorBase&lt;TTransformer,TModel&gt; where TTransformer : ISingleFeaturePredictionTransformer&lt;TModel&gt; where TModel : class" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit OnlineLinearTrainer`2&lt;(class Microsoft.ML.ISingleFeaturePredictionTransformer`1&lt;!TModel&gt;) TTransformer, class TModel&gt; extends Microsoft.ML.Trainers.TrainerEstimatorBase`2&lt;!TTransformer, !TModel&gt;" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Trainers.Online.OnlineLinearTrainer`2" />
   <TypeSignature Language="VB.NET" Value="Public MustInherit Class OnlineLinearTrainer(Of TTransformer, TModel)&#xA;Inherits TrainerEstimatorBase(Of TTransformer, TModel)" />
   <TypeSignature Language="F#" Value="type OnlineLinearTrainer&lt;'ransformer, 'Model (requires 'ransformer :&gt; ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model : null)&gt; = class&#xA;    inherit TrainerEstimatorBase&lt;'ransformer, 'Model (requires 'ransformer :&gt; ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model : null)&gt;" />
@@ -23,6 +23,7 @@
   <Base>
     <BaseTypeName>Microsoft.ML.Runtime.Training.TrainerEstimatorBase&lt;TTransformer,TModel&gt;</BaseTypeName>
     <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Training.TrainerEstimatorBase&lt;TTransformer,TModel&gt;</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Trainers.TrainerEstimatorBase&lt;TTransformer,TModel&gt;</BaseTypeName>
     <BaseTypeArguments>
       <BaseTypeArgument TypeParamName="!0">TTransformer</BaseTypeArgument>
       <BaseTypeArgument TypeParamName="!1">TModel</BaseTypeArgument>
@@ -36,31 +37,12 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName="Args">
-      <MemberSignature Language="C#" Value="protected readonly Microsoft.ML.Trainers.Online.OnlineLinearArguments Args;" />
-      <MemberSignature Language="ILAsm" Value=".field family initonly class Microsoft.ML.Trainers.Online.OnlineLinearArguments Args" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.Online.OnlineLinearTrainer`2.Args" />
-      <MemberSignature Language="VB.NET" Value="Protected ReadOnly Args As OnlineLinearArguments " />
-      <MemberSignature Language="F#" Value="val mutable Args : Microsoft.ML.Trainers.Online.OnlineLinearArguments" Usage="Microsoft.ML.Trainers.Online.OnlineLinearTrainer&lt;'ransformer, 'Model (requires 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model : null)&gt;.Args" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Trainers.Online.OnlineLinearArguments</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Fit">
-      <MemberSignature Language="C#" Value="public TTransformer Fit (Microsoft.Data.DataView.IDataView trainData, Microsoft.ML.IPredictor initialPredictor);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance !TTransformer Fit(class Microsoft.Data.DataView.IDataView trainData, class Microsoft.ML.IPredictor initialPredictor) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.Online.OnlineLinearTrainer`2.Fit(Microsoft.Data.DataView.IDataView,Microsoft.ML.IPredictor)" />
-      <MemberSignature Language="VB.NET" Value="Public Function Fit (trainData As IDataView, initialPredictor As IPredictor) As TTransformer" />
-      <MemberSignature Language="F#" Value="override this.Fit : Microsoft.Data.DataView.IDataView * Microsoft.ML.IPredictor -&gt; 'ransformer" Usage="onlineLinearTrainer.Fit (trainData, initialPredictor)" />
+      <MemberSignature Language="C#" Value="public TTransformer Fit (Microsoft.Data.DataView.IDataView trainData, Microsoft.ML.Trainers.LinearModelParameters modelParameters);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance !TTransformer Fit(class Microsoft.Data.DataView.IDataView trainData, class Microsoft.ML.Trainers.LinearModelParameters modelParameters) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.Online.OnlineLinearTrainer`2.Fit(Microsoft.Data.DataView.IDataView,Microsoft.ML.Trainers.LinearModelParameters)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Fit (trainData As IDataView, modelParameters As LinearModelParameters) As TTransformer" />
+      <MemberSignature Language="F#" Value="override this.Fit : Microsoft.Data.DataView.IDataView * Microsoft.ML.Trainers.LinearModelParameters -&gt; 'ransformer" Usage="onlineLinearTrainer.Fit (trainData, modelParameters)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
@@ -71,13 +53,13 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="trainData" Type="Microsoft.Data.DataView.IDataView" />
-        <Parameter Name="initialPredictor" Type="Microsoft.ML.IPredictor" />
+        <Parameter Name="modelParameters" Type="Microsoft.ML.Trainers.LinearModelParameters" />
       </Parameters>
       <Docs>
         <param name="trainData">To be added.</param>
-        <param name="initialPredictor">To be added.</param>
+        <param name="modelParameters">To be added.</param>
         <summary>
-            Continues the training of a <see cref="T:Microsoft.ML.Trainers.Online.OnlineLinearTrainer`2" /> using an initial predictor and returns a <see cref="T:Microsoft.ML.ITransformer" />.
+            Continues the training of a <see cref="T:Microsoft.ML.Trainers.Online.OnlineLinearTrainer`2" /> using an already trained <paramref name="modelParameters" /> and returns a <see cref="T:Microsoft.ML.ITransformer" />.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -100,83 +82,6 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Name">
-      <MemberSignature Language="C#" Value="protected readonly string Name;" />
-      <MemberSignature Language="ILAsm" Value=".field family initonly string Name" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.Online.OnlineLinearTrainer`2.Name" />
-      <MemberSignature Language="VB.NET" Value="Protected ReadOnly Name As String " />
-      <MemberSignature Language="F#" Value="val mutable Name : string" Usage="Microsoft.ML.Trainers.Online.OnlineLinearTrainer&lt;'ransformer, 'Model (requires 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model : null)&gt;.Name" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="NeedCalibration">
-      <MemberSignature Language="C#" Value="protected virtual bool NeedCalibration { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool NeedCalibration" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.Online.OnlineLinearTrainer`2.NeedCalibration" />
-      <MemberSignature Language="VB.NET" Value="Protected Overridable ReadOnly Property NeedCalibration As Boolean" />
-      <MemberSignature Language="F#" Value="member this.NeedCalibration : bool" Usage="Microsoft.ML.Trainers.Online.OnlineLinearTrainer&lt;'ransformer, 'Model (requires 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model : null)&gt;.NeedCalibration" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="UserErrorNonNegative">
-      <MemberSignature Language="C#" Value="protected const string UserErrorNonNegative;" />
-      <MemberSignature Language="ILAsm" Value=".field family static literal string UserErrorNonNegative" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.Online.OnlineLinearTrainer`2.UserErrorNonNegative" />
-      <MemberSignature Language="VB.NET" Value="Protected Const UserErrorNonNegative As String " />
-      <MemberSignature Language="F#" Value="val mutable UserErrorNonNegative : string" Usage="Microsoft.ML.Trainers.Online.OnlineLinearTrainer&lt;'ransformer, 'Model (requires 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model : null)&gt;.UserErrorNonNegative" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="UserErrorPositive">
-      <MemberSignature Language="C#" Value="protected const string UserErrorPositive;" />
-      <MemberSignature Language="ILAsm" Value=".field family static literal string UserErrorPositive" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.Online.OnlineLinearTrainer`2.UserErrorPositive" />
-      <MemberSignature Language="VB.NET" Value="Protected Const UserErrorPositive As String " />
-      <MemberSignature Language="F#" Value="val mutable UserErrorPositive : string" Usage="Microsoft.ML.Trainers.Online.OnlineLinearTrainer&lt;'ransformer, 'Model (requires 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model : null)&gt;.UserErrorPositive" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
