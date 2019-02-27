@@ -15,7 +15,7 @@
   <Docs>
     <summary>
             A catalog of operations over data that are not transformers or estimators.
-            This includes data readers, saving, caching, filtering etc.
+            This includes data loaders, saving, caching, filtering etc.
             </summary>
     <remarks>To be added.</remarks>
   </Docs>
@@ -102,6 +102,51 @@
         <example>
           <format type="text/markdown"><![CDATA[
             [!code-csharp[Cache](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/DataOperations/Cache.cs)]
+            ]]></format>
+        </example>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateEnumerable&lt;TRow&gt;">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.IEnumerable&lt;TRow&gt; CreateEnumerable&lt;TRow&gt; (Microsoft.Data.DataView.IDataView data, bool reuseRowObject, bool ignoreMissingColumns = false, Microsoft.ML.Data.SchemaDefinition schemaDefinition = null) where TRow : class, new();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.IEnumerable`1&lt;!!TRow&gt; CreateEnumerable&lt;class .ctor TRow&gt;(class Microsoft.Data.DataView.IDataView data, bool reuseRowObject, bool ignoreMissingColumns, class Microsoft.ML.Data.SchemaDefinition schemaDefinition) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.DataOperationsCatalog.CreateEnumerable``1(Microsoft.Data.DataView.IDataView,System.Boolean,System.Boolean,Microsoft.ML.Data.SchemaDefinition)" />
+      <MemberSignature Language="F#" Value="member this.CreateEnumerable : Microsoft.Data.DataView.IDataView * bool * bool * Microsoft.ML.Data.SchemaDefinition -&gt; seq&lt;'Row (requires 'Row : null and 'Row : (new : unit -&gt; 'Row))&gt; (requires 'Row : null and 'Row : (new : unit -&gt; 'Row))" Usage="dataOperationsCatalog.CreateEnumerable (data, reuseRowObject, ignoreMissingColumns, schemaDefinition)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;TRow&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TRow">
+          <Constraints>
+            <ParameterAttribute>DefaultConstructorConstraint</ParameterAttribute>
+            <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="data" Type="Microsoft.Data.DataView.IDataView" />
+        <Parameter Name="reuseRowObject" Type="System.Boolean" />
+        <Parameter Name="ignoreMissingColumns" Type="System.Boolean" />
+        <Parameter Name="schemaDefinition" Type="Microsoft.ML.Data.SchemaDefinition" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TRow">The user-defined row type.</typeparam>
+        <param name="data">The underlying data view.</param>
+        <param name="reuseRowObject">Whether to return the same object on every row, or allocate a new one per row.</param>
+        <param name="ignoreMissingColumns">Whether to ignore the case when a requested column is not present in the data view.</param>
+        <param name="schemaDefinition">Optional user-provided schema definition. If it is not present, the schema is inferred from the definition of T.</param>
+        <summary>
+            Convert an <see cref="T:Microsoft.Data.DataView.IDataView" /> into a strongly-typed <see cref="T:System.Collections.Generic.IEnumerable`1" />.
+            </summary>
+        <returns>The <see cref="T:System.Collections.Generic.IEnumerable`1" /> that holds the data in <paramref name="data" />. It can be enumerated multiple times.</returns>
+        <remarks>To be added.</remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[BootstrapSample](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/DataOperations/DataViewEnumerable.cs)]
             ]]></format>
         </example>
       </Docs>
@@ -225,6 +270,56 @@
           <format type="text/markdown"><![CDATA[
             [!code-csharp[FilterRowsByMissingValues](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/DataOperations/FilterRowsByMissingValues.cs)]
             ]]></format>
+        </example>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadFromEnumerable&lt;TRow&gt;">
+      <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.IDataView LoadFromEnumerable&lt;TRow&gt; (System.Collections.Generic.IEnumerable&lt;TRow&gt; data, Microsoft.ML.Data.SchemaDefinition schemaDefinition = null) where TRow : class;" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.Data.DataView.IDataView LoadFromEnumerable&lt;class TRow&gt;(class System.Collections.Generic.IEnumerable`1&lt;!!TRow&gt; data, class Microsoft.ML.Data.SchemaDefinition schemaDefinition) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.DataOperationsCatalog.LoadFromEnumerable``1(System.Collections.Generic.IEnumerable{``0},Microsoft.ML.Data.SchemaDefinition)" />
+      <MemberSignature Language="F#" Value="member this.LoadFromEnumerable : seq&lt;'Row (requires 'Row : null)&gt; * Microsoft.ML.Data.SchemaDefinition -&gt; Microsoft.Data.DataView.IDataView (requires 'Row : null)" Usage="dataOperationsCatalog.LoadFromEnumerable (data, schemaDefinition)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.Data.DataView.IDataView</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TRow">
+          <Constraints>
+            <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="data" Type="System.Collections.Generic.IEnumerable&lt;TRow&gt;" />
+        <Parameter Name="schemaDefinition" Type="Microsoft.ML.Data.SchemaDefinition" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TRow">The user-defined item type.</typeparam>
+        <param name="data">The data to wrap around.</param>
+        <param name="schemaDefinition">The optional schema definition of the data view to create. If <c>null</c>,
+             the schema definition is inferred from <typeparamref name="TRow" />.</param>
+        <summary>
+             Create a new <see cref="T:Microsoft.Data.DataView.IDataView" /> over an enumerable of the items of user-defined type.
+             The user maintains ownership of the <paramref name="data" /> and the resulting data view will
+             never alter the contents of the <paramref name="data" />.
+             Since <see cref="T:Microsoft.Data.DataView.IDataView" /> is assumed to be immutable, the user is expected to support
+             multiple enumeration of the <paramref name="data" /> that would return the same results, unless
+             the user knows that the data will only be cursored once.
+            
+             One typical usage for streaming data view could be: create the data view that lazily loads data
+             as needed, then apply pre-trained transformations to it and cursor through it for transformation
+             results.
+             </summary>
+        <returns>The constructed <see cref="T:Microsoft.Data.DataView.IDataView" />.</returns>
+        <remarks>To be added.</remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+             [!code-csharp[BootstrapSample](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/DataOperations/DataViewEnumerable.cs)]
+             ]]></format>
         </example>
       </Docs>
     </Member>

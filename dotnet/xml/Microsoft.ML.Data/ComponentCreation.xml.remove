@@ -1,0 +1,71 @@
+<Type Name="ComponentCreation" FullName="Microsoft.ML.Data.ComponentCreation">
+  <TypeSignature Language="C#" Value="public static class ComponentCreation" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit ComponentCreation extends System.Object" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Data.ComponentCreation" />
+  <TypeSignature Language="VB.NET" Value="Public Module ComponentCreation" />
+  <TypeSignature Language="F#" Value="type ComponentCreation = class" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Data</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+            This class defines extension methods for an <see cref="T:Microsoft.ML.IHostEnvironment" /> to facilitate creating
+            components (loaders, transforms, trainers, scorers, evaluators, savers).
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="ReadFromEnumerable&lt;TRow&gt;">
+      <MemberSignature Language="C#" Value="public static Microsoft.Data.DataView.IDataView ReadFromEnumerable&lt;TRow&gt; (this Microsoft.ML.DataOperationsCatalog catalog, System.Collections.Generic.IEnumerable&lt;TRow&gt; data, Microsoft.ML.Data.SchemaDefinition schemaDefinition = null) where TRow : class;" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.Data.DataView.IDataView ReadFromEnumerable&lt;class TRow&gt;(class Microsoft.ML.DataOperationsCatalog catalog, class System.Collections.Generic.IEnumerable`1&lt;!!TRow&gt; data, class Microsoft.ML.Data.SchemaDefinition schemaDefinition) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.ComponentCreation.ReadFromEnumerable``1(Microsoft.ML.DataOperationsCatalog,System.Collections.Generic.IEnumerable{``0},Microsoft.ML.Data.SchemaDefinition)" />
+      <MemberSignature Language="F#" Value="static member ReadFromEnumerable : Microsoft.ML.DataOperationsCatalog * seq&lt;'Row (requires 'Row : null)&gt; * Microsoft.ML.Data.SchemaDefinition -&gt; Microsoft.Data.DataView.IDataView (requires 'Row : null)" Usage="Microsoft.ML.Data.ComponentCreation.ReadFromEnumerable (catalog, data, schemaDefinition)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.Data.DataView.IDataView</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TRow">
+          <Constraints>
+            <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="catalog" Type="Microsoft.ML.DataOperationsCatalog" RefType="this" />
+        <Parameter Name="data" Type="System.Collections.Generic.IEnumerable&lt;TRow&gt;" />
+        <Parameter Name="schemaDefinition" Type="Microsoft.ML.Data.SchemaDefinition" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TRow">The user-defined item type.</typeparam>
+        <param name="catalog">The context to use for data view creation.</param>
+        <param name="data">The data to wrap around.</param>
+        <param name="schemaDefinition">The optional schema definition of the data view to create. If <c>null</c>,
+             the schema definition is inferred from <typeparamref name="TRow" />.</param>
+        <summary>
+             Create a new <see cref="T:Microsoft.Data.DataView.IDataView" /> over an enumerable of the items of user-defined type.
+             The user maintains ownership of the <paramref name="data" /> and the resulting data view will
+             never alter the contents of the <paramref name="data" />.
+             Since <see cref="T:Microsoft.Data.DataView.IDataView" /> is assumed to be immutable, the user is expected to support
+             multiple enumeration of the <paramref name="data" /> that would return the same results, unless
+             the user knows that the data will only be cursored once.
+            
+             One typical usage for streaming data view could be: create the data view that lazily loads data
+             as needed, then apply pre-trained transformations to it and cursor through it for transformation
+             results.
+             </summary>
+        <returns>The constructed <see cref="T:Microsoft.Data.DataView.IDataView" />.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

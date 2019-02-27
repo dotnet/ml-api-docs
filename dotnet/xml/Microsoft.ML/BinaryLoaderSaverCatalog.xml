@@ -17,12 +17,12 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName="ReadFromBinary">
-      <MemberSignature Language="C#" Value="public static Microsoft.Data.DataView.IDataView ReadFromBinary (this Microsoft.ML.DataOperationsCatalog catalog, Microsoft.ML.Data.IMultiStreamSource fileSource);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.Data.DataView.IDataView ReadFromBinary(class Microsoft.ML.DataOperationsCatalog catalog, class Microsoft.ML.Data.IMultiStreamSource fileSource) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.BinaryLoaderSaverCatalog.ReadFromBinary(Microsoft.ML.DataOperationsCatalog,Microsoft.ML.Data.IMultiStreamSource)" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ReadFromBinary (catalog As DataOperationsCatalog, fileSource As IMultiStreamSource) As IDataView" />
-      <MemberSignature Language="F#" Value="static member ReadFromBinary : Microsoft.ML.DataOperationsCatalog * Microsoft.ML.Data.IMultiStreamSource -&gt; Microsoft.Data.DataView.IDataView" Usage="Microsoft.ML.BinaryLoaderSaverCatalog.ReadFromBinary (catalog, fileSource)" />
+    <Member MemberName="LoadFromBinary">
+      <MemberSignature Language="C#" Value="public static Microsoft.Data.DataView.IDataView LoadFromBinary (this Microsoft.ML.DataOperationsCatalog catalog, Microsoft.ML.Data.IMultiStreamSource fileSource);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.Data.DataView.IDataView LoadFromBinary(class Microsoft.ML.DataOperationsCatalog catalog, class Microsoft.ML.Data.IMultiStreamSource fileSource) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.BinaryLoaderSaverCatalog.LoadFromBinary(Microsoft.ML.DataOperationsCatalog,Microsoft.ML.Data.IMultiStreamSource)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function LoadFromBinary (catalog As DataOperationsCatalog, fileSource As IMultiStreamSource) As IDataView" />
+      <MemberSignature Language="F#" Value="static member LoadFromBinary : Microsoft.ML.DataOperationsCatalog * Microsoft.ML.Data.IMultiStreamSource -&gt; Microsoft.Data.DataView.IDataView" Usage="Microsoft.ML.BinaryLoaderSaverCatalog.LoadFromBinary (catalog, fileSource)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -37,20 +37,21 @@
       </Parameters>
       <Docs>
         <param name="catalog">The catalog.</param>
-        <param name="fileSource">The file source to read from. This can be a <see cref="T:Microsoft.ML.Data.MultiFileSource" />, for example.</param>
+        <param name="fileSource">The file source to load from. This can be a <see cref="T:Microsoft.ML.Data.MultiFileSource" />, for example.</param>
         <summary>
-            Read a data view from an <see cref="T:Microsoft.ML.Data.IMultiStreamSource" /> on a binary file using <see cref="T:Microsoft.ML.Data.IO.BinaryLoader" />.
+            Load a <see cref="T:Microsoft.Data.DataView.IDataView" /> from an <see cref="T:Microsoft.ML.Data.IMultiStreamSource" /> on a binary file.
+            Note that <see cref="T:Microsoft.Data.DataView.IDataView" />'s are lazy, so no actual loading happens here, just schema validation.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ReadFromBinary">
-      <MemberSignature Language="C#" Value="public static Microsoft.Data.DataView.IDataView ReadFromBinary (this Microsoft.ML.DataOperationsCatalog catalog, string path);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.Data.DataView.IDataView ReadFromBinary(class Microsoft.ML.DataOperationsCatalog catalog, string path) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.BinaryLoaderSaverCatalog.ReadFromBinary(Microsoft.ML.DataOperationsCatalog,System.String)" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ReadFromBinary (catalog As DataOperationsCatalog, path As String) As IDataView" />
-      <MemberSignature Language="F#" Value="static member ReadFromBinary : Microsoft.ML.DataOperationsCatalog * string -&gt; Microsoft.Data.DataView.IDataView" Usage="Microsoft.ML.BinaryLoaderSaverCatalog.ReadFromBinary (catalog, path)" />
+    <Member MemberName="LoadFromBinary">
+      <MemberSignature Language="C#" Value="public static Microsoft.Data.DataView.IDataView LoadFromBinary (this Microsoft.ML.DataOperationsCatalog catalog, string path);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.Data.DataView.IDataView LoadFromBinary(class Microsoft.ML.DataOperationsCatalog catalog, string path) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.BinaryLoaderSaverCatalog.LoadFromBinary(Microsoft.ML.DataOperationsCatalog,System.String)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function LoadFromBinary (catalog As DataOperationsCatalog, path As String) As IDataView" />
+      <MemberSignature Language="F#" Value="static member LoadFromBinary : Microsoft.ML.DataOperationsCatalog * string -&gt; Microsoft.Data.DataView.IDataView" Usage="Microsoft.ML.BinaryLoaderSaverCatalog.LoadFromBinary (catalog, path)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -65,9 +66,10 @@
       </Parameters>
       <Docs>
         <param name="catalog">The catalog.</param>
-        <param name="path">The path to the file to read from.</param>
+        <param name="path">The path to the file to load from.</param>
         <summary>
-            Read a data view from a binary file using <see cref="T:Microsoft.ML.Data.IO.BinaryLoader" />.
+            Load a <see cref="T:Microsoft.Data.DataView.IDataView" /> from a binary file.
+            Note that <see cref="T:Microsoft.Data.DataView.IDataView" />'s are lazy, so no actual loading happens here, just schema validation.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -98,7 +100,7 @@
         <param name="stream">The stream to write to.</param>
         <param name="keepHidden">Whether to keep hidden columns in the dataset.</param>
         <summary>
-            Save the data view into a binary stream.
+            Save the <see cref="T:Microsoft.Data.DataView.IDataView" /> into a binary stream.
             </summary>
         <remarks>To be added.</remarks>
       </Docs>

@@ -8,6 +8,10 @@
     <AssemblyName>Microsoft.ML.Onnx</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </AssemblyInfo>
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.OnnxConverter</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
@@ -18,30 +22,31 @@
   </Docs>
   <Members>
     <Member MemberName="ConvertToOnnx">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.UniversalModelFormat.Onnx.ModelProto ConvertToOnnx (this Microsoft.ML.ModelOperationsCatalog catalog, Microsoft.ML.ITransformer transform, Microsoft.Data.DataView.IDataView inputData);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.UniversalModelFormat.Onnx.ModelProto ConvertToOnnx(class Microsoft.ML.ModelOperationsCatalog catalog, class Microsoft.ML.ITransformer transform, class Microsoft.Data.DataView.IDataView inputData) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.OnnxExportExtensions.ConvertToOnnx(Microsoft.ML.ModelOperationsCatalog,Microsoft.ML.ITransformer,Microsoft.Data.DataView.IDataView)" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ConvertToOnnx (catalog As ModelOperationsCatalog, transform As ITransformer, inputData As IDataView) As ModelProto" />
-      <MemberSignature Language="F#" Value="static member ConvertToOnnx : Microsoft.ML.ModelOperationsCatalog * Microsoft.ML.ITransformer * Microsoft.Data.DataView.IDataView -&gt; Microsoft.ML.UniversalModelFormat.Onnx.ModelProto" Usage="Microsoft.ML.OnnxExportExtensions.ConvertToOnnx (catalog, transform, inputData)" />
+      <MemberSignature Language="C#" Value="public static void ConvertToOnnx (this Microsoft.ML.ModelOperationsCatalog catalog, Microsoft.ML.ITransformer transform, Microsoft.Data.DataView.IDataView inputData, System.IO.Stream stream);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void ConvertToOnnx(class Microsoft.ML.ModelOperationsCatalog catalog, class Microsoft.ML.ITransformer transform, class Microsoft.Data.DataView.IDataView inputData, class System.IO.Stream stream) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.OnnxExportExtensions.ConvertToOnnx(Microsoft.ML.ModelOperationsCatalog,Microsoft.ML.ITransformer,Microsoft.Data.DataView.IDataView,System.IO.Stream)" />
+      <MemberSignature Language="F#" Value="static member ConvertToOnnx : Microsoft.ML.ModelOperationsCatalog * Microsoft.ML.ITransformer * Microsoft.Data.DataView.IDataView * System.IO.Stream -&gt; unit" Usage="Microsoft.ML.OnnxExportExtensions.ConvertToOnnx (catalog, transform, inputData, stream)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Onnx</AssemblyName>
+        <AssemblyName>Microsoft.ML.OnnxConverter</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.UniversalModelFormat.Onnx.ModelProto</ReturnType>
+        <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="catalog" Type="Microsoft.ML.ModelOperationsCatalog" RefType="this" />
         <Parameter Name="transform" Type="Microsoft.ML.ITransformer" />
         <Parameter Name="inputData" Type="Microsoft.Data.DataView.IDataView" />
+        <Parameter Name="stream" Type="System.IO.Stream" />
       </Parameters>
       <Docs>
-        <param name="catalog">The class that <see cref="M:Microsoft.ML.OnnxExportExtensions.ConvertToOnnx(Microsoft.ML.ModelOperationsCatalog,Microsoft.ML.ITransformer,Microsoft.Data.DataView.IDataView)" /> attached to.</param>
+        <param name="catalog">The class that <see cref="M:Microsoft.ML.OnnxExportExtensions.ConvertToOnnx(Microsoft.ML.ModelOperationsCatalog,Microsoft.ML.ITransformer,Microsoft.Data.DataView.IDataView,System.IO.Stream)" /> attached to.</param>
         <param name="transform">The <see cref="T:Microsoft.ML.ITransformer" /> that will be converted into ONNX format.</param>
         <param name="inputData">The input of the specified transform.</param>
+        <param name="stream">The stream to write the protobuf model to.</param>
         <summary>
-            Convert the specified <see cref="T:Microsoft.ML.ITransformer" /> to ONNX format. Note that ONNX uses Google's Protobuf so the returned value is a Protobuf object.
+            Convert the specified <see cref="T:Microsoft.ML.ITransformer" /> to ONNX format and writes to a stream.
             </summary>
         <returns>An ONNX model equivalent to the converted ML.NET model.</returns>
         <remarks>To be added.</remarks>
