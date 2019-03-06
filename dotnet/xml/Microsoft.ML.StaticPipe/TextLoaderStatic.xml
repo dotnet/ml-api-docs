@@ -17,19 +17,19 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName="CreateReader&lt;TShape&gt;">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.DataReader&lt;Microsoft.ML.Data.IMultiStreamSource,TShape&gt; CreateReader&lt;TShape&gt; (Microsoft.ML.IHostEnvironment env, Func&lt;Microsoft.ML.StaticPipe.TextLoaderStatic.Context,TShape&gt; func, Microsoft.ML.Data.IMultiStreamSource files = null, bool hasHeader = false, char separator = '\t', bool allowQuoting = true, bool allowSparse = true, bool trimWhitspace = false);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.DataReader`2&lt;class Microsoft.ML.Data.IMultiStreamSource, !!TShape&gt; CreateReader&lt;TShape&gt;(class Microsoft.ML.IHostEnvironment env, class System.Func`2&lt;class Microsoft.ML.StaticPipe.TextLoaderStatic/Context, !!TShape&gt; func, class Microsoft.ML.Data.IMultiStreamSource files, bool hasHeader, char separator, bool allowQuoting, bool allowSparse, bool trimWhitspace) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.TextLoaderStatic.CreateReader``1(Microsoft.ML.IHostEnvironment,System.Func{Microsoft.ML.StaticPipe.TextLoaderStatic.Context,``0},Microsoft.ML.Data.IMultiStreamSource,System.Boolean,System.Char,System.Boolean,System.Boolean,System.Boolean)" />
-      <MemberSignature Language="VB.NET" Value="Public Shared Function CreateReader(Of TShape) (env As IHostEnvironment, func As Func(Of TextLoaderStatic.Context, TShape), Optional files As IMultiStreamSource = null, Optional hasHeader As Boolean = false, Optional separator As Char = '\t', Optional allowQuoting As Boolean = true, Optional allowSparse As Boolean = true, Optional trimWhitspace As Boolean = false) As DataReader(Of IMultiStreamSource, TShape)" />
-      <MemberSignature Language="F#" Value="static member CreateReader : Microsoft.ML.IHostEnvironment * Func&lt;Microsoft.ML.StaticPipe.TextLoaderStatic.Context, 'Shape&gt; * Microsoft.ML.Data.IMultiStreamSource * bool * char * bool * bool * bool -&gt; Microsoft.ML.StaticPipe.DataReader&lt;Microsoft.ML.Data.IMultiStreamSource, 'Shape&gt;" Usage="Microsoft.ML.StaticPipe.TextLoaderStatic.CreateReader (env, func, files, hasHeader, separator, allowQuoting, allowSparse, trimWhitspace)" />
+    <Member MemberName="CreateLoader&lt;TShape&gt;">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.DataLoader&lt;Microsoft.ML.Data.IMultiStreamSource,TShape&gt; CreateLoader&lt;TShape&gt; (Microsoft.ML.IHostEnvironment env, Func&lt;Microsoft.ML.StaticPipe.TextLoaderStatic.Context,TShape&gt; func, Microsoft.ML.Data.IMultiStreamSource files = null, char separator = '\t', bool hasHeader = false, bool allowQuoting = true, bool allowSparse = true, bool trimWhitspace = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.DataLoader`2&lt;class Microsoft.ML.Data.IMultiStreamSource, !!TShape&gt; CreateLoader&lt;TShape&gt;(class Microsoft.ML.IHostEnvironment env, class System.Func`2&lt;class Microsoft.ML.StaticPipe.TextLoaderStatic/Context, !!TShape&gt; func, class Microsoft.ML.Data.IMultiStreamSource files, char separator, bool hasHeader, bool allowQuoting, bool allowSparse, bool trimWhitspace) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.TextLoaderStatic.CreateLoader``1(Microsoft.ML.IHostEnvironment,System.Func{Microsoft.ML.StaticPipe.TextLoaderStatic.Context,``0},Microsoft.ML.Data.IMultiStreamSource,System.Char,System.Boolean,System.Boolean,System.Boolean,System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function CreateLoader(Of TShape) (env As IHostEnvironment, func As Func(Of TextLoaderStatic.Context, TShape), Optional files As IMultiStreamSource = null, Optional separator As Char = '\t', Optional hasHeader As Boolean = false, Optional allowQuoting As Boolean = true, Optional allowSparse As Boolean = true, Optional trimWhitspace As Boolean = false) As DataLoader(Of IMultiStreamSource, TShape)" />
+      <MemberSignature Language="F#" Value="static member CreateLoader : Microsoft.ML.IHostEnvironment * Func&lt;Microsoft.ML.StaticPipe.TextLoaderStatic.Context, 'Shape&gt; * Microsoft.ML.Data.IMultiStreamSource * char * bool * bool * bool * bool -&gt; Microsoft.ML.StaticPipe.DataLoader&lt;Microsoft.ML.Data.IMultiStreamSource, 'Shape&gt;" Usage="Microsoft.ML.StaticPipe.TextLoaderStatic.CreateLoader (env, func, files, separator, hasHeader, allowQuoting, allowSparse, trimWhitspace)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StaticPipe</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.StaticPipe.DataReader&lt;Microsoft.ML.Data.IMultiStreamSource,TShape&gt;</ReturnType>
+        <ReturnType>Microsoft.ML.StaticPipe.DataLoader&lt;Microsoft.ML.Data.IMultiStreamSource,TShape&gt;</ReturnType>
       </ReturnValue>
       <TypeParameters>
         <TypeParameter Name="TShape">
@@ -44,8 +44,8 @@
         <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
         <Parameter Name="func" Type="System.Func&lt;Microsoft.ML.StaticPipe.TextLoaderStatic+Context,TShape&gt;" />
         <Parameter Name="files" Type="Microsoft.ML.Data.IMultiStreamSource" />
-        <Parameter Name="hasHeader" Type="System.Boolean" />
         <Parameter Name="separator" Type="System.Char" />
+        <Parameter Name="hasHeader" Type="System.Boolean" />
         <Parameter Name="allowQuoting" Type="System.Boolean" />
         <Parameter Name="allowSparse" Type="System.Boolean" />
         <Parameter Name="trimWhitspace" Type="System.Boolean" />
@@ -63,8 +63,8 @@
         <param name="files">Input files. If <c>null</c> then no files are read, but this means that options or
             configurations that require input data for initialization (for example, <paramref name="hasHeader" /> or
             <see cref="M:Microsoft.ML.StaticPipe.TextLoaderStatic.Context.LoadFloat(System.Int32,System.Nullable{System.Int32})" />) with a <c>null</c> second argument.</param>
-        <param name="hasHeader">Data file has header with feature names.</param>
         <param name="separator">Text field separator.</param>
+        <param name="hasHeader">Data file has header with feature names.</param>
         <param name="allowQuoting">Whether the input -may include quoted values, which can contain separator
             characters, colons, and distinguish empty values from missing values. When true, consecutive separators
             denote a missing value and an empty value is denoted by <c>""</c>. When false, consecutive separators
@@ -72,9 +72,9 @@
         <param name="allowSparse">Whether the input may include sparse representations.</param>
         <param name="trimWhitspace">Remove trailing whitespace from lines.</param>
         <summary>
-            Configures a reader for text files.
+            Configures a loader for text files.
             </summary>
-        <returns>A configured statically-typed reader for text files.</returns>
+        <returns>A configured statically-typed loader for text files.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

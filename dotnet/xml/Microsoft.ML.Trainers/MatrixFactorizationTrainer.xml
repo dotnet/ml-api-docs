@@ -1,9 +1,9 @@
 ﻿<Type Name="MatrixFactorizationTrainer" FullName="Microsoft.ML.Trainers.MatrixFactorizationTrainer">
-  <TypeSignature Language="C#" Value="public sealed class MatrixFactorizationTrainer : Microsoft.ML.Training.TrainerBase&lt;Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor&gt;, Microsoft.ML.Core.Data.IEstimator&lt;Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit MatrixFactorizationTrainer extends Microsoft.ML.Training.TrainerBase`1&lt;class Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor&gt; implements class Microsoft.ML.Core.Data.IEstimator`1&lt;class Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer&gt;" />
+  <TypeSignature Language="C#" Value="public sealed class MatrixFactorizationTrainer : Microsoft.ML.IEstimator&lt;Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit MatrixFactorizationTrainer extends System.Object implements class Microsoft.ML.IEstimator`1&lt;class Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer&gt;" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Trainers.MatrixFactorizationTrainer" />
-  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class MatrixFactorizationTrainer&#xA;Inherits TrainerBase(Of MatrixFactorizationPredictor)&#xA;Implements IEstimator(Of MatrixFactorizationPredictionTransformer)" />
-  <TypeSignature Language="F#" Value="type MatrixFactorizationTrainer = class&#xA;    inherit TrainerBase&lt;MatrixFactorizationPredictor&gt;&#xA;    interface IEstimator&lt;MatrixFactorizationPredictionTransformer&gt;" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class MatrixFactorizationTrainer&#xA;Implements IEstimator(Of MatrixFactorizationPredictionTransformer)" />
+  <TypeSignature Language="F#" Value="type MatrixFactorizationTrainer = class&#xA;    interface IEstimator&lt;MatrixFactorizationPredictionTransformer&gt;" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -14,10 +14,11 @@
     <BaseTypeArguments>
       <BaseTypeArgument TypeParamName="!0">Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictor</BaseTypeArgument>
     </BaseTypeArguments>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">System.Object</BaseTypeName>
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>Microsoft.ML.Core.Data.IEstimator&lt;Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer&gt;</InterfaceName>
+      <InterfaceName>Microsoft.ML.IEstimator&lt;Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer&gt;</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -75,6 +76,11 @@
              [!code-csharp[MF](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/MatrixFactorization.cs)]
              ]]></format>
     </example>
+    <example>
+      <format type="text/markdown"><![CDATA[
+             [!code-csharp[MF](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Trainers/Recommendation/MatrixFactorization.cs)]
+             ]]></format>
+    </example>
   </Docs>
   <Members>
     <Member MemberName="Fit">
@@ -85,7 +91,7 @@
       <MemberSignature Language="F#" Value="abstract member Fit : Microsoft.Data.DataView.IDataView -&gt; Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer&#xA;override this.Fit : Microsoft.Data.DataView.IDataView -&gt; Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer" Usage="matrixFactorizationTrainer.Fit input" />
       <MemberType>Method</MemberType>
       <Implements>
-        <InterfaceMember>M:Microsoft.ML.Core.Data.IEstimator`1.Fit(Microsoft.Data.DataView.IDataView)</InterfaceMember>
+        <InterfaceMember>M:Microsoft.ML.IEstimator`1.Fit(Microsoft.Data.DataView.IDataView)</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
@@ -100,107 +106,18 @@
       <Docs>
         <param name="input">The training data set.</param>
         <summary>
-            Train a matrix factorization model based on the input <see cref="T:Microsoft.Data.DataView.IDataView" />
-            using the roles specified by <see cref="P:Microsoft.ML.Recommender.RecommenderUtils.MatrixColumnIndexKind" /> and <see cref="P:Microsoft.ML.Recommender.RecommenderUtils.MatrixRowIndexKind" /> in <see cref="T:Microsoft.ML.Trainers.MatrixFactorizationTrainer" />.
-            </summary>
+          <summary> Trains and returns a <see cref="T:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer" />.</summary>
+        </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="GetOutputSchema">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Core.Data.SchemaShape GetOutputSchema (Microsoft.ML.Core.Data.SchemaShape inputSchema);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Core.Data.SchemaShape GetOutputSchema(class Microsoft.ML.Core.Data.SchemaShape inputSchema) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.GetOutputSchema(Microsoft.ML.Core.Data.SchemaShape)" />
-      <MemberSignature Language="VB.NET" Value="Public Function GetOutputSchema (inputSchema As SchemaShape) As SchemaShape" />
-      <MemberSignature Language="F#" Value="abstract member GetOutputSchema : Microsoft.ML.Core.Data.SchemaShape -&gt; Microsoft.ML.Core.Data.SchemaShape&#xA;override this.GetOutputSchema : Microsoft.ML.Core.Data.SchemaShape -&gt; Microsoft.ML.Core.Data.SchemaShape" Usage="matrixFactorizationTrainer.GetOutputSchema inputSchema" />
-      <MemberType>Method</MemberType>
-      <Implements>
-        <InterfaceMember>M:Microsoft.ML.Core.Data.IEstimator`1.GetOutputSchema(Microsoft.ML.Core.Data.SchemaShape)</InterfaceMember>
-      </Implements>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Core.Data.SchemaShape</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="inputSchema" Type="Microsoft.ML.Core.Data.SchemaShape" />
-      </Parameters>
-      <Docs>
-        <param name="inputSchema">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Info">
-      <MemberSignature Language="C#" Value="public override Microsoft.ML.TrainerInfo Info { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.TrainerInfo Info" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Info" />
-      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property Info As TrainerInfo" />
-      <MemberSignature Language="F#" Value="member this.Info : Microsoft.ML.TrainerInfo" Usage="Microsoft.ML.Trainers.MatrixFactorizationTrainer.Info" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.TrainerInfo</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>
-            The <see cref="T:Microsoft.ML.TrainerInfo" /> contains general parameters for this trainer.
-            </summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="LoadNameValue">
-      <MemberSignature Language="C#" Value="public const string LoadNameValue;" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal string LoadNameValue" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.LoadNameValue" />
-      <MemberSignature Language="VB.NET" Value="Public Const LoadNameValue As String " />
-      <MemberSignature Language="F#" Value="val mutable LoadNameValue : string" Usage="Microsoft.ML.Trainers.MatrixFactorizationTrainer.LoadNameValue" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="PredictionKind">
-      <MemberSignature Language="C#" Value="public override Microsoft.ML.PredictionKind PredictionKind { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.ML.PredictionKind PredictionKind" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.MatrixFactorizationTrainer.PredictionKind" />
-      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property PredictionKind As PredictionKind" />
-      <MemberSignature Language="F#" Value="member this.PredictionKind : Microsoft.ML.PredictionKind" Usage="Microsoft.ML.Trainers.MatrixFactorizationTrainer.PredictionKind" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.PredictionKind</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Train">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer Train (Microsoft.Data.DataView.IDataView trainData, Microsoft.Data.DataView.IDataView validationData = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer Train(class Microsoft.Data.DataView.IDataView trainData, class Microsoft.Data.DataView.IDataView validationData) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Train(Microsoft.Data.DataView.IDataView,Microsoft.Data.DataView.IDataView)" />
-      <MemberSignature Language="VB.NET" Value="Public Function Train (trainData As IDataView, Optional validationData As IDataView = null) As MatrixFactorizationPredictionTransformer" />
-      <MemberSignature Language="F#" Value="override this.Train : Microsoft.Data.DataView.IDataView * Microsoft.Data.DataView.IDataView -&gt; Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer" Usage="matrixFactorizationTrainer.Train (trainData, validationData)" />
+    <Member MemberName="Fit">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer Fit (Microsoft.Data.DataView.IDataView trainData, Microsoft.Data.DataView.IDataView validationData);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer Fit(class Microsoft.Data.DataView.IDataView trainData, class Microsoft.Data.DataView.IDataView validationData) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Fit(Microsoft.Data.DataView.IDataView,Microsoft.Data.DataView.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Fit (trainData As IDataView, validationData As IDataView) As MatrixFactorizationPredictionTransformer" />
+      <MemberSignature Language="F#" Value="member this.Fit : Microsoft.Data.DataView.IDataView * Microsoft.Data.DataView.IDataView -&gt; Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer" Usage="matrixFactorizationTrainer.Fit (trainData, validationData)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
@@ -217,8 +134,37 @@
         <param name="trainData">The training data set.</param>
         <param name="validationData">The validation data set.</param>
         <summary>
-            Train a matrix factorization model based on the input <see cref="T:Microsoft.Data.DataView.IDataView" />
-            using the roles specified by <see cref="P:Microsoft.ML.Recommender.RecommenderUtils.MatrixColumnIndexKind" /> and <see cref="P:Microsoft.ML.Recommender.RecommenderUtils.MatrixRowIndexKind" /> in <see cref="T:Microsoft.ML.Trainers.MatrixFactorizationTrainer" />.
+            Trains a <see cref="T:Microsoft.ML.Trainers.MatrixFactorizationTrainer" /> using both training and validation data, returns a <see cref="T:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer" />.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetOutputSchema">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.SchemaShape GetOutputSchema (Microsoft.ML.SchemaShape inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.SchemaShape GetOutputSchema(class Microsoft.ML.SchemaShape inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.GetOutputSchema(Microsoft.ML.SchemaShape)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetOutputSchema (inputSchema As SchemaShape) As SchemaShape" />
+      <MemberSignature Language="F#" Value="abstract member GetOutputSchema : Microsoft.ML.SchemaShape -&gt; Microsoft.ML.SchemaShape&#xA;override this.GetOutputSchema : Microsoft.ML.SchemaShape -&gt; Microsoft.ML.SchemaShape" Usage="matrixFactorizationTrainer.GetOutputSchema inputSchema" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.IEstimator`1.GetOutputSchema(Microsoft.ML.SchemaShape)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.SchemaShape</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.SchemaShape" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
+        <summary>
+            Schema propagation for transformers. Returns the output schema of the data, if
+            the input schema is like the one provided.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

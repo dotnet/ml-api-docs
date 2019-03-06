@@ -22,11 +22,11 @@
   </Docs>
   <Members>
     <Member MemberName="AssertStatic&lt;T&gt;">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.DataView&lt;T&gt; AssertStatic&lt;T&gt; (this Microsoft.Data.DataView.IDataView view, Microsoft.ML.IHostEnvironment env, Func&lt;Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext,T&gt; outputDecl);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.DataView`1&lt;!!T&gt; AssertStatic&lt;T&gt;(class Microsoft.Data.DataView.IDataView view, class Microsoft.ML.IHostEnvironment env, class System.Func`2&lt;class Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext, !!T&gt; outputDecl) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.StaticPipeExtensions.AssertStatic``1(Microsoft.Data.DataView.IDataView,Microsoft.ML.IHostEnvironment,System.Func{Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext,``0})" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.DataView&lt;T&gt; AssertStatic&lt;T&gt; (this Microsoft.Data.DataView.IDataView view, Microsoft.ML.IHostEnvironment env, Func&lt;Microsoft.ML.StaticPipe.SchemaAssertionContext,T&gt; outputDecl);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.DataView`1&lt;!!T&gt; AssertStatic&lt;T&gt;(class Microsoft.Data.DataView.IDataView view, class Microsoft.ML.IHostEnvironment env, class System.Func`2&lt;class Microsoft.ML.StaticPipe.SchemaAssertionContext, !!T&gt; outputDecl) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.StaticPipeExtensions.AssertStatic``1(Microsoft.Data.DataView.IDataView,Microsoft.ML.IHostEnvironment,System.Func{Microsoft.ML.StaticPipe.SchemaAssertionContext,``0})" />
       <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function AssertStatic(Of T) (view As IDataView, env As IHostEnvironment, outputDecl As Func(Of SchemaAssertionContext, T)) As DataView(Of T)" />
-      <MemberSignature Language="F#" Value="static member AssertStatic : Microsoft.Data.DataView.IDataView * Microsoft.ML.IHostEnvironment * Func&lt;Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext, 'T&gt; -&gt; Microsoft.ML.StaticPipe.DataView&lt;'T&gt;" Usage="Microsoft.ML.StaticPipe.StaticPipeExtensions.AssertStatic (view, env, outputDecl)" />
+      <MemberSignature Language="F#" Value="static member AssertStatic : Microsoft.Data.DataView.IDataView * Microsoft.ML.IHostEnvironment * Func&lt;Microsoft.ML.StaticPipe.SchemaAssertionContext, 'T&gt; -&gt; Microsoft.ML.StaticPipe.DataView&lt;'T&gt;" Usage="Microsoft.ML.StaticPipe.StaticPipeExtensions.AssertStatic (view, env, outputDecl)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StaticPipe</AssemblyName>
@@ -47,14 +47,14 @@
       <Parameters>
         <Parameter Name="view" Type="Microsoft.Data.DataView.IDataView" RefType="this" />
         <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
-        <Parameter Name="outputDecl" Type="System.Func&lt;Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext,T&gt;" />
+        <Parameter Name="outputDecl" Type="System.Func&lt;Microsoft.ML.StaticPipe.SchemaAssertionContext,T&gt;" />
       </Parameters>
       <Docs>
         <typeparam name="T">The type representing the view's schema shape</typeparam>
         <param name="view">The view to assert the static schema on</param>
         <param name="env">The host environment to keep in the statically typed variant</param>
         <param name="outputDecl">The delegate through which we declare the schema, which ought to
-            use the input <see cref="T:Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext" /> to declare a <see cref="T:System.ValueTuple" />
+            use the input <see cref="T:Microsoft.ML.StaticPipe.SchemaAssertionContext" /> to declare a <see cref="T:System.ValueTuple" />
             of the <see cref="T:Microsoft.ML.StaticPipe.PipelineColumn" /> indices, properly named</param>
         <summary>
             Asserts that a given data view has the indicated schema. If this method returns without
@@ -65,18 +65,18 @@
       </Docs>
     </Member>
     <Member MemberName="AssertStatic&lt;TIn,T&gt;">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.DataReader&lt;TIn,T&gt; AssertStatic&lt;TIn,T&gt; (this Microsoft.ML.Core.Data.IDataReader&lt;TIn&gt; reader, Microsoft.ML.IHostEnvironment env, Func&lt;Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext,T&gt; outputDecl);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.DataReader`2&lt;!!TIn, !!T&gt; AssertStatic&lt;TIn, T&gt;(class Microsoft.ML.Core.Data.IDataReader`1&lt;!!TIn&gt; reader, class Microsoft.ML.IHostEnvironment env, class System.Func`2&lt;class Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext, !!T&gt; outputDecl) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.StaticPipeExtensions.AssertStatic``2(Microsoft.ML.Core.Data.IDataReader{``0},Microsoft.ML.IHostEnvironment,System.Func{Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext,``1})" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function AssertStatic(Of TIn, T) (reader As IDataReader(Of TIn), env As IHostEnvironment, outputDecl As Func(Of SchemaAssertionContext, T)) As DataReader(Of TIn, T)" />
-      <MemberSignature Language="F#" Value="static member AssertStatic : Microsoft.ML.Core.Data.IDataReader&lt;'In&gt; * Microsoft.ML.IHostEnvironment * Func&lt;Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext, 'T&gt; -&gt; Microsoft.ML.StaticPipe.DataReader&lt;'In, 'T&gt;" Usage="Microsoft.ML.StaticPipe.StaticPipeExtensions.AssertStatic (reader, env, outputDecl)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.DataLoader&lt;TIn,T&gt; AssertStatic&lt;TIn,T&gt; (this Microsoft.ML.IDataLoader&lt;TIn&gt; loader, Microsoft.ML.IHostEnvironment env, Func&lt;Microsoft.ML.StaticPipe.SchemaAssertionContext,T&gt; outputDecl);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.DataLoader`2&lt;!!TIn, !!T&gt; AssertStatic&lt;TIn, T&gt;(class Microsoft.ML.IDataLoader`1&lt;!!TIn&gt; loader, class Microsoft.ML.IHostEnvironment env, class System.Func`2&lt;class Microsoft.ML.StaticPipe.SchemaAssertionContext, !!T&gt; outputDecl) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.StaticPipeExtensions.AssertStatic``2(Microsoft.ML.IDataLoader{``0},Microsoft.ML.IHostEnvironment,System.Func{Microsoft.ML.StaticPipe.SchemaAssertionContext,``1})" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function AssertStatic(Of TIn, T) (loader As IDataLoader(Of TIn), env As IHostEnvironment, outputDecl As Func(Of SchemaAssertionContext, T)) As DataLoader(Of TIn, T)" />
+      <MemberSignature Language="F#" Value="static member AssertStatic : Microsoft.ML.IDataLoader&lt;'In&gt; * Microsoft.ML.IHostEnvironment * Func&lt;Microsoft.ML.StaticPipe.SchemaAssertionContext, 'T&gt; -&gt; Microsoft.ML.StaticPipe.DataLoader&lt;'In, 'T&gt;" Usage="Microsoft.ML.StaticPipe.StaticPipeExtensions.AssertStatic (loader, env, outputDecl)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StaticPipe</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.StaticPipe.DataReader&lt;TIn,T&gt;</ReturnType>
+        <ReturnType>Microsoft.ML.StaticPipe.DataLoader&lt;TIn,T&gt;</ReturnType>
       </ReturnValue>
       <TypeParameters>
         <TypeParameter Name="TIn" />
@@ -89,14 +89,14 @@
         </TypeParameter>
       </TypeParameters>
       <Parameters>
-        <Parameter Name="reader" Type="Microsoft.ML.Core.Data.IDataReader&lt;TIn&gt;" RefType="this" />
+        <Parameter Name="loader" Type="Microsoft.ML.IDataLoader&lt;TIn&gt;" RefType="this" />
         <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
-        <Parameter Name="outputDecl" Type="System.Func&lt;Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext,T&gt;" />
+        <Parameter Name="outputDecl" Type="System.Func&lt;Microsoft.ML.StaticPipe.SchemaAssertionContext,T&gt;" />
       </Parameters>
       <Docs>
         <typeparam name="TIn">To be added.</typeparam>
         <typeparam name="T">To be added.</typeparam>
-        <param name="reader">To be added.</param>
+        <param name="loader">To be added.</param>
         <param name="env">To be added.</param>
         <param name="outputDecl">To be added.</param>
         <summary>To be added.</summary>
@@ -104,19 +104,19 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="AssertStatic&lt;TIn,T,TReader&gt;">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.DataReaderEstimator&lt;TIn,T,TReader&gt; AssertStatic&lt;TIn,T,TReader&gt; (this Microsoft.ML.Core.Data.IDataReaderEstimator&lt;TIn,TReader&gt; readerEstimator, Microsoft.ML.IHostEnvironment env, Func&lt;Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext,T&gt; outputDecl) where TReader : class, Microsoft.ML.Core.Data.IDataReader&lt;TIn&gt;;" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.DataReaderEstimator`3&lt;!!TIn, !!T, !!TReader&gt; AssertStatic&lt;TIn, T, class (class Microsoft.ML.Core.Data.IDataReader`1&lt;!!TIn&gt;) TReader&gt;(class Microsoft.ML.Core.Data.IDataReaderEstimator`2&lt;!!TIn, !!TReader&gt; readerEstimator, class Microsoft.ML.IHostEnvironment env, class System.Func`2&lt;class Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext, !!T&gt; outputDecl) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.StaticPipeExtensions.AssertStatic``3(Microsoft.ML.Core.Data.IDataReaderEstimator{``0,``2},Microsoft.ML.IHostEnvironment,System.Func{Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext,``1})" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function AssertStatic(Of TIn, T, TReader) (readerEstimator As IDataReaderEstimator(Of TIn, TReader), env As IHostEnvironment, outputDecl As Func(Of SchemaAssertionContext, T)) As DataReaderEstimator(Of TIn, T, TReader)" />
-      <MemberSignature Language="F#" Value="static member AssertStatic : Microsoft.ML.Core.Data.IDataReaderEstimator&lt;'In, 'Reader (requires 'Reader : null and 'Reader :&gt; Microsoft.ML.Core.Data.IDataReader&lt;'In&gt;)&gt; * Microsoft.ML.IHostEnvironment * Func&lt;Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext, 'T&gt; -&gt; Microsoft.ML.StaticPipe.DataReaderEstimator&lt;'In, 'T, 'Reader (requires 'Reader : null and 'Reader :&gt; Microsoft.ML.Core.Data.IDataReader&lt;'In&gt;)&gt; (requires 'Reader : null and 'Reader :&gt; Microsoft.ML.Core.Data.IDataReader&lt;'In&gt;)" Usage="Microsoft.ML.StaticPipe.StaticPipeExtensions.AssertStatic (readerEstimator, env, outputDecl)" />
+    <Member MemberName="AssertStatic&lt;TIn,T,TLoader&gt;">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.DataLoaderEstimator&lt;TIn,T,TLoader&gt; AssertStatic&lt;TIn,T,TLoader&gt; (this Microsoft.ML.IDataLoaderEstimator&lt;TIn,TLoader&gt; loaderEstimator, Microsoft.ML.IHostEnvironment env, Func&lt;Microsoft.ML.StaticPipe.SchemaAssertionContext,T&gt; outputDecl) where TLoader : class, Microsoft.ML.IDataLoader&lt;TIn&gt;;" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.DataLoaderEstimator`3&lt;!!TIn, !!T, !!TLoader&gt; AssertStatic&lt;TIn, T, class (class Microsoft.ML.IDataLoader`1&lt;!!TIn&gt;) TLoader&gt;(class Microsoft.ML.IDataLoaderEstimator`2&lt;!!TIn, !!TLoader&gt; loaderEstimator, class Microsoft.ML.IHostEnvironment env, class System.Func`2&lt;class Microsoft.ML.StaticPipe.SchemaAssertionContext, !!T&gt; outputDecl) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.StaticPipeExtensions.AssertStatic``3(Microsoft.ML.IDataLoaderEstimator{``0,``2},Microsoft.ML.IHostEnvironment,System.Func{Microsoft.ML.StaticPipe.SchemaAssertionContext,``1})" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function AssertStatic(Of TIn, T, TLoader) (loaderEstimator As IDataLoaderEstimator(Of TIn, TLoader), env As IHostEnvironment, outputDecl As Func(Of SchemaAssertionContext, T)) As DataLoaderEstimator(Of TIn, T, TLoader)" />
+      <MemberSignature Language="F#" Value="static member AssertStatic : Microsoft.ML.IDataLoaderEstimator&lt;'In, 'Loader (requires 'Loader : null and 'Loader :&gt; Microsoft.ML.IDataLoader&lt;'In&gt;)&gt; * Microsoft.ML.IHostEnvironment * Func&lt;Microsoft.ML.StaticPipe.SchemaAssertionContext, 'T&gt; -&gt; Microsoft.ML.StaticPipe.DataLoaderEstimator&lt;'In, 'T, 'Loader (requires 'Loader : null and 'Loader :&gt; Microsoft.ML.IDataLoader&lt;'In&gt;)&gt; (requires 'Loader : null and 'Loader :&gt; Microsoft.ML.IDataLoader&lt;'In&gt;)" Usage="Microsoft.ML.StaticPipe.StaticPipeExtensions.AssertStatic (loaderEstimator, env, outputDecl)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StaticPipe</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.StaticPipe.DataReaderEstimator&lt;TIn,T,TReader&gt;</ReturnType>
+        <ReturnType>Microsoft.ML.StaticPipe.DataLoaderEstimator&lt;TIn,T,TLoader&gt;</ReturnType>
       </ReturnValue>
       <TypeParameters>
         <TypeParameter Name="TIn" />
@@ -127,23 +127,23 @@
             </Attribute>
           </Attributes>
         </TypeParameter>
-        <TypeParameter Name="TReader">
+        <TypeParameter Name="TLoader">
           <Constraints>
             <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
-            <InterfaceName>Microsoft.ML.Core.Data.IDataReader&lt;TIn&gt;</InterfaceName>
+            <InterfaceName>Microsoft.ML.IDataLoader&lt;TIn&gt;</InterfaceName>
           </Constraints>
         </TypeParameter>
       </TypeParameters>
       <Parameters>
-        <Parameter Name="readerEstimator" Type="Microsoft.ML.Core.Data.IDataReaderEstimator&lt;TIn,TReader&gt;" RefType="this" />
+        <Parameter Name="loaderEstimator" Type="Microsoft.ML.IDataLoaderEstimator&lt;TIn,TLoader&gt;" RefType="this" />
         <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
-        <Parameter Name="outputDecl" Type="System.Func&lt;Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext,T&gt;" />
+        <Parameter Name="outputDecl" Type="System.Func&lt;Microsoft.ML.StaticPipe.SchemaAssertionContext,T&gt;" />
       </Parameters>
       <Docs>
         <typeparam name="TIn">To be added.</typeparam>
         <typeparam name="T">To be added.</typeparam>
-        <typeparam name="TReader">To be added.</typeparam>
-        <param name="readerEstimator">To be added.</param>
+        <typeparam name="TLoader">To be added.</typeparam>
+        <param name="loaderEstimator">To be added.</param>
         <param name="env">To be added.</param>
         <param name="outputDecl">To be added.</param>
         <summary>To be added.</summary>
@@ -152,11 +152,11 @@
       </Docs>
     </Member>
     <Member MemberName="AssertStatic&lt;TIn,TOut,TTrans&gt;">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.Estimator&lt;TIn,TOut,TTrans&gt; AssertStatic&lt;TIn,TOut,TTrans&gt; (this Microsoft.ML.Core.Data.IEstimator&lt;TTrans&gt; estimator, Microsoft.ML.IHostEnvironment env, Func&lt;Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext,TIn&gt; inputDecl, Func&lt;Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext,TOut&gt; outputDecl) where TTrans : class, Microsoft.ML.Core.Data.ITransformer;" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.Estimator`3&lt;!!TIn, !!TOut, !!TTrans&gt; AssertStatic&lt;TIn, TOut, class (class Microsoft.ML.Core.Data.ITransformer) TTrans&gt;(class Microsoft.ML.Core.Data.IEstimator`1&lt;!!TTrans&gt; estimator, class Microsoft.ML.IHostEnvironment env, class System.Func`2&lt;class Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext, !!TIn&gt; inputDecl, class System.Func`2&lt;class Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext, !!TOut&gt; outputDecl) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.StaticPipeExtensions.AssertStatic``3(Microsoft.ML.Core.Data.IEstimator{``2},Microsoft.ML.IHostEnvironment,System.Func{Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext,``0},System.Func{Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext,``1})" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.Estimator&lt;TIn,TOut,TTrans&gt; AssertStatic&lt;TIn,TOut,TTrans&gt; (this Microsoft.ML.IEstimator&lt;TTrans&gt; estimator, Microsoft.ML.IHostEnvironment env, Func&lt;Microsoft.ML.StaticPipe.SchemaAssertionContext,TIn&gt; inputDecl, Func&lt;Microsoft.ML.StaticPipe.SchemaAssertionContext,TOut&gt; outputDecl) where TTrans : class, Microsoft.ML.ITransformer;" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.Estimator`3&lt;!!TIn, !!TOut, !!TTrans&gt; AssertStatic&lt;TIn, TOut, class (class Microsoft.ML.ITransformer) TTrans&gt;(class Microsoft.ML.IEstimator`1&lt;!!TTrans&gt; estimator, class Microsoft.ML.IHostEnvironment env, class System.Func`2&lt;class Microsoft.ML.StaticPipe.SchemaAssertionContext, !!TIn&gt; inputDecl, class System.Func`2&lt;class Microsoft.ML.StaticPipe.SchemaAssertionContext, !!TOut&gt; outputDecl) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.StaticPipeExtensions.AssertStatic``3(Microsoft.ML.IEstimator{``2},Microsoft.ML.IHostEnvironment,System.Func{Microsoft.ML.StaticPipe.SchemaAssertionContext,``0},System.Func{Microsoft.ML.StaticPipe.SchemaAssertionContext,``1})" />
       <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function AssertStatic(Of TIn, TOut, TTrans) (estimator As IEstimator(Of TTrans), env As IHostEnvironment, inputDecl As Func(Of SchemaAssertionContext, TIn), outputDecl As Func(Of SchemaAssertionContext, TOut)) As Estimator(Of TIn, TOut, TTrans)" />
-      <MemberSignature Language="F#" Value="static member AssertStatic : Microsoft.ML.Core.Data.IEstimator&lt;'rans (requires 'rans : null and 'rans :&gt; Microsoft.ML.Core.Data.ITransformer)&gt; * Microsoft.ML.IHostEnvironment * Func&lt;Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext, 'In&gt; * Func&lt;Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext, 'Out&gt; -&gt; Microsoft.ML.StaticPipe.Estimator&lt;'In, 'Out, 'rans (requires 'rans : null and 'rans :&gt; Microsoft.ML.Core.Data.ITransformer)&gt; (requires 'rans : null and 'rans :&gt; Microsoft.ML.Core.Data.ITransformer)" Usage="Microsoft.ML.StaticPipe.StaticPipeExtensions.AssertStatic (estimator, env, inputDecl, outputDecl)" />
+      <MemberSignature Language="F#" Value="static member AssertStatic : Microsoft.ML.IEstimator&lt;'rans (requires 'rans : null and 'rans :&gt; Microsoft.ML.ITransformer)&gt; * Microsoft.ML.IHostEnvironment * Func&lt;Microsoft.ML.StaticPipe.SchemaAssertionContext, 'In&gt; * Func&lt;Microsoft.ML.StaticPipe.SchemaAssertionContext, 'Out&gt; -&gt; Microsoft.ML.StaticPipe.Estimator&lt;'In, 'Out, 'rans (requires 'rans : null and 'rans :&gt; Microsoft.ML.ITransformer)&gt; (requires 'rans : null and 'rans :&gt; Microsoft.ML.ITransformer)" Usage="Microsoft.ML.StaticPipe.StaticPipeExtensions.AssertStatic (estimator, env, inputDecl, outputDecl)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StaticPipe</AssemblyName>
@@ -183,15 +183,15 @@
         <TypeParameter Name="TTrans">
           <Constraints>
             <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
-            <InterfaceName>Microsoft.ML.Core.Data.ITransformer</InterfaceName>
+            <InterfaceName>Microsoft.ML.ITransformer</InterfaceName>
           </Constraints>
         </TypeParameter>
       </TypeParameters>
       <Parameters>
-        <Parameter Name="estimator" Type="Microsoft.ML.Core.Data.IEstimator&lt;TTrans&gt;" RefType="this" />
+        <Parameter Name="estimator" Type="Microsoft.ML.IEstimator&lt;TTrans&gt;" RefType="this" />
         <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
-        <Parameter Name="inputDecl" Type="System.Func&lt;Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext,TIn&gt;" />
-        <Parameter Name="outputDecl" Type="System.Func&lt;Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext,TOut&gt;" />
+        <Parameter Name="inputDecl" Type="System.Func&lt;Microsoft.ML.StaticPipe.SchemaAssertionContext,TIn&gt;" />
+        <Parameter Name="outputDecl" Type="System.Func&lt;Microsoft.ML.StaticPipe.SchemaAssertionContext,TOut&gt;" />
       </Parameters>
       <Docs>
         <typeparam name="TIn">To be added.</typeparam>
@@ -207,11 +207,11 @@
       </Docs>
     </Member>
     <Member MemberName="AssertStatic&lt;TIn,TOut,TTrans&gt;">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.Transformer&lt;TIn,TOut,TTrans&gt; AssertStatic&lt;TIn,TOut,TTrans&gt; (this TTrans transformer, Microsoft.ML.IHostEnvironment env, Func&lt;Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext,TIn&gt; inputDecl, Func&lt;Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext,TOut&gt; outputDecl) where TTrans : class, Microsoft.ML.Core.Data.ITransformer;" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.Transformer`3&lt;!!TIn, !!TOut, !!TTrans&gt; AssertStatic&lt;TIn, TOut, class (class Microsoft.ML.Core.Data.ITransformer) TTrans&gt;(!!TTrans transformer, class Microsoft.ML.IHostEnvironment env, class System.Func`2&lt;class Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext, !!TIn&gt; inputDecl, class System.Func`2&lt;class Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext, !!TOut&gt; outputDecl) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.StaticPipeExtensions.AssertStatic``3(``2,Microsoft.ML.IHostEnvironment,System.Func{Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext,``0},System.Func{Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext,``1})" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.Transformer&lt;TIn,TOut,TTrans&gt; AssertStatic&lt;TIn,TOut,TTrans&gt; (this TTrans transformer, Microsoft.ML.IHostEnvironment env, Func&lt;Microsoft.ML.StaticPipe.SchemaAssertionContext,TIn&gt; inputDecl, Func&lt;Microsoft.ML.StaticPipe.SchemaAssertionContext,TOut&gt; outputDecl) where TTrans : class, Microsoft.ML.ITransformer;" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.Transformer`3&lt;!!TIn, !!TOut, !!TTrans&gt; AssertStatic&lt;TIn, TOut, class (class Microsoft.ML.ITransformer) TTrans&gt;(!!TTrans transformer, class Microsoft.ML.IHostEnvironment env, class System.Func`2&lt;class Microsoft.ML.StaticPipe.SchemaAssertionContext, !!TIn&gt; inputDecl, class System.Func`2&lt;class Microsoft.ML.StaticPipe.SchemaAssertionContext, !!TOut&gt; outputDecl) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.StaticPipeExtensions.AssertStatic``3(``2,Microsoft.ML.IHostEnvironment,System.Func{Microsoft.ML.StaticPipe.SchemaAssertionContext,``0},System.Func{Microsoft.ML.StaticPipe.SchemaAssertionContext,``1})" />
       <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function AssertStatic(Of TIn, TOut, TTrans) (transformer As TTrans, env As IHostEnvironment, inputDecl As Func(Of SchemaAssertionContext, TIn), outputDecl As Func(Of SchemaAssertionContext, TOut)) As Transformer(Of TIn, TOut, TTrans)" />
-      <MemberSignature Language="F#" Value="static member AssertStatic : 'rans * Microsoft.ML.IHostEnvironment * Func&lt;Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext, 'In&gt; * Func&lt;Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext, 'Out&gt; -&gt; Microsoft.ML.StaticPipe.Transformer&lt;'In, 'Out, 'rans (requires 'rans : null and 'rans :&gt; Microsoft.ML.Core.Data.ITransformer)&gt; (requires 'rans : null and 'rans :&gt; Microsoft.ML.Core.Data.ITransformer)" Usage="Microsoft.ML.StaticPipe.StaticPipeExtensions.AssertStatic (transformer, env, inputDecl, outputDecl)" />
+      <MemberSignature Language="F#" Value="static member AssertStatic : 'rans * Microsoft.ML.IHostEnvironment * Func&lt;Microsoft.ML.StaticPipe.SchemaAssertionContext, 'In&gt; * Func&lt;Microsoft.ML.StaticPipe.SchemaAssertionContext, 'Out&gt; -&gt; Microsoft.ML.StaticPipe.Transformer&lt;'In, 'Out, 'rans (requires 'rans : null and 'rans :&gt; Microsoft.ML.ITransformer)&gt; (requires 'rans : null and 'rans :&gt; Microsoft.ML.ITransformer)" Usage="Microsoft.ML.StaticPipe.StaticPipeExtensions.AssertStatic (transformer, env, inputDecl, outputDecl)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StaticPipe</AssemblyName>
@@ -238,15 +238,15 @@
         <TypeParameter Name="TTrans">
           <Constraints>
             <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
-            <InterfaceName>Microsoft.ML.Core.Data.ITransformer</InterfaceName>
+            <InterfaceName>Microsoft.ML.ITransformer</InterfaceName>
           </Constraints>
         </TypeParameter>
       </TypeParameters>
       <Parameters>
         <Parameter Name="transformer" Type="TTrans" RefType="this" />
         <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
-        <Parameter Name="inputDecl" Type="System.Func&lt;Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext,TIn&gt;" />
-        <Parameter Name="outputDecl" Type="System.Func&lt;Microsoft.ML.StaticPipe.Runtime.SchemaAssertionContext,TOut&gt;" />
+        <Parameter Name="inputDecl" Type="System.Func&lt;Microsoft.ML.StaticPipe.SchemaAssertionContext,TIn&gt;" />
+        <Parameter Name="outputDecl" Type="System.Func&lt;Microsoft.ML.StaticPipe.SchemaAssertionContext,TOut&gt;" />
       </Parameters>
       <Docs>
         <typeparam name="TIn">To be added.</typeparam>

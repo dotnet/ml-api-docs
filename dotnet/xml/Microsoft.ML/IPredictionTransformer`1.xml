@@ -1,9 +1,9 @@
 ﻿<Type Name="IPredictionTransformer&lt;TModel&gt;" FullName="Microsoft.ML.IPredictionTransformer&lt;TModel&gt;">
-  <TypeSignature Language="C#" Value="public interface IPredictionTransformer&lt;out TModel&gt; : Microsoft.ML.Core.Data.ITransformer" />
-  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IPredictionTransformer`1&lt;+ TModel&gt; implements class Microsoft.ML.Core.Data.ITransformer" />
+  <TypeSignature Language="C#" Value="public interface IPredictionTransformer&lt;out TModel&gt; : Microsoft.ML.ITransformer" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IPredictionTransformer`1&lt;+ TModel&gt; implements class Microsoft.ML.ICanSaveModel, class Microsoft.ML.ITransformer" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.IPredictionTransformer`1" />
   <TypeSignature Language="VB.NET" Value="Public Interface IPredictionTransformer(Of Out TModel)&#xA;Implements ITransformer" />
-  <TypeSignature Language="F#" Value="type IPredictionTransformer&lt;'Model&gt; = interface&#xA;    interface ITransformer" />
+  <TypeSignature Language="F#" Value="type IPredictionTransformer&lt;'Model&gt; = interface&#xA;    interface ITransformer&#xA;    interface ICanSaveModel" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.Data</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -17,11 +17,14 @@
   </TypeParameters>
   <Interfaces>
     <Interface>
-      <InterfaceName>Microsoft.ML.Core.Data.ITransformer</InterfaceName>
+      <InterfaceName>Microsoft.ML.ICanSaveModel</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.ITransformer</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
-    <typeparam name="TModel">The <see cref="T:Microsoft.ML.IPredictor" /> or <see cref="T:Microsoft.ML.Calibrator.ICalibrator" /> used for the data transformation.</typeparam>
+    <typeparam name="TModel">The <see cref="T:Microsoft.ML.IPredictor" /> or <see cref="T:Microsoft.ML.Calibrators.ICalibrator" /> used for the data transformation.</typeparam>
     <summary>
             An interface for all the transformer that can transform data based on the <see cref="T:Microsoft.ML.IPredictor" /> field.
             The implemendations of this interface either have no feature column, or have more than one feature column, and cannot implement the

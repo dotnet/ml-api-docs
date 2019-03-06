@@ -1,0 +1,397 @@
+<Type Name="RowToRowScorerBase" FullName="Microsoft.ML.Data.RowToRowScorerBase">
+  <TypeSignature Language="C#" Value="public abstract class RowToRowScorerBase : Microsoft.ML.Data.RowToRowMapperTransformBase, Microsoft.Data.DataView.IDataView, Microsoft.ML.Data.IDataScorerTransform" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit RowToRowScorerBase extends Microsoft.ML.Data.RowToRowMapperTransformBase implements class Microsoft.Data.DataView.IDataView, class Microsoft.ML.Data.IDataScorerTransform, class Microsoft.ML.Data.IDataTransform, class Microsoft.ML.Data.ITransformTemplate, class Microsoft.ML.Model.ICanSaveModel" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Data.RowToRowScorerBase" />
+  <TypeSignature Language="VB.NET" Value="Public MustInherit Class RowToRowScorerBase&#xA;Inherits RowToRowMapperTransformBase&#xA;Implements IDataScorerTransform, IDataView" />
+  <TypeSignature Language="F#" Value="type RowToRowScorerBase = class&#xA;    inherit RowToRowMapperTransformBase&#xA;    interface IDataScorerTransform&#xA;    interface IDataTransform&#xA;    interface IDataView&#xA;    interface ICanSaveModel&#xA;    interface ITransformTemplate" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Data</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Microsoft.ML.Data.RowToRowMapperTransformBase</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.Data.DataView.IDataView</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Data.IDataScorerTransform</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Data.IDataTransform</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Data.ITransformTemplate</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Model.ICanSaveModel</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+            Base class for scoring rows independently. This assumes that all columns produced by the
+            underlying <see cref="T:Microsoft.ML.Data.ISchemaBoundRowMapper" /> should be exposed, as well as zero or more
+            "derived" columns.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="ApplyToData">
+      <MemberSignature Language="C#" Value="public abstract Microsoft.ML.Data.IDataTransform ApplyToData (Microsoft.ML.IHostEnvironment env, Microsoft.Data.DataView.IDataView newSource);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Data.IDataTransform ApplyToData(class Microsoft.ML.IHostEnvironment env, class Microsoft.Data.DataView.IDataView newSource) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.RowToRowScorerBase.ApplyToData(Microsoft.ML.IHostEnvironment,Microsoft.Data.DataView.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function ApplyToData (env As IHostEnvironment, newSource As IDataView) As IDataTransform" />
+      <MemberSignature Language="F#" Value="abstract member ApplyToData : Microsoft.ML.IHostEnvironment * Microsoft.Data.DataView.IDataView -&gt; Microsoft.ML.Data.IDataTransform" Usage="rowToRowScorerBase.ApplyToData (env, newSource)" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Data.ITransformTemplate.ApplyToData(Microsoft.ML.IHostEnvironment,Microsoft.Data.DataView.IDataView)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.IDataTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
+        <Parameter Name="newSource" Type="Microsoft.Data.DataView.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="env">To be added.</param>
+        <param name="newSource">To be added.</param>
+        <summary>
+            For the ITransformTemplate implementation.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateGetters">
+      <MemberSignature Language="C#" Value="protected override Delegate[] CreateGetters (Microsoft.Data.DataView.Row input, Func&lt;int,bool&gt; active, out Action disp);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class System.Delegate[] CreateGetters(class Microsoft.Data.DataView.Row input, class System.Func`2&lt;int32, bool&gt; active, [out] class System.Action&amp; disp) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.RowToRowScorerBase.CreateGetters(Microsoft.Data.DataView.Row,System.Func{System.Int32,System.Boolean},System.Action@)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function CreateGetters (input As Row, active As Func(Of Integer, Boolean), ByRef disp As Action) As Delegate()" />
+      <MemberSignature Language="F#" Value="override this.CreateGetters : Microsoft.Data.DataView.Row * Func&lt;int, bool&gt; *  -&gt; Delegate[]" Usage="rowToRowScorerBase.CreateGetters (input, active, disp)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Delegate[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.Data.DataView.Row" />
+        <Parameter Name="active" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+        <Parameter Name="disp" Type="System.Action" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="input">To be added.</param>
+        <param name="active">To be added.</param>
+        <param name="disp">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetDependenciesCore">
+      <MemberSignature Language="C#" Value="protected override Func&lt;int,bool&gt; GetDependenciesCore (Func&lt;int,bool&gt; predicate);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class System.Func`2&lt;int32, bool&gt; GetDependenciesCore(class System.Func`2&lt;int32, bool&gt; predicate) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.RowToRowScorerBase.GetDependenciesCore(System.Func{System.Int32,System.Boolean})" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetDependenciesCore (predicate As Func(Of Integer, Boolean)) As Func(Of Integer, Boolean)" />
+      <MemberSignature Language="F#" Value="override this.GetDependenciesCore : Func&lt;int, bool&gt; -&gt; Func&lt;int, bool&gt;" Usage="rowToRowScorerBase.GetDependenciesCore predicate" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Func&lt;System.Int32,System.Boolean&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="predicate">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetGetterFromRow">
+      <MemberSignature Language="C#" Value="protected static Delegate GetGetterFromRow (Microsoft.Data.DataView.Row row, int col);" />
+      <MemberSignature Language="ILAsm" Value=".method familystatic hidebysig class System.Delegate GetGetterFromRow(class Microsoft.Data.DataView.Row row, int32 col) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.RowToRowScorerBase.GetGetterFromRow(Microsoft.Data.DataView.Row,System.Int32)" />
+      <MemberSignature Language="F#" Value="static member GetGetterFromRow : Microsoft.Data.DataView.Row * int -&gt; Delegate" Usage="Microsoft.ML.Data.RowToRowScorerBase.GetGetterFromRow (row, col)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Delegate</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="row" Type="Microsoft.Data.DataView.Row" />
+        <Parameter Name="col" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="row">To be added.</param>
+        <param name="col">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetGetterFromRow&lt;T&gt;">
+      <MemberSignature Language="C#" Value="protected static Microsoft.Data.DataView.ValueGetter&lt;T&gt; GetGetterFromRow&lt;T&gt; (Microsoft.Data.DataView.Row output, int col);" />
+      <MemberSignature Language="ILAsm" Value=".method familystatic hidebysig class Microsoft.Data.DataView.ValueGetter`1&lt;!!T&gt; GetGetterFromRow&lt;T&gt;(class Microsoft.Data.DataView.Row output, int32 col) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.RowToRowScorerBase.GetGetterFromRow``1(Microsoft.Data.DataView.Row,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected Shared Function GetGetterFromRow(Of T) (output As Row, col As Integer) As ValueGetter(Of T)" />
+      <MemberSignature Language="F#" Value="static member GetGetterFromRow : Microsoft.Data.DataView.Row * int -&gt; Microsoft.Data.DataView.ValueGetter&lt;'T&gt;" Usage="Microsoft.ML.Data.RowToRowScorerBase.GetGetterFromRow (output, col)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.Data.DataView.ValueGetter&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="output" Type="Microsoft.Data.DataView.Row" />
+        <Parameter Name="col" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T">To be added.</typeparam>
+        <param name="output">To be added.</param>
+        <param name="col">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetGetters">
+      <MemberSignature Language="C#" Value="protected abstract Delegate[] GetGetters (Microsoft.Data.DataView.Row output, Func&lt;int,bool&gt; predicate);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class System.Delegate[] GetGetters(class Microsoft.Data.DataView.Row output, class System.Func`2&lt;int32, bool&gt; predicate) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.RowToRowScorerBase.GetGetters(Microsoft.Data.DataView.Row,System.Func{System.Int32,System.Boolean})" />
+      <MemberSignature Language="VB.NET" Value="Protected MustOverride Function GetGetters (output As Row, predicate As Func(Of Integer, Boolean)) As Delegate()" />
+      <MemberSignature Language="F#" Value="abstract member GetGetters : Microsoft.Data.DataView.Row * Func&lt;int, bool&gt; -&gt; Delegate[]" Usage="rowToRowScorerBase.GetGetters (output, predicate)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Delegate[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="output" Type="Microsoft.Data.DataView.Row" />
+        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="output">To be added.</param>
+        <param name="predicate">To be added.</param>
+        <summary>
+            Create and fill an array of getters of size InfoCount. The indices of the non-null entries in the
+            result should be exactly those for which predicate(iinfo) is true.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetGettersFromRow">
+      <MemberSignature Language="C#" Value="protected static Delegate[] GetGettersFromRow (Microsoft.Data.DataView.Row row, Func&lt;int,bool&gt; predicate);" />
+      <MemberSignature Language="ILAsm" Value=".method familystatic hidebysig class System.Delegate[] GetGettersFromRow(class Microsoft.Data.DataView.Row row, class System.Func`2&lt;int32, bool&gt; predicate) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.RowToRowScorerBase.GetGettersFromRow(Microsoft.Data.DataView.Row,System.Func{System.Int32,System.Boolean})" />
+      <MemberSignature Language="F#" Value="static member GetGettersFromRow : Microsoft.Data.DataView.Row * Func&lt;int, bool&gt; -&gt; Delegate[]" Usage="Microsoft.ML.Data.RowToRowScorerBase.GetGettersFromRow (row, predicate)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Delegate[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="row" Type="Microsoft.Data.DataView.Row" />
+        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="row">To be added.</param>
+        <param name="predicate">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRowCursorCore">
+      <MemberSignature Language="C#" Value="protected override Microsoft.Data.DataView.RowCursor GetRowCursorCore (System.Collections.Generic.IEnumerable&lt;Microsoft.Data.DataView.Schema.Column&gt; columnsNeeded, Random rand = null);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.Data.DataView.RowCursor GetRowCursorCore(class System.Collections.Generic.IEnumerable`1&lt;valuetype Microsoft.Data.DataView.Schema/Column&gt; columnsNeeded, class System.Random rand) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.RowToRowScorerBase.GetRowCursorCore(System.Collections.Generic.IEnumerable{Microsoft.Data.DataView.Schema.Column},System.Random)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetRowCursorCore (columnsNeeded As IEnumerable(Of Schema.Column), Optional rand As Random = null) As RowCursor" />
+      <MemberSignature Language="F#" Value="override this.GetRowCursorCore : seq&lt;Microsoft.Data.DataView.Schema.Column&gt; * Random -&gt; Microsoft.Data.DataView.RowCursor" Usage="rowToRowScorerBase.GetRowCursorCore (columnsNeeded, rand)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.Data.DataView.RowCursor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="columnsNeeded" Type="System.Collections.Generic.IEnumerable&lt;Microsoft.Data.DataView.Schema+Column&gt;" />
+        <Parameter Name="rand" Type="System.Random" />
+      </Parameters>
+      <Docs>
+        <param name="columnsNeeded">To be added.</param>
+        <param name="rand">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRowCursorSet">
+      <MemberSignature Language="C#" Value="public override Microsoft.Data.DataView.RowCursor[] GetRowCursorSet (System.Collections.Generic.IEnumerable&lt;Microsoft.Data.DataView.Schema.Column&gt; columnsNeeded, int n, Random rand = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Microsoft.Data.DataView.RowCursor[] GetRowCursorSet(class System.Collections.Generic.IEnumerable`1&lt;valuetype Microsoft.Data.DataView.Schema/Column&gt; columnsNeeded, int32 n, class System.Random rand) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.RowToRowScorerBase.GetRowCursorSet(System.Collections.Generic.IEnumerable{Microsoft.Data.DataView.Schema.Column},System.Int32,System.Random)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function GetRowCursorSet (columnsNeeded As IEnumerable(Of Schema.Column), n As Integer, Optional rand As Random = null) As RowCursor()" />
+      <MemberSignature Language="F#" Value="override this.GetRowCursorSet : seq&lt;Microsoft.Data.DataView.Schema.Column&gt; * int * Random -&gt; Microsoft.Data.DataView.RowCursor[]" Usage="rowToRowScorerBase.GetRowCursorSet (columnsNeeded, n, rand)" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.Data.DataView.IDataView.GetRowCursorSet(System.Collections.Generic.IEnumerable{Microsoft.Data.DataView.Schema.Column},System.Int32,System.Random)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.Data.DataView.RowCursor[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="columnsNeeded" Type="System.Collections.Generic.IEnumerable&lt;Microsoft.Data.DataView.Schema+Column&gt;" />
+        <Parameter Name="n" Type="System.Int32" />
+        <Parameter Name="rand" Type="System.Random" />
+      </Parameters>
+      <Docs>
+        <param name="columnsNeeded">To be added.</param>
+        <param name="n">To be added.</param>
+        <param name="rand">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MapColumnIndex">
+      <MemberSignature Language="C#" Value="protected override int MapColumnIndex (out bool isSrc, int col);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance int32 MapColumnIndex([out] bool&amp; isSrc, int32 col) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.RowToRowScorerBase.MapColumnIndex(System.Boolean@,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides Function MapColumnIndex (ByRef isSrc As Boolean, col As Integer) As Integer" />
+      <MemberSignature Language="F#" Value="override this.MapColumnIndex :  * int -&gt; int" Usage="rowToRowScorerBase.MapColumnIndex (isSrc, col)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="isSrc" Type="System.Boolean" RefType="out" />
+        <Parameter Name="col" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="isSrc">To be added.</param>
+        <param name="col">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Save">
+      <MemberSignature Language="C#" Value="public override sealed void Save (Microsoft.ML.Model.ModelSaveContext ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Save(class Microsoft.ML.Model.ModelSaveContext ctx) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.RowToRowScorerBase.Save(Microsoft.ML.Model.ModelSaveContext)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides NotOverridable Sub Save (ctx As ModelSaveContext)" />
+      <MemberSignature Language="F#" Value="override this.Save : Microsoft.ML.Model.ModelSaveContext -&gt; unit" Usage="rowToRowScorerBase.Save ctx" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Model.ICanSaveModel.Save(Microsoft.ML.Model.ModelSaveContext)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ctx" Type="Microsoft.ML.Model.ModelSaveContext" />
+      </Parameters>
+      <Docs>
+        <param name="ctx">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShouldUseParallelCursors">
+      <MemberSignature Language="C#" Value="protected override sealed Nullable&lt;bool&gt; ShouldUseParallelCursors (Func&lt;int,bool&gt; predicate);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance valuetype System.Nullable`1&lt;bool&gt; ShouldUseParallelCursors(class System.Func`2&lt;int32, bool&gt; predicate) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.RowToRowScorerBase.ShouldUseParallelCursors(System.Func{System.Int32,System.Boolean})" />
+      <MemberSignature Language="VB.NET" Value="Protected Overrides NotOverridable Function ShouldUseParallelCursors (predicate As Func(Of Integer, Boolean)) As Nullable(Of Boolean)" />
+      <MemberSignature Language="F#" Value="override this.ShouldUseParallelCursors : Func&lt;int, bool&gt; -&gt; Nullable&lt;bool&gt;" Usage="rowToRowScorerBase.ShouldUseParallelCursors predicate" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Nullable&lt;System.Boolean&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="predicate">To be added.</param>
+        <summary>
+            This produces either "true" or "null" according to whether <see cref="M:Microsoft.ML.Data.RowToRowScorerBase.WantParallelCursors(System.Func{System.Int32,System.Boolean})" />
+            returns true or false. Note that this will never return false. Any derived class
+            must support (but not necessarily prefer) parallel cursors.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WantParallelCursors">
+      <MemberSignature Language="C#" Value="protected abstract bool WantParallelCursors (Func&lt;int,bool&gt; predicate);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool WantParallelCursors(class System.Func`2&lt;int32, bool&gt; predicate) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.RowToRowScorerBase.WantParallelCursors(System.Func{System.Int32,System.Boolean})" />
+      <MemberSignature Language="VB.NET" Value="Protected MustOverride Function WantParallelCursors (predicate As Func(Of Integer, Boolean)) As Boolean" />
+      <MemberSignature Language="F#" Value="abstract member WantParallelCursors : Func&lt;int, bool&gt; -&gt; bool" Usage="rowToRowScorerBase.WantParallelCursors predicate" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="predicate" Type="System.Func&lt;System.Int32,System.Boolean&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="predicate">To be added.</param>
+        <summary>
+            This should return true iff parallel cursors are advantageous. Typically, this
+            will return true iff some columns added by this scorer are active.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

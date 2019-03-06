@@ -15,68 +15,10 @@
   <Docs>
     <summary>
             Instances of this class posses information about trainers, in terms of their requirements and capabilities.
-            The intended usage is as the value for <see cref="P:Microsoft.ML.ITrainer.Info" />.
             </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public TrainerInfo (bool normalization = true, bool calibration = false, bool caching = true, bool supportValid = false, bool supportIncrementalTrain = false, bool supportTest = false);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(bool normalization, bool calibration, bool caching, bool supportValid, bool supportIncrementalTrain, bool supportTest) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TrainerInfo.#ctor(System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (Optional normalization As Boolean = true, Optional calibration As Boolean = false, Optional caching As Boolean = true, Optional supportValid As Boolean = false, Optional supportIncrementalTrain As Boolean = false, Optional supportTest As Boolean = false)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.TrainerInfo : bool * bool * bool * bool * bool * bool -&gt; Microsoft.ML.TrainerInfo" Usage="new Microsoft.ML.TrainerInfo (normalization, calibration, caching, supportValid, supportIncrementalTrain, supportTest)" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Core</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="normalization" Type="System.Boolean" />
-        <Parameter Name="calibration" Type="System.Boolean" />
-        <Parameter Name="caching" Type="System.Boolean" />
-        <Parameter Name="supportValid" Type="System.Boolean" />
-        <Parameter Name="supportIncrementalTrain" Type="System.Boolean" />
-        <Parameter Name="supportTest" Type="System.Boolean" />
-      </Parameters>
-      <Docs>
-        <param name="normalization">The value for the property <see cref="P:Microsoft.ML.TrainerInfo.NeedNormalization" /></param>
-        <param name="calibration">The value for the property <see cref="P:Microsoft.ML.TrainerInfo.NeedCalibration" /></param>
-        <param name="caching">The value for the property <see cref="P:Microsoft.ML.TrainerInfo.WantCaching" /></param>
-        <param name="supportValid">The value for the property <see cref="P:Microsoft.ML.TrainerInfo.SupportsValidation" /></param>
-        <param name="supportIncrementalTrain">The value for the property <see cref="P:Microsoft.ML.TrainerInfo.SupportsIncrementalTraining" /></param>
-        <param name="supportTest">The value for the property <see cref="P:Microsoft.ML.TrainerInfo.SupportsTest" /></param>
-        <summary>
-            Initializes with the given parameters. The parameters have default values for the most typical values
-            for most classical trainers.
-            </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="NeedCalibration">
-      <MemberSignature Language="C#" Value="public bool NeedCalibration { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool NeedCalibration" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.TrainerInfo.NeedCalibration" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property NeedCalibration As Boolean" />
-      <MemberSignature Language="F#" Value="member this.NeedCalibration : bool" Usage="Microsoft.ML.TrainerInfo.NeedCalibration" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Core</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>
-            Whether the trainer needs calibration to produce probabilities. As a general rule only trainers that produce
-            binary classifier predictors that also do not have a natural probabilistic interpretation should have a
-            <c>true</c> value here.
-            </summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="NeedNormalization">
       <MemberSignature Language="C#" Value="public bool NeedNormalization { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool NeedNormalization" />
@@ -93,80 +35,8 @@
       </ReturnValue>
       <Docs>
         <summary>
-            Whether the trainer needs to see data in normalized form. Only non-parametric learners will tend to produce
-            normalization here.
-            </summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SupportsIncrementalTraining">
-      <MemberSignature Language="C#" Value="public bool SupportsIncrementalTraining { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool SupportsIncrementalTraining" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.TrainerInfo.SupportsIncrementalTraining" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property SupportsIncrementalTraining As Boolean" />
-      <MemberSignature Language="F#" Value="member this.SupportsIncrementalTraining : bool" Usage="Microsoft.ML.TrainerInfo.SupportsIncrementalTraining" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Core</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>
-            Whether the trainer can support incremental trainers via <see cref="P:Microsoft.ML.TrainContext.InitialPredictor" />. Not
-            implementing this interface and returning <c>true</c> from this property is an indication the trainer does
-            not support that.
-            </summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SupportsTest">
-      <MemberSignature Language="C#" Value="public bool SupportsTest { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool SupportsTest" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.TrainerInfo.SupportsTest" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property SupportsTest As Boolean" />
-      <MemberSignature Language="F#" Value="member this.SupportsTest : bool" Usage="Microsoft.ML.TrainerInfo.SupportsTest" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Core</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>
-            Whether the trainer can use test set via <see cref="P:Microsoft.ML.TrainContext.TestSet" />. Not implementing
-            this interface and returning <c>false</c> from this property is an indication the trainer does not support
-            that.
-            </summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SupportsValidation">
-      <MemberSignature Language="C#" Value="public bool SupportsValidation { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool SupportsValidation" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.TrainerInfo.SupportsValidation" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property SupportsValidation As Boolean" />
-      <MemberSignature Language="F#" Value="member this.SupportsValidation : bool" Usage="Microsoft.ML.TrainerInfo.SupportsValidation" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Core</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>
-            Whether the trainer supports validation set via <see cref="P:Microsoft.ML.TrainContext.ValidationSet" />. Not implementing
-            this interface and returning <c>false</c> from this property is an indication the trainer does not support
-            that.
+            Whether the trainer needs to see data in normalized form. Only non-parametric trainers will tend to return
+            <see langword="false" /> here.
             </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
