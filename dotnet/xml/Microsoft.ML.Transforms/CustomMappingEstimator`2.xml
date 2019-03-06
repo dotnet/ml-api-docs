@@ -37,64 +37,37 @@
   <Docs>
     <typeparam name="TSrc">To be added.</typeparam>
     <typeparam name="TDst">To be added.</typeparam>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>
+            The <see cref="T:Microsoft.ML.IEstimator`1" /> to define a custom mapping of rows of an <see cref="T:Microsoft.Data.DataView.IDataView" />.
+            For usage details, please see <see cref="M:Microsoft.ML.CustomMappingCatalog.CustomMapping``2(Microsoft.ML.TransformsCatalog,System.Action{``0,``1},System.String,Microsoft.ML.Data.SchemaDefinition,Microsoft.ML.Data.SchemaDefinition)" /></summary>
+    <remarks>
+            Calling <see cref="M:Microsoft.ML.IEstimator`1.Fit(Microsoft.Data.DataView.IDataView)" /> in this estimator, produces an <see cref="T:Microsoft.ML.Transforms.CustomMappingTransformer`2" />.
+            </remarks>
   </Docs>
   <Members>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CustomMappingEstimator (Microsoft.ML.IHostEnvironment env, Action&lt;TSrc,TDst&gt; mapAction, string contractName, Microsoft.ML.Data.SchemaDefinition inputSchemaDefinition = null, Microsoft.ML.Data.SchemaDefinition outputSchemaDefinition = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, class System.Action`2&lt;!TSrc, !TDst&gt; mapAction, string contractName, class Microsoft.ML.Data.SchemaDefinition inputSchemaDefinition, class Microsoft.ML.Data.SchemaDefinition outputSchemaDefinition) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.CustomMappingEstimator`2.#ctor(Microsoft.ML.IHostEnvironment,System.Action{`0,`1},System.String,Microsoft.ML.Data.SchemaDefinition,Microsoft.ML.Data.SchemaDefinition)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, mapAction As Action(Of TSrc, TDst), contractName As String, Optional inputSchemaDefinition As SchemaDefinition = null, Optional outputSchemaDefinition As SchemaDefinition = null)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.CustomMappingEstimator&lt;'Src, 'Dst (requires 'Src : null and 'Src : (new : unit -&gt; 'Src) and 'Dst : null and 'Dst : (new : unit -&gt; 'Dst))&gt; : Microsoft.ML.IHostEnvironment * Action&lt;'Src, 'Dst (requires 'Src : null and 'Src : (new : unit -&gt; 'Src) and 'Dst : null and 'Dst : (new : unit -&gt; 'Dst))&gt; * string * Microsoft.ML.Data.SchemaDefinition * Microsoft.ML.Data.SchemaDefinition -&gt; Microsoft.ML.Transforms.CustomMappingEstimator&lt;'Src, 'Dst (requires 'Src : null and 'Src : (new : unit -&gt; 'Src) and 'Dst : null and 'Dst : (new : unit -&gt; 'Dst))&gt;" Usage="new Microsoft.ML.Transforms.CustomMappingEstimator&lt;'Src, 'Dst (requires 'Src : null and 'Src : (new : unit -&gt; 'Src) and 'Dst : null and 'Dst : (new : unit -&gt; 'Dst))&gt; (env, mapAction, contractName, inputSchemaDefinition, outputSchemaDefinition)" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
-        <Parameter Name="mapAction" Type="System.Action&lt;TSrc,TDst&gt;" />
-        <Parameter Name="contractName" Type="System.String" />
-        <Parameter Name="inputSchemaDefinition" Type="Microsoft.ML.Data.SchemaDefinition" />
-        <Parameter Name="outputSchemaDefinition" Type="Microsoft.ML.Data.SchemaDefinition" />
-      </Parameters>
-      <Docs>
-        <param name="env">The host environment</param>
-        <param name="mapAction">The mapping action. This must be thread-safe and free from side effects.</param>
-        <param name="contractName">The contract name, used by ML.NET for loading the model. If <c>null</c> is specified, such a trained model would not be save-able.</param>
-        <param name="inputSchemaDefinition">Additional parameters for schema mapping between <typeparamref name="TSrc" /> and input data.</param>
-        <param name="outputSchemaDefinition">Additional parameters for schema mapping between <typeparamref name="TDst" /> and output data.</param>
-        <summary>
-            Create a custom mapping of input columns to output columns.
-            </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="GetOutputSchema">
-      <MemberSignature Language="C#" Value="public override Microsoft.ML.Core.Data.SchemaShape GetOutputSchema (Microsoft.ML.Core.Data.SchemaShape inputSchema);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Microsoft.ML.Core.Data.SchemaShape GetOutputSchema(class Microsoft.ML.Core.Data.SchemaShape inputSchema) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.CustomMappingEstimator`2.GetOutputSchema(Microsoft.ML.Core.Data.SchemaShape)" />
+      <MemberSignature Language="C#" Value="public override Microsoft.ML.SchemaShape GetOutputSchema (Microsoft.ML.SchemaShape inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Microsoft.ML.SchemaShape GetOutputSchema(class Microsoft.ML.SchemaShape inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.CustomMappingEstimator`2.GetOutputSchema(Microsoft.ML.SchemaShape)" />
       <MemberSignature Language="VB.NET" Value="Public Overrides Function GetOutputSchema (inputSchema As SchemaShape) As SchemaShape" />
-      <MemberSignature Language="F#" Value="override this.GetOutputSchema : Microsoft.ML.Core.Data.SchemaShape -&gt; Microsoft.ML.Core.Data.SchemaShape" Usage="customMappingEstimator.GetOutputSchema inputSchema" />
+      <MemberSignature Language="F#" Value="override this.GetOutputSchema : Microsoft.ML.SchemaShape -&gt; Microsoft.ML.SchemaShape" Usage="customMappingEstimator.GetOutputSchema inputSchema" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Api</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Core.Data.SchemaShape</ReturnType>
+        <ReturnType>Microsoft.ML.SchemaShape</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="inputSchema" Type="Microsoft.ML.Core.Data.SchemaShape" />
+        <Parameter Name="inputSchema" Type="Microsoft.ML.SchemaShape" />
       </Parameters>
       <Docs>
         <param name="inputSchema">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>
+            Returns the <see cref="T:Microsoft.ML.SchemaShape" /> of the schema which will be produced by the transformer.
+            Used for schema propagation and verification in a pipeline.
+            </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>

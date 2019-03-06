@@ -16,21 +16,22 @@
     <summary>
         The <see cref="T:Microsoft.ML.Transforms.TensorFlowTransformer" /> is used in following two scenarios.
         <list type="number"><item><description>
-            Scoring with pretrained TensorFlow model: In this mode, the transform extracts hidden layers' values from a pre-trained Tensorflow model and uses outputs as features in ML.Net pipeline.
+            Scoring with pretrained <a href="https://www.tensorflow.org/">TensorFlow</a> model: In this mode, the transform extracts hidden layers' values from a pre-trained Tensorflow model and uses outputs as features in ML.Net pipeline.
           </description></item><item><description>
-            Retraining of TensorFlow model: In this mode, the transform retrains a TensorFlow model using the user data passed through ML.Net pipeline. Once the model is trained, it's outputs can be used as features for scoring.
+            Retraining of <a href="https://www.tensorflow.org/">TensorFlow</a> model: In this mode, the transform retrains a TensorFlow model using the user data passed through ML.Net pipeline. Once the model is trained, it's outputs can be used as features for scoring.
           </description></item></list></summary>
     <remarks>
       <para>
           The TensorFlowTransform extracts specified outputs using a pre-trained <a href="https://www.tensorflow.org">Tensorflow</a> model.
           Optionally, it can further retrain TensorFlow model on user data to adjust model parameters on the user data ( also know as "Transfer Learning").
-
+        </para>
+      <para>
           For scoring, the transform takes as inputs the pre-trained Tensorflow model, the names of the input nodes, and names of the output nodes whose values we want to extract.
           For retraining, the transform also requires training related parameters such as the names of optimization operation in the TensorFlow graph, the name of the learning rate operation in the graph and its value, name of the operations in the graph to compute loss and performance metric etc.
         </para>
       <para>
           This transform requires the <a href="https://dotnet.myget.org/feed/dotnet-core/package/nuget/Microsoft.ML.TensorFlow">Microsoft.ML.TensorFlow</a> nuget to be installed.
-          The TensorFlowTransform has the following assumptions regarding input, output and processing of data.
+          The TensorFlowTransform has the following assumptions regarding input, output, processing of data, and retraining.
         </para>
       <list type="number">
         <item>
@@ -42,6 +43,9 @@
         </item>
         <item>
           <description>The transform supports scoring only one example at a time. However, retraining can be performed in batches.</description>
+        </item>
+        <item>
+          <description>Advanced transfer learning/fine tuning scenarios (e.g. adding more layers into the network, changing the shape of inputs, freezing the layers which do not need to be updated during retraining process etc.) are currently not possible due to lack of support for network/graph manipulation inside the model using TensorFlow C-API.</description>
         </item>
         <item>
           <description>The name of input column(s) should match the name of input(s) in TensorFlow model.</description>
@@ -56,13 +60,44 @@
           <description>Upon success, the transform will introduce a new column in <see cref="T:Microsoft.Data.DataView.IDataView" /> corresponding to each output column specified.</description>
         </item>
       </list>
-
-        The inputs and outputs of a TensorFlow model can be obtained using the <see cref="M:Microsoft.ML.Transforms.TensorFlowModelInfo.GetModelSchema" /> or <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/tools/graph_transforms/README.md#inspecting-graphs"><code>summarize_graph</code> tools.
-        </a>.
-
-      </remarks>
+      <para>
+            The inputs and outputs of a TensorFlow model can be obtained using the <see cref="M:Microsoft.ML.Transforms.TensorFlowModelInfo.GetModelSchema" /> or <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/tools/graph_transforms/README.md#inspecting-graphs"><code>summarize_graph</code> tools</a>.
+        </para>
+    </remarks>
   </Docs>
   <Members>
+    <Member MemberName="ScoreTensorFlowModel">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.TensorFlowEstimator ScoreTensorFlowModel (this Microsoft.ML.TransformsCatalog catalog, Microsoft.ML.Transforms.TensorFlowModelInfo tensorFlowModel, string outputColumnName, string inputColumnName);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.TensorFlowEstimator ScoreTensorFlowModel(class Microsoft.ML.TransformsCatalog catalog, class Microsoft.ML.Transforms.TensorFlowModelInfo tensorFlowModel, string outputColumnName, string inputColumnName) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TensorflowCatalog.ScoreTensorFlowModel(Microsoft.ML.TransformsCatalog,Microsoft.ML.Transforms.TensorFlowModelInfo,System.String,System.String)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ScoreTensorFlowModel (catalog As TransformsCatalog, tensorFlowModel As TensorFlowModelInfo, outputColumnName As String, inputColumnName As String) As TensorFlowEstimator" />
+      <MemberSignature Language="F#" Value="static member ScoreTensorFlowModel : Microsoft.ML.TransformsCatalog * Microsoft.ML.Transforms.TensorFlowModelInfo * string * string -&gt; Microsoft.ML.Transforms.TensorFlowEstimator" Usage="Microsoft.ML.TensorflowCatalog.ScoreTensorFlowModel (catalog, tensorFlowModel, outputColumnName, inputColumnName)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TensorFlow</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Transforms.TensorFlowEstimator</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog" RefType="this" />
+        <Parameter Name="tensorFlowModel" Type="Microsoft.ML.Transforms.TensorFlowModelInfo" />
+        <Parameter Name="outputColumnName" Type="System.String" />
+        <Parameter Name="inputColumnName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="catalog">The transform's catalog.</param>
+        <param name="tensorFlowModel">The pre-loaded TensorFlow model.</param>
+        <param name="outputColumnName">The name of the requested model output.</param>
+        <param name="inputColumnName"> The name of the model input.</param>
+        <summary>
+            Scores a dataset using a pre-traiend <a href="https://www.tensorflow.org/">TensorFlow</a> model specified via <paramref name="tensorFlowModel" />.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ScoreTensorFlowModel">
       <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.TensorFlowEstimator ScoreTensorFlowModel (this Microsoft.ML.TransformsCatalog catalog, Microsoft.ML.Transforms.TensorFlowModelInfo tensorFlowModel, string[] outputColumnNames, string[] inputColumnNames);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.TensorFlowEstimator ScoreTensorFlowModel(class Microsoft.ML.TransformsCatalog catalog, class Microsoft.ML.Transforms.TensorFlowModelInfo tensorFlowModel, string[] outputColumnNames, string[] inputColumnNames) cil managed" />
@@ -85,7 +120,7 @@
       </Parameters>
       <Docs>
         <param name="catalog">The transform's catalog.</param>
-        <param name="tensorFlowModel">The pre-trained TensorFlow model.</param>
+        <param name="tensorFlowModel">The pre-loaded TensorFlow model.</param>
         <param name="outputColumnNames">The names of the requested model outputs.</param>
         <param name="inputColumnNames"> The names of the model inputs.</param>
         <summary>
@@ -93,6 +128,48 @@
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[ScoreTensorFlowModel](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/TensorFlow/TextClassification.cs)]
+            ]]></format>
+        </example>
+      </Docs>
+    </Member>
+    <Member MemberName="ScoreTensorFlowModel">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.TensorFlowEstimator ScoreTensorFlowModel (this Microsoft.ML.TransformsCatalog catalog, string modelLocation, string outputColumnName, string inputColumnName);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.TensorFlowEstimator ScoreTensorFlowModel(class Microsoft.ML.TransformsCatalog catalog, string modelLocation, string outputColumnName, string inputColumnName) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TensorflowCatalog.ScoreTensorFlowModel(Microsoft.ML.TransformsCatalog,System.String,System.String,System.String)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ScoreTensorFlowModel (catalog As TransformsCatalog, modelLocation As String, outputColumnName As String, inputColumnName As String) As TensorFlowEstimator" />
+      <MemberSignature Language="F#" Value="static member ScoreTensorFlowModel : Microsoft.ML.TransformsCatalog * string * string * string -&gt; Microsoft.ML.Transforms.TensorFlowEstimator" Usage="Microsoft.ML.TensorflowCatalog.ScoreTensorFlowModel (catalog, modelLocation, outputColumnName, inputColumnName)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TensorFlow</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Transforms.TensorFlowEstimator</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog" RefType="this" />
+        <Parameter Name="modelLocation" Type="System.String" />
+        <Parameter Name="outputColumnName" Type="System.String" />
+        <Parameter Name="inputColumnName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="catalog">The transform's catalog.</param>
+        <param name="modelLocation">Location of the TensorFlow model.</param>
+        <param name="outputColumnName">The name of the requested model output.</param>
+        <param name="inputColumnName"> The name of the model input.</param>
+        <summary>
+            Scores a dataset using a pre-traiend <a href="https://www.tensorflow.org/">TensorFlow</a> model located in <paramref name="modelLocation" />.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[ScoreTensorFlowModel](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/TensorFlowTransform.cs)]
+            ]]></format>
+        </example>
       </Docs>
     </Member>
     <Member MemberName="ScoreTensorFlowModel">
@@ -130,14 +207,18 @@
             [!code-csharp[ScoreTensorFlowModel](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/TensorFlowTransform.cs)]
             ]]></format>
         </example>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[ScoreTensorFlowModel](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/TensorFlow/ImageClassification.cs)]
+            ]]></format>
+        </example>
       </Docs>
     </Member>
     <Member MemberName="TensorFlow">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.TensorFlowEstimator TensorFlow (this Microsoft.ML.TransformsCatalog catalog, Microsoft.ML.Transforms.TensorFlowTransformer.Arguments args);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.TensorFlowEstimator TensorFlow(class Microsoft.ML.TransformsCatalog catalog, class Microsoft.ML.Transforms.TensorFlowTransformer/Arguments args) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TensorflowCatalog.TensorFlow(Microsoft.ML.TransformsCatalog,Microsoft.ML.Transforms.TensorFlowTransformer.Arguments)" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function TensorFlow (catalog As TransformsCatalog, args As TensorFlowTransformer.Arguments) As TensorFlowEstimator" />
-      <MemberSignature Language="F#" Value="static member TensorFlow : Microsoft.ML.TransformsCatalog * Microsoft.ML.Transforms.TensorFlowTransformer.Arguments -&gt; Microsoft.ML.Transforms.TensorFlowEstimator" Usage="Microsoft.ML.TensorflowCatalog.TensorFlow (catalog, args)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.TensorFlowEstimator TensorFlow (this Microsoft.ML.TransformsCatalog catalog, Microsoft.ML.Transforms.TensorFlowEstimator.Options options);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.TensorFlowEstimator TensorFlow(class Microsoft.ML.TransformsCatalog catalog, class Microsoft.ML.Transforms.TensorFlowEstimator/Options options) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TensorflowCatalog.TensorFlow(Microsoft.ML.TransformsCatalog,Microsoft.ML.Transforms.TensorFlowEstimator.Options)" />
+      <MemberSignature Language="F#" Value="static member TensorFlow : Microsoft.ML.TransformsCatalog * Microsoft.ML.Transforms.TensorFlowEstimator.Options -&gt; Microsoft.ML.Transforms.TensorFlowEstimator" Usage="Microsoft.ML.TensorflowCatalog.TensorFlow (catalog, options)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.TensorFlow</AssemblyName>
@@ -148,25 +229,24 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog" RefType="this" />
-        <Parameter Name="args" Type="Microsoft.ML.Transforms.TensorFlowTransformer+Arguments" />
+        <Parameter Name="options" Type="Microsoft.ML.Transforms.TensorFlowEstimator+Options" />
       </Parameters>
       <Docs>
         <param name="catalog">The transform's catalog.</param>
-        <param name="args">The <see cref="T:Microsoft.ML.Transforms.TensorFlowTransformer.Arguments" /> specifying the inputs and the settings of the <see cref="T:Microsoft.ML.Transforms.TensorFlowEstimator" />.</param>
+        <param name="options">The <see cref="T:Microsoft.ML.Transforms.TensorFlowEstimator.Options" /> specifying the inputs and the settings of the <see cref="T:Microsoft.ML.Transforms.TensorFlowEstimator" />.</param>
         <summary>
-            Score or Retrain a tensorflow model (based on setting of the <see cref="F:Microsoft.ML.Transforms.TensorFlowTransformer.Arguments.ReTrain" />) setting.
-            The model is specified in the <see cref="F:Microsoft.ML.Transforms.TensorFlowTransformer.Arguments.ModelLocation" />.
+            Score or Retrain a tensorflow model (based on setting of the <see cref="F:Microsoft.ML.Transforms.TensorFlowEstimator.Options.ReTrain" />) setting.
+            The model is specified in the <see cref="F:Microsoft.ML.Transforms.TensorFlowEstimator.Options.ModelLocation" />.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="TensorFlow">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.TensorFlowEstimator TensorFlow (this Microsoft.ML.TransformsCatalog catalog, Microsoft.ML.Transforms.TensorFlowTransformer.Arguments args, Microsoft.ML.Transforms.TensorFlowModelInfo tensorFlowModel);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.TensorFlowEstimator TensorFlow(class Microsoft.ML.TransformsCatalog catalog, class Microsoft.ML.Transforms.TensorFlowTransformer/Arguments args, class Microsoft.ML.Transforms.TensorFlowModelInfo tensorFlowModel) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TensorflowCatalog.TensorFlow(Microsoft.ML.TransformsCatalog,Microsoft.ML.Transforms.TensorFlowTransformer.Arguments,Microsoft.ML.Transforms.TensorFlowModelInfo)" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function TensorFlow (catalog As TransformsCatalog, args As TensorFlowTransformer.Arguments, tensorFlowModel As TensorFlowModelInfo) As TensorFlowEstimator" />
-      <MemberSignature Language="F#" Value="static member TensorFlow : Microsoft.ML.TransformsCatalog * Microsoft.ML.Transforms.TensorFlowTransformer.Arguments * Microsoft.ML.Transforms.TensorFlowModelInfo -&gt; Microsoft.ML.Transforms.TensorFlowEstimator" Usage="Microsoft.ML.TensorflowCatalog.TensorFlow (catalog, args, tensorFlowModel)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.TensorFlowEstimator TensorFlow (this Microsoft.ML.TransformsCatalog catalog, Microsoft.ML.Transforms.TensorFlowEstimator.Options options, Microsoft.ML.Transforms.TensorFlowModelInfo tensorFlowModel);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.TensorFlowEstimator TensorFlow(class Microsoft.ML.TransformsCatalog catalog, class Microsoft.ML.Transforms.TensorFlowEstimator/Options options, class Microsoft.ML.Transforms.TensorFlowModelInfo tensorFlowModel) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TensorflowCatalog.TensorFlow(Microsoft.ML.TransformsCatalog,Microsoft.ML.Transforms.TensorFlowEstimator.Options,Microsoft.ML.Transforms.TensorFlowModelInfo)" />
+      <MemberSignature Language="F#" Value="static member TensorFlow : Microsoft.ML.TransformsCatalog * Microsoft.ML.Transforms.TensorFlowEstimator.Options * Microsoft.ML.Transforms.TensorFlowModelInfo -&gt; Microsoft.ML.Transforms.TensorFlowEstimator" Usage="Microsoft.ML.TensorflowCatalog.TensorFlow (catalog, options, tensorFlowModel)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.TensorFlow</AssemblyName>
@@ -177,15 +257,15 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog" RefType="this" />
-        <Parameter Name="args" Type="Microsoft.ML.Transforms.TensorFlowTransformer+Arguments" />
+        <Parameter Name="options" Type="Microsoft.ML.Transforms.TensorFlowEstimator+Options" />
         <Parameter Name="tensorFlowModel" Type="Microsoft.ML.Transforms.TensorFlowModelInfo" />
       </Parameters>
       <Docs>
         <param name="catalog">The transform's catalog.</param>
-        <param name="args">The <see cref="T:Microsoft.ML.Transforms.TensorFlowTransformer.Arguments" /> specifying the inputs and the settings of the <see cref="T:Microsoft.ML.Transforms.TensorFlowEstimator" />.</param>
-        <param name="tensorFlowModel">The pre-trained TensorFlow model.</param>
+        <param name="options">The <see cref="T:Microsoft.ML.Transforms.TensorFlowEstimator.Options" /> specifying the inputs and the settings of the <see cref="T:Microsoft.ML.Transforms.TensorFlowEstimator" />.</param>
+        <param name="tensorFlowModel">The pre-loaded TensorFlow model.</param>
         <summary>
-            Scores or retrains (based on setting of the <see cref="F:Microsoft.ML.Transforms.TensorFlowTransformer.Arguments.ReTrain" />) a pre-traiend TensorFlow model specified via <paramref name="tensorFlowModel" />.
+            Scores or retrains (based on setting of the <see cref="F:Microsoft.ML.Transforms.TensorFlowEstimator.Options.ReTrain" />) a pre-traiend TensorFlow model specified via <paramref name="tensorFlowModel" />.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

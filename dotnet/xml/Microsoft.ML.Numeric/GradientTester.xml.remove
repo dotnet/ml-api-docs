@@ -1,0 +1,201 @@
+<Type Name="GradientTester" FullName="Microsoft.ML.Numeric.GradientTester">
+  <TypeSignature Language="C#" Value="public static class GradientTester" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit GradientTester extends System.Object" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Numeric.GradientTester" />
+  <TypeSignature Language="VB.NET" Value="Public Class GradientTester" />
+  <TypeSignature Language="F#" Value="type GradientTester = class" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+            A class for testing the gradient of DifferentiableFunctions, useful for debugging
+            </summary>
+    <remarks>
+            Works by comparing the reported gradient to the numerically computed gradient.
+            If the gradient is correct, the return value should be small (order of 1e-6).
+            May have false negatives if extreme values cause the numeric gradient to be off,
+            for example, if the norm of x is very large, or if the gradient is changing rapidly at x.
+            </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Header">
+      <MemberSignature Language="C#" Value="public static readonly string Header;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly string Header" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Numeric.GradientTester.Header" />
+      <MemberSignature Language="VB.NET" Value="Public Shared ReadOnly Header As String " />
+      <MemberSignature Language="F#" Value=" staticval mutable Header : string" Usage="Microsoft.ML.Numeric.GradientTester.Header" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The head of the test output
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Test">
+      <MemberSignature Language="C#" Value="public static float Test (Microsoft.ML.Numeric.DifferentiableFunction f, ref Microsoft.ML.Data.VBuffer&lt;float&gt; x);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 Test(class Microsoft.ML.Numeric.DifferentiableFunction f, [in]valuetype Microsoft.ML.Data.VBuffer`1&lt;float32&gt;&amp; x) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Numeric.GradientTester.Test(Microsoft.ML.Numeric.DifferentiableFunction,Microsoft.ML.Data.VBuffer{System.Single}@)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Test (f As DifferentiableFunction, ByRef x As VBuffer(Of Single)) As Single" />
+      <MemberSignature Language="F#" Value="static member Test : Microsoft.ML.Numeric.DifferentiableFunction *  -&gt; single" Usage="Microsoft.ML.Numeric.GradientTester.Test (f, x)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="f" Type="Microsoft.ML.Numeric.DifferentiableFunction" />
+        <Parameter Name="x" Type="Microsoft.ML.Data.VBuffer&lt;System.Single&gt;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="f">function to test</param>
+        <param name="x">point at which to test</param>
+        <summary>
+            Tests the gradient reported by f.
+            </summary>
+        <returns>maximum normalized difference between analytic and numeric directional derivative over multiple tests</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Test">
+      <MemberSignature Language="C#" Value="public static float Test (Microsoft.ML.Numeric.DifferentiableFunction f, ref Microsoft.ML.Data.VBuffer&lt;float&gt; x, bool quiet);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 Test(class Microsoft.ML.Numeric.DifferentiableFunction f, [in]valuetype Microsoft.ML.Data.VBuffer`1&lt;float32&gt;&amp; x, bool quiet) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Numeric.GradientTester.Test(Microsoft.ML.Numeric.DifferentiableFunction,Microsoft.ML.Data.VBuffer{System.Single}@,System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Test (f As DifferentiableFunction, ByRef x As VBuffer(Of Single), quiet As Boolean) As Single" />
+      <MemberSignature Language="F#" Value="static member Test : Microsoft.ML.Numeric.DifferentiableFunction *  * bool -&gt; single" Usage="Microsoft.ML.Numeric.GradientTester.Test (f, x, quiet)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="f" Type="Microsoft.ML.Numeric.DifferentiableFunction" />
+        <Parameter Name="x" Type="Microsoft.ML.Data.VBuffer&lt;System.Single&gt;" RefType="ref" />
+        <Parameter Name="quiet" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="f">function to test</param>
+        <param name="x">point at which to test</param>
+        <param name="quiet">If false, outputs detailed info.</param>
+        <summary>
+            Tests the gradient reported by f.
+            </summary>
+        <returns>maximum normalized difference between analytic and numeric directional derivative over multiple tests</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Test">
+      <MemberSignature Language="C#" Value="public static float Test (Microsoft.ML.Numeric.DifferentiableFunction f, ref Microsoft.ML.Data.VBuffer&lt;float&gt; x, ref Microsoft.ML.Data.VBuffer&lt;float&gt; dir, bool quiet, ref Microsoft.ML.Data.VBuffer&lt;float&gt; newGrad, ref Microsoft.ML.Data.VBuffer&lt;float&gt; newX);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 Test(class Microsoft.ML.Numeric.DifferentiableFunction f, [in]valuetype Microsoft.ML.Data.VBuffer`1&lt;float32&gt;&amp; x, valuetype Microsoft.ML.Data.VBuffer`1&lt;float32&gt;&amp; dir, bool quiet, valuetype Microsoft.ML.Data.VBuffer`1&lt;float32&gt;&amp; newGrad, valuetype Microsoft.ML.Data.VBuffer`1&lt;float32&gt;&amp; newX) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Numeric.GradientTester.Test(Microsoft.ML.Numeric.DifferentiableFunction,Microsoft.ML.Data.VBuffer{System.Single}@,Microsoft.ML.Data.VBuffer{System.Single}@,System.Boolean,Microsoft.ML.Data.VBuffer{System.Single}@,Microsoft.ML.Data.VBuffer{System.Single}@)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function Test (f As DifferentiableFunction, ByRef x As VBuffer(Of Single), ByRef dir As VBuffer(Of Single), quiet As Boolean, ByRef newGrad As VBuffer(Of Single), ByRef newX As VBuffer(Of Single)) As Single" />
+      <MemberSignature Language="F#" Value="static member Test : Microsoft.ML.Numeric.DifferentiableFunction *  *  * bool *  *  -&gt; single" Usage="Microsoft.ML.Numeric.GradientTester.Test (f, x, dir, quiet, newGrad, newX)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="f" Type="Microsoft.ML.Numeric.DifferentiableFunction" />
+        <Parameter Name="x" Type="Microsoft.ML.Data.VBuffer&lt;System.Single&gt;" RefType="ref" />
+        <Parameter Name="dir" Type="Microsoft.ML.Data.VBuffer&lt;System.Single&gt;" RefType="ref" />
+        <Parameter Name="quiet" Type="System.Boolean" />
+        <Parameter Name="newGrad" Type="Microsoft.ML.Data.VBuffer&lt;System.Single&gt;" RefType="ref" />
+        <Parameter Name="newX" Type="Microsoft.ML.Data.VBuffer&lt;System.Single&gt;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="f">Function to test</param>
+        <param name="x">Point at which to test</param>
+        <param name="dir">Direction to test derivative</param>
+        <param name="quiet">Whether to disable output</param>
+        <param name="newGrad">This is a reusable working buffer for intermediate calculations</param>
+        <param name="newX">This is a reusable working buffer for intermediate calculations</param>
+        <summary>
+            Tests the gradient reported by <paramref name="f" />.
+            </summary>
+        <returns>Normalized difference between analytic and numeric directional derivative</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TestAllCoords">
+      <MemberSignature Language="C#" Value="public static void TestAllCoords (Microsoft.ML.Numeric.DifferentiableFunction f, ref Microsoft.ML.Data.VBuffer&lt;float&gt; x);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void TestAllCoords(class Microsoft.ML.Numeric.DifferentiableFunction f, [in]valuetype Microsoft.ML.Data.VBuffer`1&lt;float32&gt;&amp; x) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Numeric.GradientTester.TestAllCoords(Microsoft.ML.Numeric.DifferentiableFunction,Microsoft.ML.Data.VBuffer{System.Single}@)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Sub TestAllCoords (f As DifferentiableFunction, ByRef x As VBuffer(Of Single))" />
+      <MemberSignature Language="F#" Value="static member TestAllCoords : Microsoft.ML.Numeric.DifferentiableFunction *  -&gt; unit" Usage="Microsoft.ML.Numeric.GradientTester.TestAllCoords (f, x)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="f" Type="Microsoft.ML.Numeric.DifferentiableFunction" />
+        <Parameter Name="x" Type="Microsoft.ML.Data.VBuffer&lt;System.Single&gt;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="f">
+        </param>
+        <param name="x">
+        </param>
+        <summary>
+            Tests the gradient using finite differences on each axis (appropriate for small functions)
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TestCoords">
+      <MemberSignature Language="C#" Value="public static void TestCoords (Microsoft.ML.Numeric.DifferentiableFunction f, ref Microsoft.ML.Data.VBuffer&lt;float&gt; x, System.Collections.Generic.IList&lt;int&gt; coords);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void TestCoords(class Microsoft.ML.Numeric.DifferentiableFunction f, [in]valuetype Microsoft.ML.Data.VBuffer`1&lt;float32&gt;&amp; x, class System.Collections.Generic.IList`1&lt;int32&gt; coords) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Numeric.GradientTester.TestCoords(Microsoft.ML.Numeric.DifferentiableFunction,Microsoft.ML.Data.VBuffer{System.Single}@,System.Collections.Generic.IList{System.Int32})" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Sub TestCoords (f As DifferentiableFunction, ByRef x As VBuffer(Of Single), coords As IList(Of Integer))" />
+      <MemberSignature Language="F#" Value="static member TestCoords : Microsoft.ML.Numeric.DifferentiableFunction *  * System.Collections.Generic.IList&lt;int&gt; -&gt; unit" Usage="Microsoft.ML.Numeric.GradientTester.TestCoords (f, x, coords)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="f" Type="Microsoft.ML.Numeric.DifferentiableFunction" />
+        <Parameter Name="x" Type="Microsoft.ML.Data.VBuffer&lt;System.Single&gt;" RefType="ref" />
+        <Parameter Name="coords" Type="System.Collections.Generic.IList&lt;System.Int32&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="f">Function to test</param>
+        <param name="x">Point at which to test</param>
+        <param name="coords">List of coordinates to test</param>
+        <summary>
+            Tests the gradient using finite differences on each axis in the list
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

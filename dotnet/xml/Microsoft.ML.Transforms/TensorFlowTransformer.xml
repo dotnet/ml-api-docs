@@ -16,21 +16,22 @@
     <summary>
         The <see cref="T:Microsoft.ML.Transforms.TensorFlowTransformer" /> is used in following two scenarios.
         <list type="number"><item><description>
-            Scoring with pretrained TensorFlow model: In this mode, the transform extracts hidden layers' values from a pre-trained Tensorflow model and uses outputs as features in ML.Net pipeline.
+            Scoring with pretrained <a href="https://www.tensorflow.org/">TensorFlow</a> model: In this mode, the transform extracts hidden layers' values from a pre-trained Tensorflow model and uses outputs as features in ML.Net pipeline.
           </description></item><item><description>
-            Retraining of TensorFlow model: In this mode, the transform retrains a TensorFlow model using the user data passed through ML.Net pipeline. Once the model is trained, it's outputs can be used as features for scoring.
+            Retraining of <a href="https://www.tensorflow.org/">TensorFlow</a> model: In this mode, the transform retrains a TensorFlow model using the user data passed through ML.Net pipeline. Once the model is trained, it's outputs can be used as features for scoring.
           </description></item></list></summary>
     <remarks>
       <para>
           The TensorFlowTransform extracts specified outputs using a pre-trained <a href="https://www.tensorflow.org">Tensorflow</a> model.
           Optionally, it can further retrain TensorFlow model on user data to adjust model parameters on the user data ( also know as "Transfer Learning").
-
+        </para>
+      <para>
           For scoring, the transform takes as inputs the pre-trained Tensorflow model, the names of the input nodes, and names of the output nodes whose values we want to extract.
           For retraining, the transform also requires training related parameters such as the names of optimization operation in the TensorFlow graph, the name of the learning rate operation in the graph and its value, name of the operations in the graph to compute loss and performance metric etc.
         </para>
       <para>
           This transform requires the <a href="https://dotnet.myget.org/feed/dotnet-core/package/nuget/Microsoft.ML.TensorFlow">Microsoft.ML.TensorFlow</a> nuget to be installed.
-          The TensorFlowTransform has the following assumptions regarding input, output and processing of data.
+          The TensorFlowTransform has the following assumptions regarding input, output, processing of data, and retraining.
         </para>
       <list type="number">
         <item>
@@ -42,6 +43,9 @@
         </item>
         <item>
           <description>The transform supports scoring only one example at a time. However, retraining can be performed in batches.</description>
+        </item>
+        <item>
+          <description>Advanced transfer learning/fine tuning scenarios (e.g. adding more layers into the network, changing the shape of inputs, freezing the layers which do not need to be updated during retraining process etc.) are currently not possible due to lack of support for network/graph manipulation inside the model using TensorFlow C-API.</description>
         </item>
         <item>
           <description>The name of input column(s) should match the name of input(s) in TensorFlow model.</description>
@@ -56,156 +60,12 @@
           <description>Upon success, the transform will introduce a new column in <see cref="T:Microsoft.Data.DataView.IDataView" /> corresponding to each output column specified.</description>
         </item>
       </list>
-
-        The inputs and outputs of a TensorFlow model can be obtained using the <see cref="M:Microsoft.ML.Transforms.TensorFlowModelInfo.GetModelSchema" /> or <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/tools/graph_transforms/README.md#inspecting-graphs"><code>summarize_graph</code> tools.
-        </a>.
-
-      </remarks>
+      <para>
+            The inputs and outputs of a TensorFlow model can be obtained using the <see cref="M:Microsoft.ML.Transforms.TensorFlowModelInfo.GetModelSchema" /> or <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/tools/graph_transforms/README.md#inspecting-graphs"><code>summarize_graph</code> tools</a>.
+        </para>
+    </remarks>
   </Docs>
   <Members>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public TensorFlowTransformer (Microsoft.ML.IHostEnvironment env, Microsoft.ML.Transforms.TensorFlowModelInfo tfModelInfo, string outputColumnName, string inputColumnName = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, class Microsoft.ML.Transforms.TensorFlowModelInfo tfModelInfo, string outputColumnName, string inputColumnName) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.TensorFlowTransformer.#ctor(Microsoft.ML.IHostEnvironment,Microsoft.ML.Transforms.TensorFlowModelInfo,System.String,System.String)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, tfModelInfo As TensorFlowModelInfo, outputColumnName As String, Optional inputColumnName As String = null)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.TensorFlowTransformer : Microsoft.ML.IHostEnvironment * Microsoft.ML.Transforms.TensorFlowModelInfo * string * string -&gt; Microsoft.ML.Transforms.TensorFlowTransformer" Usage="new Microsoft.ML.Transforms.TensorFlowTransformer (env, tfModelInfo, outputColumnName, inputColumnName)" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.TensorFlow</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
-        <Parameter Name="tfModelInfo" Type="Microsoft.ML.Transforms.TensorFlowModelInfo" />
-        <Parameter Name="outputColumnName" Type="System.String" />
-        <Parameter Name="inputColumnName" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="env">The environment to use.</param>
-        <param name="tfModelInfo">
-          <see cref="T:Microsoft.ML.Transforms.TensorFlowModelInfo" /> object created with <see cref="M:Microsoft.ML.Transforms.TensorFlow.TensorFlowUtils.LoadTensorFlowModel(Microsoft.ML.IHostEnvironment,System.String)" />.</param>
-        <param name="outputColumnName">The output columns to generate. Names must match model specifications. Data types are inferred from model.</param>
-        <param name="inputColumnName">The name of the input data columns. Must match model's input names. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
-        <summary>
-            Transform for scoring Tensorflow models. Input data column names/types must exactly match
-            all model input names. Only the output columns specified will be generated.
-            This convenience method avoids reloading of TensorFlow model.
-            It is useful in a situation where user has already loaded TensorFlow model using <see cref="M:Microsoft.ML.Transforms.TensorFlow.TensorFlowUtils.LoadTensorFlowModel(Microsoft.ML.IHostEnvironment,System.String)" /> for inspecting model schema.
-            </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public TensorFlowTransformer (Microsoft.ML.IHostEnvironment env, Microsoft.ML.Transforms.TensorFlowModelInfo tfModelInfo, string[] outputColumnNames, string[] inputColumnNames);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, class Microsoft.ML.Transforms.TensorFlowModelInfo tfModelInfo, string[] outputColumnNames, string[] inputColumnNames) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.TensorFlowTransformer.#ctor(Microsoft.ML.IHostEnvironment,Microsoft.ML.Transforms.TensorFlowModelInfo,System.String[],System.String[])" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, tfModelInfo As TensorFlowModelInfo, outputColumnNames As String(), inputColumnNames As String())" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.TensorFlowTransformer : Microsoft.ML.IHostEnvironment * Microsoft.ML.Transforms.TensorFlowModelInfo * string[] * string[] -&gt; Microsoft.ML.Transforms.TensorFlowTransformer" Usage="new Microsoft.ML.Transforms.TensorFlowTransformer (env, tfModelInfo, outputColumnNames, inputColumnNames)" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.TensorFlow</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
-        <Parameter Name="tfModelInfo" Type="Microsoft.ML.Transforms.TensorFlowModelInfo" />
-        <Parameter Name="outputColumnNames" Type="System.String[]" />
-        <Parameter Name="inputColumnNames" Type="System.String[]" />
-      </Parameters>
-      <Docs>
-        <param name="env">The environment to use.</param>
-        <param name="tfModelInfo">
-          <see cref="T:Microsoft.ML.Transforms.TensorFlowModelInfo" /> object created with <see cref="M:Microsoft.ML.Transforms.TensorFlow.TensorFlowUtils.LoadTensorFlowModel(Microsoft.ML.IHostEnvironment,System.String)" />.</param>
-        <param name="outputColumnNames">The output columns to generate. Names must match model specifications. Data types are inferred from model.</param>
-        <param name="inputColumnNames">The name of the input data columns. Must match model's input names.</param>
-        <summary>
-            Transform for scoring Tensorflow models. Input data column names/types must exactly match
-            all model input names. Only the output columns specified will be generated.
-            This convenience method avoids reloading of TensorFlow model.
-            It is useful in a situation where user has already loaded TensorFlow model using <see cref="M:Microsoft.ML.Transforms.TensorFlow.TensorFlowUtils.LoadTensorFlowModel(Microsoft.ML.IHostEnvironment,System.String)" /> for inspecting model schema.
-            </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public TensorFlowTransformer (Microsoft.ML.IHostEnvironment env, string modelFile, string outputColumnName, string inputColumnName = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, string modelFile, string outputColumnName, string inputColumnName) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.TensorFlowTransformer.#ctor(Microsoft.ML.IHostEnvironment,System.String,System.String,System.String)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, modelFile As String, outputColumnName As String, Optional inputColumnName As String = null)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.TensorFlowTransformer : Microsoft.ML.IHostEnvironment * string * string * string -&gt; Microsoft.ML.Transforms.TensorFlowTransformer" Usage="new Microsoft.ML.Transforms.TensorFlowTransformer (env, modelFile, outputColumnName, inputColumnName)" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.TensorFlow</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
-        <Parameter Name="modelFile" Type="System.String" />
-        <Parameter Name="outputColumnName" Type="System.String" />
-        <Parameter Name="inputColumnName" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="env">The environment to use.</param>
-        <param name="modelFile">Model file path.</param>
-        <param name="outputColumnName">The output columns to generate. Names must match model specifications. Data types are inferred from model.</param>
-        <param name="inputColumnName">The name of the input data column. Must match model input name. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
-        <summary>
-            Transform for scoring Tensorflow models. Input data column names/types must exactly match
-            all model input names. Only the output columns specified will be generated.
-            If the model is already loaded please <see cref="M:Microsoft.ML.Transforms.TensorFlowTransformer.#ctor(Microsoft.ML.IHostEnvironment,Microsoft.ML.Transforms.TensorFlowModelInfo,System.String,System.String)" /> to avoid reloading of model.
-            </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public TensorFlowTransformer (Microsoft.ML.IHostEnvironment env, string modelFile, string[] outputColumnNames, string[] inputColumnNames);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHostEnvironment env, string modelFile, string[] outputColumnNames, string[] inputColumnNames) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.TensorFlowTransformer.#ctor(Microsoft.ML.IHostEnvironment,System.String,System.String[],System.String[])" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (env As IHostEnvironment, modelFile As String, outputColumnNames As String(), inputColumnNames As String())" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.Transforms.TensorFlowTransformer : Microsoft.ML.IHostEnvironment * string * string[] * string[] -&gt; Microsoft.ML.Transforms.TensorFlowTransformer" Usage="new Microsoft.ML.Transforms.TensorFlowTransformer (env, modelFile, outputColumnNames, inputColumnNames)" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.TensorFlow</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
-        <Parameter Name="modelFile" Type="System.String" />
-        <Parameter Name="outputColumnNames" Type="System.String[]" />
-        <Parameter Name="inputColumnNames" Type="System.String[]" />
-      </Parameters>
-      <Docs>
-        <param name="env">The environment to use.</param>
-        <param name="modelFile">Model file path.</param>
-        <param name="outputColumnNames">The output columns to generate. Names must match model specifications. Data types are inferred from model.</param>
-        <param name="inputColumnNames">The name of the input data columns. Must match model's input names.</param>
-        <summary>
-            Transform for scoring Tensorflow models. Input data column names/types must exactly match
-            all model input names. Only the output columns specified will be generated.
-            If the model is already loaded please <see cref="M:Microsoft.ML.Transforms.TensorFlowTransformer.#ctor(Microsoft.ML.IHostEnvironment,Microsoft.ML.Transforms.TensorFlowModelInfo,System.String[],System.String[])" /> to avoid reloading of model.
-            </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="BatchSize">
-      <MemberSignature Language="C#" Value="public static int BatchSize;" />
-      <MemberSignature Language="ILAsm" Value=".field public static int32 BatchSize" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.TensorFlowTransformer.BatchSize" />
-      <MemberSignature Language="VB.NET" Value="Public Shared BatchSize As Integer " />
-      <MemberSignature Language="F#" Value=" staticval mutable BatchSize : int" Usage="Microsoft.ML.Transforms.TensorFlowTransformer.BatchSize" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.TensorFlow</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Finalize">
       <MemberSignature Language="C#" Value="~TensorFlowTransformer ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Finalize() cil managed" />
@@ -222,67 +82,6 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Inputs">
-      <MemberSignature Language="C#" Value="public readonly string[] Inputs;" />
-      <MemberSignature Language="ILAsm" Value=".field public initonly string[] Inputs" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.TensorFlowTransformer.Inputs" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Inputs As String() " />
-      <MemberSignature Language="F#" Value="val mutable Inputs : string[]" Usage="Microsoft.ML.Transforms.TensorFlowTransformer.Inputs" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.TensorFlow</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String[]</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Outputs">
-      <MemberSignature Language="C#" Value="public readonly string[] Outputs;" />
-      <MemberSignature Language="ILAsm" Value=".field public initonly string[] Outputs" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Transforms.TensorFlowTransformer.Outputs" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Outputs As String() " />
-      <MemberSignature Language="F#" Value="val mutable Outputs : string[]" Usage="Microsoft.ML.Transforms.TensorFlowTransformer.Outputs" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.TensorFlow</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String[]</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Save">
-      <MemberSignature Language="C#" Value="public override void Save (Microsoft.ML.Model.ModelSaveContext ctx);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Save(class Microsoft.ML.Model.ModelSaveContext ctx) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.TensorFlowTransformer.Save(Microsoft.ML.Model.ModelSaveContext)" />
-      <MemberSignature Language="VB.NET" Value="Public Overrides Sub Save (ctx As ModelSaveContext)" />
-      <MemberSignature Language="F#" Value="override this.Save : Microsoft.ML.Model.ModelSaveContext -&gt; unit" Usage="tensorFlowTransformer.Save ctx" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.TensorFlow</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="ctx" Type="Microsoft.ML.Model.ModelSaveContext" />
-      </Parameters>
-      <Docs>
-        <param name="ctx">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

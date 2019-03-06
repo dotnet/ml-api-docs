@@ -18,11 +18,11 @@
   </Docs>
   <Members>
     <Member MemberName="LowerVectorSizeWithRandomFourierTransformation">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.Vector&lt;float&gt; LowerVectorSizeWithRandomFourierTransformation (this Microsoft.ML.StaticPipe.Vector&lt;float&gt; input, int newDim = 1000, bool useSin = false, Microsoft.ML.IComponentFactory&lt;float,Microsoft.ML.Transforms.IFourierDistributionSampler&gt; generator = null, Nullable&lt;int&gt; seed = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.Vector`1&lt;float32&gt; LowerVectorSizeWithRandomFourierTransformation(class Microsoft.ML.StaticPipe.Vector`1&lt;float32&gt; input, int32 newDim, bool useSin, class Microsoft.ML.IComponentFactory`2&lt;float32, class Microsoft.ML.Transforms.IFourierDistributionSampler&gt; generator, valuetype System.Nullable`1&lt;int32&gt; seed) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.RffStaticExtenensions.LowerVectorSizeWithRandomFourierTransformation(Microsoft.ML.StaticPipe.Vector{System.Single},System.Int32,System.Boolean,Microsoft.ML.IComponentFactory{System.Single,Microsoft.ML.Transforms.IFourierDistributionSampler},System.Nullable{System.Int32})" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function LowerVectorSizeWithRandomFourierTransformation (input As Vector(Of Single), Optional newDim As Integer = 1000, Optional useSin As Boolean = false, Optional generator As IComponentFactory(Of Single, IFourierDistributionSampler) = null, Optional seed As Nullable(Of Integer) = null) As Vector(Of Single)" />
-      <MemberSignature Language="F#" Value="static member LowerVectorSizeWithRandomFourierTransformation : Microsoft.ML.StaticPipe.Vector&lt;single&gt; * int * bool * Microsoft.ML.IComponentFactory&lt;single, Microsoft.ML.Transforms.IFourierDistributionSampler&gt; * Nullable&lt;int&gt; -&gt; Microsoft.ML.StaticPipe.Vector&lt;single&gt;" Usage="Microsoft.ML.StaticPipe.RffStaticExtenensions.LowerVectorSizeWithRandomFourierTransformation (input, newDim, useSin, generator, seed)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.Vector&lt;float&gt; LowerVectorSizeWithRandomFourierTransformation (this Microsoft.ML.StaticPipe.Vector&lt;float&gt; input, int newDim = 1000, bool useSin = false, Microsoft.ML.Transforms.KernelBase generator = null, Nullable&lt;int&gt; seed = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.Vector`1&lt;float32&gt; LowerVectorSizeWithRandomFourierTransformation(class Microsoft.ML.StaticPipe.Vector`1&lt;float32&gt; input, int32 newDim, bool useSin, class Microsoft.ML.Transforms.KernelBase generator, valuetype System.Nullable`1&lt;int32&gt; seed) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.RffStaticExtenensions.LowerVectorSizeWithRandomFourierTransformation(Microsoft.ML.StaticPipe.Vector{System.Single},System.Int32,System.Boolean,Microsoft.ML.Transforms.KernelBase,System.Nullable{System.Int32})" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function LowerVectorSizeWithRandomFourierTransformation (input As Vector(Of Single), Optional newDim As Integer = 1000, Optional useSin As Boolean = false, Optional generator As KernelBase = null, Optional seed As Nullable(Of Integer) = null) As Vector(Of Single)" />
+      <MemberSignature Language="F#" Value="static member LowerVectorSizeWithRandomFourierTransformation : Microsoft.ML.StaticPipe.Vector&lt;single&gt; * int * bool * Microsoft.ML.Transforms.KernelBase * Nullable&lt;int&gt; -&gt; Microsoft.ML.StaticPipe.Vector&lt;single&gt;" Usage="Microsoft.ML.StaticPipe.RffStaticExtenensions.LowerVectorSizeWithRandomFourierTransformation (input, newDim, useSin, generator, seed)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StaticPipe</AssemblyName>
@@ -35,14 +35,14 @@
         <Parameter Name="input" Type="Microsoft.ML.StaticPipe.Vector&lt;System.Single&gt;" RefType="this" />
         <Parameter Name="newDim" Type="System.Int32" />
         <Parameter Name="useSin" Type="System.Boolean" />
-        <Parameter Name="generator" Type="Microsoft.ML.IComponentFactory&lt;System.Single,Microsoft.ML.Transforms.IFourierDistributionSampler&gt;" />
+        <Parameter Name="generator" Type="Microsoft.ML.Transforms.KernelBase" />
         <Parameter Name="seed" Type="System.Nullable&lt;System.Int32&gt;" />
       </Parameters>
       <Docs>
         <param name="input">The column to apply Random Fourier transfomration.</param>
         <param name="newDim">Expected size of new vector.</param>
         <param name="useSin">Create two features for every random Fourier frequency? (one for cos and one for sin) </param>
-        <param name="generator">Which kernel to use. (<see cref="T:Microsoft.ML.Transforms.GaussianFourierSampler" /> by default)</param>
+        <param name="generator">Which kernel to use. (if it is null, <see cref="T:Microsoft.ML.Transforms.GaussianKernel" /> is used.)</param>
         <param name="seed">The seed of the random number generator for generating the new features. If not specified global random would be used.</param>
         <summary>
             It maps input to a random low-dimensional feature space. It is useful when data has non-linear features, since the transform
