@@ -57,6 +57,28 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="AnomalyDetection">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.AnomalyDetectionCatalog AnomalyDetection { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.AnomalyDetectionCatalog AnomalyDetection" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.MLContext.AnomalyDetection" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property AnomalyDetection As AnomalyDetectionCatalog" />
+      <MemberSignature Language="F#" Value="member this.AnomalyDetection : Microsoft.ML.AnomalyDetectionCatalog" Usage="Microsoft.ML.MLContext.AnomalyDetection" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.AnomalyDetectionCatalog</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Trainers and tasks specific to anomaly detection problems.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="BinaryClassification">
       <MemberSignature Language="C#" Value="public Microsoft.ML.BinaryClassificationCatalog BinaryClassification { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.BinaryClassificationCatalog BinaryClassification" />
@@ -101,23 +123,26 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="CompositionContainer">
-      <MemberSignature Language="C#" Value="public System.ComponentModel.Composition.Hosting.CompositionContainer CompositionContainer { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class System.ComponentModel.Composition.Hosting.CompositionContainer CompositionContainer" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.MLContext.CompositionContainer" />
-      <MemberSignature Language="VB.NET" Value="Public Property CompositionContainer As CompositionContainer" />
-      <MemberSignature Language="F#" Value="member this.CompositionContainer : System.ComponentModel.Composition.Hosting.CompositionContainer with get, set" Usage="Microsoft.ML.MLContext.CompositionContainer" />
+    <Member MemberName="ComponentCatalog">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.ComponentCatalog ComponentCatalog { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.ComponentCatalog ComponentCatalog" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.MLContext.ComponentCatalog" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property ComponentCatalog As ComponentCatalog" />
+      <MemberSignature Language="F#" Value="member this.ComponentCatalog : Microsoft.ML.ComponentCatalog" Usage="Microsoft.ML.MLContext.ComponentCatalog" />
       <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.IHostEnvironment.ComponentCatalog</InterfaceMember>
+      </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.ComponentModel.Composition.Hosting.CompositionContainer</ReturnType>
+        <ReturnType>Microsoft.ML.ComponentCatalog</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
-            This is a MEF composition container catalog to be used for model loading.
+            This is a catalog of components that will be used for model loading.
             </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
@@ -279,29 +304,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Microsoft.ML.IHostEnvironment.ComponentCatalog">
-      <MemberSignature Language="C#" Value="Microsoft.ML.ComponentCatalog Microsoft.ML.IHostEnvironment.ComponentCatalog { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.ComponentCatalog Microsoft.ML.IHostEnvironment.ComponentCatalog" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.MLContext.Microsoft#ML#IHostEnvironment#ComponentCatalog" />
-      <MemberSignature Language="VB.NET" Value=" ReadOnly Property ComponentCatalog As ComponentCatalog Implements IHostEnvironment.ComponentCatalog" />
-      <MemberSignature Language="F#" Usage="Microsoft.ML.IHostEnvironment.ComponentCatalog" />
-      <MemberType>Property</MemberType>
-      <Implements>
-        <InterfaceMember>P:Microsoft.ML.IHostEnvironment.ComponentCatalog</InterfaceMember>
-      </Implements>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.ComponentCatalog</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Microsoft.ML.IHostEnvironment.ConcurrencyFactor">
       <MemberSignature Language="C#" Value="int Microsoft.ML.IHostEnvironment.ConcurrencyFactor { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 Microsoft.ML.IHostEnvironment.ConcurrencyFactor" />
@@ -325,83 +327,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Microsoft.ML.IHostEnvironment.CreateOutputFile">
-      <MemberSignature Language="C#" Value="Microsoft.ML.IFileHandle IHostEnvironment.CreateOutputFile (string path);" />
-      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class Microsoft.ML.IFileHandle Microsoft.ML.IHostEnvironment.CreateOutputFile(string path) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.MLContext.Microsoft#ML#IHostEnvironment#CreateOutputFile(System.String)" />
-      <MemberSignature Language="VB.NET" Value="Function CreateOutputFile (path As String) As IFileHandle Implements IHostEnvironment.CreateOutputFile" />
-      <MemberType>Method</MemberType>
-      <Implements>
-        <InterfaceMember>M:Microsoft.ML.IHostEnvironment.CreateOutputFile(System.String)</InterfaceMember>
-      </Implements>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.IFileHandle</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="path" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="path">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Microsoft.ML.IHostEnvironment.CreateTempFile">
-      <MemberSignature Language="C#" Value="Microsoft.ML.IFileHandle IHostEnvironment.CreateTempFile (string suffix, string prefix);" />
-      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class Microsoft.ML.IFileHandle Microsoft.ML.IHostEnvironment.CreateTempFile(string suffix, string prefix) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.MLContext.Microsoft#ML#IHostEnvironment#CreateTempFile(System.String,System.String)" />
-      <MemberSignature Language="VB.NET" Value="Function CreateTempFile (suffix As String, prefix As String) As IFileHandle Implements IHostEnvironment.CreateTempFile" />
-      <MemberType>Method</MemberType>
-      <Implements>
-        <InterfaceMember>M:Microsoft.ML.IHostEnvironment.CreateTempFile(System.String,System.String)</InterfaceMember>
-      </Implements>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.IFileHandle</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="suffix" Type="System.String" />
-        <Parameter Name="prefix" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="suffix">To be added.</param>
-        <param name="prefix">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Microsoft.ML.IHostEnvironment.GetCompositionContainer">
-      <MemberSignature Language="C#" Value="System.ComponentModel.Composition.Hosting.CompositionContainer IHostEnvironment.GetCompositionContainer ();" />
-      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class System.ComponentModel.Composition.Hosting.CompositionContainer Microsoft.ML.IHostEnvironment.GetCompositionContainer() cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.MLContext.Microsoft#ML#IHostEnvironment#GetCompositionContainer" />
-      <MemberSignature Language="VB.NET" Value="Function GetCompositionContainer () As CompositionContainer Implements IHostEnvironment.GetCompositionContainer" />
-      <MemberType>Method</MemberType>
-      <Implements>
-        <InterfaceMember>M:Microsoft.ML.IHostEnvironment.GetCompositionContainer</InterfaceMember>
-      </Implements>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.ComponentModel.Composition.Hosting.CompositionContainer</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Microsoft.ML.IHostEnvironment.IsCancelled">
       <MemberSignature Language="C#" Value="bool Microsoft.ML.IHostEnvironment.IsCancelled { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Microsoft.ML.IHostEnvironment.IsCancelled" />
@@ -422,32 +347,6 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Microsoft.ML.IHostEnvironment.OpenInputFile">
-      <MemberSignature Language="C#" Value="Microsoft.ML.IFileHandle IHostEnvironment.OpenInputFile (string path);" />
-      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class Microsoft.ML.IFileHandle Microsoft.ML.IHostEnvironment.OpenInputFile(string path) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.MLContext.Microsoft#ML#IHostEnvironment#OpenInputFile(System.String)" />
-      <MemberSignature Language="VB.NET" Value="Function OpenInputFile (path As String) As IFileHandle Implements IHostEnvironment.OpenInputFile" />
-      <MemberType>Method</MemberType>
-      <Implements>
-        <InterfaceMember>M:Microsoft.ML.IHostEnvironment.OpenInputFile(System.String)</InterfaceMember>
-      </Implements>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.IFileHandle</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="path" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="path">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

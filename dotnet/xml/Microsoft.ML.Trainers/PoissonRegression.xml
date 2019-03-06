@@ -1,6 +1,6 @@
 ﻿<Type Name="PoissonRegression" FullName="Microsoft.ML.Trainers.PoissonRegression">
-  <TypeSignature Language="C#" Value="public sealed class PoissonRegression : Microsoft.ML.Learners.LbfgsTrainerBase&lt;Microsoft.ML.Trainers.PoissonRegression.Options,Microsoft.ML.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Learners.PoissonRegressionModelParameters&gt;,Microsoft.ML.Learners.PoissonRegressionModelParameters&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit PoissonRegression extends Microsoft.ML.Learners.LbfgsTrainerBase`3&lt;class Microsoft.ML.Trainers.PoissonRegression/Options, class Microsoft.ML.Data.RegressionPredictionTransformer`1&lt;class Microsoft.ML.Learners.PoissonRegressionModelParameters&gt;, class Microsoft.ML.Learners.PoissonRegressionModelParameters&gt;" />
+  <TypeSignature Language="C#" Value="public sealed class PoissonRegression : Microsoft.ML.Trainers.LbfgsTrainerBase&lt;Microsoft.ML.Trainers.PoissonRegression.Options,Microsoft.ML.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Trainers.PoissonRegressionModelParameters&gt;,Microsoft.ML.Trainers.PoissonRegressionModelParameters&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit PoissonRegression extends Microsoft.ML.Trainers.LbfgsTrainerBase`3&lt;class Microsoft.ML.Trainers.PoissonRegression/Options, class Microsoft.ML.Data.RegressionPredictionTransformer`1&lt;class Microsoft.ML.Trainers.PoissonRegressionModelParameters&gt;, class Microsoft.ML.Trainers.PoissonRegressionModelParameters&gt;" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Trainers.PoissonRegression" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class PoissonRegression&#xA;Inherits LbfgsTrainerBase(Of PoissonRegression.Options, RegressionPredictionTransformer(Of PoissonRegressionModelParameters), PoissonRegressionModelParameters)" />
   <TypeSignature Language="F#" Value="type PoissonRegression = class&#xA;    inherit LbfgsTrainerBase&lt;PoissonRegression.Options, RegressionPredictionTransformer&lt;PoissonRegressionModelParameters&gt;, PoissonRegressionModelParameters&gt;" />
@@ -12,10 +12,11 @@
     <BaseTypeName>Microsoft.ML.Runtime.Learners.LbfgsTrainerBase&lt;Microsoft.ML.Trainers.PoissonRegression+Arguments,Microsoft.ML.Runtime.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Runtime.Learners.PoissonRegressionPredictor&gt;,Microsoft.ML.Runtime.Learners.PoissonRegressionPredictor&gt;</BaseTypeName>
     <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Learners.LbfgsTrainerBase&lt;Microsoft.ML.Trainers.PoissonRegression+Arguments,Microsoft.ML.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Learners.PoissonRegressionModelParameters&gt;,Microsoft.ML.Learners.PoissonRegressionModelParameters&gt;</BaseTypeName>
     <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Learners.LbfgsTrainerBase&lt;Microsoft.ML.Trainers.PoissonRegression+Options,Microsoft.ML.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Learners.PoissonRegressionModelParameters&gt;,Microsoft.ML.Learners.PoissonRegressionModelParameters&gt;</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Trainers.LbfgsTrainerBase&lt;Microsoft.ML.Trainers.PoissonRegression+Options,Microsoft.ML.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Trainers.PoissonRegressionModelParameters&gt;,Microsoft.ML.Trainers.PoissonRegressionModelParameters&gt;</BaseTypeName>
     <BaseTypeArguments>
-      <BaseTypeArgument TypeParamName="TArgs">Microsoft.ML.Trainers.PoissonRegression+Options</BaseTypeArgument>
-      <BaseTypeArgument TypeParamName="TTransformer">Microsoft.ML.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Learners.PoissonRegressionModelParameters&gt;</BaseTypeArgument>
-      <BaseTypeArgument TypeParamName="TModel">Microsoft.ML.Learners.PoissonRegressionModelParameters</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TOptions">Microsoft.ML.Trainers.PoissonRegression+Options</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TTransformer">Microsoft.ML.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Trainers.PoissonRegressionModelParameters&gt;</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TModel">Microsoft.ML.Trainers.PoissonRegressionModelParameters</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
   <Interfaces />
@@ -30,257 +31,31 @@
       </remarks>
   </Docs>
   <Members>
-    <Member MemberName="AccumulateOneGradient">
-      <MemberSignature Language="C#" Value="protected override float AccumulateOneGradient (Microsoft.ML.Data.VBuffer&lt;T&gt; feat, float label, float weight, Microsoft.ML.Data.VBuffer&lt;T&gt; x, ref Microsoft.ML.Data.VBuffer&lt;float&gt; grad, ref float[] scratch);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance float32 AccumulateOneGradient([in]class Microsoft.ML.Data.VBuffer`1&lt;!T&gt; feat, float32 label, float32 weight, [in]class Microsoft.ML.Data.VBuffer`1&lt;!T&gt; x, valuetype Microsoft.ML.Data.VBuffer`1&lt;float32&gt;&amp; grad, float32[]&amp; scratch) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.PoissonRegression.AccumulateOneGradient(Microsoft.ML.Data.VBuffer{System.Single}@|System.Runtime.InteropServices.InAttribute,System.Single,System.Single,Microsoft.ML.Data.VBuffer{System.Single}@|System.Runtime.InteropServices.InAttribute,Microsoft.ML.Data.VBuffer{System.Single}@,System.Single[]@)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function AccumulateOneGradient (feat As VBuffer(Of T), label As Single, weight As Single, x As VBuffer(Of T), ByRef grad As VBuffer(Of Single), ByRef scratch As Single()) As Single" />
-      <MemberSignature Language="F#" Value="override this.AccumulateOneGradient : Microsoft.ML.Data.VBuffer&lt;'T&gt; * single * single * Microsoft.ML.Data.VBuffer&lt;'T&gt; *  *  -&gt; single" Usage="poissonRegression.AccumulateOneGradient (feat, label, weight, x, grad, scratch)" />
+    <Member MemberName="Fit">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Trainers.PoissonRegressionModelParameters&gt; Fit (Microsoft.Data.DataView.IDataView trainData, Microsoft.ML.Trainers.LinearModelParameters linearModel);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Data.RegressionPredictionTransformer`1&lt;class Microsoft.ML.Trainers.PoissonRegressionModelParameters&gt; Fit(class Microsoft.Data.DataView.IDataView trainData, class Microsoft.ML.Trainers.LinearModelParameters linearModel) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.PoissonRegression.Fit(Microsoft.Data.DataView.IDataView,Microsoft.ML.Trainers.LinearModelParameters)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Fit (trainData As IDataView, linearModel As LinearModelParameters) As RegressionPredictionTransformer(Of PoissonRegressionModelParameters)" />
+      <MemberSignature Language="F#" Value="override this.Fit : Microsoft.Data.DataView.IDataView * Microsoft.ML.Trainers.LinearModelParameters -&gt; Microsoft.ML.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Trainers.PoissonRegressionModelParameters&gt;" Usage="poissonRegression.Fit (trainData, linearModel)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="feat" Type="Microsoft.ML.Data.VBuffer&lt;T&gt;" />
-        <Parameter Name="label" Type="System.Single" />
-        <Parameter Name="weight" Type="System.Single" />
-        <Parameter Name="x" Type="Microsoft.ML.Data.VBuffer&lt;T&gt;" />
-        <Parameter Name="grad" Type="Microsoft.ML.Data.VBuffer&lt;System.Single&gt;" RefType="ref" />
-        <Parameter Name="scratch" Type="System.Single[]" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <param name="feat">To be added.</param>
-        <param name="label">To be added.</param>
-        <param name="weight">To be added.</param>
-        <param name="x">To be added.</param>
-        <param name="grad">To be added.</param>
-        <param name="scratch">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CreatePredictor">
-      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Learners.PoissonRegressionModelParameters CreatePredictor ();" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Learners.PoissonRegressionModelParameters CreatePredictor() cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.PoissonRegression.CreatePredictor" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function CreatePredictor () As PoissonRegressionModelParameters" />
-      <MemberSignature Language="F#" Value="override this.CreatePredictor : unit -&gt; Microsoft.ML.Learners.PoissonRegressionModelParameters" Usage="poissonRegression.CreatePredictor " />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Learners.PoissonRegressionModelParameters</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DifferentiableFunction">
-      <MemberSignature Language="C#" Value="protected override float DifferentiableFunction (Microsoft.ML.Data.VBuffer&lt;T&gt; x, ref Microsoft.ML.Data.VBuffer&lt;float&gt; gradient, Microsoft.ML.IProgressChannelProvider progress);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance float32 DifferentiableFunction([in]class Microsoft.ML.Data.VBuffer`1&lt;!T&gt; x, valuetype Microsoft.ML.Data.VBuffer`1&lt;float32&gt;&amp; gradient, class Microsoft.ML.IProgressChannelProvider progress) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.PoissonRegression.DifferentiableFunction(Microsoft.ML.Data.VBuffer{System.Single}@|System.Runtime.InteropServices.InAttribute,Microsoft.ML.Data.VBuffer{System.Single}@,Microsoft.ML.IProgressChannelProvider)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function DifferentiableFunction (x As VBuffer(Of T), ByRef gradient As VBuffer(Of Single), progress As IProgressChannelProvider) As Single" />
-      <MemberSignature Language="F#" Value="override this.DifferentiableFunction : Microsoft.ML.Data.VBuffer&lt;'T&gt; *  * Microsoft.ML.IProgressChannelProvider -&gt; single" Usage="poissonRegression.DifferentiableFunction (x, gradient, progress)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="x" Type="Microsoft.ML.Data.VBuffer&lt;T&gt;" />
-        <Parameter Name="gradient" Type="Microsoft.ML.Data.VBuffer&lt;System.Single&gt;" RefType="ref" />
-        <Parameter Name="progress" Type="Microsoft.ML.IProgressChannelProvider" />
-      </Parameters>
-      <Docs>
-        <param name="x">To be added.</param>
-        <param name="gradient">To be added.</param>
-        <param name="progress">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GetOutputColumnsCore">
-      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Core.Data.SchemaShape.Column[] GetOutputColumnsCore (Microsoft.ML.Core.Data.SchemaShape inputSchema);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance valuetype Microsoft.ML.Core.Data.SchemaShape/Column[] GetOutputColumnsCore(class Microsoft.ML.Core.Data.SchemaShape inputSchema) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.PoissonRegression.GetOutputColumnsCore(Microsoft.ML.Core.Data.SchemaShape)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function GetOutputColumnsCore (inputSchema As SchemaShape) As SchemaShape.Column()" />
-      <MemberSignature Language="F#" Value="override this.GetOutputColumnsCore : Microsoft.ML.Core.Data.SchemaShape -&gt; Microsoft.ML.Core.Data.SchemaShape.Column[]" Usage="poissonRegression.GetOutputColumnsCore inputSchema" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Core.Data.SchemaShape+Column[]</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="inputSchema" Type="Microsoft.ML.Core.Data.SchemaShape" />
-      </Parameters>
-      <Docs>
-        <param name="inputSchema">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InitializeWeightsFromPredictor">
-      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Data.VBuffer&lt;float&gt; InitializeWeightsFromPredictor (Microsoft.ML.Learners.PoissonRegressionModelParameters srcPredictor);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance valuetype Microsoft.ML.Data.VBuffer`1&lt;float32&gt; InitializeWeightsFromPredictor(class Microsoft.ML.Learners.PoissonRegressionModelParameters srcPredictor) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.PoissonRegression.InitializeWeightsFromPredictor(Microsoft.ML.Learners.PoissonRegressionModelParameters)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function InitializeWeightsFromPredictor (srcPredictor As PoissonRegressionModelParameters) As VBuffer(Of Single)" />
-      <MemberSignature Language="F#" Value="override this.InitializeWeightsFromPredictor : Microsoft.ML.Learners.PoissonRegressionModelParameters -&gt; Microsoft.ML.Data.VBuffer&lt;single&gt;" Usage="poissonRegression.InitializeWeightsFromPredictor srcPredictor" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Data.VBuffer&lt;System.Single&gt;</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="srcPredictor" Type="Microsoft.ML.Learners.PoissonRegressionModelParameters" />
-      </Parameters>
-      <Docs>
-        <param name="srcPredictor">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="MakeTransformer">
-      <MemberSignature Language="C#" Value="protected override Microsoft.ML.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Learners.PoissonRegressionModelParameters&gt; MakeTransformer (Microsoft.ML.Learners.PoissonRegressionModelParameters model, Microsoft.Data.DataView.Schema trainSchema);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Microsoft.ML.Data.RegressionPredictionTransformer`1&lt;class Microsoft.ML.Learners.PoissonRegressionModelParameters&gt; MakeTransformer(class Microsoft.ML.Learners.PoissonRegressionModelParameters model, class Microsoft.Data.DataView.Schema trainSchema) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.PoissonRegression.MakeTransformer(Microsoft.ML.Learners.PoissonRegressionModelParameters,Microsoft.Data.DataView.Schema)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Function MakeTransformer (model As PoissonRegressionModelParameters, trainSchema As Schema) As RegressionPredictionTransformer(Of PoissonRegressionModelParameters)" />
-      <MemberSignature Language="F#" Value="override this.MakeTransformer : Microsoft.ML.Learners.PoissonRegressionModelParameters * Microsoft.Data.DataView.Schema -&gt; Microsoft.ML.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Learners.PoissonRegressionModelParameters&gt;" Usage="poissonRegression.MakeTransformer (model, trainSchema)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Learners.PoissonRegressionModelParameters&gt;</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="model" Type="Microsoft.ML.Learners.PoissonRegressionModelParameters" />
-        <Parameter Name="trainSchema" Type="Microsoft.Data.DataView.Schema" />
-      </Parameters>
-      <Docs>
-        <param name="model">To be added.</param>
-        <param name="trainSchema">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="PredictionKind">
-      <MemberSignature Language="C#" Value="public override Microsoft.ML.PredictionKind PredictionKind { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.ML.PredictionKind PredictionKind" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.PoissonRegression.PredictionKind" />
-      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property PredictionKind As PredictionKind" />
-      <MemberSignature Language="F#" Value="member this.PredictionKind : Microsoft.ML.PredictionKind" Usage="Microsoft.ML.Trainers.PoissonRegression.PredictionKind" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.PredictionKind</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="PreTrainingProcessInstance">
-      <MemberSignature Language="C#" Value="protected override void PreTrainingProcessInstance (float label, Microsoft.ML.Data.VBuffer&lt;T&gt; feat, float weight);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void PreTrainingProcessInstance(float32 label, [in]class Microsoft.ML.Data.VBuffer`1&lt;!T&gt; feat, float32 weight) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.PoissonRegression.PreTrainingProcessInstance(System.Single,Microsoft.ML.Data.VBuffer{System.Single}@|System.Runtime.InteropServices.InAttribute,System.Single)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Sub PreTrainingProcessInstance (label As Single, feat As VBuffer(Of T), weight As Single)" />
-      <MemberSignature Language="F#" Value="override this.PreTrainingProcessInstance : single * Microsoft.ML.Data.VBuffer&lt;'T&gt; * single -&gt; unit" Usage="poissonRegression.PreTrainingProcessInstance (label, feat, weight)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="label" Type="System.Single" />
-        <Parameter Name="feat" Type="Microsoft.ML.Data.VBuffer&lt;T&gt;" />
-        <Parameter Name="weight" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="label">To be added.</param>
-        <param name="feat">To be added.</param>
-        <param name="weight">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ProcessPriorDistribution">
-      <MemberSignature Language="C#" Value="protected override void ProcessPriorDistribution (float label, float weight);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void ProcessPriorDistribution(float32 label, float32 weight) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.PoissonRegression.ProcessPriorDistribution(System.Single,System.Single)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overrides Sub ProcessPriorDistribution (label As Single, weight As Single)" />
-      <MemberSignature Language="F#" Value="override this.ProcessPriorDistribution : single * single -&gt; unit" Usage="poissonRegression.ProcessPriorDistribution (label, weight)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="label" Type="System.Single" />
-        <Parameter Name="weight" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="label">To be added.</param>
-        <param name="weight">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Train">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Learners.PoissonRegressionModelParameters&gt; Train (Microsoft.Data.DataView.IDataView trainData, Microsoft.ML.IPredictor initialPredictor = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Data.RegressionPredictionTransformer`1&lt;class Microsoft.ML.Learners.PoissonRegressionModelParameters&gt; Train(class Microsoft.Data.DataView.IDataView trainData, class Microsoft.ML.IPredictor initialPredictor) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.PoissonRegression.Train(Microsoft.Data.DataView.IDataView,Microsoft.ML.IPredictor)" />
-      <MemberSignature Language="VB.NET" Value="Public Function Train (trainData As IDataView, Optional initialPredictor As IPredictor = null) As RegressionPredictionTransformer(Of PoissonRegressionModelParameters)" />
-      <MemberSignature Language="F#" Value="member this.Train : Microsoft.Data.DataView.IDataView * Microsoft.ML.IPredictor -&gt; Microsoft.ML.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Learners.PoissonRegressionModelParameters&gt;" Usage="poissonRegression.Train (trainData, initialPredictor)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Learners.PoissonRegressionModelParameters&gt;</ReturnType>
+        <ReturnType>Microsoft.ML.Data.RegressionPredictionTransformer&lt;Microsoft.ML.Trainers.PoissonRegressionModelParameters&gt;</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="trainData" Type="Microsoft.Data.DataView.IDataView" />
-        <Parameter Name="initialPredictor" Type="Microsoft.ML.IPredictor" />
+        <Parameter Name="linearModel" Type="Microsoft.ML.Trainers.LinearModelParameters" />
       </Parameters>
       <Docs>
         <param name="trainData">To be added.</param>
-        <param name="initialPredictor">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="linearModel">To be added.</param>
+        <summary>
+            Continues the training of a <see cref="T:Microsoft.ML.Trainers.PoissonRegression" /> using an already trained <paramref name="linearModel" /> and returns
+            a <see cref="T:Microsoft.ML.Data.RegressionPredictionTransformer`1" />.
+            </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
