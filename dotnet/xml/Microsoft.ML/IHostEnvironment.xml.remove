@@ -1,0 +1,132 @@
+<Type Name="IHostEnvironment" FullName="Microsoft.ML.IHostEnvironment">
+  <TypeSignature Language="C#" Value="public interface IHostEnvironment : Microsoft.ML.IChannelProvider, Microsoft.ML.IProgressChannelProvider" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IHostEnvironment implements class Microsoft.ML.IChannelProvider, class Microsoft.ML.IExceptionContext, class Microsoft.ML.IProgressChannelProvider" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.IHostEnvironment" />
+  <TypeSignature Language="VB.NET" Value="Public Interface IHostEnvironment&#xA;Implements IChannelProvider, IProgressChannelProvider" />
+  <TypeSignature Language="F#" Value="type IHostEnvironment = interface&#xA;    interface IChannelProvider&#xA;    interface IExceptionContext&#xA;    interface IProgressChannelProvider" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Core</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.IChannelProvider</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.IExceptionContext</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.IProgressChannelProvider</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+            The host environment interface creates hosts for components. Note that the methods of
+            this interface should be called from the main thread for the environment. To get an environment
+            to service another thread, call Fork and pass the return result to that thread.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="ComponentCatalog">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.ComponentCatalog ComponentCatalog { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.ComponentCatalog ComponentCatalog" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.IHostEnvironment.ComponentCatalog" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property ComponentCatalog As ComponentCatalog" />
+      <MemberSignature Language="F#" Value="member this.ComponentCatalog : Microsoft.ML.ComponentCatalog" Usage="Microsoft.ML.IHostEnvironment.ComponentCatalog" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.ComponentCatalog</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The catalog of loadable components (<see cref="T:Microsoft.ML.LoadableClassAttribute" />) that are available in this host.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConcurrencyFactor">
+      <MemberSignature Language="C#" Value="public int ConcurrencyFactor { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 ConcurrencyFactor" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.IHostEnvironment.ConcurrencyFactor" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property ConcurrencyFactor As Integer" />
+      <MemberSignature Language="F#" Value="member this.ConcurrencyFactor : int" Usage="Microsoft.ML.IHostEnvironment.ConcurrencyFactor" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            How much concurrency the component should use. A value of 1 means
+            single-threaded. Higher values generally mean number of threads. Less
+            than 1 means whatever the component views as ideal.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsCancelled">
+      <MemberSignature Language="C#" Value="public bool IsCancelled { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsCancelled" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.IHostEnvironment.IsCancelled" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property IsCancelled As Boolean" />
+      <MemberSignature Language="F#" Value="member this.IsCancelled : bool" Usage="Microsoft.ML.IHostEnvironment.IsCancelled" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Flag which indicate should we stop any code execution in this host.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Register">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.IHost Register (string name, Nullable&lt;int&gt; seed = null, Nullable&lt;bool&gt; verbose = null, Nullable&lt;int&gt; conc = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.IHost Register(string name, valuetype System.Nullable`1&lt;int32&gt; seed, valuetype System.Nullable`1&lt;bool&gt; verbose, valuetype System.Nullable`1&lt;int32&gt; conc) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.IHostEnvironment.Register(System.String,System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Int32})" />
+      <MemberSignature Language="VB.NET" Value="Public Function Register (name As String, Optional seed As Nullable(Of Integer) = null, Optional verbose As Nullable(Of Boolean) = null, Optional conc As Nullable(Of Integer) = null) As IHost" />
+      <MemberSignature Language="F#" Value="abstract member Register : string * Nullable&lt;int&gt; * Nullable&lt;bool&gt; * Nullable&lt;int&gt; -&gt; Microsoft.ML.IHost" Usage="iHostEnvironment.Register (name, seed, verbose, conc)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.IHost</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="seed" Type="System.Nullable&lt;System.Int32&gt;" />
+        <Parameter Name="verbose" Type="System.Nullable&lt;System.Boolean&gt;" />
+        <Parameter Name="conc" Type="System.Nullable&lt;System.Int32&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="name">To be added.</param>
+        <param name="seed">To be added.</param>
+        <param name="verbose">To be added.</param>
+        <param name="conc">To be added.</param>
+        <summary>
+            Create a host with the given registration name.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

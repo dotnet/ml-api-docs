@@ -78,12 +78,17 @@
             If left to <value>null</value> the <paramref name="inputColumnName" /> will get replaced.</param>
         <summary>
             Creates a new output column, or replaces the source with a new column
-            (depending on whether the <paramref name="outputColumnName" /> is given a value, or left to null)
+            (depending on whether the <paramref name="inputColumnName" /> is given a value, or left to null)
             of boolean type, with the same number of slots as the input column. The value in the output column
             is true if the value in the input column is missing.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+             [!code-csharp[RPCA](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/IndicateMissingValues.cs)]
+            ]]></format>
+        </example>
       </Docs>
     </Member>
     <Member MemberName="ReplaceMissingValues">
@@ -122,11 +127,11 @@
       </Docs>
     </Member>
     <Member MemberName="ReplaceMissingValues">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.MissingValueReplacingEstimator ReplaceMissingValues (this Microsoft.ML.TransformsCatalog catalog, string outputColumnName, string inputColumnName = null, Microsoft.ML.Transforms.MissingValueReplacingEstimator.ColumnOptions.ReplacementMode replacementKind = Microsoft.ML.Transforms.MissingValueReplacingEstimator+ColumnOptions+ReplacementMode.DefaultValue);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.MissingValueReplacingEstimator ReplaceMissingValues(class Microsoft.ML.TransformsCatalog catalog, string outputColumnName, string inputColumnName, valuetype Microsoft.ML.Transforms.MissingValueReplacingEstimator/ColumnOptions/ReplacementMode replacementKind) cil managed" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.MissingValueReplacingEstimator ReplaceMissingValues (this Microsoft.ML.TransformsCatalog catalog, string outputColumnName, string inputColumnName = null, Microsoft.ML.Transforms.MissingValueReplacingEstimator.ColumnOptions.ReplacementMode replacementMode = Microsoft.ML.Transforms.MissingValueReplacingEstimator+ColumnOptions+ReplacementMode.DefaultValue);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.MissingValueReplacingEstimator ReplaceMissingValues(class Microsoft.ML.TransformsCatalog catalog, string outputColumnName, string inputColumnName, valuetype Microsoft.ML.Transforms.MissingValueReplacingEstimator/ColumnOptions/ReplacementMode replacementMode) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.ExtensionsCatalog.ReplaceMissingValues(Microsoft.ML.TransformsCatalog,System.String,System.String,Microsoft.ML.Transforms.MissingValueReplacingEstimator.ColumnOptions.ReplacementMode)" />
       <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ReplaceMissingValues (catalog As TransformsCatalog, outputColumnName As String, Optional inputColumnName As String = null, Optional replacementKind As MissingValueReplacingEstimator.ColumnOptions.ReplacementMode = Microsoft.ML.Transforms.MissingValueReplacingEstimator+ColumnOptions+ReplacementMode.DefaultValue) As MissingValueReplacingEstimator" />
-      <MemberSignature Language="F#" Value="static member ReplaceMissingValues : Microsoft.ML.TransformsCatalog * string * string * Microsoft.ML.Transforms.MissingValueReplacingEstimator.ColumnOptions.ReplacementMode -&gt; Microsoft.ML.Transforms.MissingValueReplacingEstimator" Usage="Microsoft.ML.ExtensionsCatalog.ReplaceMissingValues (catalog, outputColumnName, inputColumnName, replacementKind)" />
+      <MemberSignature Language="F#" Value="static member ReplaceMissingValues : Microsoft.ML.TransformsCatalog * string * string * Microsoft.ML.Transforms.MissingValueReplacingEstimator.ColumnOptions.ReplacementMode -&gt; Microsoft.ML.Transforms.MissingValueReplacingEstimator" Usage="Microsoft.ML.ExtensionsCatalog.ReplaceMissingValues (catalog, outputColumnName, inputColumnName, replacementMode)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
@@ -136,26 +141,31 @@
         <ReturnType>Microsoft.ML.Transforms.MissingValueReplacingEstimator</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog" RefType="this" />
-        <Parameter Name="outputColumnName" Type="System.String" />
-        <Parameter Name="inputColumnName" Type="System.String" />
-        <Parameter Name="replacementKind" Type="Microsoft.ML.Transforms.MissingValueReplacingEstimator+ColumnOptions+ReplacementMode" />
+        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog" RefType="this" Index="0" />
+        <Parameter Name="outputColumnName" Type="System.String" Index="1" />
+        <Parameter Name="inputColumnName" Type="System.String" Index="2" />
+        <Parameter Name="replacementMode" Type="Microsoft.ML.Transforms.MissingValueReplacingEstimator+ColumnOptions+ReplacementMode" Index="3" FrameworkAlternate="ml-dotnet" />
       </Parameters>
       <Docs>
         <param name="catalog">The transform extensions' catalog.</param>
         <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
         <param name="inputColumnName">Name of column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.
             If not provided, the <paramref name="inputColumnName" /> will be replaced with the results of the transforms.</param>
-        <param name="replacementKind">The type of replacement to use as specified in <see cref="T:Microsoft.ML.Transforms.MissingValueReplacingEstimator.ColumnOptions.ReplacementMode" /></param>
+        <param name="replacementMode">The type of replacement to use as specified in <see cref="T:Microsoft.ML.Transforms.MissingValueReplacingEstimator.ColumnOptions.ReplacementMode" /></param>
         <summary>
             Creates a new output column, or replaces the source with a new column
             (depending on whether the <paramref name="outputColumnName" /> is given a value, or left to null)
             identical to the input column for everything but the missing values. The missing values of the input column, in this new column are replaced with
-            one of the values specifid in the <paramref name="replacementKind" />. The default for the <paramref name="replacementKind" /> is
+            one of the values specifid in the <paramref name="replacementMode" />. The default for the <paramref name="replacementMode" /> is
             <see cref="F:Microsoft.ML.Transforms.MissingValueReplacingEstimator.ColumnOptions.ReplacementMode.DefaultValue" />.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+             [!code-csharp[RPCA](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/ReplaceMissingValues.cs)]
+            ]]></format>
+        </example>
       </Docs>
     </Member>
   </Members>
