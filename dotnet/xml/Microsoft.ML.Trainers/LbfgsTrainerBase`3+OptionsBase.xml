@@ -36,7 +36,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+            Base options for <a href="https://en.wikipedia.org/wiki/Limited-memory_BFGS">L-BFGS</a>-based trainers.
+            </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -150,7 +152,7 @@
       </ReturnValue>
       <Docs>
         <summary>
-            Number of previous iterations to remember for estimate of Hessian.
+            Number of previous iterations to remember for estimating the Hessian. Lower values mean faster but less accurate estimates.
             </summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -182,8 +184,12 @@
       </ReturnValue>
       <Docs>
         <summary>
-            Init Weights Diameter
+            Initial weights scale.
             </summary>
+        <returns>
+            This property is only used if the provided value is positive.
+            The weights will be randomly selected from InitialWeights * [-0.5,0.5] interval with uniform distribution.
+            </returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -366,8 +372,11 @@
       </ReturnValue>
       <Docs>
         <summary>
-            Features must occur in at least this many instances to be included
+            Determines whether to produce output during training or not.
             </summary>
+        <returns>
+            If set to <see langword="true" /> no output is produced.
+            </returns>
         <remarks>If greater than 1, forces an initialization pass over the data</remarks>
       </Docs>
     </Member>

@@ -149,6 +149,51 @@
             [!code-csharp[BootstrapSample](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/DataOperations/DataViewEnumerable.cs)]
             ]]></format>
         </example>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[CreateEnumerable](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/DataOperations/DataViewEnumerable.cs)]
+            ]]></format>
+        </example>
+      </Docs>
+    </Member>
+    <Member MemberName="CrossValidationSplit">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.DataOperationsCatalog.TrainTestData&gt; CrossValidationSplit (Microsoft.ML.IDataView data, int numberOfFolds = 5, string samplingKeyColumnName = null, Nullable&lt;int&gt; seed = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.IReadOnlyList`1&lt;valuetype Microsoft.ML.DataOperationsCatalog/TrainTestData&gt; CrossValidationSplit(class Microsoft.ML.IDataView data, int32 numberOfFolds, string samplingKeyColumnName, valuetype System.Nullable`1&lt;int32&gt; seed) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.DataOperationsCatalog.CrossValidationSplit(Microsoft.ML.IDataView,System.Int32,System.String,System.Nullable{System.Int32})" />
+      <MemberSignature Language="VB.NET" Value="Public Function CrossValidationSplit (data As IDataView, Optional numberOfFolds As Integer = 5, Optional samplingKeyColumnName As String = null, Optional seed As Nullable(Of Integer) = null) As IReadOnlyList(Of DataOperationsCatalog.TrainTestData)" />
+      <MemberSignature Language="F#" Value="member this.CrossValidationSplit : Microsoft.ML.IDataView * int * string * Nullable&lt;int&gt; -&gt; System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.DataOperationsCatalog.TrainTestData&gt;" Usage="dataOperationsCatalog.CrossValidationSplit (data, numberOfFolds, samplingKeyColumnName, seed)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.DataOperationsCatalog+TrainTestData&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data" Type="Microsoft.ML.IDataView" />
+        <Parameter Name="numberOfFolds" Type="System.Int32" />
+        <Parameter Name="samplingKeyColumnName" Type="System.String" />
+        <Parameter Name="seed" Type="System.Nullable&lt;System.Int32&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="data">The dataset to split.</param>
+        <param name="numberOfFolds">Number of cross-validation folds.</param>
+        <param name="samplingKeyColumnName">Name of a column to use for grouping rows. If two examples share the same value of the <paramref name="samplingKeyColumnName" />,
+            they are guaranteed to appear in the same subset (train or test). This can be used to ensure no label leakage from the train to the test set.
+            If <see langword="null" /> no row grouping will be performed.</param>
+        <param name="seed">Seed for the random number generator used to select rows for cross-validation folds.</param>
+        <summary>
+            Split the dataset into cross-validation folds of train set and test set.
+            Respects the <paramref name="samplingKeyColumnName" /> if provided.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[CrossValidationSplit](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/DataOperations/CrossValidationSplit.cs)]
+            ]]></format>
+        </example>
       </Docs>
     </Member>
     <Member MemberName="FilterRowsByColumn">
@@ -217,7 +262,7 @@
         <param name="lowerBound">The inclusive lower bound.</param>
         <param name="upperBound">The exclusive upper bound.</param>
         <summary>
-            Filter the dataset by the values of a <see cref="T:Microsoft.ML.Data.KeyType" /> column.
+            Filter the dataset by the values of a <see cref="T:Microsoft.ML.Data.KeyDataViewType" /> column.
             </summary>
         <returns>To be added.</returns>
         <remarks>
@@ -321,6 +366,58 @@
              [!code-csharp[BootstrapSample](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/DataOperations/DataViewEnumerable.cs)]
              ]]></format>
         </example>
+        <example>
+          <format type="text/markdown"><![CDATA[
+             [!code-csharp[LoadFromEnumerable](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/DataOperations/DataViewEnumerable.cs)]
+             ]]></format>
+        </example>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadFromEnumerable&lt;TRow&gt;">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.IDataView LoadFromEnumerable&lt;TRow&gt; (System.Collections.Generic.IEnumerable&lt;TRow&gt; data, Microsoft.ML.DataViewSchema schema) where TRow : class;" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.IDataView LoadFromEnumerable&lt;class TRow&gt;(class System.Collections.Generic.IEnumerable`1&lt;!!TRow&gt; data, class Microsoft.ML.DataViewSchema schema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.DataOperationsCatalog.LoadFromEnumerable``1(System.Collections.Generic.IEnumerable{``0},Microsoft.ML.DataViewSchema)" />
+      <MemberSignature Language="VB.NET" Value="Public Function LoadFromEnumerable(Of TRow As Class) (data As IEnumerable(Of TRow), schema As DataViewSchema) As IDataView" />
+      <MemberSignature Language="F#" Value="member this.LoadFromEnumerable : seq&lt;'Row (requires 'Row : null)&gt; * Microsoft.ML.DataViewSchema -&gt; Microsoft.ML.IDataView (requires 'Row : null)" Usage="dataOperationsCatalog.LoadFromEnumerable (data, schema)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.IDataView</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TRow">
+          <Constraints>
+            <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="data" Type="System.Collections.Generic.IEnumerable&lt;TRow&gt;" />
+        <Parameter Name="schema" Type="Microsoft.ML.DataViewSchema" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TRow">The <typeparamref name="TRow" /> to convert to an <see cref="T:Microsoft.ML.IDataView" />.</typeparam>
+        <param name="data">The data with <typeparamref name="TRow" /> to convert to an <see cref="T:Microsoft.ML.IDataView" />.</param>
+        <param name="schema">The schema of the returned <see cref="T:Microsoft.ML.IDataView" />.</param>
+        <summary>
+            Create a new <see cref="T:Microsoft.ML.IDataView" /> over an enumerable of the items of user-defined type, and the provided <see cref="T:Microsoft.ML.DataViewSchema" />
+            which might contain more information about the schema than the type can capture.
+            </summary>
+        <returns>An <see cref="T:Microsoft.ML.IDataView" /> with the given <paramref name="schema" />.</returns>
+        <remarks>
+            The user maintains ownership of the <paramref name="data" /> and the resulting data view will
+            never alter the contents of the <paramref name="data" />.
+            Since <see cref="T:Microsoft.ML.IDataView" /> is assumed to be immutable, the user is expected to support
+            multiple enumeration of the <paramref name="data" /> that would return the same results, unless
+            the user knows that the data will only be cursored once.
+            One typical usage for streaming data view could be: create the data view that lazily loads data
+            as needed, then apply pre-trained transformations to it and cursor through it for transformation
+            results.
+            One practical usage of this would be to supply the feature column names through the <see cref="T:Microsoft.ML.DataViewSchema.Annotations" />.
+            </remarks>
       </Docs>
     </Member>
     <Member MemberName="ShuffleRows">
@@ -443,11 +540,11 @@
       </Docs>
     </Member>
     <Member MemberName="TrainTestSplit">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.DataOperationsCatalog.TrainTestData TrainTestSplit (Microsoft.ML.IDataView data, double testFraction = 0.1, string samplingKeyColumn = null, Nullable&lt;int&gt; seed = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Microsoft.ML.DataOperationsCatalog/TrainTestData TrainTestSplit(class Microsoft.ML.IDataView data, float64 testFraction, string samplingKeyColumn, valuetype System.Nullable`1&lt;int32&gt; seed) cil managed" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.DataOperationsCatalog.TrainTestData TrainTestSplit (Microsoft.ML.IDataView data, double testFraction = 0.1, string samplingKeyColumnName = null, Nullable&lt;int&gt; seed = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Microsoft.ML.DataOperationsCatalog/TrainTestData TrainTestSplit(class Microsoft.ML.IDataView data, float64 testFraction, string samplingKeyColumnName, valuetype System.Nullable`1&lt;int32&gt; seed) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.DataOperationsCatalog.TrainTestSplit(Microsoft.ML.IDataView,System.Double,System.String,System.Nullable{System.Int32})" />
-      <MemberSignature Language="VB.NET" Value="Public Function TrainTestSplit (data As IDataView, Optional testFraction As Double = 0.1, Optional samplingKeyColumn As String = null, Optional seed As Nullable(Of Integer) = null) As DataOperationsCatalog.TrainTestData" />
-      <MemberSignature Language="F#" Value="member this.TrainTestSplit : Microsoft.ML.IDataView * double * string * Nullable&lt;int&gt; -&gt; Microsoft.ML.DataOperationsCatalog.TrainTestData" Usage="dataOperationsCatalog.TrainTestSplit (data, testFraction, samplingKeyColumn, seed)" />
+      <MemberSignature Language="VB.NET" Value="Public Function TrainTestSplit (data As IDataView, Optional testFraction As Double = 0.1, Optional samplingKeyColumnName As String = null, Optional seed As Nullable(Of Integer) = null) As DataOperationsCatalog.TrainTestData" />
+      <MemberSignature Language="F#" Value="member this.TrainTestSplit : Microsoft.ML.IDataView * double * string * Nullable&lt;int&gt; -&gt; Microsoft.ML.DataOperationsCatalog.TrainTestData" Usage="dataOperationsCatalog.TrainTestSplit (data, testFraction, samplingKeyColumnName, seed)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -457,24 +554,29 @@
         <ReturnType>Microsoft.ML.DataOperationsCatalog+TrainTestData</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="data" Type="Microsoft.ML.IDataView" />
-        <Parameter Name="testFraction" Type="System.Double" />
-        <Parameter Name="samplingKeyColumn" Type="System.String" />
-        <Parameter Name="seed" Type="System.Nullable&lt;System.Int32&gt;" />
+        <Parameter Name="data" Type="Microsoft.ML.IDataView" Index="0" />
+        <Parameter Name="testFraction" Type="System.Double" Index="1" />
+        <Parameter Name="samplingKeyColumnName" Type="System.String" Index="2" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="seed" Type="System.Nullable&lt;System.Int32&gt;" Index="3" />
       </Parameters>
       <Docs>
         <param name="data">The dataset to split.</param>
         <param name="testFraction">The fraction of data to go into the test set.</param>
-        <param name="samplingKeyColumn">Name of a column to use for grouping rows. If two examples share the same value of the <paramref name="samplingKeyColumn" />,
+        <param name="samplingKeyColumnName">Name of a column to use for grouping rows. If two examples share the same value of the <paramref name="samplingKeyColumnName" />,
             they are guaranteed to appear in the same subset (train or test). This can be used to ensure no label leakage from the train to the test set.
             If <see langword="null" /> no row grouping will be performed.</param>
         <param name="seed">Seed for the random number generator used to select rows for the train-test split.</param>
         <summary>
             Split the dataset into the train set and test set according to the given fraction.
-            Respects the <paramref name="samplingKeyColumn" /> if provided.
+            Respects the <paramref name="samplingKeyColumnName" /> if provided.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[TrainTestSplit](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/DataOperations/TrainTestSplit.cs)]
+            ]]></format>
+        </example>
       </Docs>
     </Member>
   </Members>

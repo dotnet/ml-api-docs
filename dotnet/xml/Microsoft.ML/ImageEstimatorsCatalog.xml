@@ -22,11 +22,11 @@
   </Docs>
   <Members>
     <Member MemberName="ConvertToGrayscale">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Image.ImageGrayscalingEstimator ConvertToGrayscale (this Microsoft.ML.TransformsCatalog catalog, params Microsoft.ML.ColumnOptions[] columns);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Image.ImageGrayscalingEstimator ConvertToGrayscale(class Microsoft.ML.TransformsCatalog catalog, class Microsoft.ML.ColumnOptions[] columns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ImageEstimatorsCatalog.ConvertToGrayscale(Microsoft.ML.TransformsCatalog,Microsoft.ML.ColumnOptions[])" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ConvertToGrayscale (catalog As TransformsCatalog, ParamArray columns As ColumnOptions()) As ImageGrayscalingEstimator" />
-      <MemberSignature Language="F#" Value="static member ConvertToGrayscale : Microsoft.ML.TransformsCatalog * Microsoft.ML.ColumnOptions[] -&gt; Microsoft.ML.Transforms.Image.ImageGrayscalingEstimator" Usage="Microsoft.ML.ImageEstimatorsCatalog.ConvertToGrayscale (catalog, columns)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Image.ImageGrayscalingEstimator ConvertToGrayscale (this Microsoft.ML.TransformsCatalog catalog, string outputColumnName, string inputColumnName = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Image.ImageGrayscalingEstimator ConvertToGrayscale(class Microsoft.ML.TransformsCatalog catalog, string outputColumnName, string inputColumnName) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ImageEstimatorsCatalog.ConvertToGrayscale(Microsoft.ML.TransformsCatalog,System.String,System.String)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ConvertToGrayscale (catalog As TransformsCatalog, outputColumnName As String, Optional inputColumnName As String = null) As ImageGrayscalingEstimator" />
+      <MemberSignature Language="F#" Value="static member ConvertToGrayscale : Microsoft.ML.TransformsCatalog * string * string -&gt; Microsoft.ML.Transforms.Image.ImageGrayscalingEstimator" Usage="Microsoft.ML.ImageEstimatorsCatalog.ConvertToGrayscale (catalog, outputColumnName, inputColumnName)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.ImageAnalytics</AssemblyName>
@@ -37,32 +37,27 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog" RefType="this" />
-        <Parameter Name="columns" Type="Microsoft.ML.ColumnOptions[]">
-          <Attributes>
-            <Attribute>
-              <AttributeName>System.ParamArray</AttributeName>
-            </Attribute>
-          </Attributes>
-        </Parameter>
+        <Parameter Name="outputColumnName" Type="System.String" />
+        <Parameter Name="inputColumnName" Type="System.String" />
       </Parameters>
       <Docs>
         <param name="catalog">The transform's catalog.</param>
-        <param name="columns">Specifies the names of the input columns for the transformation, and their respective output column names.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
+        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
         <summary>
         Converts the images to grayscale.
       </summary>
         <returns>To be added.</returns>
         <remarks>
-          <format type="text/markdown"><![CDATA[ 
-
-          ## Remarks 
-          The images might be converted to grayscale to reduce the complexity of the model.
-          The grayed out images contain less information to process than the colored images.
-          Another use case for converting to grayscale is to generate new images out of the existing ones, so you can have a larger dataset,        
-          a technique known as [data augmentation](http://www.stat.harvard.edu/Faculty_Content/meng/JCGS01.pdf)</a>.
-          
-          For end-to-end image processing pipelines, and scenarios in your applications, see the 
-          [examples in the machinelearning-samples github repository](https://github.com/dotnet/machinelearning-samples/tree/master/samples/csharp/getting-started).</a>
+          <format type="text/markdown"><![CDATA[
+## Remarks 
+The images might be converted to grayscale to reduce the complexity of the model.
+The grayed out images contain less information to process than the colored images.
+Another use case for converting to grayscale is to generate new images out of the existing ones, so you can have a larger dataset,        
+a technique known as [data augmentation](http://www.stat.harvard.edu/Faculty_Content/meng/JCGS01.pdf).
+         
+For end-to-end image processing pipelines, and scenarios in your applications, see the 
+[examples in the machinelearning-samples github repository](https://github.com/dotnet/machinelearning-samples/tree/master/samples/csharp/getting-started).
         ]]></format>
           <seealso cref="T:Microsoft.ML.ImageEstimatorsCatalog" />
           <seealso cref="T:Microsoft.ML.Data.ImageLoadingEstimator" />
@@ -72,40 +67,6 @@
              [!code-csharp[ConvertToGrayscale](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/ImageAnalytics/ConvertToGrayscale.cs)]
             ]]></format>
         </example>
-      </Docs>
-    </Member>
-    <Member MemberName="ConvertToImage">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Image.VectorToImageConvertingEstimator ConvertToImage (this Microsoft.ML.TransformsCatalog catalog, params Microsoft.ML.Transforms.Image.VectorToImageConvertingEstimator.ColumnOptions[] columnOptions);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Image.VectorToImageConvertingEstimator ConvertToImage(class Microsoft.ML.TransformsCatalog catalog, class Microsoft.ML.Transforms.Image.VectorToImageConvertingEstimator/ColumnOptions[] columnOptions) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ImageEstimatorsCatalog.ConvertToImage(Microsoft.ML.TransformsCatalog,Microsoft.ML.Transforms.Image.VectorToImageConvertingEstimator.ColumnOptions[])" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ConvertToImage (catalog As TransformsCatalog, ParamArray columnOptions As VectorToImageConvertingEstimator.ColumnOptions()) As VectorToImageConvertingEstimator" />
-      <MemberSignature Language="F#" Value="static member ConvertToImage : Microsoft.ML.TransformsCatalog * Microsoft.ML.Transforms.Image.VectorToImageConvertingEstimator.ColumnOptions[] -&gt; Microsoft.ML.Transforms.Image.VectorToImageConvertingEstimator" Usage="Microsoft.ML.ImageEstimatorsCatalog.ConvertToImage (catalog, columnOptions)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.ImageAnalytics</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Transforms.Image.VectorToImageConvertingEstimator</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog" RefType="this" />
-        <Parameter Name="columnOptions" Type="Microsoft.ML.Transforms.Image.VectorToImageConvertingEstimator+ColumnOptions[]">
-          <Attributes>
-            <Attribute>
-              <AttributeName>System.ParamArray</AttributeName>
-            </Attribute>
-          </Attributes>
-        </Parameter>
-      </Parameters>
-      <Docs>
-        <param name="catalog">The transform's catalog.</param>
-        <param name="columnOptions">The <see cref="T:Microsoft.ML.Transforms.Image.VectorToImageConvertingEstimator.ColumnOptions" /> describing how the transform handles each vector to image conversion column pair.</param>
-        <summary>
-            Converts vectors of pixels into <see cref="T:Microsoft.ML.Transforms.Image.ImageType" /> representation.
-            </summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ConvertToImage">
@@ -155,51 +116,10 @@
         <param name="defaultGreen">Default value for grenn color, would be overriden if <paramref name="colorsPresent" /> contains <see cref="F:Microsoft.ML.Transforms.Image.ImagePixelExtractingEstimator.ColorBits.Green" />.</param>
         <param name="defaultBlue">Default value for blue color, would be overriden if <paramref name="colorsPresent" /> contains <see cref="F:Microsoft.ML.Transforms.Image.ImagePixelExtractingEstimator.ColorBits.Blue" />.</param>
         <summary>
-            Converts vectors of pixels into <see cref="T:Microsoft.ML.Transforms.Image.ImageType" /> representation.
+            Converts vectors of pixels into <see cref="T:Microsoft.ML.Transforms.Image.ImageDataViewType" /> representation.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ExtractPixels">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Image.ImagePixelExtractingEstimator ExtractPixels (this Microsoft.ML.TransformsCatalog catalog, params Microsoft.ML.Transforms.Image.ImagePixelExtractingEstimator.ColumnOptions[] columnOptions);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Image.ImagePixelExtractingEstimator ExtractPixels(class Microsoft.ML.TransformsCatalog catalog, class Microsoft.ML.Transforms.Image.ImagePixelExtractingEstimator/ColumnOptions[] columnOptions) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ImageEstimatorsCatalog.ExtractPixels(Microsoft.ML.TransformsCatalog,Microsoft.ML.Transforms.Image.ImagePixelExtractingEstimator.ColumnOptions[])" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ExtractPixels (catalog As TransformsCatalog, ParamArray columnOptions As ImagePixelExtractingEstimator.ColumnOptions()) As ImagePixelExtractingEstimator" />
-      <MemberSignature Language="F#" Value="static member ExtractPixels : Microsoft.ML.TransformsCatalog * Microsoft.ML.Transforms.Image.ImagePixelExtractingEstimator.ColumnOptions[] -&gt; Microsoft.ML.Transforms.Image.ImagePixelExtractingEstimator" Usage="Microsoft.ML.ImageEstimatorsCatalog.ExtractPixels (catalog, columnOptions)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.ImageAnalytics</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Transforms.Image.ImagePixelExtractingEstimator</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog" RefType="this" />
-        <Parameter Name="columnOptions" Type="Microsoft.ML.Transforms.Image.ImagePixelExtractingEstimator+ColumnOptions[]">
-          <Attributes>
-            <Attribute>
-              <AttributeName>System.ParamArray</AttributeName>
-            </Attribute>
-          </Attributes>
-        </Parameter>
-      </Parameters>
-      <Docs>
-        <param name="catalog">The transform's catalog.</param>
-        <param name="columnOptions">The <see cref="T:Microsoft.ML.Transforms.Image.ImagePixelExtractingEstimator.ColumnOptions" /> describing how the transform handles each image pixel extraction output input column pair.</param>
-        <summary>
-        Extracts the pixels from the input images and, converts them into a vector of numbers. This can be further used as feature by the algorithms added to the pipeline.   
-      </summary>
-        <returns>To be added.</returns>
-        <remarks>
-        The ImagePixelExtractingEstimator extracts the pixels from the input images and, converts them into a vector of numbers.
-        This can be further used as feature by the algorithms added to the pipeline.
-
-        ImagePixelExtractingEstimator expects a <see cref="T:Microsoft.ML.Transforms.Image.ImageResizingEstimator" />  in the pipeline, before it is used.
-        For end-to-end image processing pipelines, and scenarios in your applications, see the
-        <a href="https://github.com/dotnet/machinelearning-samples/tree/master/samples/csharp/getting-started">examples in the machinelearning-samples github repository</a>.
-        <seealso cref="T:Microsoft.ML.ImageEstimatorsCatalog" /><seealso cref="T:Microsoft.ML.Data.ImageLoadingEstimator" /><seealso cref="T:Microsoft.ML.Transforms.Image.ImageResizingEstimator" /></remarks>
       </Docs>
     </Member>
     <Member MemberName="ExtractPixels">
@@ -245,11 +165,11 @@
         <remarks>
         The ImagePixelExtractingEstimator extracts the pixels from the input images and, converts them into a vector of numbers.
         This can be further used as feature by the algorithms added to the pipeline.
-
-        ImagePixelExtractingEstimator expects a <see cref="T:Microsoft.ML.Transforms.Image.ImageResizingEstimator" />  in the pipeline, before it is used.
-        For end-to-end image processing pipelines, and scenarios in your applications, see the
-        <a href="https://github.com/dotnet/machinelearning-samples/tree/master/samples/csharp/getting-started">examples in the machinelearning-samples github repository</a>.
-        <seealso cref="T:Microsoft.ML.ImageEstimatorsCatalog" /><seealso cref="T:Microsoft.ML.Data.ImageLoadingEstimator" /><seealso cref="T:Microsoft.ML.Transforms.Image.ImageResizingEstimator" /></remarks>
+        <para>
+          ImagePixelExtractingEstimator expects a <see cref="T:Microsoft.ML.Transforms.Image.ImageResizingEstimator" />  in the pipeline, before it is used.
+          For end-to-end image processing pipelines, and scenarios in your applications, see the
+          <a href="https://github.com/dotnet/machinelearning-samples/tree/master/samples/csharp/getting-started">examples in the machinelearning-samples github repository</a>.
+        </para><seealso cref="T:Microsoft.ML.ImageEstimatorsCatalog" /><seealso cref="T:Microsoft.ML.Data.ImageLoadingEstimator" /><seealso cref="T:Microsoft.ML.Transforms.Image.ImageResizingEstimator" /></remarks>
         <example>
           <format type="text/markdown"><![CDATA[
              [!code-csharp[ExtractPixels](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/ImageAnalytics/ExtractPixels.cs)]
@@ -258,11 +178,11 @@
       </Docs>
     </Member>
     <Member MemberName="LoadImages">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.ImageLoadingEstimator LoadImages (this Microsoft.ML.TransformsCatalog catalog, string imageFolder, params Microsoft.ML.ColumnOptions[] columns);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.ImageLoadingEstimator LoadImages(class Microsoft.ML.TransformsCatalog catalog, string imageFolder, class Microsoft.ML.ColumnOptions[] columns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ImageEstimatorsCatalog.LoadImages(Microsoft.ML.TransformsCatalog,System.String,Microsoft.ML.ColumnOptions[])" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function LoadImages (catalog As TransformsCatalog, imageFolder As String, ParamArray columns As ColumnOptions()) As ImageLoadingEstimator" />
-      <MemberSignature Language="F#" Value="static member LoadImages : Microsoft.ML.TransformsCatalog * string * Microsoft.ML.ColumnOptions[] -&gt; Microsoft.ML.Data.ImageLoadingEstimator" Usage="Microsoft.ML.ImageEstimatorsCatalog.LoadImages (catalog, imageFolder, columns)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.ImageLoadingEstimator LoadImages (this Microsoft.ML.TransformsCatalog catalog, string outputColumnName, string imageFolder, string inputColumnName = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.ImageLoadingEstimator LoadImages(class Microsoft.ML.TransformsCatalog catalog, string outputColumnName, string imageFolder, string inputColumnName) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ImageEstimatorsCatalog.LoadImages(Microsoft.ML.TransformsCatalog,System.String,System.String,System.String)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function LoadImages (catalog As TransformsCatalog, outputColumnName As String, imageFolder As String, Optional inputColumnName As String = null) As ImageLoadingEstimator" />
+      <MemberSignature Language="F#" Value="static member LoadImages : Microsoft.ML.TransformsCatalog * string * string * string -&gt; Microsoft.ML.Data.ImageLoadingEstimator" Usage="Microsoft.ML.ImageEstimatorsCatalog.LoadImages (catalog, outputColumnName, imageFolder, inputColumnName)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.ImageAnalytics</AssemblyName>
@@ -273,19 +193,15 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog" RefType="this" />
+        <Parameter Name="outputColumnName" Type="System.String" />
         <Parameter Name="imageFolder" Type="System.String" />
-        <Parameter Name="columns" Type="Microsoft.ML.ColumnOptions[]">
-          <Attributes>
-            <Attribute>
-              <AttributeName>System.ParamArray</AttributeName>
-            </Attribute>
-          </Attributes>
-        </Parameter>
+        <Parameter Name="inputColumnName" Type="System.String" />
       </Parameters>
       <Docs>
         <param name="catalog">The transform's catalog.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
         <param name="imageFolder">The images folder.</param>
-        <param name="columns">Specifies the names of the input columns for the transformation, and their respective output column names.</param>
+        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
         <summary>
             Loads the images from the <see cref="F:Microsoft.ML.Data.ImageLoadingTransformer.ImageFolder" /> into memory.
             </summary>
@@ -299,52 +215,6 @@
         <example>
           <format type="text/markdown"><![CDATA[
              [!code-csharp[LoadImages](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/ImageAnalytics/LoadImages.cs)]
-            ]]></format>
-        </example>
-      </Docs>
-    </Member>
-    <Member MemberName="ResizeImages">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Image.ImageResizingEstimator ResizeImages (this Microsoft.ML.TransformsCatalog catalog, params Microsoft.ML.Transforms.Image.ImageResizingEstimator.ColumnOptions[] columnOptions);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Image.ImageResizingEstimator ResizeImages(class Microsoft.ML.TransformsCatalog catalog, class Microsoft.ML.Transforms.Image.ImageResizingEstimator/ColumnOptions[] columnOptions) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ImageEstimatorsCatalog.ResizeImages(Microsoft.ML.TransformsCatalog,Microsoft.ML.Transforms.Image.ImageResizingEstimator.ColumnOptions[])" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ResizeImages (catalog As TransformsCatalog, ParamArray columnOptions As ImageResizingEstimator.ColumnOptions()) As ImageResizingEstimator" />
-      <MemberSignature Language="F#" Value="static member ResizeImages : Microsoft.ML.TransformsCatalog * Microsoft.ML.Transforms.Image.ImageResizingEstimator.ColumnOptions[] -&gt; Microsoft.ML.Transforms.Image.ImageResizingEstimator" Usage="Microsoft.ML.ImageEstimatorsCatalog.ResizeImages (catalog, columnOptions)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.ImageAnalytics</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Transforms.Image.ImageResizingEstimator</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog" RefType="this" />
-        <Parameter Name="columnOptions" Type="Microsoft.ML.Transforms.Image.ImageResizingEstimator+ColumnOptions[]">
-          <Attributes>
-            <Attribute>
-              <AttributeName>System.ParamArray</AttributeName>
-            </Attribute>
-          </Attributes>
-        </Parameter>
-      </Parameters>
-      <Docs>
-        <param name="catalog">The transform's catalog.</param>
-        <param name="columnOptions">The <see cref="T:Microsoft.ML.Transforms.Image.ImageResizingEstimator.ColumnOptions" /> describing how the transform handles each image resize column.</param>
-        <summary>
-            Resizes the images to a new width and height.
-            </summary>
-        <returns>To be added.</returns>
-        <remarks>
-            In image processing pipelines, often machine learning practitioner make use of<a href="https://blogs.msdn.microsoft.com/mlserver/2017/04/12/image-featurization-with-a-pre-trained-deep-neural-network-model/">
-            pre - trained DNN featurizers</a> to extract features for usage in the machine learning algorithms.
-            Those pre-trained models have a defined width and height for their input images, so often, after getting loaded, the images will need to get resized before
-            further processing.
-            The new width and height, as well as other properties of resizing, like type of scaling (uniform, or non-uniform), and whether to pad the image,
-            or just crop it can be specified separately for each column loaded, through the <see cref="T:Microsoft.ML.Transforms.Image.ImageResizingEstimator.ColumnOptions" />.
-            <seealso cref="T:Microsoft.ML.ImageEstimatorsCatalog" /><seealso cref="T:Microsoft.ML.Data.ImageLoadingEstimator" /></remarks>
-        <example>
-          <format type="text/markdown"><![CDATA[
-             [!code-csharp[ResizeImages](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/ImageAnalytics/ResizeImages.cs)]
             ]]></format>
         </example>
       </Docs>

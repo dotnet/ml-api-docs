@@ -20,73 +20,6 @@
   </Docs>
   <Members>
     <Member MemberName="ApplyWordEmbedding">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Text.WordEmbeddingEstimator ApplyWordEmbedding (this Microsoft.ML.TransformsCatalog.TextTransforms catalog, Microsoft.ML.Transforms.Text.WordEmbeddingEstimator.PretrainedModelKind modelKind = Microsoft.ML.Transforms.Text.WordEmbeddingEstimator+PretrainedModelKind.SentimentSpecificWordEmbedding, params Microsoft.ML.Transforms.Text.WordEmbeddingEstimator.ColumnOptions[] columns);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Text.WordEmbeddingEstimator ApplyWordEmbedding(class Microsoft.ML.TransformsCatalog/TextTransforms catalog, valuetype Microsoft.ML.Transforms.Text.WordEmbeddingEstimator/PretrainedModelKind modelKind, class Microsoft.ML.Transforms.Text.WordEmbeddingEstimator/ColumnOptions[] columns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TextCatalog.ApplyWordEmbedding(Microsoft.ML.TransformsCatalog.TextTransforms,Microsoft.ML.Transforms.Text.WordEmbeddingEstimator.PretrainedModelKind,Microsoft.ML.Transforms.Text.WordEmbeddingEstimator.ColumnOptions[])" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ApplyWordEmbedding (catalog As TransformsCatalog.TextTransforms, Optional modelKind As WordEmbeddingEstimator.PretrainedModelKind = Microsoft.ML.Transforms.Text.WordEmbeddingEstimator+PretrainedModelKind.SentimentSpecificWordEmbedding, ParamArray columns As WordEmbeddingEstimator.ColumnOptions()) As WordEmbeddingEstimator" />
-      <MemberSignature Language="F#" Value="static member ApplyWordEmbedding : Microsoft.ML.TransformsCatalog.TextTransforms * Microsoft.ML.Transforms.Text.WordEmbeddingEstimator.PretrainedModelKind * Microsoft.ML.Transforms.Text.WordEmbeddingEstimator.ColumnOptions[] -&gt; Microsoft.ML.Transforms.Text.WordEmbeddingEstimator" Usage="Microsoft.ML.TextCatalog.ApplyWordEmbedding (catalog, modelKind, columns)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Transforms.Text.WordEmbeddingEstimator</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+TextTransforms" RefType="this" />
-        <Parameter Name="modelKind" Type="Microsoft.ML.Transforms.Text.WordEmbeddingEstimator+PretrainedModelKind" />
-        <Parameter Name="columns" Type="Microsoft.ML.Transforms.Text.WordEmbeddingEstimator+ColumnOptions[]">
-          <Attributes>
-            <Attribute>
-              <AttributeName>System.ParamArray</AttributeName>
-            </Attribute>
-          </Attributes>
-        </Parameter>
-      </Parameters>
-      <Docs>
-        <param name="catalog">The text-related transform's catalog.</param>
-        <param name="modelKind">The embeddings <see cref="T:Microsoft.ML.Transforms.Text.WordEmbeddingEstimator.PretrainedModelKind" /> to use. </param>
-        <param name="columns">The array columns, and per-column configurations to extract embeedings from.</param>
-        <summary>
-        Word Embeddings transform is a text featurizer which converts vectors of text tokens into sentence vectors using a pre-trained model.
-      </summary>
-        <returns>To be added.</returns>
-        <remarks>
-          <para>WordEmbeddings wrap different embedding models, such as GloVe. Users can specify which embedding to use. 
-        The available options are various versions of <a href="https://nlp.stanford.edu/projects/glove/">GloVe Models</a>, <a href="https://en.wikipedia.org/wiki/FastText">fastText</a>, and <a href="https://anthology.aclweb.org/P/P14/P14-1146.pdf">SSWE</a>.
-        </para>
-          <para>Note: As WordEmbedding requires a column with text vector, for example, 'this', 'is', 'good', users need to create an input column by
-          using the output_tokens=True for TextTransform to convert a column with sentences like 'This is good' into 'this', 'is', 'good'.
-          The suffix of '_TransformedText' is added to the original column name to create the output token column. For instance if the input column is 'body',
-          the output tokens column is named 'body_TransformedText'.</para>
-          <para>
-          WordEmbedding produces an output column of floats with size of 3 * dimensionality of model. For example if you use GloVe50D, which itself is 50 dimensional, we will produce 150 features.
-          First 1/3rd of slots would contain minimum values of encountered embeddings, second 1/3rd will contain average values of encountered embeddings
-          and last 1/3rd of slots would contain maximum values of encountered embeddings. The min/max provides a bounding hyper-rectangle for the words in the word embedding space.
-          This can assist for longer phrases where the average of many words drowns out the useful signal and your label is reasonably correlated with a dimension of the embedding space.
-        </para>
-          <para>
-          License attributes for pretrained models:
-          <list type="bullet"><item><description>
-                "fastText Wikipedia 300D" by Facebook, Inc. is licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA 3.0</a> based on:
-                P. Bojanowski*, E. Grave*, A. Joulin, T. Mikolov,<a href="https://arxiv.org/abs/1607.04606">Enriching Word Vectors with Subword Information</a>
-                More information can be found <a href="https://github.com/facebookresearch/fastText/blob/master/pretrained-vectors.md">here</a>.
-              </description></item><item><description>
-                GloVe models by Stanford University, or (Jeffrey Pennington, Richard Socher, and Christopher D. Manning. 2014. 
-                <a href="https://nlp.stanford.edu/pubs/glove.pdf">GloVe: Global Vectors for Word Representation</a>) is licensed under <a href="https://opendatacommons.org/licenses/pddl/1.0/">PDDL</a>.
-                More information can be found <a href="https://nlp.stanford.edu/projects/glove/">here</a>. 
-                Repository can be found <a href="https://github.com/stanfordnlp/GloVe">here</a>.
-              </description></item></list></para>
-        </remarks>
-        <example>
-          <format type="text/markdown"><![CDATA[
-            [!code-csharp[FeaturizeText](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/WordEmbeddingTransform.cs)]
-            ]]></format>
-        </example>
-      </Docs>
-    </Member>
-    <Member MemberName="ApplyWordEmbedding">
       <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Text.WordEmbeddingEstimator ApplyWordEmbedding (this Microsoft.ML.TransformsCatalog.TextTransforms catalog, string outputColumnName, string inputColumnName = null, Microsoft.ML.Transforms.Text.WordEmbeddingEstimator.PretrainedModelKind modelKind = Microsoft.ML.Transforms.Text.WordEmbeddingEstimator+PretrainedModelKind.SentimentSpecificWordEmbedding);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Text.WordEmbeddingEstimator ApplyWordEmbedding(class Microsoft.ML.TransformsCatalog/TextTransforms catalog, string outputColumnName, string inputColumnName, valuetype Microsoft.ML.Transforms.Text.WordEmbeddingEstimator/PretrainedModelKind modelKind) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.TextCatalog.ApplyWordEmbedding(Microsoft.ML.TransformsCatalog.TextTransforms,System.String,System.String,Microsoft.ML.Transforms.Text.WordEmbeddingEstimator.PretrainedModelKind)" />
@@ -285,46 +218,11 @@
       </Docs>
     </Member>
     <Member MemberName="LatentDirichletAllocation">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Text.LatentDirichletAllocationEstimator LatentDirichletAllocation (this Microsoft.ML.TransformsCatalog.TextTransforms catalog, params Microsoft.ML.Transforms.Text.LatentDirichletAllocationEstimator.ColumnOptions[] columns);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Text.LatentDirichletAllocationEstimator LatentDirichletAllocation(class Microsoft.ML.TransformsCatalog/TextTransforms catalog, class Microsoft.ML.Transforms.Text.LatentDirichletAllocationEstimator/ColumnOptions[] columns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TextCatalog.LatentDirichletAllocation(Microsoft.ML.TransformsCatalog.TextTransforms,Microsoft.ML.Transforms.Text.LatentDirichletAllocationEstimator.ColumnOptions[])" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function LatentDirichletAllocation (catalog As TransformsCatalog.TextTransforms, ParamArray columns As LatentDirichletAllocationEstimator.ColumnOptions()) As LatentDirichletAllocationEstimator" />
-      <MemberSignature Language="F#" Value="static member LatentDirichletAllocation : Microsoft.ML.TransformsCatalog.TextTransforms * Microsoft.ML.Transforms.Text.LatentDirichletAllocationEstimator.ColumnOptions[] -&gt; Microsoft.ML.Transforms.Text.LatentDirichletAllocationEstimator" Usage="Microsoft.ML.TextCatalog.LatentDirichletAllocation (catalog, columns)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Transforms.Text.LatentDirichletAllocationEstimator</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+TextTransforms" RefType="this" />
-        <Parameter Name="columns" Type="Microsoft.ML.Transforms.Text.LatentDirichletAllocationEstimator+ColumnOptions[]">
-          <Attributes>
-            <Attribute>
-              <AttributeName>System.ParamArray</AttributeName>
-            </Attribute>
-          </Attributes>
-        </Parameter>
-      </Parameters>
-      <Docs>
-        <param name="catalog">The transform's catalog.</param>
-        <param name="columns">Describes the parameters of LDA for each column pair.</param>
-        <summary>
-            Uses <a href="https://arxiv.org/abs/1412.1576">LightLDA</a> to transform a document (represented as a vector of floats)
-            into a vector of floats over a set of topics.
-            </summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="LatentDirichletAllocation">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Text.LatentDirichletAllocationEstimator LatentDirichletAllocation (this Microsoft.ML.TransformsCatalog.TextTransforms catalog, string outputColumnName, string inputColumnName = null, int numberOfTopics = 100, int maximumNumberOfIterations = 200, int maximumTokenCountPerDocument = 512, int numberOfSummaryTermsPerTopic = 10);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Text.LatentDirichletAllocationEstimator LatentDirichletAllocation(class Microsoft.ML.TransformsCatalog/TextTransforms catalog, string outputColumnName, string inputColumnName, int32 numberOfTopics, int32 maximumNumberOfIterations, int32 maximumTokenCountPerDocument, int32 numberOfSummaryTermsPerTopic) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TextCatalog.LatentDirichletAllocation(Microsoft.ML.TransformsCatalog.TextTransforms,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32)" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function LatentDirichletAllocation (catalog As TransformsCatalog.TextTransforms, outputColumnName As String, Optional inputColumnName As String = null, Optional numberOfTopics As Integer = 100, Optional maximumNumberOfIterations As Integer = 200, Optional maximumTokenCountPerDocument As Integer = 512, Optional numberOfSummaryTermsPerTopic As Integer = 10) As LatentDirichletAllocationEstimator" />
-      <MemberSignature Language="F#" Value="static member LatentDirichletAllocation : Microsoft.ML.TransformsCatalog.TextTransforms * string * string * int * int * int * int -&gt; Microsoft.ML.Transforms.Text.LatentDirichletAllocationEstimator" Usage="Microsoft.ML.TextCatalog.LatentDirichletAllocation (catalog, outputColumnName, inputColumnName, numberOfTopics, maximumNumberOfIterations, maximumTokenCountPerDocument, numberOfSummaryTermsPerTopic)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Text.LatentDirichletAllocationEstimator LatentDirichletAllocation (this Microsoft.ML.TransformsCatalog.TextTransforms catalog, string outputColumnName, string inputColumnName = null, int numberOfTopics = 100, float alphaSum = 100, float beta = 0.01, int samplingStepCount = 4, int maximumNumberOfIterations = 200, int likelihoodInterval = 5, int numberOfThreads = 0, int maximumTokenCountPerDocument = 512, int numberOfSummaryTermsPerTopic = 10, int numberOfBurninIterations = 10, bool resetRandomGenerator = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Text.LatentDirichletAllocationEstimator LatentDirichletAllocation(class Microsoft.ML.TransformsCatalog/TextTransforms catalog, string outputColumnName, string inputColumnName, int32 numberOfTopics, float32 alphaSum, float32 beta, int32 samplingStepCount, int32 maximumNumberOfIterations, int32 likelihoodInterval, int32 numberOfThreads, int32 maximumTokenCountPerDocument, int32 numberOfSummaryTermsPerTopic, int32 numberOfBurninIterations, bool resetRandomGenerator) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TextCatalog.LatentDirichletAllocation(Microsoft.ML.TransformsCatalog.TextTransforms,System.String,System.String,System.Int32,System.Single,System.Single,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function LatentDirichletAllocation (catalog As TransformsCatalog.TextTransforms, outputColumnName As String, Optional inputColumnName As String = null, Optional numberOfTopics As Integer = 100, Optional alphaSum As Single = 100, Optional beta As Single = 0.01, Optional samplingStepCount As Integer = 4, Optional maximumNumberOfIterations As Integer = 200, Optional likelihoodInterval As Integer = 5, Optional numberOfThreads As Integer = 0, Optional maximumTokenCountPerDocument As Integer = 512, Optional numberOfSummaryTermsPerTopic As Integer = 10, Optional numberOfBurninIterations As Integer = 10, Optional resetRandomGenerator As Boolean = false) As LatentDirichletAllocationEstimator" />
+      <MemberSignature Language="F#" Value="static member LatentDirichletAllocation : Microsoft.ML.TransformsCatalog.TextTransforms * string * string * int * single * single * int * int * int * int * int * int * int * bool -&gt; Microsoft.ML.Transforms.Text.LatentDirichletAllocationEstimator" Usage="Microsoft.ML.TextCatalog.LatentDirichletAllocation (catalog, outputColumnName, inputColumnName, numberOfTopics, alphaSum, beta, samplingStepCount, maximumNumberOfIterations, likelihoodInterval, numberOfThreads, maximumTokenCountPerDocument, numberOfSummaryTermsPerTopic, numberOfBurninIterations, resetRandomGenerator)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
@@ -338,18 +236,32 @@
         <Parameter Name="outputColumnName" Type="System.String" />
         <Parameter Name="inputColumnName" Type="System.String" />
         <Parameter Name="numberOfTopics" Type="System.Int32" />
+        <Parameter Name="alphaSum" Type="System.Single" />
+        <Parameter Name="beta" Type="System.Single" />
+        <Parameter Name="samplingStepCount" Type="System.Int32" />
         <Parameter Name="maximumNumberOfIterations" Type="System.Int32" />
+        <Parameter Name="likelihoodInterval" Type="System.Int32" />
+        <Parameter Name="numberOfThreads" Type="System.Int32" />
         <Parameter Name="maximumTokenCountPerDocument" Type="System.Int32" />
         <Parameter Name="numberOfSummaryTermsPerTopic" Type="System.Int32" />
+        <Parameter Name="numberOfBurninIterations" Type="System.Int32" />
+        <Parameter Name="resetRandomGenerator" Type="System.Boolean" />
       </Parameters>
       <Docs>
         <param name="catalog">The transform's catalog.</param>
         <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
         <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
         <param name="numberOfTopics">The number of topics.</param>
+        <param name="alphaSum">Dirichlet prior on document-topic vectors.</param>
+        <param name="beta">Dirichlet prior on vocab-topic vectors.</param>
+        <param name="samplingStepCount">Number of Metropolis Hasting step.</param>
         <param name="maximumNumberOfIterations">Number of iterations.</param>
+        <param name="likelihoodInterval">Compute log likelihood over local dataset on this iteration interval.</param>
+        <param name="numberOfThreads">The number of training threads. Default value depends on number of logical processors.</param>
         <param name="maximumTokenCountPerDocument">The threshold of maximum count of tokens per doc.</param>
         <param name="numberOfSummaryTermsPerTopic">The number of words to summarize the topic.</param>
+        <param name="numberOfBurninIterations">The number of burn-in iterations.</param>
+        <param name="resetRandomGenerator">Reset the random number generator for each document.</param>
         <summary>
             Uses <a href="https://arxiv.org/abs/1412.1576">LightLDA</a> to transform a document (represented as a vector of floats)
             into a vector of floats over a set of topics.
@@ -402,11 +314,11 @@
       </Docs>
     </Member>
     <Member MemberName="ProduceHashedNgrams">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Text.NgramHashingEstimator ProduceHashedNgrams (this Microsoft.ML.TransformsCatalog.TextTransforms catalog, Microsoft.ML.Transforms.Text.NgramHashingEstimator.ColumnOptions[] columns);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Text.NgramHashingEstimator ProduceHashedNgrams(class Microsoft.ML.TransformsCatalog/TextTransforms catalog, class Microsoft.ML.Transforms.Text.NgramHashingEstimator/ColumnOptions[] columns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TextCatalog.ProduceHashedNgrams(Microsoft.ML.TransformsCatalog.TextTransforms,Microsoft.ML.Transforms.Text.NgramHashingEstimator.ColumnOptions[])" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ProduceHashedNgrams (catalog As TransformsCatalog.TextTransforms, columns As NgramHashingEstimator.ColumnOptions()) As NgramHashingEstimator" />
-      <MemberSignature Language="F#" Value="static member ProduceHashedNgrams : Microsoft.ML.TransformsCatalog.TextTransforms * Microsoft.ML.Transforms.Text.NgramHashingEstimator.ColumnOptions[] -&gt; Microsoft.ML.Transforms.Text.NgramHashingEstimator" Usage="Microsoft.ML.TextCatalog.ProduceHashedNgrams (catalog, columns)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Text.NgramHashingEstimator ProduceHashedNgrams (this Microsoft.ML.TransformsCatalog.TextTransforms catalog, string outputColumnName, string inputColumnName = null, int numberOfBits = 16, int ngramLength = 2, int skipLength = 0, bool useAllLengths = true, uint seed = 314489979, bool useOrderedHashing = true, int maximumNumberOfInverts = 0, bool rehashUnigrams = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Text.NgramHashingEstimator ProduceHashedNgrams(class Microsoft.ML.TransformsCatalog/TextTransforms catalog, string outputColumnName, string inputColumnName, int32 numberOfBits, int32 ngramLength, int32 skipLength, bool useAllLengths, unsigned int32 seed, bool useOrderedHashing, int32 maximumNumberOfInverts, bool rehashUnigrams) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TextCatalog.ProduceHashedNgrams(Microsoft.ML.TransformsCatalog.TextTransforms,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Boolean,System.UInt32,System.Boolean,System.Int32,System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ProduceHashedNgrams (catalog As TransformsCatalog.TextTransforms, outputColumnName As String, Optional inputColumnName As String = null, Optional numberOfBits As Integer = 16, Optional ngramLength As Integer = 2, Optional skipLength As Integer = 0, Optional useAllLengths As Boolean = true, Optional seed As UInteger = 314489979, Optional useOrderedHashing As Boolean = true, Optional maximumNumberOfInverts As Integer = 0, Optional rehashUnigrams As Boolean = false) As NgramHashingEstimator" />
+      <MemberSignature Language="F#" Value="static member ProduceHashedNgrams : Microsoft.ML.TransformsCatalog.TextTransforms * string * string * int * int * int * bool * uint32 * bool * int * bool -&gt; Microsoft.ML.Transforms.Text.NgramHashingEstimator" Usage="Microsoft.ML.TextCatalog.ProduceHashedNgrams (catalog, outputColumnName, inputColumnName, numberOfBits, ngramLength, skipLength, useAllLengths, seed, useOrderedHashing, maximumNumberOfInverts, rehashUnigrams)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
@@ -417,47 +329,16 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+TextTransforms" RefType="this" />
-        <Parameter Name="columns" Type="Microsoft.ML.Transforms.Text.NgramHashingEstimator+ColumnOptions[]" />
-      </Parameters>
-      <Docs>
-        <param name="catalog">The text-related transform's catalog.</param>
-        <param name="columns">Pairs of columns to compute n-grams. Note that gram indices are generated by hashing.</param>
-        <summary>
-             Produces a bag of counts of hashed ngrams for each <paramref name="columns" />. For each column,
-             <see cref="P:Microsoft.ML.Transforms.Text.NgramHashingEstimator.ColumnOptions.InputColumnNames" /> are the input columns of the output column named as <see cref="F:Microsoft.ML.Transforms.Text.NgramHashingEstimator.ColumnOptions.Name" />.
-            
-             <see cref="T:Microsoft.ML.Transforms.Text.NgramHashingEstimator" /> is different from <see cref="T:Microsoft.ML.Transforms.Text.WordHashBagEstimator" /> in a way that <see cref="T:Microsoft.ML.Transforms.Text.NgramHashingEstimator" />
-             takes tokenized text as input while <see cref="T:Microsoft.ML.Transforms.Text.WordHashBagEstimator" /> tokenizes text internally.
-             </summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ProduceHashedNgrams">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Text.NgramHashingEstimator ProduceHashedNgrams (this Microsoft.ML.TransformsCatalog.TextTransforms catalog, string outputColumnName, string inputColumnName = null, int numberOfBits = 16, int ngramLength = 2, int skipLength = 0, bool useAllLengths = true, uint seed = 314489979, bool useOrderedHashing = true, int maximumNumberOfInverts = 0);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Text.NgramHashingEstimator ProduceHashedNgrams(class Microsoft.ML.TransformsCatalog/TextTransforms catalog, string outputColumnName, string inputColumnName, int32 numberOfBits, int32 ngramLength, int32 skipLength, bool useAllLengths, unsigned int32 seed, bool useOrderedHashing, int32 maximumNumberOfInverts) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TextCatalog.ProduceHashedNgrams(Microsoft.ML.TransformsCatalog.TextTransforms,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Boolean,System.UInt32,System.Boolean,System.Int32)" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ProduceHashedNgrams (catalog As TransformsCatalog.TextTransforms, outputColumnName As String, Optional inputColumnName As String = null, Optional numberOfBits As Integer = 16, Optional ngramLength As Integer = 2, Optional skipLength As Integer = 0, Optional useAllLengths As Boolean = true, Optional seed As UInteger = 314489979, Optional useOrderedHashing As Boolean = true, Optional maximumNumberOfInverts As Integer = 0) As NgramHashingEstimator" />
-      <MemberSignature Language="F#" Value="static member ProduceHashedNgrams : Microsoft.ML.TransformsCatalog.TextTransforms * string * string * int * int * int * bool * uint32 * bool * int -&gt; Microsoft.ML.Transforms.Text.NgramHashingEstimator" Usage="Microsoft.ML.TextCatalog.ProduceHashedNgrams (catalog, outputColumnName, inputColumnName, numberOfBits, ngramLength, skipLength, useAllLengths, seed, useOrderedHashing, maximumNumberOfInverts)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Transforms.Text.NgramHashingEstimator</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+TextTransforms" RefType="this" Index="0" />
-        <Parameter Name="outputColumnName" Type="System.String" Index="1" FrameworkAlternate="ml-dotnet" />
-        <Parameter Name="inputColumnName" Type="System.String" Index="2" FrameworkAlternate="ml-dotnet" />
-        <Parameter Name="numberOfBits" Type="System.Int32" Index="3" FrameworkAlternate="ml-dotnet" />
-        <Parameter Name="ngramLength" Type="System.Int32" Index="4" />
-        <Parameter Name="skipLength" Type="System.Int32" Index="5" />
-        <Parameter Name="useAllLengths" Type="System.Boolean" Index="6" FrameworkAlternate="ml-dotnet" />
-        <Parameter Name="seed" Type="System.UInt32" Index="7" />
-        <Parameter Name="useOrderedHashing" Type="System.Boolean" Index="8" FrameworkAlternate="ml-dotnet" />
-        <Parameter Name="maximumNumberOfInverts" Type="System.Int32" Index="9" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="outputColumnName" Type="System.String" />
+        <Parameter Name="inputColumnName" Type="System.String" />
+        <Parameter Name="numberOfBits" Type="System.Int32" />
+        <Parameter Name="ngramLength" Type="System.Int32" />
+        <Parameter Name="skipLength" Type="System.Int32" />
+        <Parameter Name="useAllLengths" Type="System.Boolean" />
+        <Parameter Name="seed" Type="System.UInt32" />
+        <Parameter Name="useOrderedHashing" Type="System.Boolean" />
+        <Parameter Name="maximumNumberOfInverts" Type="System.Int32" />
+        <Parameter Name="rehashUnigrams" Type="System.Boolean" />
       </Parameters>
       <Docs>
         <param name="catalog">The text-related transform's catalog.</param>
@@ -473,8 +354,60 @@
              Text representation of original values are stored in the slot names of the  metadata for the new column.Hashing, as such, can map many initial values to one.
              <paramref name="maximumNumberOfInverts" /> specifies the upper bound of the number of distinct input values mapping to a hash that should be retained.
              <value>0</value> does not retain any input values. <value>-1</value> retains all input values mapping to each hash.</param>
+        <param name="rehashUnigrams">Whether to rehash unigrams.</param>
         <summary>
              Produces a bag of counts of hashed ngrams in <paramref name="inputColumnName" />
+             and outputs ngram vector as <paramref name="outputColumnName" /><see cref="T:Microsoft.ML.Transforms.Text.NgramHashingEstimator" /> is different from <see cref="T:Microsoft.ML.Transforms.Text.WordHashBagEstimator" /> in a way that <see cref="T:Microsoft.ML.Transforms.Text.NgramHashingEstimator" />
+             takes tokenized text as input while <see cref="T:Microsoft.ML.Transforms.Text.WordHashBagEstimator" /> tokenizes text internally.
+             </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ProduceHashedNgrams">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Text.NgramHashingEstimator ProduceHashedNgrams (this Microsoft.ML.TransformsCatalog.TextTransforms catalog, string outputColumnName, string[] inputColumnNames = null, int numberOfBits = 16, int ngramLength = 2, int skipLength = 0, bool useAllLengths = true, uint seed = 314489979, bool useOrderedHashing = true, int maximumNumberOfInverts = 0, bool rehashUnigrams = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Text.NgramHashingEstimator ProduceHashedNgrams(class Microsoft.ML.TransformsCatalog/TextTransforms catalog, string outputColumnName, string[] inputColumnNames, int32 numberOfBits, int32 ngramLength, int32 skipLength, bool useAllLengths, unsigned int32 seed, bool useOrderedHashing, int32 maximumNumberOfInverts, bool rehashUnigrams) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TextCatalog.ProduceHashedNgrams(Microsoft.ML.TransformsCatalog.TextTransforms,System.String,System.String[],System.Int32,System.Int32,System.Int32,System.Boolean,System.UInt32,System.Boolean,System.Int32,System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ProduceHashedNgrams (catalog As TransformsCatalog.TextTransforms, outputColumnName As String, Optional inputColumnNames As String() = null, Optional numberOfBits As Integer = 16, Optional ngramLength As Integer = 2, Optional skipLength As Integer = 0, Optional useAllLengths As Boolean = true, Optional seed As UInteger = 314489979, Optional useOrderedHashing As Boolean = true, Optional maximumNumberOfInverts As Integer = 0, Optional rehashUnigrams As Boolean = false) As NgramHashingEstimator" />
+      <MemberSignature Language="F#" Value="static member ProduceHashedNgrams : Microsoft.ML.TransformsCatalog.TextTransforms * string * string[] * int * int * int * bool * uint32 * bool * int * bool -&gt; Microsoft.ML.Transforms.Text.NgramHashingEstimator" Usage="Microsoft.ML.TextCatalog.ProduceHashedNgrams (catalog, outputColumnName, inputColumnNames, numberOfBits, ngramLength, skipLength, useAllLengths, seed, useOrderedHashing, maximumNumberOfInverts, rehashUnigrams)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Transforms.Text.NgramHashingEstimator</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+TextTransforms" RefType="this" />
+        <Parameter Name="outputColumnName" Type="System.String" />
+        <Parameter Name="inputColumnNames" Type="System.String[]" />
+        <Parameter Name="numberOfBits" Type="System.Int32" />
+        <Parameter Name="ngramLength" Type="System.Int32" />
+        <Parameter Name="skipLength" Type="System.Int32" />
+        <Parameter Name="useAllLengths" Type="System.Boolean" />
+        <Parameter Name="seed" Type="System.UInt32" />
+        <Parameter Name="useOrderedHashing" Type="System.Boolean" />
+        <Parameter Name="maximumNumberOfInverts" Type="System.Int32" />
+        <Parameter Name="rehashUnigrams" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="catalog">The text-related transform's catalog.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnNames" />.</param>
+        <param name="inputColumnNames">Names of the columns to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
+        <param name="numberOfBits">Number of bits to hash into. Must be between 1 and 30, inclusive.</param>
+        <param name="ngramLength">Ngram length.</param>
+        <param name="skipLength">Maximum number of tokens to skip when constructing an ngram.</param>
+        <param name="useAllLengths">Whether to include all ngram lengths up to <paramref name="ngramLength" /> or only <paramref name="ngramLength" />.</param>
+        <param name="seed">Hashing seed.</param>
+        <param name="useOrderedHashing">Whether the position of each source column should be included in the hash (when there are multiple source columns).</param>
+        <param name="maximumNumberOfInverts">During hashing we constuct mappings between original values and the produced hash values.
+             Text representation of original values are stored in the slot names of the  metadata for the new column.Hashing, as such, can map many initial values to one.
+             <paramref name="maximumNumberOfInverts" /> specifies the upper bound of the number of distinct input values mapping to a hash that should be retained.
+             <value>0</value> does not retain any input values. <value>-1</value> retains all input values mapping to each hash.</param>
+        <param name="rehashUnigrams">Whether to rehash unigrams.</param>
+        <summary>
+             Produces a bag of counts of hashed ngrams in <paramref name="inputColumnNames" />
              and outputs ngram vector as <paramref name="outputColumnName" /><see cref="T:Microsoft.ML.Transforms.Text.NgramHashingEstimator" /> is different from <see cref="T:Microsoft.ML.Transforms.Text.WordHashBagEstimator" /> in a way that <see cref="T:Microsoft.ML.Transforms.Text.NgramHashingEstimator" />
              takes tokenized text as input while <see cref="T:Microsoft.ML.Transforms.Text.WordHashBagEstimator" /> tokenizes text internally.
              </summary>
@@ -572,40 +505,6 @@
         <summary>
             Produces a bag of counts of hashed ngrams in <paramref name="inputColumnNames" />
             and outputs bag of word vector as <paramref name="outputColumnName" /></summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ProduceNgrams">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Text.NgramExtractingEstimator ProduceNgrams (this Microsoft.ML.TransformsCatalog.TextTransforms catalog, params Microsoft.ML.Transforms.Text.NgramExtractingEstimator.ColumnOptions[] columns);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Text.NgramExtractingEstimator ProduceNgrams(class Microsoft.ML.TransformsCatalog/TextTransforms catalog, class Microsoft.ML.Transforms.Text.NgramExtractingEstimator/ColumnOptions[] columns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TextCatalog.ProduceNgrams(Microsoft.ML.TransformsCatalog.TextTransforms,Microsoft.ML.Transforms.Text.NgramExtractingEstimator.ColumnOptions[])" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ProduceNgrams (catalog As TransformsCatalog.TextTransforms, ParamArray columns As NgramExtractingEstimator.ColumnOptions()) As NgramExtractingEstimator" />
-      <MemberSignature Language="F#" Value="static member ProduceNgrams : Microsoft.ML.TransformsCatalog.TextTransforms * Microsoft.ML.Transforms.Text.NgramExtractingEstimator.ColumnOptions[] -&gt; Microsoft.ML.Transforms.Text.NgramExtractingEstimator" Usage="Microsoft.ML.TextCatalog.ProduceNgrams (catalog, columns)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Transforms.Text.NgramExtractingEstimator</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+TextTransforms" RefType="this" />
-        <Parameter Name="columns" Type="Microsoft.ML.Transforms.Text.NgramExtractingEstimator+ColumnOptions[]">
-          <Attributes>
-            <Attribute>
-              <AttributeName>System.ParamArray</AttributeName>
-            </Attribute>
-          </Attributes>
-        </Parameter>
-      </Parameters>
-      <Docs>
-        <param name="catalog">The text-related transform's catalog.</param>
-        <param name="columns">Pairs of columns to run the ngram process on.</param>
-        <summary>
-            Produces a bag of counts of ngrams (sequences of consecutive words) in <paramref name="columns.inputs.inputs" />
-            and outputs bag of word vector for each output in <paramref name="columns.output.output" /></summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -817,43 +716,6 @@
       </Docs>
     </Member>
     <Member MemberName="TokenizeIntoCharactersAsKeys">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Text.TokenizingByCharactersEstimator TokenizeIntoCharactersAsKeys (this Microsoft.ML.TransformsCatalog.TextTransforms catalog, bool useMarkerCharacters = true, params Microsoft.ML.ColumnOptions[] columns);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Text.TokenizingByCharactersEstimator TokenizeIntoCharactersAsKeys(class Microsoft.ML.TransformsCatalog/TextTransforms catalog, bool useMarkerCharacters, class Microsoft.ML.ColumnOptions[] columns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TextCatalog.TokenizeIntoCharactersAsKeys(Microsoft.ML.TransformsCatalog.TextTransforms,System.Boolean,Microsoft.ML.ColumnOptions[])" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function TokenizeIntoCharactersAsKeys (catalog As TransformsCatalog.TextTransforms, Optional useMarkerCharacters As Boolean = true, ParamArray columns As ColumnOptions()) As TokenizingByCharactersEstimator" />
-      <MemberSignature Language="F#" Value="static member TokenizeIntoCharactersAsKeys : Microsoft.ML.TransformsCatalog.TextTransforms * bool * Microsoft.ML.ColumnOptions[] -&gt; Microsoft.ML.Transforms.Text.TokenizingByCharactersEstimator" Usage="Microsoft.ML.TextCatalog.TokenizeIntoCharactersAsKeys (catalog, useMarkerCharacters, columns)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Transforms.Text.TokenizingByCharactersEstimator</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+TextTransforms" RefType="this" />
-        <Parameter Name="useMarkerCharacters" Type="System.Boolean" />
-        <Parameter Name="columns" Type="Microsoft.ML.ColumnOptions[]">
-          <Attributes>
-            <Attribute>
-              <AttributeName>System.ParamArray</AttributeName>
-            </Attribute>
-          </Attributes>
-        </Parameter>
-      </Parameters>
-      <Docs>
-        <param name="catalog">The text-related transform's catalog.</param>
-        <param name="useMarkerCharacters">Whether to prepend a marker character, <see langword="0x02" />, to the beginning,
-            and append another marker character, <see langword="0x03" />, to the end of the output vector of characters.</param>
-        <param name="columns">Pairs of columns to run the tokenization on.</param>
-        <summary>
-            Tokenize incoming text in input columns and output the tokens as output columns.
-            </summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="TokenizeIntoCharactersAsKeys">
       <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Text.TokenizingByCharactersEstimator TokenizeIntoCharactersAsKeys (this Microsoft.ML.TransformsCatalog.TextTransforms catalog, string outputColumnName, string inputColumnName = null, bool useMarkerCharacters = true);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Text.TokenizingByCharactersEstimator TokenizeIntoCharactersAsKeys(class Microsoft.ML.TransformsCatalog/TextTransforms catalog, string outputColumnName, string inputColumnName, bool useMarkerCharacters) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.TextCatalog.TokenizeIntoCharactersAsKeys(Microsoft.ML.TransformsCatalog.TextTransforms,System.String,System.String,System.Boolean)" />
@@ -881,40 +743,6 @@
             and append another marker character, <see langword="0x03" />, to the end of the output vector of characters.</param>
         <summary>
             Tokenize incoming text in <paramref name="inputColumnName" /> and output the tokens as <paramref name="outputColumnName" />.
-            </summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="TokenizeIntoWords">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Text.WordTokenizingEstimator TokenizeIntoWords (this Microsoft.ML.TransformsCatalog.TextTransforms catalog, params Microsoft.ML.Transforms.Text.WordTokenizingEstimator.ColumnOptions[] columns);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Text.WordTokenizingEstimator TokenizeIntoWords(class Microsoft.ML.TransformsCatalog/TextTransforms catalog, class Microsoft.ML.Transforms.Text.WordTokenizingEstimator/ColumnOptions[] columns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TextCatalog.TokenizeIntoWords(Microsoft.ML.TransformsCatalog.TextTransforms,Microsoft.ML.Transforms.Text.WordTokenizingEstimator.ColumnOptions[])" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function TokenizeIntoWords (catalog As TransformsCatalog.TextTransforms, ParamArray columns As WordTokenizingEstimator.ColumnOptions()) As WordTokenizingEstimator" />
-      <MemberSignature Language="F#" Value="static member TokenizeIntoWords : Microsoft.ML.TransformsCatalog.TextTransforms * Microsoft.ML.Transforms.Text.WordTokenizingEstimator.ColumnOptions[] -&gt; Microsoft.ML.Transforms.Text.WordTokenizingEstimator" Usage="Microsoft.ML.TextCatalog.TokenizeIntoWords (catalog, columns)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Transforms.Text.WordTokenizingEstimator</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+TextTransforms" RefType="this" />
-        <Parameter Name="columns" Type="Microsoft.ML.Transforms.Text.WordTokenizingEstimator+ColumnOptions[]">
-          <Attributes>
-            <Attribute>
-              <AttributeName>System.ParamArray</AttributeName>
-            </Attribute>
-          </Attributes>
-        </Parameter>
-      </Parameters>
-      <Docs>
-        <param name="catalog">The text-related transform's catalog.</param>
-        <param name="columns">Pairs of columns to run the tokenization on.</param>
-        <summary>
-             Tokenizes incoming text in input columns, using per-column configurations, and outputs the tokens.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

@@ -1,0 +1,281 @@
+<Type Name="DataViewRow" FullName="Microsoft.Data.DataView.DataViewRow">
+  <TypeSignature Language="C#" Value="public abstract class DataViewRow : IDisposable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit DataViewRow extends System.Object implements class System.IDisposable" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.Data.DataView.DataViewRow" />
+  <TypeSignature Language="VB.NET" Value="Public MustInherit Class DataViewRow&#xA;Implements IDisposable" />
+  <TypeSignature Language="F#" Value="type DataViewRow = class&#xA;    interface IDisposable" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.IDisposable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+            A logical row. May be a row of an <see cref="T:Microsoft.Data.DataView.IDataView" /> or a stand-alone row. If/when its contents
+            change, its <see cref="P:Microsoft.Data.DataView.DataViewRow.Position" /> value is changed.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected DataViewRow ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.DataView.DataViewRow.#ctor" />
+      <MemberSignature Language="VB.NET" Value="Protected Sub New ()" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Batch">
+      <MemberSignature Language="C#" Value="public abstract long Batch { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int64 Batch" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.Data.DataView.DataViewRow.Batch" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride ReadOnly Property Batch As Long" />
+      <MemberSignature Language="F#" Value="member this.Batch : int64" Usage="Microsoft.Data.DataView.DataViewRow.Batch" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int64</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+             This provides a means for reconciling multiple rows that have been produced generally from
+             <see cref="M:Microsoft.Data.DataView.IDataView.GetRowCursorSet(System.Collections.Generic.IEnumerable{Microsoft.Data.DataView.DataViewSchema.Column},System.Int32,System.Random)" />. When getting a set, there is a need
+             to, while allowing parallel processing to proceed, always have an aim that the original order should be
+             reconverable. Note, whether or not a user cares about that original order in ones specific application is
+             another story altogether (most callers of this as a practical matter do not, otherwise they would not call
+             it), but at least in principle it should be possible to reconstruct the original order one would get from an
+             identically configured <see cref="M:Microsoft.Data.DataView.IDataView.GetRowCursor(System.Collections.Generic.IEnumerable{Microsoft.Data.DataView.DataViewSchema.Column},System.Random)" />. So: for any cursor
+             implementation, batch numbers should be non-decreasing. Furthermore, any given batch number should only
+             appear in one of the cursors as returned by
+             <see cref="M:Microsoft.Data.DataView.IDataView.GetRowCursorSet(System.Collections.Generic.IEnumerable{Microsoft.Data.DataView.DataViewSchema.Column},System.Int32,System.Random)" />. In this way, order is determined by
+             batch number. An operation that reconciles these cursors to produce a consistent single cursoring, could do
+             so by drawing from the single cursor, among all cursors in the set, that has the smallest batch number
+             available.
+            
+             Note that there is no suggestion that the batches for a particular entry will be consistent from cursoring
+             to cursoring, except for the consistency in resulting in the same overall ordering. The same entry could
+             have different batch numbers from one cursoring to another. There is also no requirement that any given
+             batch number must appear, at all. It is merely a mechanism for recovering ordering from a possibly arbitrary
+             partitioning of the data. It also follows from this, of course, that considering the batch to be a property
+             of the data is completely invalid.
+             </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dispose">
+      <MemberSignature Language="C#" Value="public void Dispose ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Dispose() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.DataView.DataViewRow.Dispose" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Dispose ()" />
+      <MemberSignature Language="F#" Value="abstract member Dispose : unit -&gt; unit&#xA;override this.Dispose : unit -&gt; unit" Usage="dataViewRow.Dispose " />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:System.IDisposable.Dispose</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            Implementation of dispose. Calls <see cref="M:Microsoft.Data.DataView.DataViewRow.Dispose(System.Boolean)" /> with <see langword="true" />.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dispose">
+      <MemberSignature Language="C#" Value="protected virtual void Dispose (bool disposing);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void Dispose(bool disposing) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.DataView.DataViewRow.Dispose(System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Protected Overridable Sub Dispose (disposing As Boolean)" />
+      <MemberSignature Language="F#" Value="abstract member Dispose : bool -&gt; unit&#xA;override this.Dispose : bool -&gt; unit" Usage="dataViewRow.Dispose disposing" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="disposing" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="disposing">Whether this was called from <see cref="M:System.IDisposable.Dispose" />.
+            Subclasses that implement <see cref="M:System.Object.Finalize" /> should call this method with
+            <see langword="false" />, but I hasten to add that implementing finalizers should be
+            avoided if at all possible.</param>
+        <summary>
+            The disposable method for the disposable pattern. This default implementation does nothing.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetGetter&lt;TValue&gt;">
+      <MemberSignature Language="C#" Value="public abstract Microsoft.Data.DataView.ValueGetter&lt;TValue&gt; GetGetter&lt;TValue&gt; (int col);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.Data.DataView.ValueGetter`1&lt;!!TValue&gt; GetGetter&lt;TValue&gt;(int32 col) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.DataView.DataViewRow.GetGetter``1(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function GetGetter(Of TValue) (col As Integer) As ValueGetter(Of TValue)" />
+      <MemberSignature Language="F#" Value="abstract member GetGetter : int -&gt; Microsoft.Data.DataView.ValueGetter&lt;'Value&gt;" Usage="dataViewRow.GetGetter col" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.Data.DataView.ValueGetter&lt;TValue&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TValue" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="col" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TValue">To be added.</typeparam>
+        <param name="col">To be added.</param>
+        <summary>
+            Returns a value getter delegate to fetch the given column value from the row.
+            This throws if the column is not active in this row, or if the type
+            <typeparamref name="TValue" /> differs from this column's type.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetIdGetter">
+      <MemberSignature Language="C#" Value="public abstract Microsoft.Data.DataView.ValueGetter&lt;Microsoft.Data.DataView.DataViewRowId&gt; GetIdGetter ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.Data.DataView.ValueGetter`1&lt;valuetype Microsoft.Data.DataView.DataViewRowId&gt; GetIdGetter() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.DataView.DataViewRow.GetIdGetter" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function GetIdGetter () As ValueGetter(Of DataViewRowId)" />
+      <MemberSignature Language="F#" Value="abstract member GetIdGetter : unit -&gt; Microsoft.Data.DataView.ValueGetter&lt;Microsoft.Data.DataView.DataViewRowId&gt;" Usage="dataViewRow.GetIdGetter " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.Data.DataView.ValueGetter&lt;Microsoft.Data.DataView.DataViewRowId&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+             A getter for a 128-bit ID value. It is common for objects to serve multiple <see cref="T:Microsoft.Data.DataView.DataViewRow" />
+             instances to iterate over what is supposed to be the same data, for example, in a <see cref="T:Microsoft.Data.DataView.IDataView" />
+             a cursor set will produce the same data as a serial cursor, just partitioned, and a shuffled cursor will
+             produce the same data as a serial cursor or any other shuffled cursor, only shuffled. The ID exists for
+             applications that need to reconcile which entry is actually which. Ideally this ID should be unique, but for
+             practical reasons, it suffices if collisions are simply extremely improbable.
+            
+             Note that this ID, while it must be consistent for multiple streams according to the semantics above, is not
+             considered part of the data per se. So, to take the example of a data view specifically, a single data view
+             must render consistent IDs across all cursorings, but there is no suggestion at all that if the "same" data
+             were presented in a different data view (as by, say, being transformed, cached, saved, or whatever), that
+             the IDs between the two different data views would have any discernable relationship.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsColumnActive">
+      <MemberSignature Language="C#" Value="public abstract bool IsColumnActive (int col);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool IsColumnActive(int32 col) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.DataView.DataViewRow.IsColumnActive(System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function IsColumnActive (col As Integer) As Boolean" />
+      <MemberSignature Language="F#" Value="abstract member IsColumnActive : int -&gt; bool" Usage="dataViewRow.IsColumnActive col" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="col" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="col">To be added.</param>
+        <summary>
+            Returns whether the given column is active in this row.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Position">
+      <MemberSignature Language="C#" Value="public abstract long Position { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int64 Position" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.Data.DataView.DataViewRow.Position" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride ReadOnly Property Position As Long" />
+      <MemberSignature Language="F#" Value="member this.Position : int64" Usage="Microsoft.Data.DataView.DataViewRow.Position" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int64</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+             This is incremented when the underlying contents changes, giving clients a way to detect change. It should be
+             -1 when the object is in a state where values cannot be fetched. In particular, for an <see cref="T:Microsoft.Data.DataView.DataViewRowCursor" />,
+             this will be before <see cref="M:Microsoft.Data.DataView.DataViewRowCursor.MoveNext" /> if ever called for the first time, or after the first time
+             <see cref="M:Microsoft.Data.DataView.DataViewRowCursor.MoveNext" /> is called and returns <see langword="false" />.
+            
+             Note that this position is not position within the underlying data, but position of this cursor only. If
+             one, for example, opened a set of parallel streaming cursors, or a shuffled cursor, each such cursor's first
+             valid entry would always have position 0.
+             </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Schema">
+      <MemberSignature Language="C#" Value="public abstract Microsoft.Data.DataView.DataViewSchema Schema { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.Data.DataView.DataViewSchema Schema" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.Data.DataView.DataViewRow.Schema" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride ReadOnly Property Schema As DataViewSchema" />
+      <MemberSignature Language="F#" Value="member this.Schema : Microsoft.Data.DataView.DataViewSchema" Usage="Microsoft.Data.DataView.DataViewRow.Schema" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.Data.DataView.DataViewSchema</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Gets a <see cref="P:Microsoft.Data.DataView.DataViewRow.Schema" />, which provides name and type information for variables
+            (i.e., columns in ML.NET's type system) stored in this row.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

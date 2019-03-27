@@ -1,9 +1,9 @@
 ﻿<Type Name="CompositeDataLoader&lt;TSource,TLastTransformer&gt;" FullName="Microsoft.ML.Data.CompositeDataLoader&lt;TSource,TLastTransformer&gt;">
   <TypeSignature Language="C#" Value="public sealed class CompositeDataLoader&lt;TSource,TLastTransformer&gt; : Microsoft.ML.IDataLoader&lt;TSource&gt; where TLastTransformer : class, ITransformer" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit CompositeDataLoader`2&lt;TSource, class (class Microsoft.ML.ITransformer) TLastTransformer&gt; extends System.Object implements class Microsoft.ML.IDataLoader`1&lt;!TSource&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit CompositeDataLoader`2&lt;TSource, class (class Microsoft.ML.ITransformer) TLastTransformer&gt; extends System.Object implements class Microsoft.ML.ICanSaveModel, class Microsoft.ML.IDataLoader`1&lt;!TSource&gt;" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Data.CompositeDataLoader`2" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class CompositeDataLoader(Of TSource, TLastTransformer)&#xA;Implements IDataLoader(Of TSource)" />
-  <TypeSignature Language="F#" Value="type CompositeDataLoader&lt;'Source, 'LastTransformer (requires 'LastTransformer : null and 'LastTransformer :&gt; ITransformer)&gt; = class&#xA;    interface IDataLoader&lt;'Source&gt;" />
+  <TypeSignature Language="F#" Value="type CompositeDataLoader&lt;'Source, 'LastTransformer (requires 'LastTransformer : null and 'LastTransformer :&gt; ITransformer)&gt; = class&#xA;    interface IDataLoader&lt;'Source&gt;&#xA;    interface ICanSaveModel" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.Data</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -21,6 +21,9 @@
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.ICanSaveModel</InterfaceName>
+    </Interface>
     <Interface>
       <InterfaceName>Microsoft.ML.IDataLoader&lt;TSource&gt;</InterfaceName>
     </Interface>
@@ -167,13 +170,15 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="SaveTo">
-      <MemberSignature Language="C#" Value="public void SaveTo (Microsoft.ML.Runtime.IHostEnvironment env, System.IO.Stream outputStream);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SaveTo(class Microsoft.ML.Runtime.IHostEnvironment env, class System.IO.Stream outputStream) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.CompositeDataLoader`2.SaveTo(Microsoft.ML.Runtime.IHostEnvironment,System.IO.Stream)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub SaveTo (env As IHostEnvironment, outputStream As Stream)" />
-      <MemberSignature Language="F#" Value="member this.SaveTo : Microsoft.ML.Runtime.IHostEnvironment * System.IO.Stream -&gt; unit" Usage="compositeDataLoader.SaveTo (env, outputStream)" />
+    <Member MemberName="Microsoft.ML.ICanSaveModel.Save">
+      <MemberSignature Language="C#" Value="void ICanSaveModel.Save (Microsoft.ML.ModelSaveContext ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance void Microsoft.ML.ICanSaveModel.Save(class Microsoft.ML.ModelSaveContext ctx) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.CompositeDataLoader`2.Microsoft#ML#ICanSaveModel#Save(Microsoft.ML.ModelSaveContext)" />
+      <MemberSignature Language="VB.NET" Value="Sub Save (ctx As ModelSaveContext) Implements ICanSaveModel.Save" />
       <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.ICanSaveModel.Save(Microsoft.ML.ModelSaveContext)</InterfaceMember>
+      </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -182,15 +187,11 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
-        <Parameter Name="outputStream" Type="System.IO.Stream" />
+        <Parameter Name="ctx" Type="Microsoft.ML.ModelSaveContext" />
       </Parameters>
       <Docs>
-        <param name="env">To be added.</param>
-        <param name="outputStream">To be added.</param>
-        <summary>
-            Save the contents to a stream, as a "model file".
-            </summary>
+        <param name="ctx">To be added.</param>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
