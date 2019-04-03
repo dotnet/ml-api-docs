@@ -5,10 +5,6 @@
   <TypeSignature Language="VB.NET" Value="Public Module NormalizerStaticExtensions" />
   <TypeSignature Language="F#" Value="type NormalizerStaticExtensions = class" />
   <AssemblyInfo>
-    <AssemblyName>Microsoft.ML.Data</AssemblyName>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-  </AssemblyInfo>
-  <AssemblyInfo>
     <AssemblyName>Microsoft.ML.StaticPipe</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </AssemblyInfo>
@@ -24,16 +20,12 @@
   </Docs>
   <Members>
     <Member MemberName="Normalize">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.NormVector&lt;double&gt; Normalize (this Microsoft.ML.StaticPipe.Vector&lt;double&gt; input, bool fixZero = true, long maxTrainingExamples = 1000000000, Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitAffine&lt;System.Collections.Immutable.ImmutableArray&lt;double&gt;&gt; onFit = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.NormVector`1&lt;float64&gt; Normalize(class Microsoft.ML.StaticPipe.Vector`1&lt;float64&gt; input, bool fixZero, int64 maxTrainingExamples, class Microsoft.ML.StaticPipe.NormalizerStaticExtensions/OnFitAffine`1&lt;valuetype System.Collections.Immutable.ImmutableArray`1&lt;float64&gt;&gt; onFit) cil managed" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.NormVector&lt;double&gt; Normalize (this Microsoft.ML.StaticPipe.Vector&lt;double&gt; input, bool ensureZeroUntouched = true, long maximumExampleCount = 1000000000, Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitAffine&lt;System.Collections.Immutable.ImmutableArray&lt;double&gt;&gt; onFit = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.NormVector`1&lt;float64&gt; Normalize(class Microsoft.ML.StaticPipe.Vector`1&lt;float64&gt; input, bool ensureZeroUntouched, int64 maximumExampleCount, class Microsoft.ML.StaticPipe.NormalizerStaticExtensions/OnFitAffine`1&lt;valuetype System.Collections.Immutable.ImmutableArray`1&lt;float64&gt;&gt; onFit) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.NormalizerStaticExtensions.Normalize(Microsoft.ML.StaticPipe.Vector{System.Double},System.Boolean,System.Int64,Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitAffine{System.Collections.Immutable.ImmutableArray{System.Double}})" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function Normalize (input As Vector(Of Double), Optional fixZero As Boolean = true, Optional maxTrainingExamples As Long = 1000000000, Optional onFit As NormalizerStaticExtensions.OnFitAffine(Of ImmutableArray(Of Double)) = null) As NormVector(Of Double)" />
-      <MemberSignature Language="F#" Value="static member Normalize : Microsoft.ML.StaticPipe.Vector&lt;double&gt; * bool * int64 * Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitAffine&lt;System.Collections.Immutable.ImmutableArray&lt;double&gt;&gt; -&gt; Microsoft.ML.StaticPipe.NormVector&lt;double&gt;" Usage="Microsoft.ML.StaticPipe.NormalizerStaticExtensions.Normalize (input, fixZero, maxTrainingExamples, onFit)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function Normalize (input As Vector(Of Double), Optional ensureZeroUntouched As Boolean = true, Optional maximumExampleCount As Long = 1000000000, Optional onFit As NormalizerStaticExtensions.OnFitAffine(Of ImmutableArray(Of Double)) = null) As NormVector(Of Double)" />
+      <MemberSignature Language="F#" Value="static member Normalize : Microsoft.ML.StaticPipe.Vector&lt;double&gt; * bool * int64 * Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitAffine&lt;System.Collections.Immutable.ImmutableArray&lt;double&gt;&gt; -&gt; Microsoft.ML.StaticPipe.NormVector&lt;double&gt;" Usage="Microsoft.ML.StaticPipe.NormalizerStaticExtensions.Normalize (input, ensureZeroUntouched, maximumExampleCount, onFit)" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StaticPipe</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -43,18 +35,18 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="input" Type="Microsoft.ML.StaticPipe.Vector&lt;System.Double&gt;" RefType="this" />
-        <Parameter Name="fixZero" Type="System.Boolean" />
-        <Parameter Name="maxTrainingExamples" Type="System.Int64" />
+        <Parameter Name="ensureZeroUntouched" Type="System.Boolean" />
+        <Parameter Name="maximumExampleCount" Type="System.Int64" />
         <Parameter Name="onFit" Type="Microsoft.ML.StaticPipe.NormalizerStaticExtensions+OnFitAffine&lt;System.Collections.Immutable.ImmutableArray&lt;System.Double&gt;&gt;" />
       </Parameters>
       <Docs>
-        <param name="input">The input column.</param>
-        <param name="fixZero">If set to <c>false</c>, then the observed minimum and maximum during fitting
+        <param name="input">The column containing the vectors to apply the normalization to.</param>
+        <param name="ensureZeroUntouched">If set to <c>false</c>, then the observed minimum and maximum during fitting
             will map to -1 and 1 respectively, exactly. If however set to <c>true</c>, then 0 will always map to 0.
             This is valuable for the sake of sparsity preservation, if normalizing sparse vectors.</param>
-        <param name="maxTrainingExamples">When gathering statistics only look at most this many examples.</param>
+        <param name="maximumExampleCount">When gathering statistics only look at most this many examples.</param>
         <param name="onFit">A delegate called whenever the estimator is fit, with the learned slopes
-            and, if <paramref name="fixZero" /> is <c>false</c>, the offsets as well.</param>
+            and, if <paramref name="ensureZeroUntouched" /> is <c>false</c>, the offsets as well.</param>
         <summary>
             Learns an affine function based on the minimum and maximum, so that all values between the minimum and
             maximum observed during fitting fall into the range of -1 to 1.
@@ -67,16 +59,12 @@
       </Docs>
     </Member>
     <Member MemberName="Normalize">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.NormVector&lt;float&gt; Normalize (this Microsoft.ML.StaticPipe.Vector&lt;float&gt; input, bool fixZero = true, long maxTrainingExamples = 1000000000, Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitAffine&lt;System.Collections.Immutable.ImmutableArray&lt;float&gt;&gt; onFit = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.NormVector`1&lt;float32&gt; Normalize(class Microsoft.ML.StaticPipe.Vector`1&lt;float32&gt; input, bool fixZero, int64 maxTrainingExamples, class Microsoft.ML.StaticPipe.NormalizerStaticExtensions/OnFitAffine`1&lt;valuetype System.Collections.Immutable.ImmutableArray`1&lt;float32&gt;&gt; onFit) cil managed" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.NormVector&lt;float&gt; Normalize (this Microsoft.ML.StaticPipe.Vector&lt;float&gt; input, bool ensureZeroUntouched = true, long maximumExampleCount = 1000000000, Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitAffine&lt;System.Collections.Immutable.ImmutableArray&lt;float&gt;&gt; onFit = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.NormVector`1&lt;float32&gt; Normalize(class Microsoft.ML.StaticPipe.Vector`1&lt;float32&gt; input, bool ensureZeroUntouched, int64 maximumExampleCount, class Microsoft.ML.StaticPipe.NormalizerStaticExtensions/OnFitAffine`1&lt;valuetype System.Collections.Immutable.ImmutableArray`1&lt;float32&gt;&gt; onFit) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.NormalizerStaticExtensions.Normalize(Microsoft.ML.StaticPipe.Vector{System.Single},System.Boolean,System.Int64,Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitAffine{System.Collections.Immutable.ImmutableArray{System.Single}})" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function Normalize (input As Vector(Of Single), Optional fixZero As Boolean = true, Optional maxTrainingExamples As Long = 1000000000, Optional onFit As NormalizerStaticExtensions.OnFitAffine(Of ImmutableArray(Of Single)) = null) As NormVector(Of Single)" />
-      <MemberSignature Language="F#" Value="static member Normalize : Microsoft.ML.StaticPipe.Vector&lt;single&gt; * bool * int64 * Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitAffine&lt;System.Collections.Immutable.ImmutableArray&lt;single&gt;&gt; -&gt; Microsoft.ML.StaticPipe.NormVector&lt;single&gt;" Usage="Microsoft.ML.StaticPipe.NormalizerStaticExtensions.Normalize (input, fixZero, maxTrainingExamples, onFit)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function Normalize (input As Vector(Of Single), Optional ensureZeroUntouched As Boolean = true, Optional maximumExampleCount As Long = 1000000000, Optional onFit As NormalizerStaticExtensions.OnFitAffine(Of ImmutableArray(Of Single)) = null) As NormVector(Of Single)" />
+      <MemberSignature Language="F#" Value="static member Normalize : Microsoft.ML.StaticPipe.Vector&lt;single&gt; * bool * int64 * Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitAffine&lt;System.Collections.Immutable.ImmutableArray&lt;single&gt;&gt; -&gt; Microsoft.ML.StaticPipe.NormVector&lt;single&gt;" Usage="Microsoft.ML.StaticPipe.NormalizerStaticExtensions.Normalize (input, ensureZeroUntouched, maximumExampleCount, onFit)" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StaticPipe</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -86,18 +74,18 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="input" Type="Microsoft.ML.StaticPipe.Vector&lt;System.Single&gt;" RefType="this" />
-        <Parameter Name="fixZero" Type="System.Boolean" />
-        <Parameter Name="maxTrainingExamples" Type="System.Int64" />
+        <Parameter Name="ensureZeroUntouched" Type="System.Boolean" />
+        <Parameter Name="maximumExampleCount" Type="System.Int64" />
         <Parameter Name="onFit" Type="Microsoft.ML.StaticPipe.NormalizerStaticExtensions+OnFitAffine&lt;System.Collections.Immutable.ImmutableArray&lt;System.Single&gt;&gt;" />
       </Parameters>
       <Docs>
         <param name="input">The input column.</param>
-        <param name="fixZero">If set to <c>false</c>, then the observed minimum and maximum during fitting
+        <param name="ensureZeroUntouched">If set to <c>false</c>, then the observed minimum and maximum during fitting
             will map to -1 and 1 respectively, exactly. If however set to <c>true</c>, then 0 will always map to 0.
             This is valuable for the sake of sparsity preservation, if normalizing sparse vectors.</param>
-        <param name="maxTrainingExamples">When gathering statistics only look at most this many examples.</param>
+        <param name="maximumExampleCount">When gathering statistics only look at most this many examples.</param>
         <param name="onFit">A delegate that can be called whenever the function is fit, with the learned slopes
-            and, if <paramref name="fixZero" /> is <c>false</c>, the offsets as well.</param>
+            and, if <paramref name="ensureZeroUntouched" /> is <c>false</c>, the offsets as well.</param>
         <summary>
             Learns an affine function based on the minimum and maximum, so that all values between the minimum and
             maximum observed during fitting fall into the range of -1 to 1.
@@ -110,16 +98,12 @@
       </Docs>
     </Member>
     <Member MemberName="NormalizeByBinning">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.NormVector&lt;double&gt; NormalizeByBinning (this Microsoft.ML.StaticPipe.Vector&lt;double&gt; input, int maxBins = 1024, bool fixZero = true, long maxTrainingExamples = 1000000000, Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitBinned&lt;System.Collections.Immutable.ImmutableArray&lt;double&gt;&gt; onFit = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.NormVector`1&lt;float64&gt; NormalizeByBinning(class Microsoft.ML.StaticPipe.Vector`1&lt;float64&gt; input, int32 maxBins, bool fixZero, int64 maxTrainingExamples, class Microsoft.ML.StaticPipe.NormalizerStaticExtensions/OnFitBinned`1&lt;valuetype System.Collections.Immutable.ImmutableArray`1&lt;float64&gt;&gt; onFit) cil managed" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.NormVector&lt;double&gt; NormalizeByBinning (this Microsoft.ML.StaticPipe.Vector&lt;double&gt; input, int maximumBinCount = 1024, bool ensureZeroUntouched = true, long maximumExampleCount = 1000000000, Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitBinned&lt;System.Collections.Immutable.ImmutableArray&lt;double&gt;&gt; onFit = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.NormVector`1&lt;float64&gt; NormalizeByBinning(class Microsoft.ML.StaticPipe.Vector`1&lt;float64&gt; input, int32 maximumBinCount, bool ensureZeroUntouched, int64 maximumExampleCount, class Microsoft.ML.StaticPipe.NormalizerStaticExtensions/OnFitBinned`1&lt;valuetype System.Collections.Immutable.ImmutableArray`1&lt;float64&gt;&gt; onFit) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.NormalizerStaticExtensions.NormalizeByBinning(Microsoft.ML.StaticPipe.Vector{System.Double},System.Int32,System.Boolean,System.Int64,Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitBinned{System.Collections.Immutable.ImmutableArray{System.Double}})" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function NormalizeByBinning (input As Vector(Of Double), Optional maxBins As Integer = 1024, Optional fixZero As Boolean = true, Optional maxTrainingExamples As Long = 1000000000, Optional onFit As NormalizerStaticExtensions.OnFitBinned(Of ImmutableArray(Of Double)) = null) As NormVector(Of Double)" />
-      <MemberSignature Language="F#" Value="static member NormalizeByBinning : Microsoft.ML.StaticPipe.Vector&lt;double&gt; * int * bool * int64 * Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitBinned&lt;System.Collections.Immutable.ImmutableArray&lt;double&gt;&gt; -&gt; Microsoft.ML.StaticPipe.NormVector&lt;double&gt;" Usage="Microsoft.ML.StaticPipe.NormalizerStaticExtensions.NormalizeByBinning (input, maxBins, fixZero, maxTrainingExamples, onFit)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function NormalizeByBinning (input As Vector(Of Double), Optional maximumBinCount As Integer = 1024, Optional ensureZeroUntouched As Boolean = true, Optional maximumExampleCount As Long = 1000000000, Optional onFit As NormalizerStaticExtensions.OnFitBinned(Of ImmutableArray(Of Double)) = null) As NormVector(Of Double)" />
+      <MemberSignature Language="F#" Value="static member NormalizeByBinning : Microsoft.ML.StaticPipe.Vector&lt;double&gt; * int * bool * int64 * Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitBinned&lt;System.Collections.Immutable.ImmutableArray&lt;double&gt;&gt; -&gt; Microsoft.ML.StaticPipe.NormVector&lt;double&gt;" Usage="Microsoft.ML.StaticPipe.NormalizerStaticExtensions.NormalizeByBinning (input, maximumBinCount, ensureZeroUntouched, maximumExampleCount, onFit)" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StaticPipe</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -129,18 +113,18 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="input" Type="Microsoft.ML.StaticPipe.Vector&lt;System.Double&gt;" RefType="this" />
-        <Parameter Name="maxBins" Type="System.Int32" />
-        <Parameter Name="fixZero" Type="System.Boolean" />
-        <Parameter Name="maxTrainingExamples" Type="System.Int64" />
+        <Parameter Name="maximumBinCount" Type="System.Int32" />
+        <Parameter Name="ensureZeroUntouched" Type="System.Boolean" />
+        <Parameter Name="maximumExampleCount" Type="System.Int64" />
         <Parameter Name="onFit" Type="Microsoft.ML.StaticPipe.NormalizerStaticExtensions+OnFitBinned&lt;System.Collections.Immutable.ImmutableArray&lt;System.Double&gt;&gt;" />
       </Parameters>
       <Docs>
-        <param name="input">The input column.</param>
-        <param name="maxBins">The maximum number of discretization points to learn per slot.</param>
-        <param name="fixZero">Normally the output is in the range of 0 to 1, but if set to <c>true</c>, then what
+        <param name="input">The column containing the vectors to apply the normalization to.</param>
+        <param name="maximumBinCount">The maximum number of discretization points to learn per slot.</param>
+        <param name="ensureZeroUntouched">Normally the output is in the range of 0 to 1, but if set to <c>true</c>, then what
             would have been the output for a zero input is subtracted off the value.
             This is valuable for the sake of sparsity preservation, if normalizing sparse vectors.</param>
-        <param name="maxTrainingExamples">When gathering statistics only look at most this many examples.</param>
+        <param name="maximumExampleCount">When gathering statistics only look at most this many examples.</param>
         <param name="onFit">A delegate called whenever the estimator is fit, with the bin upper bounds for each slot.</param>
         <summary>
             Learns a function based on a discretization of the input values. The observed values for each slot are
@@ -148,7 +132,7 @@
             to make these bins equal in population, but under some circumstances this may be impossible (for example, a slot
             with a very dominant mode). The way the mapping works is, if there are <c>N</c> bins in a slot, and a value
             falls in the range of bin <c>n</c> (indexed from 0), the output value is <c>n / (N - 1)</c>, and then possibly
-            subtracting off the binned value for what 0 would have been if <paramref name="fixZero" /> is true.
+            subtracting off the binned value for what 0 would have been if <paramref name="ensureZeroUntouched" /> is true.
             </summary>
         <returns>The normalized column.</returns>
         <remarks>Note that the statistics gathering and normalization is done independently per slot of the
@@ -156,16 +140,12 @@
       </Docs>
     </Member>
     <Member MemberName="NormalizeByBinning">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.NormVector&lt;float&gt; NormalizeByBinning (this Microsoft.ML.StaticPipe.Vector&lt;float&gt; input, int maxBins = 1024, bool fixZero = true, long maxTrainingExamples = 1000000000, Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitBinned&lt;System.Collections.Immutable.ImmutableArray&lt;float&gt;&gt; onFit = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.NormVector`1&lt;float32&gt; NormalizeByBinning(class Microsoft.ML.StaticPipe.Vector`1&lt;float32&gt; input, int32 maxBins, bool fixZero, int64 maxTrainingExamples, class Microsoft.ML.StaticPipe.NormalizerStaticExtensions/OnFitBinned`1&lt;valuetype System.Collections.Immutable.ImmutableArray`1&lt;float32&gt;&gt; onFit) cil managed" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.NormVector&lt;float&gt; NormalizeByBinning (this Microsoft.ML.StaticPipe.Vector&lt;float&gt; input, int maximumBinCount = 1024, bool ensureZeroUntouched = true, long maximumExampleCount = 1000000000, Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitBinned&lt;System.Collections.Immutable.ImmutableArray&lt;float&gt;&gt; onFit = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.NormVector`1&lt;float32&gt; NormalizeByBinning(class Microsoft.ML.StaticPipe.Vector`1&lt;float32&gt; input, int32 maximumBinCount, bool ensureZeroUntouched, int64 maximumExampleCount, class Microsoft.ML.StaticPipe.NormalizerStaticExtensions/OnFitBinned`1&lt;valuetype System.Collections.Immutable.ImmutableArray`1&lt;float32&gt;&gt; onFit) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.NormalizerStaticExtensions.NormalizeByBinning(Microsoft.ML.StaticPipe.Vector{System.Single},System.Int32,System.Boolean,System.Int64,Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitBinned{System.Collections.Immutable.ImmutableArray{System.Single}})" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function NormalizeByBinning (input As Vector(Of Single), Optional maxBins As Integer = 1024, Optional fixZero As Boolean = true, Optional maxTrainingExamples As Long = 1000000000, Optional onFit As NormalizerStaticExtensions.OnFitBinned(Of ImmutableArray(Of Single)) = null) As NormVector(Of Single)" />
-      <MemberSignature Language="F#" Value="static member NormalizeByBinning : Microsoft.ML.StaticPipe.Vector&lt;single&gt; * int * bool * int64 * Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitBinned&lt;System.Collections.Immutable.ImmutableArray&lt;single&gt;&gt; -&gt; Microsoft.ML.StaticPipe.NormVector&lt;single&gt;" Usage="Microsoft.ML.StaticPipe.NormalizerStaticExtensions.NormalizeByBinning (input, maxBins, fixZero, maxTrainingExamples, onFit)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function NormalizeByBinning (input As Vector(Of Single), Optional maximumBinCount As Integer = 1024, Optional ensureZeroUntouched As Boolean = true, Optional maximumExampleCount As Long = 1000000000, Optional onFit As NormalizerStaticExtensions.OnFitBinned(Of ImmutableArray(Of Single)) = null) As NormVector(Of Single)" />
+      <MemberSignature Language="F#" Value="static member NormalizeByBinning : Microsoft.ML.StaticPipe.Vector&lt;single&gt; * int * bool * int64 * Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitBinned&lt;System.Collections.Immutable.ImmutableArray&lt;single&gt;&gt; -&gt; Microsoft.ML.StaticPipe.NormVector&lt;single&gt;" Usage="Microsoft.ML.StaticPipe.NormalizerStaticExtensions.NormalizeByBinning (input, maximumBinCount, ensureZeroUntouched, maximumExampleCount, onFit)" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StaticPipe</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -175,18 +155,18 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="input" Type="Microsoft.ML.StaticPipe.Vector&lt;System.Single&gt;" RefType="this" />
-        <Parameter Name="maxBins" Type="System.Int32" />
-        <Parameter Name="fixZero" Type="System.Boolean" />
-        <Parameter Name="maxTrainingExamples" Type="System.Int64" />
+        <Parameter Name="maximumBinCount" Type="System.Int32" />
+        <Parameter Name="ensureZeroUntouched" Type="System.Boolean" />
+        <Parameter Name="maximumExampleCount" Type="System.Int64" />
         <Parameter Name="onFit" Type="Microsoft.ML.StaticPipe.NormalizerStaticExtensions+OnFitBinned&lt;System.Collections.Immutable.ImmutableArray&lt;System.Single&gt;&gt;" />
       </Parameters>
       <Docs>
-        <param name="input">The input column.</param>
-        <param name="maxBins">The maximum number of discretization points to learn per slot.</param>
-        <param name="fixZero">Normally the output is in the range of 0 to 1, but if set to <c>true</c>, then what
+        <param name="input">The column containing the vectors to apply the normalization to.</param>
+        <param name="maximumBinCount">The maximum number of discretization points to learn per slot.</param>
+        <param name="ensureZeroUntouched">Normally the output is in the range of 0 to 1, but if set to <c>true</c>, then what
             would have been the output for a zero input is subtracted off the value.
             This is valuable for the sake of sparsity preservation, if normalizing sparse vectors.</param>
-        <param name="maxTrainingExamples">When gathering statistics only look at most this many examples.</param>
+        <param name="maximumExampleCount">When gathering statistics only look at most this many examples.</param>
         <param name="onFit">A delegate called whenever the estimator is fit, with the bin upper bounds for each slot.</param>
         <summary>
             Learns a function based on a discretization of the input values. The observed values for each slot are
@@ -194,7 +174,7 @@
             to make these bins equal in population, but under some circumstances this may be impossible (for example, a slot
             with a very dominant mode). The way the mapping works is, if there are <c>N</c> bins in a slot, and a value
             falls in the range of bin <c>n</c> (indexed from 0), the output value is <c>n / (N - 1)</c>, and then possibly
-            subtracting off the binned value for what 0 would have been if <paramref name="fixZero" /> is true.
+            subtracting off the binned value for what 0 would have been if <paramref name="ensureZeroUntouched" /> is true.
             </summary>
         <returns>The normalized column.</returns>
         <remarks>Note that the statistics gathering and normalization is done independently per slot of the
@@ -202,16 +182,12 @@
       </Docs>
     </Member>
     <Member MemberName="NormalizeByCumulativeDistribution">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.NormVector&lt;double&gt; NormalizeByCumulativeDistribution (this Microsoft.ML.StaticPipe.Vector&lt;double&gt; input, bool fixZero = true, bool useLog = false, long maxTrainingExamples = 1000000000, Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitCumulativeDistribution&lt;System.Collections.Immutable.ImmutableArray&lt;double&gt;&gt; onFit = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.NormVector`1&lt;float64&gt; NormalizeByCumulativeDistribution(class Microsoft.ML.StaticPipe.Vector`1&lt;float64&gt; input, bool fixZero, bool useLog, int64 maxTrainingExamples, class Microsoft.ML.StaticPipe.NormalizerStaticExtensions/OnFitCumulativeDistribution`1&lt;valuetype System.Collections.Immutable.ImmutableArray`1&lt;float64&gt;&gt; onFit) cil managed" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.NormVector&lt;double&gt; NormalizeByCumulativeDistribution (this Microsoft.ML.StaticPipe.Vector&lt;double&gt; input, bool ensureZeroUntouched = true, bool useLog = false, long maximumExampleCount = 1000000000, Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitCumulativeDistribution&lt;System.Collections.Immutable.ImmutableArray&lt;double&gt;&gt; onFit = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.NormVector`1&lt;float64&gt; NormalizeByCumulativeDistribution(class Microsoft.ML.StaticPipe.Vector`1&lt;float64&gt; input, bool ensureZeroUntouched, bool useLog, int64 maximumExampleCount, class Microsoft.ML.StaticPipe.NormalizerStaticExtensions/OnFitCumulativeDistribution`1&lt;valuetype System.Collections.Immutable.ImmutableArray`1&lt;float64&gt;&gt; onFit) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.NormalizerStaticExtensions.NormalizeByCumulativeDistribution(Microsoft.ML.StaticPipe.Vector{System.Double},System.Boolean,System.Boolean,System.Int64,Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitCumulativeDistribution{System.Collections.Immutable.ImmutableArray{System.Double}})" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function NormalizeByCumulativeDistribution (input As Vector(Of Double), Optional fixZero As Boolean = true, Optional useLog As Boolean = false, Optional maxTrainingExamples As Long = 1000000000, Optional onFit As NormalizerStaticExtensions.OnFitCumulativeDistribution(Of ImmutableArray(Of Double)) = null) As NormVector(Of Double)" />
-      <MemberSignature Language="F#" Value="static member NormalizeByCumulativeDistribution : Microsoft.ML.StaticPipe.Vector&lt;double&gt; * bool * bool * int64 * Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitCumulativeDistribution&lt;System.Collections.Immutable.ImmutableArray&lt;double&gt;&gt; -&gt; Microsoft.ML.StaticPipe.NormVector&lt;double&gt;" Usage="Microsoft.ML.StaticPipe.NormalizerStaticExtensions.NormalizeByCumulativeDistribution (input, fixZero, useLog, maxTrainingExamples, onFit)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function NormalizeByCumulativeDistribution (input As Vector(Of Double), Optional ensureZeroUntouched As Boolean = true, Optional useLog As Boolean = false, Optional maximumExampleCount As Long = 1000000000, Optional onFit As NormalizerStaticExtensions.OnFitCumulativeDistribution(Of ImmutableArray(Of Double)) = null) As NormVector(Of Double)" />
+      <MemberSignature Language="F#" Value="static member NormalizeByCumulativeDistribution : Microsoft.ML.StaticPipe.Vector&lt;double&gt; * bool * bool * int64 * Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitCumulativeDistribution&lt;System.Collections.Immutable.ImmutableArray&lt;double&gt;&gt; -&gt; Microsoft.ML.StaticPipe.NormVector&lt;double&gt;" Usage="Microsoft.ML.StaticPipe.NormalizerStaticExtensions.NormalizeByCumulativeDistribution (input, ensureZeroUntouched, useLog, maximumExampleCount, onFit)" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StaticPipe</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -221,19 +197,19 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="input" Type="Microsoft.ML.StaticPipe.Vector&lt;System.Double&gt;" RefType="this" />
-        <Parameter Name="fixZero" Type="System.Boolean" />
+        <Parameter Name="ensureZeroUntouched" Type="System.Boolean" />
         <Parameter Name="useLog" Type="System.Boolean" />
-        <Parameter Name="maxTrainingExamples" Type="System.Int64" />
+        <Parameter Name="maximumExampleCount" Type="System.Int64" />
         <Parameter Name="onFit" Type="Microsoft.ML.StaticPipe.NormalizerStaticExtensions+OnFitCumulativeDistribution&lt;System.Collections.Immutable.ImmutableArray&lt;System.Double&gt;&gt;" />
       </Parameters>
       <Docs>
-        <param name="input">The input column.</param>
-        <param name="fixZero">If set to <c>false</c>, then the learned distributional parameters will be
+        <param name="input">The column containing the vectors to apply the normalization to.</param>
+        <param name="ensureZeroUntouched">If set to <c>false</c>, then the learned distributional parameters will be
             adjusted in such a way as to ensure that the input 0 maps to the output 0.
             This is valuable for the sake of sparsity preservation, if normalizing sparse vectors.</param>
         <param name="useLog">If set to true then we transform over the logarithm of the values, rather
-            than just the raw values. If this is set to <c>true</c> then <paramref name="fixZero" /> is ignored.</param>
-        <param name="maxTrainingExamples">When gathering statistics only look at most this many examples.</param>
+            than just the raw values. If this is set to <c>true</c> then <paramref name="ensureZeroUntouched" /> is ignored.</param>
+        <param name="maximumExampleCount">When gathering statistics only look at most this many examples.</param>
         <param name="onFit">A delegate called whenever the estimator is fit, with the learned mean and standard
             deviation for all slots.</param>
         <summary>
@@ -246,16 +222,12 @@
       </Docs>
     </Member>
     <Member MemberName="NormalizeByCumulativeDistribution">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.NormVector&lt;float&gt; NormalizeByCumulativeDistribution (this Microsoft.ML.StaticPipe.Vector&lt;float&gt; input, bool fixZero = true, bool useLog = false, long maxTrainingExamples = 1000000000, Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitCumulativeDistribution&lt;System.Collections.Immutable.ImmutableArray&lt;float&gt;&gt; onFit = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.NormVector`1&lt;float32&gt; NormalizeByCumulativeDistribution(class Microsoft.ML.StaticPipe.Vector`1&lt;float32&gt; input, bool fixZero, bool useLog, int64 maxTrainingExamples, class Microsoft.ML.StaticPipe.NormalizerStaticExtensions/OnFitCumulativeDistribution`1&lt;valuetype System.Collections.Immutable.ImmutableArray`1&lt;float32&gt;&gt; onFit) cil managed" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.NormVector&lt;float&gt; NormalizeByCumulativeDistribution (this Microsoft.ML.StaticPipe.Vector&lt;float&gt; input, bool ensureZeroUntouched = true, bool useLog = false, long maximumNumberOfExamples = 1000000000, Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitCumulativeDistribution&lt;System.Collections.Immutable.ImmutableArray&lt;float&gt;&gt; onFit = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.NormVector`1&lt;float32&gt; NormalizeByCumulativeDistribution(class Microsoft.ML.StaticPipe.Vector`1&lt;float32&gt; input, bool ensureZeroUntouched, bool useLog, int64 maximumNumberOfExamples, class Microsoft.ML.StaticPipe.NormalizerStaticExtensions/OnFitCumulativeDistribution`1&lt;valuetype System.Collections.Immutable.ImmutableArray`1&lt;float32&gt;&gt; onFit) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.NormalizerStaticExtensions.NormalizeByCumulativeDistribution(Microsoft.ML.StaticPipe.Vector{System.Single},System.Boolean,System.Boolean,System.Int64,Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitCumulativeDistribution{System.Collections.Immutable.ImmutableArray{System.Single}})" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function NormalizeByCumulativeDistribution (input As Vector(Of Single), Optional fixZero As Boolean = true, Optional useLog As Boolean = false, Optional maxTrainingExamples As Long = 1000000000, Optional onFit As NormalizerStaticExtensions.OnFitCumulativeDistribution(Of ImmutableArray(Of Single)) = null) As NormVector(Of Single)" />
-      <MemberSignature Language="F#" Value="static member NormalizeByCumulativeDistribution : Microsoft.ML.StaticPipe.Vector&lt;single&gt; * bool * bool * int64 * Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitCumulativeDistribution&lt;System.Collections.Immutable.ImmutableArray&lt;single&gt;&gt; -&gt; Microsoft.ML.StaticPipe.NormVector&lt;single&gt;" Usage="Microsoft.ML.StaticPipe.NormalizerStaticExtensions.NormalizeByCumulativeDistribution (input, fixZero, useLog, maxTrainingExamples, onFit)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function NormalizeByCumulativeDistribution (input As Vector(Of Single), Optional ensureZeroUntouched As Boolean = true, Optional useLog As Boolean = false, Optional maximumNumberOfExamples As Long = 1000000000, Optional onFit As NormalizerStaticExtensions.OnFitCumulativeDistribution(Of ImmutableArray(Of Single)) = null) As NormVector(Of Single)" />
+      <MemberSignature Language="F#" Value="static member NormalizeByCumulativeDistribution : Microsoft.ML.StaticPipe.Vector&lt;single&gt; * bool * bool * int64 * Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitCumulativeDistribution&lt;System.Collections.Immutable.ImmutableArray&lt;single&gt;&gt; -&gt; Microsoft.ML.StaticPipe.NormVector&lt;single&gt;" Usage="Microsoft.ML.StaticPipe.NormalizerStaticExtensions.NormalizeByCumulativeDistribution (input, ensureZeroUntouched, useLog, maximumNumberOfExamples, onFit)" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StaticPipe</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -265,19 +237,19 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="input" Type="Microsoft.ML.StaticPipe.Vector&lt;System.Single&gt;" RefType="this" />
-        <Parameter Name="fixZero" Type="System.Boolean" />
+        <Parameter Name="ensureZeroUntouched" Type="System.Boolean" />
         <Parameter Name="useLog" Type="System.Boolean" />
-        <Parameter Name="maxTrainingExamples" Type="System.Int64" />
+        <Parameter Name="maximumNumberOfExamples" Type="System.Int64" />
         <Parameter Name="onFit" Type="Microsoft.ML.StaticPipe.NormalizerStaticExtensions+OnFitCumulativeDistribution&lt;System.Collections.Immutable.ImmutableArray&lt;System.Single&gt;&gt;" />
       </Parameters>
       <Docs>
-        <param name="input">The input column.</param>
-        <param name="fixZero">If set to <c>false</c>, then the learned distributional parameters will be
+        <param name="input">The column containing the vectors to apply the normalization to.</param>
+        <param name="ensureZeroUntouched">If set to <c>false</c>, then the learned distributional parameters will be
             adjusted in such a way as to ensure that the input 0 maps to the output 0.
             This is valuable for the sake of sparsity preservation, if normalizing sparse vectors.</param>
         <param name="useLog">If set to true then we transform over the logarithm of the values, rather
-            than just the raw values. If this is set to <c>true</c> then <paramref name="fixZero" /> is ignored.</param>
-        <param name="maxTrainingExamples">When gathering statistics only look at most this many examples.</param>
+            than just the raw values. If this is set to <c>true</c> then <paramref name="ensureZeroUntouched" /> is ignored.</param>
+        <param name="maximumNumberOfExamples">When gathering statistics only look at most this many examples.</param>
         <param name="onFit">A delegate called whenever the estimator is fit, with the learned mean and standard
             deviation for all slots.</param>
         <summary>
@@ -289,17 +261,13 @@
             vector values.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NormalizeByMeanVar">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.NormVector&lt;double&gt; NormalizeByMeanVar (this Microsoft.ML.StaticPipe.Vector&lt;double&gt; input, bool fixZero = true, bool useLog = false, long maxTrainingExamples = 1000000000, Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitAffine&lt;System.Collections.Immutable.ImmutableArray&lt;double&gt;&gt; onFit = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.NormVector`1&lt;float64&gt; NormalizeByMeanVar(class Microsoft.ML.StaticPipe.Vector`1&lt;float64&gt; input, bool fixZero, bool useLog, int64 maxTrainingExamples, class Microsoft.ML.StaticPipe.NormalizerStaticExtensions/OnFitAffine`1&lt;valuetype System.Collections.Immutable.ImmutableArray`1&lt;float64&gt;&gt; onFit) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.NormalizerStaticExtensions.NormalizeByMeanVar(Microsoft.ML.StaticPipe.Vector{System.Double},System.Boolean,System.Boolean,System.Int64,Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitAffine{System.Collections.Immutable.ImmutableArray{System.Double}})" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function NormalizeByMeanVar (input As Vector(Of Double), Optional fixZero As Boolean = true, Optional useLog As Boolean = false, Optional maxTrainingExamples As Long = 1000000000, Optional onFit As NormalizerStaticExtensions.OnFitAffine(Of ImmutableArray(Of Double)) = null) As NormVector(Of Double)" />
-      <MemberSignature Language="F#" Value="static member NormalizeByMeanVar : Microsoft.ML.StaticPipe.Vector&lt;double&gt; * bool * bool * int64 * Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitAffine&lt;System.Collections.Immutable.ImmutableArray&lt;double&gt;&gt; -&gt; Microsoft.ML.StaticPipe.NormVector&lt;double&gt;" Usage="Microsoft.ML.StaticPipe.NormalizerStaticExtensions.NormalizeByMeanVar (input, fixZero, useLog, maxTrainingExamples, onFit)" />
+    <Member MemberName="NormalizeMeanVariance">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.NormVector&lt;double&gt; NormalizeMeanVariance (this Microsoft.ML.StaticPipe.Vector&lt;double&gt; input, bool ensureZeroUntouched = true, bool useLog = false, long maximumExampleCount = 1000000000, Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitAffine&lt;System.Collections.Immutable.ImmutableArray&lt;double&gt;&gt; onFit = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.NormVector`1&lt;float64&gt; NormalizeMeanVariance(class Microsoft.ML.StaticPipe.Vector`1&lt;float64&gt; input, bool ensureZeroUntouched, bool useLog, int64 maximumExampleCount, class Microsoft.ML.StaticPipe.NormalizerStaticExtensions/OnFitAffine`1&lt;valuetype System.Collections.Immutable.ImmutableArray`1&lt;float64&gt;&gt; onFit) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.NormalizerStaticExtensions.NormalizeMeanVariance(Microsoft.ML.StaticPipe.Vector{System.Double},System.Boolean,System.Boolean,System.Int64,Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitAffine{System.Collections.Immutable.ImmutableArray{System.Double}})" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function NormalizeMeanVariance (input As Vector(Of Double), Optional ensureZeroUntouched As Boolean = true, Optional useLog As Boolean = false, Optional maximumExampleCount As Long = 1000000000, Optional onFit As NormalizerStaticExtensions.OnFitAffine(Of ImmutableArray(Of Double)) = null) As NormVector(Of Double)" />
+      <MemberSignature Language="F#" Value="static member NormalizeMeanVariance : Microsoft.ML.StaticPipe.Vector&lt;double&gt; * bool * bool * int64 * Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitAffine&lt;System.Collections.Immutable.ImmutableArray&lt;double&gt;&gt; -&gt; Microsoft.ML.StaticPipe.NormVector&lt;double&gt;" Usage="Microsoft.ML.StaticPipe.NormalizerStaticExtensions.NormalizeMeanVariance (input, ensureZeroUntouched, useLog, maximumExampleCount, onFit)" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StaticPipe</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -309,19 +277,19 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="input" Type="Microsoft.ML.StaticPipe.Vector&lt;System.Double&gt;" RefType="this" />
-        <Parameter Name="fixZero" Type="System.Boolean" />
+        <Parameter Name="ensureZeroUntouched" Type="System.Boolean" />
         <Parameter Name="useLog" Type="System.Boolean" />
-        <Parameter Name="maxTrainingExamples" Type="System.Int64" />
+        <Parameter Name="maximumExampleCount" Type="System.Int64" />
         <Parameter Name="onFit" Type="Microsoft.ML.StaticPipe.NormalizerStaticExtensions+OnFitAffine&lt;System.Collections.Immutable.ImmutableArray&lt;System.Double&gt;&gt;" />
       </Parameters>
       <Docs>
-        <param name="input">The input column.</param>
-        <param name="fixZero">If set to <c>true</c> then the offset will always be considered zero.</param>
+        <param name="input">The column containing the vectors to apply the normalization to.</param>
+        <param name="ensureZeroUntouched">If set to <c>true</c> then the offset will always be considered zero.</param>
         <param name="useLog">If set to true then we transform over the logarithm of the values, rather
-            than just the raw values. If this is set to <c>true</c> then <paramref name="fixZero" /> is ignored.</param>
-        <param name="maxTrainingExamples">When gathering statistics only look at most this many examples.</param>
+            than just the raw values. If this is set to <c>true</c> then <paramref name="ensureZeroUntouched" /> is ignored.</param>
+        <param name="maximumExampleCount">When gathering statistics only look at most this many examples.</param>
         <param name="onFit">A delegate called whenever the estimator is fit, with the learned slopes
-            and, if <paramref name="fixZero" /> is <c>false</c>, the offsets as well.</param>
+            and, if <paramref name="ensureZeroUntouched" /> is <c>false</c>, the offsets as well.</param>
         <summary>
             Learns an affine function based on the observed mean and standard deviation. This is less susceptible
             to outliers as compared to <see cref="M:Microsoft.ML.StaticPipe.NormalizerStaticExtensions.Normalize(Microsoft.ML.StaticPipe.Vector{System.Double},System.Boolean,System.Int64,Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitAffine{System.Collections.Immutable.ImmutableArray{System.Double}})" />.
@@ -331,17 +299,13 @@
             vector values.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NormalizeByMeanVar">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.NormVector&lt;float&gt; NormalizeByMeanVar (this Microsoft.ML.StaticPipe.Vector&lt;float&gt; input, bool fixZero = true, bool useLog = false, long maxTrainingExamples = 1000000000, Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitAffine&lt;System.Collections.Immutable.ImmutableArray&lt;float&gt;&gt; onFit = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.NormVector`1&lt;float32&gt; NormalizeByMeanVar(class Microsoft.ML.StaticPipe.Vector`1&lt;float32&gt; input, bool fixZero, bool useLog, int64 maxTrainingExamples, class Microsoft.ML.StaticPipe.NormalizerStaticExtensions/OnFitAffine`1&lt;valuetype System.Collections.Immutable.ImmutableArray`1&lt;float32&gt;&gt; onFit) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.NormalizerStaticExtensions.NormalizeByMeanVar(Microsoft.ML.StaticPipe.Vector{System.Single},System.Boolean,System.Boolean,System.Int64,Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitAffine{System.Collections.Immutable.ImmutableArray{System.Single}})" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function NormalizeByMeanVar (input As Vector(Of Single), Optional fixZero As Boolean = true, Optional useLog As Boolean = false, Optional maxTrainingExamples As Long = 1000000000, Optional onFit As NormalizerStaticExtensions.OnFitAffine(Of ImmutableArray(Of Single)) = null) As NormVector(Of Single)" />
-      <MemberSignature Language="F#" Value="static member NormalizeByMeanVar : Microsoft.ML.StaticPipe.Vector&lt;single&gt; * bool * bool * int64 * Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitAffine&lt;System.Collections.Immutable.ImmutableArray&lt;single&gt;&gt; -&gt; Microsoft.ML.StaticPipe.NormVector&lt;single&gt;" Usage="Microsoft.ML.StaticPipe.NormalizerStaticExtensions.NormalizeByMeanVar (input, fixZero, useLog, maxTrainingExamples, onFit)" />
+    <Member MemberName="NormalizeMeanVariance">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.NormVector&lt;float&gt; NormalizeMeanVariance (this Microsoft.ML.StaticPipe.Vector&lt;float&gt; input, bool ensureZeroUntouched = true, bool useLog = false, long maximumExampleCount = 1000000000, Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitAffine&lt;System.Collections.Immutable.ImmutableArray&lt;float&gt;&gt; onFit = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.NormVector`1&lt;float32&gt; NormalizeMeanVariance(class Microsoft.ML.StaticPipe.Vector`1&lt;float32&gt; input, bool ensureZeroUntouched, bool useLog, int64 maximumExampleCount, class Microsoft.ML.StaticPipe.NormalizerStaticExtensions/OnFitAffine`1&lt;valuetype System.Collections.Immutable.ImmutableArray`1&lt;float32&gt;&gt; onFit) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.NormalizerStaticExtensions.NormalizeMeanVariance(Microsoft.ML.StaticPipe.Vector{System.Single},System.Boolean,System.Boolean,System.Int64,Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitAffine{System.Collections.Immutable.ImmutableArray{System.Single}})" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function NormalizeMeanVariance (input As Vector(Of Single), Optional ensureZeroUntouched As Boolean = true, Optional useLog As Boolean = false, Optional maximumExampleCount As Long = 1000000000, Optional onFit As NormalizerStaticExtensions.OnFitAffine(Of ImmutableArray(Of Single)) = null) As NormVector(Of Single)" />
+      <MemberSignature Language="F#" Value="static member NormalizeMeanVariance : Microsoft.ML.StaticPipe.Vector&lt;single&gt; * bool * bool * int64 * Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitAffine&lt;System.Collections.Immutable.ImmutableArray&lt;single&gt;&gt; -&gt; Microsoft.ML.StaticPipe.NormVector&lt;single&gt;" Usage="Microsoft.ML.StaticPipe.NormalizerStaticExtensions.NormalizeMeanVariance (input, ensureZeroUntouched, useLog, maximumExampleCount, onFit)" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StaticPipe</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -351,19 +315,19 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="input" Type="Microsoft.ML.StaticPipe.Vector&lt;System.Single&gt;" RefType="this" />
-        <Parameter Name="fixZero" Type="System.Boolean" />
+        <Parameter Name="ensureZeroUntouched" Type="System.Boolean" />
         <Parameter Name="useLog" Type="System.Boolean" />
-        <Parameter Name="maxTrainingExamples" Type="System.Int64" />
+        <Parameter Name="maximumExampleCount" Type="System.Int64" />
         <Parameter Name="onFit" Type="Microsoft.ML.StaticPipe.NormalizerStaticExtensions+OnFitAffine&lt;System.Collections.Immutable.ImmutableArray&lt;System.Single&gt;&gt;" />
       </Parameters>
       <Docs>
-        <param name="input">The input column.</param>
-        <param name="fixZero">If set to <c>true</c> then the offset will always be considered zero.</param>
+        <param name="input">The column containing the vectors to apply the normalization to.</param>
+        <param name="ensureZeroUntouched">If set to <c>true</c> then the offset will always be considered zero.</param>
         <param name="useLog">If set to true then we transform over the logarithm of the values, rather
-            than just the raw values. If this is set to <c>true</c> then <paramref name="fixZero" /> is ignored.</param>
-        <param name="maxTrainingExamples">When gathering statistics only look at most this many examples.</param>
+            than just the raw values. If this is set to <c>true</c> then <paramref name="ensureZeroUntouched" /> is ignored.</param>
+        <param name="maximumExampleCount">When gathering statistics only look at most this many examples.</param>
         <param name="onFit">A delegate called whenever the estimator is fit, with the learned slopes
-            and, if <paramref name="fixZero" /> is <c>false</c>, the offsets as well.</param>
+            and, if <paramref name="ensureZeroUntouched" /> is <c>false</c>, the offsets as well.</param>
         <summary>
             Learns an affine function based on the observed mean and standard deviation. This is less susceptible
             to outliers as compared to <see cref="M:Microsoft.ML.StaticPipe.NormalizerStaticExtensions.Normalize(Microsoft.ML.StaticPipe.Vector{System.Single},System.Boolean,System.Int64,Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitAffine{System.Collections.Immutable.ImmutableArray{System.Single}})" />.

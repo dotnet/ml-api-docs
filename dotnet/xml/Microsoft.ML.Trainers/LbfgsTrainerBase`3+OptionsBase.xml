@@ -1,11 +1,11 @@
 ﻿<Type Name="LbfgsTrainerBase&lt;TOptions,TTransformer,TModel&gt;+OptionsBase" FullName="Microsoft.ML.Trainers.LbfgsTrainerBase&lt;TOptions,TTransformer,TModel&gt;+OptionsBase">
-  <TypeSignature Language="C#" Value="public abstract class LbfgsTrainerBase&lt;TOptions,TTransformer,TModel&gt;.OptionsBase : Microsoft.ML.EntryPoints.LearnerInputBaseWithWeight where TOptions : LbfgsTrainerBase&lt;TOptions,TTransformer,TModel&gt;.OptionsBasenew() where TTransformer : ISingleFeaturePredictionTransformer&lt;TModel&gt; where TModel : class" />
-  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi abstract beforefieldinit LbfgsTrainerBase`3/OptionsBase&lt;.ctor (class Microsoft.ML.Trainers.LbfgsTrainerBase`3/OptionsBase&lt;!TOptions, !TTransformer, !TModel&gt;) TOptions, (class Microsoft.ML.ISingleFeaturePredictionTransformer`1&lt;!TModel&gt;) TTransformer, class TModel&gt; extends Microsoft.ML.EntryPoints.LearnerInputBaseWithWeight" />
+  <TypeSignature Language="C#" Value="public abstract class LbfgsTrainerBase&lt;TOptions,TTransformer,TModel&gt;.OptionsBase : Microsoft.ML.Trainers.TrainerInputBaseWithWeight where TOptions : LbfgsTrainerBase&lt;TOptions,TTransformer,TModel&gt;.OptionsBasenew() where TTransformer : ISingleFeaturePredictionTransformer&lt;TModel&gt; where TModel : class" />
+  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi abstract beforefieldinit LbfgsTrainerBase`3/OptionsBase&lt;.ctor (class Microsoft.ML.Trainers.LbfgsTrainerBase`3/OptionsBase&lt;!TOptions, !TTransformer, !TModel&gt;) TOptions, (class Microsoft.ML.ISingleFeaturePredictionTransformer`1&lt;!TModel&gt;) TTransformer, class TModel&gt; extends Microsoft.ML.Trainers.TrainerInputBaseWithWeight" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Trainers.LbfgsTrainerBase`3.OptionsBase" />
-  <TypeSignature Language="VB.NET" Value="Public MustInherit Class LbfgsTrainerBase(Of TOptions, TTransformer, TModel).OptionsBase&#xA;Inherits LearnerInputBaseWithWeight" />
-  <TypeSignature Language="F#" Value="type LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model (requires 'Options :&gt; LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model : null)&gt;.OptionsBase = class&#xA;    inherit LearnerInputBaseWithWeight" />
+  <TypeSignature Language="VB.NET" Value="Public MustInherit Class LbfgsTrainerBase(Of TOptions, TTransformer, TModel).OptionsBase&#xA;Inherits TrainerInputBaseWithWeight" />
+  <TypeSignature Language="F#" Value="type LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model (requires 'Options :&gt; LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model : null)&gt;.OptionsBase = class&#xA;    inherit TrainerInputBaseWithWeight" />
   <AssemblyInfo>
-    <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+    <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <TypeParameters>
@@ -27,11 +27,13 @@
     </TypeParameter>
   </TypeParameters>
   <Base>
-    <BaseTypeName>Microsoft.ML.EntryPoints.LearnerInputBaseWithWeight</BaseTypeName>
+    <BaseTypeName>Microsoft.ML.Trainers.TrainerInputBaseWithWeight</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+            Base options for <a href="https://en.wikipedia.org/wiki/Limited-memory_BFGS">L-BFGS</a>-based trainers.
+            </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -42,7 +44,7 @@
       <MemberSignature Language="VB.NET" Value="Protected Sub New ()" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
@@ -59,14 +61,14 @@
       <MemberSignature Language="F#" Value="val mutable DenseOptimizer : bool" Usage="Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model (requires 'Options :&gt; Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model : null)&gt;.OptionsBase.DenseOptimizer" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
-        <Attribute>
+        <Attribute FrameworkAlternate="ml-dotnet">
           <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Force densification of the internal optimization vectors", ShortName="do")</AttributeName>
         </Attribute>
-        <Attribute>
+        <Attribute FrameworkAlternate="ml-dotnet">
           <AttributeName>Microsoft.ML.EntryPoints.TlcModule/SweepableDiscreteParam("DenseOptimizer", new System.Object[] { Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument }, false)</AttributeName>
         </Attribute>
       </Attributes>
@@ -74,7 +76,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Force densification of the internal optimization vectors. Default is false.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -86,11 +90,11 @@
       <MemberSignature Language="F#" Value="val mutable EnforceNonNegativity : bool" Usage="Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model (requires 'Options :&gt; Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model : null)&gt;.OptionsBase.EnforceNonNegativity" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
-        <Attribute>
+        <Attribute FrameworkAlternate="ml-dotnet">
           <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Enforce non-negative weights", ShortName="nn", SortOrder=90)</AttributeName>
         </Attribute>
       </Attributes>
@@ -98,29 +102,63 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Enforce non-negative weights. Default is false.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="InitWtsDiameter">
-      <MemberSignature Language="C#" Value="public float InitWtsDiameter;" />
-      <MemberSignature Language="ILAsm" Value=".field public float32 InitWtsDiameter" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.LbfgsTrainerBase`3.OptionsBase.InitWtsDiameter" />
-      <MemberSignature Language="VB.NET" Value="Public InitWtsDiameter As Single " />
-      <MemberSignature Language="F#" Value="val mutable InitWtsDiameter : single" Usage="Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model (requires 'Options :&gt; Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model : null)&gt;.OptionsBase.InitWtsDiameter" />
+    <Member MemberName="HistorySize">
+      <MemberSignature Language="C#" Value="public int HistorySize;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 HistorySize" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.LbfgsTrainerBase`3.OptionsBase.HistorySize" />
+      <MemberSignature Language="VB.NET" Value="Public HistorySize As Integer " />
+      <MemberSignature Language="F#" Value="val mutable HistorySize : int" Usage="Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model (requires 'Options :&gt; Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model : null)&gt;.OptionsBase.HistorySize" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
-        <Attribute>
-          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.LastOccurenceWins, HelpText="Init weights diameter", ShortName="initwts", SortOrder=140)</AttributeName>
+        <Attribute FrameworkAlternate="ml-dotnet">
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Memory size for L-BFGS. Low=faster, less accurate", ShortName="m, MemorySize", SortOrder=50)</AttributeName>
         </Attribute>
-        <Attribute>
+        <Attribute FrameworkAlternate="ml-dotnet">
+          <AttributeName>Microsoft.ML.EntryPoints.TlcModule/SweepableDiscreteParam("MemorySize", new System.Object[] { Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument }, false)</AttributeName>
+        </Attribute>
+        <Attribute FrameworkAlternate="ml-dotnet">
+          <AttributeName>Microsoft.ML.Internal.Internallearn.TGUI(Description="Memory size for L-BFGS", SuggestedSweeps="5,20,50")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Number of previous iterations to remember for estimating the Hessian. Lower values mean faster but less accurate estimates.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitialWeightsDiameter">
+      <MemberSignature Language="C#" Value="public float InitialWeightsDiameter;" />
+      <MemberSignature Language="ILAsm" Value=".field public float32 InitialWeightsDiameter" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.LbfgsTrainerBase`3.OptionsBase.InitialWeightsDiameter" />
+      <MemberSignature Language="VB.NET" Value="Public InitialWeightsDiameter As Single " />
+      <MemberSignature Language="F#" Value="val mutable InitialWeightsDiameter : single" Usage="Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model (requires 'Options :&gt; Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model : null)&gt;.OptionsBase.InitialWeightsDiameter" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute FrameworkAlternate="ml-dotnet">
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.LastOccurenceWins, HelpText="Init weights diameter", ShortName="initwts, InitWtsDiameter", SortOrder=140)</AttributeName>
+        </Attribute>
+        <Attribute FrameworkAlternate="ml-dotnet">
           <AttributeName>Microsoft.ML.EntryPoints.TlcModule/SweepableFloatParam("InitWtsDiameter", 0, 1, -1, 5, false)</AttributeName>
         </Attribute>
-        <Attribute>
+        <Attribute FrameworkAlternate="ml-dotnet">
           <AttributeName>Microsoft.ML.Internal.Internallearn.TGUI(Label="Initial Weights Scale", SuggestedSweeps="0,0.1,0.5,1")</AttributeName>
         </Attribute>
       </Attributes>
@@ -129,30 +167,34 @@
       </ReturnValue>
       <Docs>
         <summary>
-            Init Weights Diameter
+            Initial weights scale.
             </summary>
+        <returns>
+            This property is only used if the provided value is positive.
+            The weights will be randomly selected from InitialWeights * [-0.5,0.5] interval with uniform distribution.
+            </returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="L1Weight">
-      <MemberSignature Language="C#" Value="public float L1Weight;" />
-      <MemberSignature Language="ILAsm" Value=".field public float32 L1Weight" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.LbfgsTrainerBase`3.OptionsBase.L1Weight" />
-      <MemberSignature Language="VB.NET" Value="Public L1Weight As Single " />
-      <MemberSignature Language="F#" Value="val mutable L1Weight : single" Usage="Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model (requires 'Options :&gt; Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model : null)&gt;.OptionsBase.L1Weight" />
+    <Member MemberName="L1Regularization">
+      <MemberSignature Language="C#" Value="public float L1Regularization;" />
+      <MemberSignature Language="ILAsm" Value=".field public float32 L1Regularization" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.LbfgsTrainerBase`3.OptionsBase.L1Regularization" />
+      <MemberSignature Language="VB.NET" Value="Public L1Regularization As Single " />
+      <MemberSignature Language="F#" Value="val mutable L1Regularization : single" Usage="Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model (requires 'Options :&gt; Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model : null)&gt;.OptionsBase.L1Regularization" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
-        <Attribute>
-          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="L1 regularization weight", ShortName="l1", SortOrder=50)</AttributeName>
+        <Attribute FrameworkAlternate="ml-dotnet">
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="L1 regularization weight", ShortName="l1, L1Weight", SortOrder=50)</AttributeName>
         </Attribute>
-        <Attribute>
+        <Attribute FrameworkAlternate="ml-dotnet">
           <AttributeName>Microsoft.ML.EntryPoints.TlcModule/SweepableFloatParam(0, 1, -1, 4, false)</AttributeName>
         </Attribute>
-        <Attribute>
+        <Attribute FrameworkAlternate="ml-dotnet">
           <AttributeName>Microsoft.ML.Internal.Internallearn.TGUI(Description="Weight of L1 regularizer term", Label="L1 Weight", SuggestedSweeps="0,0.1,1")</AttributeName>
         </Attribute>
       </Attributes>
@@ -160,29 +202,31 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            L1 regularization weight.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="L2Weight">
-      <MemberSignature Language="C#" Value="public float L2Weight;" />
-      <MemberSignature Language="ILAsm" Value=".field public float32 L2Weight" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.LbfgsTrainerBase`3.OptionsBase.L2Weight" />
-      <MemberSignature Language="VB.NET" Value="Public L2Weight As Single " />
-      <MemberSignature Language="F#" Value="val mutable L2Weight : single" Usage="Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model (requires 'Options :&gt; Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model : null)&gt;.OptionsBase.L2Weight" />
+    <Member MemberName="L2Regularization">
+      <MemberSignature Language="C#" Value="public float L2Regularization;" />
+      <MemberSignature Language="ILAsm" Value=".field public float32 L2Regularization" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.LbfgsTrainerBase`3.OptionsBase.L2Regularization" />
+      <MemberSignature Language="VB.NET" Value="Public L2Regularization As Single " />
+      <MemberSignature Language="F#" Value="val mutable L2Regularization : single" Usage="Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model (requires 'Options :&gt; Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model : null)&gt;.OptionsBase.L2Regularization" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
-        <Attribute>
-          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="L2 regularization weight", ShortName="l2", SortOrder=50)</AttributeName>
+        <Attribute FrameworkAlternate="ml-dotnet">
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="L2 regularization weight", ShortName="l2, L2Weight", SortOrder=50)</AttributeName>
         </Attribute>
-        <Attribute>
+        <Attribute FrameworkAlternate="ml-dotnet">
           <AttributeName>Microsoft.ML.EntryPoints.TlcModule/SweepableFloatParam(0, 1, -1, 4, false)</AttributeName>
         </Attribute>
-        <Attribute>
+        <Attribute FrameworkAlternate="ml-dotnet">
           <AttributeName>Microsoft.ML.Internal.Internallearn.TGUI(Description="Weight of L2 regularizer term", Label="L2 Weight", SuggestedSweeps="0,0.1,1")</AttributeName>
         </Attribute>
       </Attributes>
@@ -190,29 +234,31 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            L2 regularization weight.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="MaxIterations">
-      <MemberSignature Language="C#" Value="public int MaxIterations;" />
-      <MemberSignature Language="ILAsm" Value=".field public int32 MaxIterations" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.LbfgsTrainerBase`3.OptionsBase.MaxIterations" />
-      <MemberSignature Language="VB.NET" Value="Public MaxIterations As Integer " />
-      <MemberSignature Language="F#" Value="val mutable MaxIterations : int" Usage="Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model (requires 'Options :&gt; Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model : null)&gt;.OptionsBase.MaxIterations" />
+    <Member MemberName="MaximumNumberOfIterations">
+      <MemberSignature Language="C#" Value="public int MaximumNumberOfIterations;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 MaximumNumberOfIterations" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.LbfgsTrainerBase`3.OptionsBase.MaximumNumberOfIterations" />
+      <MemberSignature Language="VB.NET" Value="Public MaximumNumberOfIterations As Integer " />
+      <MemberSignature Language="F#" Value="val mutable MaximumNumberOfIterations : int" Usage="Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model (requires 'Options :&gt; Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model : null)&gt;.OptionsBase.MaximumNumberOfIterations" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
-        <Attribute>
-          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Maximum iterations.", ShortName="maxiter")</AttributeName>
+        <Attribute FrameworkAlternate="ml-dotnet">
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Maximum iterations.", ShortName="maxiter, MaxIterations, NumberOfIterations")</AttributeName>
         </Attribute>
-        <Attribute>
+        <Attribute FrameworkAlternate="ml-dotnet">
           <AttributeName>Microsoft.ML.EntryPoints.TlcModule/SweepableLongParam("MaxIterations", 1, 2147483647, -1, -1, false)</AttributeName>
         </Attribute>
-        <Attribute>
+        <Attribute FrameworkAlternate="ml-dotnet">
           <AttributeName>Microsoft.ML.Internal.Internallearn.TGUI(Label="Max Number of Iterations")</AttributeName>
         </Attribute>
       </Attributes>
@@ -220,54 +266,26 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Number of iterations.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="MemorySize">
-      <MemberSignature Language="C#" Value="public int MemorySize;" />
-      <MemberSignature Language="ILAsm" Value=".field public int32 MemorySize" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.LbfgsTrainerBase`3.OptionsBase.MemorySize" />
-      <MemberSignature Language="VB.NET" Value="Public MemorySize As Integer " />
-      <MemberSignature Language="F#" Value="val mutable MemorySize : int" Usage="Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model (requires 'Options :&gt; Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model : null)&gt;.OptionsBase.MemorySize" />
+    <Member MemberName="NumberOfThreads">
+      <MemberSignature Language="C#" Value="public Nullable&lt;int&gt; NumberOfThreads;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype System.Nullable`1&lt;int32&gt; NumberOfThreads" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.LbfgsTrainerBase`3.OptionsBase.NumberOfThreads" />
+      <MemberSignature Language="VB.NET" Value="Public NumberOfThreads As Nullable(Of Integer) " />
+      <MemberSignature Language="F#" Value="val mutable NumberOfThreads : Nullable&lt;int&gt;" Usage="Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model (requires 'Options :&gt; Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model : null)&gt;.OptionsBase.NumberOfThreads" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
-        <Attribute>
-          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Memory size for L-BFGS. Low=faster, less accurate", ShortName="m", SortOrder=50)</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>Microsoft.ML.EntryPoints.TlcModule/SweepableDiscreteParam("MemorySize", new System.Object[] { Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument }, false)</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>Microsoft.ML.Internal.Internallearn.TGUI(Description="Memory size for L-BFGS", SuggestedSweeps="5,20,50")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="NumThreads">
-      <MemberSignature Language="C#" Value="public Nullable&lt;int&gt; NumThreads;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype System.Nullable`1&lt;int32&gt; NumThreads" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.LbfgsTrainerBase`3.OptionsBase.NumThreads" />
-      <MemberSignature Language="VB.NET" Value="Public NumThreads As Nullable(Of Integer) " />
-      <MemberSignature Language="F#" Value="val mutable NumThreads : Nullable&lt;int&gt;" Usage="Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model (requires 'Options :&gt; Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model : null)&gt;.OptionsBase.NumThreads" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Number of threads", ShortName="nt")</AttributeName>
+        <Attribute FrameworkAlternate="ml-dotnet">
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Number of threads", ShortName="nt, NumThreads")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -280,25 +298,25 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OptTol">
-      <MemberSignature Language="C#" Value="public float OptTol;" />
-      <MemberSignature Language="ILAsm" Value=".field public float32 OptTol" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.LbfgsTrainerBase`3.OptionsBase.OptTol" />
-      <MemberSignature Language="VB.NET" Value="Public OptTol As Single " />
-      <MemberSignature Language="F#" Value="val mutable OptTol : single" Usage="Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model (requires 'Options :&gt; Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model : null)&gt;.OptionsBase.OptTol" />
+    <Member MemberName="OptmizationTolerance">
+      <MemberSignature Language="C#" Value="public float OptmizationTolerance;" />
+      <MemberSignature Language="ILAsm" Value=".field public float32 OptmizationTolerance" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.LbfgsTrainerBase`3.OptionsBase.OptmizationTolerance" />
+      <MemberSignature Language="VB.NET" Value="Public OptmizationTolerance As Single " />
+      <MemberSignature Language="F#" Value="val mutable OptmizationTolerance : single" Usage="Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model (requires 'Options :&gt; Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model : null)&gt;.OptionsBase.OptmizationTolerance" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
-        <Attribute>
-          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Tolerance parameter for optimization convergence. Low = slower, more accurate", ShortName="ot", SortOrder=50)</AttributeName>
+        <Attribute FrameworkAlternate="ml-dotnet">
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Tolerance parameter for optimization convergence. Low = slower, more accurate", ShortName="ot, OptTol", SortOrder=50)</AttributeName>
         </Attribute>
-        <Attribute>
+        <Attribute FrameworkAlternate="ml-dotnet">
           <AttributeName>Microsoft.ML.EntryPoints.TlcModule/SweepableDiscreteParam(new System.Object[] { Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument }, false)</AttributeName>
         </Attribute>
-        <Attribute>
+        <Attribute FrameworkAlternate="ml-dotnet">
           <AttributeName>Microsoft.ML.Internal.Internallearn.TGUI(Description="Threshold for optimizer convergence", Label="Optimization Tolerance", SuggestedSweeps="1e-4,1e-7")</AttributeName>
         </Attribute>
       </Attributes>
@@ -306,7 +324,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Tolerance parameter for optimization convergence. (Low = slower, more accurate).
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -318,11 +338,11 @@
       <MemberSignature Language="F#" Value="val mutable Quiet : bool" Usage="Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model (requires 'Options :&gt; Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model : null)&gt;.OptionsBase.Quiet" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
-        <Attribute>
+        <Attribute FrameworkAlternate="ml-dotnet">
           <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="If set to true, produce no output during training.", ShortName="q")</AttributeName>
         </Attribute>
       </Attributes>
@@ -331,56 +351,37 @@
       </ReturnValue>
       <Docs>
         <summary>
-            Features must occur in at least this many instances to be included
+            Determines whether to produce output during training or not.
             </summary>
-        <remarks>If greater than 1, forces an initialization pass over the data</remarks>
+        <returns>
+            If set to <see langword="true" /> no output is produced.
+            </returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="SgdInitializationTolerance">
-      <MemberSignature Language="C#" Value="public float SgdInitializationTolerance;" />
-      <MemberSignature Language="ILAsm" Value=".field public float32 SgdInitializationTolerance" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.LbfgsTrainerBase`3.OptionsBase.SgdInitializationTolerance" />
-      <MemberSignature Language="VB.NET" Value="Public SgdInitializationTolerance As Single " />
-      <MemberSignature Language="F#" Value="val mutable SgdInitializationTolerance : single" Usage="Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model (requires 'Options :&gt; Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model : null)&gt;.OptionsBase.SgdInitializationTolerance" />
+    <Member MemberName="StochasticGradientDescentInitilaizationTolerance">
+      <MemberSignature Language="C#" Value="public float StochasticGradientDescentInitilaizationTolerance;" />
+      <MemberSignature Language="ILAsm" Value=".field public float32 StochasticGradientDescentInitilaizationTolerance" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.LbfgsTrainerBase`3.OptionsBase.StochasticGradientDescentInitilaizationTolerance" />
+      <MemberSignature Language="VB.NET" Value="Public StochasticGradientDescentInitilaizationTolerance As Single " />
+      <MemberSignature Language="F#" Value="val mutable StochasticGradientDescentInitilaizationTolerance : single" Usage="Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model (requires 'Options :&gt; Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model : null)&gt;.OptionsBase.StochasticGradientDescentInitilaizationTolerance" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
-        <Attribute>
-          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Run SGD to initialize LR weights, converging to this tolerance", ShortName="sgd")</AttributeName>
+        <Attribute FrameworkAlternate="ml-dotnet">
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Run SGD to initialize LR weights, converging to this tolerance", ShortName="sgd, SgdInitializationTolerance")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="UseThreads">
-      <MemberSignature Language="C#" Value="public bool UseThreads;" />
-      <MemberSignature Language="ILAsm" Value=".field public bool UseThreads" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.LbfgsTrainerBase`3.OptionsBase.UseThreads" />
-      <MemberSignature Language="VB.NET" Value="Public UseThreads As Boolean " />
-      <MemberSignature Language="F#" Value="val mutable UseThreads : bool" Usage="Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model (requires 'Options :&gt; Microsoft.ML.Trainers.LbfgsTrainerBase&lt;'Options, 'ransformer, 'Model&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Model&gt; and 'Model : null)&gt;.OptionsBase.UseThreads" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Whether or not to use threads. Default is true", Hide=true, ShortName="t")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Run SGD to initialize LR weights, converging to this tolerance.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

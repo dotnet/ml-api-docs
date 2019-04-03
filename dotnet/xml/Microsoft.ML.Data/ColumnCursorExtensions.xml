@@ -14,18 +14,17 @@
   <Interfaces />
   <Docs>
     <summary>
-            Extension methods that allow to extract values of a single column of an <see cref="T:Microsoft.Data.DataView.IDataView" /> as an
+            Extension methods that allow to extract values of a single column of an <see cref="T:Microsoft.ML.IDataView" /> as an
             <see cref="T:System.Collections.Generic.IEnumerable`1" />.
             </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName="GetColumn&lt;T&gt;">
-      <MemberSignature Language="C#" Value="public static System.Collections.Generic.IEnumerable&lt;T&gt; GetColumn&lt;T&gt; (this Microsoft.Data.DataView.IDataView data, Microsoft.ML.IHostEnvironment env, string columnName);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Collections.Generic.IEnumerable`1&lt;!!T&gt; GetColumn&lt;T&gt;(class Microsoft.Data.DataView.IDataView data, class Microsoft.ML.IHostEnvironment env, string columnName) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.ColumnCursorExtensions.GetColumn``1(Microsoft.Data.DataView.IDataView,Microsoft.ML.IHostEnvironment,System.String)" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function GetColumn(Of T) (data As IDataView, env As IHostEnvironment, columnName As String) As IEnumerable(Of T)" />
-      <MemberSignature Language="F#" Value="static member GetColumn : Microsoft.Data.DataView.IDataView * Microsoft.ML.IHostEnvironment * string -&gt; seq&lt;'T&gt;" Usage="Microsoft.ML.Data.ColumnCursorExtensions.GetColumn (data, env, columnName)" />
+      <MemberSignature Language="C#" Value="public static System.Collections.Generic.IEnumerable&lt;T&gt; GetColumn&lt;T&gt; (this Microsoft.ML.IDataView data, Microsoft.ML.DataViewSchema.Column column);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Collections.Generic.IEnumerable`1&lt;!!T&gt; GetColumn&lt;T&gt;(class Microsoft.ML.IDataView data, valuetype Microsoft.ML.DataViewSchema/Column column) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.ColumnCursorExtensions.GetColumn``1(Microsoft.ML.IDataView,Microsoft.ML.DataViewSchema.Column)" />
+      <MemberSignature Language="F#" Value="static member GetColumn : Microsoft.ML.IDataView * Microsoft.ML.DataViewSchema.Column -&gt; seq&lt;'T&gt;" Usage="Microsoft.ML.Data.ColumnCursorExtensions.GetColumn (data, column)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -38,15 +37,45 @@
         <TypeParameter Name="T" />
       </TypeParameters>
       <Parameters>
-        <Parameter Name="data" Type="Microsoft.Data.DataView.IDataView" RefType="this" />
-        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
+        <Parameter Name="data" Type="Microsoft.ML.IDataView" RefType="this" />
+        <Parameter Name="column" Type="Microsoft.ML.DataViewSchema+Column" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T">The type of the values. This must match the actual column type.</typeparam>
+        <param name="data">The data view to get the column from.</param>
+        <param name="column">The column to be extracted.</param>
+        <summary>
+            Extract all values of one column of the data view in a form of an <see cref="T:System.Collections.Generic.IEnumerable`1" />.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetColumn&lt;T&gt;">
+      <MemberSignature Language="C#" Value="public static System.Collections.Generic.IEnumerable&lt;T&gt; GetColumn&lt;T&gt; (this Microsoft.ML.IDataView data, string columnName);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Collections.Generic.IEnumerable`1&lt;!!T&gt; GetColumn&lt;T&gt;(class Microsoft.ML.IDataView data, string columnName) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.ColumnCursorExtensions.GetColumn``1(Microsoft.ML.IDataView,System.String)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function GetColumn(Of T) (data As IDataView, columnName As String) As IEnumerable(Of T)" />
+      <MemberSignature Language="F#" Value="static member GetColumn : Microsoft.ML.IDataView * string -&gt; seq&lt;'T&gt;" Usage="Microsoft.ML.Data.ColumnCursorExtensions.GetColumn (data, columnName)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="data" Type="Microsoft.ML.IDataView" RefType="this" />
         <Parameter Name="columnName" Type="System.String" />
       </Parameters>
       <Docs>
         <typeparam name="T">The type of the values. This must match the actual column type.</typeparam>
         <param name="data">The data view to get the column from.</param>
-        <param name="env">The current host environment.</param>
-        <param name="columnName">The name of the column to extract.</param>
+        <param name="columnName">The name of the column to be extracted.</param>
         <summary>
             Extract all values of one column of the data view in a form of an <see cref="T:System.Collections.Generic.IEnumerable`1" />.
             </summary>

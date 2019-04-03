@@ -12,7 +12,7 @@
     <TypeParameter Name="TLastTransformer">
       <Constraints>
         <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
-        <InterfaceName>Microsoft.ML.Core.Data.ITransformer</InterfaceName>
+        <InterfaceName>Microsoft.ML.ITransformer</InterfaceName>
       </Constraints>
     </TypeParameter>
   </TypeParameters>
@@ -56,7 +56,7 @@
       <Parameters>
         <Parameter Name="transformers" Type="Microsoft.ML.ITransformer[]">
           <Attributes>
-            <Attribute>
+            <Attribute FrameworkAlternate="ml-dotnet">
               <AttributeName>System.ParamArray</AttributeName>
             </Attribute>
           </Attributes>
@@ -113,7 +113,7 @@
         <TypeParameter Name="TNewLast">
           <Constraints>
             <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
-            <InterfaceName>Microsoft.ML.Core.Data.ITransformer</InterfaceName>
+            <InterfaceName>Microsoft.ML.ITransformer</InterfaceName>
           </Constraints>
         </TypeParameter>
       </TypeParameters>
@@ -179,24 +179,24 @@
       </Docs>
     </Member>
     <Member MemberName="GetOutputSchema">
-      <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.DataViewSchema GetOutputSchema (Microsoft.Data.DataView.DataViewSchema inputSchema);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.Data.DataView.DataViewSchema GetOutputSchema(class Microsoft.Data.DataView.DataViewSchema inputSchema) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.TransformerChain`1.GetOutputSchema(Microsoft.Data.DataView.DataViewSchema)" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.DataViewSchema GetOutputSchema (Microsoft.ML.DataViewSchema inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.DataViewSchema GetOutputSchema(class Microsoft.ML.DataViewSchema inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.TransformerChain`1.GetOutputSchema(Microsoft.ML.DataViewSchema)" />
       <MemberSignature Language="VB.NET" Value="Public Function GetOutputSchema (inputSchema As DataViewSchema) As DataViewSchema" />
-      <MemberSignature Language="F#" Value="abstract member GetOutputSchema : Microsoft.Data.DataView.DataViewSchema -&gt; Microsoft.Data.DataView.DataViewSchema&#xA;override this.GetOutputSchema : Microsoft.Data.DataView.DataViewSchema -&gt; Microsoft.Data.DataView.DataViewSchema" Usage="transformerChain.GetOutputSchema inputSchema" />
+      <MemberSignature Language="F#" Value="abstract member GetOutputSchema : Microsoft.ML.DataViewSchema -&gt; Microsoft.ML.DataViewSchema&#xA;override this.GetOutputSchema : Microsoft.ML.DataViewSchema -&gt; Microsoft.ML.DataViewSchema" Usage="transformerChain.GetOutputSchema inputSchema" />
       <MemberType>Method</MemberType>
       <Implements>
-        <InterfaceMember>M:Microsoft.ML.ITransformer.GetOutputSchema(Microsoft.Data.DataView.DataViewSchema)</InterfaceMember>
+        <InterfaceMember>M:Microsoft.ML.ITransformer.GetOutputSchema(Microsoft.ML.DataViewSchema)</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.Data.DataView.DataViewSchema</ReturnType>
+        <ReturnType>Microsoft.ML.DataViewSchema</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="inputSchema" Type="Microsoft.Data.DataView.DataViewSchema" />
+        <Parameter Name="inputSchema" Type="Microsoft.ML.DataViewSchema" />
       </Parameters>
       <Docs>
         <param name="inputSchema">To be added.</param>
@@ -250,13 +250,13 @@
       </Docs>
     </Member>
     <Member MemberName="Microsoft.ML.ITransformer.GetRowToRowMapper">
-      <MemberSignature Language="C#" Value="Microsoft.ML.Data.IRowToRowMapper ITransformer.GetRowToRowMapper (Microsoft.Data.DataView.DataViewSchema inputSchema);" />
-      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class Microsoft.ML.Data.IRowToRowMapper Microsoft.ML.ITransformer.GetRowToRowMapper(class Microsoft.Data.DataView.DataViewSchema inputSchema) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.TransformerChain`1.Microsoft#ML#ITransformer#GetRowToRowMapper(Microsoft.Data.DataView.DataViewSchema)" />
+      <MemberSignature Language="C#" Value="Microsoft.ML.Data.IRowToRowMapper ITransformer.GetRowToRowMapper (Microsoft.ML.DataViewSchema inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class Microsoft.ML.Data.IRowToRowMapper Microsoft.ML.ITransformer.GetRowToRowMapper(class Microsoft.ML.DataViewSchema inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.TransformerChain`1.Microsoft#ML#ITransformer#GetRowToRowMapper(Microsoft.ML.DataViewSchema)" />
       <MemberSignature Language="VB.NET" Value="Function GetRowToRowMapper (inputSchema As DataViewSchema) As IRowToRowMapper Implements ITransformer.GetRowToRowMapper" />
       <MemberType>Method</MemberType>
       <Implements>
-        <InterfaceMember>M:Microsoft.ML.ITransformer.GetRowToRowMapper(Microsoft.Data.DataView.DataViewSchema)</InterfaceMember>
+        <InterfaceMember>M:Microsoft.ML.ITransformer.GetRowToRowMapper(Microsoft.ML.DataViewSchema)</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -266,7 +266,7 @@
         <ReturnType>Microsoft.ML.Data.IRowToRowMapper</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="inputSchema" Type="Microsoft.Data.DataView.DataViewSchema" />
+        <Parameter Name="inputSchema" Type="Microsoft.ML.DataViewSchema" />
       </Parameters>
       <Docs>
         <param name="inputSchema">To be added.</param>
@@ -298,31 +298,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="SaveTo">
-      <MemberSignature Language="C#" Value="public void SaveTo (Microsoft.ML.IHostEnvironment env, System.IO.Stream outputStream);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SaveTo(class Microsoft.ML.IHostEnvironment env, class System.IO.Stream outputStream) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.TransformerChain`1.SaveTo(Microsoft.ML.IHostEnvironment,System.IO.Stream)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub SaveTo (env As IHostEnvironment, outputStream As Stream)" />
-      <MemberSignature Language="F#" Value="member this.SaveTo : Microsoft.ML.IHostEnvironment * System.IO.Stream -&gt; unit" Usage="transformerChain.SaveTo (env, outputStream)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
-        <Parameter Name="outputStream" Type="System.IO.Stream" />
-      </Parameters>
-      <Docs>
-        <param name="env">To be added.</param>
-        <param name="outputStream">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="System.Collections.IEnumerable.GetEnumerator">
       <MemberSignature Language="C#" Value="System.Collections.IEnumerator IEnumerable.GetEnumerator ();" />
       <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() cil managed" />
@@ -347,24 +322,24 @@
       </Docs>
     </Member>
     <Member MemberName="Transform">
-      <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.IDataView Transform (Microsoft.Data.DataView.IDataView input);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.Data.DataView.IDataView Transform(class Microsoft.Data.DataView.IDataView input) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.TransformerChain`1.Transform(Microsoft.Data.DataView.IDataView)" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.IDataView Transform (Microsoft.ML.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.IDataView Transform(class Microsoft.ML.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.TransformerChain`1.Transform(Microsoft.ML.IDataView)" />
       <MemberSignature Language="VB.NET" Value="Public Function Transform (input As IDataView) As IDataView" />
-      <MemberSignature Language="F#" Value="abstract member Transform : Microsoft.Data.DataView.IDataView -&gt; Microsoft.Data.DataView.IDataView&#xA;override this.Transform : Microsoft.Data.DataView.IDataView -&gt; Microsoft.Data.DataView.IDataView" Usage="transformerChain.Transform input" />
+      <MemberSignature Language="F#" Value="abstract member Transform : Microsoft.ML.IDataView -&gt; Microsoft.ML.IDataView&#xA;override this.Transform : Microsoft.ML.IDataView -&gt; Microsoft.ML.IDataView" Usage="transformerChain.Transform input" />
       <MemberType>Method</MemberType>
       <Implements>
-        <InterfaceMember>M:Microsoft.ML.ITransformer.Transform(Microsoft.Data.DataView.IDataView)</InterfaceMember>
+        <InterfaceMember>M:Microsoft.ML.ITransformer.Transform(Microsoft.ML.IDataView)</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.Data.DataView.IDataView</ReturnType>
+        <ReturnType>Microsoft.ML.IDataView</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="input" Type="Microsoft.Data.DataView.IDataView" />
+        <Parameter Name="input" Type="Microsoft.ML.IDataView" />
       </Parameters>
       <Docs>
         <param name="input">To be added.</param>

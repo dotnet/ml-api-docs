@@ -5,7 +5,7 @@
   <TypeSignature Language="VB.NET" Value="Public Structure VBufferEditor(Of T)" />
   <TypeSignature Language="F#" Value="type VBufferEditor&lt;'T&gt; = struct" />
   <AssemblyInfo>
-    <AssemblyName>Microsoft.ML.Core</AssemblyName>
+    <AssemblyName>Microsoft.ML.DataView</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <TypeParameters>
@@ -21,7 +21,12 @@
             An object capable of editing a <see cref="T:Microsoft.ML.Data.VBuffer`1" /> by filling out
             <see cref="F:Microsoft.ML.Data.VBufferEditor`1.Values" /> (and <see cref="F:Microsoft.ML.Data.VBufferEditor`1.Indices" /> if the buffer is not dense).
             </summary>
-    <remarks>To be added.</remarks>
+    <remarks>
+            The <see cref="T:Microsoft.ML.Data.VBuffer`1" /> structure by itself is immutable. However, the purpose of <see cref="T:Microsoft.ML.Data.VBuffer`1" />
+            is to enable buffer re-use we can edit them through this structure, as created through
+            <see cref="M:Microsoft.ML.Data.VBufferEditor.Create``1(Microsoft.ML.Data.VBuffer{``0}@,System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Boolean,System.Boolean)" /> or
+            <see cref="M:Microsoft.ML.Data.VBufferEditor.CreateFromBuffer``1(Microsoft.ML.Data.VBuffer{``0}@)" />.
+            </remarks>
   </Docs>
   <Members>
     <Member MemberName="Commit">
@@ -32,7 +37,7 @@
       <MemberSignature Language="F#" Value="member this.Commit : unit -&gt; Microsoft.ML.Data.VBuffer&lt;'T&gt;" Usage="vBufferEditor.Commit " />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -41,12 +46,10 @@
       <Parameters />
       <Docs>
         <summary>
-            Commits the edits and creates a new <see cref="T:Microsoft.ML.Data.VBuffer`1" /> using
-            the current Values and Indices.
+            Commits the edits and creates a new <see cref="T:Microsoft.ML.Data.VBuffer`1" /> using the current <see cref="F:Microsoft.ML.Data.VBufferEditor`1.Values" /> and <see cref="F:Microsoft.ML.Data.VBufferEditor`1.Indices" />.
+            Note that this structure and its properties should not be used once this is called.
             </summary>
-        <returns>
-            The newly created <see cref="T:Microsoft.ML.Data.VBuffer`1" />.
-            </returns>
+        <returns>The newly created <see cref="T:Microsoft.ML.Data.VBuffer`1" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -58,7 +61,7 @@
       <MemberSignature Language="F#" Value="member this.CommitTruncated : int -&gt; Microsoft.ML.Data.VBuffer&lt;'T&gt;" Usage="vBufferEditor.CommitTruncated physicalValuesCount" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -74,14 +77,14 @@
         <summary>
             Commits the edits and creates a new <see cref="T:Microsoft.ML.Data.VBuffer`1" /> using
             the current Values and Indices, while allowing to truncate the length
-            of Values and Indices.
+            of <see cref="F:Microsoft.ML.Data.VBufferEditor`1.Values" /> and, if sparse, <see cref="F:Microsoft.ML.Data.VBufferEditor`1.Indices" />.
+            Like <see cref="M:Microsoft.ML.Data.VBufferEditor`1.Commit" />, this structure and its properties should not be used once this is called.
             </summary>
         <returns>
             The newly created <see cref="T:Microsoft.ML.Data.VBuffer`1" />.
             </returns>
         <remarks>
-            CommitTruncated allows to modify the length of the explicitly
-            defined values.
+            This method allows to modify the length of the explicitly defined values.
             This is useful in sparse situations where the <see cref="T:Microsoft.ML.Data.VBufferEditor`1" />
             was created with a larger physical value count than was needed
             because the final value count was not known at creation time.
@@ -96,7 +99,7 @@
       <MemberSignature Language="F#" Value="member this.CreatedNewIndices : bool" Usage="Microsoft.ML.Data.VBufferEditor&lt;'T&gt;.CreatedNewIndices" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -104,7 +107,7 @@
       </ReturnValue>
       <Docs>
         <summary>
-            Gets a value indicating whether a new Indices array was allocated.
+            Gets a value indicating whether a new <see cref="F:Microsoft.ML.Data.VBufferEditor`1.Indices" /> array was allocated.
             </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
@@ -118,7 +121,7 @@
       <MemberSignature Language="F#" Value="member this.CreatedNewValues : bool" Usage="Microsoft.ML.Data.VBufferEditor&lt;'T&gt;.CreatedNewValues" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -126,7 +129,7 @@
       </ReturnValue>
       <Docs>
         <summary>
-            Gets a value indicating whether a new Values array was allocated.
+            Gets a value indicating whether a new <see cref="F:Microsoft.ML.Data.VBufferEditor`1.Values" /> array was allocated.
             </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
@@ -140,7 +143,7 @@
       <MemberSignature Language="F#" Value="val mutable Indices : Span&lt;int&gt;" Usage="Microsoft.ML.Data.VBufferEditor&lt;'T&gt;.Indices" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -161,7 +164,7 @@
       <MemberSignature Language="F#" Value="val mutable Values : Span&lt;'T&gt;" Usage="Microsoft.ML.Data.VBufferEditor&lt;'T&gt;.Values" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

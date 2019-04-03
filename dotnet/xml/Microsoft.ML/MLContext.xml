@@ -1,6 +1,6 @@
 ﻿<Type Name="MLContext" FullName="Microsoft.ML.MLContext">
-  <TypeSignature Language="C#" Value="public sealed class MLContext : Microsoft.ML.IHostEnvironment" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit MLContext extends System.Object implements class Microsoft.ML.IChannelProvider, class Microsoft.ML.IExceptionContext, class Microsoft.ML.IHostEnvironment, class Microsoft.ML.IProgressChannelProvider" />
+  <TypeSignature Language="C#" Value="public sealed class MLContext : Microsoft.ML.Runtime.IHostEnvironment" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit MLContext extends System.Object implements class Microsoft.ML.Runtime.IChannelProvider, class Microsoft.ML.Runtime.IExceptionContext, class Microsoft.ML.Runtime.IHostEnvironment, class Microsoft.ML.Runtime.IProgressChannelProvider" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.MLContext" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class MLContext&#xA;Implements IHostEnvironment" />
   <TypeSignature Language="F#" Value="type MLContext = class&#xA;    interface IHostEnvironment&#xA;    interface IChannelProvider&#xA;    interface IExceptionContext&#xA;    interface IProgressChannelProvider" />
@@ -13,16 +13,16 @@
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>Microsoft.ML.IChannelProvider</InterfaceName>
+      <InterfaceName>Microsoft.ML.Runtime.IChannelProvider</InterfaceName>
     </Interface>
     <Interface>
-      <InterfaceName>Microsoft.ML.IExceptionContext</InterfaceName>
+      <InterfaceName>Microsoft.ML.Runtime.IExceptionContext</InterfaceName>
     </Interface>
     <Interface>
-      <InterfaceName>Microsoft.ML.IHostEnvironment</InterfaceName>
+      <InterfaceName>Microsoft.ML.Runtime.IHostEnvironment</InterfaceName>
     </Interface>
     <Interface>
-      <InterfaceName>Microsoft.ML.IProgressChannelProvider</InterfaceName>
+      <InterfaceName>Microsoft.ML.Runtime.IProgressChannelProvider</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -34,11 +34,11 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public MLContext (Nullable&lt;int&gt; seed = null, int conc = 0);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype System.Nullable`1&lt;int32&gt; seed, int32 conc) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.MLContext.#ctor(System.Nullable{System.Int32},System.Int32)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New (Optional seed As Nullable(Of Integer) = null, Optional conc As Integer = 0)" />
-      <MemberSignature Language="F#" Value="new Microsoft.ML.MLContext : Nullable&lt;int&gt; * int -&gt; Microsoft.ML.MLContext" Usage="new Microsoft.ML.MLContext (seed, conc)" />
+      <MemberSignature Language="C#" Value="public MLContext (Nullable&lt;int&gt; seed = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype System.Nullable`1&lt;int32&gt; seed) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.MLContext.#ctor(System.Nullable{System.Int32})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (Optional seed As Nullable(Of Integer) = null)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.MLContext : Nullable&lt;int&gt; -&gt; Microsoft.ML.MLContext" Usage="new Microsoft.ML.MLContext seed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -46,11 +46,9 @@
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="seed" Type="System.Nullable&lt;System.Int32&gt;" />
-        <Parameter Name="conc" Type="System.Int32" />
       </Parameters>
       <Docs>
         <param name="seed">Random seed. Set to <c>null</c> for a non-deterministic environment.</param>
-        <param name="conc">Concurrency level. Set to 1 to run single-threaded. Set to 0 to pick automatically.</param>
         <summary>
             Create the ML context.
             </summary>
@@ -124,21 +122,21 @@
       </Docs>
     </Member>
     <Member MemberName="ComponentCatalog">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.ComponentCatalog ComponentCatalog { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.ComponentCatalog ComponentCatalog" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.ComponentCatalog ComponentCatalog { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.ComponentCatalog ComponentCatalog" />
       <MemberSignature Language="DocId" Value="P:Microsoft.ML.MLContext.ComponentCatalog" />
       <MemberSignature Language="VB.NET" Value="Public ReadOnly Property ComponentCatalog As ComponentCatalog" />
-      <MemberSignature Language="F#" Value="member this.ComponentCatalog : Microsoft.ML.ComponentCatalog" Usage="Microsoft.ML.MLContext.ComponentCatalog" />
+      <MemberSignature Language="F#" Value="member this.ComponentCatalog : Microsoft.ML.Runtime.ComponentCatalog" Usage="Microsoft.ML.MLContext.ComponentCatalog" />
       <MemberType>Property</MemberType>
       <Implements>
-        <InterfaceMember>P:Microsoft.ML.IHostEnvironment.ComponentCatalog</InterfaceMember>
+        <InterfaceMember>P:Microsoft.ML.Runtime.IHostEnvironment.ComponentCatalog</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.ComponentCatalog</ReturnType>
+        <ReturnType>Microsoft.ML.Runtime.ComponentCatalog</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -191,21 +189,21 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Microsoft.ML.IChannelProvider.Start">
-      <MemberSignature Language="C#" Value="Microsoft.ML.IChannel IChannelProvider.Start (string name);" />
-      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class Microsoft.ML.IChannel Microsoft.ML.IChannelProvider.Start(string name) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.MLContext.Microsoft#ML#IChannelProvider#Start(System.String)" />
+    <Member MemberName="Microsoft.ML.Runtime.IChannelProvider.Start">
+      <MemberSignature Language="C#" Value="Microsoft.ML.Runtime.IChannel IChannelProvider.Start (string name);" />
+      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class Microsoft.ML.Runtime.IChannel Microsoft.ML.Runtime.IChannelProvider.Start(string name) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.MLContext.Microsoft#ML#Runtime#IChannelProvider#Start(System.String)" />
       <MemberSignature Language="VB.NET" Value="Function Start (name As String) As IChannel Implements IChannelProvider.Start" />
       <MemberType>Method</MemberType>
       <Implements>
-        <InterfaceMember>M:Microsoft.ML.IChannelProvider.Start(System.String)</InterfaceMember>
+        <InterfaceMember>M:Microsoft.ML.Runtime.IChannelProvider.Start(System.String)</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.IChannel</ReturnType>
+        <ReturnType>Microsoft.ML.Runtime.IChannel</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="name" Type="System.String" />
@@ -217,21 +215,21 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Microsoft.ML.IChannelProvider.StartPipe&lt;TMessage&gt;">
-      <MemberSignature Language="C#" Value="Microsoft.ML.IPipe&lt;TMessage&gt; IChannelProvider.StartPipe&lt;TMessage&gt; (string name);" />
-      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class Microsoft.ML.IPipe`1&lt;!!TMessage&gt; Microsoft.ML.IChannelProvider.StartPipe&lt;TMessage&gt;(string name) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.MLContext.Microsoft#ML#IChannelProvider#StartPipe``1(System.String)" />
+    <Member MemberName="Microsoft.ML.Runtime.IChannelProvider.StartPipe&lt;TMessage&gt;">
+      <MemberSignature Language="C#" Value="Microsoft.ML.Runtime.IPipe&lt;TMessage&gt; IChannelProvider.StartPipe&lt;TMessage&gt; (string name);" />
+      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class Microsoft.ML.Runtime.IPipe`1&lt;!!TMessage&gt; Microsoft.ML.Runtime.IChannelProvider.StartPipe&lt;TMessage&gt;(string name) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.MLContext.Microsoft#ML#Runtime#IChannelProvider#StartPipe``1(System.String)" />
       <MemberSignature Language="VB.NET" Value="Function StartPipe(Of TMessage) (name As String) As IPipe(Of TMessage) Implements IChannelProvider.StartPipe" />
       <MemberType>Method</MemberType>
       <Implements>
-        <InterfaceMember>M:Microsoft.ML.IChannelProvider.StartPipe``1(System.String)</InterfaceMember>
+        <InterfaceMember>M:Microsoft.ML.Runtime.IChannelProvider.StartPipe``1(System.String)</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.IPipe&lt;TMessage&gt;</ReturnType>
+        <ReturnType>Microsoft.ML.Runtime.IPipe&lt;TMessage&gt;</ReturnType>
       </ReturnValue>
       <TypeParameters>
         <TypeParameter Name="TMessage" />
@@ -247,15 +245,15 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Microsoft.ML.IExceptionContext.ContextDescription">
-      <MemberSignature Language="C#" Value="string Microsoft.ML.IExceptionContext.ContextDescription { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string Microsoft.ML.IExceptionContext.ContextDescription" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.MLContext.Microsoft#ML#IExceptionContext#ContextDescription" />
+    <Member MemberName="Microsoft.ML.Runtime.IExceptionContext.ContextDescription">
+      <MemberSignature Language="C#" Value="string Microsoft.ML.Runtime.IExceptionContext.ContextDescription { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Microsoft.ML.Runtime.IExceptionContext.ContextDescription" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.MLContext.Microsoft#ML#Runtime#IExceptionContext#ContextDescription" />
       <MemberSignature Language="VB.NET" Value=" ReadOnly Property ContextDescription As String Implements IExceptionContext.ContextDescription" />
-      <MemberSignature Language="F#" Usage="Microsoft.ML.IExceptionContext.ContextDescription" />
+      <MemberSignature Language="F#" Usage="Microsoft.ML.Runtime.IExceptionContext.ContextDescription" />
       <MemberType>Property</MemberType>
       <Implements>
-        <InterfaceMember>P:Microsoft.ML.IExceptionContext.ContextDescription</InterfaceMember>
+        <InterfaceMember>P:Microsoft.ML.Runtime.IExceptionContext.ContextDescription</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -270,14 +268,14 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Microsoft.ML.IExceptionContext.Process&lt;TException&gt;">
+    <Member MemberName="Microsoft.ML.Runtime.IExceptionContext.Process&lt;TException&gt;">
       <MemberSignature Language="C#" Value="TException IExceptionContext.Process&lt;TException&gt; (TException ex) where TException : Exception;" />
-      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance !!TException Microsoft.ML.IExceptionContext.Process&lt;(class System.Exception) TException&gt;(!!TException ex) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.MLContext.Microsoft#ML#IExceptionContext#Process``1(``0)" />
+      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance !!TException Microsoft.ML.Runtime.IExceptionContext.Process&lt;(class System.Exception) TException&gt;(!!TException ex) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.MLContext.Microsoft#ML#Runtime#IExceptionContext#Process``1(``0)" />
       <MemberSignature Language="VB.NET" Value="Function Process(Of TException As Exception) (ex As TException) As TException Implements IExceptionContext.Process" />
       <MemberType>Method</MemberType>
       <Implements>
-        <InterfaceMember>M:Microsoft.ML.IExceptionContext.Process``1(``0)</InterfaceMember>
+        <InterfaceMember>M:Microsoft.ML.Runtime.IExceptionContext.Process``1(``0)</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -304,99 +302,51 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Microsoft.ML.IHostEnvironment.ConcurrencyFactor">
-      <MemberSignature Language="C#" Value="int Microsoft.ML.IHostEnvironment.ConcurrencyFactor { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 Microsoft.ML.IHostEnvironment.ConcurrencyFactor" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.MLContext.Microsoft#ML#IHostEnvironment#ConcurrencyFactor" />
-      <MemberSignature Language="VB.NET" Value=" ReadOnly Property ConcurrencyFactor As Integer Implements IHostEnvironment.ConcurrencyFactor" />
-      <MemberSignature Language="F#" Usage="Microsoft.ML.IHostEnvironment.ConcurrencyFactor" />
-      <MemberType>Property</MemberType>
-      <Implements>
-        <InterfaceMember>P:Microsoft.ML.IHostEnvironment.ConcurrencyFactor</InterfaceMember>
-      </Implements>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Microsoft.ML.IHostEnvironment.IsCancelled">
-      <MemberSignature Language="C#" Value="bool Microsoft.ML.IHostEnvironment.IsCancelled { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool Microsoft.ML.IHostEnvironment.IsCancelled" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.MLContext.Microsoft#ML#IHostEnvironment#IsCancelled" />
-      <MemberSignature Language="VB.NET" Value=" ReadOnly Property IsCancelled As Boolean Implements IHostEnvironment.IsCancelled" />
-      <MemberSignature Language="F#" Usage="Microsoft.ML.IHostEnvironment.IsCancelled" />
-      <MemberType>Property</MemberType>
-      <Implements>
-        <InterfaceMember>P:Microsoft.ML.IHostEnvironment.IsCancelled</InterfaceMember>
-      </Implements>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Microsoft.ML.IHostEnvironment.Register">
-      <MemberSignature Language="C#" Value="Microsoft.ML.IHost IHostEnvironment.Register (string name, Nullable&lt;int&gt; seed, Nullable&lt;bool&gt; verbose, Nullable&lt;int&gt; conc);" />
-      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class Microsoft.ML.IHost Microsoft.ML.IHostEnvironment.Register(string name, valuetype System.Nullable`1&lt;int32&gt; seed, valuetype System.Nullable`1&lt;bool&gt; verbose, valuetype System.Nullable`1&lt;int32&gt; conc) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.MLContext.Microsoft#ML#IHostEnvironment#Register(System.String,System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Int32})" />
-      <MemberSignature Language="VB.NET" Value="Function Register (name As String, seed As Nullable(Of Integer), verbose As Nullable(Of Boolean), conc As Nullable(Of Integer)) As IHost Implements IHostEnvironment.Register" />
+    <Member MemberName="Microsoft.ML.Runtime.IHostEnvironment.Register">
+      <MemberSignature Language="C#" Value="Microsoft.ML.Runtime.IHost IHostEnvironment.Register (string name, Nullable&lt;int&gt; seed, Nullable&lt;bool&gt; verbose);" />
+      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class Microsoft.ML.Runtime.IHost Microsoft.ML.Runtime.IHostEnvironment.Register(string name, valuetype System.Nullable`1&lt;int32&gt; seed, valuetype System.Nullable`1&lt;bool&gt; verbose) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.MLContext.Microsoft#ML#Runtime#IHostEnvironment#Register(System.String,System.Nullable{System.Int32},System.Nullable{System.Boolean})" />
+      <MemberSignature Language="VB.NET" Value="Function Register (name As String, seed As Nullable(Of Integer), verbose As Nullable(Of Boolean)) As IHost Implements IHostEnvironment.Register" />
       <MemberType>Method</MemberType>
       <Implements>
-        <InterfaceMember>M:Microsoft.ML.IHostEnvironment.Register(System.String,System.Nullable{System.Int32},System.Nullable{System.Boolean},System.Nullable{System.Int32})</InterfaceMember>
+        <InterfaceMember>M:Microsoft.ML.Runtime.IHostEnvironment.Register(System.String,System.Nullable{System.Int32},System.Nullable{System.Boolean})</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.IHost</ReturnType>
+        <ReturnType>Microsoft.ML.Runtime.IHost</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="name" Type="System.String" />
         <Parameter Name="seed" Type="System.Nullable&lt;System.Int32&gt;" />
         <Parameter Name="verbose" Type="System.Nullable&lt;System.Boolean&gt;" />
-        <Parameter Name="conc" Type="System.Nullable&lt;System.Int32&gt;" />
       </Parameters>
       <Docs>
         <param name="name">To be added.</param>
         <param name="seed">To be added.</param>
         <param name="verbose">To be added.</param>
-        <param name="conc">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Microsoft.ML.IProgressChannelProvider.StartProgressChannel">
-      <MemberSignature Language="C#" Value="Microsoft.ML.IProgressChannel IProgressChannelProvider.StartProgressChannel (string name);" />
-      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class Microsoft.ML.IProgressChannel Microsoft.ML.IProgressChannelProvider.StartProgressChannel(string name) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.MLContext.Microsoft#ML#IProgressChannelProvider#StartProgressChannel(System.String)" />
+    <Member MemberName="Microsoft.ML.Runtime.IProgressChannelProvider.StartProgressChannel">
+      <MemberSignature Language="C#" Value="Microsoft.ML.Runtime.IProgressChannel IProgressChannelProvider.StartProgressChannel (string name);" />
+      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class Microsoft.ML.Runtime.IProgressChannel Microsoft.ML.Runtime.IProgressChannelProvider.StartProgressChannel(string name) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.MLContext.Microsoft#ML#Runtime#IProgressChannelProvider#StartProgressChannel(System.String)" />
       <MemberSignature Language="VB.NET" Value="Function StartProgressChannel (name As String) As IProgressChannel Implements IProgressChannelProvider.StartProgressChannel" />
       <MemberType>Method</MemberType>
       <Implements>
-        <InterfaceMember>M:Microsoft.ML.IProgressChannelProvider.StartProgressChannel(System.String)</InterfaceMember>
+        <InterfaceMember>M:Microsoft.ML.Runtime.IProgressChannelProvider.StartProgressChannel(System.String)</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.IProgressChannel</ReturnType>
+        <ReturnType>Microsoft.ML.Runtime.IProgressChannel</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="name" Type="System.String" />

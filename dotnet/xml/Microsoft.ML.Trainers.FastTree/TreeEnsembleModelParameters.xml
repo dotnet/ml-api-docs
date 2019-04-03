@@ -1,26 +1,22 @@
 ﻿<Type Name="TreeEnsembleModelParameters" FullName="Microsoft.ML.Trainers.FastTree.TreeEnsembleModelParameters">
-  <TypeSignature Language="C#" Value="public abstract class TreeEnsembleModelParameters : Microsoft.ML.Model.ModelParametersBase&lt;float&gt;, Microsoft.ML.Model.ICalculateFeatureContribution" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit TreeEnsembleModelParameters extends Microsoft.ML.Model.ModelParametersBase`1&lt;float32&gt; implements class Microsoft.ML.Model.ICalculateFeatureContribution, class Microsoft.ML.Model.IHaveFeatureWeights" />
+  <TypeSignature Language="C#" Value="public abstract class TreeEnsembleModelParameters : Microsoft.ML.Trainers.ModelParametersBase&lt;float&gt;, Microsoft.ML.Trainers.ICalculateFeatureContribution" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit TreeEnsembleModelParameters extends Microsoft.ML.Trainers.ModelParametersBase`1&lt;float32&gt; implements class Microsoft.ML.Trainers.ICalculateFeatureContribution" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Trainers.FastTree.TreeEnsembleModelParameters" />
   <TypeSignature Language="VB.NET" Value="Public MustInherit Class TreeEnsembleModelParameters&#xA;Inherits ModelParametersBase(Of Single)&#xA;Implements ICalculateFeatureContribution" />
-  <TypeSignature Language="F#" Value="type TreeEnsembleModelParameters = class&#xA;    inherit ModelParametersBase&lt;single&gt;&#xA;    interface IHaveFeatureWeights&#xA;    interface ICalculateFeatureContribution" />
+  <TypeSignature Language="F#" Value="type TreeEnsembleModelParameters = class&#xA;    inherit ModelParametersBase&lt;single&gt;&#xA;    interface ICalculateFeatureContribution" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Microsoft.ML.Internal.Internallearn.ModelParametersBase&lt;System.Single&gt;</BaseTypeName>
-    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Model.ModelParametersBase&lt;System.Single&gt;</BaseTypeName>
+    <BaseTypeName>Microsoft.ML.Trainers.ModelParametersBase&lt;System.Single&gt;</BaseTypeName>
     <BaseTypeArguments>
       <BaseTypeArgument TypeParamName="!0">System.Single</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>Microsoft.ML.Model.ICalculateFeatureContribution</InterfaceName>
-    </Interface>
-    <Interface>
-      <InterfaceName>Microsoft.ML.Model.IHaveFeatureWeights</InterfaceName>
+      <InterfaceName>Microsoft.ML.Trainers.ICalculateFeatureContribution</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -49,104 +45,30 @@
         <Parameter Name="weights" Type="Microsoft.ML.Data.VBuffer&lt;System.Single&gt;" RefType="ref" />
       </Parameters>
       <Docs>
-        <param name="weights">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GetLeaf">
-      <MemberSignature Language="C#" Value="public int GetLeaf (int treeId, ref Microsoft.ML.Data.VBuffer&lt;float&gt; features, ref System.Collections.Generic.List&lt;int&gt; path);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 GetLeaf(int32 treeId, [in]valuetype Microsoft.ML.Data.VBuffer`1&lt;float32&gt;&amp; features, class System.Collections.Generic.List`1&lt;int32&gt;&amp; path) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.TreeEnsembleModelParameters.GetLeaf(System.Int32,Microsoft.ML.Data.VBuffer{System.Single}@,System.Collections.Generic.List{System.Int32}@)" />
-      <MemberSignature Language="VB.NET" Value="Public Function GetLeaf (treeId As Integer, ByRef features As VBuffer(Of Single), ByRef path As List(Of Integer)) As Integer" />
-      <MemberSignature Language="F#" Value="member this.GetLeaf : int *  *  -&gt; int" Usage="treeEnsembleModelParameters.GetLeaf (treeId, features, path)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="treeId" Type="System.Int32" />
-        <Parameter Name="features" Type="Microsoft.ML.Data.VBuffer&lt;System.Single&gt;" RefType="ref" />
-        <Parameter Name="path" Type="System.Collections.Generic.List&lt;System.Int32&gt;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <param name="treeId">To be added.</param>
-        <param name="features">To be added.</param>
-        <param name="path">To be added.</param>
+        <param name="weights">a <see cref="T:Microsoft.ML.Data.VBuffer`1" /> where feature weights would be assigned to.
+            The i-th element in <paramref name="weights" /> stores the weight of the i-th feature.</param>
         <summary>
-            Returns the leaf node in the requested tree for the given feature vector, and populates 'path' with the list of
-            internal nodes in the path from the root to that leaf. If 'path' is null a new list is initialized. All elements
-            in 'path' are cleared before filling in the current path nodes.
+            Copy the weights of all training features to <paramref name="weights" />.
             </summary>
-        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="GetLeafValue">
-      <MemberSignature Language="C#" Value="public float GetLeafValue (int treeId, int leafId);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float32 GetLeafValue(int32 treeId, int32 leafId) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.TreeEnsembleModelParameters.GetLeafValue(System.Int32,System.Int32)" />
-      <MemberSignature Language="VB.NET" Value="Public Function GetLeafValue (treeId As Integer, leafId As Integer) As Single" />
-      <MemberSignature Language="F#" Value="member this.GetLeafValue : int * int -&gt; single" Usage="treeEnsembleModelParameters.GetLeafValue (treeId, leafId)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="treeId" Type="System.Int32" />
-        <Parameter Name="leafId" Type="System.Int32" />
-      </Parameters>
-      <Docs>
-        <param name="treeId">To be added.</param>
-        <param name="leafId">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InputType">
-      <MemberSignature Language="C#" Value="protected internal readonly Microsoft.Data.DataView.DataViewType InputType;" />
-      <MemberSignature Language="ILAsm" Value=".field familyorassembly initonly class Microsoft.Data.DataView.DataViewType InputType" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.TreeEnsembleModelParameters.InputType" />
-      <MemberSignature Language="VB.NET" Value="Protected Friend ReadOnly InputType As DataViewType " />
-      <MemberSignature Language="F#" Value="val mutable InputType : Microsoft.Data.DataView.DataViewType" Usage="Microsoft.ML.Trainers.FastTree.TreeEnsembleModelParameters.InputType" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.Data.DataView.DataViewType</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Microsoft.ML.Model.ICalculateFeatureContribution.FeatureContributionCalculator">
-      <MemberSignature Language="C#" Value="Microsoft.ML.Model.FeatureContributionCalculator Microsoft.ML.Model.ICalculateFeatureContribution.FeatureContributionCalculator { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Model.FeatureContributionCalculator Microsoft.ML.Model.ICalculateFeatureContribution.FeatureContributionCalculator" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FastTree.TreeEnsembleModelParameters.Microsoft#ML#Model#ICalculateFeatureContribution#FeatureContributionCalculator" />
+    <Member MemberName="Microsoft.ML.Trainers.ICalculateFeatureContribution.FeatureContributionCalculator">
+      <MemberSignature Language="C#" Value="Microsoft.ML.Trainers.FeatureContributionCalculator Microsoft.ML.Trainers.ICalculateFeatureContribution.FeatureContributionCalculator { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Trainers.FeatureContributionCalculator Microsoft.ML.Trainers.ICalculateFeatureContribution.FeatureContributionCalculator" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FastTree.TreeEnsembleModelParameters.Microsoft#ML#Trainers#ICalculateFeatureContribution#FeatureContributionCalculator" />
       <MemberSignature Language="VB.NET" Value=" ReadOnly Property FeatureContributionCalculator As FeatureContributionCalculator Implements ICalculateFeatureContribution.FeatureContributionCalculator" />
-      <MemberSignature Language="F#" Usage="Microsoft.ML.Model.ICalculateFeatureContribution.FeatureContributionCalculator" />
+      <MemberSignature Language="F#" Usage="Microsoft.ML.Trainers.ICalculateFeatureContribution.FeatureContributionCalculator" />
       <MemberType>Property</MemberType>
       <Implements>
-        <InterfaceMember>P:Microsoft.ML.Model.ICalculateFeatureContribution.FeatureContributionCalculator</InterfaceMember>
+        <InterfaceMember>P:Microsoft.ML.Trainers.ICalculateFeatureContribution.FeatureContributionCalculator</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Model.FeatureContributionCalculator</ReturnType>
+        <ReturnType>Microsoft.ML.Trainers.FeatureContributionCalculator</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -161,25 +83,6 @@
             many decision trees.
             </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OutputType">
-      <MemberSignature Language="C#" Value="protected readonly Microsoft.Data.DataView.DataViewType OutputType;" />
-      <MemberSignature Language="ILAsm" Value=".field family initonly class Microsoft.Data.DataView.DataViewType OutputType" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.TreeEnsembleModelParameters.OutputType" />
-      <MemberSignature Language="VB.NET" Value="Protected ReadOnly OutputType As DataViewType " />
-      <MemberSignature Language="F#" Value="val mutable OutputType : Microsoft.Data.DataView.DataViewType" Usage="Microsoft.ML.Trainers.FastTree.TreeEnsembleModelParameters.OutputType" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.Data.DataView.DataViewType</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

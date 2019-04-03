@@ -19,12 +19,12 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName="ToBagofHashedWords">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.Vector&lt;float&gt; ToBagofHashedWords (this Microsoft.ML.StaticPipe.Scalar&lt;string&gt; input, int hashBits = 16, int ngramLength = 1, int skipLength = 0, bool allLengths = true, uint seed = 314489979, bool ordered = true, int invertHash = 0);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.Vector`1&lt;float32&gt; ToBagofHashedWords(class Microsoft.ML.StaticPipe.Scalar`1&lt;string&gt; input, int32 hashBits, int32 ngramLength, int32 skipLength, bool allLengths, unsigned int32 seed, bool ordered, int32 invertHash) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.WordHashBagEstimatorStaticExtensions.ToBagofHashedWords(Microsoft.ML.StaticPipe.Scalar{System.String},System.Int32,System.Int32,System.Int32,System.Boolean,System.UInt32,System.Boolean,System.Int32)" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ToBagofHashedWords (input As Scalar(Of String), Optional hashBits As Integer = 16, Optional ngramLength As Integer = 1, Optional skipLength As Integer = 0, Optional allLengths As Boolean = true, Optional seed As UInteger = 314489979, Optional ordered As Boolean = true, Optional invertHash As Integer = 0) As Vector(Of Single)" />
-      <MemberSignature Language="F#" Value="static member ToBagofHashedWords : Microsoft.ML.StaticPipe.Scalar&lt;string&gt; * int * int * int * bool * uint32 * bool * int -&gt; Microsoft.ML.StaticPipe.Vector&lt;single&gt;" Usage="Microsoft.ML.StaticPipe.WordHashBagEstimatorStaticExtensions.ToBagofHashedWords (input, hashBits, ngramLength, skipLength, allLengths, seed, ordered, invertHash)" />
+    <Member MemberName="ProduceHashedWordBags">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.StaticPipe.Vector&lt;float&gt; ProduceHashedWordBags (this Microsoft.ML.StaticPipe.Scalar&lt;string&gt; input, int numberOfBits = 16, int ngramLength = 1, int skipLength = 0, bool useAllLengths = true, uint seed = 314489979, bool useOrderedHashing = true, int maximumNumberOfInverts = 0);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.StaticPipe.Vector`1&lt;float32&gt; ProduceHashedWordBags(class Microsoft.ML.StaticPipe.Scalar`1&lt;string&gt; input, int32 numberOfBits, int32 ngramLength, int32 skipLength, bool useAllLengths, unsigned int32 seed, bool useOrderedHashing, int32 maximumNumberOfInverts) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.StaticPipe.WordHashBagEstimatorStaticExtensions.ProduceHashedWordBags(Microsoft.ML.StaticPipe.Scalar{System.String},System.Int32,System.Int32,System.Int32,System.Boolean,System.UInt32,System.Boolean,System.Int32)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ProduceHashedWordBags (input As Scalar(Of String), Optional numberOfBits As Integer = 16, Optional ngramLength As Integer = 1, Optional skipLength As Integer = 0, Optional useAllLengths As Boolean = true, Optional seed As UInteger = 314489979, Optional useOrderedHashing As Boolean = true, Optional maximumNumberOfInverts As Integer = 0) As Vector(Of Single)" />
+      <MemberSignature Language="F#" Value="static member ProduceHashedWordBags : Microsoft.ML.StaticPipe.Scalar&lt;string&gt; * int * int * int * bool * uint32 * bool * int -&gt; Microsoft.ML.StaticPipe.Vector&lt;single&gt;" Usage="Microsoft.ML.StaticPipe.WordHashBagEstimatorStaticExtensions.ProduceHashedWordBags (input, numberOfBits, ngramLength, skipLength, useAllLengths, seed, useOrderedHashing, maximumNumberOfInverts)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StaticPipe</AssemblyName>
@@ -35,25 +35,25 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="input" Type="Microsoft.ML.StaticPipe.Scalar&lt;System.String&gt;" RefType="this" />
-        <Parameter Name="hashBits" Type="System.Int32" />
+        <Parameter Name="numberOfBits" Type="System.Int32" />
         <Parameter Name="ngramLength" Type="System.Int32" />
         <Parameter Name="skipLength" Type="System.Int32" />
-        <Parameter Name="allLengths" Type="System.Boolean" />
+        <Parameter Name="useAllLengths" Type="System.Boolean" />
         <Parameter Name="seed" Type="System.UInt32" />
-        <Parameter Name="ordered" Type="System.Boolean" />
-        <Parameter Name="invertHash" Type="System.Int32" />
+        <Parameter Name="useOrderedHashing" Type="System.Boolean" />
+        <Parameter Name="maximumNumberOfInverts" Type="System.Int32" />
       </Parameters>
       <Docs>
         <param name="input">The column to apply to.</param>
-        <param name="hashBits">Number of bits to hash into. Must be between 1 and 30, inclusive.</param>
+        <param name="numberOfBits">Number of bits to hash into. Must be between 1 and 30, inclusive.</param>
         <param name="ngramLength">Ngram length.</param>
         <param name="skipLength">Maximum number of tokens to skip when constructing an ngram.</param>
-        <param name="allLengths">Whether to include all ngram lengths up to <paramref name="ngramLength" /> or only <paramref name="ngramLength" />.</param>
+        <param name="useAllLengths">Whether to include all ngram lengths up to <paramref name="ngramLength" /> or only <paramref name="ngramLength" />.</param>
         <param name="seed">Hashing seed.</param>
-        <param name="ordered">Whether the position of each source column should be included in the hash (when there are multiple source columns).</param>
-        <param name="invertHash">During hashing we constuct mappings between original values and the produced hash values.
+        <param name="useOrderedHashing">Whether the position of each source column should be included in the hash (when there are multiple source columns).</param>
+        <param name="maximumNumberOfInverts">During hashing we constuct mappings between original values and the produced hash values.
             Text representation of original values are stored in the slot names of the  metadata for the new column.Hashing, as such, can map many initial values to one.
-            <paramref name="invertHash" /> specifies the upper bound of the number of distinct input values mapping to a hash that should be retained.
+            <paramref name="maximumNumberOfInverts" /> specifies the upper bound of the number of distinct input values mapping to a hash that should be retained.
             <value>0</value> does not retain any input values. <value>-1</value> retains all input values mapping to each hash.</param>
         <summary>
             Produces a bag of counts of ngrams (sequences of consecutive words of length 1-n) in a given text.
