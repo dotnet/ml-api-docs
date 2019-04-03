@@ -9,27 +9,25 @@
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <TypeParameters>
-    <TypeParameter Name="TArgs">
+    <TypeParameter Name="TOptions">
       <Constraints>
         <ParameterAttribute>DefaultConstructorConstraint</ParameterAttribute>
-        <BaseTypeName>Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;TArgs,TTransformer,TPredictor&gt;+ArgumentsBase</BaseTypeName>
+        <BaseTypeName>Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;TOptions,TTransformer,TPredictor&gt;+OptionsBase</BaseTypeName>
       </Constraints>
     </TypeParameter>
     <TypeParameter Name="TTransformer">
       <Constraints>
-        <InterfaceName>Microsoft.ML.Runtime.ISingleFeaturePredictionTransformer&lt;TPredictor&gt;</InterfaceName>
+        <InterfaceName>Microsoft.ML.ISingleFeaturePredictionTransformer&lt;TPredictor&gt;</InterfaceName>
       </Constraints>
     </TypeParameter>
     <TypeParameter Name="TPredictor">
       <Constraints>
-        <InterfaceName>Microsoft.ML.Runtime.IPredictorProducing&lt;System.Single&gt;</InterfaceName>
+        <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
       </Constraints>
     </TypeParameter>
   </TypeParameters>
   <Base>
-    <BaseTypeName>Microsoft.ML.Runtime.Training.TrainerEstimatorBase&lt;TTransformer,TPredictor&gt;</BaseTypeName>
-    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Training.TrainerEstimatorBase&lt;TTransformer,TPredictor&gt;</BaseTypeName>
-    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Trainers.TrainerEstimatorBase&lt;TTransformer,TPredictor&gt;</BaseTypeName>
+    <BaseTypeName>Microsoft.ML.Trainers.TrainerEstimatorBase&lt;TTransformer,TPredictor&gt;</BaseTypeName>
     <BaseTypeArguments>
       <BaseTypeArgument TypeParamName="!0">TTransformer</BaseTypeArgument>
       <BaseTypeArgument TypeParamName="!1">TPredictor</BaseTypeArgument>
@@ -37,36 +35,13 @@
   </Base>
   <Interfaces />
   <Docs>
-    <typeparam name="TArgs">To be added.</typeparam>
     <typeparam name="TOptions">To be added.</typeparam>
     <typeparam name="TTransformer">To be added.</typeparam>
     <typeparam name="TPredictor">To be added.</typeparam>
     <summary>
-            Generalized Additive Model Trainer.
+            Base class for GAM trainers.
             </summary>
-    <remarks>
-      <para>
-            Generalized Additive Models, or GAMs, model the data as a set of linearly independent features
-            similar to a linear model. For each feature, the GAM trainer learns a non-linear function,
-            called a "shape function", that computes the response as a function of the feature's value.
-            (In contrast, a linear model fits a linear response (e.g. a line) to each feature.)
-            To score an example, the outputs of all the shape functions are summed and the score is the total value.
-            </para>
-      <para>
-            This GAM trainer is implemented using shallow gradient boosted trees (e.g. tree stumps) to learn nonparametric
-            shape functions, and is based on the method described in Lou, Caruana, and Gehrke.
-            <a href="http://www.cs.cornell.edu/~yinlou/papers/lou-kdd12.pdf">"Intelligible Models for Classification and Regression."</a> KDD'12, Beijing, China. 2012.
-            After training, an intercept is added to represent the average prediction over the training set,
-            and the shape functions are normalized to represent the deviation from the average prediction. This results
-            in models that are easily interpreted simply by inspecting the intercept and the shape functions.
-            See the sample below for an example of how to train a GAM model and inspect and interpret the results.
-            </para>
-    </remarks>
-    <example>
-      <format type="text/markdown"><![CDATA[
-            [!code-csharp[GAM](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/GeneralizedAdditiveModels.cs)]
-            ]]></format>
-    </example>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName="Info">

@@ -96,34 +96,10 @@
         <summary>
             Return categorical thresholds used at node indexed by nodeIndex. If the considered input feature does NOT
             matche any of values returned by <see cref="M:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.GetCategoricalSplitFeaturesAt(System.Int32)" />, we call it a
-            less-than-threshold event and therefore <see cref="P:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.LteChild" />[nodeIndex] is the child node that input
+            less-than-threshold event and therefore <see cref="P:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.LeftChild" />[nodeIndex] is the child node that input
             should go next. The returned value is valid only if <see cref="P:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.CategoricalSplitFlags" />[nodeIndex] is true.
             </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GtChild">
-      <MemberSignature Language="C#" Value="public System.Collections.Generic.IReadOnlyList&lt;int&gt; GtChild { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.IReadOnlyList`1&lt;int32&gt; GtChild" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.GtChild" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property GtChild As IReadOnlyList(Of Integer)" />
-      <MemberSignature Language="F#" Value="member this.GtChild : System.Collections.Generic.IReadOnlyList&lt;int&gt;" Usage="Microsoft.ML.Trainers.FastTree.RegressionTreeBase.GtChild" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Collections.Generic.IReadOnlyList&lt;System.Int32&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>
-          <see cref="P:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.GtChild" />[i] is the i-th node's child index used when the two conditions, (1) and (2),
-            described in <see cref="P:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.LteChild" />'s document are not true. Its return value follows the format
-            used in <see cref="P:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.LteChild" />.
-            </summary>
-        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -149,12 +125,12 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="LteChild">
-      <MemberSignature Language="C#" Value="public System.Collections.Generic.IReadOnlyList&lt;int&gt; LteChild { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.IReadOnlyList`1&lt;int32&gt; LteChild" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.LteChild" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property LteChild As IReadOnlyList(Of Integer)" />
-      <MemberSignature Language="F#" Value="member this.LteChild : System.Collections.Generic.IReadOnlyList&lt;int&gt;" Usage="Microsoft.ML.Trainers.FastTree.RegressionTreeBase.LteChild" />
+    <Member MemberName="LeftChild">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.IReadOnlyList&lt;int&gt; LeftChild { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.IReadOnlyList`1&lt;int32&gt; LeftChild" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.LeftChild" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property LeftChild As IReadOnlyList(Of Integer)" />
+      <MemberSignature Language="F#" Value="member this.LeftChild : System.Collections.Generic.IReadOnlyList&lt;int&gt;" Usage="Microsoft.ML.Trainers.FastTree.RegressionTreeBase.LeftChild" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
@@ -165,9 +141,9 @@
       </ReturnValue>
       <Docs>
         <summary>
-          <see cref="P:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.LteChild" />[i] is the i-th node's child index used when
-            (1) the numerical feature indexed by <see cref="P:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.NumericalSplitFeatureIndexes" />[i] is less than the
-            threshold <see cref="P:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.NumericalSplitThresholds" />[i], or
+          <see cref="P:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.LeftChild" />[i] is the i-th node's child index used when
+            (1) the numerical feature indexed by <see cref="P:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.NumericalSplitFeatureIndexes" />[i] is less than or equal
+            to the threshold <see cref="P:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.NumericalSplitThresholds" />[i], or
             (2) the categorical features indexed by <see cref="M:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.GetCategoricalCategoricalSplitFeatureRangeAt(System.Int32)" />'s
             returned value with nodeIndex=i is NOT a sub-set of <see cref="M:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.GetCategoricalSplitFeaturesAt(System.Int32)" /> with
             nodeIndex=i.
@@ -177,6 +153,52 @@
             <see langword="~" />(-1)-th leaf in the underlying <see cref="F:Microsoft.ML.Trainers.FastTree.RegressionTreeBase._tree" />. Note that <see langword="~" /> is the
             bitwise complement operator in C#; for details, see
             https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/bitwise-complement-operator.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NumberOfLeaves">
+      <MemberSignature Language="C#" Value="public int NumberOfLeaves { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 NumberOfLeaves" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.NumberOfLeaves" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property NumberOfLeaves As Integer" />
+      <MemberSignature Language="F#" Value="member this.NumberOfLeaves : int" Usage="Microsoft.ML.Trainers.FastTree.RegressionTreeBase.NumberOfLeaves" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Number of leaves in the tree. Note that <see cref="P:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.NumberOfLeaves" /> does not take non-leaf nodes into account.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NumberOfNodes">
+      <MemberSignature Language="C#" Value="public int NumberOfNodes { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 NumberOfNodes" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.NumberOfNodes" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property NumberOfNodes As Integer" />
+      <MemberSignature Language="F#" Value="member this.NumberOfNodes : int" Usage="Microsoft.ML.Trainers.FastTree.RegressionTreeBase.NumberOfNodes" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Number of nodes in the tree. This doesn't include any leaves. For example, a tree with node0-&gt;node1,
+            node0-&gt;leaf3, node1-&gt;leaf1, node1-&gt;leaf2, <see cref="P:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.NumberOfNodes" /> and <see cref="P:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.NumberOfLeaves" /> should
+            be 2 and 3, respectively.
             </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
@@ -229,47 +251,25 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NumLeaves">
-      <MemberSignature Language="C#" Value="public int NumLeaves { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 NumLeaves" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.NumLeaves" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property NumLeaves As Integer" />
-      <MemberSignature Language="F#" Value="member this.NumLeaves : int" Usage="Microsoft.ML.Trainers.FastTree.RegressionTreeBase.NumLeaves" />
+    <Member MemberName="RightChild">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.IReadOnlyList&lt;int&gt; RightChild { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.IReadOnlyList`1&lt;int32&gt; RightChild" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.RightChild" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property RightChild As IReadOnlyList(Of Integer)" />
+      <MemberSignature Language="F#" Value="member this.RightChild : System.Collections.Generic.IReadOnlyList&lt;int&gt;" Usage="Microsoft.ML.Trainers.FastTree.RegressionTreeBase.RightChild" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
+        <ReturnType>System.Collections.Generic.IReadOnlyList&lt;System.Int32&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
-            Number of leaves in the tree. Note that <see cref="P:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.NumLeaves" /> does not take non-leaf nodes into account.
-            </summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="NumNodes">
-      <MemberSignature Language="C#" Value="public int NumNodes { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 NumNodes" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.NumNodes" />
-      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property NumNodes As Integer" />
-      <MemberSignature Language="F#" Value="member this.NumNodes : int" Usage="Microsoft.ML.Trainers.FastTree.RegressionTreeBase.NumNodes" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>
-            Number of nodes in the tree. This doesn't include any leaves. For example, a tree with node0-&gt;node1,
-            node0-&gt;leaf3, node1-&gt;leaf1, node1-&gt;leaf2, <see cref="P:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.NumNodes" /> and <see cref="P:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.NumLeaves" /> should
-            be 2 and 3, respectively.
+          <see cref="P:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.RightChild" />[i] is the i-th node's child index used when the two conditions, (1) and (2),
+            described in <see cref="P:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.LeftChild" />'s document are not true. Its return value follows the format
+            used in <see cref="P:Microsoft.ML.Trainers.FastTree.RegressionTreeBase.LeftChild" />.
             </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>

@@ -14,17 +14,17 @@
   <Interfaces />
   <Docs>
     <summary>
-            Extensions for the HashEstimator.
+            Extensions for the conversion transformations.
             </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName="ConvertType">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.TypeConvertingEstimator ConvertType (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, params Microsoft.ML.Transforms.TypeConvertingEstimator.ColumnOptions[] columns);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.TypeConvertingEstimator ConvertType(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, class Microsoft.ML.Transforms.TypeConvertingEstimator/ColumnOptions[] columns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.ConvertType(Microsoft.ML.TransformsCatalog.ConversionTransforms,Microsoft.ML.Transforms.TypeConvertingEstimator.ColumnOptions[])" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ConvertType (catalog As TransformsCatalog.ConversionTransforms, ParamArray columns As TypeConvertingEstimator.ColumnOptions()) As TypeConvertingEstimator" />
-      <MemberSignature Language="F#" Value="static member ConvertType : Microsoft.ML.TransformsCatalog.ConversionTransforms * Microsoft.ML.Transforms.TypeConvertingEstimator.ColumnOptions[] -&gt; Microsoft.ML.Transforms.TypeConvertingEstimator" Usage="Microsoft.ML.ConversionsExtensionsCatalog.ConvertType (catalog, columns)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.TypeConvertingEstimator ConvertType (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, Microsoft.ML.InputOutputColumnPair[] columns, Microsoft.ML.Data.DataKind outputKind = Microsoft.ML.Data.DataKind.Single);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.TypeConvertingEstimator ConvertType(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, class Microsoft.ML.InputOutputColumnPair[] columns, valuetype Microsoft.ML.Data.DataKind outputKind) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.ConvertType(Microsoft.ML.TransformsCatalog.ConversionTransforms,Microsoft.ML.InputOutputColumnPair[],Microsoft.ML.Data.DataKind)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ConvertType (catalog As TransformsCatalog.ConversionTransforms, columns As InputOutputColumnPair(), Optional outputKind As DataKind = Microsoft.ML.Data.DataKind.Single) As TypeConvertingEstimator" />
+      <MemberSignature Language="F#" Value="static member ConvertType : Microsoft.ML.TransformsCatalog.ConversionTransforms * Microsoft.ML.InputOutputColumnPair[] * Microsoft.ML.Data.DataKind -&gt; Microsoft.ML.Transforms.TypeConvertingEstimator" Usage="Microsoft.ML.ConversionsExtensionsCatalog.ConvertType (catalog, columns, outputKind)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -35,19 +35,15 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+ConversionTransforms" RefType="this" />
-        <Parameter Name="columns" Type="Microsoft.ML.Transforms.TypeConvertingEstimator+ColumnOptions[]">
-          <Attributes>
-            <Attribute>
-              <AttributeName>System.ParamArray</AttributeName>
-            </Attribute>
-          </Attributes>
-        </Parameter>
+        <Parameter Name="columns" Type="Microsoft.ML.InputOutputColumnPair[]" />
+        <Parameter Name="outputKind" Type="Microsoft.ML.Data.DataKind" />
       </Parameters>
       <Docs>
-        <param name="catalog">The transform's catalog.</param>
-        <param name="columns">Description of dataset columns and how to process them.</param>
+        <param name="catalog">The conversion transform's catalog.</param>
+        <param name="columns">Specifies the names of the columns on which to apply the transformation.</param>
+        <param name="outputKind">The expected kind of the output column.</param>
         <summary>
-            Changes column type of the input column.
+            Changes column type of the input columns.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -74,7 +70,7 @@
         <Parameter Name="outputKind" Type="Microsoft.ML.Data.DataKind" />
       </Parameters>
       <Docs>
-        <param name="catalog">The transform's catalog.</param>
+        <param name="catalog">The conversion transform's catalog.</param>
         <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
         <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
         <param name="outputKind">The expected kind of the output column.</param>
@@ -91,45 +87,11 @@
       </Docs>
     </Member>
     <Member MemberName="Hash">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.HashingEstimator Hash (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, params Microsoft.ML.Transforms.HashingEstimator.ColumnOptions[] columns);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.HashingEstimator Hash(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, class Microsoft.ML.Transforms.HashingEstimator/ColumnOptions[] columns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.Hash(Microsoft.ML.TransformsCatalog.ConversionTransforms,Microsoft.ML.Transforms.HashingEstimator.ColumnOptions[])" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function Hash (catalog As TransformsCatalog.ConversionTransforms, ParamArray columns As HashingEstimator.ColumnOptions()) As HashingEstimator" />
-      <MemberSignature Language="F#" Value="static member Hash : Microsoft.ML.TransformsCatalog.ConversionTransforms * Microsoft.ML.Transforms.HashingEstimator.ColumnOptions[] -&gt; Microsoft.ML.Transforms.HashingEstimator" Usage="Microsoft.ML.ConversionsExtensionsCatalog.Hash (catalog, columns)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Transforms.HashingEstimator</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+ConversionTransforms" RefType="this" />
-        <Parameter Name="columns" Type="Microsoft.ML.Transforms.HashingEstimator+ColumnOptions[]">
-          <Attributes>
-            <Attribute>
-              <AttributeName>System.ParamArray</AttributeName>
-            </Attribute>
-          </Attributes>
-        </Parameter>
-      </Parameters>
-      <Docs>
-        <param name="catalog">The transform's catalog.</param>
-        <param name="columns">Description of dataset columns and how to process them.</param>
-        <summary>
-            Hashes the values in the input column.
-            </summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Hash">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.HashingEstimator Hash (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, string outputColumnName, string inputColumnName = null, int hashBits = 31, int invertHash = 0);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.HashingEstimator Hash(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, string outputColumnName, string inputColumnName, int32 hashBits, int32 invertHash) cil managed" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.HashingEstimator Hash (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, string outputColumnName, string inputColumnName = null, int numberOfBits = 31, int maximumNumberOfInverts = 0);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.HashingEstimator Hash(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, string outputColumnName, string inputColumnName, int32 numberOfBits, int32 maximumNumberOfInverts) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.Hash(Microsoft.ML.TransformsCatalog.ConversionTransforms,System.String,System.String,System.Int32,System.Int32)" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function Hash (catalog As TransformsCatalog.ConversionTransforms, outputColumnName As String, Optional inputColumnName As String = null, Optional hashBits As Integer = 31, Optional invertHash As Integer = 0) As HashingEstimator" />
-      <MemberSignature Language="F#" Value="static member Hash : Microsoft.ML.TransformsCatalog.ConversionTransforms * string * string * int * int -&gt; Microsoft.ML.Transforms.HashingEstimator" Usage="Microsoft.ML.ConversionsExtensionsCatalog.Hash (catalog, outputColumnName, inputColumnName, hashBits, invertHash)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function Hash (catalog As TransformsCatalog.ConversionTransforms, outputColumnName As String, Optional inputColumnName As String = null, Optional numberOfBits As Integer = 31, Optional maximumNumberOfInverts As Integer = 0) As HashingEstimator" />
+      <MemberSignature Language="F#" Value="static member Hash : Microsoft.ML.TransformsCatalog.ConversionTransforms * string * string * int * int -&gt; Microsoft.ML.Transforms.HashingEstimator" Usage="Microsoft.ML.ConversionsExtensionsCatalog.Hash (catalog, outputColumnName, inputColumnName, numberOfBits, maximumNumberOfInverts)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -142,31 +104,36 @@
         <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+ConversionTransforms" RefType="this" />
         <Parameter Name="outputColumnName" Type="System.String" />
         <Parameter Name="inputColumnName" Type="System.String" />
-        <Parameter Name="hashBits" Type="System.Int32" />
-        <Parameter Name="invertHash" Type="System.Int32" />
+        <Parameter Name="numberOfBits" Type="System.Int32" />
+        <Parameter Name="maximumNumberOfInverts" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="catalog">The transform's catalog.</param>
+        <param name="catalog">The conversion transform's catalog.</param>
         <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
         <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
-        <param name="hashBits">Number of bits to hash into. Must be between 1 and 31, inclusive.</param>
-        <param name="invertHash">During hashing we constuct mappings between original values and the produced hash values.
+        <param name="numberOfBits">Number of bits to hash into. Must be between 1 and 31, inclusive.</param>
+        <param name="maximumNumberOfInverts">During hashing we constuct mappings between original values and the produced hash values.
             Text representation of original values are stored in the slot names of the  metadata for the new column.Hashing, as such, can map many initial values to one.
-            <paramref name="invertHash" /> specifies the upper bound of the number of distinct input values mapping to a hash that should be retained.
+            <paramref name="maximumNumberOfInverts" />Specifies the upper bound of the number of distinct input values mapping to a hash that should be retained.
             <value>0</value> does not retain any input values. <value>-1</value> retains all input values mapping to each hash.</param>
         <summary>
             Hashes the values in the input column.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+             [!code-csharp[Hash](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/Conversion/Hash.cs)]
+            ]]></format>
+        </example>
       </Docs>
     </Member>
     <Member MemberName="MapKeyToValue">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.KeyToValueMappingEstimator MapKeyToValue (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, params Microsoft.ML.ColumnOptions[] columns);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.KeyToValueMappingEstimator MapKeyToValue(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, class Microsoft.ML.ColumnOptions[] columns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.MapKeyToValue(Microsoft.ML.TransformsCatalog.ConversionTransforms,Microsoft.ML.ColumnOptions[])" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function MapKeyToValue (catalog As TransformsCatalog.ConversionTransforms, ParamArray columns As ColumnOptions()) As KeyToValueMappingEstimator" />
-      <MemberSignature Language="F#" Value="static member MapKeyToValue : Microsoft.ML.TransformsCatalog.ConversionTransforms * Microsoft.ML.ColumnOptions[] -&gt; Microsoft.ML.Transforms.KeyToValueMappingEstimator" Usage="Microsoft.ML.ConversionsExtensionsCatalog.MapKeyToValue (catalog, columns)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.KeyToValueMappingEstimator MapKeyToValue (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, Microsoft.ML.InputOutputColumnPair[] columns);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.KeyToValueMappingEstimator MapKeyToValue(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, class Microsoft.ML.InputOutputColumnPair[] columns) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.MapKeyToValue(Microsoft.ML.TransformsCatalog.ConversionTransforms,Microsoft.ML.InputOutputColumnPair[])" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function MapKeyToValue (catalog As TransformsCatalog.ConversionTransforms, columns As InputOutputColumnPair()) As KeyToValueMappingEstimator" />
+      <MemberSignature Language="F#" Value="static member MapKeyToValue : Microsoft.ML.TransformsCatalog.ConversionTransforms * Microsoft.ML.InputOutputColumnPair[] -&gt; Microsoft.ML.Transforms.KeyToValueMappingEstimator" Usage="Microsoft.ML.ConversionsExtensionsCatalog.MapKeyToValue (catalog, columns)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -177,28 +144,16 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+ConversionTransforms" RefType="this" />
-        <Parameter Name="columns" Type="Microsoft.ML.ColumnOptions[]">
-          <Attributes>
-            <Attribute>
-              <AttributeName>System.ParamArray</AttributeName>
-            </Attribute>
-          </Attributes>
-        </Parameter>
+        <Parameter Name="columns" Type="Microsoft.ML.InputOutputColumnPair[]" />
       </Parameters>
       <Docs>
-        <param name="catalog">The categorical transform's catalog</param>
-        <param name="columns">The pairs of input and output columns.</param>
+        <param name="catalog">The conversion transform's catalog.</param>
+        <param name="columns">Specifies the names of the columns on which to apply the transformation.</param>
         <summary>
-             Convert the key types (name of the column specified in the first item of the tuple) back to their original values
-             (named as specified in the second item of the tuple).
+            Convert the key types back to their original values.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
-        <example>
-          <format type="text/markdown"><![CDATA[
-             [!code-csharp[KeyToValueMappingEstimator](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/ValueMappingStringToKeyType.cs)]
-            ]]></format>
-        </example>
       </Docs>
     </Member>
     <Member MemberName="MapKeyToValue">
@@ -221,7 +176,7 @@
         <Parameter Name="inputColumnName" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="catalog">The categorical transform's catalog.</param>
+        <param name="catalog">The conversion transform's catalog.</param>
         <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
         <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
         <summary>
@@ -237,11 +192,11 @@
       </Docs>
     </Member>
     <Member MemberName="MapKeyToVector">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.KeyToVectorMappingEstimator MapKeyToVector (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, params Microsoft.ML.Transforms.KeyToVectorMappingEstimator.ColumnOptions[] columns);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.KeyToVectorMappingEstimator MapKeyToVector(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, class Microsoft.ML.Transforms.KeyToVectorMappingEstimator/ColumnOptions[] columns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.MapKeyToVector(Microsoft.ML.TransformsCatalog.ConversionTransforms,Microsoft.ML.Transforms.KeyToVectorMappingEstimator.ColumnOptions[])" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function MapKeyToVector (catalog As TransformsCatalog.ConversionTransforms, ParamArray columns As KeyToVectorMappingEstimator.ColumnOptions()) As KeyToVectorMappingEstimator" />
-      <MemberSignature Language="F#" Value="static member MapKeyToVector : Microsoft.ML.TransformsCatalog.ConversionTransforms * Microsoft.ML.Transforms.KeyToVectorMappingEstimator.ColumnOptions[] -&gt; Microsoft.ML.Transforms.KeyToVectorMappingEstimator" Usage="Microsoft.ML.ConversionsExtensionsCatalog.MapKeyToVector (catalog, columns)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.KeyToVectorMappingEstimator MapKeyToVector (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, Microsoft.ML.InputOutputColumnPair[] columns, bool outputCountVector = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.KeyToVectorMappingEstimator MapKeyToVector(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, class Microsoft.ML.InputOutputColumnPair[] columns, bool outputCountVector) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.MapKeyToVector(Microsoft.ML.TransformsCatalog.ConversionTransforms,Microsoft.ML.InputOutputColumnPair[],System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function MapKeyToVector (catalog As TransformsCatalog.ConversionTransforms, columns As InputOutputColumnPair(), Optional outputCountVector As Boolean = false) As KeyToVectorMappingEstimator" />
+      <MemberSignature Language="F#" Value="static member MapKeyToVector : Microsoft.ML.TransformsCatalog.ConversionTransforms * Microsoft.ML.InputOutputColumnPair[] * bool -&gt; Microsoft.ML.Transforms.KeyToVectorMappingEstimator" Usage="Microsoft.ML.ConversionsExtensionsCatalog.MapKeyToVector (catalog, columns, outputCountVector)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -252,30 +207,27 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+ConversionTransforms" RefType="this" />
-        <Parameter Name="columns" Type="Microsoft.ML.Transforms.KeyToVectorMappingEstimator+ColumnOptions[]">
-          <Attributes>
-            <Attribute>
-              <AttributeName>System.ParamArray</AttributeName>
-            </Attribute>
-          </Attributes>
-        </Parameter>
+        <Parameter Name="columns" Type="Microsoft.ML.InputOutputColumnPair[]" />
+        <Parameter Name="outputCountVector" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="catalog">The categorical transform's catalog.</param>
-        <param name="columns">The input column to map back to vectors.</param>
+        <param name="catalog">The conversion transform's catalog.</param>
+        <param name="columns">Specifies the names of the columns on which to apply the transformation.</param>
+        <param name="outputCountVector">Whether to combine multiple indicator vectors into a single vector of counts instead of concatenating them.
+            This is only relevant when the input column is a vector of keys.</param>
         <summary>
-            Convert the key types back to their original vectors.
+            Maps columns of key types or key values into columns of floating point vectors.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="MapKeyToVector">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.KeyToVectorMappingEstimator MapKeyToVector (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, string outputColumnName, string inputColumnName = null, bool bag = false);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.KeyToVectorMappingEstimator MapKeyToVector(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, string outputColumnName, string inputColumnName, bool bag) cil managed" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.KeyToVectorMappingEstimator MapKeyToVector (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, string outputColumnName, string inputColumnName = null, bool outputCountVector = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.KeyToVectorMappingEstimator MapKeyToVector(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, string outputColumnName, string inputColumnName, bool outputCountVector) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.MapKeyToVector(Microsoft.ML.TransformsCatalog.ConversionTransforms,System.String,System.String,System.Boolean)" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function MapKeyToVector (catalog As TransformsCatalog.ConversionTransforms, outputColumnName As String, Optional inputColumnName As String = null, Optional bag As Boolean = false) As KeyToVectorMappingEstimator" />
-      <MemberSignature Language="F#" Value="static member MapKeyToVector : Microsoft.ML.TransformsCatalog.ConversionTransforms * string * string * bool -&gt; Microsoft.ML.Transforms.KeyToVectorMappingEstimator" Usage="Microsoft.ML.ConversionsExtensionsCatalog.MapKeyToVector (catalog, outputColumnName, inputColumnName, bag)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function MapKeyToVector (catalog As TransformsCatalog.ConversionTransforms, outputColumnName As String, Optional inputColumnName As String = null, Optional outputCountVector As Boolean = false) As KeyToVectorMappingEstimator" />
+      <MemberSignature Language="F#" Value="static member MapKeyToVector : Microsoft.ML.TransformsCatalog.ConversionTransforms * string * string * bool -&gt; Microsoft.ML.Transforms.KeyToVectorMappingEstimator" Usage="Microsoft.ML.ConversionsExtensionsCatalog.MapKeyToVector (catalog, outputColumnName, inputColumnName, outputCountVector)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -288,103 +240,27 @@
         <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+ConversionTransforms" RefType="this" />
         <Parameter Name="outputColumnName" Type="System.String" />
         <Parameter Name="inputColumnName" Type="System.String" />
-        <Parameter Name="bag" Type="System.Boolean" />
+        <Parameter Name="outputCountVector" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="catalog">The categorical transform's catalog.</param>
+        <param name="catalog">The conversion transform's catalog.</param>
         <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
         <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
-        <param name="bag">Whether bagging is used for the conversion. </param>
+        <param name="outputCountVector">Whether to combine multiple indicator vectors into a single vector of counts instead of concatenating them.
+            This is only relevant when the input column is a vector of keys.</param>
         <summary>
-            Convert the key types back to their original vectors.
+            Maps key types or key values into a floating point vector.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="MapValueToKey">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.ValueToKeyMappingEstimator MapValueToKey (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, Microsoft.ML.Transforms.ValueToKeyMappingEstimator.ColumnOptions[] columns, Microsoft.Data.DataView.IDataView keyData = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.ValueToKeyMappingEstimator MapValueToKey(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, class Microsoft.ML.Transforms.ValueToKeyMappingEstimator/ColumnOptions[] columns, class Microsoft.Data.DataView.IDataView keyData) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.MapValueToKey(Microsoft.ML.TransformsCatalog.ConversionTransforms,Microsoft.ML.Transforms.ValueToKeyMappingEstimator.ColumnOptions[],Microsoft.Data.DataView.IDataView)" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function MapValueToKey (catalog As TransformsCatalog.ConversionTransforms, columns As ValueToKeyMappingEstimator.ColumnOptions(), Optional keyData As IDataView = null) As ValueToKeyMappingEstimator" />
-      <MemberSignature Language="F#" Value="static member MapValueToKey : Microsoft.ML.TransformsCatalog.ConversionTransforms * Microsoft.ML.Transforms.ValueToKeyMappingEstimator.ColumnOptions[] * Microsoft.Data.DataView.IDataView -&gt; Microsoft.ML.Transforms.ValueToKeyMappingEstimator" Usage="Microsoft.ML.ConversionsExtensionsCatalog.MapValueToKey (catalog, columns, keyData)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Transforms.ValueToKeyMappingEstimator</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+ConversionTransforms" RefType="this" />
-        <Parameter Name="columns" Type="Microsoft.ML.Transforms.ValueToKeyMappingEstimator+ColumnOptions[]" />
-        <Parameter Name="keyData" Type="Microsoft.Data.DataView.IDataView" />
-      </Parameters>
-      <Docs>
-        <param name="catalog">The categorical transform's catalog.</param>
-        <param name="columns">The data columns to map to keys.</param>
-        <param name="keyData">The data view containing the terms. If specified, this should be a single column data
-            view, and the key-values will be taken from that column. If unspecified, the key-values will be determined
-            from the input data upon fitting.</param>
-        <summary>
-            Converts value types into <see cref="T:Microsoft.ML.Data.KeyType" />, optionally loading the keys to use from <paramref name="keyData" />.
-            </summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-        <example>
-          <format type="text/markdown"><![CDATA[
-            [!code-csharp[ValueToKey](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/KeyToValueValueToKey.cs)]
-            ]]></format>
-        </example>
-      </Docs>
-    </Member>
-    <Member MemberName="MapValueToKey">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.ValueToKeyMappingEstimator MapValueToKey (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, string outputColumnName, string inputColumnName = null, int maxNumKeys = 1000000, Microsoft.ML.Transforms.ValueToKeyMappingEstimator.SortOrder sort = Microsoft.ML.Transforms.ValueToKeyMappingEstimator+SortOrder.Occurrence);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.ValueToKeyMappingEstimator MapValueToKey(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, string outputColumnName, string inputColumnName, int32 maxNumKeys, valuetype Microsoft.ML.Transforms.ValueToKeyMappingEstimator/SortOrder sort) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.MapValueToKey(Microsoft.ML.TransformsCatalog.ConversionTransforms,System.String,System.String,System.Int32,Microsoft.ML.Transforms.ValueToKeyMappingEstimator.SortOrder)" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function MapValueToKey (catalog As TransformsCatalog.ConversionTransforms, outputColumnName As String, Optional inputColumnName As String = null, Optional maxNumKeys As Integer = 1000000, Optional sort As ValueToKeyMappingEstimator.SortOrder = Microsoft.ML.Transforms.ValueToKeyMappingEstimator+SortOrder.Occurrence) As ValueToKeyMappingEstimator" />
-      <MemberSignature Language="F#" Value="static member MapValueToKey : Microsoft.ML.TransformsCatalog.ConversionTransforms * string * string * int * Microsoft.ML.Transforms.ValueToKeyMappingEstimator.SortOrder -&gt; Microsoft.ML.Transforms.ValueToKeyMappingEstimator" Usage="Microsoft.ML.ConversionsExtensionsCatalog.MapValueToKey (catalog, outputColumnName, inputColumnName, maxNumKeys, sort)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Transforms.ValueToKeyMappingEstimator</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+ConversionTransforms" RefType="this" />
-        <Parameter Name="outputColumnName" Type="System.String" />
-        <Parameter Name="inputColumnName" Type="System.String" />
-        <Parameter Name="maxNumKeys" Type="System.Int32" />
-        <Parameter Name="sort" Type="Microsoft.ML.Transforms.ValueToKeyMappingEstimator+SortOrder" />
-      </Parameters>
-      <Docs>
-        <param name="catalog">The categorical transform's catalog.</param>
-        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
-        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
-        <param name="maxNumKeys">Maximum number of keys to keep per column when auto-training.</param>
-        <param name="sort">How items should be ordered when vectorized. If <see cref="F:Microsoft.ML.Transforms.ValueToKeyMappingEstimator.SortOrder.Occurrence" /> choosen they will be in the order encountered.
-            If <see cref="F:Microsoft.ML.Transforms.ValueToKeyMappingEstimator.SortOrder.Value" />, items are sorted according to their default comparison, for example, text sorting will be case sensitive (for example, 'A' then 'Z' then 'a').</param>
-        <summary>
-            Converts value types into <see cref="T:Microsoft.ML.Data.KeyType" />.
-            </summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-        <example>
-          <format type="text/markdown"><![CDATA[
-            [!code-csharp[ValueToKey](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/KeyToValueValueToKey.cs)]
-            ]]></format>
-        </example>
-      </Docs>
-    </Member>
-    <Member MemberName="ValueMap">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.ValueMappingEstimator ValueMap (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, Microsoft.Data.DataView.IDataView lookupMap, string keyColumn, string valueColumn, params Microsoft.ML.ColumnOptions[] columns);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.ValueMappingEstimator ValueMap(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, class Microsoft.Data.DataView.IDataView lookupMap, string keyColumn, string valueColumn, class Microsoft.ML.ColumnOptions[] columns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.ValueMap(Microsoft.ML.TransformsCatalog.ConversionTransforms,Microsoft.Data.DataView.IDataView,System.String,System.String,Microsoft.ML.ColumnOptions[])" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ValueMap (catalog As TransformsCatalog.ConversionTransforms, lookupMap As IDataView, keyColumn As String, valueColumn As String, ParamArray columns As ColumnOptions()) As ValueMappingEstimator" />
-      <MemberSignature Language="F#" Value="static member ValueMap : Microsoft.ML.TransformsCatalog.ConversionTransforms * Microsoft.Data.DataView.IDataView * string * string * Microsoft.ML.ColumnOptions[] -&gt; Microsoft.ML.Transforms.ValueMappingEstimator" Usage="Microsoft.ML.ConversionsExtensionsCatalog.ValueMap (catalog, lookupMap, keyColumn, valueColumn, columns)" />
+    <Member MemberName="MapValue">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.ValueMappingEstimator MapValue (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, string outputColumnName, Microsoft.ML.IDataView lookupMap, Microsoft.ML.DataViewSchema.Column keyColumn, Microsoft.ML.DataViewSchema.Column valueColumn, string inputColumnName = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.ValueMappingEstimator MapValue(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, string outputColumnName, class Microsoft.ML.IDataView lookupMap, valuetype Microsoft.ML.DataViewSchema/Column keyColumn, valuetype Microsoft.ML.DataViewSchema/Column valueColumn, string inputColumnName) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.MapValue(Microsoft.ML.TransformsCatalog.ConversionTransforms,System.String,Microsoft.ML.IDataView,Microsoft.ML.DataViewSchema.Column,Microsoft.ML.DataViewSchema.Column,System.String)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function MapValue (catalog As TransformsCatalog.ConversionTransforms, outputColumnName As String, lookupMap As IDataView, keyColumn As DataViewSchema.Column, valueColumn As DataViewSchema.Column, Optional inputColumnName As String = null) As ValueMappingEstimator" />
+      <MemberSignature Language="F#" Value="static member MapValue : Microsoft.ML.TransformsCatalog.ConversionTransforms * string * Microsoft.ML.IDataView * Microsoft.ML.DataViewSchema.Column * Microsoft.ML.DataViewSchema.Column * string -&gt; Microsoft.ML.Transforms.ValueMappingEstimator" Usage="Microsoft.ML.ConversionsExtensionsCatalog.MapValue (catalog, outputColumnName, lookupMap, keyColumn, valueColumn, inputColumnName)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -395,23 +271,19 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+ConversionTransforms" RefType="this" />
-        <Parameter Name="lookupMap" Type="Microsoft.Data.DataView.IDataView" />
-        <Parameter Name="keyColumn" Type="System.String" />
-        <Parameter Name="valueColumn" Type="System.String" />
-        <Parameter Name="columns" Type="Microsoft.ML.ColumnOptions[]">
-          <Attributes>
-            <Attribute>
-              <AttributeName>System.ParamArray</AttributeName>
-            </Attribute>
-          </Attributes>
-        </Parameter>
+        <Parameter Name="outputColumnName" Type="System.String" />
+        <Parameter Name="lookupMap" Type="Microsoft.ML.IDataView" />
+        <Parameter Name="keyColumn" Type="Microsoft.ML.DataViewSchema+Column" />
+        <Parameter Name="valueColumn" Type="Microsoft.ML.DataViewSchema+Column" />
+        <Parameter Name="inputColumnName" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="catalog">The categorical transform's catalog</param>
-        <param name="lookupMap">An instance of <see cref="T:Microsoft.Data.DataView.IDataView" /> that contains the key and value columns.</param>
-        <param name="keyColumn">Name of the key column in <paramref name="lookupMap" />.</param>
-        <param name="valueColumn">Name of the value column in <paramref name="lookupMap" />.</param>
-        <param name="columns">The columns to apply this transform on.</param>
+        <param name="catalog">The conversion transform's catalog</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
+        <param name="lookupMap">An instance of <see cref="T:Microsoft.ML.IDataView" /> that contains the <paramref name="keyColumn" /> and <paramref name="valueColumn" /> columns.</param>
+        <param name="keyColumn">The key column in <paramref name="lookupMap" />.</param>
+        <param name="valueColumn">The value column in <paramref name="lookupMap" />.</param>
+        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
         <summary>
           <see cref="T:Microsoft.ML.Transforms.ValueMappingEstimator" />
         </summary>
@@ -427,12 +299,12 @@
         </example>
       </Docs>
     </Member>
-    <Member MemberName="ValueMap&lt;TInputType,TOutputType&gt;">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.ValueMappingEstimator&lt;TInputType,TOutputType&gt; ValueMap&lt;TInputType,TOutputType&gt; (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, System.Collections.Generic.IEnumerable&lt;TInputType&gt; keys, System.Collections.Generic.IEnumerable&lt;TOutputType[]&gt; values, params Microsoft.ML.ColumnOptions[] columns);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.ValueMappingEstimator`2&lt;!!TInputType, !!TOutputType&gt; ValueMap&lt;TInputType, TOutputType&gt;(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, class System.Collections.Generic.IEnumerable`1&lt;!!TInputType&gt; keys, class System.Collections.Generic.IEnumerable`1&lt;!!TOutputType[]&gt; values, class Microsoft.ML.ColumnOptions[] columns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.ValueMap``2(Microsoft.ML.TransformsCatalog.ConversionTransforms,System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1[]},Microsoft.ML.ColumnOptions[])" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ValueMap(Of TInputType, TOutputType) (catalog As TransformsCatalog.ConversionTransforms, keys As IEnumerable(Of TInputType), values As IEnumerable(Of TOutputType()), ParamArray columns As ColumnOptions()) As ValueMappingEstimator(Of TInputType, TOutputType)" />
-      <MemberSignature Language="F#" Value="static member ValueMap : Microsoft.ML.TransformsCatalog.ConversionTransforms * seq&lt;'InputType&gt; * seq&lt;'OutputType[]&gt; * Microsoft.ML.ColumnOptions[] -&gt; Microsoft.ML.Transforms.ValueMappingEstimator&lt;'InputType, 'OutputType&gt;" Usage="Microsoft.ML.ConversionsExtensionsCatalog.ValueMap (catalog, keys, values, columns)" />
+    <Member MemberName="MapValue&lt;TInputType,TOutputType&gt;">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.ValueMappingEstimator&lt;TInputType,TOutputType&gt; MapValue&lt;TInputType,TOutputType&gt; (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, string outputColumnName, System.Collections.Generic.IEnumerable&lt;System.Collections.Generic.KeyValuePair&lt;TInputType,TOutputType[]&gt;&gt; keyValuePairs, string inputColumnName = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.ValueMappingEstimator`2&lt;!!TInputType, !!TOutputType&gt; MapValue&lt;TInputType, TOutputType&gt;(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, string outputColumnName, class System.Collections.Generic.IEnumerable`1&lt;valuetype System.Collections.Generic.KeyValuePair`2&lt;!!TInputType, !!TOutputType[]&gt;&gt; keyValuePairs, string inputColumnName) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.MapValue``2(Microsoft.ML.TransformsCatalog.ConversionTransforms,System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{``0,``1[]}},System.String)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function MapValue(Of TInputType, TOutputType) (catalog As TransformsCatalog.ConversionTransforms, outputColumnName As String, keyValuePairs As IEnumerable(Of KeyValuePair(Of TInputType, TOutputType())), Optional inputColumnName As String = null) As ValueMappingEstimator(Of TInputType, TOutputType)" />
+      <MemberSignature Language="F#" Value="static member MapValue : Microsoft.ML.TransformsCatalog.ConversionTransforms * string * seq&lt;System.Collections.Generic.KeyValuePair&lt;'InputType, 'OutputType[]&gt;&gt; * string -&gt; Microsoft.ML.Transforms.ValueMappingEstimator&lt;'InputType, 'OutputType&gt;" Usage="Microsoft.ML.ConversionsExtensionsCatalog.MapValue (catalog, outputColumnName, keyValuePairs, inputColumnName)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -447,24 +319,17 @@
       </TypeParameters>
       <Parameters>
         <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+ConversionTransforms" RefType="this" />
-        <Parameter Name="keys" Type="System.Collections.Generic.IEnumerable&lt;TInputType&gt;" />
-        <Parameter Name="values" Type="System.Collections.Generic.IEnumerable&lt;TOutputType[]&gt;" />
-        <Parameter Name="columns" Type="Microsoft.ML.ColumnOptions[]">
-          <Attributes>
-            <Attribute>
-              <AttributeName>System.ParamArray</AttributeName>
-            </Attribute>
-          </Attributes>
-        </Parameter>
+        <Parameter Name="outputColumnName" Type="System.String" />
+        <Parameter Name="keyValuePairs" Type="System.Collections.Generic.IEnumerable&lt;System.Collections.Generic.KeyValuePair&lt;TInputType,TOutputType[]&gt;&gt;" />
+        <Parameter Name="inputColumnName" Type="System.String" />
       </Parameters>
       <Docs>
         <typeparam name="TInputType">The key type.</typeparam>
         <typeparam name="TOutputType">The value type.</typeparam>
-        <param name="catalog">The categorical transform's catalog</param>
-        <param name="keys">The list of keys to use for the mapping. The mapping is 1-1 with <paramref name="values" />. The length of this list  must be the same length as <paramref name="values" /> and
-            cannot contain duplicate keys.</param>
-        <param name="values">The list of values to pair with the keys for the mapping of TOutputType[]. The length of this list  must be equal to the same length as <paramref name="keys" />.</param>
-        <param name="columns">The columns to apply this transform on.</param>
+        <param name="catalog">The conversion transform's catalog</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
+        <param name="keyValuePairs">Specifies the mapping that will be perfomed. The keys will be mapped to the values as specified in the <paramref name="keyValuePairs" />.</param>
+        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
         <summary>
           <see cref="T:Microsoft.ML.Transforms.ValueMappingEstimator" />
         </summary>
@@ -480,12 +345,12 @@
         </example>
       </Docs>
     </Member>
-    <Member MemberName="ValueMap&lt;TInputType,TOutputType&gt;">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.ValueMappingEstimator&lt;TInputType,TOutputType&gt; ValueMap&lt;TInputType,TOutputType&gt; (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, System.Collections.Generic.IEnumerable&lt;TInputType&gt; keys, System.Collections.Generic.IEnumerable&lt;TOutputType&gt; values, params Microsoft.ML.ColumnOptions[] columns);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.ValueMappingEstimator`2&lt;!!TInputType, !!TOutputType&gt; ValueMap&lt;TInputType, TOutputType&gt;(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, class System.Collections.Generic.IEnumerable`1&lt;!!TInputType&gt; keys, class System.Collections.Generic.IEnumerable`1&lt;!!TOutputType&gt; values, class Microsoft.ML.ColumnOptions[] columns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.ValueMap``2(Microsoft.ML.TransformsCatalog.ConversionTransforms,System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},Microsoft.ML.ColumnOptions[])" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ValueMap(Of TInputType, TOutputType) (catalog As TransformsCatalog.ConversionTransforms, keys As IEnumerable(Of TInputType), values As IEnumerable(Of TOutputType), ParamArray columns As ColumnOptions()) As ValueMappingEstimator(Of TInputType, TOutputType)" />
-      <MemberSignature Language="F#" Value="static member ValueMap : Microsoft.ML.TransformsCatalog.ConversionTransforms * seq&lt;'InputType&gt; * seq&lt;'OutputType&gt; * Microsoft.ML.ColumnOptions[] -&gt; Microsoft.ML.Transforms.ValueMappingEstimator&lt;'InputType, 'OutputType&gt;" Usage="Microsoft.ML.ConversionsExtensionsCatalog.ValueMap (catalog, keys, values, columns)" />
+    <Member MemberName="MapValue&lt;TInputType,TOutputType&gt;">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.ValueMappingEstimator&lt;TInputType,TOutputType&gt; MapValue&lt;TInputType,TOutputType&gt; (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, string outputColumnName, System.Collections.Generic.IEnumerable&lt;System.Collections.Generic.KeyValuePair&lt;TInputType,TOutputType&gt;&gt; keyValuePairs, string inputColumnName = null, bool treatValuesAsKeyType = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.ValueMappingEstimator`2&lt;!!TInputType, !!TOutputType&gt; MapValue&lt;TInputType, TOutputType&gt;(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, string outputColumnName, class System.Collections.Generic.IEnumerable`1&lt;valuetype System.Collections.Generic.KeyValuePair`2&lt;!!TInputType, !!TOutputType&gt;&gt; keyValuePairs, string inputColumnName, bool treatValuesAsKeyType) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.MapValue``2(Microsoft.ML.TransformsCatalog.ConversionTransforms,System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{``0,``1}},System.String,System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function MapValue(Of TInputType, TOutputType) (catalog As TransformsCatalog.ConversionTransforms, outputColumnName As String, keyValuePairs As IEnumerable(Of KeyValuePair(Of TInputType, TOutputType)), Optional inputColumnName As String = null, Optional treatValuesAsKeyType As Boolean = false) As ValueMappingEstimator(Of TInputType, TOutputType)" />
+      <MemberSignature Language="F#" Value="static member MapValue : Microsoft.ML.TransformsCatalog.ConversionTransforms * string * seq&lt;System.Collections.Generic.KeyValuePair&lt;'InputType, 'OutputType&gt;&gt; * string * bool -&gt; Microsoft.ML.Transforms.ValueMappingEstimator&lt;'InputType, 'OutputType&gt;" Usage="Microsoft.ML.ConversionsExtensionsCatalog.MapValue (catalog, outputColumnName, keyValuePairs, inputColumnName, treatValuesAsKeyType)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -500,79 +365,19 @@
       </TypeParameters>
       <Parameters>
         <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+ConversionTransforms" RefType="this" />
-        <Parameter Name="keys" Type="System.Collections.Generic.IEnumerable&lt;TInputType&gt;" />
-        <Parameter Name="values" Type="System.Collections.Generic.IEnumerable&lt;TOutputType&gt;" />
-        <Parameter Name="columns" Type="Microsoft.ML.ColumnOptions[]">
-          <Attributes>
-            <Attribute>
-              <AttributeName>System.ParamArray</AttributeName>
-            </Attribute>
-          </Attributes>
-        </Parameter>
-      </Parameters>
-      <Docs>
-        <typeparam name="TInputType">The key type.</typeparam>
-        <typeparam name="TOutputType">The value type.</typeparam>
-        <param name="catalog">The categorical transform's catalog</param>
-        <param name="keys">The list of keys to use for the mapping. The mapping is 1-1 with <paramref name="values" />. The length of this list must be the same length as <paramref name="values" /> and
-            cannot contain duplicate keys.</param>
-        <param name="values">The list of values to pair with the keys for the mapping. The length of this list must be equal to the same length as <paramref name="keys" />.</param>
-        <param name="columns">The columns to apply this transform on.</param>
-        <summary>
-          <see cref="T:Microsoft.ML.Transforms.ValueMappingEstimator" />
-        </summary>
-        <returns>An instance of the <see cref="T:Microsoft.ML.Transforms.ValueMappingEstimator" /></returns>
-        <remarks>To be added.</remarks>
-        <example>
-          <format type="text/markdown"><![CDATA[
-             [!code-csharp[ValueMappingEstimator](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/ValueMapping.cs)]
-             [!code-csharp[ValueMappingEstimator](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/ValueMappingStringToKeyType.cs)]
-             [!code-csharp[ValueMappingEstimator](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/ValueMappingFloatToString.cs)]
-             [!code-csharp[ValueMappingEstimator](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/ValueMappingStringToArray.cs)]
-            ]]></format>
-        </example>
-      </Docs>
-    </Member>
-    <Member MemberName="ValueMap&lt;TInputType,TOutputType&gt;">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.ValueMappingEstimator&lt;TInputType,TOutputType&gt; ValueMap&lt;TInputType,TOutputType&gt; (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, System.Collections.Generic.IEnumerable&lt;TInputType&gt; keys, System.Collections.Generic.IEnumerable&lt;TOutputType&gt; values, bool treatValuesAsKeyType, params Microsoft.ML.ColumnOptions[] columns);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.ValueMappingEstimator`2&lt;!!TInputType, !!TOutputType&gt; ValueMap&lt;TInputType, TOutputType&gt;(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, class System.Collections.Generic.IEnumerable`1&lt;!!TInputType&gt; keys, class System.Collections.Generic.IEnumerable`1&lt;!!TOutputType&gt; values, bool treatValuesAsKeyType, class Microsoft.ML.ColumnOptions[] columns) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.ValueMap``2(Microsoft.ML.TransformsCatalog.ConversionTransforms,System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Boolean,Microsoft.ML.ColumnOptions[])" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ValueMap(Of TInputType, TOutputType) (catalog As TransformsCatalog.ConversionTransforms, keys As IEnumerable(Of TInputType), values As IEnumerable(Of TOutputType), treatValuesAsKeyType As Boolean, ParamArray columns As ColumnOptions()) As ValueMappingEstimator(Of TInputType, TOutputType)" />
-      <MemberSignature Language="F#" Value="static member ValueMap : Microsoft.ML.TransformsCatalog.ConversionTransforms * seq&lt;'InputType&gt; * seq&lt;'OutputType&gt; * bool * Microsoft.ML.ColumnOptions[] -&gt; Microsoft.ML.Transforms.ValueMappingEstimator&lt;'InputType, 'OutputType&gt;" Usage="Microsoft.ML.ConversionsExtensionsCatalog.ValueMap (catalog, keys, values, treatValuesAsKeyType, columns)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.Data</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Transforms.ValueMappingEstimator&lt;TInputType,TOutputType&gt;</ReturnType>
-      </ReturnValue>
-      <TypeParameters>
-        <TypeParameter Name="TInputType" />
-        <TypeParameter Name="TOutputType" />
-      </TypeParameters>
-      <Parameters>
-        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+ConversionTransforms" RefType="this" />
-        <Parameter Name="keys" Type="System.Collections.Generic.IEnumerable&lt;TInputType&gt;" />
-        <Parameter Name="values" Type="System.Collections.Generic.IEnumerable&lt;TOutputType&gt;" />
+        <Parameter Name="outputColumnName" Type="System.String" />
+        <Parameter Name="keyValuePairs" Type="System.Collections.Generic.IEnumerable&lt;System.Collections.Generic.KeyValuePair&lt;TInputType,TOutputType&gt;&gt;" />
+        <Parameter Name="inputColumnName" Type="System.String" />
         <Parameter Name="treatValuesAsKeyType" Type="System.Boolean" />
-        <Parameter Name="columns" Type="Microsoft.ML.ColumnOptions[]">
-          <Attributes>
-            <Attribute>
-              <AttributeName>System.ParamArray</AttributeName>
-            </Attribute>
-          </Attributes>
-        </Parameter>
       </Parameters>
       <Docs>
         <typeparam name="TInputType">The key type.</typeparam>
         <typeparam name="TOutputType">The value type.</typeparam>
-        <param name="catalog">The categorical transform's catalog</param>
-        <param name="keys">The list of keys to use for the mapping. The mapping is 1-1 with <paramref name="values" />. The length of this list must be the same length as <paramref name="values" /> and
-            cannot contain duplicate keys.</param>
-        <param name="values">The list of values to pair with the keys for the mapping. The length of this list must be equal to the same length as <paramref name="keys" />.</param>
-        <param name="treatValuesAsKeyType">Whether to treat the values as a <see cref="T:Microsoft.ML.Data.KeyType" />.</param>
-        <param name="columns">The columns to apply this transform on.</param>
+        <param name="catalog">The conversion transform's catalog</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
+        <param name="keyValuePairs">Specifies the mapping that will be perfomed. The keys will be mapped to the values as specified in the <paramref name="keyValuePairs" />.</param>
+        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
+        <param name="treatValuesAsKeyType">Whether to treat the values as a <see cref="T:Microsoft.ML.Data.KeyDataViewType" />.</param>
         <summary>
           <see cref="T:Microsoft.ML.Transforms.ValueMappingEstimator" />
         </summary>
@@ -580,7 +385,93 @@
         <remarks>To be added.</remarks>
         <example>
           <format type="text/markdown"><![CDATA[
+             [!code-csharp[ValueMappingEstimator](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/ValueMapping.cs)]
              [!code-csharp[ValueMappingEstimator](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/ValueMappingStringToKeyType.cs)]
+             [!code-csharp[ValueMappingEstimator](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/ValueMappingFloatToString.cs)]
+             [!code-csharp[ValueMappingEstimator](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/ValueMappingStringToArray.cs)]
+            ]]></format>
+        </example>
+      </Docs>
+    </Member>
+    <Member MemberName="MapValueToKey">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.ValueToKeyMappingEstimator MapValueToKey (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, Microsoft.ML.InputOutputColumnPair[] columns, int maximumNumberOfKeys = 1000000, Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality keyOrdinality = Microsoft.ML.Transforms.ValueToKeyMappingEstimator+KeyOrdinality.ByOccurrence, bool addKeyValueAnnotationsAsText = false, Microsoft.ML.IDataView keyData = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.ValueToKeyMappingEstimator MapValueToKey(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, class Microsoft.ML.InputOutputColumnPair[] columns, int32 maximumNumberOfKeys, valuetype Microsoft.ML.Transforms.ValueToKeyMappingEstimator/KeyOrdinality keyOrdinality, bool addKeyValueAnnotationsAsText, class Microsoft.ML.IDataView keyData) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.MapValueToKey(Microsoft.ML.TransformsCatalog.ConversionTransforms,Microsoft.ML.InputOutputColumnPair[],System.Int32,Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality,System.Boolean,Microsoft.ML.IDataView)" />
+      <MemberSignature Language="F#" Value="static member MapValueToKey : Microsoft.ML.TransformsCatalog.ConversionTransforms * Microsoft.ML.InputOutputColumnPair[] * int * Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality * bool * Microsoft.ML.IDataView -&gt; Microsoft.ML.Transforms.ValueToKeyMappingEstimator" Usage="Microsoft.ML.ConversionsExtensionsCatalog.MapValueToKey (catalog, columns, maximumNumberOfKeys, keyOrdinality, addKeyValueAnnotationsAsText, keyData)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Transforms.ValueToKeyMappingEstimator</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+ConversionTransforms" RefType="this" />
+        <Parameter Name="columns" Type="Microsoft.ML.InputOutputColumnPair[]" />
+        <Parameter Name="maximumNumberOfKeys" Type="System.Int32" />
+        <Parameter Name="keyOrdinality" Type="Microsoft.ML.Transforms.ValueToKeyMappingEstimator+KeyOrdinality" />
+        <Parameter Name="addKeyValueAnnotationsAsText" Type="System.Boolean" />
+        <Parameter Name="keyData" Type="Microsoft.ML.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="catalog">The conversion transform's catalog.</param>
+        <param name="columns">Specifies the names of the columns on which to apply the transformation.</param>
+        <param name="maximumNumberOfKeys">Maximum number of keys to keep per column when auto-training.</param>
+        <param name="keyOrdinality">How items should be ordered when vectorized. If <see cref="F:Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality.ByOccurrence" /> choosen they will be in the order encountered.
+            If <see cref="F:Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality.ByValue" />, items are sorted according to their default comparison, for example, text sorting will be case sensitive (for example, 'A' then 'Z' then 'a').</param>
+        <param name="addKeyValueAnnotationsAsText">Whether key value annotations should be text, regardless of the actual input type.</param>
+        <param name="keyData">The data view containing the terms. If specified, this should be a single column data
+            view, and the key-values will be taken from that column. If unspecified, the key-values will be determined
+            from the input data upon fitting.</param>
+        <summary>
+            Converts value types into <see cref="T:Microsoft.ML.Data.KeyDataViewType" />.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MapValueToKey">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.ValueToKeyMappingEstimator MapValueToKey (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, string outputColumnName, string inputColumnName = null, int maximumNumberOfKeys = 1000000, Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality keyOrdinality = Microsoft.ML.Transforms.ValueToKeyMappingEstimator+KeyOrdinality.ByOccurrence, bool addKeyValueAnnotationsAsText = false, Microsoft.ML.IDataView keyData = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.ValueToKeyMappingEstimator MapValueToKey(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, string outputColumnName, string inputColumnName, int32 maximumNumberOfKeys, valuetype Microsoft.ML.Transforms.ValueToKeyMappingEstimator/KeyOrdinality keyOrdinality, bool addKeyValueAnnotationsAsText, class Microsoft.ML.IDataView keyData) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.MapValueToKey(Microsoft.ML.TransformsCatalog.ConversionTransforms,System.String,System.String,System.Int32,Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality,System.Boolean,Microsoft.ML.IDataView)" />
+      <MemberSignature Language="F#" Value="static member MapValueToKey : Microsoft.ML.TransformsCatalog.ConversionTransforms * string * string * int * Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality * bool * Microsoft.ML.IDataView -&gt; Microsoft.ML.Transforms.ValueToKeyMappingEstimator" Usage="Microsoft.ML.ConversionsExtensionsCatalog.MapValueToKey (catalog, outputColumnName, inputColumnName, maximumNumberOfKeys, keyOrdinality, addKeyValueAnnotationsAsText, keyData)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Transforms.ValueToKeyMappingEstimator</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+ConversionTransforms" RefType="this" />
+        <Parameter Name="outputColumnName" Type="System.String" />
+        <Parameter Name="inputColumnName" Type="System.String" />
+        <Parameter Name="maximumNumberOfKeys" Type="System.Int32" />
+        <Parameter Name="keyOrdinality" Type="Microsoft.ML.Transforms.ValueToKeyMappingEstimator+KeyOrdinality" />
+        <Parameter Name="addKeyValueAnnotationsAsText" Type="System.Boolean" />
+        <Parameter Name="keyData" Type="Microsoft.ML.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="catalog">The conversion transform's catalog.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
+        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
+        <param name="maximumNumberOfKeys">Maximum number of keys to keep per column when auto-training.</param>
+        <param name="keyOrdinality">How items should be ordered when vectorized. If <see cref="F:Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality.ByOccurrence" /> choosen they will be in the order encountered.
+            If <see cref="F:Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality.ByValue" />, items are sorted according to their default comparison, for example, text sorting will be case sensitive (for example, 'A' then 'Z' then 'a').</param>
+        <param name="addKeyValueAnnotationsAsText">Whether key value annotations should be text, regardless of the actual input type.</param>
+        <param name="keyData">The data view containing the terms. If specified, this should be a single column data
+            view, and the key-values will be taken from that column. If unspecified, the key-values will be determined
+            from the input data upon fitting.</param>
+        <summary>
+            Converts value types into <see cref="T:Microsoft.ML.Data.KeyDataViewType" />.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[ValueToKey](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/KeyToValueValueToKey.cs)]
             ]]></format>
         </example>
       </Docs>
