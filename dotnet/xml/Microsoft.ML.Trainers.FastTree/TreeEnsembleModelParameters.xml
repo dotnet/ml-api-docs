@@ -1,0 +1,90 @@
+﻿<Type Name="TreeEnsembleModelParameters" FullName="Microsoft.ML.Trainers.FastTree.TreeEnsembleModelParameters">
+  <TypeSignature Language="C#" Value="public abstract class TreeEnsembleModelParameters : Microsoft.ML.Trainers.ModelParametersBase&lt;float&gt;, Microsoft.ML.Trainers.ICalculateFeatureContribution" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit TreeEnsembleModelParameters extends Microsoft.ML.Trainers.ModelParametersBase`1&lt;float32&gt; implements class Microsoft.ML.Trainers.ICalculateFeatureContribution" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Trainers.FastTree.TreeEnsembleModelParameters" />
+  <TypeSignature Language="VB.NET" Value="Public MustInherit Class TreeEnsembleModelParameters&#xA;Inherits ModelParametersBase(Of Single)&#xA;Implements ICalculateFeatureContribution" />
+  <TypeSignature Language="F#" Value="type TreeEnsembleModelParameters = class&#xA;    inherit ModelParametersBase&lt;single&gt;&#xA;    interface ICalculateFeatureContribution" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Microsoft.ML.Trainers.ModelParametersBase&lt;System.Single&gt;</BaseTypeName>
+    <BaseTypeArguments>
+      <BaseTypeArgument TypeParamName="!0">System.Single</BaseTypeArgument>
+    </BaseTypeArguments>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Trainers.ICalculateFeatureContribution</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="GetFeatureWeights">
+      <MemberSignature Language="C#" Value="public void GetFeatureWeights (ref Microsoft.ML.Data.VBuffer&lt;float&gt; weights);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void GetFeatureWeights(valuetype Microsoft.ML.Data.VBuffer`1&lt;float32&gt;&amp; weights) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.TreeEnsembleModelParameters.GetFeatureWeights(Microsoft.ML.Data.VBuffer{System.Single}@)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub GetFeatureWeights (ByRef weights As VBuffer(Of Single))" />
+      <MemberSignature Language="F#" Value="abstract member GetFeatureWeights :  -&gt; unit&#xA;override this.GetFeatureWeights :  -&gt; unit" Usage="treeEnsembleModelParameters.GetFeatureWeights weights" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Model.IHaveFeatureWeights.GetFeatureWeights(Microsoft.ML.Data.VBuffer{System.Single}@)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="weights" Type="Microsoft.ML.Data.VBuffer&lt;System.Single&gt;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="weights">a <see cref="T:Microsoft.ML.Data.VBuffer`1" /> where feature weights would be assigned to.
+            The i-th element in <paramref name="weights" /> stores the weight of the i-th feature.</param>
+        <summary>
+            Copy the weights of all training features to <paramref name="weights" />.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Microsoft.ML.Trainers.ICalculateFeatureContribution.FeatureContributionCalculator">
+      <MemberSignature Language="C#" Value="Microsoft.ML.Trainers.FeatureContributionCalculator Microsoft.ML.Trainers.ICalculateFeatureContribution.FeatureContributionCalculator { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Trainers.FeatureContributionCalculator Microsoft.ML.Trainers.ICalculateFeatureContribution.FeatureContributionCalculator" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FastTree.TreeEnsembleModelParameters.Microsoft#ML#Trainers#ICalculateFeatureContribution#FeatureContributionCalculator" />
+      <MemberSignature Language="VB.NET" Value=" ReadOnly Property FeatureContributionCalculator As FeatureContributionCalculator Implements ICalculateFeatureContribution.FeatureContributionCalculator" />
+      <MemberSignature Language="F#" Usage="Microsoft.ML.Trainers.ICalculateFeatureContribution.FeatureContributionCalculator" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Trainers.ICalculateFeatureContribution.FeatureContributionCalculator</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Trainers.FeatureContributionCalculator</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Used to determine the contribution of each feature to the score of an example by <see cref="T:Microsoft.ML.Transforms.FeatureContributionCalculatingTransformer" />.
+            The calculation of feature contribution essentially consists in determining which splits in the tree have the most impact
+            on the final score and assigning the value of the impact to the features determining the split. More precisely, the contribution of a feature
+            is equal to the change in score produced by exploring the opposite sub-tree every time a decision node for the given feature is encountered.
+            Consider a simple case with a single decision tree that has a decision node for the binary feature F1. Given an example that has feature F1
+            equal to true, we can calculate the score it would have obtained if we chose the subtree corresponding to the feature F1 being equal to false
+            while keeping the other features constant. The contribution of feature F1 for the given example is the difference between the original score
+            and the score obtained by taking the opposite decision at the node corresponding to feature F1. This algorithm extends naturally to models with
+            many decision trees.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
