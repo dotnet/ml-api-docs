@@ -1,0 +1,932 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Framework Name="ml-dotnet-preview">
+  <Assemblies>
+    <Assembly Name="Microsoft.ML.DnnImageFeaturizer.AlexNet" Version="1.0.0.0" />
+    <Assembly Name="Microsoft.ML.DnnImageFeaturizer.ResNet101" Version="1.0.0.0" />
+    <Assembly Name="Microsoft.ML.DnnImageFeaturizer.ResNet18" Version="1.0.0.0" />
+    <Assembly Name="Microsoft.ML.DnnImageFeaturizer.ResNet50" Version="1.0.0.0" />
+    <Assembly Name="Microsoft.ML.OnnxConverter" Version="1.0.0.0" />
+    <Assembly Name="Microsoft.ML.OnnxTransformer" Version="1.0.0.0" />
+    <Assembly Name="Microsoft.ML.Recommender" Version="1.0.0.0" />
+    <Assembly Name="Microsoft.ML.SamplesUtils" Version="1.0.0.0" />
+    <Assembly Name="Microsoft.ML.StaticPipe" Version="1.0.0.0" />
+    <Assembly Name="Microsoft.ML.TensorFlow" Version="1.0.0.0" />
+    <Assembly Name="Microsoft.ML.TimeSeries" Version="1.0.0.0" />
+  </Assemblies>
+  <Namespace Name="Microsoft.ML">
+    <Type Name="Microsoft.ML.AlexNetExtension" Id="T:Microsoft.ML.AlexNetExtension">
+      <Member Id="M:Microsoft.ML.AlexNetExtension.AlexNet(Microsoft.ML.Transforms.Onnx.DnnImageModelSelector,Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.AlexNetExtension.AlexNet(Microsoft.ML.Transforms.Onnx.DnnImageModelSelector,Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String)" />
+    </Type>
+    <Type Name="Microsoft.ML.OnnxCatalog" Id="T:Microsoft.ML.OnnxCatalog">
+      <Member Id="M:Microsoft.ML.OnnxCatalog.ApplyOnnxModel(Microsoft.ML.TransformsCatalog,System.String,System.Nullable{System.Int32},System.Boolean)" />
+      <Member Id="M:Microsoft.ML.OnnxCatalog.ApplyOnnxModel(Microsoft.ML.TransformsCatalog,System.String,System.String,System.String,System.Nullable{System.Int32},System.Boolean)" />
+      <Member Id="M:Microsoft.ML.OnnxCatalog.ApplyOnnxModel(Microsoft.ML.TransformsCatalog,System.String[],System.String[],System.String,System.Nullable{System.Int32},System.Boolean)" />
+      <Member Id="M:Microsoft.ML.OnnxCatalog.DnnFeaturizeImage(Microsoft.ML.TransformsCatalog,System.String,System.Func{Microsoft.ML.Transforms.Onnx.DnnImageFeaturizerInput,Microsoft.ML.Data.EstimatorChain{Microsoft.ML.Transforms.ColumnCopyingTransformer}},System.String)" />
+    </Type>
+    <Type Name="Microsoft.ML.OnnxExportExtensions" Id="T:Microsoft.ML.OnnxExportExtensions">
+      <Member Id="M:Microsoft.ML.OnnxExportExtensions.ConvertToOnnx(Microsoft.ML.ModelOperationsCatalog,Microsoft.ML.ITransformer,Microsoft.ML.IDataView,System.IO.Stream)" />
+    </Type>
+    <Type Name="Microsoft.ML.RecommendationCatalog" Id="T:Microsoft.ML.RecommendationCatalog">
+      <Member Id="M:Microsoft.ML.RecommendationCatalog.CrossValidate(Microsoft.ML.IDataView,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.Int32,System.String,System.String,System.Nullable{System.Int32})" />
+      <Member Id="M:Microsoft.ML.RecommendationCatalog.Evaluate(Microsoft.ML.IDataView,System.String,System.String)" />
+      <Member Id="P:Microsoft.ML.RecommendationCatalog.Trainers" />
+    </Type>
+    <Type Name="Microsoft.ML.RecommendationCatalog/RecommendationTrainers" Id="T:Microsoft.ML.RecommendationCatalog.RecommendationTrainers">
+      <Member Id="M:Microsoft.ML.RecommendationCatalog.RecommendationTrainers.MatrixFactorization(Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options)" />
+      <Member Id="M:Microsoft.ML.RecommendationCatalog.RecommendationTrainers.MatrixFactorization(System.String,System.String,System.String,System.Int32,System.Double,System.Int32)" />
+    </Type>
+    <Type Name="Microsoft.ML.RecommenderCatalog" Id="T:Microsoft.ML.RecommenderCatalog">
+      <Member Id="M:Microsoft.ML.RecommenderCatalog.Recommendation(Microsoft.ML.MLContext)" />
+    </Type>
+    <Type Name="Microsoft.ML.ResNet101Extension" Id="T:Microsoft.ML.ResNet101Extension">
+      <Member Id="M:Microsoft.ML.ResNet101Extension.ResNet101(Microsoft.ML.Transforms.Onnx.DnnImageModelSelector,Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.ResNet101Extension.ResNet101(Microsoft.ML.Transforms.Onnx.DnnImageModelSelector,Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String)" />
+    </Type>
+    <Type Name="Microsoft.ML.ResNet18Extension" Id="T:Microsoft.ML.ResNet18Extension">
+      <Member Id="M:Microsoft.ML.ResNet18Extension.ResNet18(Microsoft.ML.Transforms.Onnx.DnnImageModelSelector,Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.ResNet18Extension.ResNet18(Microsoft.ML.Transforms.Onnx.DnnImageModelSelector,Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String)" />
+    </Type>
+    <Type Name="Microsoft.ML.ResNet50Extension" Id="T:Microsoft.ML.ResNet50Extension">
+      <Member Id="M:Microsoft.ML.ResNet50Extension.ResNet50(Microsoft.ML.Transforms.Onnx.DnnImageModelSelector,Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.ResNet50Extension.ResNet50(Microsoft.ML.Transforms.Onnx.DnnImageModelSelector,Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String)" />
+    </Type>
+    <Type Name="Microsoft.ML.TensorflowCatalog" Id="T:Microsoft.ML.TensorflowCatalog">
+      <Member Id="M:Microsoft.ML.TensorflowCatalog.LoadTensorFlowModel(Microsoft.ML.ModelOperationsCatalog,System.String)" />
+    </Type>
+    <Type Name="Microsoft.ML.TimeSeriesCatalog" Id="T:Microsoft.ML.TimeSeriesCatalog">
+      <Member Id="M:Microsoft.ML.TimeSeriesCatalog.DetectChangePointBySsa(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,Microsoft.ML.Transforms.TimeSeries.ErrorFunction,Microsoft.ML.Transforms.TimeSeries.MartingaleType,System.Double)" />
+      <Member Id="M:Microsoft.ML.TimeSeriesCatalog.DetectIidChangePoint(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Int32,System.Int32,Microsoft.ML.Transforms.TimeSeries.MartingaleType,System.Double)" />
+      <Member Id="M:Microsoft.ML.TimeSeriesCatalog.DetectIidSpike(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Int32,System.Int32,Microsoft.ML.Transforms.TimeSeries.AnomalySide)" />
+      <Member Id="M:Microsoft.ML.TimeSeriesCatalog.DetectSpikeBySsa(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,Microsoft.ML.Transforms.TimeSeries.AnomalySide,Microsoft.ML.Transforms.TimeSeries.ErrorFunction)" />
+    </Type>
+  </Namespace>
+  <Namespace Name="Microsoft.ML.SamplesUtils">
+    <Type Name="Microsoft.ML.SamplesUtils.ConsoleUtils" Id="T:Microsoft.ML.SamplesUtils.ConsoleUtils">
+      <Member Id="M:Microsoft.ML.SamplesUtils.ConsoleUtils.PrintMetrics(Microsoft.ML.Data.BinaryClassificationMetrics)" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.ConsoleUtils.PrintMetrics(Microsoft.ML.Data.CalibratedBinaryClassificationMetrics)" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.ConsoleUtils.PrintMetrics(Microsoft.ML.Data.MulticlassClassificationMetrics)" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.ConsoleUtils.PrintMetrics(Microsoft.ML.Data.RankingMetrics)" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.ConsoleUtils.PrintMetrics(Microsoft.ML.Data.RegressionMetrics)" />
+    </Type>
+    <Type Name="Microsoft.ML.SamplesUtils.DatasetUtils" Id="T:Microsoft.ML.SamplesUtils.DatasetUtils">
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.DownloadAdultDataset" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.DownloadBreastCancerDataset" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.DownloadHousingRegressionDataset" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.DownloadImages" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.DownloadMslrWeb10k" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.DownloadSentimentDataset" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.DownloadTensorFlowSentimentModel" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.GenerateBinaryLabelFloatFeatureVectorFloatWeightSamples(System.Int32)" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.GenerateFfmSamples(System.Int32)" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.GenerateFloatLabelFloatFeatureVectorSamples(System.Int32,System.Double)" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.GenerateRandomMulticlassClassificationExamples(System.Int32)" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.GetInfertData" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.GetInputData" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.GetRecommendationData" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.GetSampleTemperatureData(System.Int32)" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.GetSentimentData" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.GetTopicsData" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.GetVectorOfNumbersData" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.LoadFeaturizedAdultDataset(Microsoft.ML.MLContext)" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.LoadFeaturizedMslrWeb10kDataset(Microsoft.ML.MLContext)" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.LoadFeaturizedSentimentDataset(Microsoft.ML.MLContext)" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.LoadHousingRegressionDataset(Microsoft.ML.MLContext)" />
+    </Type>
+    <Type Name="Microsoft.ML.SamplesUtils.DatasetUtils/BinaryLabelFloatFeatureVectorFloatWeightSample" Id="T:Microsoft.ML.SamplesUtils.DatasetUtils.BinaryLabelFloatFeatureVectorFloatWeightSample">
+      <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.BinaryLabelFloatFeatureVectorFloatWeightSample.Features" />
+      <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.BinaryLabelFloatFeatureVectorFloatWeightSample.Label" />
+      <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.BinaryLabelFloatFeatureVectorFloatWeightSample.Weight" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.BinaryLabelFloatFeatureVectorFloatWeightSample.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.SamplesUtils.DatasetUtils/CalibratedBinaryClassifierOutput" Id="T:Microsoft.ML.SamplesUtils.DatasetUtils.CalibratedBinaryClassifierOutput">
+      <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.CalibratedBinaryClassifierOutput.Label" />
+      <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.CalibratedBinaryClassifierOutput.Probability" />
+      <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.CalibratedBinaryClassifierOutput.Score" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.CalibratedBinaryClassifierOutput.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.SamplesUtils.DatasetUtils/FfmExample" Id="T:Microsoft.ML.SamplesUtils.DatasetUtils.FfmExample">
+      <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.FfmExample.Field0" />
+      <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.FfmExample.Field1" />
+      <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.FfmExample.Field2" />
+      <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.FfmExample.Label" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.FfmExample.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.SamplesUtils.DatasetUtils/FloatLabelFloatFeatureVectorSample" Id="T:Microsoft.ML.SamplesUtils.DatasetUtils.FloatLabelFloatFeatureVectorSample">
+      <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.FloatLabelFloatFeatureVectorSample.Features" />
+      <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.FloatLabelFloatFeatureVectorSample.Label" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.FloatLabelFloatFeatureVectorSample.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.SamplesUtils.DatasetUtils/HousingRegression" Id="T:Microsoft.ML.SamplesUtils.DatasetUtils.HousingRegression">
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.HousingRegression.#ctor" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.HousingRegression.CharlesRiver" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.HousingRegression.CrimesPerCapita" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.HousingRegression.EmploymentDistance" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.HousingRegression.HighwayDistance" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.HousingRegression.MedianHomeValue" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.HousingRegression.NitricOxides" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.HousingRegression.PercentNonRetail" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.HousingRegression.PercentPre40s" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.HousingRegression.PercentResidental" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.HousingRegression.RoomsPerDwelling" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.HousingRegression.TaxRate" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.HousingRegression.TeacherRatio" />
+    </Type>
+    <Type Name="Microsoft.ML.SamplesUtils.DatasetUtils/MatrixElement" Id="T:Microsoft.ML.SamplesUtils.DatasetUtils.MatrixElement">
+      <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.MatrixElement.MatrixColumnIndex" />
+      <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.MatrixElement.MatrixRowIndex" />
+      <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.MatrixElement.Value" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.MatrixElement.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.SamplesUtils.DatasetUtils/MatrixElementForScore" Id="T:Microsoft.ML.SamplesUtils.DatasetUtils.MatrixElementForScore">
+      <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.MatrixElementForScore.MatrixColumnIndex" />
+      <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.MatrixElementForScore.MatrixRowIndex" />
+      <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.MatrixElementForScore.Score" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.MatrixElementForScore.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.SamplesUtils.DatasetUtils/MulticlassClassificationExample" Id="T:Microsoft.ML.SamplesUtils.DatasetUtils.MulticlassClassificationExample">
+      <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.MulticlassClassificationExample.Features" />
+      <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.MulticlassClassificationExample.Label" />
+      <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.MulticlassClassificationExample.LabelIndex" />
+      <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.MulticlassClassificationExample.PredictedLabelIndex" />
+      <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.MulticlassClassificationExample.Scores" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.MulticlassClassificationExample.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.SamplesUtils.DatasetUtils/NonCalibratedBinaryClassifierOutput" Id="T:Microsoft.ML.SamplesUtils.DatasetUtils.NonCalibratedBinaryClassifierOutput">
+      <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.NonCalibratedBinaryClassifierOutput.Label" />
+      <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.NonCalibratedBinaryClassifierOutput.Score" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.NonCalibratedBinaryClassifierOutput.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.SamplesUtils.DatasetUtils/SampleInfertData" Id="T:Microsoft.ML.SamplesUtils.DatasetUtils.SampleInfertData">
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.SampleInfertData.#ctor" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleInfertData.Age" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleInfertData.Case" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleInfertData.Education" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleInfertData.Induced" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleInfertData.Parity" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleInfertData.PooledStratum" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleInfertData.RowNum" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleInfertData.Spontaneous" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleInfertData.Stratum" />
+    </Type>
+    <Type Name="Microsoft.ML.SamplesUtils.DatasetUtils/SampleInput" Id="T:Microsoft.ML.SamplesUtils.DatasetUtils.SampleInput">
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.SampleInput.#ctor" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleInput.Feature0" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleInput.Feature1" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleInput.Feature2" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleInput.Feature3" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleInput.Target" />
+    </Type>
+    <Type Name="Microsoft.ML.SamplesUtils.DatasetUtils/SampleSentimentData" Id="T:Microsoft.ML.SamplesUtils.DatasetUtils.SampleSentimentData">
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.SampleSentimentData.#ctor" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleSentimentData.Sentiment" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleSentimentData.SentimentText" />
+    </Type>
+    <Type Name="Microsoft.ML.SamplesUtils.DatasetUtils/SampleTemperatureData" Id="T:Microsoft.ML.SamplesUtils.DatasetUtils.SampleTemperatureData">
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.SampleTemperatureData.#ctor" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleTemperatureData.Date" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleTemperatureData.Temperature" />
+    </Type>
+    <Type Name="Microsoft.ML.SamplesUtils.DatasetUtils/SampleTemperatureDataWithLatitude" Id="T:Microsoft.ML.SamplesUtils.DatasetUtils.SampleTemperatureDataWithLatitude">
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.SampleTemperatureDataWithLatitude.#ctor" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleTemperatureDataWithLatitude.Date" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleTemperatureDataWithLatitude.Latitude" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleTemperatureDataWithLatitude.Temperature" />
+    </Type>
+    <Type Name="Microsoft.ML.SamplesUtils.DatasetUtils/SampleTopicsData" Id="T:Microsoft.ML.SamplesUtils.DatasetUtils.SampleTopicsData">
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.SampleTopicsData.#ctor" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleTopicsData.Label" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleTopicsData.Review" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleTopicsData.ReviewReverse" />
+    </Type>
+    <Type Name="Microsoft.ML.SamplesUtils.DatasetUtils/SampleVectorOfNumbersData" Id="T:Microsoft.ML.SamplesUtils.DatasetUtils.SampleVectorOfNumbersData">
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.SampleVectorOfNumbersData.#ctor" />
+      <Member Id="P:Microsoft.ML.SamplesUtils.DatasetUtils.SampleVectorOfNumbersData.Features" />
+    </Type>
+  </Namespace>
+  <Namespace Name="Microsoft.ML.StaticPipe">
+    <Type Name="Microsoft.ML.StaticPipe.ApproximatedKernelMappingStaticExtenensions" Id="T:Microsoft.ML.StaticPipe.ApproximatedKernelMappingStaticExtenensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.ApproximatedKernelMappingStaticExtenensions.ApproximatedKernelMap(Microsoft.ML.StaticPipe.Vector{System.Single},System.Int32,System.Boolean,Microsoft.ML.Transforms.KernelBase,System.Nullable{System.Int32})" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.AveragedPerceptronStaticExtensions" Id="T:Microsoft.ML.StaticPipe.AveragedPerceptronStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.AveragedPerceptronStaticExtensions.AveragedPerceptron(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.Trainers.IClassificationLoss,Microsoft.ML.Trainers.AveragedPerceptronTrainer.Options,System.Action{Microsoft.ML.Trainers.LinearBinaryModelParameters})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.AveragedPerceptronStaticExtensions.AveragedPerceptron(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.Trainers.IClassificationLoss,System.Single,System.Boolean,System.Single,System.Int32,System.Action{Microsoft.ML.Trainers.LinearBinaryModelParameters})" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.CategoricalHashStaticExtensions" Id="T:Microsoft.ML.StaticPipe.CategoricalHashStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.CategoricalHashStaticExtensions.OneHotHashEncoding(Microsoft.ML.StaticPipe.Scalar{System.String},Microsoft.ML.StaticPipe.CategoricalHashStaticExtensions.OneHotHashScalarOutputKind,System.Int32,System.UInt32,System.Boolean,System.Int32)" />
+      <Member Id="M:Microsoft.ML.StaticPipe.CategoricalHashStaticExtensions.OneHotHashEncoding(Microsoft.ML.StaticPipe.VarVector{System.String},Microsoft.ML.StaticPipe.CategoricalHashStaticExtensions.OneHotHashVectorOutputKind,System.Int32,System.UInt32,System.Boolean,System.Int32)" />
+      <Member Id="M:Microsoft.ML.StaticPipe.CategoricalHashStaticExtensions.OneHotHashEncoding(Microsoft.ML.StaticPipe.Vector{System.String},Microsoft.ML.StaticPipe.CategoricalHashStaticExtensions.OneHotHashVectorOutputKind,System.Int32,System.UInt32,System.Boolean,System.Int32)" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.CategoricalHashStaticExtensions/OneHotHashScalarOutputKind" Id="T:Microsoft.ML.StaticPipe.CategoricalHashStaticExtensions.OneHotHashScalarOutputKind">
+      <Member Id="F:Microsoft.ML.StaticPipe.CategoricalHashStaticExtensions.OneHotHashScalarOutputKind.Bin" />
+      <Member Id="F:Microsoft.ML.StaticPipe.CategoricalHashStaticExtensions.OneHotHashScalarOutputKind.Ind" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.CategoricalHashStaticExtensions/OneHotHashVectorOutputKind" Id="T:Microsoft.ML.StaticPipe.CategoricalHashStaticExtensions.OneHotHashVectorOutputKind">
+      <Member Id="F:Microsoft.ML.StaticPipe.CategoricalHashStaticExtensions.OneHotHashVectorOutputKind.Bag" />
+      <Member Id="F:Microsoft.ML.StaticPipe.CategoricalHashStaticExtensions.OneHotHashVectorOutputKind.Bin" />
+      <Member Id="F:Microsoft.ML.StaticPipe.CategoricalHashStaticExtensions.OneHotHashVectorOutputKind.Ind" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.CategoricalStaticExtensions" Id="T:Microsoft.ML.StaticPipe.CategoricalStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.CategoricalStaticExtensions.OneHotEncoding(Microsoft.ML.StaticPipe.Scalar{System.String},Microsoft.ML.StaticPipe.CategoricalStaticExtensions.OneHotScalarOutputKind,Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.ReadOnlyMemory{System.Char}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.CategoricalStaticExtensions.OneHotEncoding(Microsoft.ML.StaticPipe.Vector{System.String},Microsoft.ML.StaticPipe.CategoricalStaticExtensions.OneHotVectorOutputKind,Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.ReadOnlyMemory{System.Char}})" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.CategoricalStaticExtensions/OneHotScalarOutputKind" Id="T:Microsoft.ML.StaticPipe.CategoricalStaticExtensions.OneHotScalarOutputKind">
+      <Member Id="F:Microsoft.ML.StaticPipe.CategoricalStaticExtensions.OneHotScalarOutputKind.Bin" />
+      <Member Id="F:Microsoft.ML.StaticPipe.CategoricalStaticExtensions.OneHotScalarOutputKind.Ind" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.CategoricalStaticExtensions/OneHotVectorOutputKind" Id="T:Microsoft.ML.StaticPipe.CategoricalStaticExtensions.OneHotVectorOutputKind">
+      <Member Id="F:Microsoft.ML.StaticPipe.CategoricalStaticExtensions.OneHotVectorOutputKind.Bag" />
+      <Member Id="F:Microsoft.ML.StaticPipe.CategoricalStaticExtensions.OneHotVectorOutputKind.Bin" />
+      <Member Id="F:Microsoft.ML.StaticPipe.CategoricalStaticExtensions.OneHotVectorOutputKind.Ind" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.CharacterTokenizerStaticExtensions" Id="T:Microsoft.ML.StaticPipe.CharacterTokenizerStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.CharacterTokenizerStaticExtensions.TokenizeIntoCharactersAsKeys(Microsoft.ML.StaticPipe.Scalar{System.String},System.Boolean)" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.ConcatStaticExtensions" Id="T:Microsoft.ML.StaticPipe.ConcatStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.ConcatStaticExtensions.AsVector``1(Microsoft.ML.StaticPipe.Scalar{``0})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConcatStaticExtensions.ConcatWith``1(Microsoft.ML.StaticPipe.NormVector{``0},Microsoft.ML.StaticPipe.NormVector{``0}[])" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConcatStaticExtensions.ConcatWith``1(Microsoft.ML.StaticPipe.Scalar{``0},Microsoft.ML.StaticPipe.ConcatStaticExtensions.ScalarOrVector{``0}[])" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConcatStaticExtensions.ConcatWith``1(Microsoft.ML.StaticPipe.Scalar{``0},Microsoft.ML.StaticPipe.ConcatStaticExtensions.ScalarOrVectorOrVarVector{``0}[])" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConcatStaticExtensions.ConcatWith``1(Microsoft.ML.StaticPipe.VarVector{``0},Microsoft.ML.StaticPipe.ConcatStaticExtensions.ScalarOrVectorOrVarVector{``0}[])" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConcatStaticExtensions.ConcatWith``1(Microsoft.ML.StaticPipe.Vector{``0},Microsoft.ML.StaticPipe.ConcatStaticExtensions.ScalarOrVector{``0}[])" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConcatStaticExtensions.ConcatWith``1(Microsoft.ML.StaticPipe.Vector{``0},Microsoft.ML.StaticPipe.ConcatStaticExtensions.ScalarOrVectorOrVarVector{``0}[])" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.ConcatStaticExtensions/ScalarOrVector`1" Id="T:Microsoft.ML.StaticPipe.ConcatStaticExtensions.ScalarOrVector`1">
+      <Member Id="M:Microsoft.ML.StaticPipe.ConcatStaticExtensions.ScalarOrVector`1.op_Implicit(Microsoft.ML.StaticPipe.NormVector{`0})~Microsoft.ML.StaticPipe.ConcatStaticExtensions.ScalarOrVector{`0}" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConcatStaticExtensions.ScalarOrVector`1.op_Implicit(Microsoft.ML.StaticPipe.Scalar{`0})~Microsoft.ML.StaticPipe.ConcatStaticExtensions.ScalarOrVector{`0}" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConcatStaticExtensions.ScalarOrVector`1.op_Implicit(Microsoft.ML.StaticPipe.Vector{`0})~Microsoft.ML.StaticPipe.ConcatStaticExtensions.ScalarOrVector{`0}" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.ConcatStaticExtensions/ScalarOrVectorOrVarVector`1" Id="T:Microsoft.ML.StaticPipe.ConcatStaticExtensions.ScalarOrVectorOrVarVector`1">
+      <Member Id="M:Microsoft.ML.StaticPipe.ConcatStaticExtensions.ScalarOrVectorOrVarVector`1.op_Implicit(Microsoft.ML.StaticPipe.VarVector{`0})~Microsoft.ML.StaticPipe.ConcatStaticExtensions.ScalarOrVectorOrVarVector{`0}" />
+      <Member Id="P:Microsoft.ML.StaticPipe.ConcatStaticExtensions.ScalarOrVectorOrVarVector`1.WrappedColumn" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.ConvertStaticExtensions" Id="T:Microsoft.ML.StaticPipe.ConvertStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.Scalar{System.Boolean})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.Scalar{System.Byte})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.Scalar{System.Double})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.Scalar{System.Int16})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.Scalar{System.Int32})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.Scalar{System.Int64})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.Scalar{System.SByte})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.Scalar{System.String})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.Scalar{System.UInt16})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.Scalar{System.UInt32})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.Scalar{System.UInt64})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.VarVector{System.Boolean})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.VarVector{System.Byte})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.VarVector{System.Double})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.VarVector{System.Int16})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.VarVector{System.Int32})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.VarVector{System.Int64})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.VarVector{System.SByte})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.VarVector{System.String})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.VarVector{System.UInt16})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.VarVector{System.UInt32})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.VarVector{System.UInt64})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.Vector{System.Boolean})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.Vector{System.Byte})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.Vector{System.Double})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.Vector{System.Int16})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.Vector{System.Int32})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.Vector{System.Int64})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.Vector{System.SByte})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.Vector{System.String})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.Vector{System.UInt16})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.Vector{System.UInt32})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ConvertStaticExtensions.ToFloat(Microsoft.ML.StaticPipe.Vector{System.UInt64})" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.CountFeatureSelectorStaticExtensions" Id="T:Microsoft.ML.StaticPipe.CountFeatureSelectorStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.CountFeatureSelectorStaticExtensions.SelectFeaturesBasedOnCount(Microsoft.ML.StaticPipe.Vector{System.Double},System.Int64)" />
+      <Member Id="M:Microsoft.ML.StaticPipe.CountFeatureSelectorStaticExtensions.SelectFeaturesBasedOnCount(Microsoft.ML.StaticPipe.Vector{System.Single},System.Int64)" />
+      <Member Id="M:Microsoft.ML.StaticPipe.CountFeatureSelectorStaticExtensions.SelectFeaturesBasedOnCount(Microsoft.ML.StaticPipe.Vector{System.String},System.Int64)" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.Custom`1" Id="T:Microsoft.ML.StaticPipe.Custom`1">
+      <Member Id="M:Microsoft.ML.StaticPipe.Custom`1.#ctor(Microsoft.ML.StaticPipe.Reconciler,Microsoft.ML.StaticPipe.PipelineColumn[])" />
+      <Member Id="M:Microsoft.ML.StaticPipe.Custom`1.ToString" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.DataLoader`2" Id="T:Microsoft.ML.StaticPipe.DataLoader`2">
+      <Member Id="M:Microsoft.ML.StaticPipe.DataLoader`2.Append``2(Microsoft.ML.StaticPipe.Estimator{`1,``0,``1})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.DataLoader`2.Append``2(Microsoft.ML.StaticPipe.Transformer{`1,``0,``1})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.DataLoader`2.Load(`0)" />
+      <Member Id="P:Microsoft.ML.StaticPipe.DataLoader`2.AsDynamic" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.DataLoaderEstimator`3" Id="T:Microsoft.ML.StaticPipe.DataLoaderEstimator`3">
+      <Member Id="M:Microsoft.ML.StaticPipe.DataLoaderEstimator`3.Append``2(Microsoft.ML.StaticPipe.Estimator{`1,``0,``1})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.DataLoaderEstimator`3.Fit(`0)" />
+      <Member Id="P:Microsoft.ML.StaticPipe.DataLoaderEstimator`3.AsDynamic" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.DataLoadSaveOperationsExtensions" Id="T:Microsoft.ML.StaticPipe.DataLoadSaveOperationsExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.DataLoadSaveOperationsExtensions.CreateTextLoader``1(Microsoft.ML.DataOperationsCatalog,System.Func{Microsoft.ML.StaticPipe.TextLoaderStatic.Context,``0},Microsoft.ML.Data.IMultiStreamSource,System.Boolean,System.Char,System.Boolean,System.Boolean,System.Boolean)" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.DataView`1" Id="T:Microsoft.ML.StaticPipe.DataView`1">
+      <Member Id="M:Microsoft.ML.StaticPipe.DataView`1.Cache" />
+      <Member Id="P:Microsoft.ML.StaticPipe.DataView`1.AsDynamic" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.DataViewExtensions" Id="T:Microsoft.ML.StaticPipe.DataViewExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.DataViewExtensions.GetColumn``2(Microsoft.ML.StaticPipe.DataView{``1},System.Func{``1,Microsoft.ML.StaticPipe.Scalar{``0}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.DataViewExtensions.GetColumn``2(Microsoft.ML.StaticPipe.DataView{``1},System.Func{``1,Microsoft.ML.StaticPipe.VarVector{``0}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.DataViewExtensions.GetColumn``2(Microsoft.ML.StaticPipe.DataView{``1},System.Func{``1,Microsoft.ML.StaticPipe.Vector{``0}})" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.Estimator`3" Id="T:Microsoft.ML.StaticPipe.Estimator`3">
+      <Member Id="M:Microsoft.ML.StaticPipe.Estimator`3.Append``1(Microsoft.ML.StaticPipe.Estimator{`1,``0,Microsoft.ML.ITransformer})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.Estimator`3.Append``1(System.Func{`1,``0})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.Estimator`3.AppendCacheCheckpoint" />
+      <Member Id="M:Microsoft.ML.StaticPipe.Estimator`3.Fit(Microsoft.ML.StaticPipe.DataView{`0})" />
+      <Member Id="P:Microsoft.ML.StaticPipe.Estimator`3.AsDynamic" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.EstimatorReconciler" Id="T:Microsoft.ML.StaticPipe.EstimatorReconciler">
+      <Member Id="M:Microsoft.ML.StaticPipe.EstimatorReconciler.#ctor" />
+      <Member Id="M:Microsoft.ML.StaticPipe.EstimatorReconciler.Reconcile(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.StaticPipe.PipelineColumn[],System.Collections.Generic.IReadOnlyDictionary{Microsoft.ML.StaticPipe.PipelineColumn,System.String},System.Collections.Generic.IReadOnlyDictionary{Microsoft.ML.StaticPipe.PipelineColumn,System.String},System.Collections.Generic.IReadOnlyCollection{System.String})" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.EvaluatorStaticExtensions" Id="T:Microsoft.ML.StaticPipe.EvaluatorStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.EvaluatorStaticExtensions.Evaluate``1(Microsoft.ML.BinaryClassificationCatalog,Microsoft.ML.StaticPipe.DataView{``0},System.Func{``0,Microsoft.ML.StaticPipe.Scalar{System.Boolean}},System.Func{``0,System.ValueTuple{Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Boolean}}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.EvaluatorStaticExtensions.Evaluate``1(Microsoft.ML.BinaryClassificationCatalog,Microsoft.ML.StaticPipe.DataView{``0},System.Func{``0,Microsoft.ML.StaticPipe.Scalar{System.Boolean}},System.Func{``0,System.ValueTuple{Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Boolean}}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.EvaluatorStaticExtensions.Evaluate``1(Microsoft.ML.ClusteringCatalog,Microsoft.ML.StaticPipe.DataView{``0},System.Func{``0,Microsoft.ML.StaticPipe.Vector{System.Single}},System.Func{``0,Microsoft.ML.StaticPipe.Key{System.UInt32}},System.Func{``0,Microsoft.ML.StaticPipe.Vector{System.Single}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.EvaluatorStaticExtensions.Evaluate``1(Microsoft.ML.RegressionCatalog,Microsoft.ML.StaticPipe.DataView{``0},System.Func{``0,Microsoft.ML.StaticPipe.Scalar{System.Single}},System.Func{``0,Microsoft.ML.StaticPipe.Scalar{System.Single}},Microsoft.ML.Trainers.IRegressionLoss)" />
+      <Member Id="M:Microsoft.ML.StaticPipe.EvaluatorStaticExtensions.Evaluate``2(Microsoft.ML.MulticlassClassificationCatalog,Microsoft.ML.StaticPipe.DataView{``0},System.Func{``0,Microsoft.ML.StaticPipe.Key{System.UInt32,``1}},System.Func{``0,System.ValueTuple{Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Key{System.UInt32,``1}}},System.Int32)" />
+      <Member Id="M:Microsoft.ML.StaticPipe.EvaluatorStaticExtensions.Evaluate``2(Microsoft.ML.RankingCatalog,Microsoft.ML.StaticPipe.DataView{``0},System.Func{``0,Microsoft.ML.StaticPipe.Scalar{System.Single}},System.Func{``0,Microsoft.ML.StaticPipe.Key{System.UInt32,``1}},System.Func{``0,Microsoft.ML.StaticPipe.Scalar{System.Single}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.EvaluatorStaticExtensions.EvaluateWithPRCurve``1(Microsoft.ML.BinaryClassificationCatalog,Microsoft.ML.StaticPipe.DataView{``0},System.Func{``0,Microsoft.ML.StaticPipe.Scalar{System.Boolean}},System.Func{``0,System.ValueTuple{Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Boolean}}},System.Collections.Generic.List{Microsoft.ML.Data.BinaryPrecisionRecallDataPoint}@)" />
+      <Member Id="M:Microsoft.ML.StaticPipe.EvaluatorStaticExtensions.EvaluateWithPRCurve``1(Microsoft.ML.BinaryClassificationCatalog,Microsoft.ML.StaticPipe.DataView{``0},System.Func{``0,Microsoft.ML.StaticPipe.Scalar{System.Boolean}},System.Func{``0,System.ValueTuple{Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Boolean}}},System.Collections.Generic.List{Microsoft.ML.Data.BinaryPrecisionRecallDataPoint}@)" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.FactorizationMachineExtensions" Id="T:Microsoft.ML.StaticPipe.FactorizationMachineExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.FactorizationMachineExtensions.FieldAwareFactorizationMachine(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.Vector{System.Single}[],Microsoft.ML.Trainers.FieldAwareFactorizationMachineTrainer.Options,System.Action{Microsoft.ML.Trainers.FieldAwareFactorizationMachineModelParameters})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.FactorizationMachineExtensions.FieldAwareFactorizationMachine(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.Vector{System.Single}[],System.Action{Microsoft.ML.Trainers.FieldAwareFactorizationMachineModelParameters})" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.GlobalContrastNormalizerStaticExtensions" Id="T:Microsoft.ML.StaticPipe.GlobalContrastNormalizerStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.GlobalContrastNormalizerStaticExtensions.NormalizeGlobalContrast(Microsoft.ML.StaticPipe.Vector{System.Single},System.Boolean,System.Boolean,System.Single)" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.ImageGreyScalingStaticExtensions" Id="T:Microsoft.ML.StaticPipe.ImageGreyScalingStaticExtensions" />
+    <Type Name="Microsoft.ML.StaticPipe.ImageLoadingStaticExtensions" Id="T:Microsoft.ML.StaticPipe.ImageLoadingStaticExtensions" />
+    <Type Name="Microsoft.ML.StaticPipe.ImagePixelExtractingStaticExtensions" Id="T:Microsoft.ML.StaticPipe.ImagePixelExtractingStaticExtensions" />
+    <Type Name="Microsoft.ML.StaticPipe.ImageResizingStaticExtensions" Id="T:Microsoft.ML.StaticPipe.ImageResizingStaticExtensions" />
+    <Type Name="Microsoft.ML.StaticPipe.ImageStaticPipe" Id="T:Microsoft.ML.StaticPipe.ImageStaticPipe">
+      <Member Id="M:Microsoft.ML.StaticPipe.ImageStaticPipe.AsGrayscale(Microsoft.ML.StaticPipe.Custom{Microsoft.ML.StaticPipe.UnknownSizeBitmap})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ImageStaticPipe.AsGrayscale(Microsoft.ML.StaticPipe.Custom{System.Drawing.Bitmap})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ImageStaticPipe.ExtractPixels(Microsoft.ML.StaticPipe.Custom{System.Drawing.Bitmap},System.Boolean,System.Boolean,System.Boolean,System.Boolean,Microsoft.ML.Transforms.Image.ImagePixelExtractingEstimator.ColorsOrder,System.Boolean,System.Single,System.Single)" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ImageStaticPipe.ExtractPixelsAsBytes(Microsoft.ML.StaticPipe.Custom{System.Drawing.Bitmap},System.Boolean,System.Boolean,System.Boolean,System.Boolean,Microsoft.ML.Transforms.Image.ImagePixelExtractingEstimator.ColorsOrder,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ImageStaticPipe.LoadAsImage(Microsoft.ML.StaticPipe.Scalar{System.String},System.String)" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ImageStaticPipe.Resize(Microsoft.ML.StaticPipe.Custom{Microsoft.ML.StaticPipe.UnknownSizeBitmap},System.Int32,System.Int32,Microsoft.ML.Transforms.Image.ImageResizingEstimator.ResizingKind,Microsoft.ML.Transforms.Image.ImageResizingEstimator.Anchor)" />
+      <Member Id="M:Microsoft.ML.StaticPipe.ImageStaticPipe.Resize(Microsoft.ML.StaticPipe.Custom{System.Drawing.Bitmap},System.Int32,System.Int32,Microsoft.ML.Transforms.Image.ImageResizingEstimator.ResizingKind,Microsoft.ML.Transforms.Image.ImageResizingEstimator.Anchor)" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.IsShapeAttribute" Id="T:Microsoft.ML.StaticPipe.IsShapeAttribute">
+      <Member Id="M:Microsoft.ML.StaticPipe.IsShapeAttribute.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.Key`1" Id="T:Microsoft.ML.StaticPipe.Key`1">
+      <Member Id="M:Microsoft.ML.StaticPipe.Key`1.#ctor(Microsoft.ML.StaticPipe.Reconciler,Microsoft.ML.StaticPipe.PipelineColumn[])" />
+      <Member Id="M:Microsoft.ML.StaticPipe.Key`1.ToString" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.Key`2" Id="T:Microsoft.ML.StaticPipe.Key`2">
+      <Member Id="M:Microsoft.ML.StaticPipe.Key`2.#ctor(Microsoft.ML.StaticPipe.Reconciler,Microsoft.ML.StaticPipe.PipelineColumn[])" />
+      <Member Id="M:Microsoft.ML.StaticPipe.Key`2.ToString" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.KeyOrdinality" Id="T:Microsoft.ML.StaticPipe.KeyOrdinality">
+      <Member Id="F:Microsoft.ML.StaticPipe.KeyOrdinality.Occurence" />
+      <Member Id="F:Microsoft.ML.StaticPipe.KeyOrdinality.Value" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.KeyToBinaryVectorStaticExtensions" Id="T:Microsoft.ML.StaticPipe.KeyToBinaryVectorStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.KeyToBinaryVectorStaticExtensions.ToBinaryVector``1(Microsoft.ML.StaticPipe.Key{``0})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.KeyToBinaryVectorStaticExtensions.ToBinaryVector``1(Microsoft.ML.StaticPipe.VarVector{Microsoft.ML.StaticPipe.Key{``0}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.KeyToBinaryVectorStaticExtensions.ToBinaryVector``1(Microsoft.ML.StaticPipe.Vector{Microsoft.ML.StaticPipe.Key{``0}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.KeyToBinaryVectorStaticExtensions.ToBinaryVector``2(Microsoft.ML.StaticPipe.Key{``0,``1})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.KeyToBinaryVectorStaticExtensions.ToBinaryVector``2(Microsoft.ML.StaticPipe.VarVector{Microsoft.ML.StaticPipe.Key{``0,``1}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.KeyToBinaryVectorStaticExtensions.ToBinaryVector``2(Microsoft.ML.StaticPipe.Vector{Microsoft.ML.StaticPipe.Key{``0,``1}})" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.KeyToValueStaticExtensions" Id="T:Microsoft.ML.StaticPipe.KeyToValueStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.KeyToValueStaticExtensions.ToValue``2(Microsoft.ML.StaticPipe.Key{``0,``1})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.KeyToValueStaticExtensions.ToValue``2(Microsoft.ML.StaticPipe.Key{``0,Microsoft.ML.StaticPipe.Key{``1}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.KeyToValueStaticExtensions.ToValue``2(Microsoft.ML.StaticPipe.VarVector{Microsoft.ML.StaticPipe.Key{``0,``1}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.KeyToValueStaticExtensions.ToValue``2(Microsoft.ML.StaticPipe.Vector{Microsoft.ML.StaticPipe.Key{``0,``1}})" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.KeyToVectorStaticExtensions" Id="T:Microsoft.ML.StaticPipe.KeyToVectorStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.KeyToVectorStaticExtensions.ToBaggedVector``1(Microsoft.ML.StaticPipe.VarVector{Microsoft.ML.StaticPipe.Key{``0}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.KeyToVectorStaticExtensions.ToBaggedVector``1(Microsoft.ML.StaticPipe.Vector{Microsoft.ML.StaticPipe.Key{``0}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.KeyToVectorStaticExtensions.ToBaggedVector``2(Microsoft.ML.StaticPipe.VarVector{Microsoft.ML.StaticPipe.Key{``0,``1}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.KeyToVectorStaticExtensions.ToBaggedVector``2(Microsoft.ML.StaticPipe.Vector{Microsoft.ML.StaticPipe.Key{``0,``1}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.KeyToVectorStaticExtensions.ToVector``1(Microsoft.ML.StaticPipe.Key{``0})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.KeyToVectorStaticExtensions.ToVector``1(Microsoft.ML.StaticPipe.VarVector{Microsoft.ML.StaticPipe.Key{``0}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.KeyToVectorStaticExtensions.ToVector``1(Microsoft.ML.StaticPipe.Vector{Microsoft.ML.StaticPipe.Key{``0}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.KeyToVectorStaticExtensions.ToVector``2(Microsoft.ML.StaticPipe.Key{``0,``1})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.KeyToVectorStaticExtensions.ToVector``2(Microsoft.ML.StaticPipe.VarVector{Microsoft.ML.StaticPipe.Key{``0,``1}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.KeyToVectorStaticExtensions.ToVector``2(Microsoft.ML.StaticPipe.Vector{Microsoft.ML.StaticPipe.Key{``0,``1}})" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.KMeansClusteringExtensions" Id="T:Microsoft.ML.StaticPipe.KMeansClusteringExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.KMeansClusteringExtensions.KMeans(Microsoft.ML.ClusteringCatalog.ClusteringTrainers,Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.Trainers.KMeansTrainer.Options,System.Action{Microsoft.ML.Trainers.KMeansModelParameters})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.KMeansClusteringExtensions.KMeans(Microsoft.ML.ClusteringCatalog.ClusteringTrainers,Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Int32,System.Action{Microsoft.ML.Trainers.KMeansModelParameters})" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.LatentDirichletAllocationFitResult" Id="T:Microsoft.ML.StaticPipe.LatentDirichletAllocationFitResult">
+      <Member Id="F:Microsoft.ML.StaticPipe.LatentDirichletAllocationFitResult.LdaTopicSummary" />
+      <Member Id="M:Microsoft.ML.StaticPipe.LatentDirichletAllocationFitResult.#ctor(Microsoft.ML.Transforms.Text.LatentDirichletAllocationTransformer.ModelParameters)" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.LatentDirichletAllocationFitResult/OnFit" Id="T:Microsoft.ML.StaticPipe.LatentDirichletAllocationFitResult.OnFit" />
+    <Type Name="Microsoft.ML.StaticPipe.LatentDirichletAllocationStaticExtensions" Id="T:Microsoft.ML.StaticPipe.LatentDirichletAllocationStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.LatentDirichletAllocationStaticExtensions.LatentDirichletAllocation(Microsoft.ML.StaticPipe.Vector{System.Single},System.Int32,System.Single,System.Single,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,Microsoft.ML.StaticPipe.LatentDirichletAllocationFitResult.OnFit)" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.LbfgsBinaryStaticExtensions" Id="T:Microsoft.ML.StaticPipe.LbfgsBinaryStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.LbfgsBinaryStaticExtensions.LbfgsLogisticRegression(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.Trainers.LbfgsLogisticRegressionBinaryTrainer.Options,System.Action{Microsoft.ML.Calibrators.CalibratedModelParametersBase{Microsoft.ML.Trainers.LinearBinaryModelParameters,Microsoft.ML.Calibrators.PlattCalibrator}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.LbfgsBinaryStaticExtensions.LbfgsLogisticRegression(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Single,System.Single,System.Single,System.Int32,System.Boolean,System.Action{Microsoft.ML.Calibrators.CalibratedModelParametersBase{Microsoft.ML.Trainers.LinearBinaryModelParameters,Microsoft.ML.Calibrators.PlattCalibrator}})" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.LbfgsMulticlassStaticExtensions" Id="T:Microsoft.ML.StaticPipe.LbfgsMulticlassStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.LbfgsMulticlassStaticExtensions.LbfgsMaximumEntropy``1(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,Microsoft.ML.StaticPipe.Key{System.UInt32,``0},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.Trainers.LbfgsMaximumEntropyMulticlassTrainer.Options,System.Action{Microsoft.ML.Trainers.MaximumEntropyModelParameters})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.LbfgsMulticlassStaticExtensions.LbfgsMaximumEntropy``1(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,Microsoft.ML.StaticPipe.Key{System.UInt32,``0},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Single,System.Single,System.Single,System.Int32,System.Boolean,System.Action{Microsoft.ML.Trainers.MaximumEntropyModelParameters})" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.LbfgsRegressionStaticExtensions" Id="T:Microsoft.ML.StaticPipe.LbfgsRegressionStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.LbfgsRegressionStaticExtensions.LbfgsPoissonRegression(Microsoft.ML.RegressionCatalog.RegressionTrainers,Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.Trainers.LbfgsPoissonRegressionTrainer.Options,System.Action{Microsoft.ML.Trainers.PoissonRegressionModelParameters})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.LbfgsRegressionStaticExtensions.LbfgsPoissonRegression(Microsoft.ML.RegressionCatalog.RegressionTrainers,Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Single,System.Single,System.Single,System.Int32,System.Boolean,System.Action{Microsoft.ML.Trainers.PoissonRegressionModelParameters})" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.LoaderReconciler`1" Id="T:Microsoft.ML.StaticPipe.LoaderReconciler`1">
+      <Member Id="M:Microsoft.ML.StaticPipe.LoaderReconciler`1.#ctor" />
+      <Member Id="M:Microsoft.ML.StaticPipe.LoaderReconciler`1.Reconcile(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.StaticPipe.PipelineColumn[],System.Collections.Generic.IReadOnlyDictionary{Microsoft.ML.StaticPipe.PipelineColumn,System.String})" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.LocalPathReader" Id="T:Microsoft.ML.StaticPipe.LocalPathReader">
+      <Member Id="M:Microsoft.ML.StaticPipe.LocalPathReader.Load``1(Microsoft.ML.StaticPipe.DataLoader{Microsoft.ML.Data.IMultiStreamSource,``0},System.String[])" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.LpNormNormalizerStaticExtensions" Id="T:Microsoft.ML.StaticPipe.LpNormNormalizerStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.LpNormNormalizerStaticExtensions.NormalizeLpNorm(Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.Transforms.LpNormNormalizingEstimatorBase.NormFunction,System.Boolean)" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.MatrixFactorizationExtensions" Id="T:Microsoft.ML.StaticPipe.MatrixFactorizationExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.MatrixFactorizationExtensions.MatrixFactorization``1(Microsoft.ML.RegressionCatalog.RegressionTrainers,Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Key{``0},Microsoft.ML.StaticPipe.Key{``0},Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options,System.Action{Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters})" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.MulticlassClassificationStaticExtensions" Id="T:Microsoft.ML.StaticPipe.MulticlassClassificationStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.MulticlassClassificationStaticExtensions.MulticlassNaiveBayesTrainer``1(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,Microsoft.ML.StaticPipe.Key{System.UInt32,``0},Microsoft.ML.StaticPipe.Vector{System.Single},System.Action{Microsoft.ML.Trainers.NaiveBayesMulticlassModelParameters})" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.MutualInformationFeatureSelectorStaticExtensions" Id="T:Microsoft.ML.StaticPipe.MutualInformationFeatureSelectorStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.MutualInformationFeatureSelectorStaticExtensions.SelectFeaturesBasedOnMutualInformation(Microsoft.ML.StaticPipe.Vector{System.Boolean},Microsoft.ML.StaticPipe.Scalar{System.Boolean},System.Int32,System.Int32)" />
+      <Member Id="M:Microsoft.ML.StaticPipe.MutualInformationFeatureSelectorStaticExtensions.SelectFeaturesBasedOnMutualInformation(Microsoft.ML.StaticPipe.Vector{System.Boolean},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Int32,System.Int32)" />
+      <Member Id="M:Microsoft.ML.StaticPipe.MutualInformationFeatureSelectorStaticExtensions.SelectFeaturesBasedOnMutualInformation(Microsoft.ML.StaticPipe.Vector{System.Double},Microsoft.ML.StaticPipe.Scalar{System.Boolean},System.Int32,System.Int32)" />
+      <Member Id="M:Microsoft.ML.StaticPipe.MutualInformationFeatureSelectorStaticExtensions.SelectFeaturesBasedOnMutualInformation(Microsoft.ML.StaticPipe.Vector{System.Double},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Int32,System.Int32)" />
+      <Member Id="M:Microsoft.ML.StaticPipe.MutualInformationFeatureSelectorStaticExtensions.SelectFeaturesBasedOnMutualInformation(Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Boolean},System.Int32,System.Int32)" />
+      <Member Id="M:Microsoft.ML.StaticPipe.MutualInformationFeatureSelectorStaticExtensions.SelectFeaturesBasedOnMutualInformation(Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Int32,System.Int32)" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.NAIndicatorStaticExtensions" Id="T:Microsoft.ML.StaticPipe.NAIndicatorStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.NAIndicatorStaticExtensions.IsMissingValue(Microsoft.ML.StaticPipe.Scalar{System.Double})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.NAIndicatorStaticExtensions.IsMissingValue(Microsoft.ML.StaticPipe.Scalar{System.Single})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.NAIndicatorStaticExtensions.IsMissingValue(Microsoft.ML.StaticPipe.VarVector{System.Double})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.NAIndicatorStaticExtensions.IsMissingValue(Microsoft.ML.StaticPipe.VarVector{System.Single})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.NAIndicatorStaticExtensions.IsMissingValue(Microsoft.ML.StaticPipe.Vector{System.Double})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.NAIndicatorStaticExtensions.IsMissingValue(Microsoft.ML.StaticPipe.Vector{System.Single})" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.NAReplacerStaticExtensions" Id="T:Microsoft.ML.StaticPipe.NAReplacerStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.NAReplacerStaticExtensions.ReplaceNaNValues(Microsoft.ML.StaticPipe.Scalar{System.Double},Microsoft.ML.Transforms.MissingValueReplacingEstimator.ReplacementMode)" />
+      <Member Id="M:Microsoft.ML.StaticPipe.NAReplacerStaticExtensions.ReplaceNaNValues(Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.Transforms.MissingValueReplacingEstimator.ReplacementMode)" />
+      <Member Id="M:Microsoft.ML.StaticPipe.NAReplacerStaticExtensions.ReplaceNaNValues(Microsoft.ML.StaticPipe.VarVector{System.Double},Microsoft.ML.Transforms.MissingValueReplacingEstimator.ReplacementMode)" />
+      <Member Id="M:Microsoft.ML.StaticPipe.NAReplacerStaticExtensions.ReplaceNaNValues(Microsoft.ML.StaticPipe.VarVector{System.Single},Microsoft.ML.Transforms.MissingValueReplacingEstimator.ReplacementMode)" />
+      <Member Id="M:Microsoft.ML.StaticPipe.NAReplacerStaticExtensions.ReplaceNaNValues(Microsoft.ML.StaticPipe.Vector{System.Double},Microsoft.ML.Transforms.MissingValueReplacingEstimator.ReplacementMode,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.StaticPipe.NAReplacerStaticExtensions.ReplaceNaNValues(Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.Transforms.MissingValueReplacingEstimator.ReplacementMode,System.Boolean)" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.NgramEstimatorStaticExtensions" Id="T:Microsoft.ML.StaticPipe.NgramEstimatorStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.NgramEstimatorStaticExtensions.ProduceNgrams``1(Microsoft.ML.StaticPipe.VarVector{Microsoft.ML.StaticPipe.Key{``0,System.String}},System.Int32,System.Int32,System.Boolean,System.Int32,Microsoft.ML.Transforms.Text.NgramExtractingEstimator.WeightingCriteria)" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.NgramHashEstimatorStaticExtensions" Id="T:Microsoft.ML.StaticPipe.NgramHashEstimatorStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.NgramHashEstimatorStaticExtensions.ProduceHashedNgrams(Microsoft.ML.StaticPipe.VarVector{Microsoft.ML.StaticPipe.Key{System.UInt32,System.String}},System.Int32,System.Int32,System.Int32,System.Boolean,System.UInt32,System.Boolean,System.Int32)" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.NormalizerStaticExtensions" Id="T:Microsoft.ML.StaticPipe.NormalizerStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.NormalizerStaticExtensions.Normalize(Microsoft.ML.StaticPipe.Vector{System.Double},System.Boolean,System.Int64,Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitAffine{System.Collections.Immutable.ImmutableArray{System.Double}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.NormalizerStaticExtensions.Normalize(Microsoft.ML.StaticPipe.Vector{System.Single},System.Boolean,System.Int64,Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitAffine{System.Collections.Immutable.ImmutableArray{System.Single}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.NormalizerStaticExtensions.NormalizeByBinning(Microsoft.ML.StaticPipe.Vector{System.Double},System.Int32,System.Boolean,System.Int64,Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitBinned{System.Collections.Immutable.ImmutableArray{System.Double}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.NormalizerStaticExtensions.NormalizeByBinning(Microsoft.ML.StaticPipe.Vector{System.Single},System.Int32,System.Boolean,System.Int64,Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitBinned{System.Collections.Immutable.ImmutableArray{System.Single}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.NormalizerStaticExtensions.NormalizeByCumulativeDistribution(Microsoft.ML.StaticPipe.Vector{System.Double},System.Boolean,System.Boolean,System.Int64,Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitCumulativeDistribution{System.Collections.Immutable.ImmutableArray{System.Double}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.NormalizerStaticExtensions.NormalizeByCumulativeDistribution(Microsoft.ML.StaticPipe.Vector{System.Single},System.Boolean,System.Boolean,System.Int64,Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitCumulativeDistribution{System.Collections.Immutable.ImmutableArray{System.Single}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.NormalizerStaticExtensions.NormalizeMeanVariance(Microsoft.ML.StaticPipe.Vector{System.Double},System.Boolean,System.Boolean,System.Int64,Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitAffine{System.Collections.Immutable.ImmutableArray{System.Double}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.NormalizerStaticExtensions.NormalizeMeanVariance(Microsoft.ML.StaticPipe.Vector{System.Single},System.Boolean,System.Boolean,System.Int64,Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitAffine{System.Collections.Immutable.ImmutableArray{System.Single}})" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.NormalizerStaticExtensions/OnFitAffine`1" Id="T:Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitAffine`1" />
+    <Type Name="Microsoft.ML.StaticPipe.NormalizerStaticExtensions/OnFitBinned`1" Id="T:Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitBinned`1" />
+    <Type Name="Microsoft.ML.StaticPipe.NormalizerStaticExtensions/OnFitCumulativeDistribution`1" Id="T:Microsoft.ML.StaticPipe.NormalizerStaticExtensions.OnFitCumulativeDistribution`1" />
+    <Type Name="Microsoft.ML.StaticPipe.NormVector`1" Id="T:Microsoft.ML.StaticPipe.NormVector`1">
+      <Member Id="M:Microsoft.ML.StaticPipe.NormVector`1.#ctor(Microsoft.ML.StaticPipe.Reconciler,Microsoft.ML.StaticPipe.PipelineColumn[])" />
+      <Member Id="M:Microsoft.ML.StaticPipe.NormVector`1.ToString" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.OnlineGradientDescentExtensions" Id="T:Microsoft.ML.StaticPipe.OnlineGradientDescentExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.OnlineGradientDescentExtensions.OnlineGradientDescent(Microsoft.ML.RegressionCatalog.RegressionTrainers,Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.Trainers.IRegressionLoss,System.Single,System.Boolean,System.Single,System.Int32,System.Action{Microsoft.ML.Trainers.LinearRegressionModelParameters})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.OnlineGradientDescentExtensions.OnlineGradientDescent(Microsoft.ML.RegressionCatalog.RegressionTrainers,Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.Trainers.OnlineGradientDescentTrainer.Options,System.Action{Microsoft.ML.Trainers.LinearRegressionModelParameters})" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.PcaStaticExtensions" Id="T:Microsoft.ML.StaticPipe.PcaStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.PcaStaticExtensions.ProjectToPrincipalComponents(Microsoft.ML.StaticPipe.Vector{System.Single},System.String,System.Int32,System.Int32,System.Boolean,System.Nullable{System.Int32})" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.PipelineColumn" Id="T:Microsoft.ML.StaticPipe.PipelineColumn" />
+    <Type Name="Microsoft.ML.StaticPipe.Reconciler" Id="T:Microsoft.ML.StaticPipe.Reconciler" />
+    <Type Name="Microsoft.ML.StaticPipe.Scalar`1" Id="T:Microsoft.ML.StaticPipe.Scalar`1">
+      <Member Id="M:Microsoft.ML.StaticPipe.Scalar`1.#ctor(Microsoft.ML.StaticPipe.Reconciler,Microsoft.ML.StaticPipe.PipelineColumn[])" />
+      <Member Id="M:Microsoft.ML.StaticPipe.Scalar`1.ToString" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.SchemaAssertionContext" Id="T:Microsoft.ML.StaticPipe.SchemaAssertionContext">
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.Bool" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.I1" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.I2" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.I4" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.I8" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.KeyU1" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.KeyU2" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.KeyU4" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.KeyU8" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.R4" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.R8" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.Text" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.U1" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.U2" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.U4" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.U8" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.SchemaAssertionContext/KeyTypeSelectorAssertions`1" Id="T:Microsoft.ML.StaticPipe.SchemaAssertionContext.KeyTypeSelectorAssertions`1">
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.KeyTypeSelectorAssertions`1.BoolValues" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.KeyTypeSelectorAssertions`1.I1Values" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.KeyTypeSelectorAssertions`1.I2Values" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.KeyTypeSelectorAssertions`1.I4Values" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.KeyTypeSelectorAssertions`1.I8Values" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.KeyTypeSelectorAssertions`1.NoValue" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.KeyTypeSelectorAssertions`1.R4Values" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.KeyTypeSelectorAssertions`1.R8Values" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.KeyTypeSelectorAssertions`1.TextValues" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.KeyTypeSelectorAssertions`1.U1Values" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.KeyTypeSelectorAssertions`1.U2Values" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.KeyTypeSelectorAssertions`1.U4Values" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.KeyTypeSelectorAssertions`1.U8Values" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.KeyTypeSelectorAssertions`1.UnknownCardinality" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.SchemaAssertionContext/KeyTypeVectorAssertions`1" Id="T:Microsoft.ML.StaticPipe.SchemaAssertionContext.KeyTypeVectorAssertions`1">
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.KeyTypeVectorAssertions`1.Scalar" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.KeyTypeVectorAssertions`1.VarVector" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.KeyTypeVectorAssertions`1.Vector" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.SchemaAssertionContext/NormalizableTypeAssertions`1" Id="T:Microsoft.ML.StaticPipe.SchemaAssertionContext.NormalizableTypeAssertions`1">
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.NormalizableTypeAssertions`1.NormVector" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.NormalizableTypeAssertions`1.Scalar" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.NormalizableTypeAssertions`1.VarVector" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.NormalizableTypeAssertions`1.Vector" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.SchemaAssertionContext/PrimitiveTypeAssertions`1" Id="T:Microsoft.ML.StaticPipe.SchemaAssertionContext.PrimitiveTypeAssertions`1">
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.PrimitiveTypeAssertions`1.Scalar" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.PrimitiveTypeAssertions`1.VarVector" />
+      <Member Id="P:Microsoft.ML.StaticPipe.SchemaAssertionContext.PrimitiveTypeAssertions`1.Vector" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.SchemaBearing`1" Id="T:Microsoft.ML.StaticPipe.SchemaBearing`1">
+      <Member Id="M:Microsoft.ML.StaticPipe.SchemaBearing`1.MakeNewEstimator" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.SdcaStaticExtensions" Id="T:Microsoft.ML.StaticPipe.SdcaStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.SdcaStaticExtensions.Sdca(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.Trainers.SdcaLogisticRegressionBinaryTrainer.Options,System.Action{Microsoft.ML.Calibrators.CalibratedModelParametersBase{Microsoft.ML.Trainers.LinearBinaryModelParameters,Microsoft.ML.Calibrators.PlattCalibrator}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.SdcaStaticExtensions.Sdca(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Int32},System.Action{Microsoft.ML.Calibrators.CalibratedModelParametersBase{Microsoft.ML.Trainers.LinearBinaryModelParameters,Microsoft.ML.Calibrators.PlattCalibrator}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.SdcaStaticExtensions.Sdca(Microsoft.ML.RegressionCatalog.RegressionTrainers,Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.Trainers.SdcaRegressionTrainer.Options,System.Action{Microsoft.ML.Trainers.LinearRegressionModelParameters})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.SdcaStaticExtensions.Sdca(Microsoft.ML.RegressionCatalog.RegressionTrainers,Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Int32},Microsoft.ML.Trainers.ISupportSdcaRegressionLoss,System.Action{Microsoft.ML.Trainers.LinearRegressionModelParameters})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.SdcaStaticExtensions.Sdca``1(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,Microsoft.ML.StaticPipe.Key{System.UInt32,``0},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.Trainers.SdcaMaximumEntropyMulticlassTrainer.Options,System.Action{Microsoft.ML.Trainers.MaximumEntropyModelParameters})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.SdcaStaticExtensions.Sdca``1(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,Microsoft.ML.StaticPipe.Key{System.UInt32,``0},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Int32},System.Action{Microsoft.ML.Trainers.MaximumEntropyModelParameters})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.SdcaStaticExtensions.SdcaNonCalibrated(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.Trainers.ISupportSdcaClassificationLoss,Microsoft.ML.Trainers.SdcaNonCalibratedBinaryTrainer.Options,System.Action{Microsoft.ML.Trainers.LinearBinaryModelParameters})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.SdcaStaticExtensions.SdcaNonCalibrated(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.Trainers.ISupportSdcaClassificationLoss,Microsoft.ML.StaticPipe.Scalar{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Int32},System.Action{Microsoft.ML.Trainers.LinearBinaryModelParameters})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.SdcaStaticExtensions.SdcaNonCalibrated``1(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,Microsoft.ML.StaticPipe.Key{System.UInt32,``0},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.Trainers.SdcaNonCalibratedMulticlassTrainer.Options,System.Action{Microsoft.ML.Trainers.LinearMulticlassModelParameters})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.SdcaStaticExtensions.SdcaNonCalibrated``1(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,Microsoft.ML.StaticPipe.Key{System.UInt32,``0},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.Trainers.ISupportSdcaClassificationLoss,Microsoft.ML.StaticPipe.Scalar{System.Single},System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Int32},System.Action{Microsoft.ML.Trainers.LinearMulticlassModelParameters})" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.SgdStaticExtensions" Id="T:Microsoft.ML.StaticPipe.SgdStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.SgdStaticExtensions.StochasticGradientDescentClassificationTrainer(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.Trainers.SgdCalibratedTrainer.Options,System.Action{Microsoft.ML.Calibrators.CalibratedModelParametersBase{Microsoft.ML.Trainers.LinearBinaryModelParameters,Microsoft.ML.Calibrators.PlattCalibrator}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.SgdStaticExtensions.StochasticGradientDescentClassificationTrainer(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Int32,System.Double,System.Single,System.Action{Microsoft.ML.Calibrators.CalibratedModelParametersBase{Microsoft.ML.Trainers.LinearBinaryModelParameters,Microsoft.ML.Calibrators.PlattCalibrator}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.SgdStaticExtensions.StochasticGradientDescentNonCalibratedClassificationTrainer(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.Trainers.SgdNonCalibratedTrainer.Options,System.Action{Microsoft.ML.Trainers.LinearBinaryModelParameters})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.SgdStaticExtensions.StochasticGradientDescentNonCalibratedClassificationTrainer(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Int32,System.Double,System.Single,Microsoft.ML.Trainers.IClassificationLoss,System.Action{Microsoft.ML.Trainers.LinearBinaryModelParameters})" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.StaticPipeExtensions" Id="T:Microsoft.ML.StaticPipe.StaticPipeExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.StaticPipeExtensions.AssertStatic``1(Microsoft.ML.IDataView,Microsoft.ML.Runtime.IHostEnvironment,System.Func{Microsoft.ML.StaticPipe.SchemaAssertionContext,``0})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.StaticPipeExtensions.AssertStatic``2(Microsoft.ML.IDataLoader{``0},Microsoft.ML.Runtime.IHostEnvironment,System.Func{Microsoft.ML.StaticPipe.SchemaAssertionContext,``1})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.StaticPipeExtensions.AssertStatic``3(``2,Microsoft.ML.Runtime.IHostEnvironment,System.Func{Microsoft.ML.StaticPipe.SchemaAssertionContext,``0},System.Func{Microsoft.ML.StaticPipe.SchemaAssertionContext,``1})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.StaticPipeExtensions.AssertStatic``3(Microsoft.ML.IDataLoaderEstimator{``0,``2},Microsoft.ML.Runtime.IHostEnvironment,System.Func{Microsoft.ML.StaticPipe.SchemaAssertionContext,``1})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.StaticPipeExtensions.AssertStatic``3(Microsoft.ML.IEstimator{``2},Microsoft.ML.Runtime.IHostEnvironment,System.Func{Microsoft.ML.StaticPipe.SchemaAssertionContext,``0},System.Func{Microsoft.ML.StaticPipe.SchemaAssertionContext,``1})" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.StaticPipeUtils" Id="T:Microsoft.ML.StaticPipe.StaticPipeUtils">
+      <Member Id="M:Microsoft.ML.StaticPipe.StaticPipeUtils.GetEnvironment``1(Microsoft.ML.StaticPipe.SchemaBearing{``0})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.StaticPipeUtils.GetIndexer``1(Microsoft.ML.StaticPipe.SchemaBearing{``0})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.StaticPipeUtils.LoaderEstimatorAnalyzerHelper``3(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Runtime.IChannel,``1,Microsoft.ML.StaticPipe.LoaderReconciler{``0},System.Func{``1,``2})" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.StaticPipeUtils/IndexHelper`1" Id="T:Microsoft.ML.StaticPipe.StaticPipeUtils.IndexHelper`1">
+      <Member Id="M:Microsoft.ML.StaticPipe.StaticPipeUtils.IndexHelper`1.Get(Microsoft.ML.StaticPipe.PipelineColumn,Microsoft.ML.Runtime.IExceptionContext)" />
+      <Member Id="P:Microsoft.ML.StaticPipe.StaticPipeUtils.IndexHelper`1.Indices" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.StopwordRemoverStaticExtensions" Id="T:Microsoft.ML.StaticPipe.StopwordRemoverStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.StopwordRemoverStaticExtensions.RemoveDefaultStopWords(Microsoft.ML.StaticPipe.VarVector{System.String},Microsoft.ML.Transforms.Text.StopWordsRemovingEstimator.Language)" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.TermStaticExtensions" Id="T:Microsoft.ML.StaticPipe.TermStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Boolean})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.Scalar{System.Byte},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Byte})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.Scalar{System.Double},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Double})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.Scalar{System.Int16},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Int16})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.Scalar{System.Int32},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Int32})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.Scalar{System.Int64},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Int64})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.Scalar{System.SByte},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.SByte})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Single})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.Scalar{System.String},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.ReadOnlyMemory{System.Char}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.Scalar{System.UInt16},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.UInt16})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.Scalar{System.UInt32},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.UInt32})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.Scalar{System.UInt64},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.UInt64})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.VarVector{System.Boolean},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Boolean})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.VarVector{System.Byte},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Byte})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.VarVector{System.Double},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Double})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.VarVector{System.Int16},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Int16})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.VarVector{System.Int32},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Int32})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.VarVector{System.Int64},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Int64})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.VarVector{System.SByte},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.SByte})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.VarVector{System.Single},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Single})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.VarVector{System.String},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.ReadOnlyMemory{System.Char}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.VarVector{System.UInt16},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.UInt16})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.VarVector{System.UInt32},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.UInt32})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.VarVector{System.UInt64},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.UInt64})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.Vector{System.Boolean},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Boolean})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.Vector{System.Byte},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Byte})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.Vector{System.Double},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Double})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.Vector{System.Int16},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Int16})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.Vector{System.Int32},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Int32})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.Vector{System.Int64},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Int64})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.Vector{System.SByte},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.SByte})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Single})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.Vector{System.String},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.ReadOnlyMemory{System.Char}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.Vector{System.UInt16},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.UInt16})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.Vector{System.UInt32},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.UInt32})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey(Microsoft.ML.StaticPipe.Vector{System.UInt64},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.UInt64})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.Key{``0,System.Boolean},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Boolean})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.Key{``0,System.Byte},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Byte})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.Key{``0,System.Double},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Double})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.Key{``0,System.Int16},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Int16})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.Key{``0,System.Int32},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Int32})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.Key{``0,System.Int64},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Int64})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.Key{``0,System.SByte},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.SByte})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.Key{``0,System.Single},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Single})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.Key{``0,System.String},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.ReadOnlyMemory{System.Char}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.Key{``0,System.UInt16},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.UInt16})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.Key{``0,System.UInt32},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.UInt32})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.Key{``0,System.UInt64},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.UInt64})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.VarVector{Microsoft.ML.StaticPipe.Key{``0,System.Boolean}},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Boolean})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.VarVector{Microsoft.ML.StaticPipe.Key{``0,System.Byte}},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Byte})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.VarVector{Microsoft.ML.StaticPipe.Key{``0,System.Double}},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Double})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.VarVector{Microsoft.ML.StaticPipe.Key{``0,System.Int16}},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Int16})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.VarVector{Microsoft.ML.StaticPipe.Key{``0,System.Int32}},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Int32})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.VarVector{Microsoft.ML.StaticPipe.Key{``0,System.Int64}},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Int64})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.VarVector{Microsoft.ML.StaticPipe.Key{``0,System.SByte}},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.SByte})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.VarVector{Microsoft.ML.StaticPipe.Key{``0,System.Single}},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Single})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.VarVector{Microsoft.ML.StaticPipe.Key{``0,System.String}},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.ReadOnlyMemory{System.Char}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.VarVector{Microsoft.ML.StaticPipe.Key{``0,System.UInt16}},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.UInt16})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.VarVector{Microsoft.ML.StaticPipe.Key{``0,System.UInt32}},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.UInt32})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.VarVector{Microsoft.ML.StaticPipe.Key{``0,System.UInt64}},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.UInt64})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.Vector{Microsoft.ML.StaticPipe.Key{``0,System.Boolean}},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Boolean})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.Vector{Microsoft.ML.StaticPipe.Key{``0,System.Byte}},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Byte})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.Vector{Microsoft.ML.StaticPipe.Key{``0,System.Double}},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Double})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.Vector{Microsoft.ML.StaticPipe.Key{``0,System.Int16}},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Int16})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.Vector{Microsoft.ML.StaticPipe.Key{``0,System.Int32}},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Int32})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.Vector{Microsoft.ML.StaticPipe.Key{``0,System.Int64}},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Int64})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.Vector{Microsoft.ML.StaticPipe.Key{``0,System.SByte}},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.SByte})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.Vector{Microsoft.ML.StaticPipe.Key{``0,System.Single}},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.Single})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.Vector{Microsoft.ML.StaticPipe.Key{``0,System.String}},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.ReadOnlyMemory{System.Char}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.Vector{Microsoft.ML.StaticPipe.Key{``0,System.UInt16}},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.UInt16})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.Vector{Microsoft.ML.StaticPipe.Key{``0,System.UInt32}},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.UInt32})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKey``1(Microsoft.ML.StaticPipe.Vector{Microsoft.ML.StaticPipe.Key{``0,System.UInt64}},Microsoft.ML.StaticPipe.KeyOrdinality,System.Int32,Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit{System.UInt64})" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.TermStaticExtensions/ToKeyFitResult`1" Id="T:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1" />
+    <Type Name="Microsoft.ML.StaticPipe.TermStaticExtensions/ToKeyFitResult`1/OnFit" Id="T:Microsoft.ML.StaticPipe.TermStaticExtensions.ToKeyFitResult`1.OnFit" />
+    <Type Name="Microsoft.ML.StaticPipe.TextFeaturizerStaticExtensions" Id="T:Microsoft.ML.StaticPipe.TextFeaturizerStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.TextFeaturizerStaticExtensions.FeaturizeText(Microsoft.ML.StaticPipe.Scalar{System.String},Microsoft.ML.StaticPipe.Scalar{System.String}[],Microsoft.ML.Transforms.Text.TextFeaturizingEstimator.Options)" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.TextLoaderStatic" Id="T:Microsoft.ML.StaticPipe.TextLoaderStatic">
+      <Member Id="M:Microsoft.ML.StaticPipe.TextLoaderStatic.CreateLoader``1(Microsoft.ML.Runtime.IHostEnvironment,System.Func{Microsoft.ML.StaticPipe.TextLoaderStatic.Context,``0},Microsoft.ML.Data.IMultiStreamSource,System.Char,System.Boolean,System.Boolean,System.Boolean,System.Boolean)" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.TextLoaderStatic/Context" Id="T:Microsoft.ML.StaticPipe.TextLoaderStatic.Context">
+      <Member Id="M:Microsoft.ML.StaticPipe.TextLoaderStatic.Context.LoadBool(System.Int32)" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TextLoaderStatic.Context.LoadBool(System.Int32,System.Nullable{System.Int32})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TextLoaderStatic.Context.LoadDouble(System.Int32)" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TextLoaderStatic.Context.LoadDouble(System.Int32,System.Nullable{System.Int32})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TextLoaderStatic.Context.LoadFloat(System.Int32)" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TextLoaderStatic.Context.LoadFloat(System.Int32,System.Nullable{System.Int32})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TextLoaderStatic.Context.LoadKey(System.Int32,System.Nullable{System.UInt64})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TextLoaderStatic.Context.LoadText(System.Int32)" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TextLoaderStatic.Context.LoadText(System.Int32,System.Nullable{System.Int32})" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.TextNormalizerStaticExtensions" Id="T:Microsoft.ML.StaticPipe.TextNormalizerStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.TextNormalizerStaticExtensions.NormalizeText(Microsoft.ML.StaticPipe.Scalar{System.String},Microsoft.ML.Transforms.Text.TextNormalizingEstimator.CaseMode,System.Boolean,System.Boolean,System.Boolean)" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.TrainerEstimatorReconciler" Id="T:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler">
+      <Member Id="F:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.Inputs" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.#ctor(Microsoft.ML.StaticPipe.PipelineColumn[],System.String[])" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.Reconcile(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.StaticPipe.PipelineColumn[],System.Collections.Generic.IReadOnlyDictionary{Microsoft.ML.StaticPipe.PipelineColumn,System.String},System.Collections.Generic.IReadOnlyDictionary{Microsoft.ML.StaticPipe.PipelineColumn,System.String},System.Collections.Generic.IReadOnlyCollection{System.String})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.ReconcileCore(Microsoft.ML.Runtime.IHostEnvironment,System.String[])" />
+      <Member Id="P:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.Outputs" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.TrainerEstimatorReconciler/BinaryClassifier" Id="T:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.BinaryClassifier">
+      <Member Id="M:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.BinaryClassifier.#ctor(Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.BinaryClassifier.EstimatorFactory,Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.BinaryClassifier.ReconcileCore(Microsoft.ML.Runtime.IHostEnvironment,System.String[])" />
+      <Member Id="P:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.BinaryClassifier.Output" />
+      <Member Id="P:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.BinaryClassifier.Outputs" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.TrainerEstimatorReconciler/BinaryClassifier/EstimatorFactory" Id="T:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.BinaryClassifier.EstimatorFactory" />
+    <Type Name="Microsoft.ML.StaticPipe.TrainerEstimatorReconciler/BinaryClassifierNoCalibration" Id="T:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.BinaryClassifierNoCalibration">
+      <Member Id="M:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.BinaryClassifierNoCalibration.#ctor(Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.BinaryClassifierNoCalibration.EstimatorFactory,Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.BinaryClassifierNoCalibration.ReconcileCore(Microsoft.ML.Runtime.IHostEnvironment,System.String[])" />
+      <Member Id="P:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.BinaryClassifierNoCalibration.Output" />
+      <Member Id="P:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.BinaryClassifierNoCalibration.Outputs" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.TrainerEstimatorReconciler/BinaryClassifierNoCalibration/EstimatorFactory" Id="T:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.BinaryClassifierNoCalibration.EstimatorFactory" />
+    <Type Name="Microsoft.ML.StaticPipe.TrainerEstimatorReconciler/Clustering" Id="T:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.Clustering">
+      <Member Id="M:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.Clustering.#ctor(Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.Clustering.EstimatorFactory,Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.Clustering.ReconcileCore(Microsoft.ML.Runtime.IHostEnvironment,System.String[])" />
+      <Member Id="P:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.Clustering.Output" />
+      <Member Id="P:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.Clustering.Outputs" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.TrainerEstimatorReconciler/Clustering/EstimatorFactory" Id="T:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.Clustering.EstimatorFactory" />
+    <Type Name="Microsoft.ML.StaticPipe.TrainerEstimatorReconciler/MulticlassClassificationReconciler`1" Id="T:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.MulticlassClassificationReconciler`1">
+      <Member Id="M:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.MulticlassClassificationReconciler`1.#ctor(Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.MulticlassClassificationReconciler`1.EstimatorFactory{`0},Microsoft.ML.StaticPipe.Key{System.UInt32,`0},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.MulticlassClassificationReconciler`1.ReconcileCore(Microsoft.ML.Runtime.IHostEnvironment,System.String[])" />
+      <Member Id="P:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.MulticlassClassificationReconciler`1.Output" />
+      <Member Id="P:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.MulticlassClassificationReconciler`1.Outputs" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.TrainerEstimatorReconciler/MulticlassClassificationReconciler`1/EstimatorFactory" Id="T:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.MulticlassClassificationReconciler`1.EstimatorFactory" />
+    <Type Name="Microsoft.ML.StaticPipe.TrainerEstimatorReconciler/Ranker`1" Id="T:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.Ranker`1">
+      <Member Id="M:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.Ranker`1.#ctor(Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.Ranker`1.EstimatorFactory{`0},Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Key{System.UInt32,`0},Microsoft.ML.StaticPipe.Scalar{System.Single})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.Ranker`1.ReconcileCore(Microsoft.ML.Runtime.IHostEnvironment,System.String[])" />
+      <Member Id="P:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.Ranker`1.Outputs" />
+      <Member Id="P:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.Ranker`1.Score" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.TrainerEstimatorReconciler/Ranker`1/EstimatorFactory" Id="T:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.Ranker`1.EstimatorFactory" />
+    <Type Name="Microsoft.ML.StaticPipe.TrainerEstimatorReconciler/Regression" Id="T:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.Regression">
+      <Member Id="M:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.Regression.#ctor(Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.Regression.EstimatorFactory,Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.Regression.ReconcileCore(Microsoft.ML.Runtime.IHostEnvironment,System.String[])" />
+      <Member Id="P:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.Regression.Outputs" />
+      <Member Id="P:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.Regression.Score" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.TrainerEstimatorReconciler/Regression/EstimatorFactory" Id="T:Microsoft.ML.StaticPipe.TrainerEstimatorReconciler.Regression.EstimatorFactory" />
+    <Type Name="Microsoft.ML.StaticPipe.TrainingStaticExtensions" Id="T:Microsoft.ML.StaticPipe.TrainingStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.TrainingStaticExtensions.CrossValidate``3(Microsoft.ML.BinaryClassificationCatalog,Microsoft.ML.StaticPipe.DataView{``0},Microsoft.ML.StaticPipe.Estimator{``0,``1,``2},System.Func{``1,Microsoft.ML.StaticPipe.Scalar{System.Boolean}},System.Int32,System.Func{``0,Microsoft.ML.StaticPipe.PipelineColumn},System.Nullable{System.Int32})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TrainingStaticExtensions.CrossValidate``3(Microsoft.ML.MulticlassClassificationCatalog,Microsoft.ML.StaticPipe.DataView{``0},Microsoft.ML.StaticPipe.Estimator{``0,``1,``2},System.Func{``1,Microsoft.ML.StaticPipe.Key{System.UInt32}},System.Int32,System.Func{``0,Microsoft.ML.StaticPipe.PipelineColumn},System.Nullable{System.Int32})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TrainingStaticExtensions.CrossValidate``3(Microsoft.ML.RegressionCatalog,Microsoft.ML.StaticPipe.DataView{``0},Microsoft.ML.StaticPipe.Estimator{``0,``1,``2},System.Func{``1,Microsoft.ML.StaticPipe.Scalar{System.Single}},System.Int32,System.Func{``0,Microsoft.ML.StaticPipe.PipelineColumn},System.Nullable{System.Int32})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TrainingStaticExtensions.CrossValidateNonCalibrated``3(Microsoft.ML.BinaryClassificationCatalog,Microsoft.ML.StaticPipe.DataView{``0},Microsoft.ML.StaticPipe.Estimator{``0,``1,``2},System.Func{``1,Microsoft.ML.StaticPipe.Scalar{System.Boolean}},System.Int32,System.Func{``0,Microsoft.ML.StaticPipe.PipelineColumn},System.Nullable{System.Int32})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TrainingStaticExtensions.TrainTestSplit``1(Microsoft.ML.DataOperationsCatalog,Microsoft.ML.StaticPipe.DataView{``0},System.Double,System.Func{``0,Microsoft.ML.StaticPipe.PipelineColumn},System.Nullable{System.Int32})" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.Transformer`3" Id="T:Microsoft.ML.StaticPipe.Transformer`3">
+      <Member Id="M:Microsoft.ML.StaticPipe.Transformer`3.Append``2(Microsoft.ML.StaticPipe.Transformer{`1,``0,``1})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.Transformer`3.Transform(Microsoft.ML.StaticPipe.DataView{`0})" />
+      <Member Id="P:Microsoft.ML.StaticPipe.Transformer`3.AsDynamic" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.TreeRegressionExtensions" Id="T:Microsoft.ML.StaticPipe.TreeRegressionExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.TreeRegressionExtensions.FastTree(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.Trainers.FastTree.FastTreeBinaryTrainer.Options,System.Action{Microsoft.ML.Calibrators.CalibratedModelParametersBase{Microsoft.ML.Trainers.FastTree.FastTreeBinaryModelParameters,Microsoft.ML.Calibrators.PlattCalibrator}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TreeRegressionExtensions.FastTree(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,Microsoft.ML.StaticPipe.Scalar{System.Boolean},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Int32,System.Int32,System.Int32,System.Double,System.Action{Microsoft.ML.Calibrators.CalibratedModelParametersBase{Microsoft.ML.Trainers.FastTree.FastTreeBinaryModelParameters,Microsoft.ML.Calibrators.PlattCalibrator}})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TreeRegressionExtensions.FastTree(Microsoft.ML.RegressionCatalog.RegressionTrainers,Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.Trainers.FastTree.FastTreeRegressionTrainer.Options,System.Action{Microsoft.ML.Trainers.FastTree.FastTreeRegressionModelParameters})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TreeRegressionExtensions.FastTree(Microsoft.ML.RegressionCatalog.RegressionTrainers,Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Int32,System.Int32,System.Int32,System.Double,System.Action{Microsoft.ML.Trainers.FastTree.FastTreeRegressionModelParameters})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TreeRegressionExtensions.FastTree``1(Microsoft.ML.RankingCatalog.RankingTrainers,Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Key{System.UInt32,``0},Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options,System.Action{Microsoft.ML.Trainers.FastTree.FastTreeRankingModelParameters})" />
+      <Member Id="M:Microsoft.ML.StaticPipe.TreeRegressionExtensions.FastTree``1(Microsoft.ML.RankingCatalog.RankingTrainers,Microsoft.ML.StaticPipe.Scalar{System.Single},Microsoft.ML.StaticPipe.Vector{System.Single},Microsoft.ML.StaticPipe.Key{System.UInt32,``0},Microsoft.ML.StaticPipe.Scalar{System.Single},System.Int32,System.Int32,System.Int32,System.Double,System.Action{Microsoft.ML.Trainers.FastTree.FastTreeRankingModelParameters})" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.UnknownSizeBitmap" Id="T:Microsoft.ML.StaticPipe.UnknownSizeBitmap" />
+    <Type Name="Microsoft.ML.StaticPipe.VarKey`1" Id="T:Microsoft.ML.StaticPipe.VarKey`1">
+      <Member Id="M:Microsoft.ML.StaticPipe.VarKey`1.#ctor(Microsoft.ML.StaticPipe.Reconciler,Microsoft.ML.StaticPipe.PipelineColumn[])" />
+      <Member Id="M:Microsoft.ML.StaticPipe.VarKey`1.ToString" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.VarVector`1" Id="T:Microsoft.ML.StaticPipe.VarVector`1">
+      <Member Id="M:Microsoft.ML.StaticPipe.VarVector`1.#ctor(Microsoft.ML.StaticPipe.Reconciler,Microsoft.ML.StaticPipe.PipelineColumn[])" />
+      <Member Id="M:Microsoft.ML.StaticPipe.VarVector`1.ToString" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.Vector`1" Id="T:Microsoft.ML.StaticPipe.Vector`1">
+      <Member Id="M:Microsoft.ML.StaticPipe.Vector`1.#ctor(Microsoft.ML.StaticPipe.Reconciler,Microsoft.ML.StaticPipe.PipelineColumn[])" />
+      <Member Id="M:Microsoft.ML.StaticPipe.Vector`1.ToString" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.WordBagEstimatorStaticExtensions" Id="T:Microsoft.ML.StaticPipe.WordBagEstimatorStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.WordBagEstimatorStaticExtensions.ProduceWordBags(Microsoft.ML.StaticPipe.Scalar{System.String},System.Int32,System.Int32,System.Boolean,System.Int32,Microsoft.ML.Transforms.Text.NgramExtractingEstimator.WeightingCriteria)" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.WordEmbeddingsStaticExtensions" Id="T:Microsoft.ML.StaticPipe.WordEmbeddingsStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.WordEmbeddingsStaticExtensions.WordEmbeddings(Microsoft.ML.StaticPipe.VarVector{System.String},Microsoft.ML.Transforms.Text.WordEmbeddingEstimator.PretrainedModelKind)" />
+      <Member Id="M:Microsoft.ML.StaticPipe.WordEmbeddingsStaticExtensions.WordEmbeddings(Microsoft.ML.StaticPipe.VarVector{System.String},System.String)" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.WordHashBagEstimatorStaticExtensions" Id="T:Microsoft.ML.StaticPipe.WordHashBagEstimatorStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.WordHashBagEstimatorStaticExtensions.ProduceHashedWordBags(Microsoft.ML.StaticPipe.Scalar{System.String},System.Int32,System.Int32,System.Int32,System.Boolean,System.UInt32,System.Boolean,System.Int32)" />
+    </Type>
+    <Type Name="Microsoft.ML.StaticPipe.WordTokenizerStaticExtensions" Id="T:Microsoft.ML.StaticPipe.WordTokenizerStaticExtensions">
+      <Member Id="M:Microsoft.ML.StaticPipe.WordTokenizerStaticExtensions.TokenizeIntoWords(Microsoft.ML.StaticPipe.Scalar{System.String},System.Char[])" />
+    </Type>
+  </Namespace>
+  <Namespace Name="Microsoft.ML.Trainers">
+    <Type Name="Microsoft.ML.Trainers.MatrixFactorizationTrainer" Id="T:Microsoft.ML.Trainers.MatrixFactorizationTrainer">
+      <Member Id="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Fit(Microsoft.ML.IDataView)" />
+      <Member Id="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Fit(Microsoft.ML.IDataView,Microsoft.ML.IDataView)" />
+      <Member Id="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.GetOutputSchema(Microsoft.ML.SchemaShape)" />
+    </Type>
+    <Type Name="Microsoft.ML.Trainers.MatrixFactorizationTrainer/LossFunctionType" Id="T:Microsoft.ML.Trainers.MatrixFactorizationTrainer.LossFunctionType">
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.LossFunctionType.SquareLossOneClass" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.LossFunctionType.SquareLossRegression" />
+    </Type>
+    <Type Name="Microsoft.ML.Trainers.MatrixFactorizationTrainer/Options" Id="T:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options">
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.Alpha" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.ApproximationRank" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.C" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.LabelColumnName" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.Lambda" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.LearningRate" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.LossFunction" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.MatrixColumnIndexColumnName" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.MatrixRowIndexColumnName" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.NonNegative" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.NumberOfIterations" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.NumberOfThreads" />
+      <Member Id="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.Quiet" />
+      <Member Id="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.#ctor" />
+    </Type>
+  </Namespace>
+  <Namespace Name="Microsoft.ML.Trainers.Recommender">
+    <Type Name="Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters" Id="T:Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters">
+      <Member Id="F:Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters.ApproximationRank" />
+      <Member Id="F:Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters.NumberOfColumns" />
+      <Member Id="F:Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters.NumberOfRows" />
+      <Member Id="M:Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters.Microsoft#ML#ICanSaveModel#Save(Microsoft.ML.ModelSaveContext)" />
+      <Member Id="P:Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters.LeftFactorMatrix" />
+      <Member Id="P:Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters.RightFactorMatrix" />
+    </Type>
+    <Type Name="Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer" Id="T:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer">
+      <Member Id="M:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer.GetOutputSchema(Microsoft.ML.DataViewSchema)" />
+    </Type>
+  </Namespace>
+  <Namespace Name="Microsoft.ML.Transforms.Onnx">
+    <Type Name="Microsoft.ML.Transforms.Onnx.DnnImageFeaturizerEstimator" Id="T:Microsoft.ML.Transforms.Onnx.DnnImageFeaturizerEstimator">
+      <Member Id="M:Microsoft.ML.Transforms.Onnx.DnnImageFeaturizerEstimator.Fit(Microsoft.ML.IDataView)" />
+      <Member Id="M:Microsoft.ML.Transforms.Onnx.DnnImageFeaturizerEstimator.GetOutputSchema(Microsoft.ML.SchemaShape)" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.Onnx.DnnImageFeaturizerInput" Id="T:Microsoft.ML.Transforms.Onnx.DnnImageFeaturizerInput">
+      <Member Id="P:Microsoft.ML.Transforms.Onnx.DnnImageFeaturizerInput.InputColumn" />
+      <Member Id="P:Microsoft.ML.Transforms.Onnx.DnnImageFeaturizerInput.ModelSelector" />
+      <Member Id="P:Microsoft.ML.Transforms.Onnx.DnnImageFeaturizerInput.OutputColumn" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.Onnx.DnnImageModelSelector" Id="T:Microsoft.ML.Transforms.Onnx.DnnImageModelSelector">
+      <Member Id="M:Microsoft.ML.Transforms.Onnx.DnnImageModelSelector.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.Onnx.OnnxScoringEstimator" Id="T:Microsoft.ML.Transforms.Onnx.OnnxScoringEstimator">
+      <Member Id="M:Microsoft.ML.Transforms.Onnx.OnnxScoringEstimator.GetOutputSchema(Microsoft.ML.SchemaShape)" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.Onnx.OnnxTransformer" Id="T:Microsoft.ML.Transforms.Onnx.OnnxTransformer" />
+  </Namespace>
+  <Namespace Name="Microsoft.ML.Transforms.TensorFlow">
+    <Type Name="Microsoft.ML.Transforms.TensorFlow.TensorFlowUtils" Id="T:Microsoft.ML.Transforms.TensorFlow.TensorFlowUtils" />
+  </Namespace>
+  <Namespace Name="Microsoft.ML.Transforms">
+    <Type Name="Microsoft.ML.Transforms.TensorFlowEstimator" Id="T:Microsoft.ML.Transforms.TensorFlowEstimator">
+      <Member Id="M:Microsoft.ML.Transforms.TensorFlowEstimator.Fit(Microsoft.ML.IDataView)" />
+      <Member Id="M:Microsoft.ML.Transforms.TensorFlowEstimator.GetOutputSchema(Microsoft.ML.SchemaShape)" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TensorFlowModel" Id="T:Microsoft.ML.Transforms.TensorFlowModel">
+      <Member Id="M:Microsoft.ML.Transforms.TensorFlowModel.GetInputSchema" />
+      <Member Id="M:Microsoft.ML.Transforms.TensorFlowModel.GetModelSchema" />
+      <Member Id="M:Microsoft.ML.Transforms.TensorFlowModel.RetrainTensorFlowModel(System.String[],System.String[],System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.String,System.String,System.Single,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.Transforms.TensorFlowModel.ScoreTensorFlowModel(System.String,System.String,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.Transforms.TensorFlowModel.ScoreTensorFlowModel(System.String[],System.String[],System.Boolean)" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TensorFlowTransformer" Id="T:Microsoft.ML.Transforms.TensorFlowTransformer">
+      <Member Id="M:Microsoft.ML.Transforms.TensorFlowTransformer.Finalize" />
+    </Type>
+  </Namespace>
+  <Namespace Name="Microsoft.ML.Transforms.TimeSeries">
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.AnomalySide" Id="T:Microsoft.ML.Transforms.TimeSeries.AnomalySide">
+      <Member Id="F:Microsoft.ML.Transforms.TimeSeries.AnomalySide.Negative" />
+      <Member Id="F:Microsoft.ML.Transforms.TimeSeries.AnomalySide.Positive" />
+      <Member Id="F:Microsoft.ML.Transforms.TimeSeries.AnomalySide.TwoSided" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.ErrorFunction" Id="T:Microsoft.ML.Transforms.TimeSeries.ErrorFunction">
+      <Member Id="F:Microsoft.ML.Transforms.TimeSeries.ErrorFunction.AbsoluteDifference" />
+      <Member Id="F:Microsoft.ML.Transforms.TimeSeries.ErrorFunction.AbsoluteProportion" />
+      <Member Id="F:Microsoft.ML.Transforms.TimeSeries.ErrorFunction.SignedDifference" />
+      <Member Id="F:Microsoft.ML.Transforms.TimeSeries.ErrorFunction.SignedProportion" />
+      <Member Id="F:Microsoft.ML.Transforms.TimeSeries.ErrorFunction.SquaredDifference" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.IidAnomalyDetectionBaseWrapper" Id="T:Microsoft.ML.Transforms.TimeSeries.IidAnomalyDetectionBaseWrapper">
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.IidAnomalyDetectionBaseWrapper.GetOutputSchema(Microsoft.ML.DataViewSchema)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.IidAnomalyDetectionBaseWrapper.GetStatefulRowToRowMapper(Microsoft.ML.DataViewSchema)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.IidAnomalyDetectionBaseWrapper.Microsoft#ML#ICanSaveModel#Save(Microsoft.ML.ModelSaveContext)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.IidAnomalyDetectionBaseWrapper.Microsoft#ML#ITransformer#GetRowToRowMapper(Microsoft.ML.DataViewSchema)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.IidAnomalyDetectionBaseWrapper.Transform(Microsoft.ML.IDataView)" />
+      <Member Id="P:Microsoft.ML.Transforms.TimeSeries.IidAnomalyDetectionBaseWrapper.Microsoft#ML#ITransformer#IsRowToRowMapper" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.IidChangePointDetector" Id="T:Microsoft.ML.Transforms.TimeSeries.IidChangePointDetector" />
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.IidChangePointEstimator" Id="T:Microsoft.ML.Transforms.TimeSeries.IidChangePointEstimator">
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.IidChangePointEstimator.GetOutputSchema(Microsoft.ML.SchemaShape)" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.IidSpikeDetector" Id="T:Microsoft.ML.Transforms.TimeSeries.IidSpikeDetector" />
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.IidSpikeEstimator" Id="T:Microsoft.ML.Transforms.TimeSeries.IidSpikeEstimator">
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.IidSpikeEstimator.GetOutputSchema(Microsoft.ML.SchemaShape)" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.MartingaleType" Id="T:Microsoft.ML.Transforms.TimeSeries.MartingaleType">
+      <Member Id="F:Microsoft.ML.Transforms.TimeSeries.MartingaleType.Mixture" />
+      <Member Id="F:Microsoft.ML.Transforms.TimeSeries.MartingaleType.None" />
+      <Member Id="F:Microsoft.ML.Transforms.TimeSeries.MartingaleType.Power" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.PredictionFunctionExtensions" Id="T:Microsoft.ML.Transforms.TimeSeries.PredictionFunctionExtensions">
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.PredictionFunctionExtensions.CreateTimeSeriesPredictionFunction``2(Microsoft.ML.ITransformer,Microsoft.ML.Runtime.IHostEnvironment,System.Boolean,Microsoft.ML.Data.SchemaDefinition,Microsoft.ML.Data.SchemaDefinition)" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.SsaAnomalyDetectionBaseWrapper" Id="T:Microsoft.ML.Transforms.TimeSeries.SsaAnomalyDetectionBaseWrapper">
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SsaAnomalyDetectionBaseWrapper.GetOutputSchema(Microsoft.ML.DataViewSchema)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SsaAnomalyDetectionBaseWrapper.GetStatefulRowToRowMapper(Microsoft.ML.DataViewSchema)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SsaAnomalyDetectionBaseWrapper.Microsoft#ML#ICanSaveModel#Save(Microsoft.ML.ModelSaveContext)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SsaAnomalyDetectionBaseWrapper.Microsoft#ML#ITransformer#GetRowToRowMapper(Microsoft.ML.DataViewSchema)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SsaAnomalyDetectionBaseWrapper.Transform(Microsoft.ML.IDataView)" />
+      <Member Id="P:Microsoft.ML.Transforms.TimeSeries.SsaAnomalyDetectionBaseWrapper.Microsoft#ML#ITransformer#IsRowToRowMapper" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.SsaChangePointDetector" Id="T:Microsoft.ML.Transforms.TimeSeries.SsaChangePointDetector" />
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.SsaChangePointEstimator" Id="T:Microsoft.ML.Transforms.TimeSeries.SsaChangePointEstimator">
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SsaChangePointEstimator.Fit(Microsoft.ML.IDataView)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SsaChangePointEstimator.GetOutputSchema(Microsoft.ML.SchemaShape)" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.SsaSpikeDetector" Id="T:Microsoft.ML.Transforms.TimeSeries.SsaSpikeDetector" />
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.SsaSpikeEstimator" Id="T:Microsoft.ML.Transforms.TimeSeries.SsaSpikeEstimator">
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SsaSpikeEstimator.Fit(Microsoft.ML.IDataView)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SsaSpikeEstimator.GetOutputSchema(Microsoft.ML.SchemaShape)" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.TimeSeriesPredictionFunction`2" Id="T:Microsoft.ML.Transforms.TimeSeries.TimeSeriesPredictionFunction`2">
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.TimeSeriesPredictionFunction`2.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.ITransformer,System.Boolean,Microsoft.ML.Data.SchemaDefinition,Microsoft.ML.Data.SchemaDefinition)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.TimeSeriesPredictionFunction`2.CheckPoint(Microsoft.ML.Runtime.IHostEnvironment,System.String)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.TimeSeriesPredictionFunction`2.Predict(`0,`1@)" />
+    </Type>
+  </Namespace>
+</Framework>
