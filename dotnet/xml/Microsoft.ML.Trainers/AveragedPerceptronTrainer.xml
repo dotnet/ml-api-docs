@@ -21,42 +21,20 @@
              The <see cref="T:Microsoft.ML.IEstimator`1" /> for the averaged perceptron trainer. Testing 1234.
              </summary>
     <remarks>
-To create this trainer, use [LightGbmAsALink](xref:Microsoft.ML.LightGbmExtensions.LightGbm(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Double},System.Int32))
-or [float](xref:System.Single)
-	<format type="text/markdown"><![CDATA[
+<format type="text/markdown"><![CDATA[
+To create this trainer, use [AveragedPerceptron](xref:Microsoft.ML.StandardTrainersCatalog.AveragedPerceptron(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,System.String,System.String,Microsoft.ML.Trainers.IClassificationLoss,System.Single,System.Boolean,System.Single,System.Int32)
+or [AveragedPerceptron(Options)](xref:Microsoft.ML.StandardTrainersCatalog.AveragedPerceptron(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,Microsoft.ML.Trainers.AveragedPerceptronTrainer.Options).
+
+[!include[gr](~/../docs/samples/docs/code/GraphRunner.md)]
+
 ### Input/Output stuff
 |Column Name | Column Type | Description|
 |-- | -- | --|
-|`Score` | [System.Single](xref:System.Single) | The unbounded score that was calculated by the trainer to determine the   prediction.|
-|`PredictedLabel` | [System.Boolean](xref:System.Boolean) | The label predicted by the trainer. `false` maps to negative score and   `true` maps to positive score.|
-|`Probability` | (xref:System.Single) | The probability of the score in range [0,1].|
- ]]></format>
+|`Score` | [System.Single] (xref:System.Single) | The unbounded score that was calculated by the trainer to determine the   prediction.|
+|`PredictedLabel` | [System.Boolean] (xref:System.Boolean) | The label predicted by the trainer. `false` maps to negative score and   `true` maps to positive score.|
+|`Probability` | [System.Single](xref:System.Single) | The probability of the score in range[0, 1].|
 
-	<format type="text/markdown"><![CDATA[
-To create this trainer, use [LightGbmAsALink](xref:Microsoft.ML.LightGbmExtensions.LightGbm(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Double},System.Int32))
-or [float](xref:System.Single)
-	 
-	 
-### Input/Output stuff
-|Column Name | Column Type | Description|
-|-- | -- | --|
-|`Score` | [System.Single](xref:System.Single) | The unbounded score that was calculated by the trainer to determine the   prediction.|
-|`PredictedLabel` | [System.Boolean](xref:System.Boolean) | The label predicted by the trainer. `false` maps to negative score and   `true` maps to positive score.|
-|`Probability` | (xref:System.Single) | The probability of the score in range [0,1].|
-
-### Trainer Information
-Some content.
-
-| Property | Value |
-| -- | -- |
-| Machine learning task | Binary classification |
-| Is normalization required? | Yes/No |
-| Is caching required? | Yes/No |
-| Is convertible to ONNX format? | Yes/No |
-| Additional NuGet | "Link to NuGet" OR _None_ if already part of Microsoft.ML |
-
-[LightGbmAsALink](xref:Microsoft.ML.LightGbmExtensions.LightGbm(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Double},System.Int32))
-[float](xref:System.Single)
+### Training Algorithm Details
 The perceptron is a classification algorithm that makes its predictions by finding a separating hyperplane.
 For instance, with feature values f0, f1,..., f_D-1, the prediction is given by determining what side of the hyperplane the point falls into.
 That is the same as the sign of sigma[0, D-1] (w_i * f_i), where w_0, w_1,..., w_D-1 are the weights computed by the algorithm.
@@ -71,9 +49,11 @@ and by the gradient of some loss function (in the specific case described above,
 In Averaged Perceptron (aka voted-perceptron), for each iteration, i.e. pass through the training data, a weight vector is calculated as explained above.
 The final prediction is then calculate by averaging the weighted sum from each weight vector and looking at the sign of the result.
 
-For more information see <a href="https://en.wikipedia.org/wiki/Perceptron">Wikipedia entry for Perceptron</a>
-or <a href="https://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.48.8200">Large Margin Classification Using the Perceptron Algorithm</a></remarks>
- ]]></format>
+For more information see [Wikipedia entry for Perceptron](https://en.wikipedia.org/wiki/Perceptron)
+or [Large Margin Classification Using the Perceptron Algorithm](https://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.48.8200).
+]]>
+</format>
+
  </remarks>
 			 </Docs>
   <Members />
