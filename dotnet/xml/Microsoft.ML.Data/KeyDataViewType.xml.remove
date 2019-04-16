@@ -1,0 +1,232 @@
+<Type Name="KeyDataViewType" FullName="Microsoft.ML.Data.KeyDataViewType">
+  <TypeSignature Language="C#" Value="public sealed class KeyDataViewType : Microsoft.ML.Data.PrimitiveDataViewType" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit KeyDataViewType extends Microsoft.ML.Data.PrimitiveDataViewType" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Data.KeyDataViewType" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class KeyDataViewType&#xA;Inherits PrimitiveDataViewType" />
+  <TypeSignature Language="F#" Value="type KeyDataViewType = class&#xA;    inherit PrimitiveDataViewType" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.DataView</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Microsoft.ML.Data.PrimitiveDataViewType</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+             KeyDataViewTypes are for "id"-like data. The information happens to be stored in an unsigned integer
+             type, but the information is not inherently numeric, so, typically, arithmetic is not
+             meaningful. Examples are SSNs, phone numbers, auto-generated/incremented key values,
+             class numbers, etc. For example, in multi-class classification, the label is typically
+             a class number which is naturally a KeyDataViewType.
+            
+             KeyDataViewTypes have a cardinality (i.e., <see cref="P:Microsoft.ML.Data.KeyDataViewType.Count" />) that is strictly positive.
+            
+             Note that the underlying representation value does not necessarily match the logical value.
+             For example, if a KeyDataViewType has range 0-5000, then it has a <see cref="P:Microsoft.ML.Data.KeyDataViewType.Count" /> of 5001, but
+             the representational values are 1-5001. The representation value zero is reserved
+             to mean a missing value (similar to NaN).
+             </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public KeyDataViewType (Type type, int count);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Type type, int32 count) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.KeyDataViewType.#ctor(System.Type,System.Int32)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Data.KeyDataViewType : Type * int -&gt; Microsoft.ML.Data.KeyDataViewType" Usage="new Microsoft.ML.Data.KeyDataViewType (type, count)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="type" Type="System.Type" />
+        <Parameter Name="count" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="type">To be added.</param>
+        <param name="count">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public KeyDataViewType (Type type, ulong count);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Type type, unsigned int64 count) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.KeyDataViewType.#ctor(System.Type,System.UInt64)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Data.KeyDataViewType : Type * uint64 -&gt; Microsoft.ML.Data.KeyDataViewType" Usage="new Microsoft.ML.Data.KeyDataViewType (type, count)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="type" Type="System.Type" />
+        <Parameter Name="count" Type="System.UInt64" />
+      </Parameters>
+      <Docs>
+        <param name="type">To be added.</param>
+        <param name="count">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Count">
+      <MemberSignature Language="C#" Value="public ulong Count { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int64 Count" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Data.KeyDataViewType.Count" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Count As ULong" />
+      <MemberSignature Language="F#" Value="member this.Count : uint64" Usage="Microsoft.ML.Data.KeyDataViewType.Count" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt64</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+          <see cref="P:Microsoft.ML.Data.KeyDataViewType.Count" /> is the cardinality of the <see cref="T:Microsoft.ML.Data.KeyDataViewType" />. Note that such a key type can be converted to a
+            bit vector representation by mapping to a vector of length <see cref="P:Microsoft.ML.Data.KeyDataViewType.Count" />, with "id" mapped to a
+            vector with 1 in slot (id - 1) and 0 in all other slots. This is the standard "indicator"
+            representation. Note that an id of 0 is used to represent the notion "none", which is
+            typically mapped, by for example, one-hot encoding, to a vector of all zeros (of length <see cref="P:Microsoft.ML.Data.KeyDataViewType.Count" />).
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Equals">
+      <MemberSignature Language="C#" Value="public override bool Equals (Microsoft.ML.Data.DataViewType other);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Equals(class Microsoft.ML.Data.DataViewType other) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.KeyDataViewType.Equals(Microsoft.ML.Data.DataViewType)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function Equals (other As DataViewType) As Boolean" />
+      <MemberSignature Language="F#" Value="override this.Equals : Microsoft.ML.Data.DataViewType -&gt; bool" Usage="keyDataViewType.Equals other" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="other" Type="Microsoft.ML.Data.DataViewType" />
+      </Parameters>
+      <Docs>
+        <param name="other">The other object to compare against.</param>
+        <summary>
+            Determine if this <see cref="T:Microsoft.ML.Data.KeyDataViewType" /> object is equal to another <see cref="T:Microsoft.ML.Data.DataViewType" /> instance.
+            Checks if the other item is the type of <see cref="T:Microsoft.ML.Data.KeyDataViewType" />, if the <see cref="P:Microsoft.ML.Data.DataViewType.RawType" />
+            is the same, and if the <see cref="P:Microsoft.ML.Data.KeyDataViewType.Count" /> is the same.
+            </summary>
+        <returns>
+          <see langword="true" /> if both objects are equal, otherwise <see langword="false" />.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Equals">
+      <MemberSignature Language="C#" Value="public override bool Equals (object other);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Equals(object other) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.KeyDataViewType.Equals(System.Object)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function Equals (other As Object) As Boolean" />
+      <MemberSignature Language="F#" Value="override this.Equals : obj -&gt; bool" Usage="keyDataViewType.Equals other" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="other" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="other">The other object to compare against.</param>
+        <summary>
+            Determine if a <see cref="T:Microsoft.ML.Data.KeyDataViewType" /> instance is equal to another <see cref="T:Microsoft.ML.Data.KeyDataViewType" /> instance.
+            Checks if any object is the type of <see cref="T:Microsoft.ML.Data.KeyDataViewType" />, if the <see cref="P:Microsoft.ML.Data.DataViewType.RawType" />
+            is the same, and if the <see cref="P:Microsoft.ML.Data.KeyDataViewType.Count" /> is the same.
+            </summary>
+        <returns>
+          <see langword="true" /> if both objects are equal, otherwise <see langword="false" />.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetHashCode">
+      <MemberSignature Language="C#" Value="public override int GetHashCode ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 GetHashCode() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.KeyDataViewType.GetHashCode" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function GetHashCode () As Integer" />
+      <MemberSignature Language="F#" Value="override this.GetHashCode : unit -&gt; int" Usage="keyDataViewType.GetHashCode " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            Retrieves the hash code.
+            </summary>
+        <returns>An integer representing the hash code.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsValidDataType">
+      <MemberSignature Language="C#" Value="public static bool IsValidDataType (Type type);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool IsValidDataType(class System.Type type) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.KeyDataViewType.IsValidDataType(System.Type)" />
+      <MemberSignature Language="F#" Value="static member IsValidDataType : Type -&gt; bool" Usage="Microsoft.ML.Data.KeyDataViewType.IsValidDataType type" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="type" Type="System.Type" />
+      </Parameters>
+      <Docs>
+        <param name="type">To be added.</param>
+        <summary>
+            Returns true iff the given type is valid for a <see cref="T:Microsoft.ML.Data.KeyDataViewType" />. The valid ones are
+            <see cref="T:System.Byte" />, <see cref="T:System.UInt16" />, <see cref="T:System.UInt32" />, and <see cref="T:System.UInt64" />, that is, the unsigned integer types.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.KeyDataViewType.ToString" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function ToString () As String" />
+      <MemberSignature Language="F#" Value="override this.ToString : unit -&gt; string" Usage="keyDataViewType.ToString " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            The string representation of the <see cref="T:Microsoft.ML.Data.KeyDataViewType" />.
+            </summary>
+        <returns>A formatted string.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
