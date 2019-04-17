@@ -1,0 +1,129 @@
+﻿<Type Name="ProgressHeader" FullName="Microsoft.ML.Runtime.ProgressHeader">
+  <TypeSignature Language="C#" Value="public sealed class ProgressHeader" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit ProgressHeader extends System.Object" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Runtime.ProgressHeader" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class ProgressHeader" />
+  <TypeSignature Language="F#" Value="type ProgressHeader = class" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Core</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+            This is the 'header' of the progress report.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ProgressHeader (params string[] unitNames);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string[] unitNames) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ProgressHeader.#ctor(System.String[])" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (ParamArray unitNames As String())" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.ProgressHeader : string[] -&gt; Microsoft.ML.Runtime.ProgressHeader" Usage="new Microsoft.ML.Runtime.ProgressHeader unitNames" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="unitNames" Type="System.String[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="unitNames">To be added.</param>
+        <summary>
+            A constructor for no metrics, just progress units. As naming convention, <paramref name="unitNames" /> should be lower-cased
+            and typically plural (for example, iterations, clusters, examples).
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ProgressHeader (string[] metricNames, string[] unitNames);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string[] metricNames, string[] unitNames) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Runtime.ProgressHeader.#ctor(System.String[],System.String[])" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (metricNames As String(), unitNames As String())" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Runtime.ProgressHeader : string[] * string[] -&gt; Microsoft.ML.Runtime.ProgressHeader" Usage="new Microsoft.ML.Runtime.ProgressHeader (metricNames, unitNames)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="metricNames" Type="System.String[]" />
+        <Parameter Name="unitNames" Type="System.String[]" />
+      </Parameters>
+      <Docs>
+        <param name="metricNames">The metrics that the calculation reports. These are completely independent, and there
+            is no contract on whether the metric values should increase or not. As naming convention, <paramref name="metricNames" />
+            can have multiple words with spaces, and should be title-cased.</param>
+        <param name="unitNames">The names of the progress units, listed from least granular to most granular.
+            The idea is that the progress should be lexicographically increasing (like [0,0], [0,10], [1,0], [1,15], [2,5] etc.).
+            As naming convention, <paramref name="unitNames" /> should be lower-cased and typically plural
+            (for example, iterations, clusters, examples). </param>
+        <summary>
+            Initialize the header. This will take ownership of the arrays.
+            Both arrays can be null, even simultaneously. This 'empty' header indicated that the calculation doesn't report
+            any units of progress, but the tracker can still track start, stop and elapsed time. Of course, if there's any
+            progress or metrics to report, it is always better to report them.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MetricNames">
+      <MemberSignature Language="C#" Value="public readonly System.Collections.Generic.IReadOnlyList&lt;string&gt; MetricNames;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly class System.Collections.Generic.IReadOnlyList`1&lt;string&gt; MetricNames" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.ProgressHeader.MetricNames" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly MetricNames As IReadOnlyList(Of String) " />
+      <MemberSignature Language="F#" Value="val mutable MetricNames : System.Collections.Generic.IReadOnlyList&lt;string&gt;" Usage="Microsoft.ML.Runtime.ProgressHeader.MetricNames" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IReadOnlyList&lt;System.String&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            These are the names of the reported metrics. For example, this could be the 'loss', 'weight updates/sec' etc.
+            Will never be null, but can be empty.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UnitNames">
+      <MemberSignature Language="C#" Value="public readonly System.Collections.Generic.IReadOnlyList&lt;string&gt; UnitNames;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly class System.Collections.Generic.IReadOnlyList`1&lt;string&gt; UnitNames" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Runtime.ProgressHeader.UnitNames" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly UnitNames As IReadOnlyList(Of String) " />
+      <MemberSignature Language="F#" Value="val mutable UnitNames : System.Collections.Generic.IReadOnlyList&lt;string&gt;" Usage="Microsoft.ML.Runtime.ProgressHeader.UnitNames" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IReadOnlyList&lt;System.String&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            These are the names of the progress 'units', from the least granular to the most granular.
+            For example, neural network might have {'epoch', 'example'} and FastTree might have {'tree', 'split', 'feature'}.
+            Will never be null, but can be empty.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
