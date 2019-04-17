@@ -1,0 +1,90 @@
+﻿<Type Name="GamTrainerBase&lt;TOptions,TTransformer,TPredictor&gt;" FullName="Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;TOptions,TTransformer,TPredictor&gt;">
+  <TypeSignature Language="C#" Value="public abstract class GamTrainerBase&lt;TOptions,TTransformer,TPredictor&gt; : Microsoft.ML.Trainers.TrainerEstimatorBase&lt;TTransformer,TPredictor&gt; where TOptions : GamTrainerBase&lt;TOptions,TTransformer,TPredictor&gt;.OptionsBasenew() where TTransformer : ISingleFeaturePredictionTransformer&lt;TPredictor&gt; where TPredictor : class" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit GamTrainerBase`3&lt;.ctor (class Microsoft.ML.Trainers.FastTree.GamTrainerBase`3/OptionsBase&lt;!TOptions, !TTransformer, !TPredictor&gt;) TOptions, (class Microsoft.ML.ISingleFeaturePredictionTransformer`1&lt;!TPredictor&gt;) TTransformer, class TPredictor&gt; extends Microsoft.ML.Trainers.TrainerEstimatorBase`2&lt;!TTransformer, !TPredictor&gt;" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Trainers.FastTree.GamTrainerBase`3" />
+  <TypeSignature Language="VB.NET" Value="Public MustInherit Class GamTrainerBase(Of TOptions, TTransformer, TPredictor)&#xA;Inherits TrainerEstimatorBase(Of TTransformer, TPredictor)" />
+  <TypeSignature Language="F#" Value="type GamTrainerBase&lt;'Options, 'ransformer, 'Predictor (requires 'Options :&gt; GamTrainerBase&lt;'Options, 'ransformer, 'Predictor&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; ISingleFeaturePredictionTransformer&lt;'Predictor&gt; and 'Predictor : null)&gt; = class&#xA;    inherit TrainerEstimatorBase&lt;'ransformer, 'Predictor (requires 'ransformer :&gt; ISingleFeaturePredictionTransformer&lt;'Predictor&gt; and 'Predictor : null)&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <TypeParameters>
+    <TypeParameter Name="TOptions">
+      <Constraints>
+        <ParameterAttribute>DefaultConstructorConstraint</ParameterAttribute>
+        <BaseTypeName>Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;TOptions,TTransformer,TPredictor&gt;+OptionsBase</BaseTypeName>
+      </Constraints>
+    </TypeParameter>
+    <TypeParameter Name="TTransformer">
+      <Constraints>
+        <InterfaceName>Microsoft.ML.ISingleFeaturePredictionTransformer&lt;TPredictor&gt;</InterfaceName>
+      </Constraints>
+    </TypeParameter>
+    <TypeParameter Name="TPredictor">
+      <Constraints>
+        <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
+      </Constraints>
+    </TypeParameter>
+  </TypeParameters>
+  <Base>
+    <BaseTypeName>Microsoft.ML.Trainers.TrainerEstimatorBase&lt;TTransformer,TPredictor&gt;</BaseTypeName>
+    <BaseTypeArguments>
+      <BaseTypeArgument TypeParamName="!0">TTransformer</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="!1">TPredictor</BaseTypeArgument>
+    </BaseTypeArguments>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <typeparam name="TOptions">To be added.</typeparam>
+    <typeparam name="TTransformer">To be added.</typeparam>
+    <typeparam name="TPredictor">To be added.</typeparam>
+    <summary>
+            Generalized Additive Model Trainer.
+            </summary>
+    <remarks>
+      <para>
+            Generalized Additive Models, or GAMs, model the data as a set of linearly independent features
+            similar to a linear model. For each feature, the GAM trainer learns a non-linear function,
+            called a "shape function", that computes the response as a function of the feature's value.
+            (In contrast, a linear model fits a linear response (e.g. a line) to each feature.)
+            To score an example, the outputs of all the shape functions are summed and the score is the total value.
+            </para>
+      <para>
+            This GAM trainer is implemented using shallow gradient boosted trees (e.g. tree stumps) to learn nonparametric
+            shape functions, and is based on the method described in Lou, Caruana, and Gehrke.
+            <a href="http://www.cs.cornell.edu/~yinlou/papers/lou-kdd12.pdf">"Intelligible Models for Classification and Regression."</a> KDD'12, Beijing, China. 2012.
+            After training, an intercept is added to represent the average prediction over the training set,
+            and the shape functions are normalized to represent the deviation from the average prediction. This results
+            in models that are easily interpreted simply by inspecting the intercept and the shape functions.
+            See the sample below for an example of how to train a GAM model and inspect and interpret the results.
+            </para>
+    </remarks>
+    <example>
+      <format type="text/markdown"><![CDATA[
+            [!code-csharp[GAM](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/GeneralizedAdditiveModels.cs)]
+            ]]></format>
+    </example>
+  </Docs>
+  <Members>
+    <Member MemberName="Info">
+      <MemberSignature Language="C#" Value="public override Microsoft.ML.TrainerInfo Info { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.TrainerInfo Info" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FastTree.GamTrainerBase`3.Info" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides ReadOnly Property Info As TrainerInfo" />
+      <MemberSignature Language="F#" Value="member this.Info : Microsoft.ML.TrainerInfo" Usage="Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor (requires 'Options :&gt; Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Predictor&gt; and 'Predictor : null)&gt;.Info" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.TrainerInfo</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

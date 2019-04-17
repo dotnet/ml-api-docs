@@ -8,6 +8,10 @@
     <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </AssemblyInfo>
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
   <Base>
     <BaseTypeName>Microsoft.ML.Trainers.OnlineLinearOptions</BaseTypeName>
   </Base>
@@ -29,6 +33,10 @@
         <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -44,6 +52,10 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -76,6 +88,10 @@
         <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Decrease learning rate", ShortName="decreaselr", SortOrder=50)</AttributeName>
@@ -101,20 +117,51 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="L2Regularization">
-      <MemberSignature Language="C#" Value="public float L2Regularization;" />
-      <MemberSignature Language="ILAsm" Value=".field public float32 L2Regularization" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.AveragedLinearOptions.L2Regularization" />
-      <MemberSignature Language="VB.NET" Value="Public L2Regularization As Single " />
-      <MemberSignature Language="F#" Value="val mutable L2Regularization : single" Usage="Microsoft.ML.Trainers.AveragedLinearOptions.L2Regularization" />
+    <Member MemberName="DoLazyUpdates">
+      <MemberSignature Language="C#" Value="public bool DoLazyUpdates;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool DoLazyUpdates" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.AveragedLinearOptions.DoLazyUpdates" />
+      <MemberSignature Language="VB.NET" Value="Public DoLazyUpdates As Boolean " />
+      <MemberSignature Language="F#" Value="val mutable DoLazyUpdates : bool" Usage="Microsoft.ML.Trainers.AveragedLinearOptions.DoLazyUpdates" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="L2 Regularization Weight", ShortName="reg,L2RegularizerWeight", SortOrder=50)</AttributeName>
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Instead of updating averaged weights on every example, only update when loss is nonzero", ShortName="lazy")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Determines when to update averaged weights.
+            </summary>
+        <returns>
+          <see langword="true" /> to update averaged weights only when loss is nonzero.
+            <see langword="false" /> to update averaged weights on every example.
+            Default is <see langword="true" />.
+            </returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="L2RegularizerWeight">
+      <MemberSignature Language="C#" Value="public float L2RegularizerWeight;" />
+      <MemberSignature Language="ILAsm" Value=".field public float32 L2RegularizerWeight" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.AveragedLinearOptions.L2RegularizerWeight" />
+      <MemberSignature Language="VB.NET" Value="Public L2RegularizerWeight As Single " />
+      <MemberSignature Language="F#" Value="val mutable L2RegularizerWeight : single" Usage="Microsoft.ML.Trainers.AveragedLinearOptions.L2RegularizerWeight" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="L2 Regularization Weight", ShortName="reg", SortOrder=50)</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>Microsoft.ML.EntryPoints.TlcModule/SweepableFloatParam("L2RegularizerWeight", 0, 0.4, -1, -1, false)</AttributeName>
@@ -133,37 +180,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="LazyUpdate">
-      <MemberSignature Language="C#" Value="public bool LazyUpdate;" />
-      <MemberSignature Language="ILAsm" Value=".field public bool LazyUpdate" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.AveragedLinearOptions.LazyUpdate" />
-      <MemberSignature Language="VB.NET" Value="Public LazyUpdate As Boolean " />
-      <MemberSignature Language="F#" Value="val mutable LazyUpdate : bool" Usage="Microsoft.ML.Trainers.AveragedLinearOptions.LazyUpdate" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Instead of updating averaged weights on every example, only update when loss is nonzero", ShortName="lazy,DoLazyUpdates")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>
-            Determines when to update averaged weights.
-            </summary>
-        <returns>
-          <see langword="true" /> to update averaged weights only when loss is nonzero.
-            <see langword="false" /> to update averaged weights on every example.
-            Default is <see langword="true" />.
-            </returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="LearningRate">
       <MemberSignature Language="C#" Value="public float LearningRate;" />
       <MemberSignature Language="ILAsm" Value=".field public float32 LearningRate" />
@@ -173,6 +189,10 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -207,6 +227,10 @@
         <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Extra weight given to more recent updates", ShortName="rg")</AttributeName>
@@ -225,20 +249,20 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="RecencyGainMultiplicative">
-      <MemberSignature Language="C#" Value="public bool RecencyGainMultiplicative;" />
-      <MemberSignature Language="ILAsm" Value=".field public bool RecencyGainMultiplicative" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.AveragedLinearOptions.RecencyGainMultiplicative" />
-      <MemberSignature Language="VB.NET" Value="Public RecencyGainMultiplicative As Boolean " />
-      <MemberSignature Language="F#" Value="val mutable RecencyGainMultiplicative : bool" Usage="Microsoft.ML.Trainers.AveragedLinearOptions.RecencyGainMultiplicative" />
+    <Member MemberName="RecencyGainMulti">
+      <MemberSignature Language="C#" Value="public bool RecencyGainMulti;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool RecencyGainMulti" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.AveragedLinearOptions.RecencyGainMulti" />
+      <MemberSignature Language="VB.NET" Value="Public RecencyGainMulti As Boolean " />
+      <MemberSignature Language="F#" Value="val mutable RecencyGainMulti : bool" Usage="Microsoft.ML.Trainers.AveragedLinearOptions.RecencyGainMulti" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Whether Recency Gain is multiplicative (vs. additive)", ShortName="rgm,RecencyGainMulti")</AttributeName>
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Whether Recency Gain is multiplicative (vs. additive)", ShortName="rgm")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -265,6 +289,10 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>

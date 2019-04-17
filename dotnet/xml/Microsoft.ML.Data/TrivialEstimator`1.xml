@@ -28,7 +28,7 @@
     <typeparam name="TTransformer">To be added.</typeparam>
     <summary>
              The trivial implementation of <see cref="T:Microsoft.ML.IEstimator`1" /> that already has
-             the transformer and returns it on every call to <see cref="M:Microsoft.ML.Data.TrivialEstimator`1.Fit(Microsoft.ML.IDataView)" />.
+             the transformer and returns it on every call to <see cref="M:Microsoft.ML.Data.TrivialEstimator`1.Fit(Microsoft.Data.DataView.IDataView)" />.
             
              Concrete implementations still have to provide the schema propagation mechanism, since
              there is no easy way to infer it from the transformer.
@@ -36,15 +36,37 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected TrivialEstimator (Microsoft.ML.IHost host, TTransformer transformer);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IHost host, !TTransformer transformer) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.TrivialEstimator`1.#ctor(Microsoft.ML.IHost,`0)" />
+      <MemberSignature Language="VB.NET" Value="Protected Sub New (host As IHost, transformer As TTransformer)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Data.TrivialEstimator&lt;'ransformer (requires 'ransformer : null and 'ransformer :&gt; Microsoft.ML.ITransformer)&gt; : Microsoft.ML.IHost * 'ransformer -&gt; Microsoft.ML.Data.TrivialEstimator&lt;'ransformer (requires 'ransformer : null and 'ransformer :&gt; Microsoft.ML.ITransformer)&gt;" Usage="new Microsoft.ML.Data.TrivialEstimator&lt;'ransformer (requires 'ransformer : null and 'ransformer :&gt; Microsoft.ML.ITransformer)&gt; (host, transformer)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="host" Type="Microsoft.ML.IHost" />
+        <Parameter Name="transformer" Type="TTransformer" />
+      </Parameters>
+      <Docs>
+        <param name="host">To be added.</param>
+        <param name="transformer">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Fit">
-      <MemberSignature Language="C#" Value="public TTransformer Fit (Microsoft.ML.IDataView input);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance !TTransformer Fit(class Microsoft.ML.IDataView input) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.TrivialEstimator`1.Fit(Microsoft.ML.IDataView)" />
+      <MemberSignature Language="C#" Value="public TTransformer Fit (Microsoft.Data.DataView.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance !TTransformer Fit(class Microsoft.Data.DataView.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.TrivialEstimator`1.Fit(Microsoft.Data.DataView.IDataView)" />
       <MemberSignature Language="VB.NET" Value="Public Function Fit (input As IDataView) As TTransformer" />
-      <MemberSignature Language="F#" Value="abstract member Fit : Microsoft.ML.IDataView -&gt; 'ransformer&#xA;override this.Fit : Microsoft.ML.IDataView -&gt; 'ransformer" Usage="trivialEstimator.Fit input" />
+      <MemberSignature Language="F#" Value="abstract member Fit : Microsoft.Data.DataView.IDataView -&gt; 'ransformer&#xA;override this.Fit : Microsoft.Data.DataView.IDataView -&gt; 'ransformer" Usage="trivialEstimator.Fit input" />
       <MemberType>Method</MemberType>
       <Implements>
-        <InterfaceMember>M:Microsoft.ML.IEstimator`1.Fit(Microsoft.ML.IDataView)</InterfaceMember>
+        <InterfaceMember>M:Microsoft.ML.IEstimator`1.Fit(Microsoft.Data.DataView.IDataView)</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Data</AssemblyName>
@@ -54,7 +76,7 @@
         <ReturnType>TTransformer</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="input" Type="Microsoft.ML.IDataView" />
+        <Parameter Name="input" Type="Microsoft.Data.DataView.IDataView" />
       </Parameters>
       <Docs>
         <param name="input">To be added.</param>
@@ -87,6 +109,44 @@
         <param name="inputSchema">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Host">
+      <MemberSignature Language="C#" Value="protected readonly Microsoft.ML.IHost Host;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly class Microsoft.ML.IHost Host" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Data.TrivialEstimator`1.Host" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly Host As IHost " />
+      <MemberSignature Language="F#" Value="val mutable Host : Microsoft.ML.IHost" Usage="Microsoft.ML.Data.TrivialEstimator&lt;'ransformer (requires 'ransformer : null and 'ransformer :&gt; Microsoft.ML.ITransformer)&gt;.Host" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.IHost</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Transformer">
+      <MemberSignature Language="C#" Value="protected readonly TTransformer Transformer;" />
+      <MemberSignature Language="ILAsm" Value=".field family initonly !TTransformer Transformer" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Data.TrivialEstimator`1.Transformer" />
+      <MemberSignature Language="VB.NET" Value="Protected ReadOnly Transformer As TTransformer " />
+      <MemberSignature Language="F#" Value="val mutable Transformer : 'ransformer" Usage="Microsoft.ML.Data.TrivialEstimator&lt;'ransformer (requires 'ransformer : null and 'ransformer :&gt; Microsoft.ML.ITransformer)&gt;.Transformer" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>TTransformer</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

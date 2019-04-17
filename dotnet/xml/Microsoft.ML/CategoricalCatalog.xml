@@ -20,10 +20,11 @@
   </Docs>
   <Members>
     <Member MemberName="OneHotEncoding">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.OneHotEncodingEstimator OneHotEncoding (this Microsoft.ML.TransformsCatalog.CategoricalTransforms catalog, Microsoft.ML.InputOutputColumnPair[] columns, Microsoft.ML.Transforms.OneHotEncodingEstimator.OutputKind outputKind = Microsoft.ML.Transforms.OneHotEncodingEstimator+OutputKind.Indicator, int maximumNumberOfKeys = 1000000, Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality keyOrdinality = Microsoft.ML.Transforms.ValueToKeyMappingEstimator+KeyOrdinality.ByOccurrence, Microsoft.ML.IDataView keyData = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.OneHotEncodingEstimator OneHotEncoding(class Microsoft.ML.TransformsCatalog/CategoricalTransforms catalog, class Microsoft.ML.InputOutputColumnPair[] columns, valuetype Microsoft.ML.Transforms.OneHotEncodingEstimator/OutputKind outputKind, int32 maximumNumberOfKeys, valuetype Microsoft.ML.Transforms.ValueToKeyMappingEstimator/KeyOrdinality keyOrdinality, class Microsoft.ML.IDataView keyData) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.CategoricalCatalog.OneHotEncoding(Microsoft.ML.TransformsCatalog.CategoricalTransforms,Microsoft.ML.InputOutputColumnPair[],Microsoft.ML.Transforms.OneHotEncodingEstimator.OutputKind,System.Int32,Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality,Microsoft.ML.IDataView)" />
-      <MemberSignature Language="F#" Value="static member OneHotEncoding : Microsoft.ML.TransformsCatalog.CategoricalTransforms * Microsoft.ML.InputOutputColumnPair[] * Microsoft.ML.Transforms.OneHotEncodingEstimator.OutputKind * int * Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality * Microsoft.ML.IDataView -&gt; Microsoft.ML.Transforms.OneHotEncodingEstimator" Usage="Microsoft.ML.CategoricalCatalog.OneHotEncoding (catalog, columns, outputKind, maximumNumberOfKeys, keyOrdinality, keyData)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.OneHotEncodingEstimator OneHotEncoding (this Microsoft.ML.TransformsCatalog.CategoricalTransforms catalog, params Microsoft.ML.Transforms.OneHotEncodingEstimator.ColumnOptions[] columns);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.OneHotEncodingEstimator OneHotEncoding(class Microsoft.ML.TransformsCatalog/CategoricalTransforms catalog, class Microsoft.ML.Transforms.OneHotEncodingEstimator/ColumnOptions[] columns) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.CategoricalCatalog.OneHotEncoding(Microsoft.ML.TransformsCatalog.CategoricalTransforms,Microsoft.ML.Transforms.OneHotEncodingEstimator.ColumnOptions[])" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function OneHotEncoding (catalog As TransformsCatalog.CategoricalTransforms, ParamArray columns As OneHotEncodingEstimator.ColumnOptions()) As OneHotEncodingEstimator" />
+      <MemberSignature Language="F#" Value="static member OneHotEncoding : Microsoft.ML.TransformsCatalog.CategoricalTransforms * Microsoft.ML.Transforms.OneHotEncodingEstimator.ColumnOptions[] -&gt; Microsoft.ML.Transforms.OneHotEncodingEstimator" Usage="Microsoft.ML.CategoricalCatalog.OneHotEncoding (catalog, columns)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
@@ -34,38 +35,60 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+CategoricalTransforms" RefType="this" />
-        <Parameter Name="columns" Type="Microsoft.ML.InputOutputColumnPair[]" />
-        <Parameter Name="outputKind" Type="Microsoft.ML.Transforms.OneHotEncodingEstimator+OutputKind" />
-        <Parameter Name="maximumNumberOfKeys" Type="System.Int32" />
-        <Parameter Name="keyOrdinality" Type="Microsoft.ML.Transforms.ValueToKeyMappingEstimator+KeyOrdinality" />
-        <Parameter Name="keyData" Type="Microsoft.ML.IDataView" />
+        <Parameter Name="columns" Type="Microsoft.ML.Transforms.OneHotEncodingEstimator+ColumnOptions[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
       </Parameters>
       <Docs>
         <param name="catalog">The transform catalog</param>
-        <param name="columns">Specifies the names of the columns on which to apply the transformation.</param>
-        <param name="outputKind">Output kind: Bag (multi-set vector), Ind (indicator vector), Key (index), or Binary encoded indicator vector.</param>
-        <param name="maximumNumberOfKeys">Maximum number of terms to keep per column when auto-training.</param>
-        <param name="keyOrdinality">How items should be ordered when vectorized. If <see cref="F:Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality.ByOccurrence" /> choosen they will be in the order encountered.
-            If <see cref="F:Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality.ByValue" />, items are sorted according to their default comparison, for example, text sorting will be case sensitive (for example, 'A' then 'Z' then 'a').</param>
-        <param name="keyData">Specifies an ordering for the encoding. If specified, this should be a single column data view,
-            and the key-values will be taken from that column. If unspecified, the ordering will be determined from the input data upon fitting.</param>
+        <param name="columns">The column settings.</param>
         <summary>
-            Convert text columns into one-hot encoded vectors.
+            Convert several text column into one-hot encoded vectors.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
-        <example>
-          <format type="text/markdown"><![CDATA[
-             [!code-csharp[OneHotEncoding](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/Categorical/OneHotEncodingMultiColumn.cs)]
-            ]]></format>
-        </example>
       </Docs>
     </Member>
     <Member MemberName="OneHotEncoding">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.OneHotEncodingEstimator OneHotEncoding (this Microsoft.ML.TransformsCatalog.CategoricalTransforms catalog, string outputColumnName, string inputColumnName = null, Microsoft.ML.Transforms.OneHotEncodingEstimator.OutputKind outputKind = Microsoft.ML.Transforms.OneHotEncodingEstimator+OutputKind.Indicator, int maximumNumberOfKeys = 1000000, Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality keyOrdinality = Microsoft.ML.Transforms.ValueToKeyMappingEstimator+KeyOrdinality.ByOccurrence, Microsoft.ML.IDataView keyData = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.OneHotEncodingEstimator OneHotEncoding(class Microsoft.ML.TransformsCatalog/CategoricalTransforms catalog, string outputColumnName, string inputColumnName, valuetype Microsoft.ML.Transforms.OneHotEncodingEstimator/OutputKind outputKind, int32 maximumNumberOfKeys, valuetype Microsoft.ML.Transforms.ValueToKeyMappingEstimator/KeyOrdinality keyOrdinality, class Microsoft.ML.IDataView keyData) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.CategoricalCatalog.OneHotEncoding(Microsoft.ML.TransformsCatalog.CategoricalTransforms,System.String,System.String,Microsoft.ML.Transforms.OneHotEncodingEstimator.OutputKind,System.Int32,Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality,Microsoft.ML.IDataView)" />
-      <MemberSignature Language="F#" Value="static member OneHotEncoding : Microsoft.ML.TransformsCatalog.CategoricalTransforms * string * string * Microsoft.ML.Transforms.OneHotEncodingEstimator.OutputKind * int * Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality * Microsoft.ML.IDataView -&gt; Microsoft.ML.Transforms.OneHotEncodingEstimator" Usage="Microsoft.ML.CategoricalCatalog.OneHotEncoding (catalog, outputColumnName, inputColumnName, outputKind, maximumNumberOfKeys, keyOrdinality, keyData)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.OneHotEncodingEstimator OneHotEncoding (this Microsoft.ML.TransformsCatalog.CategoricalTransforms catalog, Microsoft.ML.Transforms.OneHotEncodingEstimator.ColumnOptions[] columns, Microsoft.Data.DataView.IDataView keyData = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.OneHotEncodingEstimator OneHotEncoding(class Microsoft.ML.TransformsCatalog/CategoricalTransforms catalog, class Microsoft.ML.Transforms.OneHotEncodingEstimator/ColumnOptions[] columns, class Microsoft.Data.DataView.IDataView keyData) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.CategoricalCatalog.OneHotEncoding(Microsoft.ML.TransformsCatalog.CategoricalTransforms,Microsoft.ML.Transforms.OneHotEncodingEstimator.ColumnOptions[],Microsoft.Data.DataView.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function OneHotEncoding (catalog As TransformsCatalog.CategoricalTransforms, columns As OneHotEncodingEstimator.ColumnOptions(), Optional keyData As IDataView = null) As OneHotEncodingEstimator" />
+      <MemberSignature Language="F#" Value="static member OneHotEncoding : Microsoft.ML.TransformsCatalog.CategoricalTransforms * Microsoft.ML.Transforms.OneHotEncodingEstimator.ColumnOptions[] * Microsoft.Data.DataView.IDataView -&gt; Microsoft.ML.Transforms.OneHotEncodingEstimator" Usage="Microsoft.ML.CategoricalCatalog.OneHotEncoding (catalog, columns, keyData)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Transforms.OneHotEncodingEstimator</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+CategoricalTransforms" RefType="this" />
+        <Parameter Name="columns" Type="Microsoft.ML.Transforms.OneHotEncodingEstimator+ColumnOptions[]" />
+        <Parameter Name="keyData" Type="Microsoft.Data.DataView.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="catalog">The transform catalog</param>
+        <param name="columns">The column settings.</param>
+        <param name="keyData">Specifies an ordering for the encoding. If specified, this should be a single column data view,
+            and the key-values will be taken from that column. If unspecified, the ordering will be determined from the input data upon fitting.</param>
+        <summary>
+            Convert several text column into one-hot encoded vectors.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OneHotEncoding">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.OneHotEncodingEstimator OneHotEncoding (this Microsoft.ML.TransformsCatalog.CategoricalTransforms catalog, string outputColumnName, string inputColumnName = null, Microsoft.ML.Transforms.OneHotEncodingTransformer.OutputKind outputKind = Microsoft.ML.Transforms.OneHotEncodingTransformer+OutputKind.Ind);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.OneHotEncodingEstimator OneHotEncoding(class Microsoft.ML.TransformsCatalog/CategoricalTransforms catalog, string outputColumnName, string inputColumnName, valuetype Microsoft.ML.Transforms.OneHotEncodingTransformer/OutputKind outputKind) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.CategoricalCatalog.OneHotEncoding(Microsoft.ML.TransformsCatalog.CategoricalTransforms,System.String,System.String,Microsoft.ML.Transforms.OneHotEncodingTransformer.OutputKind)" />
+      <MemberSignature Language="F#" Value="static member OneHotEncoding : Microsoft.ML.TransformsCatalog.CategoricalTransforms * string * string * Microsoft.ML.Transforms.OneHotEncodingTransformer.OutputKind -&gt; Microsoft.ML.Transforms.OneHotEncodingEstimator" Usage="Microsoft.ML.CategoricalCatalog.OneHotEncoding (catalog, outputColumnName, inputColumnName, outputKind)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
@@ -78,43 +101,26 @@
         <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+CategoricalTransforms" RefType="this" />
         <Parameter Name="outputColumnName" Type="System.String" />
         <Parameter Name="inputColumnName" Type="System.String" />
-        <Parameter Name="outputKind" Type="Microsoft.ML.Transforms.OneHotEncodingEstimator+OutputKind" />
-        <Parameter Name="maximumNumberOfKeys" Type="System.Int32" />
-        <Parameter Name="keyOrdinality" Type="Microsoft.ML.Transforms.ValueToKeyMappingEstimator+KeyOrdinality" />
-        <Parameter Name="keyData" Type="Microsoft.ML.IDataView" />
+        <Parameter Name="outputKind" Type="Microsoft.ML.Transforms.OneHotEncodingTransformer+OutputKind" />
       </Parameters>
       <Docs>
         <param name="catalog">The transform catalog</param>
         <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
         <param name="inputColumnName">Name of column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
-        <param name="outputKind">Output kind: Bag (multi-set vector), Ind (indicator vector), Key (index), or Binary encoded indicator vector.</param>
-        <param name="maximumNumberOfKeys">Maximum number of terms to keep per column when auto-training.</param>
-        <param name="keyOrdinality">How items should be ordered when vectorized. If <see cref="F:Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality.ByOccurrence" /> choosen they will be in the order encountered.
-            If <see cref="F:Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality.ByValue" />, items are sorted according to their default comparison, for example, text sorting will be case sensitive (for example, 'A' then 'Z' then 'a').</param>
-        <param name="keyData">Specifies an ordering for the encoding. If specified, this should be a single column data view,
-            and the key-values will be taken from that column. If unspecified, the ordering will be determined from the input data upon fitting.</param>
+        <param name="outputKind">The conversion mode.</param>
         <summary>
-            Convert text columns into one-hot encoded vectors.
+            Convert a text column into one-hot encoded vector.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
-        <example>
-          <format type="text/markdown"><![CDATA[
-             [!code-csharp[RPCA](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/Categorical/OneHotEncoding.cs)]
-            ]]></format>
-        </example>
-        <example>
-          <format type="text/markdown"><![CDATA[
-             [!code-csharp[OneHotEncoding](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/Categorical/OneHotEncoding.cs)]
-            ]]></format>
-        </example>
       </Docs>
     </Member>
     <Member MemberName="OneHotHashEncoding">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.OneHotHashEncodingEstimator OneHotHashEncoding (this Microsoft.ML.TransformsCatalog.CategoricalTransforms catalog, Microsoft.ML.InputOutputColumnPair[] columns, Microsoft.ML.Transforms.OneHotEncodingEstimator.OutputKind outputKind = Microsoft.ML.Transforms.OneHotEncodingEstimator+OutputKind.Indicator, int numberOfBits = 16, uint seed = 314489979, bool useOrderedHashing = true, int maximumNumberOfInverts = 0);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.OneHotHashEncodingEstimator OneHotHashEncoding(class Microsoft.ML.TransformsCatalog/CategoricalTransforms catalog, class Microsoft.ML.InputOutputColumnPair[] columns, valuetype Microsoft.ML.Transforms.OneHotEncodingEstimator/OutputKind outputKind, int32 numberOfBits, unsigned int32 seed, bool useOrderedHashing, int32 maximumNumberOfInverts) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.CategoricalCatalog.OneHotHashEncoding(Microsoft.ML.TransformsCatalog.CategoricalTransforms,Microsoft.ML.InputOutputColumnPair[],Microsoft.ML.Transforms.OneHotEncodingEstimator.OutputKind,System.Int32,System.UInt32,System.Boolean,System.Int32)" />
-      <MemberSignature Language="F#" Value="static member OneHotHashEncoding : Microsoft.ML.TransformsCatalog.CategoricalTransforms * Microsoft.ML.InputOutputColumnPair[] * Microsoft.ML.Transforms.OneHotEncodingEstimator.OutputKind * int * uint32 * bool * int -&gt; Microsoft.ML.Transforms.OneHotHashEncodingEstimator" Usage="Microsoft.ML.CategoricalCatalog.OneHotHashEncoding (catalog, columns, outputKind, numberOfBits, seed, useOrderedHashing, maximumNumberOfInverts)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.OneHotHashEncodingEstimator OneHotHashEncoding (this Microsoft.ML.TransformsCatalog.CategoricalTransforms catalog, params Microsoft.ML.Transforms.OneHotHashEncodingEstimator.ColumnOptions[] columns);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.OneHotHashEncodingEstimator OneHotHashEncoding(class Microsoft.ML.TransformsCatalog/CategoricalTransforms catalog, class Microsoft.ML.Transforms.OneHotHashEncodingEstimator/ColumnOptions[] columns) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.CategoricalCatalog.OneHotHashEncoding(Microsoft.ML.TransformsCatalog.CategoricalTransforms,Microsoft.ML.Transforms.OneHotHashEncodingEstimator.ColumnOptions[])" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function OneHotHashEncoding (catalog As TransformsCatalog.CategoricalTransforms, ParamArray columns As OneHotHashEncodingEstimator.ColumnOptions()) As OneHotHashEncodingEstimator" />
+      <MemberSignature Language="F#" Value="static member OneHotHashEncoding : Microsoft.ML.TransformsCatalog.CategoricalTransforms * Microsoft.ML.Transforms.OneHotHashEncodingEstimator.ColumnOptions[] -&gt; Microsoft.ML.Transforms.OneHotHashEncodingEstimator" Usage="Microsoft.ML.CategoricalCatalog.OneHotHashEncoding (catalog, columns)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
@@ -125,41 +131,29 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+CategoricalTransforms" RefType="this" />
-        <Parameter Name="columns" Type="Microsoft.ML.InputOutputColumnPair[]" />
-        <Parameter Name="outputKind" Type="Microsoft.ML.Transforms.OneHotEncodingEstimator+OutputKind" />
-        <Parameter Name="numberOfBits" Type="System.Int32" />
-        <Parameter Name="seed" Type="System.UInt32" />
-        <Parameter Name="useOrderedHashing" Type="System.Boolean" />
-        <Parameter Name="maximumNumberOfInverts" Type="System.Int32" />
+        <Parameter Name="columns" Type="Microsoft.ML.Transforms.OneHotHashEncodingEstimator+ColumnOptions[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
       </Parameters>
       <Docs>
         <param name="catalog">The transform catalog</param>
-        <param name="columns">Specifies the names of the columns on which to apply the transformation.</param>
-        <param name="outputKind">The conversion mode.</param>
-        <param name="numberOfBits">Number of bits to hash into. Must be between 1 and 30, inclusive.</param>
-        <param name="seed">Hashing seed.</param>
-        <param name="useOrderedHashing">Whether the position of each term should be included in the hash.</param>
-        <param name="maximumNumberOfInverts">During hashing we constuct mappings between original values and the produced hash values.
-            Text representation of original values are stored in the slot names of the  metadata for the new column.Hashing, as such, can map many initial values to one.
-            <paramref name="maximumNumberOfInverts" /> specifies the upper bound of the number of distinct input values mapping to a hash that should be retained.
-            <value>0</value> does not retain any input values. <value>-1</value> retains all input values mapping to each hash.</param>
+        <param name="columns">The column settings.</param>
         <summary>
-            Convert text columns into hash-based one-hot encoded vector columns.
+            Convert several text column into hash-based one-hot encoded vectors.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
-        <example>
-          <format type="text/markdown"><![CDATA[
-             [!code-csharp[OneHotHashEncoding](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/Categorical/OneHotHashEncodingMultiColumn.cs)]
-            ]]></format>
-        </example>
       </Docs>
     </Member>
     <Member MemberName="OneHotHashEncoding">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.OneHotHashEncodingEstimator OneHotHashEncoding (this Microsoft.ML.TransformsCatalog.CategoricalTransforms catalog, string outputColumnName, string inputColumnName = null, Microsoft.ML.Transforms.OneHotEncodingEstimator.OutputKind outputKind = Microsoft.ML.Transforms.OneHotEncodingEstimator+OutputKind.Indicator, int numberOfBits = 16, uint seed = 314489979, bool useOrderedHashing = true, int maximumNumberOfInverts = 0);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.OneHotHashEncodingEstimator OneHotHashEncoding(class Microsoft.ML.TransformsCatalog/CategoricalTransforms catalog, string outputColumnName, string inputColumnName, valuetype Microsoft.ML.Transforms.OneHotEncodingEstimator/OutputKind outputKind, int32 numberOfBits, unsigned int32 seed, bool useOrderedHashing, int32 maximumNumberOfInverts) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.CategoricalCatalog.OneHotHashEncoding(Microsoft.ML.TransformsCatalog.CategoricalTransforms,System.String,System.String,Microsoft.ML.Transforms.OneHotEncodingEstimator.OutputKind,System.Int32,System.UInt32,System.Boolean,System.Int32)" />
-      <MemberSignature Language="F#" Value="static member OneHotHashEncoding : Microsoft.ML.TransformsCatalog.CategoricalTransforms * string * string * Microsoft.ML.Transforms.OneHotEncodingEstimator.OutputKind * int * uint32 * bool * int -&gt; Microsoft.ML.Transforms.OneHotHashEncodingEstimator" Usage="Microsoft.ML.CategoricalCatalog.OneHotHashEncoding (catalog, outputColumnName, inputColumnName, outputKind, numberOfBits, seed, useOrderedHashing, maximumNumberOfInverts)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.OneHotHashEncodingEstimator OneHotHashEncoding (this Microsoft.ML.TransformsCatalog.CategoricalTransforms catalog, string outputColumnName, string inputColumnName = null, int hashBits = 16, int invertHash = 0, Microsoft.ML.Transforms.OneHotEncodingTransformer.OutputKind outputKind = Microsoft.ML.Transforms.OneHotEncodingTransformer+OutputKind.Ind);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.OneHotHashEncodingEstimator OneHotHashEncoding(class Microsoft.ML.TransformsCatalog/CategoricalTransforms catalog, string outputColumnName, string inputColumnName, int32 hashBits, int32 invertHash, valuetype Microsoft.ML.Transforms.OneHotEncodingTransformer/OutputKind outputKind) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.CategoricalCatalog.OneHotHashEncoding(Microsoft.ML.TransformsCatalog.CategoricalTransforms,System.String,System.String,System.Int32,System.Int32,Microsoft.ML.Transforms.OneHotEncodingTransformer.OutputKind)" />
+      <MemberSignature Language="F#" Value="static member OneHotHashEncoding : Microsoft.ML.TransformsCatalog.CategoricalTransforms * string * string * int * int * Microsoft.ML.Transforms.OneHotEncodingTransformer.OutputKind -&gt; Microsoft.ML.Transforms.OneHotHashEncodingEstimator" Usage="Microsoft.ML.CategoricalCatalog.OneHotHashEncoding (catalog, outputColumnName, inputColumnName, hashBits, invertHash, outputKind)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
@@ -172,34 +166,25 @@
         <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+CategoricalTransforms" RefType="this" />
         <Parameter Name="outputColumnName" Type="System.String" />
         <Parameter Name="inputColumnName" Type="System.String" />
-        <Parameter Name="outputKind" Type="Microsoft.ML.Transforms.OneHotEncodingEstimator+OutputKind" />
-        <Parameter Name="numberOfBits" Type="System.Int32" />
-        <Parameter Name="seed" Type="System.UInt32" />
-        <Parameter Name="useOrderedHashing" Type="System.Boolean" />
-        <Parameter Name="maximumNumberOfInverts" Type="System.Int32" />
+        <Parameter Name="hashBits" Type="System.Int32" />
+        <Parameter Name="invertHash" Type="System.Int32" />
+        <Parameter Name="outputKind" Type="Microsoft.ML.Transforms.OneHotEncodingTransformer+OutputKind" />
       </Parameters>
       <Docs>
         <param name="catalog">The transform catalog</param>
         <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
         <param name="inputColumnName">Name of column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
-        <param name="outputKind">The conversion mode.</param>
-        <param name="numberOfBits">Number of bits to hash into. Must be between 1 and 30, inclusive.</param>
-        <param name="seed">Hashing seed.</param>
-        <param name="useOrderedHashing">Whether the position of each term should be included in the hash.</param>
-        <param name="maximumNumberOfInverts">During hashing we constuct mappings between original values and the produced hash values.
+        <param name="hashBits">Number of bits to hash into. Must be between 1 and 30, inclusive.</param>
+        <param name="invertHash">During hashing we constuct mappings between original values and the produced hash values.
             Text representation of original values are stored in the slot names of the  metadata for the new column.Hashing, as such, can map many initial values to one.
-            <paramref name="maximumNumberOfInverts" /> specifies the upper bound of the number of distinct input values mapping to a hash that should be retained.
+            <paramref name="invertHash" /> specifies the upper bound of the number of distinct input values mapping to a hash that should be retained.
             <value>0</value> does not retain any input values. <value>-1</value> retains all input values mapping to each hash.</param>
+        <param name="outputKind">The conversion mode.</param>
         <summary>
             Convert a text column into hash-based one-hot encoded vector.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
-        <example>
-          <format type="text/markdown"><![CDATA[
-             [!code-csharp[OneHotHashEncoding](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/Categorical/OneHotHashEncoding.cs)]
-            ]]></format>
-        </example>
       </Docs>
     </Member>
   </Members>
