@@ -8,6 +8,10 @@
     <AssemblyName>Microsoft.ML.Core</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </AssemblyInfo>
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.DataView</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
   <TypeParameters>
     <TypeParameter Name="T" />
   </TypeParameters>
@@ -21,7 +25,12 @@
             An object capable of editing a <see cref="T:Microsoft.ML.Data.VBuffer`1" /> by filling out
             <see cref="F:Microsoft.ML.Data.VBufferEditor`1.Values" /> (and <see cref="F:Microsoft.ML.Data.VBufferEditor`1.Indices" /> if the buffer is not dense).
             </summary>
-    <remarks>To be added.</remarks>
+    <remarks>
+            The <see cref="T:Microsoft.ML.Data.VBuffer`1" /> structure by itself is immutable. However, the purpose of <see cref="T:Microsoft.ML.Data.VBuffer`1" />
+            is to enable buffer re-use we can edit them through this structure, as created through
+            <see cref="M:Microsoft.ML.Data.VBufferEditor.Create``1(Microsoft.ML.Data.VBuffer{``0}@,System.Int32,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Boolean,System.Boolean)" /> or
+            <see cref="M:Microsoft.ML.Data.VBufferEditor.CreateFromBuffer``1(Microsoft.ML.Data.VBuffer{``0}@)" />.
+            </remarks>
   </Docs>
   <Members>
     <Member MemberName="Commit">
@@ -35,18 +44,20 @@
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Microsoft.ML.Data.VBuffer&lt;T&gt;</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
         <summary>
-            Commits the edits and creates a new <see cref="T:Microsoft.ML.Data.VBuffer`1" /> using
-            the current Values and Indices.
+            Commits the edits and creates a new <see cref="T:Microsoft.ML.Data.VBuffer`1" /> using the current <see cref="F:Microsoft.ML.Data.VBufferEditor`1.Values" /> and <see cref="F:Microsoft.ML.Data.VBufferEditor`1.Indices" />.
+            Note that this structure and its properties should not be used once this is called.
             </summary>
-        <returns>
-            The newly created <see cref="T:Microsoft.ML.Data.VBuffer`1" />.
-            </returns>
+        <returns>The newly created <see cref="T:Microsoft.ML.Data.VBuffer`1" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -59,6 +70,10 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -74,14 +89,14 @@
         <summary>
             Commits the edits and creates a new <see cref="T:Microsoft.ML.Data.VBuffer`1" /> using
             the current Values and Indices, while allowing to truncate the length
-            of Values and Indices.
+            of <see cref="F:Microsoft.ML.Data.VBufferEditor`1.Values" /> and, if sparse, <see cref="F:Microsoft.ML.Data.VBufferEditor`1.Indices" />.
+            Like <see cref="M:Microsoft.ML.Data.VBufferEditor`1.Commit" />, this structure and its properties should not be used once this is called.
             </summary>
         <returns>
             The newly created <see cref="T:Microsoft.ML.Data.VBuffer`1" />.
             </returns>
         <remarks>
-            CommitTruncated allows to modify the length of the explicitly
-            defined values.
+            This method allows to modify the length of the explicitly defined values.
             This is useful in sparse situations where the <see cref="T:Microsoft.ML.Data.VBufferEditor`1" />
             was created with a larger physical value count than was needed
             because the final value count was not known at creation time.
@@ -99,12 +114,16 @@
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
-            Gets a value indicating whether a new Indices array was allocated.
+            Gets a value indicating whether a new <see cref="F:Microsoft.ML.Data.VBufferEditor`1.Indices" /> array was allocated.
             </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
@@ -121,12 +140,16 @@
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
-            Gets a value indicating whether a new Values array was allocated.
+            Gets a value indicating whether a new <see cref="F:Microsoft.ML.Data.VBufferEditor`1.Values" /> array was allocated.
             </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
@@ -141,6 +164,10 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
@@ -162,6 +189,10 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

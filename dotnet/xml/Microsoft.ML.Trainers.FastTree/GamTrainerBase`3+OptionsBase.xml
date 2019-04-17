@@ -1,9 +1,9 @@
 ﻿<Type Name="GamTrainerBase&lt;TOptions,TTransformer,TPredictor&gt;+OptionsBase" FullName="Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;TOptions,TTransformer,TPredictor&gt;+OptionsBase">
-  <TypeSignature Language="C#" Value="public abstract class GamTrainerBase&lt;TOptions,TTransformer,TPredictor&gt;.OptionsBase : Microsoft.ML.EntryPoints.LearnerInputBaseWithWeight where TOptions : GamTrainerBase&lt;TOptions,TTransformer,TPredictor&gt;.OptionsBasenew() where TTransformer : ISingleFeaturePredictionTransformer&lt;TPredictor&gt; where TPredictor : class" />
-  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi abstract beforefieldinit GamTrainerBase`3/OptionsBase&lt;.ctor (class Microsoft.ML.Trainers.FastTree.GamTrainerBase`3/OptionsBase&lt;!TOptions, !TTransformer, !TPredictor&gt;) TOptions, (class Microsoft.ML.ISingleFeaturePredictionTransformer`1&lt;!TPredictor&gt;) TTransformer, class TPredictor&gt; extends Microsoft.ML.EntryPoints.LearnerInputBaseWithWeight" />
+  <TypeSignature Language="C#" Value="public abstract class GamTrainerBase&lt;TOptions,TTransformer,TPredictor&gt;.OptionsBase : Microsoft.ML.Trainers.TrainerInputBaseWithWeight where TOptions : GamTrainerBase&lt;TOptions,TTransformer,TPredictor&gt;.OptionsBasenew() where TTransformer : ISingleFeaturePredictionTransformer&lt;TPredictor&gt; where TPredictor : class" />
+  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi abstract beforefieldinit GamTrainerBase`3/OptionsBase&lt;.ctor (class Microsoft.ML.Trainers.FastTree.GamTrainerBase`3/OptionsBase&lt;!TOptions, !TTransformer, !TPredictor&gt;) TOptions, (class Microsoft.ML.ISingleFeaturePredictionTransformer`1&lt;!TPredictor&gt;) TTransformer, class TPredictor&gt; extends Microsoft.ML.Trainers.TrainerInputBaseWithWeight" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Trainers.FastTree.GamTrainerBase`3.OptionsBase" />
-  <TypeSignature Language="VB.NET" Value="Public MustInherit Class GamTrainerBase(Of TOptions, TTransformer, TPredictor).OptionsBase&#xA;Inherits LearnerInputBaseWithWeight" />
-  <TypeSignature Language="F#" Value="type GamTrainerBase&lt;'Options, 'ransformer, 'Predictor (requires 'Options :&gt; GamTrainerBase&lt;'Options, 'ransformer, 'Predictor&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; ISingleFeaturePredictionTransformer&lt;'Predictor&gt; and 'Predictor : null)&gt;.OptionsBase = class&#xA;    inherit LearnerInputBaseWithWeight" />
+  <TypeSignature Language="VB.NET" Value="Public MustInherit Class GamTrainerBase(Of TOptions, TTransformer, TPredictor).OptionsBase&#xA;Inherits TrainerInputBaseWithWeight" />
+  <TypeSignature Language="F#" Value="type GamTrainerBase&lt;'Options, 'ransformer, 'Predictor (requires 'Options :&gt; GamTrainerBase&lt;'Options, 'ransformer, 'Predictor&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; ISingleFeaturePredictionTransformer&lt;'Predictor&gt; and 'Predictor : null)&gt;.OptionsBase = class&#xA;    inherit TrainerInputBaseWithWeight" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -28,10 +28,13 @@
   </TypeParameters>
   <Base>
     <BaseTypeName>Microsoft.ML.EntryPoints.LearnerInputBaseWithWeight</BaseTypeName>
+    <BaseTypeName FrameworkAlternate="ml-dotnet">Microsoft.ML.Trainers.TrainerInputBaseWithWeight</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+            Base class for GAM-based trainer options.
+            </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -71,7 +74,9 @@
         <ReturnType>System.Nullable&lt;System.Boolean&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Whether to utilize the disk or the data's native transposition facilities (where applicable) when performing the transpose.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -95,7 +100,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Enable post-training tree pruning to avoid overfitting. It requires a validation set.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -119,7 +126,9 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            The entropy (regularization) coefficient between 0 and 1.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -143,7 +152,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Whether to collectivize features during dataset preparation to speed up training.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -167,7 +178,13 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Tree fitting gain confidence requirement. Only consider a gain if its likelihood versus a random choice gain is above this value.
+            </summary>
+        <returns>
+            Value of 0.95 would mean restricting to gains that have less than a 0.05 chance of being generated randomly through choice of a random split.
+            Valid range is [0,1).
+            </returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -191,16 +208,18 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Sample each query 1 in k times in the GetDerivatives function.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="LearningRates">
-      <MemberSignature Language="C#" Value="public double LearningRates;" />
-      <MemberSignature Language="ILAsm" Value=".field public float64 LearningRates" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.GamTrainerBase`3.OptionsBase.LearningRates" />
-      <MemberSignature Language="VB.NET" Value="Public LearningRates As Double " />
-      <MemberSignature Language="F#" Value="val mutable LearningRates : double" Usage="Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor (requires 'Options :&gt; Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Predictor&gt; and 'Predictor : null)&gt;.OptionsBase.LearningRates" />
+    <Member MemberName="LearningRate">
+      <MemberSignature Language="C#" Value="public double LearningRate;" />
+      <MemberSignature Language="ILAsm" Value=".field public float64 LearningRate" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.GamTrainerBase`3.OptionsBase.LearningRate" />
+      <MemberSignature Language="VB.NET" Value="Public LearningRate As Double " />
+      <MemberSignature Language="F#" Value="val mutable LearningRate : double" Usage="Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor (requires 'Options :&gt; Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Predictor&gt; and 'Predictor : null)&gt;.OptionsBase.LearningRate" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
@@ -221,16 +240,18 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            The learning rate.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="MaxBins">
-      <MemberSignature Language="C#" Value="public int MaxBins;" />
-      <MemberSignature Language="ILAsm" Value=".field public int32 MaxBins" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.GamTrainerBase`3.OptionsBase.MaxBins" />
-      <MemberSignature Language="VB.NET" Value="Public MaxBins As Integer " />
-      <MemberSignature Language="F#" Value="val mutable MaxBins : int" Usage="Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor (requires 'Options :&gt; Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Predictor&gt; and 'Predictor : null)&gt;.OptionsBase.MaxBins" />
+    <Member MemberName="MaximumBinCountPerFeature">
+      <MemberSignature Language="C#" Value="public int MaximumBinCountPerFeature;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 MaximumBinCountPerFeature" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.GamTrainerBase`3.OptionsBase.MaximumBinCountPerFeature" />
+      <MemberSignature Language="VB.NET" Value="Public MaximumBinCountPerFeature As Integer " />
+      <MemberSignature Language="F#" Value="val mutable MaximumBinCountPerFeature : int" Usage="Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor (requires 'Options :&gt; Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Predictor&gt; and 'Predictor : null)&gt;.OptionsBase.MaximumBinCountPerFeature" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
@@ -245,16 +266,18 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            The maximum number of distinct values (bins) per feature.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="MaxOutput">
-      <MemberSignature Language="C#" Value="public double MaxOutput;" />
-      <MemberSignature Language="ILAsm" Value=".field public float64 MaxOutput" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.GamTrainerBase`3.OptionsBase.MaxOutput" />
-      <MemberSignature Language="VB.NET" Value="Public MaxOutput As Double " />
-      <MemberSignature Language="F#" Value="val mutable MaxOutput : double" Usage="Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor (requires 'Options :&gt; Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Predictor&gt; and 'Predictor : null)&gt;.OptionsBase.MaxOutput" />
+    <Member MemberName="MaximumTreeOutput">
+      <MemberSignature Language="C#" Value="public double MaximumTreeOutput;" />
+      <MemberSignature Language="ILAsm" Value=".field public float64 MaximumTreeOutput" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.GamTrainerBase`3.OptionsBase.MaximumTreeOutput" />
+      <MemberSignature Language="VB.NET" Value="Public MaximumTreeOutput As Double " />
+      <MemberSignature Language="F#" Value="val mutable MaximumTreeOutput : double" Usage="Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor (requires 'Options :&gt; Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Predictor&gt; and 'Predictor : null)&gt;.OptionsBase.MaximumTreeOutput" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
@@ -269,16 +292,18 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            The upper bound on the absolute value of a single tree output.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="MinDocuments">
-      <MemberSignature Language="C#" Value="public int MinDocuments;" />
-      <MemberSignature Language="ILAsm" Value=".field public int32 MinDocuments" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.GamTrainerBase`3.OptionsBase.MinDocuments" />
-      <MemberSignature Language="VB.NET" Value="Public MinDocuments As Integer " />
-      <MemberSignature Language="F#" Value="val mutable MinDocuments : int" Usage="Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor (requires 'Options :&gt; Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Predictor&gt; and 'Predictor : null)&gt;.OptionsBase.MinDocuments" />
+    <Member MemberName="MinimumExampleCountPerLeaf">
+      <MemberSignature Language="C#" Value="public int MinimumExampleCountPerLeaf;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 MinimumExampleCountPerLeaf" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.GamTrainerBase`3.OptionsBase.MinimumExampleCountPerLeaf" />
+      <MemberSignature Language="VB.NET" Value="Public MinimumExampleCountPerLeaf As Integer " />
+      <MemberSignature Language="F#" Value="val mutable MinimumExampleCountPerLeaf : int" Usage="Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor (requires 'Options :&gt; Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Predictor&gt; and 'Predictor : null)&gt;.OptionsBase.MinimumExampleCountPerLeaf" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
@@ -299,16 +324,18 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            The minimal number of data points required to form a new tree leaf.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NumIterations">
-      <MemberSignature Language="C#" Value="public int NumIterations;" />
-      <MemberSignature Language="ILAsm" Value=".field public int32 NumIterations" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.GamTrainerBase`3.OptionsBase.NumIterations" />
-      <MemberSignature Language="VB.NET" Value="Public NumIterations As Integer " />
-      <MemberSignature Language="F#" Value="val mutable NumIterations : int" Usage="Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor (requires 'Options :&gt; Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Predictor&gt; and 'Predictor : null)&gt;.OptionsBase.NumIterations" />
+    <Member MemberName="NumberOfIterations">
+      <MemberSignature Language="C#" Value="public int NumberOfIterations;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 NumberOfIterations" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.GamTrainerBase`3.OptionsBase.NumberOfIterations" />
+      <MemberSignature Language="VB.NET" Value="Public NumberOfIterations As Integer " />
+      <MemberSignature Language="F#" Value="val mutable NumberOfIterations : int" Usage="Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor (requires 'Options :&gt; Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Predictor&gt; and 'Predictor : null)&gt;.OptionsBase.NumberOfIterations" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
@@ -329,16 +356,18 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Total number of passes over the training data.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NumThreads">
-      <MemberSignature Language="C#" Value="public Nullable&lt;int&gt; NumThreads;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype System.Nullable`1&lt;int32&gt; NumThreads" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.GamTrainerBase`3.OptionsBase.NumThreads" />
-      <MemberSignature Language="VB.NET" Value="Public NumThreads As Nullable(Of Integer) " />
-      <MemberSignature Language="F#" Value="val mutable NumThreads : Nullable&lt;int&gt;" Usage="Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor (requires 'Options :&gt; Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Predictor&gt; and 'Predictor : null)&gt;.OptionsBase.NumThreads" />
+    <Member MemberName="NumberOfThreads">
+      <MemberSignature Language="C#" Value="public Nullable&lt;int&gt; NumberOfThreads;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype System.Nullable`1&lt;int32&gt; NumberOfThreads" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.GamTrainerBase`3.OptionsBase.NumberOfThreads" />
+      <MemberSignature Language="VB.NET" Value="Public NumberOfThreads As Nullable(Of Integer) " />
+      <MemberSignature Language="F#" Value="val mutable NumberOfThreads : Nullable&lt;int&gt;" Usage="Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor (requires 'Options :&gt; Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Predictor&gt; and 'Predictor : null)&gt;.OptionsBase.NumberOfThreads" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
@@ -353,16 +382,18 @@
         <ReturnType>System.Nullable&lt;System.Int32&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            The number of threads to use.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="RngSeed">
-      <MemberSignature Language="C#" Value="public int RngSeed;" />
-      <MemberSignature Language="ILAsm" Value=".field public int32 RngSeed" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.GamTrainerBase`3.OptionsBase.RngSeed" />
-      <MemberSignature Language="VB.NET" Value="Public RngSeed As Integer " />
-      <MemberSignature Language="F#" Value="val mutable RngSeed : int" Usage="Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor (requires 'Options :&gt; Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Predictor&gt; and 'Predictor : null)&gt;.OptionsBase.RngSeed" />
+    <Member MemberName="Seed">
+      <MemberSignature Language="C#" Value="public int Seed;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 Seed" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.GamTrainerBase`3.OptionsBase.Seed" />
+      <MemberSignature Language="VB.NET" Value="Public Seed As Integer " />
+      <MemberSignature Language="F#" Value="val mutable Seed : int" Usage="Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor (requires 'Options :&gt; Microsoft.ML.Trainers.FastTree.GamTrainerBase&lt;'Options, 'ransformer, 'Predictor&gt;.OptionsBase and 'Options : (new : unit -&gt; 'Options) and 'ransformer :&gt; Microsoft.ML.ISingleFeaturePredictionTransformer&lt;'Predictor&gt; and 'Predictor : null)&gt;.OptionsBase.Seed" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
@@ -377,7 +408,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            The seed of the random number generator.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

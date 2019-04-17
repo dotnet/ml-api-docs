@@ -1,6 +1,6 @@
 ﻿<Type Name="FastTreeRankingTrainer+Options" FullName="Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer+Options">
-  <TypeSignature Language="C#" Value="public sealed class FastTreeRankingTrainer.Options : Microsoft.ML.Trainers.FastTree.BoostedTreeOptions, Microsoft.ML.IComponentFactory&lt;Microsoft.ML.ITrainer&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi sealed beforefieldinit FastTreeRankingTrainer/Options extends Microsoft.ML.Trainers.FastTree.BoostedTreeOptions implements class Microsoft.ML.IComponentFactory, class Microsoft.ML.IComponentFactory`1&lt;class Microsoft.ML.ITrainer&gt;" />
+  <TypeSignature Language="C#" Value="public sealed class FastTreeRankingTrainer.Options : Microsoft.ML.Trainers.FastTree.BoostedTreeOptions, Microsoft.ML.Runtime.IComponentFactory&lt;Microsoft.ML.ITrainer&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi sealed beforefieldinit FastTreeRankingTrainer/Options extends Microsoft.ML.Trainers.FastTree.BoostedTreeOptions implements class Microsoft.ML.Runtime.IComponentFactory, class Microsoft.ML.Runtime.IComponentFactory`1&lt;class Microsoft.ML.ITrainer&gt;" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options" />
   <TypeSignature Language="VB.NET" Value="Public NotInheritable Class FastTreeRankingTrainer.Options&#xA;Inherits BoostedTreeOptions&#xA;Implements IComponentFactory(Of ITrainer)" />
   <TypeSignature Language="F#" Value="type FastTreeRankingTrainer.Options = class&#xA;    inherit BoostedTreeOptions&#xA;    interface IComponentFactory&lt;ITrainer&gt;&#xA;    interface IComponentFactory" />
@@ -13,10 +13,10 @@
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>Microsoft.ML.IComponentFactory</InterfaceName>
+      <InterfaceName>Microsoft.ML.Runtime.IComponentFactory</InterfaceName>
     </Interface>
     <Interface>
-      <InterfaceName>Microsoft.ML.IComponentFactory&lt;Microsoft.ML.ITrainer&gt;</InterfaceName>
+      <InterfaceName>Microsoft.ML.Runtime.IComponentFactory&lt;Microsoft.ML.ITrainer&gt;</InterfaceName>
     </Interface>
   </Interfaces>
   <Attributes>
@@ -25,7 +25,9 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+            Options for the <see cref="T:Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer" />.
+            </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -41,126 +43,71 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CostFunctionParam">
-      <MemberSignature Language="C#" Value="public char CostFunctionParam;" />
-      <MemberSignature Language="ILAsm" Value=".field public char CostFunctionParam" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options.CostFunctionParam" />
-      <MemberSignature Language="VB.NET" Value="Public CostFunctionParam As Char " />
-      <MemberSignature Language="F#" Value="val mutable CostFunctionParam : char" Usage="Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options.CostFunctionParam" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Cost function parameter (w/c)", Hide=true, ShortName="cf")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>Microsoft.ML.Internal.Internallearn.TGUI(NotGui=true)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Char</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Create a new <see cref="T:Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options" /> object with default values.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="CustomGains">
-      <MemberSignature Language="C#" Value="public string CustomGains;" />
-      <MemberSignature Language="ILAsm" Value=".field public string CustomGains" />
+      <MemberSignature Language="C#" Value="public double[] CustomGains;" />
+      <MemberSignature Language="ILAsm" Value=".field public float64[] CustomGains" />
       <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options.CustomGains" />
-      <MemberSignature Language="VB.NET" Value="Public CustomGains As String " />
-      <MemberSignature Language="F#" Value="val mutable CustomGains : string" Usage="Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options.CustomGains" />
+      <MemberSignature Language="VB.NET" Value="Public CustomGains As Double() " />
+      <MemberSignature Language="F#" Value="val mutable CustomGains : double[]" Usage="Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options.CustomGains" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
-        <Attribute>
-          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.LastOccurenceWins, HelpText="Comma seperated list of gains associated to each relevance label.", ShortName="gains")</AttributeName>
-        </Attribute>
         <Attribute>
           <AttributeName>Microsoft.ML.Internal.Internallearn.TGUI(NoSweep=true)</AttributeName>
         </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.LastOccurenceWins, HelpText="Comma-separated list of gains associated to each relevance label.", ShortName="gains")</AttributeName>
+        </Attribute>
       </Attributes>
       <ReturnValue>
-        <ReturnType>System.String</ReturnType>
+        <ReturnType>System.Double[]</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Comma-separated list of gains associated with each relevance label.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="DistanceWeight2">
-      <MemberSignature Language="C#" Value="public bool DistanceWeight2;" />
-      <MemberSignature Language="ILAsm" Value=".field public bool DistanceWeight2" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options.DistanceWeight2" />
-      <MemberSignature Language="VB.NET" Value="Public DistanceWeight2 As Boolean " />
-      <MemberSignature Language="F#" Value="val mutable DistanceWeight2 : bool" Usage="Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options.DistanceWeight2" />
-      <MemberType>Field</MemberType>
+    <Member MemberName="EarlyStoppingMetric">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Trainers.FastTree.EarlyStoppingRankingMetric EarlyStoppingMetric { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.ML.Trainers.FastTree.EarlyStoppingRankingMetric EarlyStoppingMetric" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options.EarlyStoppingMetric" />
+      <MemberSignature Language="VB.NET" Value="Public Property EarlyStoppingMetric As EarlyStoppingRankingMetric" />
+      <MemberSignature Language="F#" Value="member this.EarlyStoppingMetric : Microsoft.ML.Trainers.FastTree.EarlyStoppingRankingMetric with get, set" Usage="Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options.EarlyStoppingMetric" />
+      <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.LastOccurenceWins, HelpText="Distance weight 2 adjustment to cost", Hide=true, ShortName="dw")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>Microsoft.ML.Internal.Internallearn.TGUI(NotGui=true)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
+        <ReturnType>Microsoft.ML.Trainers.FastTree.EarlyStoppingRankingMetric</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Early stopping metrics.
+            </summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="LambdaMartMaxTruncation">
-      <MemberSignature Language="C#" Value="public int LambdaMartMaxTruncation;" />
-      <MemberSignature Language="ILAsm" Value=".field public int32 LambdaMartMaxTruncation" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options.LambdaMartMaxTruncation" />
-      <MemberSignature Language="VB.NET" Value="Public LambdaMartMaxTruncation As Integer " />
-      <MemberSignature Language="F#" Value="val mutable LambdaMartMaxTruncation : int" Usage="Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options.LambdaMartMaxTruncation" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="max-NDCG truncation to use in the Lambda Mart algorithm", Hide=true, ShortName="n")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>Microsoft.ML.Internal.Internallearn.TGUI(NotGui=true)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Microsoft.ML.IComponentFactory&lt;Microsoft.ML.ITrainer&gt;.CreateComponent">
-      <MemberSignature Language="C#" Value="Microsoft.ML.ITrainer IComponentFactory&lt;ITrainer&gt;.CreateComponent (Microsoft.ML.IHostEnvironment env);" />
-      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class Microsoft.ML.ITrainer Microsoft.ML.IComponentFactory&lt;Microsoft.ML.ITrainer&gt;.CreateComponent(class Microsoft.ML.IHostEnvironment env) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options.Microsoft#ML#IComponentFactory&lt;Microsoft#ML#ITrainer&gt;#CreateComponent(Microsoft.ML.IHostEnvironment)" />
+    <Member MemberName="Microsoft.ML.Runtime.IComponentFactory&lt;Microsoft.ML.ITrainer&gt;.CreateComponent">
+      <MemberSignature Language="C#" Value="Microsoft.ML.ITrainer IComponentFactory&lt;ITrainer&gt;.CreateComponent (Microsoft.ML.Runtime.IHostEnvironment env);" />
+      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class Microsoft.ML.ITrainer Microsoft.ML.Runtime.IComponentFactory&lt;Microsoft.ML.ITrainer&gt;.CreateComponent(class Microsoft.ML.Runtime.IHostEnvironment env) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options.Microsoft#ML#Runtime#IComponentFactory&lt;Microsoft#ML#ITrainer&gt;#CreateComponent(Microsoft.ML.Runtime.IHostEnvironment)" />
       <MemberSignature Language="VB.NET" Value="Function CreateComponent (env As IHostEnvironment) As ITrainer Implements IComponentFactory(Of ITrainer).CreateComponent" />
       <MemberType>Method</MemberType>
       <Implements>
-        <InterfaceMember>M:Microsoft.ML.IComponentFactory`1.CreateComponent(Microsoft.ML.IHostEnvironment)</InterfaceMember>
+        <InterfaceMember>M:Microsoft.ML.Runtime.IComponentFactory`1.CreateComponent(Microsoft.ML.Runtime.IHostEnvironment)</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
@@ -170,7 +117,7 @@
         <ReturnType>Microsoft.ML.ITrainer</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="env" Type="Microsoft.ML.IHostEnvironment" />
+        <Parameter Name="env" Type="Microsoft.ML.Runtime.IHostEnvironment" />
       </Parameters>
       <Docs>
         <param name="env">To be added.</param>
@@ -179,12 +126,12 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NormalizeQueryLambdas">
-      <MemberSignature Language="C#" Value="public bool NormalizeQueryLambdas;" />
-      <MemberSignature Language="ILAsm" Value=".field public bool NormalizeQueryLambdas" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options.NormalizeQueryLambdas" />
-      <MemberSignature Language="VB.NET" Value="Public NormalizeQueryLambdas As Boolean " />
-      <MemberSignature Language="F#" Value="val mutable NormalizeQueryLambdas : bool" Usage="Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options.NormalizeQueryLambdas" />
+    <Member MemberName="NdcgTruncationLevel">
+      <MemberSignature Language="C#" Value="public int NdcgTruncationLevel;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 NdcgTruncationLevel" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options.NdcgTruncationLevel" />
+      <MemberSignature Language="VB.NET" Value="Public NdcgTruncationLevel As Integer " />
+      <MemberSignature Language="F#" Value="val mutable NdcgTruncationLevel : int" Usage="Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options.NdcgTruncationLevel" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
@@ -192,80 +139,29 @@
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.LastOccurenceWins, HelpText="Normalize query lambdas", Hide=true, ShortName="nql")</AttributeName>
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="max-NDCG truncation to use in the LambdaMART algorithm", Hide=true, ShortName="n")</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>Microsoft.ML.Internal.Internallearn.TGUI(NotGui=true)</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
+        <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            The maximum NDCG truncation to use in the
+            <a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/MSR-TR-2010-82.pdf">LambdaMAR algorithm</a>.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ShiftedNdcg">
-      <MemberSignature Language="C#" Value="public bool ShiftedNdcg;" />
-      <MemberSignature Language="ILAsm" Value=".field public bool ShiftedNdcg" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options.ShiftedNdcg" />
-      <MemberSignature Language="VB.NET" Value="Public ShiftedNdcg As Boolean " />
-      <MemberSignature Language="F#" Value="val mutable ShiftedNdcg : bool" Usage="Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options.ShiftedNdcg" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.LastOccurenceWins, HelpText="Use shifted NDCG", Hide=true)</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>Microsoft.ML.Internal.Internallearn.TGUI(NotGui=true)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SortingAlgorithm">
-      <MemberSignature Language="C#" Value="public string SortingAlgorithm;" />
-      <MemberSignature Language="ILAsm" Value=".field public string SortingAlgorithm" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options.SortingAlgorithm" />
-      <MemberSignature Language="VB.NET" Value="Public SortingAlgorithm As String " />
-      <MemberSignature Language="F#" Value="val mutable SortingAlgorithm : string" Usage="Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options.SortingAlgorithm" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.LastOccurenceWins, HelpText="The sorting algorithm to use for DCG and LambdaMart calculations [DescendingStablePessimistic/DescendingStable/DescendingReverse/DescendingDotNet]", Hide=true, ShortName="sort")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>Microsoft.ML.Internal.Internallearn.TGUI(NotGui=true)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="TrainDcg">
-      <MemberSignature Language="C#" Value="public bool TrainDcg;" />
-      <MemberSignature Language="ILAsm" Value=".field public bool TrainDcg" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options.TrainDcg" />
-      <MemberSignature Language="VB.NET" Value="Public TrainDcg As Boolean " />
-      <MemberSignature Language="F#" Value="val mutable TrainDcg : bool" Usage="Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options.TrainDcg" />
+    <Member MemberName="UseDcg">
+      <MemberSignature Language="C#" Value="public bool UseDcg;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool UseDcg" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options.UseDcg" />
+      <MemberSignature Language="VB.NET" Value="Public UseDcg As Boolean " />
+      <MemberSignature Language="F#" Value="val mutable UseDcg : bool" Usage="Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options.UseDcg" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.FastTree</AssemblyName>
@@ -280,7 +176,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Whether to train using discounted cumulative gain (DCG) instead of normalized DCG (NDCG).
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

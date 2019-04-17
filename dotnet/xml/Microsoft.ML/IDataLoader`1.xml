@@ -1,9 +1,9 @@
 ﻿<Type Name="IDataLoader&lt;TSource&gt;" FullName="Microsoft.ML.IDataLoader&lt;TSource&gt;">
-  <TypeSignature Language="C#" Value="public interface IDataLoader&lt;in TSource&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IDataLoader`1&lt;- TSource&gt;" />
+  <TypeSignature Language="C#" Value="public interface IDataLoader&lt;in TSource&gt; : Microsoft.ML.ICanSaveModel" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IDataLoader`1&lt;- TSource&gt; implements class Microsoft.ML.ICanSaveModel" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.IDataLoader`1" />
-  <TypeSignature Language="VB.NET" Value="Public Interface IDataLoader(Of In TSource)" />
-  <TypeSignature Language="F#" Value="type IDataLoader&lt;'Source&gt; = interface" />
+  <TypeSignature Language="VB.NET" Value="Public Interface IDataLoader(Of In TSource)&#xA;Implements ICanSaveModel" />
+  <TypeSignature Language="F#" Value="type IDataLoader&lt;'Source&gt; = interface&#xA;    interface ICanSaveModel" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.Core</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -15,28 +15,32 @@
       </Constraints>
     </TypeParameter>
   </TypeParameters>
-  <Interfaces></Interfaces>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.ICanSaveModel</InterfaceName>
+    </Interface>
+  </Interfaces>
   <Docs>
     <typeparam name="TSource">The type of input the loader takes.</typeparam>
     <summary>
-            The 'data loader' takes a certain kind of input and turns it into an <see cref="T:Microsoft.Data.DataView.IDataView" />.
+            The 'data loader' takes a certain kind of input and turns it into an <see cref="T:Microsoft.ML.IDataView" />.
             </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName="GetOutputSchema">
-      <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.DataViewSchema GetOutputSchema ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.Data.DataView.DataViewSchema GetOutputSchema() cil managed" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.DataViewSchema GetOutputSchema ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.DataViewSchema GetOutputSchema() cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.IDataLoader`1.GetOutputSchema" />
       <MemberSignature Language="VB.NET" Value="Public Function GetOutputSchema () As DataViewSchema" />
-      <MemberSignature Language="F#" Value="abstract member GetOutputSchema : unit -&gt; Microsoft.Data.DataView.DataViewSchema" Usage="iDataLoader.GetOutputSchema " />
+      <MemberSignature Language="F#" Value="abstract member GetOutputSchema : unit -&gt; Microsoft.ML.DataViewSchema" Usage="iDataLoader.GetOutputSchema " />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.Data.DataView.DataViewSchema</ReturnType>
+        <ReturnType>Microsoft.ML.DataViewSchema</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -48,18 +52,18 @@
       </Docs>
     </Member>
     <Member MemberName="Load">
-      <MemberSignature Language="C#" Value="public Microsoft.Data.DataView.IDataView Load (TSource input);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.Data.DataView.IDataView Load(!TSource input) cil managed" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.IDataView Load (TSource input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.IDataView Load(!TSource input) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.IDataLoader`1.Load(`0)" />
       <MemberSignature Language="VB.NET" Value="Public Function Load (input As TSource) As IDataView" />
-      <MemberSignature Language="F#" Value="abstract member Load : 'Source -&gt; Microsoft.Data.DataView.IDataView" Usage="iDataLoader.Load input" />
+      <MemberSignature Language="F#" Value="abstract member Load : 'Source -&gt; Microsoft.ML.IDataView" Usage="iDataLoader.Load input" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.Data.DataView.IDataView</ReturnType>
+        <ReturnType>Microsoft.ML.IDataView</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="input" Type="TSource" />
@@ -68,7 +72,7 @@
         <param name="input">To be added.</param>
         <summary>
             Produce the data view from the specified input.
-            Note that <see cref="T:Microsoft.Data.DataView.IDataView" />'s are lazy, so no actual loading happens here, just schema validation.
+            Note that <see cref="T:Microsoft.ML.IDataView" />'s are lazy, so no actual loading happens here, just schema validation.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

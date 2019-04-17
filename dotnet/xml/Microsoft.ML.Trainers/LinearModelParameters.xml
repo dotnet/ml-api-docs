@@ -1,9 +1,9 @@
 ﻿<Type Name="LinearModelParameters" FullName="Microsoft.ML.Trainers.LinearModelParameters">
-  <TypeSignature Language="C#" Value="public abstract class LinearModelParameters : Microsoft.ML.Model.ModelParametersBase&lt;float&gt;, Microsoft.ML.Model.ICalculateFeatureContribution" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit LinearModelParameters extends Microsoft.ML.Model.ModelParametersBase`1&lt;float32&gt; implements class Microsoft.ML.Model.ICalculateFeatureContribution, class Microsoft.ML.Model.IHaveFeatureWeights" />
+  <TypeSignature Language="C#" Value="public abstract class LinearModelParameters : Microsoft.ML.Trainers.ModelParametersBase&lt;float&gt;, Microsoft.ML.Trainers.ICalculateFeatureContribution" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit LinearModelParameters extends Microsoft.ML.Trainers.ModelParametersBase`1&lt;float32&gt; implements class Microsoft.ML.Trainers.ICalculateFeatureContribution" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Trainers.LinearModelParameters" />
   <TypeSignature Language="VB.NET" Value="Public MustInherit Class LinearModelParameters&#xA;Inherits ModelParametersBase(Of Single)&#xA;Implements ICalculateFeatureContribution" />
-  <TypeSignature Language="F#" Value="type LinearModelParameters = class&#xA;    inherit ModelParametersBase&lt;single&gt;&#xA;    interface IHaveFeatureWeights&#xA;    interface ICalculateFeatureContribution" />
+  <TypeSignature Language="F#" Value="type LinearModelParameters = class&#xA;    inherit ModelParametersBase&lt;single&gt;&#xA;    interface ICalculateFeatureContribution" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -21,10 +21,7 @@
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>Microsoft.ML.Model.ICalculateFeatureContribution</InterfaceName>
-    </Interface>
-    <Interface>
-      <InterfaceName>Microsoft.ML.Model.IHaveFeatureWeights</InterfaceName>
+      <InterfaceName>Microsoft.ML.Trainers.ICalculateFeatureContribution</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -56,72 +53,15 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="GetFeatureContributions">
-      <MemberSignature Language="C#" Value="protected virtual void GetFeatureContributions (Microsoft.ML.Data.VBuffer&lt;T&gt; features, ref Microsoft.ML.Data.VBuffer&lt;float&gt; contributions, int top, int bottom, bool normalize);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void GetFeatureContributions([in]class Microsoft.ML.Data.VBuffer`1&lt;!T&gt; features, valuetype Microsoft.ML.Data.VBuffer`1&lt;float32&gt;&amp; contributions, int32 top, int32 bottom, bool normalize) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.LinearModelParameters.GetFeatureContributions(Microsoft.ML.Data.VBuffer{System.Single}@|System.Runtime.InteropServices.InAttribute,Microsoft.ML.Data.VBuffer{System.Single}@,System.Int32,System.Int32,System.Boolean)" />
-      <MemberSignature Language="VB.NET" Value="Protected Overridable Sub GetFeatureContributions (features As VBuffer(Of T), ByRef contributions As VBuffer(Of Single), top As Integer, bottom As Integer, normalize As Boolean)" />
-      <MemberSignature Language="F#" Value="abstract member GetFeatureContributions : Microsoft.ML.Data.VBuffer&lt;'T&gt; *  * int * int * bool -&gt; unit&#xA;override this.GetFeatureContributions : Microsoft.ML.Data.VBuffer&lt;'T&gt; *  * int * int * bool -&gt; unit" Usage="linearModelParameters.GetFeatureContributions (features, contributions, top, bottom, normalize)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="features" Type="Microsoft.ML.Data.VBuffer&lt;T&gt;" />
-        <Parameter Name="contributions" Type="Microsoft.ML.Data.VBuffer&lt;System.Single&gt;" RefType="ref" />
-        <Parameter Name="top" Type="System.Int32" />
-        <Parameter Name="bottom" Type="System.Int32" />
-        <Parameter Name="normalize" Type="System.Boolean" />
-      </Parameters>
-      <Docs>
-        <param name="features">To be added.</param>
-        <param name="contributions">To be added.</param>
-        <param name="top">To be added.</param>
-        <param name="bottom">To be added.</param>
-        <param name="normalize">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GetFeatureWeights">
-      <MemberSignature Language="C#" Value="public void GetFeatureWeights (ref Microsoft.ML.Data.VBuffer&lt;float&gt; weights);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void GetFeatureWeights(valuetype Microsoft.ML.Data.VBuffer`1&lt;float32&gt;&amp; weights) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.LinearModelParameters.GetFeatureWeights(Microsoft.ML.Data.VBuffer{System.Single}@)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub GetFeatureWeights (ByRef weights As VBuffer(Of Single))" />
-      <MemberSignature Language="F#" Value="abstract member GetFeatureWeights :  -&gt; unit&#xA;override this.GetFeatureWeights :  -&gt; unit" Usage="linearModelParameters.GetFeatureWeights weights" />
-      <MemberType>Method</MemberType>
-      <Implements>
-        <InterfaceMember>M:Microsoft.ML.Model.IHaveFeatureWeights.GetFeatureWeights(Microsoft.ML.Data.VBuffer{System.Single}@)</InterfaceMember>
-      </Implements>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="weights" Type="Microsoft.ML.Data.VBuffer&lt;System.Single&gt;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <param name="weights">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Microsoft.ML.Model.ICalculateFeatureContribution.FeatureContributionCalculator">
-      <MemberSignature Language="C#" Value="Microsoft.ML.Model.FeatureContributionCalculator Microsoft.ML.Model.ICalculateFeatureContribution.FeatureContributionCalculator { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Model.FeatureContributionCalculator Microsoft.ML.Model.ICalculateFeatureContribution.FeatureContributionCalculator" />
-      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.LinearModelParameters.Microsoft#ML#Model#ICalculateFeatureContribution#FeatureContributionCalculator" />
+    <Member MemberName="Microsoft.ML.Trainers.ICalculateFeatureContribution.FeatureContributionCalculator">
+      <MemberSignature Language="C#" Value="Microsoft.ML.Trainers.FeatureContributionCalculator Microsoft.ML.Trainers.ICalculateFeatureContribution.FeatureContributionCalculator { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Trainers.FeatureContributionCalculator Microsoft.ML.Trainers.ICalculateFeatureContribution.FeatureContributionCalculator" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.LinearModelParameters.Microsoft#ML#Trainers#ICalculateFeatureContribution#FeatureContributionCalculator" />
       <MemberSignature Language="VB.NET" Value=" ReadOnly Property FeatureContributionCalculator As FeatureContributionCalculator Implements ICalculateFeatureContribution.FeatureContributionCalculator" />
-      <MemberSignature Language="F#" Usage="Microsoft.ML.Model.ICalculateFeatureContribution.FeatureContributionCalculator" />
+      <MemberSignature Language="F#" Usage="Microsoft.ML.Trainers.ICalculateFeatureContribution.FeatureContributionCalculator" />
       <MemberType>Property</MemberType>
       <Implements>
-        <InterfaceMember>P:Microsoft.ML.Model.ICalculateFeatureContribution.FeatureContributionCalculator</InterfaceMember>
+        <InterfaceMember>P:Microsoft.ML.Trainers.ICalculateFeatureContribution.FeatureContributionCalculator</InterfaceMember>
       </Implements>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
@@ -132,7 +72,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Microsoft.ML.Model.FeatureContributionCalculator</ReturnType>
+        <ReturnType>Microsoft.ML.Trainers.FeatureContributionCalculator</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>

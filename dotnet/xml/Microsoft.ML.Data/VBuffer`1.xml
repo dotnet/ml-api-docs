@@ -8,6 +8,10 @@
     <AssemblyName>Microsoft.ML.Core</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </AssemblyInfo>
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.DataView</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
   <TypeParameters>
     <TypeParameter Name="T" />
   </TypeParameters>
@@ -16,14 +20,22 @@
   </Base>
   <Interfaces />
   <Docs>
-    <typeparam name="T">To be added.</typeparam>
+    <typeparam name="T">The type of the vector. There are no compile-time restrictions on what this could be, but
+             this code and practically all code that uses <see cref="T:Microsoft.ML.Data.VBuffer`1" /> makes the assumption that an assignment of
+             a value is sufficient to make a completely independent copy of it. So, for example, this means that a buffer of
+             buffers is not possible. But, things like <see cref="T:System.Int32" />, <see cref="T:System.Single" />, and <see cref="T:System.ReadOnlyMemory`1" />, are totally fine.</typeparam>
     <summary>
-            A buffer that supports both dense and sparse representations. This is the
-            representation type for all VectorType instances. When an instance of this
-            is passed to a row cursor getter, the callee is free to take ownership of
-            and re-use the arrays (Values and Indices).
-            </summary>
-    <remarks>To be added.</remarks>
+             A buffer that supports both dense and sparse representations. This is the representation type for all
+             <see cref="T:Microsoft.ML.Data.VectorDataViewType" /> instances. The explicitly defined values of this vector are exposed through
+             <see cref="M:Microsoft.ML.Data.VBuffer`1.GetValues" /> and, if not dense, <see cref="M:Microsoft.ML.Data.VBuffer`1.GetIndices" />.
+             </summary>
+    <remarks>
+             This structure is by itself immutable, but to enable buffer editing including re-use of the internal buffers,
+             a mutable variant <see cref="T:Microsoft.ML.Data.VBufferEditor`1" /> can be accessed through <see cref="T:Microsoft.ML.Data.VBuffer`1" />.
+            
+             Throughout the code, we make the assumption that a sparse <see cref="T:Microsoft.ML.Data.VBuffer`1" /> is logically equivalent to
+             a dense <see cref="T:Microsoft.ML.Data.VBuffer`1" /> with the default value for <typeparamref name="T" /> filling in the default values.
+             </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -37,19 +49,37 @@
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters>
         <Parameter Name="length" Type="System.Int32" />
         <Parameter Name="values" Type="T[]" />
         <Parameter Name="indices" Type="System.Int32[]" />
       </Parameters>
       <Docs>
-        <param name="length">To be added.</param>
-        <param name="values">To be added.</param>
-        <param name="indices">To be added.</param>
+        <param name="length">The logical length of the resulting instance.</param>
+        <param name="values">
+            The values to be used. This must be at least as long as <paramref name="length" />. If
+            <paramref name="length" /> is 0, it is legal for this to be <see langword="null" />. The constructed buffer
+            takes ownership of this array.
+            </param>
+        <param name="indices">
+            The internal indices buffer. Because this constructor is for dense representations
+            this will not be immediately useful, but it does provide a buffer to be potentially reused to avoid
+            allocation. This is mostly non-null in situations where you want to produce a dense
+            <see cref="T:Microsoft.ML.Data.VBuffer`1" />, but you happen to have an indices array "left over" and you don't want to
+            needlessly lose.
+            </param>
         <summary>
-            Construct a dense representation with unused Indices array.
+            Construct a dense representation. The <paramref name="indices" /> array is often unspecified, but if
+            specified it should be considered a buffer to be held on to, to be possibly used.
             </summary>
-        <remarks>To be added.</remarks>
+        <remarks>
+            The resulting structure takes ownership of the passed in arrays, so they should not be used for
+            other purposes in the future.
+            </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -63,6 +93,10 @@
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters>
         <Parameter Name="length" Type="System.Int32" />
         <Parameter Name="count" Type="System.Int32" />
@@ -70,40 +104,52 @@
         <Parameter Name="indices" Type="System.Int32[]" />
       </Parameters>
       <Docs>
-        <param name="length">To be added.</param>
-        <param name="count">To be added.</param>
-        <param name="values">To be added.</param>
-        <param name="indices">To be added.</param>
+        <param name="length">The length of the constructed buffer.</param>
+        <param name="count">The count of explicit entries. This must be between 0 and <paramref name="length" />, both
+            inclusive. If it equals <paramref name="length" /> the result is a dense vector, and if less this will be a
+            sparse vector.</param>
+        <param name="values">
+            The values to be used. This must be at least as long as <paramref name="count" />. If
+            <paramref name="count" /> is 0, it is legal for this to be <see langword="null" />.
+            </param>
+        <param name="indices">The indices to be used. If we are constructing a dense representation, or
+            <paramref name="count" /> is 0, this can be <see langword="null" />. Otherwise, this must be at least as long
+            as <paramref name="count" />.</param>
         <summary>
-            Construct a possibly sparse representation.
+            Construct a possibly sparse vector representation.
             </summary>
-        <remarks>To be added.</remarks>
+        <remarks>The resulting structure takes ownership of the passed in arrays, so they should not be used for
+            other purposes in the future.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public static void Copy (T[] src, int srcIndex, ref Microsoft.ML.Data.VBuffer&lt;T&gt; dst, int length);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Copy(!T[] src, int32 srcIndex, valuetype Microsoft.ML.Data.VBuffer`1&lt;!T&gt;&amp; dst, int32 length) cil managed" />
+      <MemberSignature Language="C#" Value="public static void Copy (T[] source, int sourceIndex, ref Microsoft.ML.Data.VBuffer&lt;T&gt; destination, int length);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Copy(!T[] source, int32 sourceIndex, valuetype Microsoft.ML.Data.VBuffer`1&lt;!T&gt;&amp; destination, int32 length) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.VBuffer`1.Copy(`0[],System.Int32,Microsoft.ML.Data.VBuffer{`0}@,System.Int32)" />
-      <MemberSignature Language="VB.NET" Value="Public Shared Sub Copy (src As T(), srcIndex As Integer, ByRef dst As VBuffer(Of T), length As Integer)" />
-      <MemberSignature Language="F#" Value="static member Copy : 'T[] * int *  * int -&gt; unit" Usage="Microsoft.ML.Data.VBuffer&lt;'T&gt;.Copy (src, srcIndex, dst, length)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Sub Copy (source As T(), sourceIndex As Integer, ByRef destination As VBuffer(Of T), length As Integer)" />
+      <MemberSignature Language="F#" Value="static member Copy : 'T[] * int *  * int -&gt; unit" Usage="Microsoft.ML.Data.VBuffer&lt;'T&gt;.Copy (source, sourceIndex, destination, length)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="src" Type="T[]" />
-        <Parameter Name="srcIndex" Type="System.Int32" />
-        <Parameter Name="dst" Type="Microsoft.ML.Data.VBuffer&lt;T&gt;" RefType="ref" />
-        <Parameter Name="length" Type="System.Int32" />
+        <Parameter Name="source" Type="T[]" Index="0" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="sourceIndex" Type="System.Int32" Index="1" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="destination" Type="Microsoft.ML.Data.VBuffer&lt;T&gt;" RefType="ref" Index="2" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="length" Type="System.Int32" Index="3" />
       </Parameters>
       <Docs>
-        <param name="src">To be added.</param>
-        <param name="srcIndex">To be added.</param>
-        <param name="dst">To be added.</param>
+        <param name="source">To be added.</param>
+        <param name="sourceIndex">To be added.</param>
+        <param name="destination">To be added.</param>
         <param name="length">To be added.</param>
         <summary>
             Copy from a section of a source array to the given destination.
@@ -112,24 +158,29 @@
       </Docs>
     </Member>
     <Member MemberName="CopyTo">
-      <MemberSignature Language="C#" Value="public void CopyTo (ref Microsoft.ML.Data.VBuffer&lt;T&gt; dst);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CopyTo(valuetype Microsoft.ML.Data.VBuffer`1&lt;!T&gt;&amp; dst) cil managed" />
+      <MemberSignature Language="C#" Value="public void CopyTo (ref Microsoft.ML.Data.VBuffer&lt;T&gt; destination);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CopyTo(valuetype Microsoft.ML.Data.VBuffer`1&lt;!T&gt;&amp; destination) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.VBuffer`1.CopyTo(Microsoft.ML.Data.VBuffer{`0}@)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub CopyTo (ByRef dst As VBuffer(Of T))" />
-      <MemberSignature Language="F#" Value="member this.CopyTo :  -&gt; unit" Usage="vBuffer.CopyTo dst" />
+      <MemberSignature Language="VB.NET" Value="Public Sub CopyTo (ByRef destination As VBuffer(Of T))" />
+      <MemberSignature Language="F#" Value="member this.CopyTo :  -&gt; unit" Usage="vBuffer.CopyTo destination" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="dst" Type="Microsoft.ML.Data.VBuffer&lt;T&gt;" RefType="ref" />
+        <Parameter Name="destination" Type="Microsoft.ML.Data.VBuffer&lt;T&gt;" RefType="ref" Index="0" FrameworkAlternate="ml-dotnet" />
       </Parameters>
       <Docs>
-        <param name="dst">To be added.</param>
+        <param name="destination">The destination buffer. After the copy, this will have <see cref="F:Microsoft.ML.Data.VBuffer`1.Length" />
+            of <see cref="F:Microsoft.ML.Data.VBuffer`1.Length" />.</param>
         <summary>
             Copy from this buffer to the given destination.
             </summary>
@@ -137,53 +188,62 @@
       </Docs>
     </Member>
     <Member MemberName="CopyTo">
-      <MemberSignature Language="C#" Value="public void CopyTo (Span&lt;T&gt; dst);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CopyTo(valuetype System.Span`1&lt;!T&gt; dst) cil managed" />
+      <MemberSignature Language="C#" Value="public void CopyTo (Span&lt;T&gt; destination);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CopyTo(valuetype System.Span`1&lt;!T&gt; destination) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.VBuffer`1.CopyTo(System.Span{`0})" />
-      <MemberSignature Language="VB.NET" Value="Public Sub CopyTo (dst As Span(Of T))" />
-      <MemberSignature Language="F#" Value="member this.CopyTo : Span&lt;'T&gt; -&gt; unit" Usage="vBuffer.CopyTo dst" />
+      <MemberSignature Language="VB.NET" Value="Public Sub CopyTo (destination As Span(Of T))" />
+      <MemberSignature Language="F#" Value="member this.CopyTo : Span&lt;'T&gt; -&gt; unit" Usage="vBuffer.CopyTo destination" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="dst" Type="System.Span&lt;T&gt;" />
+        <Parameter Name="destination" Type="System.Span&lt;T&gt;" Index="0" FrameworkAlternate="ml-dotnet" />
       </Parameters>
       <Docs>
-        <param name="dst">To be added.</param>
+        <param name="destination">The destination buffer. This <see cref="P:System.Span`1.Length" /> must have least <see cref="F:Microsoft.ML.Data.VBuffer`1.Length" />.</param>
         <summary>
-            Copy from this buffer to the given destination array. This "densifies".
+            Copy from this buffer to the given destination span. This "densifies."
             </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="CopyTo">
-      <MemberSignature Language="C#" Value="public void CopyTo (ref Microsoft.ML.Data.VBuffer&lt;T&gt; dst, int srcMin, int length);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CopyTo(valuetype Microsoft.ML.Data.VBuffer`1&lt;!T&gt;&amp; dst, int32 srcMin, int32 length) cil managed" />
+      <MemberSignature Language="C#" Value="public void CopyTo (ref Microsoft.ML.Data.VBuffer&lt;T&gt; destination, int sourceIndex, int length);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CopyTo(valuetype Microsoft.ML.Data.VBuffer`1&lt;!T&gt;&amp; destination, int32 sourceIndex, int32 length) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.VBuffer`1.CopyTo(Microsoft.ML.Data.VBuffer{`0}@,System.Int32,System.Int32)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub CopyTo (ByRef dst As VBuffer(Of T), srcMin As Integer, length As Integer)" />
-      <MemberSignature Language="F#" Value="member this.CopyTo :  * int * int -&gt; unit" Usage="vBuffer.CopyTo (dst, srcMin, length)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub CopyTo (ByRef destination As VBuffer(Of T), sourceIndex As Integer, length As Integer)" />
+      <MemberSignature Language="F#" Value="member this.CopyTo :  * int * int -&gt; unit" Usage="vBuffer.CopyTo (destination, sourceIndex, length)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="dst" Type="Microsoft.ML.Data.VBuffer&lt;T&gt;" RefType="ref" />
-        <Parameter Name="srcMin" Type="System.Int32" />
-        <Parameter Name="length" Type="System.Int32" />
+        <Parameter Name="destination" Type="Microsoft.ML.Data.VBuffer&lt;T&gt;" RefType="ref" Index="0" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="sourceIndex" Type="System.Int32" Index="1" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="length" Type="System.Int32" Index="2" />
       </Parameters>
       <Docs>
-        <param name="dst">To be added.</param>
-        <param name="srcMin">To be added.</param>
-        <param name="length">To be added.</param>
+        <param name="destination">The destination buffer. After the copy, this will have <see cref="F:Microsoft.ML.Data.VBuffer`1.Length" />
+            of <paramref name="length" />.</param>
+        <param name="sourceIndex">The minimum inclusive index to start copying from this vector.</param>
+        <param name="length">The logical number of values to copy from this vector into <paramref name="destination" />.</param>
         <summary>
             Copy a range of values from this buffer to the given destination.
             </summary>
@@ -191,51 +251,65 @@
       </Docs>
     </Member>
     <Member MemberName="CopyTo">
-      <MemberSignature Language="C#" Value="public void CopyTo (Span&lt;T&gt; dst, int ivDst, T defaultValue = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CopyTo(valuetype System.Span`1&lt;!T&gt; dst, int32 ivDst, !T defaultValue) cil managed" />
+      <MemberSignature Language="C#" Value="public void CopyTo (Span&lt;T&gt; destination, int destinationIndex, T defaultValue = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CopyTo(valuetype System.Span`1&lt;!T&gt; destination, int32 destinationIndex, !T defaultValue) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.VBuffer`1.CopyTo(System.Span{`0},System.Int32,`0)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub CopyTo (dst As Span(Of T), ivDst As Integer, Optional defaultValue As T = null)" />
-      <MemberSignature Language="F#" Value="member this.CopyTo : Span&lt;'T&gt; * int * 'T -&gt; unit" Usage="vBuffer.CopyTo (dst, ivDst, defaultValue)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub CopyTo (destination As Span(Of T), destinationIndex As Integer, Optional defaultValue As T = null)" />
+      <MemberSignature Language="F#" Value="member this.CopyTo : Span&lt;'T&gt; * int * 'T -&gt; unit" Usage="vBuffer.CopyTo (destination, destinationIndex, defaultValue)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="dst" Type="System.Span&lt;T&gt;" />
-        <Parameter Name="ivDst" Type="System.Int32" />
-        <Parameter Name="defaultValue" Type="T" />
+        <Parameter Name="destination" Type="System.Span&lt;T&gt;" Index="0" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="destinationIndex" Type="System.Int32" Index="1" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="defaultValue" Type="T" Index="2" />
       </Parameters>
       <Docs>
-        <param name="dst">To be added.</param>
-        <param name="ivDst">To be added.</param>
-        <param name="defaultValue">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="destination">The destination buffer. This <see cref="P:System.Span`1.Length" /> must be at least <see cref="F:Microsoft.ML.Data.VBuffer`1.Length" />
+            plus <paramref name="destinationIndex" />.</param>
+        <param name="destinationIndex">The starting index of <paramref name="destination" /> at which to start copying.</param>
+        <param name="defaultValue">The value to fill in for the implicit sparse entries. This is a potential exception to
+            general expectation of sparse <see cref="T:Microsoft.ML.Data.VBuffer`1" /> that the implicit sparse entries have the default value
+            of <typeparamref name="T" />.</param>
+        <summary>
+            Copy from this buffer to the given destination span, starting at the specified index. This "densifies."
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="CopyToDense">
-      <MemberSignature Language="C#" Value="public void CopyToDense (ref Microsoft.ML.Data.VBuffer&lt;T&gt; dst);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CopyToDense(valuetype Microsoft.ML.Data.VBuffer`1&lt;!T&gt;&amp; dst) cil managed" />
+      <MemberSignature Language="C#" Value="public void CopyToDense (ref Microsoft.ML.Data.VBuffer&lt;T&gt; destination);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CopyToDense(valuetype Microsoft.ML.Data.VBuffer`1&lt;!T&gt;&amp; destination) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.VBuffer`1.CopyToDense(Microsoft.ML.Data.VBuffer{`0}@)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub CopyToDense (ByRef dst As VBuffer(Of T))" />
-      <MemberSignature Language="F#" Value="member this.CopyToDense :  -&gt; unit" Usage="vBuffer.CopyToDense dst" />
+      <MemberSignature Language="VB.NET" Value="Public Sub CopyToDense (ByRef destination As VBuffer(Of T))" />
+      <MemberSignature Language="F#" Value="member this.CopyToDense :  -&gt; unit" Usage="vBuffer.CopyToDense destination" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="dst" Type="Microsoft.ML.Data.VBuffer&lt;T&gt;" RefType="ref" />
+        <Parameter Name="destination" Type="Microsoft.ML.Data.VBuffer&lt;T&gt;" RefType="ref" Index="0" FrameworkAlternate="ml-dotnet" />
       </Parameters>
       <Docs>
-        <param name="dst">To be added.</param>
+        <param name="destination">The destination buffer. After the copy, this will have <see cref="F:Microsoft.ML.Data.VBuffer`1.Length" />
+            of <see cref="F:Microsoft.ML.Data.VBuffer`1.Length" />.</param>
         <summary>
             Copy from this buffer to the given destination, forcing a dense representation.
             </summary>
@@ -253,12 +327,18 @@
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.IEnumerable&lt;T&gt;</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Returns an enumerable with <see cref="F:Microsoft.ML.Data.VBuffer`1.Length" /> items, representing the values.
+            </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -274,71 +354,105 @@
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.ReadOnlySpan&lt;System.Int32&gt;</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
         <summary>
-            The indices. For a dense representation, this array is not used. For a sparse representation
-            it is parallel to values and specifies the logical indices for the corresponding values.
+            The indices. For a dense representation, this array is not used, and will return the default "empty" span.
+            For a sparse representation it is parallel to that returned from <see cref="M:Microsoft.ML.Data.VBuffer`1.GetValues" /> and specifies the
+            logical indices for the corresponding values, in increasing order, between 0 inclusive and
+            <see cref="F:Microsoft.ML.Data.VBuffer`1.Length" /> exclusive, corresponding to all explicitly defined values. All values at unspecified
+            indices should be treated as being implicitly defined with the default value of <typeparamref name="T" />.
             </summary>
         <returns>To be added.</returns>
         <remarks>
-            For example, if GetIndices() returns [3, 5] and GetValues() produces [98, 76], this VBuffer
-            stands for a vector with:
-             - non-zeros values 98 and 76 respectively at the 4th and 6th coordinates
-             - zeros at all other coordinates
+            To give one example, if <see cref="M:Microsoft.ML.Data.VBuffer`1.GetIndices" /> returns [3, 5] and <see cref="M:Microsoft.ML.Data.VBuffer`1.GetValues" />() produces [98, 76],
+            this <see cref="T:Microsoft.ML.Data.VBuffer`1" /> stands for a vector with non-zero values 98 and 76 respectively at the 4th and 6th
+            coordinates, and zeros at all other indices. (Zero, because that is the default value for all .NET numeric
+            types.)
             </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetItemOrDefault">
-      <MemberSignature Language="C#" Value="public T GetItemOrDefault (int slot);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance !T GetItemOrDefault(int32 slot) cil managed" />
+      <MemberSignature Language="C#" Value="public T GetItemOrDefault (int index);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance !T GetItemOrDefault(int32 index) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.VBuffer`1.GetItemOrDefault(System.Int32)" />
-      <MemberSignature Language="VB.NET" Value="Public Function GetItemOrDefault (slot As Integer) As T" />
-      <MemberSignature Language="F#" Value="member this.GetItemOrDefault : int -&gt; 'T" Usage="vBuffer.GetItemOrDefault slot" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetItemOrDefault (index As Integer) As T" />
+      <MemberSignature Language="F#" Value="member this.GetItemOrDefault : int -&gt; 'T" Usage="vBuffer.GetItemOrDefault index" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>T</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="slot" Type="System.Int32" />
+        <Parameter Name="index" Type="System.Int32" Index="0" FrameworkAlternate="ml-dotnet" />
       </Parameters>
       <Docs>
-        <param name="slot">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="index">The index, which must be a non-negative number less than <see cref="F:Microsoft.ML.Data.VBuffer`1.Length" />.</param>
+        <summary>
+            A variant of <see cref="M:Microsoft.ML.Data.VBuffer`1.GetItemOrDefault(System.Int32,`0@)" /> that returns the value instead of passing it
+            back using a reference parameter.
+            </summary>
+        <returns>The value stored at that index, or if this is a sparse vector where this is an implicit
+            entry, the default value for <typeparamref name="T" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetItemOrDefault">
-      <MemberSignature Language="C#" Value="public void GetItemOrDefault (int slot, ref T dst);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetItemOrDefault(int32 slot, !T&amp; dst) cil managed" />
+      <MemberSignature Language="C#" Value="public void GetItemOrDefault (int index, ref T destination);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetItemOrDefault(int32 index, !T&amp; destination) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.VBuffer`1.GetItemOrDefault(System.Int32,`0@)" />
-      <MemberSignature Language="VB.NET" Value="Public Sub GetItemOrDefault (slot As Integer, ByRef dst As T)" />
-      <MemberSignature Language="F#" Value="member this.GetItemOrDefault : int *  -&gt; unit" Usage="vBuffer.GetItemOrDefault (slot, dst)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub GetItemOrDefault (index As Integer, ByRef destination As T)" />
+      <MemberSignature Language="F#" Value="member this.GetItemOrDefault : int *  -&gt; unit" Usage="vBuffer.GetItemOrDefault (index, destination)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="slot" Type="System.Int32" />
-        <Parameter Name="dst" Type="T" RefType="ref" />
+        <Parameter Name="index" Type="System.Int32" Index="0" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="destination" Type="T" RefType="ref" Index="1" FrameworkAlternate="ml-dotnet" />
       </Parameters>
       <Docs>
-        <param name="slot">To be added.</param>
-        <param name="dst">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="index">The index, which must be a non-negative number less than <see cref="F:Microsoft.ML.Data.VBuffer`1.Length" />.</param>
+        <param name="destination">The value stored at that index, or if this is a sparse vector where this is an implicit
+             entry, the default value for <typeparamref name="T" />.</param>
+        <summary>
+             Gets the item stored in this structure. In the case of a dense vector this is a simple lookup.
+             In the case of a sparse vector, it will try to find the entry with that index, and set <paramref name="destination" />
+             to that stored value, or if no such value was found, assign it the default value.
+             </summary>
+        <remarks>
+             In the case where <see cref="P:Microsoft.ML.Data.VBuffer`1.IsDense" /> is <see langword="true" />, this will take constant time since it an
+             directly lookup. For sparse vectors, however, because it must perform a bisection search on the indices to
+             find the appropriate value, that takes logarithmic time with respect to the number of explicitly represented
+             items, which is to say, the <see cref="P:System.ReadOnlySpan`1.Length" /> of the return value of <see cref="M:Microsoft.ML.Data.VBuffer`1.GetIndices" />.
+            
+             For that reason, a single completely isolated lookup, since constructing <see cref="T:System.ReadOnlySpan`1" /> as
+             <see cref="M:Microsoft.ML.Data.VBuffer`1.GetValues" /> does is not a free operation, it may be more efficient to use this method. However
+             if one is doing a more involved computation involving many operations, it may be faster to utiltize
+             <see cref="M:Microsoft.ML.Data.VBuffer`1.GetValues" /> and, if appropriate, <see cref="M:Microsoft.ML.Data.VBuffer`1.GetIndices" /> directly.
+             </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetValues">
@@ -352,13 +466,19 @@
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.ReadOnlySpan&lt;T&gt;</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
         <summary>
-            The explicitly represented values.
+            The explicitly represented values. When this <see cref="P:Microsoft.ML.Data.VBuffer`1.IsDense" />, the <see cref="P:System.ReadOnlySpan`1.Length" />
+            of the returned value will equal <see cref="F:Microsoft.ML.Data.VBuffer`1.Length" />, and otherwise will have length less than
+            <see cref="F:Microsoft.ML.Data.VBuffer`1.Length" />.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -375,13 +495,16 @@
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
-            Gets a value indicating whether every logical element is explicitly
-            represented in the buffer.
+            Gets a value indicating whether every logical element is explicitly represented in the buffer.
             </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
@@ -398,6 +521,10 @@
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.IEnumerable&lt;System.Collections.Generic.KeyValuePair&lt;System.Int32,T&gt;&gt;</ReturnType>
       </ReturnValue>
@@ -405,9 +532,15 @@
         <Parameter Name="all" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="all">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="all">
+            If <see langword="true" /> all pairs, even those implicit values of a sparse representation,
+            will be returned, with the implicit values having the default value, as is appropriate. If left
+            <see langword="false" /> then only explicitly defined values are returned.
+            </param>
+        <summary>
+            Returns the joint list of all index/value pairs.
+            </summary>
+        <returns>The index/value pairs.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -422,6 +555,10 @@
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -429,7 +566,12 @@
         <summary>
             The logical length of the buffer.
             </summary>
-        <remarks>To be added.</remarks>
+        <remarks>
+            Note that if this vector <see cref="P:Microsoft.ML.Data.VBuffer`1.IsDense" />, then this will be the same as the <see cref="P:System.ReadOnlySpan`1.Length" />
+            as returned from <see cref="M:Microsoft.ML.Data.VBuffer`1.GetValues" />, since all values are explicitly represented in a dense representation. If
+            this is a sparse representation, then that <see cref="P:System.ReadOnlySpan`1.Length" /> will be somewhat shorter, as this
+            field contains the number of both explicit and implicit entries.
+            </remarks>
       </Docs>
     </Member>
     <Member MemberName="ToString">
@@ -441,6 +583,10 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>

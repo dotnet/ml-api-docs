@@ -1,9 +1,9 @@
 ﻿<Type Name="SgdBinaryTrainerBase&lt;TModel&gt;+OptionsBase" FullName="Microsoft.ML.Trainers.SgdBinaryTrainerBase&lt;TModel&gt;+OptionsBase">
-  <TypeSignature Language="C#" Value="public class SgdBinaryTrainerBase&lt;TModel&gt;.OptionsBase : Microsoft.ML.EntryPoints.LearnerInputBaseWithWeight where TModel : class" />
-  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi beforefieldinit SgdBinaryTrainerBase`1/OptionsBase&lt;class TModel&gt; extends Microsoft.ML.EntryPoints.LearnerInputBaseWithWeight" />
+  <TypeSignature Language="C#" Value="public class SgdBinaryTrainerBase&lt;TModel&gt;.OptionsBase : Microsoft.ML.Trainers.TrainerInputBaseWithWeight where TModel : class" />
+  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi beforefieldinit SgdBinaryTrainerBase`1/OptionsBase&lt;class TModel&gt; extends Microsoft.ML.Trainers.TrainerInputBaseWithWeight" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Trainers.SgdBinaryTrainerBase`1.OptionsBase" />
-  <TypeSignature Language="VB.NET" Value="Public Class SgdBinaryTrainerBase(Of TModel).OptionsBase&#xA;Inherits LearnerInputBaseWithWeight" />
-  <TypeSignature Language="F#" Value="type SgdBinaryTrainerBase&lt;'Model (requires 'Model : null)&gt;.OptionsBase = class&#xA;    inherit LearnerInputBaseWithWeight" />
+  <TypeSignature Language="VB.NET" Value="Public Class SgdBinaryTrainerBase(Of TModel).OptionsBase&#xA;Inherits TrainerInputBaseWithWeight" />
+  <TypeSignature Language="F#" Value="type SgdBinaryTrainerBase&lt;'Model (requires 'Model : null)&gt;.OptionsBase = class&#xA;    inherit TrainerInputBaseWithWeight" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -77,7 +77,7 @@
             Determines the frequency of checking for convergence in terms of number of iterations.
             </summary>
         <returns>
-            Default equals <see cref="F:Microsoft.ML.Trainers.SgdBinaryTrainerBase`1.OptionsBase.NumThreads" />."
+            Default equals <see cref="F:Microsoft.ML.Trainers.SgdBinaryTrainerBase`1.OptionsBase.NumberOfThreads" />."
             </returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -119,49 +119,20 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="InitLearningRate">
-      <MemberSignature Language="C#" Value="public double InitLearningRate;" />
-      <MemberSignature Language="ILAsm" Value=".field public float64 InitLearningRate" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.SgdBinaryTrainerBase`1.OptionsBase.InitLearningRate" />
-      <MemberSignature Language="VB.NET" Value="Public InitLearningRate As Double " />
-      <MemberSignature Language="F#" Value="val mutable InitLearningRate : double" Usage="Microsoft.ML.Trainers.SgdBinaryTrainerBase&lt;'Model (requires 'Model : null)&gt;.OptionsBase.InitLearningRate" />
+    <Member MemberName="L2Regularization">
+      <MemberSignature Language="C#" Value="public float L2Regularization;" />
+      <MemberSignature Language="ILAsm" Value=".field public float32 L2Regularization" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.SgdBinaryTrainerBase`1.OptionsBase.L2Regularization" />
+      <MemberSignature Language="VB.NET" Value="Public L2Regularization As Single " />
+      <MemberSignature Language="F#" Value="val mutable L2Regularization : single" Usage="Microsoft.ML.Trainers.SgdBinaryTrainerBase&lt;'Model (requires 'Model : null)&gt;.OptionsBase.L2Regularization" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Initial learning rate (only used by SGD)", ShortName="ilr,lr")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>Microsoft.ML.Internal.Internallearn.TGUI(Label="Initial Learning Rate (for SGD)")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Double</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>
-            The initial <a href="tmpurl_lr">learning rate</a> used by SGD.
-            </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="L2Weight">
-      <MemberSignature Language="C#" Value="public float L2Weight;" />
-      <MemberSignature Language="ILAsm" Value=".field public float32 L2Weight" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.SgdBinaryTrainerBase`1.OptionsBase.L2Weight" />
-      <MemberSignature Language="VB.NET" Value="Public L2Weight As Single " />
-      <MemberSignature Language="F#" Value="val mutable L2Weight : single" Usage="Microsoft.ML.Trainers.SgdBinaryTrainerBase&lt;'Model (requires 'Model : null)&gt;.OptionsBase.L2Weight" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="L2 Regularization constant", ShortName="l2", SortOrder=50)</AttributeName>
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="L2 Regularization constant", ShortName="l2, L2Weight", SortOrder=50)</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>Microsoft.ML.EntryPoints.TlcModule/SweepableDiscreteParam("L2Const", new System.Object[] { Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument }, false)</AttributeName>
@@ -180,20 +151,49 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="MaxIterations">
-      <MemberSignature Language="C#" Value="public int MaxIterations;" />
-      <MemberSignature Language="ILAsm" Value=".field public int32 MaxIterations" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.SgdBinaryTrainerBase`1.OptionsBase.MaxIterations" />
-      <MemberSignature Language="VB.NET" Value="Public MaxIterations As Integer " />
-      <MemberSignature Language="F#" Value="val mutable MaxIterations : int" Usage="Microsoft.ML.Trainers.SgdBinaryTrainerBase&lt;'Model (requires 'Model : null)&gt;.OptionsBase.MaxIterations" />
+    <Member MemberName="LearningRate">
+      <MemberSignature Language="C#" Value="public double LearningRate;" />
+      <MemberSignature Language="ILAsm" Value=".field public float64 LearningRate" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.SgdBinaryTrainerBase`1.OptionsBase.LearningRate" />
+      <MemberSignature Language="VB.NET" Value="Public LearningRate As Double " />
+      <MemberSignature Language="F#" Value="val mutable LearningRate : double" Usage="Microsoft.ML.Trainers.SgdBinaryTrainerBase&lt;'Model (requires 'Model : null)&gt;.OptionsBase.LearningRate" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Maximum number of iterations; set to 1 to simulate online learning.", ShortName="iter")</AttributeName>
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Initial learning rate (only used by SGD)", Name="InitialLearningRate", ShortName="ilr,lr,InitLearningRate")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Internal.Internallearn.TGUI(Label="Initial Learning Rate (for SGD)")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The initial <a href="tmpurl_lr">learning rate</a> used by SGD.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NumberOfIterations">
+      <MemberSignature Language="C#" Value="public int NumberOfIterations;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 NumberOfIterations" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.SgdBinaryTrainerBase`1.OptionsBase.NumberOfIterations" />
+      <MemberSignature Language="VB.NET" Value="Public NumberOfIterations As Integer " />
+      <MemberSignature Language="F#" Value="val mutable NumberOfIterations : int" Usage="Microsoft.ML.Trainers.SgdBinaryTrainerBase&lt;'Model (requires 'Model : null)&gt;.OptionsBase.NumberOfIterations" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Maximum number of iterations; set to 1 to simulate online learning.", ShortName="iter, MaxIterations")</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>Microsoft.ML.EntryPoints.TlcModule/SweepableDiscreteParam("MaxIterations", new System.Object[] { Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument }, false)</AttributeName>
@@ -215,20 +215,20 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NumThreads">
-      <MemberSignature Language="C#" Value="public Nullable&lt;int&gt; NumThreads;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype System.Nullable`1&lt;int32&gt; NumThreads" />
-      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.SgdBinaryTrainerBase`1.OptionsBase.NumThreads" />
-      <MemberSignature Language="VB.NET" Value="Public NumThreads As Nullable(Of Integer) " />
-      <MemberSignature Language="F#" Value="val mutable NumThreads : Nullable&lt;int&gt;" Usage="Microsoft.ML.Trainers.SgdBinaryTrainerBase&lt;'Model (requires 'Model : null)&gt;.OptionsBase.NumThreads" />
+    <Member MemberName="NumberOfThreads">
+      <MemberSignature Language="C#" Value="public Nullable&lt;int&gt; NumberOfThreads;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype System.Nullable`1&lt;int32&gt; NumberOfThreads" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.SgdBinaryTrainerBase`1.OptionsBase.NumberOfThreads" />
+      <MemberSignature Language="VB.NET" Value="Public NumberOfThreads As Nullable(Of Integer) " />
+      <MemberSignature Language="F#" Value="val mutable NumberOfThreads : Nullable&lt;int&gt;" Usage="Microsoft.ML.Trainers.SgdBinaryTrainerBase&lt;'Model (requires 'Model : null)&gt;.OptionsBase.NumberOfThreads" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.StandardLearners</AssemblyName>
+        <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Degree of lock-free parallelism. Defaults to automatic depending on data sparseness. Determinism not guaranteed.", ShortName="nt,t,threads", SortOrder=50)</AttributeName>
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Degree of lock-free parallelism. Defaults to automatic depending on data sparseness. Determinism not guaranteed.", ShortName="nt,t,threads, NumThreads", SortOrder=50)</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>Microsoft.ML.Internal.Internallearn.TGUI(Label="Number of threads", SuggestedSweeps="1,2,4")</AttributeName>
