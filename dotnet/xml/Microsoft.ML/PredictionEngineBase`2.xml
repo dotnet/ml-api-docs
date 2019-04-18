@@ -1,0 +1,144 @@
+﻿<Type Name="PredictionEngineBase&lt;TSrc,TDst&gt;" FullName="Microsoft.ML.PredictionEngineBase&lt;TSrc,TDst&gt;">
+  <TypeSignature Language="C#" Value="public abstract class PredictionEngineBase&lt;TSrc,TDst&gt; : IDisposable where TSrc : class where TDst : class, new()" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit PredictionEngineBase`2&lt;class TSrc, class .ctor TDst&gt; extends System.Object implements class System.IDisposable" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.PredictionEngineBase`2" />
+  <TypeSignature Language="VB.NET" Value="Public MustInherit Class PredictionEngineBase(Of TSrc, TDst)&#xA;Implements IDisposable" />
+  <TypeSignature Language="F#" Value="type PredictionEngineBase&lt;'Src, 'Dst (requires 'Src : null and 'Dst : null and 'Dst : (new : unit -&gt; 'Dst))&gt; = class&#xA;    interface IDisposable" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Data</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <TypeParameters>
+    <TypeParameter Name="TSrc">
+      <Constraints>
+        <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
+      </Constraints>
+    </TypeParameter>
+    <TypeParameter Name="TDst">
+      <Constraints>
+        <ParameterAttribute>DefaultConstructorConstraint</ParameterAttribute>
+        <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
+      </Constraints>
+    </TypeParameter>
+  </TypeParameters>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.IDisposable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <typeparam name="TSrc">The user-defined type that holds the example.</typeparam>
+    <typeparam name="TDst">The user-defined type that holds the prediction.</typeparam>
+    <summary>
+            A class that runs the previously trained model (and the preceding transform pipeline) on the
+            in-memory data, one example at a time.
+            This can also be used with trained pipelines that do not end with a predictor: in this case, the
+            'prediction' will be just the outcome of all the transformations.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Dispose">
+      <MemberSignature Language="C#" Value="public void Dispose ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Dispose() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.PredictionEngineBase`2.Dispose" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Dispose ()" />
+      <MemberSignature Language="F#" Value="abstract member Dispose : unit -&gt; unit&#xA;override this.Dispose : unit -&gt; unit" Usage="predictionEngineBase.Dispose " />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:System.IDisposable.Dispose</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OutputSchema">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.DataViewSchema OutputSchema { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.DataViewSchema OutputSchema" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.PredictionEngineBase`2.OutputSchema" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property OutputSchema As DataViewSchema" />
+      <MemberSignature Language="F#" Value="member this.OutputSchema : Microsoft.ML.DataViewSchema" Usage="Microsoft.ML.PredictionEngineBase&lt;'Src, 'Dst (requires 'Src : null and 'Dst : null and 'Dst : (new : unit -&gt; 'Dst))&gt;.OutputSchema" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.DataViewSchema</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Provides output schema.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Predict">
+      <MemberSignature Language="C#" Value="public TDst Predict (TSrc example);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance !TDst Predict(!TSrc example) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.PredictionEngineBase`2.Predict(`0)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Predict (example As TSrc) As TDst" />
+      <MemberSignature Language="F#" Value="member this.Predict : 'Src -&gt; 'Dst" Usage="predictionEngineBase.Predict example" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>TDst</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="example" Type="TSrc" />
+      </Parameters>
+      <Docs>
+        <param name="example">The example to run on.</param>
+        <summary>
+            Run prediction pipeline on one example.
+            </summary>
+        <returns>The result of prediction. A new object is created for every call.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Predict">
+      <MemberSignature Language="C#" Value="public abstract void Predict (TSrc example, ref TDst prediction);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Predict(!TSrc example, !TDst&amp; prediction) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.PredictionEngineBase`2.Predict(`0,`1@)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Sub Predict (example As TSrc, ByRef prediction As TDst)" />
+      <MemberSignature Language="F#" Value="abstract member Predict : 'Src *  -&gt; unit" Usage="predictionEngineBase.Predict (example, prediction)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="example" Type="TSrc" />
+        <Parameter Name="prediction" Type="TDst" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="example">The example to run on.</param>
+        <param name="prediction">The object to store the prediction in. If it's <c>null</c>, a new one will be created, otherwise the old one
+            is reused.</param>
+        <summary>
+            Run prediction pipeline on one example.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

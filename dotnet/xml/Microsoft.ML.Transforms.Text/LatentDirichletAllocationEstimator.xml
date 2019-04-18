@@ -1,0 +1,98 @@
+﻿<Type Name="LatentDirichletAllocationEstimator" FullName="Microsoft.ML.Transforms.Text.LatentDirichletAllocationEstimator">
+  <TypeSignature Language="C#" Value="public sealed class LatentDirichletAllocationEstimator : Microsoft.ML.IEstimator&lt;Microsoft.ML.Transforms.Text.LatentDirichletAllocationTransformer&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit LatentDirichletAllocationEstimator extends System.Object implements class Microsoft.ML.IEstimator`1&lt;class Microsoft.ML.Transforms.Text.LatentDirichletAllocationTransformer&gt;" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Transforms.Text.LatentDirichletAllocationEstimator" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class LatentDirichletAllocationEstimator&#xA;Implements IEstimator(Of LatentDirichletAllocationTransformer)" />
+  <TypeSignature Language="F#" Value="type LatentDirichletAllocationEstimator = class&#xA;    interface IEstimator&lt;LatentDirichletAllocationTransformer&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.IEstimator&lt;Microsoft.ML.Transforms.Text.LatentDirichletAllocationTransformer&gt;</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+        The LDA transform implements LightLDA, a state-of-the-art implementation of Latent Dirichlet Allocation.
+      </summary>
+    <remarks>
+        Latent Dirichlet Allocation is a well-known topic modeling algorithm that infers topical structure from text data,
+        and can be used to featurize any text fields as low-dimensional topical vectors. 
+        <para>LightLDA is an extremely efficient implementation of LDA developed in MSR-Asia that incorporates a number of 
+         optimization techniques. See <a href="https://arxiv.org/abs/1412.1576">LightLDA: Big Topic Models on Modest Compute Clusters</a>.
+        </para><para>
+          With the LDA transform, ML.NET users can train a topic model to produce 1 million topics with 1 million vocabulary
+          on a 1-billion-token document set one a single machine in a few hours (typically, LDA at this scale takes days and requires large clusters).
+          The most significant innovation is a super-efficient O(1) <a href="https://en.wikipedia.org/wiki/Metropolis–Hastings_algorithm">Metropolis-Hastings sampling algorithm</a>,
+          whose running cost is (surprisingly) agnostic of model size,
+          allowing it to converges nearly an order of magnitude faster than other <a href="https://en.wikipedia.org/wiki/Gibbs_sampling">Gibbs samplers.</a></para><para>
+          For more details please see original LightLDA paper, and its open source implementation. 
+          <list type="bullet"><item><description><a href="https://arxiv.org/abs/1412.1576"> LightLDA: Big Topic Models on Modest Computer Clusters</a></description></item><item><description><a href=" https://github.com/Microsoft/LightLDA">LightLDA </a></description></item></list></para></remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Fit">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Transforms.Text.LatentDirichletAllocationTransformer Fit (Microsoft.ML.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Transforms.Text.LatentDirichletAllocationTransformer Fit(class Microsoft.ML.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Text.LatentDirichletAllocationEstimator.Fit(Microsoft.ML.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Fit (input As IDataView) As LatentDirichletAllocationTransformer" />
+      <MemberSignature Language="F#" Value="abstract member Fit : Microsoft.ML.IDataView -&gt; Microsoft.ML.Transforms.Text.LatentDirichletAllocationTransformer&#xA;override this.Fit : Microsoft.ML.IDataView -&gt; Microsoft.ML.Transforms.Text.LatentDirichletAllocationTransformer" Usage="latentDirichletAllocationEstimator.Fit input" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.IEstimator`1.Fit(Microsoft.ML.IDataView)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Transforms.Text.LatentDirichletAllocationTransformer</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="input">To be added.</param>
+        <summary>
+            Trains and returns a <see cref="T:Microsoft.ML.Transforms.Text.LatentDirichletAllocationTransformer" />.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetOutputSchema">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.SchemaShape GetOutputSchema (Microsoft.ML.SchemaShape inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.SchemaShape GetOutputSchema(class Microsoft.ML.SchemaShape inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.Text.LatentDirichletAllocationEstimator.GetOutputSchema(Microsoft.ML.SchemaShape)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetOutputSchema (inputSchema As SchemaShape) As SchemaShape" />
+      <MemberSignature Language="F#" Value="abstract member GetOutputSchema : Microsoft.ML.SchemaShape -&gt; Microsoft.ML.SchemaShape&#xA;override this.GetOutputSchema : Microsoft.ML.SchemaShape -&gt; Microsoft.ML.SchemaShape" Usage="latentDirichletAllocationEstimator.GetOutputSchema inputSchema" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.IEstimator`1.GetOutputSchema(Microsoft.ML.SchemaShape)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.SchemaShape</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.SchemaShape" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
+        <summary>
+            Returns the <see cref="T:Microsoft.ML.SchemaShape" /> of the schema which will be produced by the transformer.
+            Used for schema propagation and verification in a pipeline.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
