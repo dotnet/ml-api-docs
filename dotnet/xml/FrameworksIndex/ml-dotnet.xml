@@ -9,6 +9,7 @@
     <Assembly Name="Microsoft.ML.ImageAnalytics" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.KMeansClustering" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.LightGbm" Version="1.0.0.0" />
+    <Assembly Name="Microsoft.ML.Mkl.Components" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.OnnxConverter" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.OnnxTransformer" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.PCA" Version="1.0.0.0" />
@@ -266,6 +267,13 @@
     <Type Name="Microsoft.ML.LoggingEventArgs" Id="T:Microsoft.ML.LoggingEventArgs">
       <Member Id="M:Microsoft.ML.LoggingEventArgs.#ctor(System.String)" />
       <Member Id="P:Microsoft.ML.LoggingEventArgs.Message" />
+    </Type>
+    <Type Name="Microsoft.ML.MklComponentsCatalog" Id="T:Microsoft.ML.MklComponentsCatalog">
+      <Member Id="M:Microsoft.ML.MklComponentsCatalog.Ols(Microsoft.ML.RegressionCatalog.RegressionTrainers,Microsoft.ML.Trainers.OlsTrainer.Options)" />
+      <Member Id="M:Microsoft.ML.MklComponentsCatalog.Ols(Microsoft.ML.RegressionCatalog.RegressionTrainers,System.String,System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.MklComponentsCatalog.SymbolicSgdLogisticRegression(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Options)" />
+      <Member Id="M:Microsoft.ML.MklComponentsCatalog.SymbolicSgdLogisticRegression(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,System.String,System.String,System.Int32)" />
+      <Member Id="M:Microsoft.ML.MklComponentsCatalog.VectorWhiten(Microsoft.ML.TransformsCatalog,System.String,System.String,Microsoft.ML.Transforms.WhiteningKind,System.Single,System.Int32,System.Int32)" />
     </Type>
     <Type Name="Microsoft.ML.MLContext" Id="T:Microsoft.ML.MLContext">
       <Member Id="E:Microsoft.ML.MLContext.Log" />
@@ -1125,6 +1133,10 @@
       <Member Id="M:Microsoft.ML.Trainers.ComputeLogisticRegressionStandardDeviation.#ctor" />
       <Member Id="M:Microsoft.ML.Trainers.ComputeLogisticRegressionStandardDeviation.ComputeStandardDeviation(System.Double[],System.Int32[],System.Int32,System.Int32,Microsoft.ML.Runtime.IChannel,System.Single)" />
     </Type>
+    <Type Name="Microsoft.ML.Trainers.ComputeLRTrainingStdThroughMkl" Id="T:Microsoft.ML.Trainers.ComputeLRTrainingStdThroughMkl">
+      <Member Id="M:Microsoft.ML.Trainers.ComputeLRTrainingStdThroughMkl.#ctor" />
+      <Member Id="M:Microsoft.ML.Trainers.ComputeLRTrainingStdThroughMkl.ComputeStandardDeviation(System.Double[],System.Int32[],System.Int32,System.Int32,Microsoft.ML.Runtime.IChannel,System.Single)" />
+    </Type>
     <Type Name="Microsoft.ML.Trainers.ExpLoss" Id="T:Microsoft.ML.Trainers.ExpLoss">
       <Member Id="M:Microsoft.ML.Trainers.ExpLoss.#ctor(System.Single)" />
       <Member Id="M:Microsoft.ML.Trainers.ExpLoss.Derivative(System.Single,System.Single)" />
@@ -1334,6 +1346,22 @@
     <Type Name="Microsoft.ML.Trainers.NaiveBayesMulticlassTrainer" Id="T:Microsoft.ML.Trainers.NaiveBayesMulticlassTrainer">
       <Member Id="P:Microsoft.ML.Trainers.NaiveBayesMulticlassTrainer.Info" />
     </Type>
+    <Type Name="Microsoft.ML.Trainers.OlsModelParameters" Id="T:Microsoft.ML.Trainers.OlsModelParameters">
+      <Member Id="F:Microsoft.ML.Trainers.OlsModelParameters.RSquared" />
+      <Member Id="F:Microsoft.ML.Trainers.OlsModelParameters.RSquaredAdjusted" />
+      <Member Id="P:Microsoft.ML.Trainers.OlsModelParameters.HasStatistics" />
+      <Member Id="P:Microsoft.ML.Trainers.OlsModelParameters.PValues" />
+      <Member Id="P:Microsoft.ML.Trainers.OlsModelParameters.StandardErrors" />
+      <Member Id="P:Microsoft.ML.Trainers.OlsModelParameters.TValues" />
+    </Type>
+    <Type Name="Microsoft.ML.Trainers.OlsTrainer" Id="T:Microsoft.ML.Trainers.OlsTrainer">
+      <Member Id="P:Microsoft.ML.Trainers.OlsTrainer.Info" />
+    </Type>
+    <Type Name="Microsoft.ML.Trainers.OlsTrainer/Options" Id="T:Microsoft.ML.Trainers.OlsTrainer.Options">
+      <Member Id="F:Microsoft.ML.Trainers.OlsTrainer.Options.CalculateStatistics" />
+      <Member Id="F:Microsoft.ML.Trainers.OlsTrainer.Options.L2Regularization" />
+      <Member Id="M:Microsoft.ML.Trainers.OlsTrainer.Options.#ctor" />
+    </Type>
     <Type Name="Microsoft.ML.Trainers.OneVersusAllModelParameters" Id="T:Microsoft.ML.Trainers.OneVersusAllModelParameters" />
     <Type Name="Microsoft.ML.Trainers.OneVersusAllTrainer" Id="T:Microsoft.ML.Trainers.OneVersusAllTrainer">
       <Member Id="M:Microsoft.ML.Trainers.OneVersusAllTrainer.Fit(Microsoft.ML.IDataView)" />
@@ -1472,6 +1500,22 @@
     <Type Name="Microsoft.ML.Trainers.StochasticTrainerBase`2" Id="T:Microsoft.ML.Trainers.StochasticTrainerBase`2">
       <Member Id="M:Microsoft.ML.Trainers.StochasticTrainerBase`2.#ctor(Microsoft.ML.Runtime.IHost,Microsoft.ML.SchemaShape.Column,Microsoft.ML.SchemaShape.Column,Microsoft.ML.SchemaShape.Column)" />
       <Member Id="P:Microsoft.ML.Trainers.StochasticTrainerBase`2.Info" />
+    </Type>
+    <Type Name="Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer" Id="T:Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer">
+      <Member Id="M:Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Fit(Microsoft.ML.IDataView,Microsoft.ML.Trainers.LinearModelParameters)" />
+      <Member Id="P:Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Info" />
+    </Type>
+    <Type Name="Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer/Options" Id="T:Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Options">
+      <Member Id="F:Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Options.L2Regularization" />
+      <Member Id="F:Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Options.LearningRate" />
+      <Member Id="F:Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Options.MemorySize" />
+      <Member Id="F:Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Options.NumberOfIterations" />
+      <Member Id="F:Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Options.NumberOfThreads" />
+      <Member Id="F:Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Options.PositiveInstanceWeight" />
+      <Member Id="F:Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Options.Shuffle" />
+      <Member Id="F:Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Options.Tolerance" />
+      <Member Id="F:Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Options.UpdateFrequency" />
+      <Member Id="M:Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Options.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Trainers.TrainerEstimatorBase`2" Id="T:Microsoft.ML.Trainers.TrainerEstimatorBase`2">
       <Member Id="F:Microsoft.ML.Trainers.TrainerEstimatorBase`2.FeatureColumn" />
@@ -2082,6 +2126,15 @@
       <Member Id="F:Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality.ByValue" />
     </Type>
     <Type Name="Microsoft.ML.Transforms.ValueToKeyMappingTransformer" Id="T:Microsoft.ML.Transforms.ValueToKeyMappingTransformer" />
+    <Type Name="Microsoft.ML.Transforms.VectorWhiteningEstimator" Id="T:Microsoft.ML.Transforms.VectorWhiteningEstimator">
+      <Member Id="M:Microsoft.ML.Transforms.VectorWhiteningEstimator.Fit(Microsoft.ML.IDataView)" />
+      <Member Id="M:Microsoft.ML.Transforms.VectorWhiteningEstimator.GetOutputSchema(Microsoft.ML.SchemaShape)" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.VectorWhiteningTransformer" Id="T:Microsoft.ML.Transforms.VectorWhiteningTransformer" />
+    <Type Name="Microsoft.ML.Transforms.WhiteningKind" Id="T:Microsoft.ML.Transforms.WhiteningKind">
+      <Member Id="F:Microsoft.ML.Transforms.WhiteningKind.PrincipalComponentAnalysis" />
+      <Member Id="F:Microsoft.ML.Transforms.WhiteningKind.ZeroPhaseComponentAnalysis" />
+    </Type>
   </Namespace>
   <Namespace Name="Microsoft.ML.Transforms.Image">
     <Type Name="Microsoft.ML.Transforms.Image.ImageDataViewType" Id="T:Microsoft.ML.Transforms.Image.ImageDataViewType">
