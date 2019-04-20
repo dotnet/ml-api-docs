@@ -17,25 +17,39 @@
   <Interfaces />
   <Docs>
     <summary>
-            The <see cref="T:Microsoft.ML.IEstimator`1" /> for training a maximum entropy classification model using the stochastic dual coordinate ascent method.
-            The trained model <see cref="T:Microsoft.ML.Trainers.MaximumEntropyModelParameters" /> produces probabilities of classes.
-            </summary>
+             The <see cref="T:Microsoft.ML.IEstimator`1" /> to predict a target using a maximum entropy multiclass classifier.
+             The trained model <see cref="T:Microsoft.ML.Trainers.MaximumEntropyModelParameters" /> produces probabilities of classes.
+             </summary>
     <remarks>
-        This trainer is based on the Stochastic Dual Coordinate Ascent (SDCA) method, a state-of-the-art optimization technique for convex objective functions.
-        The algorithm can be scaled for use on large out-of-memory data sets due to a semi-asynchronized implementation that supports multi-threading.
-        <para>
-          Convergence is underwritten by periodically enforcing synchronization between primal and dual updates in a separate thread.
-          Several choices of loss functions are also provided.
-          The SDCA method combines several of the best properties and capabilities of logistic regression and SVM algorithms.
-        </para><para>
-          Note that SDCA is a stochastic and streaming optimization algorithm.
-          The results depends on the order of the training data. For reproducible results, it is recommended that one sets 'Shuffle' to
-          False and 'NumThreads' to 1.
-          Elastic net regularization can be specified by the 'L2Const' and 'L1Threshold' parameters. Note that the 'L2Const' has an effect on the rate of convergence.
-          In general, the larger the 'L2Const', the faster SDCA converges.
-        </para><para>For more information, see:</para><list type="bullet"><item><description><a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/06/main-3.pdf">Scaling Up Stochastic Dual Coordinate Ascent</a>.
-          </description></item><item><description><a href="http://www.jmlr.org/papers/volume14/shalev-shwartz13a/shalev-shwartz13a.pdf">Stochastic Dual Coordinate Ascent Methods for Regularized Loss Minimization</a>.
-          </description></item></list></remarks>
+      <format type="text/markdown"><![CDATA[
+             To create this trainer, use [SdcaMaximumEntropy](xref:Microsoft.ML.StandardTrainersCatalog.SdcaMaximumEntropy(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,System.String,System.String,System.String,System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Int32})) or
+             [SdcaMaximumEntropy(Options)](xref:Microsoft.ML.StandardTrainersCatalog.SdcaMaximumEntropy(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,Microsoft.ML.Trainers.SdcaMaximumEntropyMulticlassTrainer.Options)).
+            
+             [!include[io](~/../docs/samples/docs/api-reference/io-columns-multiclass-classification.md)]
+            
+             ### Trainer Characteristics
+             |  |  |
+             | -- | -- |
+             | Machine learning task | Multiclass classification |
+             | Is normalization required? | Yes |
+             | Is caching required? | No |
+             | Required NuGet in addition to Microsoft.ML | None |
+            
+             ### Scoring Function
+             This trains a linear model to solve multiclass classification problems.
+             Assume that the number of classes is $m$ and number of features is $n$.
+             It assigns the $c$-th class a coefficient vector $\boldsymbol{w}_c \in {\mathbb R}^n$ and a bias $b_c \in {\mathbb R}$, for $c=1,\dots,m$.
+             Given a feature vector $\boldsymbol{x} \in {\mathbb R}^n$, the $c$-th class's score would be $\tilde{P}(c|\boldsymbol{x}) = \frac{ e^{\hat{y}^c} }{ \sum_{c' = 1}^m e^{\hat{y}^{c'}} }$, where $\hat{y}^c = \boldsymbol{w}_c^T \boldsymbol{x} + b_c$.
+             Note that $\tilde{P}(c|\boldsymbol{x})$ is the probability of observing class $c$ when the feature vector is $\boldsymbol{x}$.
+            
+             ### Training Algorithm Details
+             See the documentation of [SdcaMulticlassTrainerBase](xref:Microsoft.ML.Trainers.SdcaMulticlassTrainerBase).
+            
+             ]]></format>
+    </remarks>
+    <altmember cref="M:Microsoft.ML.StandardTrainersCatalog.SdcaMaximumEntropy(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,Microsoft.ML.Trainers.SdcaMaximumEntropyMulticlassTrainer.Options)" />
+    <altmember cref="M:Microsoft.ML.StandardTrainersCatalog.SdcaMaximumEntropy(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,System.String,System.String,System.String,System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Int32})" />
+    <altmember cref="T:Microsoft.ML.Trainers.SdcaMaximumEntropyMulticlassTrainer.Options" />
   </Docs>
   <Members />
 </Type>

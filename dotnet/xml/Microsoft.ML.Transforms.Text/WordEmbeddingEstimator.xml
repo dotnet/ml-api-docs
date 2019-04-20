@@ -18,35 +18,37 @@
   </Interfaces>
   <Docs>
     <summary>
-        Word Embeddings transform is a text featurizer which converts vectors of text tokens into sentence vectors using a pre-trained model.
-      </summary>
+             Text featurizer which converts vectors of text tokens into a numerical vector using a pre-trained embeddings model.
+             </summary>
     <remarks>
-      <para>WordEmbeddings wrap different embedding models, such as GloVe. Users can specify which embedding to use. 
-        The available options are various versions of <a href="https://nlp.stanford.edu/projects/glove/">GloVe Models</a>, <a href="https://en.wikipedia.org/wiki/FastText">fastText</a>, and <a href="https://anthology.aclweb.org/P/P14/P14-1146.pdf">SSWE</a>.
-        </para>
-      <para>Note: As WordEmbedding requires a column with text vector, for example, 'this', 'is', 'good', users need to create an input column by
-          using the output_tokens=True for TextTransform to convert a column with sentences like 'This is good' into 'this', 'is', 'good'.
-          The suffix of '_TransformedText' is added to the original column name to create the output token column. For instance if the input column is 'body',
-          the output tokens column is named 'body_TransformedText'.</para>
-      <para>
-          WordEmbedding produces an output column of floats with size of 3 * dimensionality of model. For example if you use GloVe50D, which itself is 50 dimensional, we will produce 150 features.
-          First 1/3rd of slots would contain minimum values of encountered embeddings, second 1/3rd will contain average values of encountered embeddings
-          and last 1/3rd of slots would contain maximum values of encountered embeddings. The min/max provides a bounding hyper-rectangle for the words in the word embedding space.
-          This can assist for longer phrases where the average of many words drowns out the useful signal and your label is reasonably correlated with a dimension of the embedding space.
-        </para>
-      <para>
-          License attributes for pretrained models:
-          <list type="bullet"><item><description>
-                "fastText Wikipedia 300D" by Facebook, Inc. is licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA 3.0</a> based on:
-                P. Bojanowski*, E. Grave*, A. Joulin, T. Mikolov,<a href="https://arxiv.org/abs/1607.04606">Enriching Word Vectors with Subword Information</a>
-                More information can be found <a href="https://github.com/facebookresearch/fastText/blob/master/pretrained-vectors.md">here</a>.
-              </description></item><item><description>
-                GloVe models by Stanford University, or (Jeffrey Pennington, Richard Socher, and Christopher D. Manning. 2014. 
-                <a href="https://nlp.stanford.edu/pubs/glove.pdf">GloVe: Global Vectors for Word Representation</a>) is licensed under <a href="https://opendatacommons.org/licenses/pddl/1.0/">PDDL</a>.
-                More information can be found <a href="https://nlp.stanford.edu/projects/glove/">here</a>. 
-                Repository can be found <a href="https://github.com/stanfordnlp/GloVe">here</a>.
-              </description></item></list></para>
+      <format type="text/markdown"><![CDATA[
+            
+             ###  Estimator Characteristics
+             |  |  |
+             | -- | -- |
+             | Does this estimator need to look at the data to train its parameters? | No |
+             | Input column data type | Vector of [Text](xref:Microsoft.ML.Data.TextDataViewType)  |
+             | Output column data type | Known-sized vector of <xref:System.Single> |
+            
+             The <xref:Microsoft.ML.Transforms.Text.WordEmbeddingTransformer> produces a new column,
+             named as specified in the output column name parameters, where each input vector is mapped to a numerical vector
+             with size of 3 * dimensionality of the embedding model used. Notice that this is independent of the size of the input vector.
+            
+             For example, when using GloVe50D, which itself is 50 dimensional, the output column is a vector of size 150.
+             The first third of slots contains the minimum values across the embeddings corresponding to each string in the input vector.
+             The second third contains the average of the embeddings. The last third of slots contains maximum values
+             of the encountered embeddings. The min/max provides a bounding hyper-rectangle for the words in the word embedding space.
+             This can assist for longer phrases where the average of many words drowns out the useful signal.
+            
+             The user can specify a custom pre-trained embeddings model or one of the available pre-trained models.
+             The available options are various versions of [GloVe Models](https://nlp.stanford.edu/projects/glove/),
+             [FastText](https://en.wikipedia.org/wiki/FastText), and [SSWE](https://anthology.aclweb.org/P/P14/P14-1146.pdf).
+            
+             See the See Also section for links to examples of the usage.
+             ]]></format>
     </remarks>
+    <altmember cref="M:Microsoft.ML.TextCatalog.ApplyWordEmbedding(Microsoft.ML.TransformsCatalog.TextTransforms,System.String,System.String,Microsoft.ML.Transforms.Text.WordEmbeddingEstimator.PretrainedModelKind)" />
+    <altmember cref="M:Microsoft.ML.TextCatalog.ApplyWordEmbedding(Microsoft.ML.TransformsCatalog.TextTransforms,System.String,System.String,System.String)" />
   </Docs>
   <Members>
     <Member MemberName="Fit">

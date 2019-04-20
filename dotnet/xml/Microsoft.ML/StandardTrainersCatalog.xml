@@ -120,7 +120,7 @@
         <param name="catalog">The binary classification catalog trainer object.</param>
         <param name="options">Advanced arguments to the algorithm.</param>
         <summary>
-             Predict a target using a linear binary classification model trained with the <see cref="T:Microsoft.ML.Trainers.LbfgsLogisticRegressionBinaryTrainer" /> trainer.
+            Create <see cref="T:Microsoft.ML.Trainers.LbfgsLogisticRegressionBinaryTrainer" /> with advanced options, which predicts a target using a linear binary classification model trained over boolean label data.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -158,8 +158,8 @@
       </Parameters>
       <Docs>
         <param name="catalog">The binary classification catalog trainer object.</param>
-        <param name="labelColumnName">The name of the label column.</param>
-        <param name="featureColumnName">The name of the feature column.</param>
+        <param name="labelColumnName">The name of the label column. The column data must be <see cref="T:System.Boolean" />.</param>
+        <param name="featureColumnName">The name of the feature column. The column data must be a known-sized vector of <see cref="T:System.Single" />.</param>
         <param name="exampleWeightColumnName">The name of the example weight column (optional).</param>
         <param name="l1Regularization">The L1 <a href="https://en.wikipedia.org/wiki/Regularization_(mathematics)">regularization</a> hyperparameter. Higher values will tend to lead to more sparse model.</param>
         <param name="l2Regularization">The L2 weight for <a href="https://en.wikipedia.org/wiki/Regularization_(mathematics)">regularization</a>.</param>
@@ -167,7 +167,7 @@
         <param name="historySize">Memory size for <see cref="T:Microsoft.ML.Trainers.LbfgsLogisticRegressionBinaryTrainer" />. Low=faster, less accurate.</param>
         <param name="enforceNonNegativity">Enforce non-negative weights.</param>
         <summary>
-             Predict a target using a linear binary classification model trained with the <see cref="T:Microsoft.ML.Trainers.LbfgsLogisticRegressionBinaryTrainer" /> trainer.
+             Create <see cref="T:Microsoft.ML.Trainers.LbfgsLogisticRegressionBinaryTrainer" />, which predicts a target using a linear binary classification model trained over boolean label data.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -199,7 +199,7 @@
         <param name="catalog">The <see cref="T:Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers" />.</param>
         <param name="options">Advanced arguments to the algorithm.</param>
         <summary>
-            Predict a target using a maximum entropy classification model trained with the L-BFGS method implemented in <see cref="T:Microsoft.ML.Trainers.LbfgsMaximumEntropyMulticlassTrainer" />.
+            Create <see cref="T:Microsoft.ML.Trainers.LbfgsMaximumEntropyMulticlassTrainer" /> with advanced options, which predicts a target using a maximum entropy classification model trained with the L-BFGS method.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -237,8 +237,8 @@
       </Parameters>
       <Docs>
         <param name="catalog">The <see cref="T:Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers" />.</param>
-        <param name="labelColumnName">The name of the label column.</param>
-        <param name="featureColumnName">The name of the feature column.</param>
+        <param name="labelColumnName">The name of the label column. The column data must be <see cref="T:Microsoft.ML.Data.KeyDataViewType" />.</param>
+        <param name="featureColumnName">The name of the feature column. The column data must be a known-sized vector of <see cref="T:System.Single" />.</param>
         <param name="exampleWeightColumnName">The name of the example weight column (optional).</param>
         <param name="l1Regularization">The L1 <a href="https://en.wikipedia.org/wiki/Regularization_(mathematics)">regularization</a> hyperparameter. Higher values will tend to lead to more sparse model.</param>
         <param name="l2Regularization">The L2 weight for <a href="https://en.wikipedia.org/wiki/Regularization_(mathematics)">regularization</a>.</param>
@@ -246,7 +246,7 @@
         <param name="historySize">Memory size for <see cref="T:Microsoft.ML.Trainers.LbfgsMaximumEntropyMulticlassTrainer" />. Low=faster, less accurate.</param>
         <param name="enforceNonNegativity">Enforce non-negative weights.</param>
         <summary>
-            Predict a target using a maximum entropy classification model trained with the L-BFGS method implemented in <see cref="T:Microsoft.ML.Trainers.LbfgsMaximumEntropyMulticlassTrainer" />.
+            Create <see cref="T:Microsoft.ML.Trainers.LbfgsMaximumEntropyMulticlassTrainer" />, which predicts a target using a maximum entropy classification model trained with the L-BFGS method.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -354,10 +354,11 @@
         <Parameter Name="options" Type="Microsoft.ML.Trainers.LinearSvmTrainer+Options" />
       </Parameters>
       <Docs>
-        <param name="catalog">The <see cref="T:Microsoft.ML.BinaryClassificationCatalog" />.</param>
-        <param name="options">Advanced arguments to the algorithm.</param>
+        <param name="catalog">The binary classification catalog trainer object.</param>
+        <param name="options">Trainer options.</param>
         <summary>
-            Predict a target using a linear binary classification model trained with the <see cref="T:Microsoft.ML.Trainers.LinearSvmTrainer" /> trainer.
+            Create a <see cref="T:Microsoft.ML.Trainers.LinearSvmTrainer" /> with advanced options, which predicts a target using a linear binary classification model
+            trained over boolean label data.
             </summary>
         <returns>To be added.</returns>
         <remarks>
@@ -395,13 +396,14 @@
         <Parameter Name="numberOfIterations" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="catalog">The <see cref="T:Microsoft.ML.BinaryClassificationCatalog" />.</param>
-        <param name="labelColumnName">The name of the label column. </param>
-        <param name="featureColumnName">The name of the feature column.</param>
+        <param name="catalog">The binary classification catalog trainer object.</param>
+        <param name="labelColumnName">The name of the label column. The column data must be <see cref="T:System.Boolean" />.</param>
+        <param name="featureColumnName">The name of the feature column. The column data must be a known-sized vector of <see cref="T:System.Single" />.</param>
         <param name="exampleWeightColumnName">The name of the example weight column (optional).</param>
         <param name="numberOfIterations">The number of training iteraitons.</param>
         <summary>
-            Predict a target using a linear binary classification model trained with the <see cref="T:Microsoft.ML.Trainers.LinearSvmTrainer" /> trainer.
+            Create a <see cref="T:Microsoft.ML.Trainers.LinearSvmTrainer" />, which predicts a target using a linear binary classification model trained
+            over boolean label data.
             </summary>
         <returns>To be added.</returns>
         <remarks>
@@ -666,7 +668,7 @@
         <param name="labelColumnName">The name of the label column. </param>
         <param name="exampleWeightColumnName">The name of the example weight column (optional).</param>
         <summary>
-            Predict a target using a binary classification model trained with <see cref="T:Microsoft.ML.Trainers.PriorTrainer" /> trainer.
+            Create <see cref="T:Microsoft.ML.Trainers.PriorTrainer" />, which predict a target using a binary classification model.
             </summary>
         <returns>To be added.</returns>
         <remarks>
@@ -853,7 +855,7 @@
         <param name="catalog">The multiclass classification catalog trainer object.</param>
         <param name="options">Trainer options.</param>
         <summary>
-            Predict a target using a maximum entropy classification model trained with <see cref="T:Microsoft.ML.Trainers.SdcaMaximumEntropyMulticlassTrainer" /> and advanced options.
+            Create <see cref="T:Microsoft.ML.Trainers.SdcaMaximumEntropyMulticlassTrainer" /> with advanced options, which predicts a target using a maximum entropy classification model trained with a coordinate descent method.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -894,14 +896,14 @@
       </Parameters>
       <Docs>
         <param name="catalog">The multiclass classification catalog trainer object.</param>
-        <param name="labelColumnName">The name of the label column.</param>
-        <param name="featureColumnName">The name of the feature column.</param>
+        <param name="labelColumnName">The name of the label column. The column data must be <see cref="T:Microsoft.ML.Data.KeyDataViewType" />.</param>
+        <param name="featureColumnName">The name of the feature column. The column data must be a known-sized vector of <see cref="T:System.Single" />.</param>
         <param name="exampleWeightColumnName">The name of the example weight column (optional).</param>
         <param name="l2Regularization">The L2 weight for <a href="https://en.wikipedia.org/wiki/Regularization_(mathematics)">regularization</a>.</param>
         <param name="l1Regularization">The L1 <a href="https://en.wikipedia.org/wiki/Regularization_(mathematics)">regularization</a> hyperparameter. Higher values will tend to lead to more sparse model.</param>
         <param name="maximumNumberOfIterations">The maximum number of passes to perform over the data.</param>
         <summary>
-            Predict a target using a maximum entropy classification model trained with <see cref="T:Microsoft.ML.Trainers.SdcaMaximumEntropyMulticlassTrainer" />.
+            Create <see cref="T:Microsoft.ML.Trainers.SdcaMaximumEntropyMulticlassTrainer" />, which predicts a target using a maximum entropy classification model trained with a coordinate descent method.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -970,7 +972,7 @@
         <param name="catalog">The multiclass classification catalog trainer object.</param>
         <param name="options">Trainer options.</param>
         <summary>
-            Predict a target using linear multiclass classification model trained with <see cref="T:Microsoft.ML.Trainers.SdcaNonCalibratedMulticlassTrainer" /> and advanced options.
+            Create <see cref="T:Microsoft.ML.Trainers.SdcaNonCalibratedMulticlassTrainer" /> with advanced options, which predicts a target using a linear multiclass classification model trained with a coordinate descent method.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -1057,15 +1059,15 @@
       </Parameters>
       <Docs>
         <param name="catalog">The multiclass classification catalog trainer object.</param>
-        <param name="labelColumnName">The name of the label column.</param>
-        <param name="featureColumnName">The name of the feature column.</param>
+        <param name="labelColumnName">The name of the label column. The column data must be <see cref="T:Microsoft.ML.Data.KeyDataViewType" />.</param>
+        <param name="featureColumnName">The name of the feature column. The column data must be a known-sized vector of <see cref="T:System.Single" />.</param>
         <param name="exampleWeightColumnName">The name of the example weight column (optional).</param>
         <param name="lossFunction">The <a href="https://en.wikipedia.org/wiki/Loss_function">loss</a> function to be minimized. Defaults to <see cref="T:Microsoft.ML.Trainers.LogLoss" /> if not specified.</param>
         <param name="l2Regularization">The L2 weight for <a href="https://en.wikipedia.org/wiki/Regularization_(mathematics)">regularization</a>.</param>
         <param name="l1Regularization">The L1 <a href="https://en.wikipedia.org/wiki/Regularization_(mathematics)">regularization</a> hyperparameter. Higher values will tend to lead to more sparse model.</param>
         <param name="maximumNumberOfIterations">The maximum number of passes to perform over the data.</param>
         <summary>
-            Predict a target using a linear multiclass classification model trained with <see cref="T:Microsoft.ML.Trainers.SdcaNonCalibratedMulticlassTrainer" />.
+            Create <see cref="T:Microsoft.ML.Trainers.SdcaNonCalibratedMulticlassTrainer" />, which predicts a target using a linear multiclass classification model trained with a coordinate descent method.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

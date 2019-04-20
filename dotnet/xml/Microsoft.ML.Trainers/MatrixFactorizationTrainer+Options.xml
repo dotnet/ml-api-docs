@@ -14,7 +14,7 @@
   <Interfaces />
   <Docs>
     <summary>
-            Advanced options for the <see cref="T:Microsoft.ML.Trainers.MatrixFactorizationTrainer" />.
+            Options for the <see cref="T:Microsoft.ML.Trainers.MatrixFactorizationTrainer" /> as used in [MatrixFactorization(Options)](xref:Microsoft.ML.RecommendationCatalog.RecommendationTrainers.MatrixFactorization(Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options)).
             </summary>
     <remarks>To be added.</remarks>
   </Docs>
@@ -66,13 +66,13 @@
         <remarks>
             Importance of unobserved (i.e., negative) entries' loss in one-class matrix factorization.
             In general, only a few of matrix entries (e.g., less than 1%) in the training are observed (i.e., positive).
-            To balance the contributions from unobserved and obverved in the overall loss function, this parameter is
+            To balance the contributions from unobserved and observed in the overall loss function, this parameter is
             usually a small value so that the solver is able to find a factorization equally good to unobserved and observed
             entries. If only 10000 observed entries present in a 200000-by-300000 training matrix, one can try Alpha = 10000 / (200000*300000 - 10000).
             When most entries in the training matrix are observed, one can use Alpha &gt;&gt; 1; for example, if only 10000 in previous
             matrix is not observed, one can try Alpha = (200000 * 300000 - 10000) / 10000. Consequently,
             Alpha = (# of observed entries) / (# of unobserved entries) can make observed and unobserved entries equally important
-            in the minimized loss function. However, the best setting in machine learning is alwasy data-depedent so user still needs to
+            in the minimized loss function. However, the best setting in machine learning is always data-dependent so user still needs to
             try multiple values.
             </remarks>
       </Docs>
@@ -104,10 +104,10 @@
       </ReturnValue>
       <Docs>
         <summary>
-            Rank of approximation matrixes.
+            Rank of approximation matrices.
             </summary>
         <remarks>
-            If input data has size of m-by-n we would build two approximation matrixes m-by-k and k-by-n where k is approximation rank.
+            If input data has size of m-by-n we would build two approximation matrices m-by-k and k-by-n where k is approximation rank.
             </remarks>
       </Docs>
     </Member>
@@ -162,6 +162,7 @@
       <Docs>
         <summary>
             The name variable (i.e., column in a <see cref="T:Microsoft.ML.IDataView" /> type system) used as matrix's element value.
+            The column data must be <see cref="T:Microsoft.ML.Data.KeyDataViewType" />.
             </summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -288,6 +289,7 @@
       <Docs>
         <summary>
             The name of variable (i.e., Column in a <see cref="T:Microsoft.ML.IDataView" /> type system) used as matrix's column index.
+            The column data must be <see cref="T:System.Single" />.
             </summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -309,6 +311,7 @@
       <Docs>
         <summary>
             The name of variable (i.e., column in a <see cref="T:Microsoft.ML.IDataView" /> type system) used as matrix's row index.
+            The column data must be <see cref="T:Microsoft.ML.Data.KeyDataViewType" />.
             </summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -392,7 +395,7 @@
       </ReturnValue>
       <Docs>
         <summary>
-            Number of threads will be used during training. If unspecified all aviable threads will be use.
+            Number of threads will be used during training. If unspecified all available threads will be use.
             </summary>
         <remarks>To be added.</remarks>
       </Docs>

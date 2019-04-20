@@ -33,11 +33,29 @@
     <typeparam name="TSrc">To be added.</typeparam>
     <typeparam name="TDst">To be added.</typeparam>
     <summary>
-            The <see cref="T:Microsoft.ML.IEstimator`1" /> to define a custom mapping of rows of an <see cref="T:Microsoft.ML.IDataView" />.
-            For usage details, please see <see cref="M:Microsoft.ML.CustomMappingCatalog.CustomMapping``2(Microsoft.ML.TransformsCatalog,System.Action{``0,``1},System.String,Microsoft.ML.Data.SchemaDefinition,Microsoft.ML.Data.SchemaDefinition)" /></summary>
+             Applies a custom mapping function to the specified input columns. The result will be in output columns.
+             </summary>
     <remarks>
-            Calling <see cref="M:Microsoft.ML.IEstimator`1.Fit(Microsoft.ML.IDataView)" /> in this estimator, produces an <see cref="T:Microsoft.ML.Transforms.CustomMappingTransformer`2" />.
-            </remarks>
+      <format type="text/markdown"><![CDATA[
+            
+             ###  Estimator Characteristics
+             |  |  |
+             | -- | -- |
+             | Does this estimator need to look at the data to train its parameters? | No |
+             | Input column data type | Any |
+             | Output column data type | Any |
+            
+             The resulting <xref:Microsoft.ML.Transforms.CustomMappingTransformer> applies a user defined mapping
+             to one or more input columns and produces one or more output columns. This transformation doesn't change the number of rows,
+             and can be seen as the result of applying the user's function to every row of the input data.
+            
+             The provided custom function must be thread-safe and free from side effects.
+             The order with which it is applied to the rows of data cannot be guaranteed.
+            
+             See the See Also section for links to examples of the usage.
+             ]]></format>
+    </remarks>
+    <altmember cref="M:Microsoft.ML.CustomMappingCatalog.CustomMapping``2(Microsoft.ML.TransformsCatalog,System.Action{``0,``1},System.String,Microsoft.ML.Data.SchemaDefinition,Microsoft.ML.Data.SchemaDefinition)" />
   </Docs>
   <Members>
     <Member MemberName="GetOutputSchema">
