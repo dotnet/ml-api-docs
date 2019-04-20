@@ -481,9 +481,11 @@
         <Parameter Name="maximumNumberOfInverts" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="catalog">The text-related transform's catalog.</param>
-        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
-        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
+        <param name="catalog">The transform's catalog.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.
+            This column's data type will be known-size vector of <see cref="T:System.Single" />.</param>
+        <param name="inputColumnName">Name of the column to take the data from.
+            This estimator operates over vector of text.</param>
         <param name="numberOfBits">Number of bits to hash into. Must be between 1 and 30, inclusive.</param>
         <param name="ngramLength">Ngram length.</param>
         <param name="skipLength">Maximum number of tokens to skip when constructing an ngram.</param>
@@ -495,10 +497,14 @@
             <paramref name="maximumNumberOfInverts" /> specifies the upper bound of the number of distinct input values mapping to a hash that should be retained.
             <value>0</value> does not retain any input values. <value>-1</value> retains all input values mapping to each hash.</param>
         <summary>
-            Produces a bag of counts of hashed ngrams in <paramref name="inputColumnName" />
-            and outputs bag of word vector as <paramref name="outputColumnName" /></summary>
+            Create a <see cref="T:Microsoft.ML.Transforms.Text.WordHashBagEstimator" />, which maps the column specified in <paramref name="inputColumnName" />
+            to a vector of counts of hashed n-grams in a new column named <paramref name="outputColumnName" />.
+            </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <see cref="T:Microsoft.ML.Transforms.Text.WordHashBagEstimator" /> is different from <see cref="T:Microsoft.ML.Transforms.Text.NgramHashingEstimator" /> in that the former
+            tokenizes text internally and the latter takes tokenized text as input.
+            </remarks>
       </Docs>
     </Member>
     <Member MemberName="ProduceHashedWordBags">
@@ -528,9 +534,11 @@
         <Parameter Name="maximumNumberOfInverts" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="catalog">The text-related transform's catalog.</param>
-        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnNames" />.</param>
-        <param name="inputColumnNames">Name of the columns to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
+        <param name="catalog">The transform's catalog.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnNames" />.
+            This column's data type will be known-size vector of <see cref="T:System.Single" />.</param>
+        <param name="inputColumnNames">Names of the multiple columns to take the data from.
+            This estimator operates over vector of text.</param>
         <param name="numberOfBits">Number of bits to hash into. Must be between 1 and 30, inclusive.</param>
         <param name="ngramLength">Ngram length.</param>
         <param name="skipLength">Maximum number of tokens to skip when constructing an ngram.</param>
@@ -542,10 +550,14 @@
             <paramref name="maximumNumberOfInverts" /> specifies the upper bound of the number of distinct input values mapping to a hash that should be retained.
             <value>0</value> does not retain any input values. <value>-1</value> retains all input values mapping to each hash.</param>
         <summary>
-            Produces a bag of counts of hashed ngrams in <paramref name="inputColumnNames" />
-            and outputs bag of word vector as <paramref name="outputColumnName" /></summary>
+            Create a <see cref="T:Microsoft.ML.Transforms.Text.WordHashBagEstimator" />, which maps the multiple columns specified in <paramref name="inputColumnNames" />
+            to a vector of counts of hashed n-grams in a new column named <paramref name="outputColumnName" />.
+            </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <see cref="T:Microsoft.ML.Transforms.Text.WordHashBagEstimator" /> is different from <see cref="T:Microsoft.ML.Transforms.Text.NgramHashingEstimator" /> in that the former
+            tokenizes text internally and the latter takes tokenized text as input.
+            </remarks>
       </Docs>
     </Member>
     <Member MemberName="ProduceNgrams">
@@ -623,19 +635,25 @@
         <Parameter Name="weighting" Type="Microsoft.ML.Transforms.Text.NgramExtractingEstimator+WeightingCriteria" />
       </Parameters>
       <Docs>
-        <param name="catalog">The text-related transform's catalog.</param>
-        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
-        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
+        <param name="catalog">The transform's catalog.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.
+            This column's data type will be known-size vector of <see cref="T:System.Single" />.</param>
+        <param name="inputColumnName">Name of the column to take the data from.
+            This estimator operates over vector of text.</param>
         <param name="ngramLength">Ngram length.</param>
         <param name="skipLength">Maximum number of tokens to skip when constructing an ngram.</param>
         <param name="useAllLengths">Whether to include all ngram lengths up to <paramref name="ngramLength" /> or only <paramref name="ngramLength" />.</param>
         <param name="maximumNgramsCount">Maximum number of ngrams to store in the dictionary.</param>
         <param name="weighting">Statistical measure used to evaluate how important a word is to a document in a corpus.</param>
         <summary>
-            Produces a bag of counts of ngrams (sequences of consecutive words) in <paramref name="inputColumnName" />
-            and outputs bag of word vector as <paramref name="outputColumnName" /></summary>
+            Create a <see cref="T:Microsoft.ML.Transforms.Text.WordHashBagEstimator" />, which maps the column specified in <paramref name="inputColumnName" />
+            to a vector of n-gram counts in a new column named <paramref name="outputColumnName" />.
+            </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <see cref="T:Microsoft.ML.Transforms.Text.WordBagEstimator" /> is different from <see cref="T:Microsoft.ML.Transforms.Text.NgramExtractingEstimator" /> in that the former
+            tokenizes text internally and the latter takes tokenized text as input.
+            </remarks>
       </Docs>
     </Member>
     <Member MemberName="ProduceWordBags">
@@ -663,19 +681,25 @@
         <Parameter Name="weighting" Type="Microsoft.ML.Transforms.Text.NgramExtractingEstimator+WeightingCriteria" />
       </Parameters>
       <Docs>
-        <param name="catalog">The text-related transform's catalog.</param>
-        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnNames" />.</param>
-        <param name="inputColumnNames">Name of the columns to transform.</param>
+        <param name="catalog">The transform's catalog.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnNames" />.
+            This column's data type will be known-size vector of <see cref="T:System.Single" />.</param>
+        <param name="inputColumnNames">Names of the multiple columns to take the data from.
+            This estimator operates over vector of text.</param>
         <param name="ngramLength">Ngram length.</param>
         <param name="skipLength">Maximum number of tokens to skip when constructing an ngram.</param>
         <param name="useAllLengths">Whether to include all ngram lengths up to <paramref name="ngramLength" /> or only <paramref name="ngramLength" />.</param>
         <param name="maximumNgramsCount">Maximum number of ngrams to store in the dictionary.</param>
         <param name="weighting">Statistical measure used to evaluate how important a word is to a document in a corpus.</param>
         <summary>
-            Produces a bag of counts of ngrams (sequences of consecutive words) in <paramref name="inputColumnNames" />
-            and outputs bag of word vector as <paramref name="outputColumnName" /></summary>
+            Create a <see cref="T:Microsoft.ML.Transforms.Text.WordHashBagEstimator" />, which maps the multiple columns specified in <paramref name="inputColumnNames" />
+            to a vector of n-gram counts in a new column named <paramref name="outputColumnName" />.
+            </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <see cref="T:Microsoft.ML.Transforms.Text.WordBagEstimator" /> is different from <see cref="T:Microsoft.ML.Transforms.Text.NgramExtractingEstimator" /> in that the former
+            tokenizes text internally and the latter takes tokenized text as input.
+            </remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveDefaultStopWords">
