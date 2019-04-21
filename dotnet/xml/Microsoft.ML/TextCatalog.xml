@@ -174,10 +174,13 @@
       </Parameters>
       <Docs>
         <param name="catalog">The text-related transform's catalog.</param>
-        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
-        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.
+            This column's data type will be a vector of <see cref="T:System.Single" />. </param>
+        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.
+            This estimator operates over text data.
+            </param>
         <summary>
-            Transform a text column into featurized float array that represents counts of ngrams and char-grams.
+            Create a <see cref="T:Microsoft.ML.Transforms.Text.TextFeaturizingEstimator" />, which transforms a text column into a featurized vector of <see cref="T:System.Single" /> that represents normalized counts of ngrams and char-grams.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -215,14 +218,18 @@
       </Parameters>
       <Docs>
         <param name="catalog">The text-related transform's catalog.</param>
-        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnNames" />.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnNames" />.
+            This column's data type will be a vector of <see cref="T:System.Single" />.
+            </param>
         <param name="options">Advanced options to the algorithm.</param>
-        <param name="inputColumnNames">Name of the columns to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
+        <param name="inputColumnNames">Name of the columns to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.
+            This estimator operates over text data, and it can transform several columns at once, yielding one vector of <see cref="T:System.Single" />
+            as the resulting features for all columns.</param>
         <summary>
-            Transform several text columns into featurized float array that represents counts of ngrams and char-grams.
+             Create a <see cref="T:Microsoft.ML.Transforms.Text.TextFeaturizingEstimator" />, which transforms a text column into featurized float array that represents normalized counts of ngrams and char-grams.
             </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>This transform can operate over several columns.</remarks>
         <example>
           <format type="text/markdown"><![CDATA[
             [!code-csharp[FeaturizeText](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/Text/FeaturizeTextWithOptions.cs)]
@@ -262,8 +269,11 @@
       </Parameters>
       <Docs>
         <param name="catalog">The transform's catalog.</param>
-        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
-        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.
+            This estimator outputs a vector of <see cref="T:System.Single" />.</param>
+        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.
+            This estimator operates over a vector of <see cref="T:System.Single" />.
+            </param>
         <param name="numberOfTopics">The number of topics.</param>
         <param name="alphaSum">Dirichlet prior on document-topic vectors.</param>
         <param name="beta">Dirichlet prior on vocab-topic vectors.</param>
@@ -276,8 +286,8 @@
         <param name="numberOfBurninIterations">The number of burn-in iterations.</param>
         <param name="resetRandomGenerator">Reset the random number generator for each document.</param>
         <summary>
-            Uses <a href="https://arxiv.org/abs/1412.1576">LightLDA</a> to transform a document (represented as a vector of floats)
-            into a vector of floats over a set of topics.
+            Create a <see cref="T:Microsoft.ML.Transforms.Text.LatentDirichletAllocationEstimator" />, which uses <a href="https://arxiv.org/abs/1412.1576">LightLDA</a> to transform text (represented as a vector of floats)
+            into a vector of <see cref="T:System.Single" /> indicating the similarity of the text with each topic identified.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
