@@ -1,0 +1,65 @@
+﻿<Type Name="LpNormNormalizingEstimator" FullName="Microsoft.ML.Transforms.LpNormNormalizingEstimator">
+  <TypeSignature Language="C#" Value="public sealed class LpNormNormalizingEstimator : Microsoft.ML.Transforms.LpNormNormalizingEstimatorBase" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit LpNormNormalizingEstimator extends Microsoft.ML.Transforms.LpNormNormalizingEstimatorBase" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Transforms.LpNormNormalizingEstimator" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class LpNormNormalizingEstimator&#xA;Inherits LpNormNormalizingEstimatorBase" />
+  <TypeSignature Language="F#" Value="type LpNormNormalizingEstimator = class&#xA;    inherit LpNormNormalizingEstimatorBase" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Microsoft.ML.Transforms.LpNormNormalizingEstimatorBase</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+             Normalizes (scales) vectors in the input column to the unit norm. The type of norm that is used can be specified by the user.
+             </summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[
+            
+             ###  Estimator Characteristics
+             |  |  |
+             | -- | -- |
+             | Does this estimator need to look at the data to train its parameters? | No |
+             | Input column data type | Vector of <xref:System.Single> |
+             | Output column data type | Vector of <xref:System.Single> |
+            
+            
+             The resulting <xref:Microsoft.ML.Transforms.LpNormNormalizingTransformer> normalizes vectors in the input column individually
+             by rescaling them to the unit norm.
+            
+             Let $x$ be the input vector, $n$ the size of the vector, $L(x)$ the norm function selected by the user.
+             Let $\mu(x) = \sum_i x_i / n$ be the mean of the values of vector $x$. The <xref:Microsoft.ML.Transforms.LpNormNormalizingTransformer>
+             performs the following operation on each input vector $x$:
+            
+                 $y = \frac{x - \mu(x)}{L(x)}$
+            
+             if the user specifies that the mean should be zero, or otherwise:
+            
+                 $y = \frac{x}{L(x)}$
+            
+             There are four types of norm that can be selected by the user to be applied on input vector $x$. They are defined as follows:
+             - <xref:Microsoft.ML.Transforms.LpNormNormalizingEstimatorBase.NormFunction.L1>
+            
+                 $L_1(x) = \sum_i |x_i|$
+            
+             - <xref:Microsoft.ML.Transforms.LpNormNormalizingEstimatorBase.NormFunction.L2>
+            
+                 $L_2(x) = \sqrt{\sum_i x_i^2}$
+            
+             - <xref:Microsoft.ML.Transforms.LpNormNormalizingEstimatorBase.NormFunction.Infinity>
+            
+                 $L_{\infty}(x) = \max_i\{|x_i|\}$
+            
+             - <xref:Microsoft.ML.Transforms.LpNormNormalizingEstimatorBase.NormFunction.StandardDeviation>
+            
+                 $L_\sigma(x)$ is defined as the standard deviation of the elements of the input vector $x$
+            
+             ]]></format>
+    </remarks>
+    <altmember cref="M:Microsoft.ML.NormalizationCatalog.NormalizeLpNorm(Microsoft.ML.TransformsCatalog,System.String,System.String,Microsoft.ML.Transforms.LpNormNormalizingEstimatorBase.NormFunction,System.Boolean)" />
+  </Docs>
+  <Members />
+</Type>
