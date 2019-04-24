@@ -52,7 +52,28 @@
         <summary>
             Constructor for smoothed hinge losee.
             </summary>
-        <remarks>To be added.</remarks>
+        <remarks>/// <format type="text/markdown"><![CDATA[
+Let $L(f(\vec{x}, y) = 1 - yf(\vec{x})$, where $f(\vec{x})$ is the predicted score and $y \in \{-1, 1\}$ is the true label.
+
+Note that the labels used in this calculation are -1 and 1, unlike Log Loss, where the labels used are 0 and 1.
+Also unlike Log Loss, $f(\vec{x})$ is the raw predicted score, not the predicted probability (which is calculated by applying a [sigmoid function](https://en.wikipedia.org/wiki/Sigmoid_function) to the predicted score).
+
+The Smoothed Hinge Loss function is then defined as:
+
+\[
+g(L(f(\vec{ x}, y)) =
+\begin{cases}
+0                                    & \text{if } L(f(\vec{ x}, y) < 0\\
+\frac{(L(f(\vec{x}, y))^2}{2\alpha}  & \text{if } L(f(\vec{ x}, y) < \alpha\\
+L(f(\vec{ x}, y) - \frac{\alpha}{2}  & \text{otherwise}
+\end{cases}
+\]
+
+where $\alpha$ is a smoothing parameter set to 1 by default.
+
+]]>
+</format>
+</remarks>
       </Docs>
     </Member>
     <Member MemberName="ComputeDualUpdateInvariant">
