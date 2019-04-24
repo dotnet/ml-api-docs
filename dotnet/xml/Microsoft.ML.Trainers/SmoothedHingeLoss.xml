@@ -54,21 +54,21 @@
             </summary>
         <remarks>
           <format type="text/markdown"><![CDATA[
-Let $L(f(\vec{x}, y) = 1 - yf(\vec{x})$, where $f(\vec{x})$ is the predicted score and $y \in \{-1, 1\}$ is the true label.
+Let $f(\hat{y}, y) = 1 - y\hat{y}$, where $\hat{y}$ is the predicted score and $y \in \{-1, 1\}$ is the true label. $f(\hat{y}, y)$ here is the non-zero portion of the [Hinge Loss](xref:Microsoft.ML.Trainers.HingeLoss).
 
-Note that the labels used in this calculation are -1 and 1, unlike Log Loss, where the labels used are 0 and 1.
-Also unlike Log Loss, $f(\vec{x})$ is the raw predicted score, not the predicted probability (which is calculated by applying a [sigmoid function](https://en.wikipedia.org/wiki/Sigmoid_function) to the predicted score).
+Note that the labels used in this calculation are -1 and 1, unlike [Log Loss](xref:Microsoft.ML.Trainers.LogLoss), where the labels used are 0 and 1.
+Also unlike [Log Loss](xref:Microsoft.ML.Trainers.LogLoss), $\hat{y}$ is the raw predicted score, not the predicted probability (which is calculated by applying a [sigmoid function](https://en.wikipedia.org/wiki/Sigmoid_function) to the predicted score).
 
 The Smoothed Hinge Loss function is then defined as:
 
-\[
-g(L(f(\vec{ x}, y)) =
+$
+L(f(\hat{y}, y)) =
 \begin{cases}
-0                                    & \text{if } L(f(\vec{ x}, y) < 0\\
-\frac{(L(f(\vec{x}, y))^2}{2\alpha}  & \text{if } L(f(\vec{ x}, y) < \alpha\\
-L(f(\vec{ x}, y) - \frac{\alpha}{2}  & \text{otherwise}
+0                                  & \text{if } f(\hat{y}, y) < 0\\
+\frac{(f(\hat{y}, y))^2}{2\alpha}  & \text{if } f(\hat{y}, y) < \alpha\\
+f(\hat{y}, y) - \frac{\alpha}{2}   & \text{otherwise}
 \end{cases}
-\]
+$
 
 where $\alpha$ is a smoothing parameter set to 1 by default.
 
