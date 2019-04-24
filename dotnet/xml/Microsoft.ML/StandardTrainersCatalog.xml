@@ -211,6 +211,11 @@
              [!code-csharp[PoissonRegression](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Trainers/MulticlassClassification/LbfgsPoissonMaximumEntropyWithOptions.cs)]
             ]]></format>
         </example>
+        <example>
+          <format type="text/markdown"><![CDATA[
+             [!code-csharp[PoissonRegression](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Trainers/MulticlassClassification/LbfgsMaximumEntropyWithOptions.cs)]
+            ]]></format>
+        </example>
       </Docs>
     </Member>
     <Member MemberName="LbfgsMaximumEntropy">
@@ -256,6 +261,11 @@
         <example>
           <format type="text/markdown"><![CDATA[
              [!code-csharp[PoissonRegression](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Trainers/MulticlassClassification/LbfgsPoissonMaximumEntropy.cs)]
+            ]]></format>
+        </example>
+        <example>
+          <format type="text/markdown"><![CDATA[
+             [!code-csharp[Lbfgs](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Trainers/MulticlassClassification/LbfgsMaximumEntropy.cs)]
             ]]></format>
         </example>
       </Docs>
@@ -426,8 +436,8 @@
         <param name="labelColumnName">The name of the label column.</param>
         <param name="featureColumnName">The name of the feature column.</param>
         <summary>
-            Predicts a target using a linear multiclass classification model trained with the <see cref="T:Microsoft.ML.Trainers.NaiveBayesMulticlassTrainer" />.
-            The <see cref="T:Microsoft.ML.Trainers.NaiveBayesMulticlassTrainer" /> trains a multiclass Naive Bayes predictor that supports binary feature values.
+            Create a <see cref="T:Microsoft.ML.Trainers.NaiveBayesMulticlassTrainer" />, which predicts a multiclass target using a Naive Bayes model
+            that supports binary feature values.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -470,20 +480,21 @@
       </Parameters>
       <Docs>
         <typeparam name="TModel">The type of the model. This type parameter will usually be inferred automatically from <paramref name="binaryEstimator" />.</typeparam>
-        <param name="catalog">The <see cref="T:Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers" />.</param>
+        <param name="catalog">The multiclass classification catalog trainer object.</param>
         <param name="binaryEstimator">An instance of a binary <see cref="T:Microsoft.ML.Trainers.ITrainerEstimator`2" /> used as the base trainer.</param>
-        <param name="labelColumnName">The name of the label colum.</param>
+        <param name="labelColumnName">The name of the label column.</param>
         <param name="imputeMissingLabelsAsNegative">Whether to treat missing labels as having negative labels, instead of keeping them missing.</param>
-        <param name="calibrator">The calibrator. If a calibrator is not explicitely provided, it will default to <see cref="T:Microsoft.ML.Calibrators.PlattCalibratorTrainer" /></param>
+        <param name="calibrator">The calibrator. If a calibrator is not explicitly provided, it will default to <see cref="T:Microsoft.ML.Calibrators.PlattCalibratorTrainer" /></param>
         <param name="maximumCalibrationExampleCount">Number of instances to train the calibrator.</param>
         <param name="useProbabilities">Use probabilities (vs. raw outputs) to identify top-score category.</param>
         <summary>
-            Predicts a target using a linear multiclass classification model trained with the <see cref="T:Microsoft.ML.Trainers.OneVersusAllTrainer" />.
+            Create a <see cref="T:Microsoft.ML.Trainers.OneVersusAllTrainer" />, which predicts a multiclass target using one-versus-all strategy with
+            the binary classification estimator specified by <paramref name="binaryEstimator" />.
             </summary>
         <returns>To be added.</returns>
         <remarks>
           <para>
-            In <see cref="T:Microsoft.ML.Trainers.OneVersusAllTrainer" /> In this strategy, a binary classification algorithm is used to train one classifier for each class,
+            In one-versus-all strategy, a binary classification algorithm is used to train one classifier for each class,
             which distinguishes that class from all other classes. Prediction is then performed by running these binary classifiers,
             and choosing the prediction with the highest confidence score.
             </para>
@@ -603,14 +614,15 @@
       </Parameters>
       <Docs>
         <typeparam name="TModel">The type of the model. This type parameter will usually be inferred automatically from <paramref name="binaryEstimator" />.</typeparam>
-        <param name="catalog">The <see cref="T:Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers" />.</param>
+        <param name="catalog">The multiclass classification catalog trainer object.</param>
         <param name="binaryEstimator">An instance of a binary <see cref="T:Microsoft.ML.Trainers.ITrainerEstimator`2" /> used as the base trainer.</param>
-        <param name="labelColumnName">The name of the label colum.</param>
+        <param name="labelColumnName">The name of the label column.</param>
         <param name="imputeMissingLabelsAsNegative">Whether to treat missing labels as having negative labels, instead of keeping them missing.</param>
-        <param name="calibrator">The calibrator. If a calibrator is not explicitely provided, it will default to <see cref="T:Microsoft.ML.Calibrators.PlattCalibratorTrainer" /></param>
+        <param name="calibrator">The calibrator. If a calibrator is not explicitly provided, it will default to <see cref="T:Microsoft.ML.Calibrators.PlattCalibratorTrainer" /></param>
         <param name="maximumCalibrationExampleCount">Number of instances to train the calibrator.</param>
         <summary>
-            Predicts a target using a linear multiclass classification model trained with the <see cref="T:Microsoft.ML.Trainers.PairwiseCouplingTrainer" />.
+            Create a <see cref="T:Microsoft.ML.Trainers.PairwiseCouplingTrainer" />, which predicts a multiclass target using pairwise coupling strategy with
+            the binary classification estimator specified by <paramref name="binaryEstimator" />.
             </summary>
         <returns>To be added.</returns>
         <remarks>

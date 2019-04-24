@@ -161,7 +161,8 @@
             </summary>
         <returns>To be added.</returns>
         <remarks>If multiple columns are passed to the estimator, all of the columns will be processed in a single pass over the data.
-            Therefore, it is more efficient to specify one estimator with many columns than it is to specify many estimators each with a single column.</remarks>
+            Therefore, it is more efficient to specify one estimator with many columns than it is to specify many estimators each with a single column.
+            </remarks>
         <example>
           <format type="text/markdown"><![CDATA[
              [!code-csharp[OneHotHashEncoding](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/Categorical/OneHotHashEncodingMultiColumn.cs)]
@@ -193,23 +194,22 @@
         <Parameter Name="maximumNumberOfInverts" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="catalog">The transform catalog</param>
+        <param name="catalog">The transform catalog.</param>
         <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.
             This column's data type will be a vector of <see cref="T:System.Single" /> if <paramref name="outputKind" /> is
             <see cref="F:Microsoft.ML.Transforms.OneHotEncodingEstimator.OutputKind.Bag" />, <see cref="F:Microsoft.ML.Transforms.OneHotEncodingEstimator.OutputKind.Indicator" />, and <see cref="F:Microsoft.ML.Transforms.OneHotEncodingEstimator.OutputKind.Binary" />.
             If <paramref name="outputKind" /> is <see cref="F:Microsoft.ML.Transforms.OneHotEncodingEstimator.OutputKind.Key" />, this column's data type will be a key in the case of a scalar input column
-            or a vector of keys in the case of a vector input column.
-            <param name="inputColumnName">Name of column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.
-            This column's data type can be scalar or vector of numeric, text, boolean, <see cref="T:System.DateTime" /> or <see cref="T:System.DateTimeOffset" />.</param><param name="outputKind">The conversion mode.</param><param name="numberOfBits">Number of bits to hash into. Must be between 1 and 30, inclusive.</param><param name="seed">Hashing seed.</param><param name="useOrderedHashing">Whether the position of each term should be included in the hash.</param><param name="maximumNumberOfInverts">During hashing we constuct mappings between original values and the produced hash values.
-            Text representation of original values are stored in the slot names of the  metadata for the new column.Hashing,
-            as such, can map many initial values to one.</param><paramref name="maximumNumberOfInverts" /> specifies the upper bound of the number of distinct input values mapping to a hash that should be retained.
+            or a vector of keys in the case of a vector input column. </param>
+        <param name="inputColumnName">Name of column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.
+            This column's data type can be scalar or vector of numeric, text, boolean, <see cref="T:System.DateTime" /> or <see cref="T:System.DateTimeOffset" />.</param>
+        <param name="outputKind">The conversion mode.</param>
+        <param name="numberOfBits">Number of bits to hash into. Must be between 1 and 30, inclusive.</param>
+        <param name="seed">Hashing seed.</param>
+        <param name="useOrderedHashing">Whether the position of each term should be included in the hash.</param>
+        <param name="maximumNumberOfInverts">During hashing we constuct mappings between original values and the produced hash values.
+            Text representation of original values are stored in the slot names of the  metadata for the new column.Hashing, as such, can map many initial values to one.
+            <paramref name="maximumNumberOfInverts" /> specifies the upper bound of the number of distinct input values mapping to a hash that should be retained.
             <value>0</value> does not retain any input values. <value>-1</value> retains all input values mapping to each hash.</param>
-        <param name="inputColumnName">To be added.</param>
-        <param name="outputKind">To be added.</param>
-        <param name="numberOfBits">To be added.</param>
-        <param name="seed">To be added.</param>
-        <param name="useOrderedHashing">To be added.</param>
-        <param name="maximumNumberOfInverts">To be added.</param>
         <summary>
             Create a <see cref="T:Microsoft.ML.Transforms.OneHotHashEncodingEstimator" />, which converts a text column specified by <paramref name="inputColumnName" />
             into a hash-based one-hot encoded vector column named <paramref name="outputColumnName" />.
