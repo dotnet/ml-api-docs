@@ -14,7 +14,7 @@
   <Interfaces />
   <Docs>
     <summary>
-            Extensions for statically typed ngram hash estimator.
+            Extensions for statically typed n-gram hash estimator.
             </summary>
     <remarks>To be added.</remarks>
   </Docs>
@@ -47,8 +47,8 @@
         <param name="input">The column to apply to.</param>
         <param name="numberOfBits">Number of bits to hash into. Must be between 1 and 30, inclusive.</param>
         <param name="ngramLength">Ngram length.</param>
-        <param name="skipLength">Maximum number of tokens to skip when constructing an ngram.</param>
-        <param name="useAllLengths">Whether to include all ngram lengths up to <paramref name="ngramLength" /> or only <paramref name="ngramLength" />.</param>
+        <param name="skipLength">Maximum number of tokens to skip when constructing an n-gram.</param>
+        <param name="useAllLengths">Whether to include all n-gram lengths up to <paramref name="ngramLength" /> or only <paramref name="ngramLength" />.</param>
         <param name="seed">Hashing seed.</param>
         <param name="useOrderedHashing">Whether the position of each source column should be included in the hash (when there are multiple source columns).</param>
         <param name="maximumNumberOfInverts">During hashing we constuct mappings between original values and the produced hash values.
@@ -56,8 +56,8 @@
              <paramref name="maximumNumberOfInverts" /> specifies the upper bound of the number of distinct input values mapping to a hash that should be retained.
              <value>0</value> does not retain any input values. <value>-1</value> retains all input values mapping to each hash.</param>
         <summary>
-             Produces a bag of counts of ngrams (sequences of consecutive words of length 1-n) in a given tokenized text.
-             It does so by hashing each ngram and using the hash value as the index in the bag.
+             Produces a bag of counts of n-grams (sequences of n consecutive words of length 1-n) in a given tokenized text.
+             It does so by hashing each n-gram and using the hash value as the index in the bag.
             
              <see cref="M:Microsoft.ML.StaticPipe.NgramHashEstimatorStaticExtensions.ProduceHashedNgrams(Microsoft.ML.StaticPipe.VarVector{Microsoft.ML.StaticPipe.Key{System.UInt32,System.String}},System.Int32,System.Int32,System.Int32,System.Boolean,System.UInt32,System.Boolean,System.Int32)" /> is different from <see cref="M:Microsoft.ML.StaticPipe.WordHashBagEstimatorStaticExtensions.ProduceHashedWordBags(Microsoft.ML.StaticPipe.Scalar{System.String},System.Int32,System.Int32,System.Int32,System.Boolean,System.UInt32,System.Boolean,System.Int32)" />
              in a way that <see cref="M:Microsoft.ML.StaticPipe.NgramHashEstimatorStaticExtensions.ProduceHashedNgrams(Microsoft.ML.StaticPipe.VarVector{Microsoft.ML.StaticPipe.Key{System.UInt32,System.String}},System.Int32,System.Int32,System.Int32,System.Boolean,System.UInt32,System.Boolean,System.Int32)" /> takes tokenized text as input while <see cref="M:Microsoft.ML.StaticPipe.WordHashBagEstimatorStaticExtensions.ProduceHashedWordBags(Microsoft.ML.StaticPipe.Scalar{System.String},System.Int32,System.Int32,System.Int32,System.Boolean,System.UInt32,System.Boolean,System.Int32)" /> tokenizes text internally.
