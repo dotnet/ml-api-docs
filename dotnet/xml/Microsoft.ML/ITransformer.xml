@@ -1,0 +1,130 @@
+﻿<Type Name="ITransformer" FullName="Microsoft.ML.ITransformer">
+  <TypeSignature Language="C#" Value="public interface ITransformer : Microsoft.ML.ICanSaveModel" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ITransformer implements class Microsoft.ML.ICanSaveModel" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.ITransformer" />
+  <TypeSignature Language="VB.NET" Value="Public Interface ITransformer&#xA;Implements ICanSaveModel" />
+  <TypeSignature Language="F#" Value="type ITransformer = interface&#xA;    interface ICanSaveModel" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Core</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.ICanSaveModel</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+            The transformer is a component that transforms data.
+            It also supports 'schema propagation' to answer the question of 'how will the data with this schema look, after you transform it?'.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="GetOutputSchema">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.DataViewSchema GetOutputSchema (Microsoft.ML.DataViewSchema inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.DataViewSchema GetOutputSchema(class Microsoft.ML.DataViewSchema inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ITransformer.GetOutputSchema(Microsoft.ML.DataViewSchema)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetOutputSchema (inputSchema As DataViewSchema) As DataViewSchema" />
+      <MemberSignature Language="F#" Value="abstract member GetOutputSchema : Microsoft.ML.DataViewSchema -&gt; Microsoft.ML.DataViewSchema" Usage="iTransformer.GetOutputSchema inputSchema" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.DataViewSchema</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.DataViewSchema" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
+        <summary>
+            Schema propagation for transformers.
+            Returns the output schema of the data, if the input schema is like the one provided.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRowToRowMapper">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.IRowToRowMapper GetRowToRowMapper (Microsoft.ML.DataViewSchema inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Data.IRowToRowMapper GetRowToRowMapper(class Microsoft.ML.DataViewSchema inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ITransformer.GetRowToRowMapper(Microsoft.ML.DataViewSchema)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetRowToRowMapper (inputSchema As DataViewSchema) As IRowToRowMapper" />
+      <MemberSignature Language="F#" Value="abstract member GetRowToRowMapper : Microsoft.ML.DataViewSchema -&gt; Microsoft.ML.Data.IRowToRowMapper" Usage="iTransformer.GetRowToRowMapper inputSchema" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.IRowToRowMapper</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.DataViewSchema" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">The input schema for which we should get the mapper.</param>
+        <summary>
+            Constructs a row-to-row mapper based on an input schema. If <see cref="P:Microsoft.ML.ITransformer.IsRowToRowMapper" />
+            is <c>false</c>, then an exception should be thrown. If the input schema is in any way
+            unsuitable for constructing the mapper, an exception should likewise be thrown.
+            </summary>
+        <returns>The row to row mapper.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsRowToRowMapper">
+      <MemberSignature Language="C#" Value="public bool IsRowToRowMapper { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsRowToRowMapper" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.ITransformer.IsRowToRowMapper" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property IsRowToRowMapper As Boolean" />
+      <MemberSignature Language="F#" Value="member this.IsRowToRowMapper : bool" Usage="Microsoft.ML.ITransformer.IsRowToRowMapper" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Whether a call to <see cref="M:Microsoft.ML.ITransformer.GetRowToRowMapper(Microsoft.ML.DataViewSchema)" /> should succeed, on an
+            appropriate schema.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Transform">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.IDataView Transform (Microsoft.ML.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.IDataView Transform(class Microsoft.ML.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ITransformer.Transform(Microsoft.ML.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Transform (input As IDataView) As IDataView" />
+      <MemberSignature Language="F#" Value="abstract member Transform : Microsoft.ML.IDataView -&gt; Microsoft.ML.IDataView" Usage="iTransformer.Transform input" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Core</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.IDataView</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="input">To be added.</param>
+        <summary>
+            Take the data in, make transformations, output the data.
+            Note that <see cref="T:Microsoft.ML.IDataView" />'s are lazy, so no actual transformations happen here, just schema validation.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
