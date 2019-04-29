@@ -14,7 +14,7 @@
   <Interfaces />
   <Docs>
     <summary>
-            The catalog of text related transformations.
+            Collection of extension methods for the <see cref="T:Microsoft.ML.TransformsCatalog" />.
             </summary>
     <remarks>To be added.</remarks>
   </Docs>
@@ -41,12 +41,16 @@
       </Parameters>
       <Docs>
         <param name="catalog">The text-related transform's catalog.</param>
-        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
-        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.
+            This column's data type will be a vector of <see cref="T:System.Single" />.</param>
+        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />,
+            the value of the <paramref name="outputColumnName" /> will be used as source.
+            This estimator operates over known-size vector of text data type.</param>
         <param name="modelKind">The embeddings <see cref="T:Microsoft.ML.Transforms.Text.WordEmbeddingEstimator.PretrainedModelKind" /> to use. </param>
         <summary>
-        Word Embeddings transform is a text featurizer which converts vectors of text tokens into sentence vectors using a pre-trained model.
-      </summary>
+            Create an <see cref="T:Microsoft.ML.Transforms.Text.WordEmbeddingEstimator" />, which is a text featurizer that converts a vector
+            of text into a numerical vector using pre-trained embeddings models.
+            </summary>
         <returns>To be added.</returns>
         <remarks>
           <para>WordEmbeddings wrap different embedding models, such as GloVe. Users can specify which embedding to use. 
@@ -78,6 +82,11 @@
         <example>
           <format type="text/markdown"><![CDATA[
             [!code-csharp[FeaturizeText](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/WordEmbeddingTransform.cs)]
+            ]]></format>
+        </example>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[ApplyWordEmbedding](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/Text/ApplyWordEmbedding.cs)]
             ]]></format>
         </example>
       </Docs>
@@ -104,12 +113,16 @@
       </Parameters>
       <Docs>
         <param name="catalog">The text-related transform's catalog.</param>
-        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
-        <param name="customModelFile">The path of the pre-trained embeedings model to use. </param>
-        <param name="inputColumnName">Name of the column to transform.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.
+            This column's data type will be a vector of <see cref="T:System.Single" />.</param>
+        <param name="customModelFile">The path of the pre-trained embeddings model to use.</param>
+        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />,
+            the value of the <paramref name="outputColumnName" /> will be used as source.
+            This estimator operates over known-size vector of text data type.</param>
         <summary>
-        Word Embeddings transform is a text featurizer which converts vectors of text tokens into sentence vectors using a pre-trained model.
-      </summary>
+            Create an <see cref="T:Microsoft.ML.Transforms.Text.WordEmbeddingEstimator" />, which is a text featurizer that converts vectors
+            of text into numerical vectors using pre-trained embeddings models.
+            </summary>
         <returns>To be added.</returns>
         <remarks>
           <para>WordEmbeddings wrap different embedding models, such as GloVe. Users can specify which embedding to use. 
@@ -143,6 +156,11 @@
             [!code-csharp[FeaturizeText](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/WordEmbeddingTransform.cs)]
             ]]></format>
         </example>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[ApplyWordEmbedding](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/Text/ApplyCustomWordEmbedding.cs)]
+            ]]></format>
+        </example>
       </Docs>
     </Member>
     <Member MemberName="FeaturizeText">
@@ -166,13 +184,21 @@
       </Parameters>
       <Docs>
         <param name="catalog">The text-related transform's catalog.</param>
-        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
-        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.
+            This column's data type will be a vector of <see cref="T:System.Single" />. </param>
+        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.
+            This estimator operates over text data.
+            </param>
         <summary>
-            Transform a text column into featurized float array that represents counts of ngrams and char-grams.
+            Create a <see cref="T:Microsoft.ML.Transforms.Text.TextFeaturizingEstimator" />, which transforms a text column into a featurized vector of <see cref="T:System.Single" /> that represents normalized counts of n-grams and char-grams.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[FeaturizeText](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/Text/FeaturizeText.cs)]
+            ]]></format>
+        </example>
       </Docs>
     </Member>
     <Member MemberName="FeaturizeText">
@@ -194,7 +220,7 @@
         <Parameter Name="options" Type="Microsoft.ML.Transforms.Text.TextFeaturizingEstimator+Options" />
         <Parameter Name="inputColumnNames" Type="System.String[]">
           <Attributes>
-            <Attribute FrameworkAlternate="ml-dotnet">
+            <Attribute>
               <AttributeName>System.ParamArray</AttributeName>
             </Attribute>
           </Attributes>
@@ -202,17 +228,26 @@
       </Parameters>
       <Docs>
         <param name="catalog">The text-related transform's catalog.</param>
-        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnNames" />.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnNames" />.
+            This column's data type will be a vector of <see cref="T:System.Single" />.
+            </param>
         <param name="options">Advanced options to the algorithm.</param>
-        <param name="inputColumnNames">Name of the columns to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
+        <param name="inputColumnNames">Name of the columns to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.
+            This estimator operates over text data, and it can transform several columns at once, yielding one vector of <see cref="T:System.Single" />
+            as the resulting features for all columns.</param>
         <summary>
-            Transform several text columns into featurized float array that represents counts of ngrams and char-grams.
+             Create a <see cref="T:Microsoft.ML.Transforms.Text.TextFeaturizingEstimator" />, which transforms a text column into featurized float array that represents normalized counts of n-grams and char-grams.
             </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>This transform can operate over several columns.</remarks>
         <example>
           <format type="text/markdown"><![CDATA[
             [!code-csharp[FeaturizeText](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/TextTransform.cs)]
+            ]]></format>
+        </example>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[FeaturizeText](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/Text/FeaturizeTextWithOptions.cs)]
             ]]></format>
         </example>
       </Docs>
@@ -249,8 +284,11 @@
       </Parameters>
       <Docs>
         <param name="catalog">The transform's catalog.</param>
-        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
-        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.
+            This estimator outputs a vector of <see cref="T:System.Single" />.</param>
+        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.
+            This estimator operates over a vector of <see cref="T:System.Single" />.
+            </param>
         <param name="numberOfTopics">The number of topics.</param>
         <param name="alphaSum">Dirichlet prior on document-topic vectors.</param>
         <param name="beta">Dirichlet prior on vocab-topic vectors.</param>
@@ -263,14 +301,19 @@
         <param name="numberOfBurninIterations">The number of burn-in iterations.</param>
         <param name="resetRandomGenerator">Reset the random number generator for each document.</param>
         <summary>
-            Uses <a href="https://arxiv.org/abs/1412.1576">LightLDA</a> to transform a document (represented as a vector of floats)
-            into a vector of floats over a set of topics.
+            Create a <see cref="T:Microsoft.ML.Transforms.Text.LatentDirichletAllocationEstimator" />, which uses <a href="https://arxiv.org/abs/1412.1576">LightLDA</a> to transform text (represented as a vector of floats)
+            into a vector of <see cref="T:System.Single" /> indicating the similarity of the text with each topic identified.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
         <example>
           <format type="text/markdown"><![CDATA[
             [!code-csharp[LatentDirichletAllocation](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/LdaTransform.cs)]
+            ]]></format>
+        </example>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[LatentDirichletAllocation](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/Text/LatentDirichletAllocation.cs)]
             ]]></format>
         </example>
       </Docs>
@@ -299,18 +342,26 @@
       </Parameters>
       <Docs>
         <param name="catalog">The text-related transform's catalog.</param>
-        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
-        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.
+            This column's data type is a scalar or a vector of text depending on the input column data type.</param>
+        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />,
+            the value of the <paramref name="outputColumnName" /> will be used as source.
+            This estimator operates on text or vector of text data types.</param>
         <param name="caseMode">Casing text using the rules of the invariant culture.</param>
         <param name="keepDiacritics">Whether to keep diacritical marks or remove them.</param>
         <param name="keepPunctuations">Whether to keep punctuation marks or remove them.</param>
         <param name="keepNumbers">Whether to keep numbers or remove them.</param>
         <summary>
-            Normalizes incoming text in <paramref name="inputColumnName" /> by changing case, removing diacritical marks, punctuation marks and/or numbers
-            and outputs new text as <paramref name="outputColumnName" />.
+            Creates a <see cref="T:Microsoft.ML.Transforms.Text.TextNormalizingEstimator" />, which normalizes incoming text in <paramref name="inputColumnName" /> by optionally
+            changing case, removing diacritical marks, punctuation marks, numbers, and outputs new text as <paramref name="outputColumnName" />.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[NormalizeText](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/Text/NormalizeText.cs)]
+            ]]></format>
+        </example>
       </Docs>
     </Member>
     <Member MemberName="ProduceHashedNgrams">
@@ -341,27 +392,31 @@
         <Parameter Name="rehashUnigrams" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="catalog">The text-related transform's catalog.</param>
-        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
-        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
+        <param name="catalog">The transform's catalog.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.
+            This column's data type will be vector of <see cref="T:System.Single" />.</param>
+        <param name="inputColumnName">Name of the column to copy the data from.
+            This estimator operates over vector of key type.</param>
         <param name="numberOfBits">Number of bits to hash into. Must be between 1 and 30, inclusive.</param>
         <param name="ngramLength">Ngram length.</param>
-        <param name="skipLength">Maximum number of tokens to skip when constructing an ngram.</param>
-        <param name="useAllLengths">Whether to include all ngram lengths up to <paramref name="ngramLength" /> or only <paramref name="ngramLength" />.</param>
+        <param name="skipLength">Maximum number of tokens to skip when constructing an n-gram.</param>
+        <param name="useAllLengths">Whether to include all n-gram lengths up to <paramref name="ngramLength" /> or only <paramref name="ngramLength" />.</param>
         <param name="seed">Hashing seed.</param>
         <param name="useOrderedHashing">Whether the position of each source column should be included in the hash (when there are multiple source columns).</param>
-        <param name="maximumNumberOfInverts">During hashing we constuct mappings between original values and the produced hash values.
-             Text representation of original values are stored in the slot names of the  metadata for the new column.Hashing, as such, can map many initial values to one.
-             <paramref name="maximumNumberOfInverts" /> specifies the upper bound of the number of distinct input values mapping to a hash that should be retained.
-             <value>0</value> does not retain any input values. <value>-1</value> retains all input values mapping to each hash.</param>
+        <param name="maximumNumberOfInverts">During hashing we construct mappings between original values and the produced hash values.
+            Text representation of original values are stored in the slot names of the  annotations for the new column.Hashing, as such, can map many initial values to one.
+            <paramref name="maximumNumberOfInverts" /> specifies the upper bound of the number of distinct input values mapping to a hash that should be retained.
+            <value>0</value> does not retain any input values. <value>-1</value> retains all input values mapping to each hash.</param>
         <param name="rehashUnigrams">Whether to rehash unigrams.</param>
         <summary>
-             Produces a bag of counts of hashed ngrams in <paramref name="inputColumnName" />
-             and outputs ngram vector as <paramref name="outputColumnName" /><see cref="T:Microsoft.ML.Transforms.Text.NgramHashingEstimator" /> is different from <see cref="T:Microsoft.ML.Transforms.Text.WordHashBagEstimator" /> in a way that <see cref="T:Microsoft.ML.Transforms.Text.NgramHashingEstimator" />
-             takes tokenized text as input while <see cref="T:Microsoft.ML.Transforms.Text.WordHashBagEstimator" /> tokenizes text internally.
-             </summary>
+            Create a <see cref="T:Microsoft.ML.Transforms.Text.NgramHashingEstimator" />, which copies the data from the column specified in <paramref name="inputColumnName" />
+            to a new column: <paramref name="outputColumnName" /> and produces a vector of counts of hashed n-grams.
+            </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <see cref="T:Microsoft.ML.Transforms.Text.NgramHashingEstimator" /> is different from <see cref="T:Microsoft.ML.Transforms.Text.WordHashBagEstimator" /> in a way that <see cref="T:Microsoft.ML.Transforms.Text.NgramHashingEstimator" />
+            takes tokenized text as input while <see cref="T:Microsoft.ML.Transforms.Text.WordHashBagEstimator" /> tokenizes text internally.
+            </remarks>
       </Docs>
     </Member>
     <Member MemberName="ProduceHashedNgrams">
@@ -392,27 +447,36 @@
         <Parameter Name="rehashUnigrams" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="catalog">The text-related transform's catalog.</param>
-        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnNames" />.</param>
-        <param name="inputColumnNames">Names of the columns to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
+        <param name="catalog">The transform's catalog.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnNames" />.
+            This column's data type will be vector of known size of <see cref="T:System.Single" />.</param>
+        <param name="inputColumnNames">Name of the multiple columns to take the data from.
+            This estimator operates over vector of key type.</param>
         <param name="numberOfBits">Number of bits to hash into. Must be between 1 and 30, inclusive.</param>
         <param name="ngramLength">Ngram length.</param>
-        <param name="skipLength">Maximum number of tokens to skip when constructing an ngram.</param>
-        <param name="useAllLengths">Whether to include all ngram lengths up to <paramref name="ngramLength" /> or only <paramref name="ngramLength" />.</param>
+        <param name="skipLength">Maximum number of tokens to skip when constructing an n-gram.</param>
+        <param name="useAllLengths">Whether to include all n-gram lengths up to <paramref name="ngramLength" /> or only <paramref name="ngramLength" />.</param>
         <param name="seed">Hashing seed.</param>
         <param name="useOrderedHashing">Whether the position of each source column should be included in the hash (when there are multiple source columns).</param>
-        <param name="maximumNumberOfInverts">During hashing we constuct mappings between original values and the produced hash values.
-             Text representation of original values are stored in the slot names of the  metadata for the new column.Hashing, as such, can map many initial values to one.
-             <paramref name="maximumNumberOfInverts" /> specifies the upper bound of the number of distinct input values mapping to a hash that should be retained.
-             <value>0</value> does not retain any input values. <value>-1</value> retains all input values mapping to each hash.</param>
+        <param name="maximumNumberOfInverts">During hashing we construct mappings between original values and the produced hash values.
+            Text representation of original values are stored in the slot names of the  annotations for the new column.Hashing, as such, can map many initial values to one.
+            <paramref name="maximumNumberOfInverts" /> specifies the upper bound of the number of distinct input values mapping to a hash that should be retained.
+            <value>0</value> does not retain any input values. <value>-1</value> retains all input values mapping to each hash.</param>
         <param name="rehashUnigrams">Whether to rehash unigrams.</param>
         <summary>
-             Produces a bag of counts of hashed ngrams in <paramref name="inputColumnNames" />
-             and outputs ngram vector as <paramref name="outputColumnName" /><see cref="T:Microsoft.ML.Transforms.Text.NgramHashingEstimator" /> is different from <see cref="T:Microsoft.ML.Transforms.Text.WordHashBagEstimator" /> in a way that <see cref="T:Microsoft.ML.Transforms.Text.NgramHashingEstimator" />
-             takes tokenized text as input while <see cref="T:Microsoft.ML.Transforms.Text.WordHashBagEstimator" /> tokenizes text internally.
-             </summary>
+            Create a <see cref="T:Microsoft.ML.Transforms.Text.NgramHashingEstimator" />, which takes the data from the multiple columns specified in <paramref name="inputColumnNames" />
+            to a new column: <paramref name="outputColumnName" /> and produces a vector of counts of hashed n-grams.
+            </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <see cref="T:Microsoft.ML.Transforms.Text.NgramHashingEstimator" /> is different from <see cref="T:Microsoft.ML.Transforms.Text.WordHashBagEstimator" /> in a way that <see cref="T:Microsoft.ML.Transforms.Text.NgramHashingEstimator" />
+            takes tokenized text as input while <see cref="T:Microsoft.ML.Transforms.Text.WordHashBagEstimator" /> tokenizes text internally.
+            </remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[ProduceHashedNgrams](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/Text/ProduceHashedNgrams.cs)]
+            ]]></format>
+        </example>
       </Docs>
     </Member>
     <Member MemberName="ProduceHashedWordBags">
@@ -442,24 +506,30 @@
         <Parameter Name="maximumNumberOfInverts" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="catalog">The text-related transform's catalog.</param>
-        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
-        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
+        <param name="catalog">The transform's catalog.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.
+            This column's data type will be known-size vector of <see cref="T:System.Single" />.</param>
+        <param name="inputColumnName">Name of the column to take the data from.
+            This estimator operates over vector of text.</param>
         <param name="numberOfBits">Number of bits to hash into. Must be between 1 and 30, inclusive.</param>
         <param name="ngramLength">Ngram length.</param>
-        <param name="skipLength">Maximum number of tokens to skip when constructing an ngram.</param>
-        <param name="useAllLengths">Whether to include all ngram lengths up to <paramref name="ngramLength" /> or only <paramref name="ngramLength" />.</param>
+        <param name="skipLength">Maximum number of tokens to skip when constructing an n-gram.</param>
+        <param name="useAllLengths">Whether to include all n-gram lengths up to <paramref name="ngramLength" /> or only <paramref name="ngramLength" />.</param>
         <param name="seed">Hashing seed.</param>
         <param name="useOrderedHashing">Whether the position of each source column should be included in the hash (when there are multiple source columns).</param>
-        <param name="maximumNumberOfInverts">During hashing we constuct mappings between original values and the produced hash values.
-            Text representation of original values are stored in the slot names of the  metadata for the new column.Hashing, as such, can map many initial values to one.
+        <param name="maximumNumberOfInverts">During hashing we construct mappings between original values and the produced hash values.
+            Text representation of original values are stored in the slot names of the  annotations for the new column. Hashing, as such, can map many initial values to one.
             <paramref name="maximumNumberOfInverts" /> specifies the upper bound of the number of distinct input values mapping to a hash that should be retained.
             <value>0</value> does not retain any input values. <value>-1</value> retains all input values mapping to each hash.</param>
         <summary>
-            Produces a bag of counts of hashed ngrams in <paramref name="inputColumnName" />
-            and outputs bag of word vector as <paramref name="outputColumnName" /></summary>
+            Create a <see cref="T:Microsoft.ML.Transforms.Text.WordHashBagEstimator" />, which maps the column specified in <paramref name="inputColumnName" />
+            to a vector of counts of hashed n-grams in a new column named <paramref name="outputColumnName" />.
+            </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <see cref="T:Microsoft.ML.Transforms.Text.WordHashBagEstimator" /> is different from <see cref="T:Microsoft.ML.Transforms.Text.NgramHashingEstimator" /> in that the former
+            tokenizes text internally and the latter takes tokenized text as input.
+            </remarks>
       </Docs>
     </Member>
     <Member MemberName="ProduceHashedWordBags">
@@ -489,24 +559,30 @@
         <Parameter Name="maximumNumberOfInverts" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="catalog">The text-related transform's catalog.</param>
-        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnNames" />.</param>
-        <param name="inputColumnNames">Name of the columns to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
+        <param name="catalog">The transform's catalog.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnNames" />.
+            This column's data type will be known-size vector of <see cref="T:System.Single" />.</param>
+        <param name="inputColumnNames">Names of the multiple columns to take the data from.
+            This estimator operates over vector of text.</param>
         <param name="numberOfBits">Number of bits to hash into. Must be between 1 and 30, inclusive.</param>
         <param name="ngramLength">Ngram length.</param>
-        <param name="skipLength">Maximum number of tokens to skip when constructing an ngram.</param>
-        <param name="useAllLengths">Whether to include all ngram lengths up to <paramref name="ngramLength" /> or only <paramref name="ngramLength" />.</param>
+        <param name="skipLength">Maximum number of tokens to skip when constructing an n-gram.</param>
+        <param name="useAllLengths">Whether to include all n-gram lengths up to <paramref name="ngramLength" /> or only <paramref name="ngramLength" />.</param>
         <param name="seed">Hashing seed.</param>
         <param name="useOrderedHashing">Whether the position of each source column should be included in the hash (when there are multiple source columns).</param>
-        <param name="maximumNumberOfInverts">During hashing we constuct mappings between original values and the produced hash values.
-            Text representation of original values are stored in the slot names of the  metadata for the new column.Hashing, as such, can map many initial values to one.
+        <param name="maximumNumberOfInverts">During hashing we construct mappings between original values and the produced hash values.
+            Text representation of original values are stored in the slot names of the  annotations for the new column.Hashing, as such, can map many initial values to one.
             <paramref name="maximumNumberOfInverts" /> specifies the upper bound of the number of distinct input values mapping to a hash that should be retained.
             <value>0</value> does not retain any input values. <value>-1</value> retains all input values mapping to each hash.</param>
         <summary>
-            Produces a bag of counts of hashed ngrams in <paramref name="inputColumnNames" />
-            and outputs bag of word vector as <paramref name="outputColumnName" /></summary>
+            Create a <see cref="T:Microsoft.ML.Transforms.Text.WordHashBagEstimator" />, which maps the multiple columns specified in <paramref name="inputColumnNames" />
+            to a vector of counts of hashed n-grams in a new column named <paramref name="outputColumnName" />.
+            </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <see cref="T:Microsoft.ML.Transforms.Text.WordHashBagEstimator" /> is different from <see cref="T:Microsoft.ML.Transforms.Text.NgramHashingEstimator" /> in that the former
+            tokenizes text internally and the latter takes tokenized text as input.
+            </remarks>
       </Docs>
     </Member>
     <Member MemberName="ProduceNgrams">
@@ -535,21 +611,31 @@
       </Parameters>
       <Docs>
         <param name="catalog">The text-related transform's catalog.</param>
-        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
-        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.
+            This column's data type will be a vector of <see cref="T:System.Single" />.</param>
+        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.
+            This estimator operates over vectors of keys data type.</param>
         <param name="ngramLength">Ngram length.</param>
-        <param name="skipLength">Maximum number of tokens to skip when constructing an ngram.</param>
-        <param name="useAllLengths">Whether to include all ngram lengths up to <paramref name="ngramLength" /> or only <paramref name="ngramLength" />.</param>
+        <param name="skipLength">Number of tokens to skip between each n-gram. By default no token is skipped.</param>
+        <param name="useAllLengths">Whether to include all n-gram lengths up to <paramref name="ngramLength" /> or only <paramref name="ngramLength" />.</param>
         <param name="maximumNgramsCount">Maximum number of n-grams to store in the dictionary.</param>
-        <param name="weighting">Statistical measure used to evaluate how important a word is to a document in a corpus.</param>
+        <param name="weighting">Statistical measure used to evaluate how important a word or n-gram is to a document in a corpus.
+            When <paramref name="maximumNgramsCount" /> is smaller than the total number of encountered n-grams this measure is used
+            to determine which n-grams to keep.</param>
         <summary>
-            Produces a bag of counts of ngrams (sequences of consecutive words) in <paramref name="inputColumnName" />
-            and outputs bag of word vector as <paramref name="outputColumnName" /></summary>
+            Creates a <see cref="T:Microsoft.ML.Transforms.Text.NgramExtractingEstimator" /> which produces a vector of counts of n-grams (sequences of consecutive words)
+            encountered in the input text.
+            </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
         <example>
           <format type="text/markdown"><![CDATA[
             [!code-csharp[LpNormalize](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/NgramExtraction.cs?range=1-5,11-74)]
+            ]]></format>
+        </example>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[ProduceNgrams](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/Text/ProduceNgrams.cs)]
             ]]></format>
         </example>
       </Docs>
@@ -579,19 +665,25 @@
         <Parameter Name="weighting" Type="Microsoft.ML.Transforms.Text.NgramExtractingEstimator+WeightingCriteria" />
       </Parameters>
       <Docs>
-        <param name="catalog">The text-related transform's catalog.</param>
-        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
-        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
+        <param name="catalog">The transform's catalog.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.
+            This column's data type will be known-size vector of <see cref="T:System.Single" />.</param>
+        <param name="inputColumnName">Name of the column to take the data from.
+            This estimator operates over vector of text.</param>
         <param name="ngramLength">Ngram length.</param>
-        <param name="skipLength">Maximum number of tokens to skip when constructing an ngram.</param>
-        <param name="useAllLengths">Whether to include all ngram lengths up to <paramref name="ngramLength" /> or only <paramref name="ngramLength" />.</param>
-        <param name="maximumNgramsCount">Maximum number of ngrams to store in the dictionary.</param>
+        <param name="skipLength">Maximum number of tokens to skip when constructing an n-gram.</param>
+        <param name="useAllLengths">Whether to include all n-gram lengths up to <paramref name="ngramLength" /> or only <paramref name="ngramLength" />.</param>
+        <param name="maximumNgramsCount">Maximum number of n-grams to store in the dictionary.</param>
         <param name="weighting">Statistical measure used to evaluate how important a word is to a document in a corpus.</param>
         <summary>
-            Produces a bag of counts of ngrams (sequences of consecutive words) in <paramref name="inputColumnName" />
-            and outputs bag of word vector as <paramref name="outputColumnName" /></summary>
+            Create a <see cref="T:Microsoft.ML.Transforms.Text.WordHashBagEstimator" />, which maps the column specified in <paramref name="inputColumnName" />
+            to a vector of n-gram counts in a new column named <paramref name="outputColumnName" />.
+            </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <see cref="T:Microsoft.ML.Transforms.Text.WordBagEstimator" /> is different from <see cref="T:Microsoft.ML.Transforms.Text.NgramExtractingEstimator" /> in that the former
+            tokenizes text internally and the latter takes tokenized text as input.
+            </remarks>
       </Docs>
     </Member>
     <Member MemberName="ProduceWordBags">
@@ -619,19 +711,25 @@
         <Parameter Name="weighting" Type="Microsoft.ML.Transforms.Text.NgramExtractingEstimator+WeightingCriteria" />
       </Parameters>
       <Docs>
-        <param name="catalog">The text-related transform's catalog.</param>
-        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnNames" />.</param>
-        <param name="inputColumnNames">Name of the columns to transform.</param>
+        <param name="catalog">The transform's catalog.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnNames" />.
+            This column's data type will be known-size vector of <see cref="T:System.Single" />.</param>
+        <param name="inputColumnNames">Names of the multiple columns to take the data from.
+            This estimator operates over vector of text.</param>
         <param name="ngramLength">Ngram length.</param>
-        <param name="skipLength">Maximum number of tokens to skip when constructing an ngram.</param>
-        <param name="useAllLengths">Whether to include all ngram lengths up to <paramref name="ngramLength" /> or only <paramref name="ngramLength" />.</param>
-        <param name="maximumNgramsCount">Maximum number of ngrams to store in the dictionary.</param>
+        <param name="skipLength">Maximum number of tokens to skip when constructing an n-gram.</param>
+        <param name="useAllLengths">Whether to include all n-gram lengths up to <paramref name="ngramLength" /> or only <paramref name="ngramLength" />.</param>
+        <param name="maximumNgramsCount">Maximum number of n-grams to store in the dictionary.</param>
         <param name="weighting">Statistical measure used to evaluate how important a word is to a document in a corpus.</param>
         <summary>
-            Produces a bag of counts of ngrams (sequences of consecutive words) in <paramref name="inputColumnNames" />
-            and outputs bag of word vector as <paramref name="outputColumnName" /></summary>
+            Create a <see cref="T:Microsoft.ML.Transforms.Text.WordHashBagEstimator" />, which maps the multiple columns specified in <paramref name="inputColumnNames" />
+            to a vector of n-gram counts in a new column named <paramref name="outputColumnName" />.
+            </summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <see cref="T:Microsoft.ML.Transforms.Text.WordBagEstimator" /> is different from <see cref="T:Microsoft.ML.Transforms.Text.NgramExtractingEstimator" /> in that the former
+            tokenizes text internally and the latter takes tokenized text as input.
+            </remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveDefaultStopWords">
@@ -654,19 +752,26 @@
         <Parameter Name="language" Type="Microsoft.ML.Transforms.Text.StopWordsRemovingEstimator+Language" />
       </Parameters>
       <Docs>
-        <param name="catalog">The text-related transform's catalog.</param>
-        <param name="outputColumnName">The column containing output text. Null means <paramref name="inputColumnName" /> is replaced.</param>
-        <param name="inputColumnName">The column containing text to remove stop words on.</param>
+        <param name="catalog">The transform's catalog.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.
+            This column's data type will be variable-size vector of text.</param>
+        <param name="inputColumnName">Name of the column to copy the data from.
+            This estimator operates over vector of text.</param>
         <param name="language">Langauge of the input text column <paramref name="inputColumnName" />.</param>
         <summary>
-            Removes stop words from incoming token streams in <paramref name="inputColumnName" />
-            and outputs the token streams without stopwords as <paramref name="outputColumnName" />.
+            Create a <see cref="T:Microsoft.ML.Transforms.Text.CustomStopWordsRemovingEstimator" />, which copies the data from the column specified in <paramref name="inputColumnName" />
+            to a new column: <paramref name="outputColumnName" /> and removes predifined set of text specific for <paramref name="language" /> from it.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
         <example>
           <format type="text/markdown"><![CDATA[
              [!code-csharp[FastTree](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/StopWordRemoverTransform.cs)]
+            ]]></format>
+        </example>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[RemoveDefaultStopWords](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/Text/RemoveDefaultStopWords.cs)]
             ]]></format>
         </example>
       </Docs>
@@ -691,26 +796,33 @@
         <Parameter Name="inputColumnName" Type="System.String" />
         <Parameter Name="stopwords" Type="System.String[]">
           <Attributes>
-            <Attribute FrameworkAlternate="ml-dotnet">
+            <Attribute>
               <AttributeName>System.ParamArray</AttributeName>
             </Attribute>
           </Attributes>
         </Parameter>
       </Parameters>
       <Docs>
-        <param name="catalog">The text-related transform's catalog.</param>
-        <param name="outputColumnName">The column containing output text. Null means <paramref name="inputColumnName" /> is replaced.</param>
-        <param name="inputColumnName">The column containing text to remove stop words on.</param>
+        <param name="catalog">The transform's catalog.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.
+            This column's data type will be variable-size vector of text.</param>
+        <param name="inputColumnName">Name of the column to copy the data from.
+            This estimator operates over a vector of text.</param>
         <param name="stopwords">Array of words to remove.</param>
         <summary>
-            Removes stop words from incoming token streams in <paramref name="inputColumnName" />
-            and outputs the token streams without stopwords as <paramref name="outputColumnName" />.
+            Create a <see cref="T:Microsoft.ML.Transforms.Text.CustomStopWordsRemovingEstimator" />, which copies the data from the column specified in <paramref name="inputColumnName" />
+            to a new column: <paramref name="outputColumnName" /> and removes text specified in <paramref name="stopwords" /> from it.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
         <example>
           <format type="text/markdown"><![CDATA[
              [!code-csharp[FastTree](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/StopWordRemoverTransform.cs)]
+            ]]></format>
+        </example>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[RemoveStopWords](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/Text/RemoveStopWords.cs)]
             ]]></format>
         </example>
       </Docs>
@@ -737,15 +849,25 @@
       </Parameters>
       <Docs>
         <param name="catalog">The text-related transform's catalog.</param>
-        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
-        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
-        <param name="useMarkerCharacters">Whether to prepend a marker character, <see langword="0x02" />, to the beginning,
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.
+            This column's data type will be a variable-sized vector of keys.</param>
+        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the
+            <paramref name="outputColumnName" /> will be used as source.
+            This estimator operates over text data type.</param>
+        <param name="useMarkerCharacters">To be able to distinguish the tokens, for example for debugging purposes,
+            you can choose to prepend a marker character, <see langword="0x02" />, to the beginning,
             and append another marker character, <see langword="0x03" />, to the end of the output vector of characters.</param>
         <summary>
-            Tokenize incoming text in <paramref name="inputColumnName" /> and output the tokens as <paramref name="outputColumnName" />.
+            Create a <see cref="T:Microsoft.ML.Transforms.Text.TokenizingByCharactersEstimator" />, which tokenizes by splitting text into sequences of characters
+            using a sliding window.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[TokenizeIntoCharacters](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/Text/TokenizeIntoCharactersAsKeys.cs)]
+            ]]></format>
+        </example>
       </Docs>
     </Member>
     <Member MemberName="TokenizeIntoWords">
@@ -770,15 +892,21 @@
       </Parameters>
       <Docs>
         <param name="catalog">The text-related transform's catalog.</param>
-        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
-        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.
+            This column's data type will be a variable-size vector of text.</param>
+        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.
+            This estimator operates on scalar of text and vector of text data type.</param>
         <param name="separators">The separators to use (uses space character by default).</param>
         <summary>
-            Tokenizes incoming text in <paramref name="inputColumnName" />, using <paramref name="separators" /> as separators,
-            and outputs the tokens as <paramref name="outputColumnName" />.
+            Create a <see cref="T:Microsoft.ML.Transforms.Text.WordTokenizingEstimator" />, which tokenizes input text using <paramref name="separators" /> as separators.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[TokenizeIntoWords](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/Text/TokenizeIntoWords.cs)]
+            ]]></format>
+        </example>
       </Docs>
     </Member>
   </Members>

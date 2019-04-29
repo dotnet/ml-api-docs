@@ -14,7 +14,8 @@
   <Interfaces />
   <Docs>
     <summary>
-            Extension methods for the <see cref="T:Microsoft.ML.TransformsCatalog" />.
+            Collection of extension methods for <see cref="T:Microsoft.ML.TransformsCatalog" /> to create instances of transform components
+            that manipulate columns.
             </summary>
     <remarks>To be added.</remarks>
   </Docs>
@@ -38,7 +39,7 @@
         <Parameter Name="outputColumnName" Type="System.String" />
         <Parameter Name="inputColumnNames" Type="System.String[]">
           <Attributes>
-            <Attribute FrameworkAlternate="ml-dotnet">
+            <Attribute>
               <AttributeName>System.ParamArray</AttributeName>
             </Attribute>
           </Attributes>
@@ -46,10 +47,13 @@
       </Parameters>
       <Docs>
         <param name="catalog">The transform's catalog.</param>
-        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnNames" />.</param>
-        <param name="inputColumnNames">Name of the columns to transform.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnNames" />.
+            This column's data type will be a vector of the input columns' data type.</param>
+        <param name="inputColumnNames">Name of the columns to concatenate.
+            This estimator operates over any data type except key type.
+            If more that one column is provided, they must all have the same data type.</param>
         <summary>
-            Concatenates columns together.
+            Create a <see cref="T:Microsoft.ML.Transforms.ColumnConcatenatingEstimator" />, which concatenates one or more input columns into a new output column.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -81,10 +85,13 @@
       </Parameters>
       <Docs>
         <param name="catalog">The transform's catalog.</param>
-        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
-        <param name="inputColumnName">Name of the columns to transform.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.
+            This column's data type will be the same as that of the input column.</param>
+        <param name="inputColumnName">Name of the column to copy the data from.
+            This estimator operates over any data type.</param>
         <summary>
-            Copies the input column to another column named as specified in <paramref name="outputColumnName" />.
+            Create a <see cref="T:Microsoft.ML.Transforms.ColumnCopyingEstimator" />, which copies the data from the column specified in <paramref name="inputColumnName" />
+            to a new column: <paramref name="outputColumnName" />.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -113,7 +120,7 @@
         <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog" RefType="this" />
         <Parameter Name="columnNames" Type="System.String[]">
           <Attributes>
-            <Attribute FrameworkAlternate="ml-dotnet">
+            <Attribute>
               <AttributeName>System.ParamArray</AttributeName>
             </Attribute>
           </Attributes>
@@ -121,10 +128,11 @@
       </Parameters>
       <Docs>
         <param name="catalog">The transform's catalog.</param>
-        <param name="columnNames">The array of column names to drop.</param>
+        <param name="columnNames">The array of column names to drop.
+            This estimator operates over columns of any data type.</param>
         <summary>
-            DropColumns is used to select a list of columns that user wants to drop from a given input. Any column not specified will
-            be maintained in the output schema.
+            Create a <see cref="T:Microsoft.ML.Transforms.ColumnSelectingEstimator" />, which drops a given list of columns from an <see cref="T:Microsoft.ML.IDataView" />. Any column not specified will
+            be maintained in the output.
             </summary>
         <returns>To be added.</returns>
         <remarks>
@@ -159,7 +167,7 @@
         <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog" RefType="this" />
         <Parameter Name="columnNames" Type="System.String[]">
           <Attributes>
-            <Attribute FrameworkAlternate="ml-dotnet">
+            <Attribute>
               <AttributeName>System.ParamArray</AttributeName>
             </Attribute>
           </Attributes>
@@ -169,7 +177,7 @@
         <param name="catalog">The transform's catalog.</param>
         <param name="columnNames">The array of column names to keep.</param>
         <summary>
-            Select a list of columns to keep in a given <see cref="T:Microsoft.ML.IDataView" />.
+            Create a <see cref="T:Microsoft.ML.Transforms.ColumnSelectingEstimator" />, which keeps a given list of columns in an <see cref="T:Microsoft.ML.IDataView" /> and drops the others.
             </summary>
         <returns>To be added.</returns>
         <remarks>
@@ -207,9 +215,11 @@
       <Docs>
         <param name="catalog">The transform's catalog.</param>
         <param name="columnNames">The array of column names to keep.</param>
-        <param name="keepHidden">If <see langword="true" /> will keep hidden columns and <see langword="false" /> will remove hidden columns.</param>
+        <param name="keepHidden">If <see langword="true" /> will keep hidden columns and <see langword="false" /> will remove hidden columns.
+            Keeping hidden columns, instead of dropping them, is recommended when it is necessary to understand how the inputs of a pipeline
+            map to outputs of the pipeline, for debugging purposes.</param>
         <summary>
-            Select a list of columns to keep in a given <see cref="T:Microsoft.ML.IDataView" />.
+            Create a <see cref="T:Microsoft.ML.Transforms.ColumnSelectingEstimator" />, which keeps a given list of columns in an <see cref="T:Microsoft.ML.IDataView" /> and drops the others.
             </summary>
         <returns>To be added.</returns>
         <remarks>

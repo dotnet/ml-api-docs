@@ -17,9 +17,26 @@
   <Interfaces />
   <Docs>
     <summary>
-            Estimator for <see cref="T:Microsoft.ML.Transforms.KeyToVectorMappingTransformer" />. Converts the key types back to their original vectors.
-            </summary>
-    <remarks>To be added.</remarks>
+             Estimator for <see cref="T:Microsoft.ML.Transforms.KeyToVectorMappingTransformer" />. Maps the value of a key
+             into a known-sized vector of <see cref="T:System.Single" />.
+             </summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[
+             ###  Estimator Characteristics
+             |  |  |
+             | -- | -- |
+             | Does this estimator need to look at the data to train its parameters? | No |
+             | Input column data type | Scalar or known-size vector of [key](xref:Microsoft.Ml.Data.KeyDataViewType) type. |
+             | Output column data type | A known-size vector of [System.Single](xref:System.Single). |
+            
+             It iterates over keys in data, and for each key it produces vector of key cardinality filled with zeros except position of key value in which it put's `1.0`.
+             For vector of keys it can either produce vector of counts for each key or concatenate them together into one vector.
+            
+             Check the See Also section for links to usage examples.
+             ]]></format>
+    </remarks>
+    <altmember cref="M:Microsoft.ML.ConversionsExtensionsCatalog.MapKeyToVector(Microsoft.ML.TransformsCatalog.ConversionTransforms,Microsoft.ML.InputOutputColumnPair[],System.Boolean)" />
+    <altmember cref="M:Microsoft.ML.ConversionsExtensionsCatalog.MapKeyToVector(Microsoft.ML.TransformsCatalog.ConversionTransforms,System.String,System.String,System.Boolean)" />
   </Docs>
   <Members>
     <Member MemberName="GetOutputSchema">

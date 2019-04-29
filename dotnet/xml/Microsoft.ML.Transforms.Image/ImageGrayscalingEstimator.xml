@@ -17,16 +17,31 @@
   <Interfaces />
   <Docs>
     <summary>
-      <see cref="T:Microsoft.ML.IEstimator`1" /> that converts the image to grayscale.
-            </summary>
+      <see cref="T:Microsoft.ML.IEstimator`1" /> for the <see cref="T:Microsoft.ML.Transforms.Image.ImageGrayscalingTransformer" />.
+             </summary>
     <remarks>
-            Calling <see cref="M:Microsoft.ML.IEstimator`1.Fit(Microsoft.ML.IDataView)" /> in this estimator, produces an <see cref="T:Microsoft.ML.Transforms.Image.ImageGrayscalingEstimator" />.
-            The images might be converted to grayscale to reduce the complexity of the model.
-            The grayed out images contain less information to process than the colored images.
-            Another use case for converting to grayscale is to generate new images out of the existing ones, so you can have a larger dataset,
-            a technique known as <a href="http://www.stat.harvard.edu/Faculty_Content/meng/JCGS01.pdf"> data augmentation</a>.
-            For end-to-end image processing pipelines, and scenarios in your applications, see the
-            <a href="https://github.com/dotnet/machinelearning-samples/tree/master/samples/csharp/getting-started"> examples in the machinelearning-samples github repository.</a><seealso cref="T:Microsoft.ML.ImageEstimatorsCatalog" /></remarks>
+      <format type="text/markdown"><![CDATA[
+             ###  Estimator Characteristics
+             |  |  |
+             | -- | -- |
+             | Does this estimator need to look at the data to train its parameters? | No |
+             | Input column data type | <xref:System.Drawing.Bitmap> |
+             | Output column data type | <xref:System.Drawing.Bitmap> |
+             | Required NuGet in addition to Microsoft.ML | Microsoft.ML.ImageAnalytics |
+            
+             The resulting <xref:Microsoft.ML.Transforms.Image.ImageGrayscalingTransformer> creates a new column, named as specified in the output column name parameters, and
+             converts the image from the input column into a grayscale image.
+             The images might be converted to grayscale to reduce the complexity of the model.
+             The grayed out images contain less information to process than the colored images.
+             Another use case for converting to grayscale is to generate new images out of the existing ones, so you can have a larger dataset,
+             a technique known as [data augmentation](http://www.stat.harvard.edu/Faculty_Content/meng/JCGS01.pdf).
+             For end-to-end image processing pipelines, and scenarios in your applications, see the
+             [examples](https://github.com/dotnet/machinelearning-samples/tree/master/samples/csharp/getting-started) in the machinelearning-samples github repository.
+            
+             Check the See Also section for links to usage examples.
+             ]]></format>
+    </remarks>
+    <altmember cref="M:Microsoft.ML.ImageEstimatorsCatalog.ConvertToGrayscale(Microsoft.ML.TransformsCatalog,System.String,System.String)" />
   </Docs>
   <Members>
     <Member MemberName="GetOutputSchema">
