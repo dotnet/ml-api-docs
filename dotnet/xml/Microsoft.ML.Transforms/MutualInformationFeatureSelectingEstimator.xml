@@ -1,0 +1,131 @@
+﻿<Type Name="MutualInformationFeatureSelectingEstimator" FullName="Microsoft.ML.Transforms.MutualInformationFeatureSelectingEstimator">
+  <TypeSignature Language="C#" Value="public sealed class MutualInformationFeatureSelectingEstimator : Microsoft.ML.IEstimator&lt;Microsoft.ML.ITransformer&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit MutualInformationFeatureSelectingEstimator extends System.Object implements class Microsoft.ML.IEstimator`1&lt;class Microsoft.ML.ITransformer&gt;" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Transforms.MutualInformationFeatureSelectingEstimator" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class MutualInformationFeatureSelectingEstimator&#xA;Implements IEstimator(Of ITransformer)" />
+  <TypeSignature Language="F#" Value="type MutualInformationFeatureSelectingEstimator = class&#xA;    interface IEstimator&lt;ITransformer&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.IEstimator&lt;Microsoft.ML.ITransformer&gt;</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+             Selects the top k slots across all specified columns ordered by their mutual information with the label column
+             (what you can learn about the label by observing the value of the specified column).
+             </summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[
+            
+             ###  Estimator Characteristics
+             |  |  |
+             | -- | -- |
+             | Does this estimator need to look at the data to train its parameters? | Yes |
+             | Input column data type | Vector or scalar of numeric, [text](xref:Microsoft.ML.Data.TextDataViewType) or [key](xref:Microsoft.ML.Data.KeyDataViewType) data types|
+             | Output column data type | Same as the input column|
+            
+             Formally, the mutual information can be written as:
+            
+             $\text{MI}(X,Y) = E_{x,y}[\log(P(x,y)) - \log(P(x)) - \log(P(y))]$ where $x$ and $y$ are observations of random variables $X$ and $Y$.
+            
+             where the expectation E is taken over the joint distribution of X and Y.
+             Here P(x, y) is the joint probability density function of X and Y, P(x) and P(y) are the marginal probability density functions of X and Y respectively.
+             In general, a higher mutual information between the dependent variable(or label) and an independent variable(or feature) means
+             that the label has higher mutual dependence over that feature.
+             It keeps the top slots in output features with the largest mutual information with the label.
+            
+             For example, for the following Features and Label column, if we specify that we want the top 2 slots(vector elements) that have the higher correlation
+             with the label column, the output of applying this Estimator would keep the first and the third slots only, because their values
+             are more correlated with the values in the Label column.
+            
+             | Label |  Features |
+             | -- | -- |
+             |True |4,6,0 |
+             |False|0,7,5 |
+             |True |4,7,0 |
+             |False|0,7,0 |
+            
+             This is how the dataset above would look, after fitting the estimator, and transforming the data with the resulting transformer:
+            
+             | Label |  Features |
+             | -- | -- |
+             |True |4,0 |
+             |False|0,5 |
+             |True |4,0 |
+             |False|0,5 |
+            
+             Check the See Also section for links to usage examples.
+             ]]></format>
+    </remarks>
+    <altmember cref="M:Microsoft.ML.FeatureSelectionCatalog.SelectFeaturesBasedOnMutualInformation(Microsoft.ML.TransformsCatalog.FeatureSelectionTransforms,Microsoft.ML.InputOutputColumnPair[],System.String,System.Int32,System.Int32)" />
+    <altmember cref="M:Microsoft.ML.FeatureSelectionCatalog.SelectFeaturesBasedOnMutualInformation(Microsoft.ML.TransformsCatalog.FeatureSelectionTransforms,System.String,System.String,System.String,System.Int32,System.Int32)" />
+  </Docs>
+  <Members>
+    <Member MemberName="Fit">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.ITransformer Fit (Microsoft.ML.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.ITransformer Fit(class Microsoft.ML.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.MutualInformationFeatureSelectingEstimator.Fit(Microsoft.ML.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Fit (input As IDataView) As ITransformer" />
+      <MemberSignature Language="F#" Value="abstract member Fit : Microsoft.ML.IDataView -&gt; Microsoft.ML.ITransformer&#xA;override this.Fit : Microsoft.ML.IDataView -&gt; Microsoft.ML.ITransformer" Usage="mutualInformationFeatureSelectingEstimator.Fit input" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.IEstimator`1.Fit(Microsoft.ML.IDataView)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.ITransformer</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="input">To be added.</param>
+        <summary>
+            Trains and returns a <see cref="T:Microsoft.ML.ITransformer" />.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetOutputSchema">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.SchemaShape GetOutputSchema (Microsoft.ML.SchemaShape inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.SchemaShape GetOutputSchema(class Microsoft.ML.SchemaShape inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.MutualInformationFeatureSelectingEstimator.GetOutputSchema(Microsoft.ML.SchemaShape)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetOutputSchema (inputSchema As SchemaShape) As SchemaShape" />
+      <MemberSignature Language="F#" Value="abstract member GetOutputSchema : Microsoft.ML.SchemaShape -&gt; Microsoft.ML.SchemaShape&#xA;override this.GetOutputSchema : Microsoft.ML.SchemaShape -&gt; Microsoft.ML.SchemaShape" Usage="mutualInformationFeatureSelectingEstimator.GetOutputSchema inputSchema" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.IEstimator`1.GetOutputSchema(Microsoft.ML.SchemaShape)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.SchemaShape</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.SchemaShape" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
+        <summary>
+            Returns the <see cref="T:Microsoft.ML.SchemaShape" /> of the schema which will be produced by the transformer.
+            Used for schema propagation and verification in a pipeline.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

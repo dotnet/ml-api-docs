@@ -1,0 +1,430 @@
+﻿<Type Name="MatrixFactorizationTrainer+Options" FullName="Microsoft.ML.Trainers.MatrixFactorizationTrainer+Options">
+  <TypeSignature Language="C#" Value="public sealed class MatrixFactorizationTrainer.Options" />
+  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi sealed beforefieldinit MatrixFactorizationTrainer/Options extends System.Object" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class MatrixFactorizationTrainer.Options" />
+  <TypeSignature Language="F#" Value="type MatrixFactorizationTrainer.Options = class" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+            Options for the <see cref="T:Microsoft.ML.Trainers.MatrixFactorizationTrainer" /> as used in [MatrixFactorization(Options)](xref:Microsoft.ML.RecommendationCatalog.RecommendationTrainers.MatrixFactorization(Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options)).
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Options ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.#ctor" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New ()" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Alpha">
+      <MemberSignature Language="C#" Value="public double Alpha;" />
+      <MemberSignature Language="ILAsm" Value=".field public float64 Alpha" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.Alpha" />
+      <MemberSignature Language="VB.NET" Value="Public Alpha As Double " />
+      <MemberSignature Language="F#" Value="val mutable Alpha : double" Usage="Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.Alpha" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Importance of unobserved entries' loss in one-class matrix factorization.")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.EntryPoints.TlcModule/SweepableDiscreteParam("Alpha", new System.Object[] { Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument }, false)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Internal.Internallearn.TGUI(SuggestedSweeps="1,0.01,0.0001,0.000001")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Importance of unobserved entries' loss in one-class matrix factorization. Applicable if <see cref="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.LossFunction" /> set to <see cref="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.LossFunctionType.SquareLossOneClass" /></summary>
+        <remarks>
+            Importance of unobserved (i.e., negative) entries' loss in one-class matrix factorization.
+            In general, only a few of matrix entries (e.g., less than 1%) in the training are observed (i.e., positive).
+            To balance the contributions from unobserved and observed in the overall loss function, this parameter is
+            usually a small value so that the solver is able to find a factorization equally good to unobserved and observed
+            entries. If only 10000 observed entries present in a 200000-by-300000 training matrix, one can try Alpha = 10000 / (200000*300000 - 10000).
+            When most entries in the training matrix are observed, one can use Alpha &gt;&gt; 1; for example, if only 10000 in previous
+            matrix is not observed, one can try Alpha = (200000 * 300000 - 10000) / 10000. Consequently,
+            Alpha = (# of observed entries) / (# of unobserved entries) can make observed and unobserved entries equally important
+            in the minimized loss function. However, the best setting in machine learning is always data-dependent so user still needs to
+            try multiple values.
+            </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ApproximationRank">
+      <MemberSignature Language="C#" Value="public int ApproximationRank;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 ApproximationRank" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.ApproximationRank" />
+      <MemberSignature Language="VB.NET" Value="Public ApproximationRank As Integer " />
+      <MemberSignature Language="F#" Value="val mutable ApproximationRank : int" Usage="Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.ApproximationRank" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Latent space dimension (denoted by k). If the factorized matrix is m-by-n, two factor matrices found by matrix factorization are m-by-k and k-by-n, respectively. This value is also known as the rank of matrix factorization because k is generally much smaller than m and n.", ShortName="K")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.EntryPoints.TlcModule/SweepableDiscreteParam("K", new System.Object[] { Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument }, false)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Internal.Internallearn.TGUI(SuggestedSweeps="8,16,64,128")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Rank of approximation matrices.
+            </summary>
+        <remarks>
+            If input data has size of m-by-n we would build two approximation matrices m-by-k and k-by-n where k is approximation rank.
+            </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="C">
+      <MemberSignature Language="C#" Value="public double C;" />
+      <MemberSignature Language="ILAsm" Value=".field public float64 C" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.C" />
+      <MemberSignature Language="VB.NET" Value="Public C As Double " />
+      <MemberSignature Language="F#" Value="val mutable C : double" Usage="Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.C" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Desired negative entries' value in one-class matrix factorization")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.EntryPoints.TlcModule/SweepableDiscreteParam("C", new System.Object[] { Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument }, false)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Internal.Internallearn.TGUI(SuggestedSweeps="0.000001,0,0001,0.01")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Desired negative entries value in one-class matrix factorization. Applicable if <see cref="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.LossFunction" /> set to <see cref="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.LossFunctionType.SquareLossOneClass" /></summary>
+        <remarks>
+            In one-class matrix factorization, all matrix values observed are one (which can be viewed as positive cases in binary classification)
+            while unobserved values (which can be viewed as negative cases in binary classification) need to be specified manually using this option.
+            </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LabelColumnName">
+      <MemberSignature Language="C#" Value="public string LabelColumnName;" />
+      <MemberSignature Language="ILAsm" Value=".field public string LabelColumnName" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.LabelColumnName" />
+      <MemberSignature Language="VB.NET" Value="Public LabelColumnName As String " />
+      <MemberSignature Language="F#" Value="val mutable LabelColumnName : string" Usage="Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.LabelColumnName" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The name variable (i.e., column in a <see cref="T:Microsoft.ML.IDataView" /> type system) used as matrix's element value.
+            The column data must be <see cref="T:Microsoft.ML.Data.KeyDataViewType" />.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Lambda">
+      <MemberSignature Language="C#" Value="public double Lambda;" />
+      <MemberSignature Language="ILAsm" Value=".field public float64 Lambda" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.Lambda" />
+      <MemberSignature Language="VB.NET" Value="Public Lambda As Double " />
+      <MemberSignature Language="F#" Value="val mutable Lambda : double" Usage="Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.Lambda" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Regularization parameter. It's the weight of factor matrices Frobenius norms in the objective function minimized by matrix factorization's algorithm. A small value could cause over-fitting.")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.EntryPoints.TlcModule/SweepableDiscreteParam("Lambda", new System.Object[] { Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument }, false)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Internal.Internallearn.TGUI(SuggestedSweeps="0.01,0.05,0.1,0.5,1")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Regularization parameter.
+            </summary>
+        <remarks>
+            It's the weight of factor matrices Frobenius norms in the objective function minimized by matrix factorization's algorithm. A small value could cause over-fitting.
+            </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LearningRate">
+      <MemberSignature Language="C#" Value="public double LearningRate;" />
+      <MemberSignature Language="ILAsm" Value=".field public float64 LearningRate" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.LearningRate" />
+      <MemberSignature Language="VB.NET" Value="Public LearningRate As Double " />
+      <MemberSignature Language="F#" Value="val mutable LearningRate : double" Usage="Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.LearningRate" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Initial learning rate. It specifies the speed of the training algorithm. Small value may increase the number of iterations needed to achieve a reasonable result. Large value may lead to numerical difficulty such as a infinity value.", ShortName="Eta")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.EntryPoints.TlcModule/SweepableDiscreteParam("Eta", new System.Object[] { Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument }, false)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Internal.Internallearn.TGUI(SuggestedSweeps="0.001,0.01,0.1")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+             Initial learning rate. It specifies the speed of the training algorithm.
+            </summary>
+        <remarks>
+             Small value may increase the number of iterations needed to achieve a reasonable result.
+             Large value may lead to numerical difficulty such as a infinity value.
+            </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LossFunction">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Trainers.MatrixFactorizationTrainer.LossFunctionType LossFunction;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Microsoft.ML.Trainers.MatrixFactorizationTrainer/LossFunctionType LossFunction" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.LossFunction" />
+      <MemberSignature Language="VB.NET" Value="Public LossFunction As MatrixFactorizationTrainer.LossFunctionType " />
+      <MemberSignature Language="F#" Value="val mutable LossFunction : Microsoft.ML.Trainers.MatrixFactorizationTrainer.LossFunctionType" Usage="Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.LossFunction" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Loss function minimized for finding factor matrices.")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.EntryPoints.TlcModule/SweepableDiscreteParam("LossFunction", new System.Object[] { Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument }, false)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Internal.Internallearn.TGUI(SuggestedSweeps="0,12")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Trainers.MatrixFactorizationTrainer+LossFunctionType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Loss function minimized for finding factor matrices.
+            </summary>
+        <remarks>
+            Two values are allowed, <see cref="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.LossFunctionType.SquareLossRegression" /> or <see cref="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.LossFunctionType.SquareLossOneClass" />.
+            The <see cref="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.LossFunctionType.SquareLossRegression" /> means traditional collaborative filtering problem with squared loss.
+            The <see cref="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.LossFunctionType.SquareLossOneClass" /> triggers one-class matrix factorization for implicit-feedback recommendation problem.
+            </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MatrixColumnIndexColumnName">
+      <MemberSignature Language="C#" Value="public string MatrixColumnIndexColumnName;" />
+      <MemberSignature Language="ILAsm" Value=".field public string MatrixColumnIndexColumnName" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.MatrixColumnIndexColumnName" />
+      <MemberSignature Language="VB.NET" Value="Public MatrixColumnIndexColumnName As String " />
+      <MemberSignature Language="F#" Value="val mutable MatrixColumnIndexColumnName : string" Usage="Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.MatrixColumnIndexColumnName" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The name of variable (i.e., Column in a <see cref="T:Microsoft.ML.IDataView" /> type system) used as matrix's column index.
+            The column data must be <see cref="T:System.Single" />.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MatrixRowIndexColumnName">
+      <MemberSignature Language="C#" Value="public string MatrixRowIndexColumnName;" />
+      <MemberSignature Language="ILAsm" Value=".field public string MatrixRowIndexColumnName" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.MatrixRowIndexColumnName" />
+      <MemberSignature Language="VB.NET" Value="Public MatrixRowIndexColumnName As String " />
+      <MemberSignature Language="F#" Value="val mutable MatrixRowIndexColumnName : string" Usage="Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.MatrixRowIndexColumnName" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The name of variable (i.e., column in a <see cref="T:Microsoft.ML.IDataView" /> type system) used as matrix's row index.
+            The column data must be <see cref="T:Microsoft.ML.Data.KeyDataViewType" />.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NonNegative">
+      <MemberSignature Language="C#" Value="public bool NonNegative;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool NonNegative" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.NonNegative" />
+      <MemberSignature Language="VB.NET" Value="Public NonNegative As Boolean " />
+      <MemberSignature Language="F#" Value="val mutable NonNegative : bool" Usage="Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.NonNegative" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Force the factor matrices to be non-negative.", ShortName="nn")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Force the factor matrices to be non-negative.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NumberOfIterations">
+      <MemberSignature Language="C#" Value="public int NumberOfIterations;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 NumberOfIterations" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.NumberOfIterations" />
+      <MemberSignature Language="VB.NET" Value="Public NumberOfIterations As Integer " />
+      <MemberSignature Language="F#" Value="val mutable NumberOfIterations : int" Usage="Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.NumberOfIterations" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Training iterations; that is, the times that the training algorithm iterates through the whole training data once.", ShortName="iter,numiterations")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.EntryPoints.TlcModule/SweepableDiscreteParam("NumIterations", new System.Object[] { Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument, Mono.Cecil.CustomAttributeArgument }, false)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>Microsoft.ML.Internal.Internallearn.TGUI(SuggestedSweeps="10,20,40")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Number of training iterations.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NumberOfThreads">
+      <MemberSignature Language="C#" Value="public Nullable&lt;int&gt; NumberOfThreads;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype System.Nullable`1&lt;int32&gt; NumberOfThreads" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.NumberOfThreads" />
+      <MemberSignature Language="VB.NET" Value="Public NumberOfThreads As Nullable(Of Integer) " />
+      <MemberSignature Language="F#" Value="val mutable NumberOfThreads : Nullable&lt;int&gt;" Usage="Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.NumberOfThreads" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Number of threads can be used in the training procedure.", ShortName="t,numthreads")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Nullable&lt;System.Int32&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Number of threads will be used during training. If unspecified all available threads will be use.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Quiet">
+      <MemberSignature Language="C#" Value="public bool Quiet;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool Quiet" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.Quiet" />
+      <MemberSignature Language="VB.NET" Value="Public Quiet As Boolean " />
+      <MemberSignature Language="F#" Value="val mutable Quiet : bool" Usage="Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.Quiet" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Suppress writing additional information to output.")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Suppress writing additional information to output.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

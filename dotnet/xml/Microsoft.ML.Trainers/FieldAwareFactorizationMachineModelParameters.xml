@@ -1,0 +1,142 @@
+﻿<Type Name="FieldAwareFactorizationMachineModelParameters" FullName="Microsoft.ML.Trainers.FieldAwareFactorizationMachineModelParameters">
+  <TypeSignature Language="C#" Value="public sealed class FieldAwareFactorizationMachineModelParameters : Microsoft.ML.Trainers.ModelParametersBase&lt;float&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit FieldAwareFactorizationMachineModelParameters extends Microsoft.ML.Trainers.ModelParametersBase`1&lt;float32&gt;" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Trainers.FieldAwareFactorizationMachineModelParameters" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class FieldAwareFactorizationMachineModelParameters&#xA;Inherits ModelParametersBase(Of Single)" />
+  <TypeSignature Language="F#" Value="type FieldAwareFactorizationMachineModelParameters = class&#xA;    inherit ModelParametersBase&lt;single&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Microsoft.ML.Trainers.ModelParametersBase&lt;System.Single&gt;</BaseTypeName>
+    <BaseTypeArguments>
+      <BaseTypeArgument TypeParamName="!0">System.Single</BaseTypeArgument>
+    </BaseTypeArguments>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+            Model parameters for <see cref="T:Microsoft.ML.Trainers.FieldAwareFactorizationMachineTrainer" />.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="FeatureCount">
+      <MemberSignature Language="C#" Value="public int FeatureCount { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 FeatureCount" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FieldAwareFactorizationMachineModelParameters.FeatureCount" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property FeatureCount As Integer" />
+      <MemberSignature Language="F#" Value="member this.FeatureCount : int" Usage="Microsoft.ML.Trainers.FieldAwareFactorizationMachineModelParameters.FeatureCount" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Get the number of features. It's the symbol `n` in the doc: https://github.com/wschin/fast-ffm/blob/master/fast-ffm.pdf
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FieldCount">
+      <MemberSignature Language="C#" Value="public int FieldCount { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 FieldCount" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FieldAwareFactorizationMachineModelParameters.FieldCount" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property FieldCount As Integer" />
+      <MemberSignature Language="F#" Value="member this.FieldCount : int" Usage="Microsoft.ML.Trainers.FieldAwareFactorizationMachineModelParameters.FieldCount" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Get the number of fields. It's the symbol `m` in the doc: https://github.com/wschin/fast-ffm/blob/master/fast-ffm.pdf
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetLatentWeights">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.IReadOnlyList&lt;float&gt; GetLatentWeights ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.IReadOnlyList`1&lt;float32&gt; GetLatentWeights() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FieldAwareFactorizationMachineModelParameters.GetLatentWeights" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetLatentWeights () As IReadOnlyList(Of Single)" />
+      <MemberSignature Language="F#" Value="member this.GetLatentWeights : unit -&gt; System.Collections.Generic.IReadOnlyList&lt;single&gt;" Usage="fieldAwareFactorizationMachineModelParameters.GetLatentWeights " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IReadOnlyList&lt;System.Single&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            Latent representation of each feature. Note that one feature may have <see cref="P:Microsoft.ML.Trainers.FieldAwareFactorizationMachineModelParameters.FieldCount" /> latent vectors
+            and each latent vector contains <see cref="P:Microsoft.ML.Trainers.FieldAwareFactorizationMachineModelParameters.LatentDimension" /> values. In the f-th field, the j-th feature's latent vector, `v_{j, f}` in the doc
+            https://github.com/wschin/fast-ffm/blob/master/fast-ffm.pdf, starts at latentWeights[j * fieldCount * latentDim + f * latentDim].
+            The k-th element in v_{j, f} is latentWeights[j * fieldCount * latentDim + f * latentDim + k].
+            The size of the returned value is featureCount x fieldCount x latentDim.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetLinearWeights">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.IReadOnlyList&lt;float&gt; GetLinearWeights ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.IReadOnlyList`1&lt;float32&gt; GetLinearWeights() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.FieldAwareFactorizationMachineModelParameters.GetLinearWeights" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetLinearWeights () As IReadOnlyList(Of Single)" />
+      <MemberSignature Language="F#" Value="member this.GetLinearWeights : unit -&gt; System.Collections.Generic.IReadOnlyList&lt;single&gt;" Usage="fieldAwareFactorizationMachineModelParameters.GetLinearWeights " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IReadOnlyList&lt;System.Single&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            The linear coefficients of the features. It's the symbol `w` in the doc: https://github.com/wschin/fast-ffm/blob/master/fast-ffm.pdf
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LatentDimension">
+      <MemberSignature Language="C#" Value="public int LatentDimension { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 LatentDimension" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.FieldAwareFactorizationMachineModelParameters.LatentDimension" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property LatentDimension As Integer" />
+      <MemberSignature Language="F#" Value="member this.LatentDimension : int" Usage="Microsoft.ML.Trainers.FieldAwareFactorizationMachineModelParameters.LatentDimension" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Get the latent dimension. It's the tlngth of `v_{j, f}` in the doc: https://github.com/wschin/fast-ffm/blob/master/fast-ffm.pdf
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
