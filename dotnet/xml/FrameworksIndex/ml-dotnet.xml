@@ -312,12 +312,17 @@
     </Type>
     <Type Name="Microsoft.ML.MulticlassClassificationCatalog/MulticlassClassificationTrainers" Id="T:Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers" />
     <Type Name="Microsoft.ML.NormalizationCatalog" Id="T:Microsoft.ML.NormalizationCatalog">
+      <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeBinning(Microsoft.ML.TransformsCatalog,Microsoft.ML.InputOutputColumnPair[],System.Int64,System.Boolean,System.Int32)" />
       <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeBinning(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Int64,System.Boolean,System.Int32)" />
       <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeGlobalContrast(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Boolean,System.Boolean,System.Single)" />
+      <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeLogMeanVariance(Microsoft.ML.TransformsCatalog,Microsoft.ML.InputOutputColumnPair[],System.Int64,System.Boolean)" />
       <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeLogMeanVariance(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Int64,System.Boolean)" />
       <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeLpNorm(Microsoft.ML.TransformsCatalog,System.String,System.String,Microsoft.ML.Transforms.LpNormNormalizingEstimatorBase.NormFunction,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeMeanVariance(Microsoft.ML.TransformsCatalog,Microsoft.ML.InputOutputColumnPair[],System.Int64,System.Boolean,System.Boolean)" />
       <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeMeanVariance(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Int64,System.Boolean,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeMinMax(Microsoft.ML.TransformsCatalog,Microsoft.ML.InputOutputColumnPair[],System.Int64,System.Boolean)" />
       <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeMinMax(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Int64,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeSupervisedBinning(Microsoft.ML.TransformsCatalog,Microsoft.ML.InputOutputColumnPair[],System.String,System.Int64,System.Boolean,System.Int32,System.Int32)" />
       <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeSupervisedBinning(Microsoft.ML.TransformsCatalog,System.String,System.String,System.String,System.Int64,System.Boolean,System.Int32,System.Int32)" />
     </Type>
     <Type Name="Microsoft.ML.PcaCatalog" Id="T:Microsoft.ML.PcaCatalog">
@@ -537,6 +542,7 @@
       <Member Id="P:Microsoft.ML.Data.BinaryClassificationMetrics.Accuracy" />
       <Member Id="P:Microsoft.ML.Data.BinaryClassificationMetrics.AreaUnderPrecisionRecallCurve" />
       <Member Id="P:Microsoft.ML.Data.BinaryClassificationMetrics.AreaUnderRocCurve" />
+      <Member Id="P:Microsoft.ML.Data.BinaryClassificationMetrics.ConfusionMatrix" />
       <Member Id="P:Microsoft.ML.Data.BinaryClassificationMetrics.F1Score" />
       <Member Id="P:Microsoft.ML.Data.BinaryClassificationMetrics.NegativePrecision" />
       <Member Id="P:Microsoft.ML.Data.BinaryClassificationMetrics.NegativeRecall" />
@@ -599,6 +605,14 @@
       <Member Id="M:Microsoft.ML.Data.CompositeLoaderEstimator`2.Append``1(Microsoft.ML.IEstimator{``0})" />
       <Member Id="M:Microsoft.ML.Data.CompositeLoaderEstimator`2.Fit(`0)" />
       <Member Id="M:Microsoft.ML.Data.CompositeLoaderEstimator`2.GetOutputSchema" />
+    </Type>
+    <Type Name="Microsoft.ML.Data.ConfusionMatrix" Id="T:Microsoft.ML.Data.ConfusionMatrix">
+      <Member Id="M:Microsoft.ML.Data.ConfusionMatrix.GetCountForClassPair(System.Int32,System.Int32)" />
+      <Member Id="M:Microsoft.ML.Data.ConfusionMatrix.GetFormattedConfusionTable" />
+      <Member Id="P:Microsoft.ML.Data.ConfusionMatrix.Counts" />
+      <Member Id="P:Microsoft.ML.Data.ConfusionMatrix.NumberOfClasses" />
+      <Member Id="P:Microsoft.ML.Data.ConfusionMatrix.PerClassPrecision" />
+      <Member Id="P:Microsoft.ML.Data.ConfusionMatrix.PerClassRecall" />
     </Type>
     <Type Name="Microsoft.ML.Data.DataDebuggerPreview" Id="T:Microsoft.ML.Data.DataDebuggerPreview">
       <Member Id="M:Microsoft.ML.Data.DataDebuggerPreview.ToString" />
@@ -729,6 +743,7 @@
       <Member Id="P:Microsoft.ML.Data.MetricStatistics.StandardError" />
     </Type>
     <Type Name="Microsoft.ML.Data.MulticlassClassificationMetrics" Id="T:Microsoft.ML.Data.MulticlassClassificationMetrics">
+      <Member Id="P:Microsoft.ML.Data.MulticlassClassificationMetrics.ConfusionMatrix" />
       <Member Id="P:Microsoft.ML.Data.MulticlassClassificationMetrics.LogLoss" />
       <Member Id="P:Microsoft.ML.Data.MulticlassClassificationMetrics.LogLossReduction" />
       <Member Id="P:Microsoft.ML.Data.MulticlassClassificationMetrics.MacroAccuracy" />
@@ -1213,7 +1228,7 @@
       <Member Id="F:Microsoft.ML.Trainers.LbfgsTrainerBase`3.OptionsBase.L2Regularization" />
       <Member Id="F:Microsoft.ML.Trainers.LbfgsTrainerBase`3.OptionsBase.MaximumNumberOfIterations" />
       <Member Id="F:Microsoft.ML.Trainers.LbfgsTrainerBase`3.OptionsBase.NumberOfThreads" />
-      <Member Id="F:Microsoft.ML.Trainers.LbfgsTrainerBase`3.OptionsBase.OptmizationTolerance" />
+      <Member Id="F:Microsoft.ML.Trainers.LbfgsTrainerBase`3.OptionsBase.OptimizationTolerance" />
       <Member Id="F:Microsoft.ML.Trainers.LbfgsTrainerBase`3.OptionsBase.Quiet" />
       <Member Id="F:Microsoft.ML.Trainers.LbfgsTrainerBase`3.OptionsBase.StochasticGradientDescentInitilaizationTolerance" />
       <Member Id="M:Microsoft.ML.Trainers.LbfgsTrainerBase`3.OptionsBase.#ctor" />

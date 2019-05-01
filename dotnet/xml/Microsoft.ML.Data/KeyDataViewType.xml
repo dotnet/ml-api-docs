@@ -14,18 +14,23 @@
   <Interfaces />
   <Docs>
     <summary>
-             KeyDataViewTypes are for "id"-like data. The information happens to be stored in an unsigned integer
-             type, but the information is not inherently numeric, so, typically, arithmetic is not
-             meaningful. Examples are SSNs, phone numbers, auto-generated/incremented key values,
-             class numbers, etc. For example, in multi-class classification, the label is typically
-             a class number which is naturally a KeyDataViewType.
+             This type is for data representing some enumerated value. This is an enumeration over a defined, known
+             cardinality set, as expressed through <see cref="P:Microsoft.ML.Data.KeyDataViewType.Count" />. The underlying .NET type is one of the unsigned
+             integer types. Most commonly this will be <see cref="T:System.UInt32" />, but could alternately be <see cref="T:System.Byte" />,
+             <see cref="T:System.UInt16" />, or <see cref="T:System.UInt64" />. Despite this, the information is not inherently numeric, so,
+             typically, arithmetic is not meaningful. For example, in multi-class classification, the label is typically a
+             class number which is naturally a <see cref="T:Microsoft.ML.Data.KeyDataViewType" />.
             
-             KeyDataViewTypes have a cardinality (i.e., <see cref="P:Microsoft.ML.Data.KeyDataViewType.Count" />) that is strictly positive.
+             Note that for data of this type, a value of 0, being the default value of the representation type, indicates
+             the missing value since it would not be sensible for the default value to correspond to any one particular specific
+             value of the set. The first non-missing value for the enumeration of the set is always <c>1</c>.
             
-             Note that the underlying representation value does not necessarily match the logical value.
-             For example, if a KeyDataViewType has range 0-5000, then it has a <see cref="P:Microsoft.ML.Data.KeyDataViewType.Count" /> of 5001, but
-             the representational values are 1-5001. The representation value zero is reserved
-             to mean a missing value (similar to NaN).
+             For instance, if you had a key value with a <see cref="P:Microsoft.ML.Data.KeyDataViewType.Count" /> of 3, then the <see cref="T:System.UInt32" /> value <c>0</c>
+             would correspond to the missing key value, and one of the values of <c>1</c>, <c>2</c>, or <c>3</c> would be one
+             of the valid values, and no other values should in principle be used.
+            
+             Note that in usage and structure, this is quite close in intended usage and structure to so-called "factor
+             variables" in R.
              </summary>
     <remarks>To be added.</remarks>
   </Docs>
@@ -45,9 +50,21 @@
         <Parameter Name="count" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="type">To be added.</param>
-        <param name="count">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="type">
+            The underlying representation type. Should be one of <see cref="T:System.Byte" />, <see cref="T:System.UInt16" />,
+            <see cref="T:System.UInt32" /> (the most common choice), or <see cref="T:System.UInt64" />.
+            </param>
+        <param name="count">
+            The cardinality of the underlying set. This must not exceed the associated maximum value of the
+            representation type. For example, if <paramref name="type" /> is <see cref="T:System.UInt32" />, then this must not
+            exceed <see cref="F:System.UInt32.MaxValue" />.
+            </param>
+        <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ML.Data.KeyDataViewType" /> class. This differs from the hypothetically more general
+            <see cref="M:Microsoft.ML.Data.KeyDataViewType.#ctor(System.Type,System.UInt64)" /> constructor by taking an <see cref="T:System.Int32" /> for
+            <paramref name="count" />, to more naturally facilitate the most common case that the key value is being used
+            as an enumeration over an array or list of some form.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -66,9 +83,18 @@
         <Parameter Name="count" Type="System.UInt64" />
       </Parameters>
       <Docs>
-        <param name="type">To be added.</param>
-        <param name="count">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="type">
+            The underlying representation type. Should be one of <see cref="T:System.Byte" />, <see cref="T:System.UInt16" />,
+            <see cref="T:System.UInt32" /> (the most common choice), or <see cref="T:System.UInt64" />.
+            </param>
+        <param name="count">
+            The cardinality of the underlying set. This must not exceed the associated maximum value of the
+            representation type. For example, if <paramref name="type" /> is <see cref="T:System.UInt32" />, then this must not
+            exceed <see cref="F:System.UInt32.MaxValue" />.
+            </param>
+        <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.ML.Data.KeyDataViewType" /> class.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -88,14 +114,14 @@
       </ReturnValue>
       <Docs>
         <summary>
-          <see cref="P:Microsoft.ML.Data.KeyDataViewType.Count" /> is the cardinality of the <see cref="T:Microsoft.ML.Data.KeyDataViewType" />. Note that such a key type can be converted to a
-            bit vector representation by mapping to a vector of length <see cref="P:Microsoft.ML.Data.KeyDataViewType.Count" />, with "id" mapped to a
-            vector with 1 in slot (id - 1) and 0 in all other slots. This is the standard "indicator"
-            representation. Note that an id of 0 is used to represent the notion "none", which is
-            typically mapped, by for example, one-hot encoding, to a vector of all zeros (of length <see cref="P:Microsoft.ML.Data.KeyDataViewType.Count" />).
+          <see cref="P:Microsoft.ML.Data.KeyDataViewType.Count" /> is the cardinality of the <see cref="T:Microsoft.ML.Data.KeyDataViewType" />.
             </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>
+            The typical legal values for data of this type ranges from the missing value of <c>0</c>, and non-missing
+            values ranging from to <c>1</c> through <see cref="P:Microsoft.ML.Data.KeyDataViewType.Count" />, inclusive, being the enumeration into whatever
+            set the key values are enumerated over.
+            </remarks>
       </Docs>
     </Member>
     <Member MemberName="Equals">
@@ -199,7 +225,8 @@
         <param name="type">To be added.</param>
         <summary>
             Returns true iff the given type is valid for a <see cref="T:Microsoft.ML.Data.KeyDataViewType" />. The valid ones are
-            <see cref="T:System.Byte" />, <see cref="T:System.UInt16" />, <see cref="T:System.UInt32" />, and <see cref="T:System.UInt64" />, that is, the unsigned integer types.
+            <see cref="T:System.Byte" />, <see cref="T:System.UInt16" />, <see cref="T:System.UInt32" />, and <see cref="T:System.UInt64" />, that is, the unsigned
+            integer types.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

@@ -14,7 +14,7 @@
   <Interfaces />
   <Docs>
     <summary>
-            An object serving as a 'catalog' of available model operations.
+            Class used by <see cref="T:Microsoft.ML.MLContext" /> to save and load trained models.
             </summary>
     <remarks>To be added.</remarks>
   </Docs>
@@ -51,11 +51,15 @@
         <Parameter Name="inputSchema" Type="Microsoft.ML.DataViewSchema" />
       </Parameters>
       <Docs>
-        <typeparam name="TSrc">To be added.</typeparam>
-        <typeparam name="TDst">To be added.</typeparam>
-        <param name="transformer">To be added.</param>
-        <param name="inputSchema">To be added.</param>
-        <summary>To be added.</summary>
+        <typeparam name="TSrc">The class that defines the input data.</typeparam>
+        <typeparam name="TDst">The class that defines the output data.</typeparam>
+        <param name="transformer">The transformer to use for prediction.</param>
+        <param name="inputSchema">Input schema.</param>
+        <summary>
+            Create a prediction engine for one-time prediction.
+            It's mainly used in conjunction with <see cref="M:Microsoft.ML.ModelOperationsCatalog.Load(System.IO.Stream,Microsoft.ML.DataViewSchema@)" />,
+            where input schema is extracted during loading the model.
+            </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -103,10 +107,15 @@
         <param name="inputSchemaDefinition">Additional settings of the input schema.</param>
         <param name="outputSchemaDefinition">Additional settings of the output schema.</param>
         <summary>
-            Create a prediction engine for one-time prediction.
+            Create a prediction engine for one-time prediction (default usage).
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[Save](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/ModelOperations/SaveLoadModel.cs)]
+            ]]></format>
+        </example>
       </Docs>
     </Member>
     <Member MemberName="Load">
@@ -135,6 +144,11 @@
             </summary>
         <returns>The loaded model.</returns>
         <remarks>To be added.</remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[Save](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/ModelOperations/SaveLoadModel.cs)]
+            ]]></format>
+        </example>
       </Docs>
     </Member>
     <Member MemberName="Load">
@@ -164,6 +178,11 @@
             </summary>
         <returns>The loaded model.</returns>
         <remarks>To be added.</remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[Save](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/ModelOperations/SaveLoadModelFile.cs)]
+            ]]></format>
+        </example>
       </Docs>
     </Member>
     <Member MemberName="LoadWithDataLoader">
@@ -284,6 +303,11 @@
             Save a transformer model and the schema of the data that was used to train it to the file.
             </summary>
         <remarks>To be added.</remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[Save](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/ModelOperations/SaveLoadModel.cs)]
+            ]]></format>
+        </example>
       </Docs>
     </Member>
     <Member MemberName="Save&lt;TSource&gt;">

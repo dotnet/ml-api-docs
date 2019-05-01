@@ -18,9 +18,31 @@
   </Interfaces>
   <Docs>
     <summary>
-            Maps vector columns to a low -dimensional feature space.
-            </summary>
-    <remarks>To be added.</remarks>
+             Maps vector columns to a low -dimensional feature space.
+             </summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[
+            
+             ###  Estimator Characteristics
+             |  |  |
+             | -- | -- |
+             | Does this estimator need to look at the data to train its parameters? | Yes |
+             | Input column data type | Known-sized vector of <xref:System.Single> |
+             | Output column data type | Known-sized vector of <xref:System.Single> |
+            
+             The resulting <xref:Microsoft.ML.Transforms.ApproximatedKernelTransformer> creates a new column, named as specified in
+             the output column name parameters, where each input vector is mapped to a feature space where inner products
+             approximate one of two shift-invariant kernel functions: The Gaussian kernel, or the Laplacian kernel.
+             By mapping features to a space that approximate non-linear kernels, linear methods can be used to approximate
+             more complex kernel SVM models.
+             This mapping is based on the paper [Random Features for Large-Scale Kernel Machines](http://pages.cs.wisc.edu/~brecht/papers/07.rah.rec.nips.pdf)
+             by Rahimi and Recht.
+            
+             Check the See Also section for links to usage examples.
+             ]]></format>
+    </remarks>
+    <altmember cref="M:Microsoft.ML.KernelExpansionCatalog.ApproximatedKernelMap(Microsoft.ML.TransformsCatalog,Microsoft.ML.Transforms.ApproximatedKernelMappingEstimator.ColumnOptions[])" />
+    <altmember cref="M:Microsoft.ML.KernelExpansionCatalog.ApproximatedKernelMap(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Int32,System.Boolean,Microsoft.ML.Transforms.KernelBase,System.Nullable{System.Int32})" />
   </Docs>
   <Members>
     <Member MemberName="Fit">
