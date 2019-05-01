@@ -14,7 +14,9 @@
   <Interfaces />
   <Docs>
     <summary>
-            The trainer catalog extensions for the <see cref="T:Microsoft.ML.Trainers.OlsTrainer" /> and <see cref="T:Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer" />.
+            Collection of extension methods for <see cref="T:Microsoft.ML.RegressionCatalog.RegressionTrainers" />,
+            <see cref="T:Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers" />, and <see cref="T:Microsoft.ML.TransformsCatalog" />
+            to create MKL (Math Kernel Library) trainer and transform components.
             </summary>
     <remarks>To be added.</remarks>
   </Docs>
@@ -40,7 +42,7 @@
         <param name="catalog">The <see cref="T:Microsoft.ML.RegressionCatalog" />.</param>
         <param name="options">Algorithm advanced options. See <see cref="T:Microsoft.ML.Trainers.OlsTrainer.Options" />.</param>
         <summary>
-            Predict a target using a linear regression model trained with the <see cref="T:Microsoft.ML.Trainers.OlsTrainer" />.
+            Create <see cref="T:Microsoft.ML.Trainers.OlsTrainer" /> with advanced options, which predicts a target using a linear regression model.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -73,11 +75,11 @@
       </Parameters>
       <Docs>
         <param name="catalog">The <see cref="T:Microsoft.ML.RegressionCatalog" />.</param>
-        <param name="labelColumnName">The name of the label column.</param>
-        <param name="featureColumnName">The name of the feature column.</param>
+        <param name="labelColumnName">The name of the label column. The column data must be <see cref="T:System.Single" />.</param>
+        <param name="featureColumnName">The name of the feature column. The column data must be a known-sized vector of <see cref="T:System.Single" />.</param>
         <param name="exampleWeightColumnName">The name of the example weight column (optional).</param>
         <summary>
-            Predict a target using a linear regression model trained with the <see cref="T:Microsoft.ML.Trainers.OlsTrainer" />.
+            Create <see cref="T:Microsoft.ML.Trainers.OlsTrainer" />, which predicts a target using a linear regression model.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -109,7 +111,7 @@
         <param name="catalog">The <see cref="T:Microsoft.ML.BinaryClassificationCatalog" />.</param>
         <param name="options">Algorithm advanced options. See <see cref="T:Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer.Options" />.</param>
         <summary>
-             Predict a target using a linear binary classification model trained with the <see cref="T:Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer" />.
+            Create <see cref="T:Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer" /> with advanced options, which predicts a target using a linear binary classification model trained over boolean label data.
             Stochastic gradient descent (SGD) is an iterative algorithm that optimizes a differentiable objective function.
             The <see cref="T:Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer" /> parallelizes SGD using <a href="https://www.microsoft.com/en-us/research/project/project-parade/#!symbolic-execution">symbolic execution</a>.
             </summary>
@@ -117,7 +119,7 @@
         <remarks>To be added.</remarks>
         <example>
           <format type="text/markdown"><![CDATA[
-            [!code-csharp[SymbolicStochasticGradientDescent](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Trainers/BinaryClassification/SymbolicStochasticGradientDescentWithOptions.cs)]
+            [!code-csharp[SymbolicSgdLogisticRegression](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Trainers/BinaryClassification/SymbolicSgdLogisticRegressionWithOptions.cs)]
             ]]></format>
         </example>
       </Docs>
@@ -144,11 +146,11 @@
       </Parameters>
       <Docs>
         <param name="catalog">The <see cref="T:Microsoft.ML.BinaryClassificationCatalog" />.</param>
-        <param name="labelColumnName">The name of the label column.</param>
-        <param name="featureColumnName">The name of the feature column.</param>
+        <param name="labelColumnName">The name of the label column. The column data must be <see cref="T:System.Boolean" />.</param>
+        <param name="featureColumnName">The name of the feature column. The column data must be a known-sized vector of <see cref="T:System.Single" />.</param>
         <param name="numberOfIterations">Number of training iterations.</param>
         <summary>
-            Predict a target using a linear binary classification model trained with the <see cref="T:Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer" />.
+            Create <see cref="T:Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer" />, which predicts a target using a linear binary classification model trained over boolean label data.
             Stochastic gradient descent (SGD) is an iterative algorithm that optimizes a differentiable objective function.
             The <see cref="T:Microsoft.ML.Trainers.SymbolicSgdLogisticRegressionBinaryTrainer" /> parallelizes SGD using <a href="https://www.microsoft.com/en-us/research/project/project-parade/#!symbolic-execution">symbolic execution</a>.
             </summary>
@@ -156,7 +158,7 @@
         <remarks>To be added.</remarks>
         <example>
           <format type="text/markdown"><![CDATA[
-            [!code-csharp[SymbolicStochasticGradientDescent](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Trainers/BinaryClassification/SymbolicStochasticGradientDescent.cs)]
+            [!code-csharp[SymbolicSgdLogisticRegression](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Trainers/BinaryClassification/SymbolicSgdLogisticRegression.cs)]
             ]]></format>
         </example>
       </Docs>

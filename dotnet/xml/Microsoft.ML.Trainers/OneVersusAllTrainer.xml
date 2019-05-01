@@ -17,8 +17,50 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>
+             The <see cref="T:Microsoft.ML.IEstimator`1" /> for training a one-versus-all multi-class classifier that uses the specified binary classifier.
+             </summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[
+             To create this trainer, use [OneVersusAll](xref:Microsoft.ML.StandardTrainersCatalog.OneVersusAll``1(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,Microsoft.ML.Trainers.ITrainerEstimator{Microsoft.ML.Data.BinaryPredictionTransformer{``0},``0},System.String,System.Boolean,Microsoft.ML.IEstimator{Microsoft.ML.ISingleFeaturePredictionTransformer{Microsoft.ML.Calibrators.ICalibrator}},System.Int32,System.Boolean)).
+            
+             [!include[io](~/../docs/samples/docs/api-reference/io-columns-multiclass-classification.md)]
+            
+             ### Trainer Characteristics
+             |  |  |
+             | -- | -- |
+             | Machine learning task | Multiclass classification |
+             | Is normalization required? | Depends on the underlying binary classifier |
+             | Is caching required? | Yes |
+             | Required NuGet in addition to Microsoft.ML | None |
+            
+             ### Training Algorithm Details
+             In one-versus-all (OVA) strategy, a binary classification algorithm is used to train one classifier for each class,
+             which distinguishes that class from all other classes. Prediction is then performed by running
+             these binary classifiers and choosing the prediction with the highest confidence score.
+             This algorithm can be used with any of the binary classifiers in ML.NET. A few binary classifiers
+             already have implementation for multi-class problems, thus users can choose either one depending on the context.
+             The OVA version of a binary classifier, such as wrapping a <xref:Microsoft.ML.Trainers.LightGbm.LightGbmBinaryTrainer>,
+             can be different from <xref:Microsoft.ML.Trainers.LightGbm.LightGbmMulticlassTrainer>, which develops a multi-class classifier directly.
+             Note that even if the classifier indicates that it does not need caching, OneVersusAll will always
+             request caching, as it will be performing multiple passes over the data set.
+             This trainer will request normalization from the data pipeline if the classifier indicates it would benefit from it.
+            
+             This can allow you to exploit trainers that do not naturally have a
+             multiclass option, for example, using the <xref:Microsoft.ML.Trainers.FastTree.FastTreeBinaryTrainer>
+             to solve a multiclass problem.
+             Alternately, it can allow ML.NET to solve a "simpler" problem even in the cases
+             where the trainer has a multiclass option, but using it directly is not
+             practical due to, usually, memory constraints. For example, while a multiclass
+             logistic regression is a more principled way to solve a multiclass problem, it
+             requires that the trainer store a lot more intermediate state in the form of
+             L-BFGS history for all classes *simultaneously*, rather than just one-by-one
+             as would be needed for a one-versus-all classification model.
+            
+             Check the See Also section for links to usage examples.
+             ]]></format>
+    </remarks>
+    <altmember cref="M:Microsoft.ML.StandardTrainersCatalog.OneVersusAll``1(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,Microsoft.ML.Trainers.ITrainerEstimator{Microsoft.ML.Data.BinaryPredictionTransformer{``0},``0},System.String,System.Boolean,Microsoft.ML.IEstimator{Microsoft.ML.ISingleFeaturePredictionTransformer{Microsoft.ML.Calibrators.ICalibrator}},System.Int32,System.Boolean)" />
   </Docs>
   <Members>
     <Member MemberName="Fit">

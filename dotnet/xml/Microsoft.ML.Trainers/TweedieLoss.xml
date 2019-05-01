@@ -24,9 +24,25 @@
   </Interfaces>
   <Docs>
     <summary>
-            Tweedie loss, based on the log-likelihood of the Tweedie distribution.
-            </summary>
-    <remarks>To be added.</remarks>
+             Tweedie loss, based on the log-likelihood of the Tweedie distribution. This loss function is used in Tweedie regression.
+             </summary>
+    <remarks type="text/markdown"><![CDATA[
+            
+             The Tweedie Loss function is defined as:
+            
+             $
+             L(\hat{y}, y, i) =
+             \begin{cases}
+             \hat{y} - y ln(\hat{y}) + ln(\Gamma(y))                                                                                     & \text{if } i = 1 \\\\
+             \hat{y} + \frac{y}{\hat{y}} - \sqrt{y}                                                                                      & \text{if } i = 2 \\\\
+             \frac{(\hat{y})^{2 - i}}{2 - i} - y \frac{(\hat{y})^{1 - i}}{1 - i} - (\frac{y^{2 - i}}{2 - i} - y\frac{y^{1 - i}}{1 - i})  & \text{otherwise}
+             \end{cases}
+             $
+            
+             where $\hat{y}$ is the predicted value, $y$ is the true label, $\Gamma$ is the [Gamma function](https://en.wikipedia.org/wiki/Gamma_function), and $i$ is the index parameter for the [Tweedie distribution](https://en.wikipedia.org/wiki/Tweedie_distribution), in the range [1, 2].
+             $i$ is set to 1.5 by default. $i = 1$ is Poisson loss, $i = 2$ is gamma loss, and intermediate values are compound Poisson-Gamma loss.
+            
+             ]]></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">

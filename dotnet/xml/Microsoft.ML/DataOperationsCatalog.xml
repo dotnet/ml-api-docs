@@ -14,8 +14,8 @@
   <Interfaces />
   <Docs>
     <summary>
-            A catalog of operations over data that are not transformers or estimators.
-            This includes data loaders, saving, caching, filtering etc.
+            Class used to create components that operate on data, but are not part of the model training pipeline.
+            Includes components to load, save, cache, filter, shuffle, and split data.
             </summary>
     <remarks>To be added.</remarks>
   </Docs>
@@ -80,7 +80,7 @@
         <Parameter Name="input" Type="Microsoft.ML.IDataView" />
         <Parameter Name="columnsToPrefetch" Type="System.String[]">
           <Attributes>
-            <Attribute FrameworkAlternate="ml-dotnet">
+            <Attribute>
               <AttributeName>System.ParamArray</AttributeName>
             </Attribute>
           </Attributes>
@@ -134,7 +134,7 @@
         <Parameter Name="schemaDefinition" Type="Microsoft.ML.Data.SchemaDefinition" />
       </Parameters>
       <Docs>
-        <typeparam name="TRow">The user-defined row type.</typeparam>
+        <typeparam name="TRow">The user-defined item type.</typeparam>
         <param name="data">The underlying data view.</param>
         <param name="reuseRowObject">Whether to return the same object on every row, or allocate a new one per row.</param>
         <param name="ignoreMissingColumns">Whether to ignore the case when a requested column is not present in the data view.</param>
@@ -291,7 +291,7 @@
         <Parameter Name="input" Type="Microsoft.ML.IDataView" />
         <Parameter Name="columns" Type="System.String[]">
           <Attributes>
-            <Attribute FrameworkAlternate="ml-dotnet">
+            <Attribute>
               <AttributeName>System.ParamArray</AttributeName>
             </Attribute>
           </Attributes>
@@ -339,7 +339,7 @@
       </Parameters>
       <Docs>
         <typeparam name="TRow">The user-defined item type.</typeparam>
-        <param name="data">The data to wrap around.</param>
+        <param name="data">The enumerable data containing type <typeparamref name="TRow" /> to convert to an<see cref="T:Microsoft.ML.IDataView" />.</param>
         <param name="schemaDefinition">The optional schema definition of the data view to create. If <c>null</c>,
              the schema definition is inferred from <typeparamref name="TRow" />.</param>
         <summary>
@@ -347,7 +347,7 @@
              The user maintains ownership of the <paramref name="data" /> and the resulting data view will
              never alter the contents of the <paramref name="data" />.
              Since <see cref="T:Microsoft.ML.IDataView" /> is assumed to be immutable, the user is expected to support
-             multiple enumeration of the <paramref name="data" /> that would return the same results, unless
+             multiple enumerations of the <paramref name="data" /> that would return the same results, unless
              the user knows that the data will only be cursored once.
             
              One typical usage for streaming data view could be: create the data view that lazily loads data
@@ -389,11 +389,11 @@
         <Parameter Name="schema" Type="Microsoft.ML.DataViewSchema" />
       </Parameters>
       <Docs>
-        <typeparam name="TRow">The <typeparamref name="TRow" /> to convert to an <see cref="T:Microsoft.ML.IDataView" />.</typeparam>
-        <param name="data">The data with <typeparamref name="TRow" /> to convert to an <see cref="T:Microsoft.ML.IDataView" />.</param>
+        <typeparam name="TRow">The user-defined item type.</typeparam>
+        <param name="data">The enumerable data containing type <typeparamref name="TRow" /> to convert to an <see cref="T:Microsoft.ML.IDataView" />.</param>
         <param name="schema">The schema of the returned <see cref="T:Microsoft.ML.IDataView" />.</param>
         <summary>
-            Create a new <see cref="T:Microsoft.ML.IDataView" /> over an enumerable of the items of user-defined type, and the provided <see cref="T:Microsoft.ML.DataViewSchema" />
+            Create a new <see cref="T:Microsoft.ML.IDataView" /> over an enumerable of the items of user-defined type using the provided <see cref="T:Microsoft.ML.DataViewSchema" />,
             which might contain more information about the schema than the type can capture.
             </summary>
         <returns>An <see cref="T:Microsoft.ML.IDataView" /> with the given <paramref name="schema" />.</returns>
@@ -401,7 +401,7 @@
             The user maintains ownership of the <paramref name="data" /> and the resulting data view will
             never alter the contents of the <paramref name="data" />.
             Since <see cref="T:Microsoft.ML.IDataView" /> is assumed to be immutable, the user is expected to support
-            multiple enumeration of the <paramref name="data" /> that would return the same results, unless
+            multiple enumerations of the <paramref name="data" /> that would return the same results, unless
             the user knows that the data will only be cursored once.
             One typical usage for streaming data view could be: create the data view that lazily loads data
             as needed, then apply pre-trained transformations to it and cursor through it for transformation
