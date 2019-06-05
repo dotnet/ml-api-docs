@@ -17,6 +17,111 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
+    <Member MemberName="AdaptiveSingularSpectrumSequenceModeler">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler AdaptiveSingularSpectrumSequenceModeler (this Microsoft.ML.ForecastingCatalog catalog, string inputColumnName, int trainSize, int seriesLength, int windowSize, float discountFactor = 1, Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler.RankSelectionMethod rankSelectionMethod = Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler+RankSelectionMethod.Exact, Nullable&lt;int&gt; rank = null, Nullable&lt;int&gt; maxRank = null, bool shouldComputeForecastIntervals = true, bool shouldstablize = true, bool shouldMaintainInfo = false, Nullable&lt;Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler.GrowthRatio&gt; maxGrowth = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler AdaptiveSingularSpectrumSequenceModeler(class Microsoft.ML.ForecastingCatalog catalog, string inputColumnName, int32 trainSize, int32 seriesLength, int32 windowSize, float32 discountFactor, valuetype Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler/RankSelectionMethod rankSelectionMethod, valuetype System.Nullable`1&lt;int32&gt; rank, valuetype System.Nullable`1&lt;int32&gt; maxRank, bool shouldComputeForecastIntervals, bool shouldstablize, bool shouldMaintainInfo, valuetype System.Nullable`1&lt;valuetype Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler/GrowthRatio&gt; maxGrowth) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TimeSeriesCatalog.AdaptiveSingularSpectrumSequenceModeler(Microsoft.ML.ForecastingCatalog,System.String,System.Int32,System.Int32,System.Int32,System.Single,Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler.RankSelectionMethod,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Boolean,System.Boolean,System.Boolean,System.Nullable{Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler.GrowthRatio})" />
+      <MemberSignature Language="F#" Value="static member AdaptiveSingularSpectrumSequenceModeler : Microsoft.ML.ForecastingCatalog * string * int * int * int * single * Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler.RankSelectionMethod * Nullable&lt;int&gt; * Nullable&lt;int&gt; * bool * bool * bool * Nullable&lt;Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler.GrowthRatio&gt; -&gt; Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler" Usage="Microsoft.ML.TimeSeriesCatalog.AdaptiveSingularSpectrumSequenceModeler (catalog, inputColumnName, trainSize, seriesLength, windowSize, discountFactor, rankSelectionMethod, rank, maxRank, shouldComputeForecastIntervals, shouldstablize, shouldMaintainInfo, maxGrowth)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="catalog" Type="Microsoft.ML.ForecastingCatalog" RefType="this" />
+        <Parameter Name="inputColumnName" Type="System.String" />
+        <Parameter Name="trainSize" Type="System.Int32" />
+        <Parameter Name="seriesLength" Type="System.Int32" />
+        <Parameter Name="windowSize" Type="System.Int32" />
+        <Parameter Name="discountFactor" Type="System.Single" />
+        <Parameter Name="rankSelectionMethod" Type="Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler+RankSelectionMethod" />
+        <Parameter Name="rank" Type="System.Nullable&lt;System.Int32&gt;" />
+        <Parameter Name="maxRank" Type="System.Nullable&lt;System.Int32&gt;" />
+        <Parameter Name="shouldComputeForecastIntervals" Type="System.Boolean" />
+        <Parameter Name="shouldstablize" Type="System.Boolean" />
+        <Parameter Name="shouldMaintainInfo" Type="System.Boolean" />
+        <Parameter Name="maxGrowth" Type="System.Nullable&lt;Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler+GrowthRatio&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="catalog">Catalog.</param>
+        <param name="inputColumnName">The name of the column on which forecasting needs to be performed.</param>
+        <param name="trainSize">The length of series from the begining used for training.</param>
+        <param name="seriesLength">The length of series that is kept in buffer for modeling (parameter N from reference papar).</param>
+        <param name="windowSize">The length of the window on the series for building the trajectory matrix (parameter L from reference papar).</param>
+        <param name="discountFactor">The discount factor in [0,1] used for online updates (default = 1).</param>
+        <param name="rankSelectionMethod">The rank selection method (default = Exact).</param>
+        <param name="rank">The desired rank of the subspace used for SSA projection (parameter r from reference papar). This parameter should be in the range in [1, <paramref name="windowSize" />].
+            If set to null, the rank is automatically determined based on prediction error minimization. (default = null)</param>
+        <param name="maxRank">The maximum rank considered during the rank selection process. If not provided (i.e. set to null), it is set to <paramref name="windowSize" /> - 1.</param>
+        <param name="shouldComputeForecastIntervals">The flag determining whether the confidence bounds for the point forecasts should be computed. (default = <see langword="true" />)</param>
+        <param name="shouldstablize">The flag determining whether the model should be stabilized.</param>
+        <param name="shouldMaintainInfo">The flag determining whether the meta information for the model needs to be maintained.</param>
+        <param name="maxGrowth">The maximum growth on the exponential trend</param>
+        <summary>
+            Singular Spectrum Analysis (SSA) model for modeling univariate time-series.
+            For the details of the model, refer to http://arxiv.org/pdf/1206.6910.pdf.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[Forecasting](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/TimeSeries/Forecasting.cs)]
+            [!code-csharp[ForecastingWithConfidenceInterval](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/TimeSeries/ForecastingWithConfidenceInterval.cs)]
+            ]]></format>
+        </example>
+      </Docs>
+    </Member>
+    <Member MemberName="DetectAnomalyBySrCnn">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.TimeSeries.SrCnnAnomalyEstimator DetectAnomalyBySrCnn (this Microsoft.ML.TransformsCatalog catalog, string outputColumnName, string inputColumnName, int windowSize = 64, int backAddWindowSize = 5, int lookaheadWindowSize = 5, int averageingWindowSize = 3, int judgementWindowSize = 21, double threshold = 0.3);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.TimeSeries.SrCnnAnomalyEstimator DetectAnomalyBySrCnn(class Microsoft.ML.TransformsCatalog catalog, string outputColumnName, string inputColumnName, int32 windowSize, int32 backAddWindowSize, int32 lookaheadWindowSize, int32 averageingWindowSize, int32 judgementWindowSize, float64 threshold) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TimeSeriesCatalog.DetectAnomalyBySrCnn(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Double)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function DetectAnomalyBySrCnn (catalog As TransformsCatalog, outputColumnName As String, inputColumnName As String, Optional windowSize As Integer = 64, Optional backAddWindowSize As Integer = 5, Optional lookaheadWindowSize As Integer = 5, Optional averageingWindowSize As Integer = 3, Optional judgementWindowSize As Integer = 21, Optional threshold As Double = 0.3) As SrCnnAnomalyEstimator" />
+      <MemberSignature Language="F#" Value="static member DetectAnomalyBySrCnn : Microsoft.ML.TransformsCatalog * string * string * int * int * int * int * int * double -&gt; Microsoft.ML.Transforms.TimeSeries.SrCnnAnomalyEstimator" Usage="Microsoft.ML.TimeSeriesCatalog.DetectAnomalyBySrCnn (catalog, outputColumnName, inputColumnName, windowSize, backAddWindowSize, lookaheadWindowSize, averageingWindowSize, judgementWindowSize, threshold)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Transforms.TimeSeries.SrCnnAnomalyEstimator</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog" RefType="this" />
+        <Parameter Name="outputColumnName" Type="System.String" />
+        <Parameter Name="inputColumnName" Type="System.String" />
+        <Parameter Name="windowSize" Type="System.Int32" />
+        <Parameter Name="backAddWindowSize" Type="System.Int32" />
+        <Parameter Name="lookaheadWindowSize" Type="System.Int32" />
+        <Parameter Name="averageingWindowSize" Type="System.Int32" />
+        <Parameter Name="judgementWindowSize" Type="System.Int32" />
+        <Parameter Name="threshold" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="catalog">The transform's catalog.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.
+            The column data is a vector of <see cref="T:System.Double" />. The vector contains 3 elements: alert (1 means anomaly while 0 means normal), raw score, and magnitude of spectual residual.</param>
+        <param name="inputColumnName">Name of column to transform. The column data must be <see cref="T:System.Single" />.</param>
+        <param name="windowSize">The size of the sliding window for computing spectral residual.</param>
+        <param name="backAddWindowSize">The number of points to add back of training window. No more than <paramref name="windowSize" />, usually keep default value.</param>
+        <param name="lookaheadWindowSize">The number of pervious points used in prediction. No more than <paramref name="windowSize" />, usually keep default value.</param>
+        <param name="averageingWindowSize">The size of sliding window to generate a saliency map for the series. No more than <paramref name="windowSize" />, usually keep default value.</param>
+        <param name="judgementWindowSize">The size of sliding window to calculate the anomaly score for each data point. No more than <paramref name="windowSize" />.</param>
+        <param name="threshold">The threshold to determine anomaly, score larger than the threshold is considered as anomaly. Should be in (0,1)</param>
+        <summary>
+            Create <see cref="T:Microsoft.ML.Transforms.TimeSeries.SrCnnAnomalyEstimator" />, which detects timeseries anomalies using SRCNN algorithm.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[DetectAnomalyBySrCnn](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/TimeSeries/DetectAnomalyBySrCnn.cs)]
+            ]]></format>
+        </example>
+      </Docs>
+    </Member>
     <Member MemberName="DetectChangePointBySsa">
       <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.TimeSeries.SsaChangePointEstimator DetectChangePointBySsa (this Microsoft.ML.TransformsCatalog catalog, string outputColumnName, string inputColumnName, int confidence, int changeHistoryLength, int trainingWindowSize, int seasonalityWindowSize, Microsoft.ML.Transforms.TimeSeries.ErrorFunction errorFunction = Microsoft.ML.Transforms.TimeSeries.ErrorFunction.SignedDifference, Microsoft.ML.Transforms.TimeSeries.MartingaleType martingale = Microsoft.ML.Transforms.TimeSeries.MartingaleType.Power, double eps = 0.1);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.TimeSeries.SsaChangePointEstimator DetectChangePointBySsa(class Microsoft.ML.TransformsCatalog catalog, string outputColumnName, string inputColumnName, int32 confidence, int32 changeHistoryLength, int32 trainingWindowSize, int32 seasonalityWindowSize, valuetype Microsoft.ML.Transforms.TimeSeries.ErrorFunction errorFunction, valuetype Microsoft.ML.Transforms.TimeSeries.MartingaleType martingale, float64 eps) cil managed" />
@@ -147,7 +252,7 @@
         <param name="side">The argument that determines whether to detect positive or negative anomalies, or both.</param>
         <summary>
             Create <see cref="T:Microsoft.ML.Transforms.TimeSeries.IidSpikeEstimator" />, which predicts spikes in
-            <a href="https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables">independent identically distributed (i.i.d.)</a>
+            <a href="https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables"> independent identically distributed (i.i.d.)</a>
             time series based on adaptive kernel density estimations and martingale scores.
             </summary>
         <returns>To be added.</returns>
