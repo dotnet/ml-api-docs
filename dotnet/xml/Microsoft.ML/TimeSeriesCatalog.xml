@@ -17,63 +17,6 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName="AdaptiveSingularSpectrumSequenceModeler">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler AdaptiveSingularSpectrumSequenceModeler (this Microsoft.ML.ForecastingCatalog catalog, string inputColumnName, int trainSize, int seriesLength, int windowSize, float discountFactor = 1, Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler.RankSelectionMethod rankSelectionMethod = Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler+RankSelectionMethod.Exact, Nullable&lt;int&gt; rank = null, Nullable&lt;int&gt; maxRank = null, bool shouldComputeForecastIntervals = true, bool shouldstablize = true, bool shouldMaintainInfo = false, Nullable&lt;Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler.GrowthRatio&gt; maxGrowth = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler AdaptiveSingularSpectrumSequenceModeler(class Microsoft.ML.ForecastingCatalog catalog, string inputColumnName, int32 trainSize, int32 seriesLength, int32 windowSize, float32 discountFactor, valuetype Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler/RankSelectionMethod rankSelectionMethod, valuetype System.Nullable`1&lt;int32&gt; rank, valuetype System.Nullable`1&lt;int32&gt; maxRank, bool shouldComputeForecastIntervals, bool shouldstablize, bool shouldMaintainInfo, valuetype System.Nullable`1&lt;valuetype Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler/GrowthRatio&gt; maxGrowth) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TimeSeriesCatalog.AdaptiveSingularSpectrumSequenceModeler(Microsoft.ML.ForecastingCatalog,System.String,System.Int32,System.Int32,System.Int32,System.Single,Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler.RankSelectionMethod,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Boolean,System.Boolean,System.Boolean,System.Nullable{Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler.GrowthRatio})" />
-      <MemberSignature Language="F#" Value="static member AdaptiveSingularSpectrumSequenceModeler : Microsoft.ML.ForecastingCatalog * string * int * int * int * single * Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler.RankSelectionMethod * Nullable&lt;int&gt; * Nullable&lt;int&gt; * bool * bool * bool * Nullable&lt;Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler.GrowthRatio&gt; -&gt; Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler" Usage="Microsoft.ML.TimeSeriesCatalog.AdaptiveSingularSpectrumSequenceModeler (catalog, inputColumnName, trainSize, seriesLength, windowSize, discountFactor, rankSelectionMethod, rank, maxRank, shouldComputeForecastIntervals, shouldstablize, shouldMaintainInfo, maxGrowth)" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="catalog" Type="Microsoft.ML.ForecastingCatalog" RefType="this" />
-        <Parameter Name="inputColumnName" Type="System.String" />
-        <Parameter Name="trainSize" Type="System.Int32" />
-        <Parameter Name="seriesLength" Type="System.Int32" />
-        <Parameter Name="windowSize" Type="System.Int32" />
-        <Parameter Name="discountFactor" Type="System.Single" />
-        <Parameter Name="rankSelectionMethod" Type="Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler+RankSelectionMethod" />
-        <Parameter Name="rank" Type="System.Nullable&lt;System.Int32&gt;" />
-        <Parameter Name="maxRank" Type="System.Nullable&lt;System.Int32&gt;" />
-        <Parameter Name="shouldComputeForecastIntervals" Type="System.Boolean" />
-        <Parameter Name="shouldstablize" Type="System.Boolean" />
-        <Parameter Name="shouldMaintainInfo" Type="System.Boolean" />
-        <Parameter Name="maxGrowth" Type="System.Nullable&lt;Microsoft.ML.Transforms.TimeSeries.AdaptiveSingularSpectrumSequenceModeler+GrowthRatio&gt;" />
-      </Parameters>
-      <Docs>
-        <param name="catalog">Catalog.</param>
-        <param name="inputColumnName">The name of the column on which forecasting needs to be performed.</param>
-        <param name="trainSize">The length of series from the begining used for training.</param>
-        <param name="seriesLength">The length of series that is kept in buffer for modeling (parameter N from reference papar).</param>
-        <param name="windowSize">The length of the window on the series for building the trajectory matrix (parameter L from reference papar).</param>
-        <param name="discountFactor">The discount factor in [0,1] used for online updates (default = 1).</param>
-        <param name="rankSelectionMethod">The rank selection method (default = Exact).</param>
-        <param name="rank">The desired rank of the subspace used for SSA projection (parameter r from reference papar). This parameter should be in the range in [1, <paramref name="windowSize" />].
-            If set to null, the rank is automatically determined based on prediction error minimization. (default = null)</param>
-        <param name="maxRank">The maximum rank considered during the rank selection process. If not provided (i.e. set to null), it is set to <paramref name="windowSize" /> - 1.</param>
-        <param name="shouldComputeForecastIntervals">The flag determining whether the confidence bounds for the point forecasts should be computed. (default = <see langword="true" />)</param>
-        <param name="shouldstablize">The flag determining whether the model should be stabilized.</param>
-        <param name="shouldMaintainInfo">The flag determining whether the meta information for the model needs to be maintained.</param>
-        <param name="maxGrowth">The maximum growth on the exponential trend</param>
-        <summary>
-            Singular Spectrum Analysis (SSA) model for modeling univariate time-series.
-            For the details of the model, refer to http://arxiv.org/pdf/1206.6910.pdf.
-            </summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-        <example>
-          <format type="text/markdown"><![CDATA[
-            [!code-csharp[Forecasting](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/TimeSeries/Forecasting.cs)]
-            [!code-csharp[ForecastingWithConfidenceInterval](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/TimeSeries/ForecastingWithConfidenceInterval.cs)]
-            ]]></format>
-        </example>
-      </Docs>
-    </Member>
     <Member MemberName="DetectAnomalyBySrCnn">
       <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.TimeSeries.SrCnnAnomalyEstimator DetectAnomalyBySrCnn (this Microsoft.ML.TransformsCatalog catalog, string outputColumnName, string inputColumnName, int windowSize = 64, int backAddWindowSize = 5, int lookaheadWindowSize = 5, int averageingWindowSize = 3, int judgementWindowSize = 21, double threshold = 0.3);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.TimeSeries.SrCnnAnomalyEstimator DetectAnomalyBySrCnn(class Microsoft.ML.TransformsCatalog catalog, string outputColumnName, string inputColumnName, int32 windowSize, int32 backAddWindowSize, int32 lookaheadWindowSize, int32 averageingWindowSize, int32 judgementWindowSize, float64 threshold) cil managed" />
@@ -309,6 +252,76 @@
         <example>
           <format type="text/markdown"><![CDATA[
             [!code-csharp[DetectSpikeBySsa](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/TimeSeries/DetectSpikeBySsaBatchPrediction.cs)]
+            ]]></format>
+        </example>
+      </Docs>
+    </Member>
+    <Member MemberName="ForecastBySsa">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.TimeSeries.SsaForecastingEstimator ForecastBySsa (this Microsoft.ML.ForecastingCatalog catalog, string outputColumnName, string inputColumnName, int windowSize, int seriesLength, int trainSize, int horizon, bool isAdaptive = false, float discountFactor = 1, Microsoft.ML.Transforms.TimeSeries.RankSelectionMethod rankSelectionMethod = Microsoft.ML.Transforms.TimeSeries.RankSelectionMethod.Exact, Nullable&lt;int&gt; rank = null, Nullable&lt;int&gt; maxRank = null, bool shouldStabilize = true, bool shouldMaintainInfo = false, Nullable&lt;Microsoft.ML.Transforms.TimeSeries.GrowthRatio&gt; maxGrowth = null, string confidenceLowerBoundColumn = null, string confidenceUpperBoundColumn = null, float confidenceLevel = 0.95, bool variableHorizon = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.TimeSeries.SsaForecastingEstimator ForecastBySsa(class Microsoft.ML.ForecastingCatalog catalog, string outputColumnName, string inputColumnName, int32 windowSize, int32 seriesLength, int32 trainSize, int32 horizon, bool isAdaptive, float32 discountFactor, valuetype Microsoft.ML.Transforms.TimeSeries.RankSelectionMethod rankSelectionMethod, valuetype System.Nullable`1&lt;int32&gt; rank, valuetype System.Nullable`1&lt;int32&gt; maxRank, bool shouldStabilize, bool shouldMaintainInfo, valuetype System.Nullable`1&lt;valuetype Microsoft.ML.Transforms.TimeSeries.GrowthRatio&gt; maxGrowth, string confidenceLowerBoundColumn, string confidenceUpperBoundColumn, float32 confidenceLevel, bool variableHorizon) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TimeSeriesCatalog.ForecastBySsa(Microsoft.ML.ForecastingCatalog,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,System.Single,Microsoft.ML.Transforms.TimeSeries.RankSelectionMethod,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Boolean,System.Boolean,System.Nullable{Microsoft.ML.Transforms.TimeSeries.GrowthRatio},System.String,System.String,System.Single,System.Boolean)" />
+      <MemberSignature Language="F#" Value="static member ForecastBySsa : Microsoft.ML.ForecastingCatalog * string * string * int * int * int * int * bool * single * Microsoft.ML.Transforms.TimeSeries.RankSelectionMethod * Nullable&lt;int&gt; * Nullable&lt;int&gt; * bool * bool * Nullable&lt;Microsoft.ML.Transforms.TimeSeries.GrowthRatio&gt; * string * string * single * bool -&gt; Microsoft.ML.Transforms.TimeSeries.SsaForecastingEstimator" Usage="Microsoft.ML.TimeSeriesCatalog.ForecastBySsa (catalog, outputColumnName, inputColumnName, windowSize, seriesLength, trainSize, horizon, isAdaptive, discountFactor, rankSelectionMethod, rank, maxRank, shouldStabilize, shouldMaintainInfo, maxGrowth, confidenceLowerBoundColumn, confidenceUpperBoundColumn, confidenceLevel, variableHorizon)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Transforms.TimeSeries.SsaForecastingEstimator</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="catalog" Type="Microsoft.ML.ForecastingCatalog" RefType="this" />
+        <Parameter Name="outputColumnName" Type="System.String" />
+        <Parameter Name="inputColumnName" Type="System.String" />
+        <Parameter Name="windowSize" Type="System.Int32" />
+        <Parameter Name="seriesLength" Type="System.Int32" />
+        <Parameter Name="trainSize" Type="System.Int32" />
+        <Parameter Name="horizon" Type="System.Int32" />
+        <Parameter Name="isAdaptive" Type="System.Boolean" />
+        <Parameter Name="discountFactor" Type="System.Single" />
+        <Parameter Name="rankSelectionMethod" Type="Microsoft.ML.Transforms.TimeSeries.RankSelectionMethod" />
+        <Parameter Name="rank" Type="System.Nullable&lt;System.Int32&gt;" />
+        <Parameter Name="maxRank" Type="System.Nullable&lt;System.Int32&gt;" />
+        <Parameter Name="shouldStabilize" Type="System.Boolean" />
+        <Parameter Name="shouldMaintainInfo" Type="System.Boolean" />
+        <Parameter Name="maxGrowth" Type="System.Nullable&lt;Microsoft.ML.Transforms.TimeSeries.GrowthRatio&gt;" />
+        <Parameter Name="confidenceLowerBoundColumn" Type="System.String" />
+        <Parameter Name="confidenceUpperBoundColumn" Type="System.String" />
+        <Parameter Name="confidenceLevel" Type="System.Single" />
+        <Parameter Name="variableHorizon" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="catalog">Catalog.</param>
+        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
+        <param name="inputColumnName">Name of column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.
+            The vector contains Alert, Raw Score, P-Value as first three values.</param>
+        <param name="windowSize">The length of the window on the series for building the trajectory matrix (parameter L).</param>
+        <param name="seriesLength">The length of series that is kept in buffer for modeling (parameter N).</param>
+        <param name="trainSize">The length of series from the begining used for training.</param>
+        <param name="horizon">The number of values to forecast.</param>
+        <param name="isAdaptive">The flag determing whether the model is adaptive.</param>
+        <param name="discountFactor">The discount factor in [0,1] used for online updates.</param>
+        <param name="rankSelectionMethod">The rank selection method.</param>
+        <param name="rank">The desired rank of the subspace used for SSA projection (parameter r). This parameter should be in the range in [1, windowSize].
+            If set to null, the rank is automatically determined based on prediction error minimization.</param>
+        <param name="maxRank">The maximum rank considered during the rank selection process. If not provided (i.e. set to null), it is set to windowSize - 1.</param>
+        <param name="shouldStabilize">The flag determining whether the model should be stabilized.</param>
+        <param name="shouldMaintainInfo">The flag determining whether the meta information for the model needs to be maintained.</param>
+        <param name="maxGrowth">The maximum growth on the exponential trend.</param>
+        <param name="confidenceLowerBoundColumn">The name of the confidence interval lower bound column. If not specified then confidence intervals will not be calculated.</param>
+        <param name="confidenceUpperBoundColumn">The name of the confidence interval upper bound column. If not specified then confidence intervals will not be calculated.</param>
+        <param name="confidenceLevel">The confidence level for forecasting.</param>
+        <param name="variableHorizon">Set this to true if horizon will change after training(at prediction time).</param>
+        <summary>
+            Singular Spectrum Analysis (SSA) model for univariate time-series forecasting.
+            For the details of the model, refer to http://arxiv.org/pdf/1206.6910.pdf.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[Forecasting](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/TimeSeries/Forecasting.cs)]
+            [!code-csharp[ForecastingWithConfidenceInterval](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/TimeSeries/ForecastingWithConfidenceInterval.cs)]
             ]]></format>
         </example>
       </Docs>
