@@ -10,8 +10,11 @@
     <Assembly Name="Microsoft.ML.KMeansClustering" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.LightGbm" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.Mkl.Components" Version="1.0.0.0" />
+    <Assembly Name="Microsoft.ML.OnnxTransformer" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.PCA" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.StandardTrainers" Version="1.0.0.0" />
+    <Assembly Name="Microsoft.ML.TensorFlow" Version="1.0.0.0" />
+    <Assembly Name="Microsoft.ML.TimeSeries" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.Transforms" Version="1.0.0.0" />
   </Assemblies>
   <Namespace Name="Microsoft.ML">
@@ -320,7 +323,9 @@
       <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeBinning(Microsoft.ML.TransformsCatalog,Microsoft.ML.InputOutputColumnPair[],System.Int64,System.Boolean,System.Int32)" />
       <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeBinning(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Int64,System.Boolean,System.Int32)" />
       <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeGlobalContrast(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Boolean,System.Boolean,System.Single)" />
+      <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeLogMeanVariance(Microsoft.ML.TransformsCatalog,Microsoft.ML.InputOutputColumnPair[],System.Boolean,System.Int64,System.Boolean)" />
       <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeLogMeanVariance(Microsoft.ML.TransformsCatalog,Microsoft.ML.InputOutputColumnPair[],System.Int64,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeLogMeanVariance(Microsoft.ML.TransformsCatalog,System.String,System.Boolean,System.String,System.Int64,System.Boolean)" />
       <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeLogMeanVariance(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Int64,System.Boolean)" />
       <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeLpNorm(Microsoft.ML.TransformsCatalog,System.String,System.String,Microsoft.ML.Transforms.LpNormNormalizingEstimatorBase.NormFunction,System.Boolean)" />
       <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeMeanVariance(Microsoft.ML.TransformsCatalog,Microsoft.ML.InputOutputColumnPair[],System.Int64,System.Boolean,System.Boolean)" />
@@ -329,6 +334,12 @@
       <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeMinMax(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Int64,System.Boolean)" />
       <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeSupervisedBinning(Microsoft.ML.TransformsCatalog,Microsoft.ML.InputOutputColumnPair[],System.String,System.Int64,System.Boolean,System.Int32,System.Int32)" />
       <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeSupervisedBinning(Microsoft.ML.TransformsCatalog,System.String,System.String,System.String,System.Int64,System.Boolean,System.Int32,System.Int32)" />
+    </Type>
+    <Type Name="Microsoft.ML.OnnxCatalog" Id="T:Microsoft.ML.OnnxCatalog">
+      <Member Id="M:Microsoft.ML.OnnxCatalog.ApplyOnnxModel(Microsoft.ML.TransformsCatalog,System.String,System.Nullable{System.Int32},System.Boolean)" />
+      <Member Id="M:Microsoft.ML.OnnxCatalog.ApplyOnnxModel(Microsoft.ML.TransformsCatalog,System.String,System.String,System.String,System.Nullable{System.Int32},System.Boolean)" />
+      <Member Id="M:Microsoft.ML.OnnxCatalog.ApplyOnnxModel(Microsoft.ML.TransformsCatalog,System.String[],System.String[],System.String,System.Nullable{System.Int32},System.Boolean)" />
+      <Member Id="M:Microsoft.ML.OnnxCatalog.DnnFeaturizeImage(Microsoft.ML.TransformsCatalog,System.String,System.Func{Microsoft.ML.Transforms.Onnx.DnnImageFeaturizerInput,Microsoft.ML.Data.EstimatorChain{Microsoft.ML.Transforms.ColumnCopyingTransformer}},System.String)" />
     </Type>
     <Type Name="Microsoft.ML.PcaCatalog" Id="T:Microsoft.ML.PcaCatalog">
       <Member Id="M:Microsoft.ML.PcaCatalog.ProjectToPrincipalComponents(Microsoft.ML.TransformsCatalog,System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean,System.Nullable{System.Int32})" />
@@ -412,6 +423,9 @@
       <Member Id="M:Microsoft.ML.StandardTrainersCatalog.SgdNonCalibrated(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,Microsoft.ML.Trainers.SgdNonCalibratedTrainer.Options)" />
       <Member Id="M:Microsoft.ML.StandardTrainersCatalog.SgdNonCalibrated(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,System.String,System.String,System.String,Microsoft.ML.Trainers.IClassificationLoss,System.Int32,System.Double,System.Single)" />
     </Type>
+    <Type Name="Microsoft.ML.TensorflowCatalog" Id="T:Microsoft.ML.TensorflowCatalog">
+      <Member Id="M:Microsoft.ML.TensorflowCatalog.LoadTensorFlowModel(Microsoft.ML.ModelOperationsCatalog,System.String)" />
+    </Type>
     <Type Name="Microsoft.ML.TextCatalog" Id="T:Microsoft.ML.TextCatalog">
       <Member Id="M:Microsoft.ML.TextCatalog.ApplyWordEmbedding(Microsoft.ML.TransformsCatalog.TextTransforms,System.String,System.String,Microsoft.ML.Transforms.Text.WordEmbeddingEstimator.PretrainedModelKind)" />
       <Member Id="M:Microsoft.ML.TextCatalog.ApplyWordEmbedding(Microsoft.ML.TransformsCatalog.TextTransforms,System.String,System.String,System.String)" />
@@ -439,6 +453,14 @@
       <Member Id="M:Microsoft.ML.TextLoaderSaverCatalog.LoadFromTextFile(Microsoft.ML.DataOperationsCatalog,System.String,Microsoft.ML.Data.TextLoader.Options)" />
       <Member Id="M:Microsoft.ML.TextLoaderSaverCatalog.LoadFromTextFile``1(Microsoft.ML.DataOperationsCatalog,System.String,System.Char,System.Boolean,System.Boolean,System.Boolean,System.Boolean)" />
       <Member Id="M:Microsoft.ML.TextLoaderSaverCatalog.SaveAsText(Microsoft.ML.DataOperationsCatalog,Microsoft.ML.IDataView,System.IO.Stream,System.Char,System.Boolean,System.Boolean,System.Boolean,System.Boolean)" />
+    </Type>
+    <Type Name="Microsoft.ML.TimeSeriesCatalog" Id="T:Microsoft.ML.TimeSeriesCatalog">
+      <Member Id="M:Microsoft.ML.TimeSeriesCatalog.DetectAnomalyBySrCnn(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Double)" />
+      <Member Id="M:Microsoft.ML.TimeSeriesCatalog.DetectChangePointBySsa(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,Microsoft.ML.Transforms.TimeSeries.ErrorFunction,Microsoft.ML.Transforms.TimeSeries.MartingaleType,System.Double)" />
+      <Member Id="M:Microsoft.ML.TimeSeriesCatalog.DetectIidChangePoint(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Int32,System.Int32,Microsoft.ML.Transforms.TimeSeries.MartingaleType,System.Double)" />
+      <Member Id="M:Microsoft.ML.TimeSeriesCatalog.DetectIidSpike(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Int32,System.Int32,Microsoft.ML.Transforms.TimeSeries.AnomalySide)" />
+      <Member Id="M:Microsoft.ML.TimeSeriesCatalog.DetectSpikeBySsa(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,Microsoft.ML.Transforms.TimeSeries.AnomalySide,Microsoft.ML.Transforms.TimeSeries.ErrorFunction)" />
+      <Member Id="M:Microsoft.ML.TimeSeriesCatalog.ForecastBySsa(Microsoft.ML.ForecastingCatalog,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,System.Single,Microsoft.ML.Transforms.TimeSeries.RankSelectionMethod,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Boolean,System.Boolean,System.Nullable{Microsoft.ML.Transforms.TimeSeries.GrowthRatio},System.String,System.String,System.Single,System.Boolean)" />
     </Type>
     <Type Name="Microsoft.ML.TrainCatalogBase" Id="T:Microsoft.ML.TrainCatalogBase" />
     <Type Name="Microsoft.ML.TrainCatalogBase/CatalogInstantiatorBase" Id="T:Microsoft.ML.TrainCatalogBase.CatalogInstantiatorBase" />
@@ -482,6 +504,13 @@
       <Member Id="M:Microsoft.ML.TreeExtensions.FastTree(Microsoft.ML.RegressionCatalog.RegressionTrainers,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Double)" />
       <Member Id="M:Microsoft.ML.TreeExtensions.FastTreeTweedie(Microsoft.ML.RegressionCatalog.RegressionTrainers,Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer.Options)" />
       <Member Id="M:Microsoft.ML.TreeExtensions.FastTreeTweedie(Microsoft.ML.RegressionCatalog.RegressionTrainers,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Double)" />
+      <Member Id="M:Microsoft.ML.TreeExtensions.FeaturizeByFastForestBinary(Microsoft.ML.TransformsCatalog,Microsoft.ML.Trainers.FastTree.FastForestBinaryFeaturizationEstimator.Options)" />
+      <Member Id="M:Microsoft.ML.TreeExtensions.FeaturizeByFastForestRegression(Microsoft.ML.TransformsCatalog,Microsoft.ML.Trainers.FastTree.FastForestRegressionFeaturizationEstimator.Options)" />
+      <Member Id="M:Microsoft.ML.TreeExtensions.FeaturizeByFastTreeBinary(Microsoft.ML.TransformsCatalog,Microsoft.ML.Trainers.FastTree.FastTreeBinaryFeaturizationEstimator.Options)" />
+      <Member Id="M:Microsoft.ML.TreeExtensions.FeaturizeByFastTreeRanking(Microsoft.ML.TransformsCatalog,Microsoft.ML.Trainers.FastTree.FastTreeRankingFeaturizationEstimator.Options)" />
+      <Member Id="M:Microsoft.ML.TreeExtensions.FeaturizeByFastTreeRegression(Microsoft.ML.TransformsCatalog,Microsoft.ML.Trainers.FastTree.FastTreeRegressionFeaturizationEstimator.Options)" />
+      <Member Id="M:Microsoft.ML.TreeExtensions.FeaturizeByFastTreeTweedie(Microsoft.ML.TransformsCatalog,Microsoft.ML.Trainers.FastTree.FastTreeTweedieFeaturizationEstimator.Options)" />
+      <Member Id="M:Microsoft.ML.TreeExtensions.FeaturizeByPretrainTreeEnsemble(Microsoft.ML.TransformsCatalog,Microsoft.ML.Trainers.FastTree.PretrainedTreeFeaturizationEstimator.Options)" />
       <Member Id="M:Microsoft.ML.TreeExtensions.Gam(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,Microsoft.ML.Trainers.FastTree.GamBinaryTrainer.Options)" />
       <Member Id="M:Microsoft.ML.TreeExtensions.Gam(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,System.String,System.String,System.String,System.Int32,System.Int32,System.Double)" />
       <Member Id="M:Microsoft.ML.TreeExtensions.Gam(Microsoft.ML.RegressionCatalog.RegressionTrainers,Microsoft.ML.Trainers.FastTree.GamRegressionTrainer.Options)" />
@@ -1562,6 +1591,11 @@
     <Type Name="Microsoft.ML.Trainers.FastTree.EarlyStoppingRuleBase" Id="T:Microsoft.ML.Trainers.FastTree.EarlyStoppingRuleBase">
       <Member Id="M:Microsoft.ML.Trainers.FastTree.EarlyStoppingRuleBase.CheckScore(System.Single,System.Single,System.Boolean@)" />
     </Type>
+    <Type Name="Microsoft.ML.Trainers.FastTree.FastForestBinaryFeaturizationEstimator" Id="T:Microsoft.ML.Trainers.FastTree.FastForestBinaryFeaturizationEstimator" />
+    <Type Name="Microsoft.ML.Trainers.FastTree.FastForestBinaryFeaturizationEstimator/Options" Id="T:Microsoft.ML.Trainers.FastTree.FastForestBinaryFeaturizationEstimator.Options">
+      <Member Id="F:Microsoft.ML.Trainers.FastTree.FastForestBinaryFeaturizationEstimator.Options.TrainerOptions" />
+      <Member Id="M:Microsoft.ML.Trainers.FastTree.FastForestBinaryFeaturizationEstimator.Options.#ctor" />
+    </Type>
     <Type Name="Microsoft.ML.Trainers.FastTree.FastForestBinaryModelParameters" Id="T:Microsoft.ML.Trainers.FastTree.FastForestBinaryModelParameters" />
     <Type Name="Microsoft.ML.Trainers.FastTree.FastForestBinaryTrainer" Id="T:Microsoft.ML.Trainers.FastTree.FastForestBinaryTrainer">
       <Member Id="M:Microsoft.ML.Trainers.FastTree.FastForestBinaryTrainer.Fit(Microsoft.ML.IDataView,Microsoft.ML.IDataView)" />
@@ -1573,6 +1607,11 @@
     <Type Name="Microsoft.ML.Trainers.FastTree.FastForestOptionsBase" Id="T:Microsoft.ML.Trainers.FastTree.FastForestOptionsBase">
       <Member Id="F:Microsoft.ML.Trainers.FastTree.FastForestOptionsBase.NumberOfQuantileSamples" />
     </Type>
+    <Type Name="Microsoft.ML.Trainers.FastTree.FastForestRegressionFeaturizationEstimator" Id="T:Microsoft.ML.Trainers.FastTree.FastForestRegressionFeaturizationEstimator" />
+    <Type Name="Microsoft.ML.Trainers.FastTree.FastForestRegressionFeaturizationEstimator/Options" Id="T:Microsoft.ML.Trainers.FastTree.FastForestRegressionFeaturizationEstimator.Options">
+      <Member Id="F:Microsoft.ML.Trainers.FastTree.FastForestRegressionFeaturizationEstimator.Options.TrainerOptions" />
+      <Member Id="M:Microsoft.ML.Trainers.FastTree.FastForestRegressionFeaturizationEstimator.Options.#ctor" />
+    </Type>
     <Type Name="Microsoft.ML.Trainers.FastTree.FastForestRegressionModelParameters" Id="T:Microsoft.ML.Trainers.FastTree.FastForestRegressionModelParameters" />
     <Type Name="Microsoft.ML.Trainers.FastTree.FastForestRegressionTrainer" Id="T:Microsoft.ML.Trainers.FastTree.FastForestRegressionTrainer">
       <Member Id="M:Microsoft.ML.Trainers.FastTree.FastForestRegressionTrainer.Fit(Microsoft.ML.IDataView,Microsoft.ML.IDataView)" />
@@ -1580,6 +1619,11 @@
     <Type Name="Microsoft.ML.Trainers.FastTree.FastForestRegressionTrainer/Options" Id="T:Microsoft.ML.Trainers.FastTree.FastForestRegressionTrainer.Options">
       <Member Id="F:Microsoft.ML.Trainers.FastTree.FastForestRegressionTrainer.Options.ShuffleLabels" />
       <Member Id="M:Microsoft.ML.Trainers.FastTree.FastForestRegressionTrainer.Options.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Trainers.FastTree.FastTreeBinaryFeaturizationEstimator" Id="T:Microsoft.ML.Trainers.FastTree.FastTreeBinaryFeaturizationEstimator" />
+    <Type Name="Microsoft.ML.Trainers.FastTree.FastTreeBinaryFeaturizationEstimator/Options" Id="T:Microsoft.ML.Trainers.FastTree.FastTreeBinaryFeaturizationEstimator.Options">
+      <Member Id="F:Microsoft.ML.Trainers.FastTree.FastTreeBinaryFeaturizationEstimator.Options.TrainerOptions" />
+      <Member Id="M:Microsoft.ML.Trainers.FastTree.FastTreeBinaryFeaturizationEstimator.Options.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Trainers.FastTree.FastTreeBinaryModelParameters" Id="T:Microsoft.ML.Trainers.FastTree.FastTreeBinaryModelParameters" />
     <Type Name="Microsoft.ML.Trainers.FastTree.FastTreeBinaryTrainer" Id="T:Microsoft.ML.Trainers.FastTree.FastTreeBinaryTrainer">
@@ -1590,6 +1634,11 @@
       <Member Id="M:Microsoft.ML.Trainers.FastTree.FastTreeBinaryTrainer.Options.#ctor" />
       <Member Id="M:Microsoft.ML.Trainers.FastTree.FastTreeBinaryTrainer.Options.Microsoft#ML#Runtime#IComponentFactory&lt;Microsoft#ML#ITrainer&gt;#CreateComponent(Microsoft.ML.Runtime.IHostEnvironment)" />
       <Member Id="P:Microsoft.ML.Trainers.FastTree.FastTreeBinaryTrainer.Options.EarlyStoppingMetric" />
+    </Type>
+    <Type Name="Microsoft.ML.Trainers.FastTree.FastTreeRankingFeaturizationEstimator" Id="T:Microsoft.ML.Trainers.FastTree.FastTreeRankingFeaturizationEstimator" />
+    <Type Name="Microsoft.ML.Trainers.FastTree.FastTreeRankingFeaturizationEstimator/Options" Id="T:Microsoft.ML.Trainers.FastTree.FastTreeRankingFeaturizationEstimator.Options">
+      <Member Id="F:Microsoft.ML.Trainers.FastTree.FastTreeRankingFeaturizationEstimator.Options.TrainerOptions" />
+      <Member Id="M:Microsoft.ML.Trainers.FastTree.FastTreeRankingFeaturizationEstimator.Options.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Trainers.FastTree.FastTreeRankingModelParameters" Id="T:Microsoft.ML.Trainers.FastTree.FastTreeRankingModelParameters" />
     <Type Name="Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer" Id="T:Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer">
@@ -1603,6 +1652,11 @@
       <Member Id="M:Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options.Microsoft#ML#Runtime#IComponentFactory&lt;Microsoft#ML#ITrainer&gt;#CreateComponent(Microsoft.ML.Runtime.IHostEnvironment)" />
       <Member Id="P:Microsoft.ML.Trainers.FastTree.FastTreeRankingTrainer.Options.EarlyStoppingMetric" />
     </Type>
+    <Type Name="Microsoft.ML.Trainers.FastTree.FastTreeRegressionFeaturizationEstimator" Id="T:Microsoft.ML.Trainers.FastTree.FastTreeRegressionFeaturizationEstimator" />
+    <Type Name="Microsoft.ML.Trainers.FastTree.FastTreeRegressionFeaturizationEstimator/Options" Id="T:Microsoft.ML.Trainers.FastTree.FastTreeRegressionFeaturizationEstimator.Options">
+      <Member Id="F:Microsoft.ML.Trainers.FastTree.FastTreeRegressionFeaturizationEstimator.Options.TrainerOptions" />
+      <Member Id="M:Microsoft.ML.Trainers.FastTree.FastTreeRegressionFeaturizationEstimator.Options.#ctor" />
+    </Type>
     <Type Name="Microsoft.ML.Trainers.FastTree.FastTreeRegressionModelParameters" Id="T:Microsoft.ML.Trainers.FastTree.FastTreeRegressionModelParameters" />
     <Type Name="Microsoft.ML.Trainers.FastTree.FastTreeRegressionTrainer" Id="T:Microsoft.ML.Trainers.FastTree.FastTreeRegressionTrainer">
       <Member Id="M:Microsoft.ML.Trainers.FastTree.FastTreeRegressionTrainer.Fit(Microsoft.ML.IDataView,Microsoft.ML.IDataView)" />
@@ -1614,6 +1668,11 @@
     </Type>
     <Type Name="Microsoft.ML.Trainers.FastTree.FastTreeTrainerBase`3" Id="T:Microsoft.ML.Trainers.FastTree.FastTreeTrainerBase`3">
       <Member Id="P:Microsoft.ML.Trainers.FastTree.FastTreeTrainerBase`3.Info" />
+    </Type>
+    <Type Name="Microsoft.ML.Trainers.FastTree.FastTreeTweedieFeaturizationEstimator" Id="T:Microsoft.ML.Trainers.FastTree.FastTreeTweedieFeaturizationEstimator" />
+    <Type Name="Microsoft.ML.Trainers.FastTree.FastTreeTweedieFeaturizationEstimator/Options" Id="T:Microsoft.ML.Trainers.FastTree.FastTreeTweedieFeaturizationEstimator.Options">
+      <Member Id="F:Microsoft.ML.Trainers.FastTree.FastTreeTweedieFeaturizationEstimator.Options.TrainerOptions" />
+      <Member Id="M:Microsoft.ML.Trainers.FastTree.FastTreeTweedieFeaturizationEstimator.Options.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Trainers.FastTree.FastTreeTweedieModelParameters" Id="T:Microsoft.ML.Trainers.FastTree.FastTreeTweedieModelParameters" />
     <Type Name="Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer" Id="T:Microsoft.ML.Trainers.FastTree.FastTreeTweedieTrainer">
@@ -1684,6 +1743,11 @@
       <Member Id="P:Microsoft.ML.Trainers.FastTree.MovingWindowRule.Threshold" />
       <Member Id="P:Microsoft.ML.Trainers.FastTree.MovingWindowRule.WindowSize" />
     </Type>
+    <Type Name="Microsoft.ML.Trainers.FastTree.PretrainedTreeFeaturizationEstimator" Id="T:Microsoft.ML.Trainers.FastTree.PretrainedTreeFeaturizationEstimator" />
+    <Type Name="Microsoft.ML.Trainers.FastTree.PretrainedTreeFeaturizationEstimator/Options" Id="T:Microsoft.ML.Trainers.FastTree.PretrainedTreeFeaturizationEstimator.Options">
+      <Member Id="F:Microsoft.ML.Trainers.FastTree.PretrainedTreeFeaturizationEstimator.Options.ModelParameters" />
+      <Member Id="M:Microsoft.ML.Trainers.FastTree.PretrainedTreeFeaturizationEstimator.Options.#ctor" />
+    </Type>
     <Type Name="Microsoft.ML.Trainers.FastTree.QuantileRegressionTree" Id="T:Microsoft.ML.Trainers.FastTree.QuantileRegressionTree">
       <Member Id="M:Microsoft.ML.Trainers.FastTree.QuantileRegressionTree.GetLeafSamplesAt(System.Int32)" />
       <Member Id="M:Microsoft.ML.Trainers.FastTree.QuantileRegressionTree.GetLeafSampleWeightsAt(System.Int32)" />
@@ -1714,6 +1778,20 @@
       <Member Id="P:Microsoft.ML.Trainers.FastTree.TreeEnsemble`1.Bias" />
       <Member Id="P:Microsoft.ML.Trainers.FastTree.TreeEnsemble`1.Trees" />
       <Member Id="P:Microsoft.ML.Trainers.FastTree.TreeEnsemble`1.TreeWeights" />
+    </Type>
+    <Type Name="Microsoft.ML.Trainers.FastTree.TreeEnsembleFeaturizationEstimatorBase" Id="T:Microsoft.ML.Trainers.FastTree.TreeEnsembleFeaturizationEstimatorBase">
+      <Member Id="M:Microsoft.ML.Trainers.FastTree.TreeEnsembleFeaturizationEstimatorBase.Fit(Microsoft.ML.IDataView)" />
+      <Member Id="M:Microsoft.ML.Trainers.FastTree.TreeEnsembleFeaturizationEstimatorBase.GetOutputSchema(Microsoft.ML.SchemaShape)" />
+    </Type>
+    <Type Name="Microsoft.ML.Trainers.FastTree.TreeEnsembleFeaturizationEstimatorBase/OptionsBase" Id="T:Microsoft.ML.Trainers.FastTree.TreeEnsembleFeaturizationEstimatorBase.OptionsBase">
+      <Member Id="F:Microsoft.ML.Trainers.FastTree.TreeEnsembleFeaturizationEstimatorBase.OptionsBase.InputColumnName" />
+      <Member Id="F:Microsoft.ML.Trainers.FastTree.TreeEnsembleFeaturizationEstimatorBase.OptionsBase.LeavesColumnName" />
+      <Member Id="F:Microsoft.ML.Trainers.FastTree.TreeEnsembleFeaturizationEstimatorBase.OptionsBase.PathsColumnName" />
+      <Member Id="F:Microsoft.ML.Trainers.FastTree.TreeEnsembleFeaturizationEstimatorBase.OptionsBase.TreesColumnName" />
+      <Member Id="M:Microsoft.ML.Trainers.FastTree.TreeEnsembleFeaturizationEstimatorBase.OptionsBase.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Trainers.FastTree.TreeEnsembleFeaturizationTransformer" Id="T:Microsoft.ML.Trainers.FastTree.TreeEnsembleFeaturizationTransformer">
+      <Member Id="M:Microsoft.ML.Trainers.FastTree.TreeEnsembleFeaturizationTransformer.GetOutputSchema(Microsoft.ML.DataViewSchema)" />
     </Type>
     <Type Name="Microsoft.ML.Trainers.FastTree.TreeEnsembleModelParameters" Id="T:Microsoft.ML.Trainers.FastTree.TreeEnsembleModelParameters">
       <Member Id="M:Microsoft.ML.Trainers.FastTree.TreeEnsembleModelParameters.GetFeatureWeights(Microsoft.ML.Data.VBuffer{System.Single}@)" />
@@ -1820,6 +1898,7 @@
     <Type Name="Microsoft.ML.Trainers.LightGbm.LightGbmMulticlassTrainer/Options" Id="T:Microsoft.ML.Trainers.LightGbm.LightGbmMulticlassTrainer.Options">
       <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmMulticlassTrainer.Options.EvaluationMetric" />
       <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmMulticlassTrainer.Options.Sigmoid" />
+      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmMulticlassTrainer.Options.UnbalancedSets" />
       <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmMulticlassTrainer.Options.UseSoftmax" />
       <Member Id="M:Microsoft.ML.Trainers.LightGbm.LightGbmMulticlassTrainer.Options.#ctor" />
     </Type>
@@ -2043,6 +2122,19 @@
       <Member Id="M:Microsoft.ML.Transforms.PrincipalComponentAnalyzer.Fit(Microsoft.ML.IDataView)" />
       <Member Id="M:Microsoft.ML.Transforms.PrincipalComponentAnalyzer.GetOutputSchema(Microsoft.ML.SchemaShape)" />
     </Type>
+    <Type Name="Microsoft.ML.Transforms.TensorFlowEstimator" Id="T:Microsoft.ML.Transforms.TensorFlowEstimator">
+      <Member Id="M:Microsoft.ML.Transforms.TensorFlowEstimator.Fit(Microsoft.ML.IDataView)" />
+      <Member Id="M:Microsoft.ML.Transforms.TensorFlowEstimator.GetOutputSchema(Microsoft.ML.SchemaShape)" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TensorFlowModel" Id="T:Microsoft.ML.Transforms.TensorFlowModel">
+      <Member Id="M:Microsoft.ML.Transforms.TensorFlowModel.GetInputSchema" />
+      <Member Id="M:Microsoft.ML.Transforms.TensorFlowModel.GetModelSchema" />
+      <Member Id="M:Microsoft.ML.Transforms.TensorFlowModel.ScoreTensorFlowModel(System.String,System.String,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.Transforms.TensorFlowModel.ScoreTensorFlowModel(System.String[],System.String[],System.Boolean)" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TensorFlowTransformer" Id="T:Microsoft.ML.Transforms.TensorFlowTransformer">
+      <Member Id="M:Microsoft.ML.Transforms.TensorFlowTransformer.Finalize" />
+    </Type>
     <Type Name="Microsoft.ML.Transforms.TransformInputBase" Id="T:Microsoft.ML.Transforms.TransformInputBase" />
     <Type Name="Microsoft.ML.Transforms.TypeConvertingEstimator" Id="T:Microsoft.ML.Transforms.TypeConvertingEstimator">
       <Member Id="M:Microsoft.ML.Transforms.TypeConvertingEstimator.GetOutputSchema(Microsoft.ML.SchemaShape)" />
@@ -2133,6 +2225,48 @@
       <Member Id="M:Microsoft.ML.Transforms.Image.VectorToImageConvertingEstimator.GetOutputSchema(Microsoft.ML.SchemaShape)" />
     </Type>
     <Type Name="Microsoft.ML.Transforms.Image.VectorToImageConvertingTransformer" Id="T:Microsoft.ML.Transforms.Image.VectorToImageConvertingTransformer" />
+  </Namespace>
+  <Namespace Name="Microsoft.ML.Transforms.Onnx">
+    <Type Name="Microsoft.ML.Transforms.Onnx.DnnImageFeaturizerEstimator" Id="T:Microsoft.ML.Transforms.Onnx.DnnImageFeaturizerEstimator">
+      <Member Id="M:Microsoft.ML.Transforms.Onnx.DnnImageFeaturizerEstimator.Fit(Microsoft.ML.IDataView)" />
+      <Member Id="M:Microsoft.ML.Transforms.Onnx.DnnImageFeaturizerEstimator.GetOutputSchema(Microsoft.ML.SchemaShape)" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.Onnx.DnnImageFeaturizerInput" Id="T:Microsoft.ML.Transforms.Onnx.DnnImageFeaturizerInput">
+      <Member Id="P:Microsoft.ML.Transforms.Onnx.DnnImageFeaturizerInput.InputColumn" />
+      <Member Id="P:Microsoft.ML.Transforms.Onnx.DnnImageFeaturizerInput.ModelSelector" />
+      <Member Id="P:Microsoft.ML.Transforms.Onnx.DnnImageFeaturizerInput.OutputColumn" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.Onnx.DnnImageModelSelector" Id="T:Microsoft.ML.Transforms.Onnx.DnnImageModelSelector">
+      <Member Id="M:Microsoft.ML.Transforms.Onnx.DnnImageModelSelector.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.Onnx.OnnxMapType" Id="T:Microsoft.ML.Transforms.Onnx.OnnxMapType">
+      <Member Id="M:Microsoft.ML.Transforms.Onnx.OnnxMapType.#ctor(System.Type,System.Type)" />
+      <Member Id="M:Microsoft.ML.Transforms.Onnx.OnnxMapType.Equals(Microsoft.ML.Data.DataViewType)" />
+      <Member Id="M:Microsoft.ML.Transforms.Onnx.OnnxMapType.GetHashCode" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.Onnx.OnnxMapTypeAttribute" Id="T:Microsoft.ML.Transforms.Onnx.OnnxMapTypeAttribute">
+      <Member Id="M:Microsoft.ML.Transforms.Onnx.OnnxMapTypeAttribute.#ctor" />
+      <Member Id="M:Microsoft.ML.Transforms.Onnx.OnnxMapTypeAttribute.#ctor(System.Type,System.Type)" />
+      <Member Id="M:Microsoft.ML.Transforms.Onnx.OnnxMapTypeAttribute.Equals(Microsoft.ML.Data.DataViewTypeAttribute)" />
+      <Member Id="M:Microsoft.ML.Transforms.Onnx.OnnxMapTypeAttribute.GetHashCode" />
+      <Member Id="M:Microsoft.ML.Transforms.Onnx.OnnxMapTypeAttribute.Register" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.Onnx.OnnxScoringEstimator" Id="T:Microsoft.ML.Transforms.Onnx.OnnxScoringEstimator">
+      <Member Id="M:Microsoft.ML.Transforms.Onnx.OnnxScoringEstimator.GetOutputSchema(Microsoft.ML.SchemaShape)" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.Onnx.OnnxSequenceType" Id="T:Microsoft.ML.Transforms.Onnx.OnnxSequenceType">
+      <Member Id="M:Microsoft.ML.Transforms.Onnx.OnnxSequenceType.#ctor(System.Type)" />
+      <Member Id="M:Microsoft.ML.Transforms.Onnx.OnnxSequenceType.Equals(Microsoft.ML.Data.DataViewType)" />
+      <Member Id="M:Microsoft.ML.Transforms.Onnx.OnnxSequenceType.GetHashCode" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.Onnx.OnnxSequenceTypeAttribute" Id="T:Microsoft.ML.Transforms.Onnx.OnnxSequenceTypeAttribute">
+      <Member Id="M:Microsoft.ML.Transforms.Onnx.OnnxSequenceTypeAttribute.#ctor" />
+      <Member Id="M:Microsoft.ML.Transforms.Onnx.OnnxSequenceTypeAttribute.#ctor(System.Type)" />
+      <Member Id="M:Microsoft.ML.Transforms.Onnx.OnnxSequenceTypeAttribute.Equals(Microsoft.ML.Data.DataViewTypeAttribute)" />
+      <Member Id="M:Microsoft.ML.Transforms.Onnx.OnnxSequenceTypeAttribute.GetHashCode" />
+      <Member Id="M:Microsoft.ML.Transforms.Onnx.OnnxSequenceTypeAttribute.Register" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.Onnx.OnnxTransformer" Id="T:Microsoft.ML.Transforms.Onnx.OnnxTransformer" />
   </Namespace>
   <Namespace Name="Microsoft.ML.Transforms.Text">
     <Type Name="Microsoft.ML.Transforms.Text.CustomStopWordsRemovingEstimator" Id="T:Microsoft.ML.Transforms.Text.CustomStopWordsRemovingEstimator">
@@ -2289,5 +2423,105 @@
       <Member Id="M:Microsoft.ML.Transforms.Text.WordTokenizingEstimator.GetOutputSchema(Microsoft.ML.SchemaShape)" />
     </Type>
     <Type Name="Microsoft.ML.Transforms.Text.WordTokenizingTransformer" Id="T:Microsoft.ML.Transforms.Text.WordTokenizingTransformer" />
+  </Namespace>
+  <Namespace Name="Microsoft.ML.Transforms.TimeSeries">
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.AnomalySide" Id="T:Microsoft.ML.Transforms.TimeSeries.AnomalySide">
+      <Member Id="F:Microsoft.ML.Transforms.TimeSeries.AnomalySide.Negative" />
+      <Member Id="F:Microsoft.ML.Transforms.TimeSeries.AnomalySide.Positive" />
+      <Member Id="F:Microsoft.ML.Transforms.TimeSeries.AnomalySide.TwoSided" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.ErrorFunction" Id="T:Microsoft.ML.Transforms.TimeSeries.ErrorFunction">
+      <Member Id="F:Microsoft.ML.Transforms.TimeSeries.ErrorFunction.AbsoluteDifference" />
+      <Member Id="F:Microsoft.ML.Transforms.TimeSeries.ErrorFunction.AbsoluteProportion" />
+      <Member Id="F:Microsoft.ML.Transforms.TimeSeries.ErrorFunction.SignedDifference" />
+      <Member Id="F:Microsoft.ML.Transforms.TimeSeries.ErrorFunction.SignedProportion" />
+      <Member Id="F:Microsoft.ML.Transforms.TimeSeries.ErrorFunction.SquaredDifference" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.GrowthRatio" Id="T:Microsoft.ML.Transforms.TimeSeries.GrowthRatio">
+      <Member Id="F:Microsoft.ML.Transforms.TimeSeries.GrowthRatio.Growth" />
+      <Member Id="F:Microsoft.ML.Transforms.TimeSeries.GrowthRatio.TimeSpan" />
+      <Member Id="P:Microsoft.ML.Transforms.TimeSeries.GrowthRatio.Ratio" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.IidAnomalyDetectionBaseWrapper" Id="T:Microsoft.ML.Transforms.TimeSeries.IidAnomalyDetectionBaseWrapper">
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.IidAnomalyDetectionBaseWrapper.GetOutputSchema(Microsoft.ML.DataViewSchema)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.IidAnomalyDetectionBaseWrapper.GetStatefulRowToRowMapper(Microsoft.ML.DataViewSchema)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.IidAnomalyDetectionBaseWrapper.Microsoft#ML#ICanSaveModel#Save(Microsoft.ML.ModelSaveContext)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.IidAnomalyDetectionBaseWrapper.Microsoft#ML#ITransformer#GetRowToRowMapper(Microsoft.ML.DataViewSchema)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.IidAnomalyDetectionBaseWrapper.Transform(Microsoft.ML.IDataView)" />
+      <Member Id="P:Microsoft.ML.Transforms.TimeSeries.IidAnomalyDetectionBaseWrapper.Microsoft#ML#ITransformer#IsRowToRowMapper" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.IidChangePointDetector" Id="T:Microsoft.ML.Transforms.TimeSeries.IidChangePointDetector" />
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.IidChangePointEstimator" Id="T:Microsoft.ML.Transforms.TimeSeries.IidChangePointEstimator">
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.IidChangePointEstimator.GetOutputSchema(Microsoft.ML.SchemaShape)" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.IidSpikeDetector" Id="T:Microsoft.ML.Transforms.TimeSeries.IidSpikeDetector" />
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.IidSpikeEstimator" Id="T:Microsoft.ML.Transforms.TimeSeries.IidSpikeEstimator">
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.IidSpikeEstimator.GetOutputSchema(Microsoft.ML.SchemaShape)" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.MartingaleType" Id="T:Microsoft.ML.Transforms.TimeSeries.MartingaleType">
+      <Member Id="F:Microsoft.ML.Transforms.TimeSeries.MartingaleType.Mixture" />
+      <Member Id="F:Microsoft.ML.Transforms.TimeSeries.MartingaleType.None" />
+      <Member Id="F:Microsoft.ML.Transforms.TimeSeries.MartingaleType.Power" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.PredictionFunctionExtensions" Id="T:Microsoft.ML.Transforms.TimeSeries.PredictionFunctionExtensions">
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.PredictionFunctionExtensions.CreateTimeSeriesEngine``2(Microsoft.ML.ITransformer,Microsoft.ML.Runtime.IHostEnvironment,System.Boolean,Microsoft.ML.Data.SchemaDefinition,Microsoft.ML.Data.SchemaDefinition)" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.RankSelectionMethod" Id="T:Microsoft.ML.Transforms.TimeSeries.RankSelectionMethod">
+      <Member Id="F:Microsoft.ML.Transforms.TimeSeries.RankSelectionMethod.Exact" />
+      <Member Id="F:Microsoft.ML.Transforms.TimeSeries.RankSelectionMethod.Fast" />
+      <Member Id="F:Microsoft.ML.Transforms.TimeSeries.RankSelectionMethod.Fixed" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.SrCnnAnomalyDetectionBase" Id="T:Microsoft.ML.Transforms.TimeSeries.SrCnnAnomalyDetectionBase">
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SrCnnAnomalyDetectionBase.GetOutputSchema(Microsoft.ML.DataViewSchema)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SrCnnAnomalyDetectionBase.GetStatefulRowToRowMapper(Microsoft.ML.DataViewSchema)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SrCnnAnomalyDetectionBase.Microsoft#ML#ICanSaveModel#Save(Microsoft.ML.ModelSaveContext)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SrCnnAnomalyDetectionBase.Microsoft#ML#ITransformer#GetRowToRowMapper(Microsoft.ML.DataViewSchema)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SrCnnAnomalyDetectionBase.Transform(Microsoft.ML.IDataView)" />
+      <Member Id="P:Microsoft.ML.Transforms.TimeSeries.SrCnnAnomalyDetectionBase.Microsoft#ML#ITransformer#IsRowToRowMapper" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.SrCnnAnomalyDetector" Id="T:Microsoft.ML.Transforms.TimeSeries.SrCnnAnomalyDetector" />
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.SrCnnAnomalyEstimator" Id="T:Microsoft.ML.Transforms.TimeSeries.SrCnnAnomalyEstimator">
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SrCnnAnomalyEstimator.GetOutputSchema(Microsoft.ML.SchemaShape)" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.SsaAnomalyDetectionBaseWrapper" Id="T:Microsoft.ML.Transforms.TimeSeries.SsaAnomalyDetectionBaseWrapper">
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SsaAnomalyDetectionBaseWrapper.GetOutputSchema(Microsoft.ML.DataViewSchema)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SsaAnomalyDetectionBaseWrapper.GetStatefulRowToRowMapper(Microsoft.ML.DataViewSchema)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SsaAnomalyDetectionBaseWrapper.Microsoft#ML#ICanSaveModel#Save(Microsoft.ML.ModelSaveContext)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SsaAnomalyDetectionBaseWrapper.Microsoft#ML#ITransformer#GetRowToRowMapper(Microsoft.ML.DataViewSchema)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SsaAnomalyDetectionBaseWrapper.Transform(Microsoft.ML.IDataView)" />
+      <Member Id="P:Microsoft.ML.Transforms.TimeSeries.SsaAnomalyDetectionBaseWrapper.Microsoft#ML#ITransformer#IsRowToRowMapper" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.SsaChangePointDetector" Id="T:Microsoft.ML.Transforms.TimeSeries.SsaChangePointDetector" />
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.SsaChangePointEstimator" Id="T:Microsoft.ML.Transforms.TimeSeries.SsaChangePointEstimator">
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SsaChangePointEstimator.Fit(Microsoft.ML.IDataView)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SsaChangePointEstimator.GetOutputSchema(Microsoft.ML.SchemaShape)" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.SsaForecastingBaseWrapper" Id="T:Microsoft.ML.Transforms.TimeSeries.SsaForecastingBaseWrapper">
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SsaForecastingBaseWrapper.GetOutputSchema(Microsoft.ML.DataViewSchema)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SsaForecastingBaseWrapper.GetStatefulRowToRowMapper(Microsoft.ML.DataViewSchema)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SsaForecastingBaseWrapper.Microsoft#ML#ICanSaveModel#Save(Microsoft.ML.ModelSaveContext)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SsaForecastingBaseWrapper.Microsoft#ML#ITransformer#GetRowToRowMapper(Microsoft.ML.DataViewSchema)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SsaForecastingBaseWrapper.Transform(Microsoft.ML.IDataView)" />
+      <Member Id="P:Microsoft.ML.Transforms.TimeSeries.SsaForecastingBaseWrapper.Microsoft#ML#ITransformer#IsRowToRowMapper" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.SsaForecastingEstimator" Id="T:Microsoft.ML.Transforms.TimeSeries.SsaForecastingEstimator">
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SsaForecastingEstimator.Fit(Microsoft.ML.IDataView)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SsaForecastingEstimator.GetOutputSchema(Microsoft.ML.SchemaShape)" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.SsaForecastingTransformer" Id="T:Microsoft.ML.Transforms.TimeSeries.SsaForecastingTransformer" />
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.SsaSpikeDetector" Id="T:Microsoft.ML.Transforms.TimeSeries.SsaSpikeDetector" />
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.SsaSpikeEstimator" Id="T:Microsoft.ML.Transforms.TimeSeries.SsaSpikeEstimator">
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SsaSpikeEstimator.Fit(Microsoft.ML.IDataView)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.SsaSpikeEstimator.GetOutputSchema(Microsoft.ML.SchemaShape)" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.TimeSeries.TimeSeriesPredictionEngine`2" Id="T:Microsoft.ML.Transforms.TimeSeries.TimeSeriesPredictionEngine`2">
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.TimeSeriesPredictionEngine`2.#ctor(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.ITransformer,System.Boolean,Microsoft.ML.Data.SchemaDefinition,Microsoft.ML.Data.SchemaDefinition)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.TimeSeriesPredictionEngine`2.CheckPoint(Microsoft.ML.Runtime.IHostEnvironment,System.IO.Stream)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.TimeSeriesPredictionEngine`2.CheckPoint(Microsoft.ML.Runtime.IHostEnvironment,System.String)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.TimeSeriesPredictionEngine`2.Predict(`0,`1@)" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.TimeSeriesPredictionEngine`2.Predict(`0,`1@,System.Nullable{System.Int32},System.Nullable{System.Single})" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.TimeSeriesPredictionEngine`2.Predict(`0,System.Nullable{System.Int32},System.Nullable{System.Single})" />
+      <Member Id="M:Microsoft.ML.Transforms.TimeSeries.TimeSeriesPredictionEngine`2.Predict(System.Nullable{System.Int32},System.Nullable{System.Single})" />
+    </Type>
   </Namespace>
 </Framework>
