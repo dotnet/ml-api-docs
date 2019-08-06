@@ -59,6 +59,49 @@
       </Docs>
     </Member>
     <Member MemberName="ApplyOnnxModel">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Onnx.OnnxScoringEstimator ApplyOnnxModel (this Microsoft.ML.TransformsCatalog catalog, string modelFile, System.Collections.Generic.IDictionary&lt;string,int[]&gt; shapeDictionary, Nullable&lt;int&gt; gpuDeviceId = null, bool fallbackToCpu = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Onnx.OnnxScoringEstimator ApplyOnnxModel(class Microsoft.ML.TransformsCatalog catalog, string modelFile, class System.Collections.Generic.IDictionary`2&lt;string, int32[]&gt; shapeDictionary, valuetype System.Nullable`1&lt;int32&gt; gpuDeviceId, bool fallbackToCpu) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.OnnxCatalog.ApplyOnnxModel(Microsoft.ML.TransformsCatalog,System.String,System.Collections.Generic.IDictionary{System.String,System.Int32[]},System.Nullable{System.Int32},System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ApplyOnnxModel (catalog As TransformsCatalog, modelFile As String, shapeDictionary As IDictionary(Of String, Integer()), Optional gpuDeviceId As Nullable(Of Integer) = null, Optional fallbackToCpu As Boolean = false) As OnnxScoringEstimator" />
+      <MemberSignature Language="F#" Value="static member ApplyOnnxModel : Microsoft.ML.TransformsCatalog * string * System.Collections.Generic.IDictionary&lt;string, int[]&gt; * Nullable&lt;int&gt; * bool -&gt; Microsoft.ML.Transforms.Onnx.OnnxScoringEstimator" Usage="Microsoft.ML.OnnxCatalog.ApplyOnnxModel (catalog, modelFile, shapeDictionary, gpuDeviceId, fallbackToCpu)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.OnnxTransformer</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Transforms.Onnx.OnnxScoringEstimator</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog" RefType="this" />
+        <Parameter Name="modelFile" Type="System.String" />
+        <Parameter Name="shapeDictionary" Type="System.Collections.Generic.IDictionary&lt;System.String,System.Int32[]&gt;" />
+        <Parameter Name="gpuDeviceId" Type="System.Nullable&lt;System.Int32&gt;" />
+        <Parameter Name="fallbackToCpu" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="catalog">The transform's catalog.</param>
+        <param name="modelFile">The path of the file containing the ONNX model.</param>
+        <param name="shapeDictionary">ONNX shape should be used to over those loaded from <paramref name="modelFile" />.</param>
+        <param name="gpuDeviceId">Optional GPU device ID to run execution on, <see langword="null" /> to run on CPU.</param>
+        <param name="fallbackToCpu">If GPU error, raise exception or fallback to CPU.</param>
+        <summary>
+            Create a <see cref="T:Microsoft.ML.Transforms.Onnx.OnnxScoringEstimator" />, which applies a pre-trained Onnx model to the input column.
+            Input/output columns are determined based on the input/output columns of the provided ONNX model.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>
+            The name/type of input columns must exactly match name/type of the ONNX model inputs.
+            The name/type of the produced output columns will match name/type of the ONNX model outputs.
+            </remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[ApplyOnnxModel](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/ApplyOnnxModel.cs)]
+            ]]></format>
+        </example>
+      </Docs>
+    </Member>
+    <Member MemberName="ApplyOnnxModel">
       <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Onnx.OnnxScoringEstimator ApplyOnnxModel (this Microsoft.ML.TransformsCatalog catalog, string outputColumnName, string inputColumnName, string modelFile, Nullable&lt;int&gt; gpuDeviceId = null, bool fallbackToCpu = false);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Onnx.OnnxScoringEstimator ApplyOnnxModel(class Microsoft.ML.TransformsCatalog catalog, string outputColumnName, string inputColumnName, string modelFile, valuetype System.Nullable`1&lt;int32&gt; gpuDeviceId, bool fallbackToCpu) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.OnnxCatalog.ApplyOnnxModel(Microsoft.ML.TransformsCatalog,System.String,System.String,System.String,System.Nullable{System.Int32},System.Boolean)" />
@@ -126,6 +169,87 @@
         <param name="outputColumnNames">The output columns resulting from the transformation.</param>
         <param name="inputColumnNames">The input columns.</param>
         <param name="modelFile">The path of the file containing the ONNX model.</param>
+        <param name="gpuDeviceId">Optional GPU device ID to run execution on, <see langword="null" /> to run on CPU.</param>
+        <param name="fallbackToCpu">If GPU error, raise exception or fallback to CPU.</param>
+        <summary>
+            Create a <see cref="T:Microsoft.ML.Transforms.Onnx.OnnxScoringEstimator" />, which applies a pre-trained Onnx model to the <paramref name="inputColumnNames" /> columns.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ApplyOnnxModel">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Onnx.OnnxScoringEstimator ApplyOnnxModel (this Microsoft.ML.TransformsCatalog catalog, string outputColumnName, string inputColumnName, string modelFile, System.Collections.Generic.IDictionary&lt;string,int[]&gt; shapeDictionary, Nullable&lt;int&gt; gpuDeviceId = null, bool fallbackToCpu = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Onnx.OnnxScoringEstimator ApplyOnnxModel(class Microsoft.ML.TransformsCatalog catalog, string outputColumnName, string inputColumnName, string modelFile, class System.Collections.Generic.IDictionary`2&lt;string, int32[]&gt; shapeDictionary, valuetype System.Nullable`1&lt;int32&gt; gpuDeviceId, bool fallbackToCpu) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.OnnxCatalog.ApplyOnnxModel(Microsoft.ML.TransformsCatalog,System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Int32[]},System.Nullable{System.Int32},System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ApplyOnnxModel (catalog As TransformsCatalog, outputColumnName As String, inputColumnName As String, modelFile As String, shapeDictionary As IDictionary(Of String, Integer()), Optional gpuDeviceId As Nullable(Of Integer) = null, Optional fallbackToCpu As Boolean = false) As OnnxScoringEstimator" />
+      <MemberSignature Language="F#" Value="static member ApplyOnnxModel : Microsoft.ML.TransformsCatalog * string * string * string * System.Collections.Generic.IDictionary&lt;string, int[]&gt; * Nullable&lt;int&gt; * bool -&gt; Microsoft.ML.Transforms.Onnx.OnnxScoringEstimator" Usage="Microsoft.ML.OnnxCatalog.ApplyOnnxModel (catalog, outputColumnName, inputColumnName, modelFile, shapeDictionary, gpuDeviceId, fallbackToCpu)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.OnnxTransformer</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Transforms.Onnx.OnnxScoringEstimator</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog" RefType="this" />
+        <Parameter Name="outputColumnName" Type="System.String" />
+        <Parameter Name="inputColumnName" Type="System.String" />
+        <Parameter Name="modelFile" Type="System.String" />
+        <Parameter Name="shapeDictionary" Type="System.Collections.Generic.IDictionary&lt;System.String,System.Int32[]&gt;" />
+        <Parameter Name="gpuDeviceId" Type="System.Nullable&lt;System.Int32&gt;" />
+        <Parameter Name="fallbackToCpu" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="catalog">The transform's catalog.</param>
+        <param name="outputColumnName">The output column resulting from the transformation.</param>
+        <param name="inputColumnName">The input column.</param>
+        <param name="modelFile">The path of the file containing the ONNX model.</param>
+        <param name="shapeDictionary">ONNX shape should be used to over those loaded from <paramref name="modelFile" />.</param>
+        <param name="gpuDeviceId">Optional GPU device ID to run execution on, <see langword="null" /> to run on CPU.</param>
+        <param name="fallbackToCpu">If GPU error, raise exception or fallback to CPU.</param>
+        <summary>
+            Create a <see cref="T:Microsoft.ML.Transforms.Onnx.OnnxScoringEstimator" />, which applies a pre-trained Onnx model to the <paramref name="inputColumnName" /> column.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[ApplyOnnxModel](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/ApplyONNXModelWithInMemoryImages.cs)]
+            ]]></format>
+        </example>
+      </Docs>
+    </Member>
+    <Member MemberName="ApplyOnnxModel">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.Onnx.OnnxScoringEstimator ApplyOnnxModel (this Microsoft.ML.TransformsCatalog catalog, string[] outputColumnNames, string[] inputColumnNames, string modelFile, System.Collections.Generic.IDictionary&lt;string,int[]&gt; shapeDictionary, Nullable&lt;int&gt; gpuDeviceId = null, bool fallbackToCpu = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.Onnx.OnnxScoringEstimator ApplyOnnxModel(class Microsoft.ML.TransformsCatalog catalog, string[] outputColumnNames, string[] inputColumnNames, string modelFile, class System.Collections.Generic.IDictionary`2&lt;string, int32[]&gt; shapeDictionary, valuetype System.Nullable`1&lt;int32&gt; gpuDeviceId, bool fallbackToCpu) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.OnnxCatalog.ApplyOnnxModel(Microsoft.ML.TransformsCatalog,System.String[],System.String[],System.String,System.Collections.Generic.IDictionary{System.String,System.Int32[]},System.Nullable{System.Int32},System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function ApplyOnnxModel (catalog As TransformsCatalog, outputColumnNames As String(), inputColumnNames As String(), modelFile As String, shapeDictionary As IDictionary(Of String, Integer()), Optional gpuDeviceId As Nullable(Of Integer) = null, Optional fallbackToCpu As Boolean = false) As OnnxScoringEstimator" />
+      <MemberSignature Language="F#" Value="static member ApplyOnnxModel : Microsoft.ML.TransformsCatalog * string[] * string[] * string * System.Collections.Generic.IDictionary&lt;string, int[]&gt; * Nullable&lt;int&gt; * bool -&gt; Microsoft.ML.Transforms.Onnx.OnnxScoringEstimator" Usage="Microsoft.ML.OnnxCatalog.ApplyOnnxModel (catalog, outputColumnNames, inputColumnNames, modelFile, shapeDictionary, gpuDeviceId, fallbackToCpu)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.OnnxTransformer</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Transforms.Onnx.OnnxScoringEstimator</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog" RefType="this" />
+        <Parameter Name="outputColumnNames" Type="System.String[]" />
+        <Parameter Name="inputColumnNames" Type="System.String[]" />
+        <Parameter Name="modelFile" Type="System.String" />
+        <Parameter Name="shapeDictionary" Type="System.Collections.Generic.IDictionary&lt;System.String,System.Int32[]&gt;" />
+        <Parameter Name="gpuDeviceId" Type="System.Nullable&lt;System.Int32&gt;" />
+        <Parameter Name="fallbackToCpu" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="catalog">The transform's catalog.</param>
+        <param name="outputColumnNames">The output columns resulting from the transformation.</param>
+        <param name="inputColumnNames">The input columns.</param>
+        <param name="modelFile">The path of the file containing the ONNX model.</param>
+        <param name="shapeDictionary">ONNX shape should be used to over those loaded from <paramref name="modelFile" />.</param>
         <param name="gpuDeviceId">Optional GPU device ID to run execution on, <see langword="null" /> to run on CPU.</param>
         <param name="fallbackToCpu">If GPU error, raise exception or fallback to CPU.</param>
         <summary>
