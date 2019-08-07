@@ -6,6 +6,7 @@
     <Assembly Name="Microsoft.ML.DnnImageFeaturizer.ResNet101" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.DnnImageFeaturizer.ResNet18" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.DnnImageFeaturizer.ResNet50" Version="1.0.0.0" />
+    <Assembly Name="Microsoft.ML.Experimental" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.OnnxConverter" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.Recommender" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.SamplesUtils" Version="1.0.0.0" />
@@ -14,6 +15,9 @@
     <Type Name="Microsoft.ML.AlexNetExtension" Id="T:Microsoft.ML.AlexNetExtension">
       <Member Id="M:Microsoft.ML.AlexNetExtension.AlexNet(Microsoft.ML.Transforms.Onnx.DnnImageModelSelector,Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String)" />
       <Member Id="M:Microsoft.ML.AlexNetExtension.AlexNet(Microsoft.ML.Transforms.Onnx.DnnImageModelSelector,Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String)" />
+    </Type>
+    <Type Name="Microsoft.ML.DatabaseLoaderCatalog" Id="T:Microsoft.ML.DatabaseLoaderCatalog">
+      <Member Id="M:Microsoft.ML.DatabaseLoaderCatalog.CreateDatabaseLoader(Microsoft.ML.DataOperationsCatalog,Microsoft.ML.Data.DatabaseLoader.Column[])" />
     </Type>
     <Type Name="Microsoft.ML.DnnCatalog" Id="T:Microsoft.ML.DnnCatalog">
       <Member Id="M:Microsoft.ML.DnnCatalog.ImageClassification(Microsoft.ML.ModelOperationsCatalog,System.String,System.String,System.String,System.String,System.String,System.String,Microsoft.ML.Transforms.DnnEstimator.Architecture,Microsoft.ML.Transforms.DnnEstimator.DnnFramework,System.Int32,System.Int32,System.Single)" />
@@ -45,6 +49,38 @@
     <Type Name="Microsoft.ML.ResNet50Extension" Id="T:Microsoft.ML.ResNet50Extension">
       <Member Id="M:Microsoft.ML.ResNet50Extension.ResNet50(Microsoft.ML.Transforms.Onnx.DnnImageModelSelector,Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String)" />
       <Member Id="M:Microsoft.ML.ResNet50Extension.ResNet50(Microsoft.ML.Transforms.Onnx.DnnImageModelSelector,Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String)" />
+    </Type>
+  </Namespace>
+  <Namespace Name="Microsoft.ML.Data">
+    <Type Name="Microsoft.ML.Data.DatabaseLoader" Id="T:Microsoft.ML.Data.DatabaseLoader">
+      <Member Id="M:Microsoft.ML.Data.DatabaseLoader.GetOutputSchema" />
+      <Member Id="M:Microsoft.ML.Data.DatabaseLoader.Load(Microsoft.ML.Data.DatabaseSource)" />
+      <Member Id="M:Microsoft.ML.Data.DatabaseLoader.Microsoft#ML#ICanSaveModel#Save(Microsoft.ML.ModelSaveContext)" />
+    </Type>
+    <Type Name="Microsoft.ML.Data.DatabaseLoader/Column" Id="T:Microsoft.ML.Data.DatabaseLoader.Column">
+      <Member Id="F:Microsoft.ML.Data.DatabaseLoader.Column.KeyCount" />
+      <Member Id="F:Microsoft.ML.Data.DatabaseLoader.Column.Name" />
+      <Member Id="F:Microsoft.ML.Data.DatabaseLoader.Column.Source" />
+      <Member Id="F:Microsoft.ML.Data.DatabaseLoader.Column.Type" />
+      <Member Id="M:Microsoft.ML.Data.DatabaseLoader.Column.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Data.DatabaseLoader/Options" Id="T:Microsoft.ML.Data.DatabaseLoader.Options">
+      <Member Id="F:Microsoft.ML.Data.DatabaseLoader.Options.Columns" />
+      <Member Id="M:Microsoft.ML.Data.DatabaseLoader.Options.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Data.DatabaseSource" Id="T:Microsoft.ML.Data.DatabaseSource">
+      <Member Id="M:Microsoft.ML.Data.DatabaseSource.#ctor(System.Data.Common.DbProviderFactory,System.String,System.String)" />
+      <Member Id="P:Microsoft.ML.Data.DatabaseSource.CommandText" />
+      <Member Id="P:Microsoft.ML.Data.DatabaseSource.ConnectionString" />
+      <Member Id="P:Microsoft.ML.Data.DatabaseSource.ProviderFactory" />
+    </Type>
+  </Namespace>
+  <Namespace Name="Microsoft.ML.Experimental">
+    <Type Name="Microsoft.ML.Experimental.MLContextExtensions" Id="T:Microsoft.ML.Experimental.MLContextExtensions">
+      <Member Id="M:Microsoft.ML.Experimental.MLContextExtensions.CancelExecution(Microsoft.ML.MLContext)" />
+    </Type>
+    <Type Name="Microsoft.ML.Experimental.OneToOneTransformerBaseExtensions" Id="T:Microsoft.ML.Experimental.OneToOneTransformerBaseExtensions">
+      <Member Id="M:Microsoft.ML.Experimental.OneToOneTransformerBaseExtensions.GetColumnPairs(Microsoft.ML.Data.OneToOneTransformerBase)" />
     </Type>
   </Namespace>
   <Namespace Name="Microsoft.ML.SamplesUtils">
