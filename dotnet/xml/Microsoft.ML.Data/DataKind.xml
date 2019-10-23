@@ -1,4 +1,4 @@
-﻿<Type Name="DataKind" FullName="Microsoft.ML.Data.DataKind">
+<Type Name="DataKind" FullName="Microsoft.ML.Data.DataKind">
   <TypeSignature Language="C#" Value="public enum DataKind" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed DataKind extends System.Enum" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Data.DataKind" />
@@ -15,7 +15,29 @@
     <summary>
             Specifies a simple data type.
             </summary>
-    <remarks>To be added.</remarks>
+    <remarks>
+      <format type="text/markdown"><![CDATA[
+             Some transforms use the default value and/or missing value of the data types.
+             The table below shows the default value definition for each of the data types.
+            
+             | Type | Default Value | IsDefault Indicator |
+             | -- | -- | -- |
+             | <xref:Microsoft.ML.Data.DataKind.String> or [text](xref:Microsoft.ML.Data.TextDataViewType) | Empty or `null` string (both result in empty `System.ReadOnlyMemory<char>` | <xref:"System.ReadOnlyMemory`1.IsEmpty*> |
+             | [Key](xref:Microsoft.ML.Data.KeyDataViewType) type (supported by the unsigned integer types in `DataKind`) | Not defined | Always `false` |
+             | All other types | Default value of the corresponding system type as defined by .NET standard. In C#, default value expression `default(T)` provides that value. | Equality test with the default value |
+            
+             The table below shows the missing value definition for each of the data types.
+            
+             | Type | Missing Value | IsMissing Indicator |
+             | -- | -- | -- |
+             | <xref:Microsoft.ML.Data.DataKind.String> or [text](xref:Microsoft.ML.Data.TextDataViewType) | Not defined | Always `false` |
+             | [Key](xref:Microsoft.ML.Data.KeyDataViewType) type (supported by the unsigned integer types in `DataKind`) | `0` | Equality test with `0` |
+             | <xref:Microsoft.ML.Data.DataKind.Single> | <xref:System.Single.NaN> | <xref:System.Single.IsNaN(System.Single)> |
+             | <xref:Microsoft.ML.Data.DataKind.Double> | <xref:System.Double.NaN> | <xref:System.Double.IsNaN(System.Double)> |
+             | All other types | Not defined | Always `false` |
+            
+             ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="Boolean">
