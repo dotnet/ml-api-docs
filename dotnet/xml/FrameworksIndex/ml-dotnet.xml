@@ -77,6 +77,11 @@
     <Type Name="Microsoft.ML.CustomMappingCatalog" Id="T:Microsoft.ML.CustomMappingCatalog">
       <Member Id="M:Microsoft.ML.CustomMappingCatalog.CustomMapping``2(Microsoft.ML.TransformsCatalog,System.Action{``0,``1},System.String,Microsoft.ML.Data.SchemaDefinition,Microsoft.ML.Data.SchemaDefinition)" />
     </Type>
+    <Type Name="Microsoft.ML.DatabaseLoaderCatalog" Id="T:Microsoft.ML.DatabaseLoaderCatalog">
+      <Member Id="M:Microsoft.ML.DatabaseLoaderCatalog.CreateDatabaseLoader(Microsoft.ML.DataOperationsCatalog,Microsoft.ML.Data.DatabaseLoader.Column[])" />
+      <Member Id="M:Microsoft.ML.DatabaseLoaderCatalog.CreateDatabaseLoader(Microsoft.ML.DataOperationsCatalog,Microsoft.ML.Data.DatabaseLoader.Options)" />
+      <Member Id="M:Microsoft.ML.DatabaseLoaderCatalog.CreateDatabaseLoader``1(Microsoft.ML.DataOperationsCatalog)" />
+    </Type>
     <Type Name="Microsoft.ML.DataLoaderExtensions" Id="T:Microsoft.ML.DataLoaderExtensions">
       <Member Id="M:Microsoft.ML.DataLoaderExtensions.Load(Microsoft.ML.IDataLoader{Microsoft.ML.Data.IMultiStreamSource},System.String[])" />
     </Type>
@@ -220,8 +225,8 @@
       <Member Id="M:Microsoft.ML.ImageEstimatorsCatalog.ConvertToGrayscale(Microsoft.ML.TransformsCatalog,System.String,System.String)" />
       <Member Id="M:Microsoft.ML.ImageEstimatorsCatalog.ConvertToImage(Microsoft.ML.TransformsCatalog,System.Int32,System.Int32,System.String,System.String,Microsoft.ML.Transforms.Image.ImagePixelExtractingEstimator.ColorBits,Microsoft.ML.Transforms.Image.ImagePixelExtractingEstimator.ColorsOrder,System.Boolean,System.Single,System.Single,System.Int32,System.Int32,System.Int32,System.Int32)" />
       <Member Id="M:Microsoft.ML.ImageEstimatorsCatalog.ExtractPixels(Microsoft.ML.TransformsCatalog,System.String,System.String,Microsoft.ML.Transforms.Image.ImagePixelExtractingEstimator.ColorBits,Microsoft.ML.Transforms.Image.ImagePixelExtractingEstimator.ColorsOrder,System.Boolean,System.Single,System.Single,System.Boolean)" />
-      <Member Id="M:Microsoft.ML.ImageEstimatorsCatalog.LoadImages(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Boolean,System.String)" />
       <Member Id="M:Microsoft.ML.ImageEstimatorsCatalog.LoadImages(Microsoft.ML.TransformsCatalog,System.String,System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.ImageEstimatorsCatalog.LoadRawImageBytes(Microsoft.ML.TransformsCatalog,System.String,System.String,System.String)" />
       <Member Id="M:Microsoft.ML.ImageEstimatorsCatalog.ResizeImages(Microsoft.ML.TransformsCatalog,System.String,System.Int32,System.Int32,System.String,Microsoft.ML.Transforms.Image.ImageResizingEstimator.ResizingKind,Microsoft.ML.Transforms.Image.ImageResizingEstimator.Anchor)" />
     </Type>
     <Type Name="Microsoft.ML.InputOutputColumnPair" Id="T:Microsoft.ML.InputOutputColumnPair">
@@ -367,6 +372,7 @@
       <Member Id="P:Microsoft.ML.PredictionEngineBase`2.OutputSchema" />
     </Type>
     <Type Name="Microsoft.ML.RankingCatalog" Id="T:Microsoft.ML.RankingCatalog">
+      <Member Id="M:Microsoft.ML.RankingCatalog.Evaluate(Microsoft.ML.IDataView,Microsoft.ML.Data.RankingEvaluatorOptions,System.String,System.String,System.String)" />
       <Member Id="M:Microsoft.ML.RankingCatalog.Evaluate(Microsoft.ML.IDataView,System.String,System.String,System.String)" />
       <Member Id="P:Microsoft.ML.RankingCatalog.Trainers" />
     </Type>
@@ -653,6 +659,41 @@
       <Member Id="P:Microsoft.ML.Data.ConfusionMatrix.PerClassPrecision" />
       <Member Id="P:Microsoft.ML.Data.ConfusionMatrix.PerClassRecall" />
     </Type>
+    <Type Name="Microsoft.ML.Data.DatabaseLoader" Id="T:Microsoft.ML.Data.DatabaseLoader">
+      <Member Id="M:Microsoft.ML.Data.DatabaseLoader.GetOutputSchema" />
+      <Member Id="M:Microsoft.ML.Data.DatabaseLoader.Load(Microsoft.ML.Data.DatabaseSource)" />
+      <Member Id="M:Microsoft.ML.Data.DatabaseLoader.Microsoft#ML#ICanSaveModel#Save(Microsoft.ML.ModelSaveContext)" />
+    </Type>
+    <Type Name="Microsoft.ML.Data.DatabaseLoader/Column" Id="T:Microsoft.ML.Data.DatabaseLoader.Column">
+      <Member Id="F:Microsoft.ML.Data.DatabaseLoader.Column.KeyCount" />
+      <Member Id="F:Microsoft.ML.Data.DatabaseLoader.Column.Name" />
+      <Member Id="F:Microsoft.ML.Data.DatabaseLoader.Column.Source" />
+      <Member Id="F:Microsoft.ML.Data.DatabaseLoader.Column.Type" />
+      <Member Id="M:Microsoft.ML.Data.DatabaseLoader.Column.#ctor" />
+      <Member Id="M:Microsoft.ML.Data.DatabaseLoader.Column.#ctor(System.String,System.Data.DbType,Microsoft.ML.Data.DatabaseLoader.Range[],Microsoft.ML.Data.KeyCount)" />
+      <Member Id="M:Microsoft.ML.Data.DatabaseLoader.Column.#ctor(System.String,System.Data.DbType,System.Int32)" />
+      <Member Id="M:Microsoft.ML.Data.DatabaseLoader.Column.#ctor(System.String,System.Data.DbType,System.Int32,System.Int32)" />
+    </Type>
+    <Type Name="Microsoft.ML.Data.DatabaseLoader/Options" Id="T:Microsoft.ML.Data.DatabaseLoader.Options">
+      <Member Id="F:Microsoft.ML.Data.DatabaseLoader.Options.Columns" />
+      <Member Id="M:Microsoft.ML.Data.DatabaseLoader.Options.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.Data.DatabaseLoader/Range" Id="T:Microsoft.ML.Data.DatabaseLoader.Range">
+      <Member Id="F:Microsoft.ML.Data.DatabaseLoader.Range.ForceVector" />
+      <Member Id="F:Microsoft.ML.Data.DatabaseLoader.Range.Max" />
+      <Member Id="F:Microsoft.ML.Data.DatabaseLoader.Range.Min" />
+      <Member Id="F:Microsoft.ML.Data.DatabaseLoader.Range.Name" />
+      <Member Id="M:Microsoft.ML.Data.DatabaseLoader.Range.#ctor" />
+      <Member Id="M:Microsoft.ML.Data.DatabaseLoader.Range.#ctor(System.Int32)" />
+      <Member Id="M:Microsoft.ML.Data.DatabaseLoader.Range.#ctor(System.Int32,System.Int32)" />
+      <Member Id="M:Microsoft.ML.Data.DatabaseLoader.Range.#ctor(System.String)" />
+    </Type>
+    <Type Name="Microsoft.ML.Data.DatabaseSource" Id="T:Microsoft.ML.Data.DatabaseSource">
+      <Member Id="M:Microsoft.ML.Data.DatabaseSource.#ctor(System.Data.Common.DbProviderFactory,System.String,System.String)" />
+      <Member Id="P:Microsoft.ML.Data.DatabaseSource.CommandText" />
+      <Member Id="P:Microsoft.ML.Data.DatabaseSource.ConnectionString" />
+      <Member Id="P:Microsoft.ML.Data.DatabaseSource.ProviderFactory" />
+    </Type>
     <Type Name="Microsoft.ML.Data.DataDebuggerPreview" Id="T:Microsoft.ML.Data.DataDebuggerPreview">
       <Member Id="M:Microsoft.ML.Data.DataDebuggerPreview.ToString" />
       <Member Id="P:Microsoft.ML.Data.DataDebuggerPreview.ColumnView" />
@@ -747,7 +788,6 @@
     </Type>
     <Type Name="Microsoft.ML.Data.ImageLoadingTransformer" Id="T:Microsoft.ML.Data.ImageLoadingTransformer">
       <Member Id="F:Microsoft.ML.Data.ImageLoadingTransformer.ImageFolder" />
-      <Member Id="F:Microsoft.ML.Data.ImageLoadingTransformer.UseImageType" />
     </Type>
     <Type Name="Microsoft.ML.Data.IMultiStreamSource" Id="T:Microsoft.ML.Data.IMultiStreamSource">
       <Member Id="M:Microsoft.ML.Data.IMultiStreamSource.GetPathOrNull(System.Int32)" />
@@ -784,6 +824,10 @@
       <Member Id="M:Microsoft.ML.Data.LoadColumnAttribute.#ctor(System.Int32)" />
       <Member Id="M:Microsoft.ML.Data.LoadColumnAttribute.#ctor(System.Int32,System.Int32)" />
       <Member Id="M:Microsoft.ML.Data.LoadColumnAttribute.#ctor(System.Int32[])" />
+    </Type>
+    <Type Name="Microsoft.ML.Data.LoadColumnNameAttribute" Id="T:Microsoft.ML.Data.LoadColumnNameAttribute">
+      <Member Id="M:Microsoft.ML.Data.LoadColumnNameAttribute.#ctor(System.String)" />
+      <Member Id="M:Microsoft.ML.Data.LoadColumnNameAttribute.#ctor(System.String[])" />
     </Type>
     <Type Name="Microsoft.ML.Data.MetricStatistics" Id="T:Microsoft.ML.Data.MetricStatistics">
       <Member Id="P:Microsoft.ML.Data.MetricStatistics.Count" />
@@ -845,6 +889,11 @@
     </Type>
     <Type Name="Microsoft.ML.Data.PrimitiveDataViewType" Id="T:Microsoft.ML.Data.PrimitiveDataViewType">
       <Member Id="M:Microsoft.ML.Data.PrimitiveDataViewType.#ctor(System.Type)" />
+    </Type>
+    <Type Name="Microsoft.ML.Data.RankingEvaluatorOptions" Id="T:Microsoft.ML.Data.RankingEvaluatorOptions">
+      <Member Id="F:Microsoft.ML.Data.RankingEvaluatorOptions.DcgTruncationLevel" />
+      <Member Id="F:Microsoft.ML.Data.RankingEvaluatorOptions.LabelGains" />
+      <Member Id="M:Microsoft.ML.Data.RankingEvaluatorOptions.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.Data.RankingMetrics" Id="T:Microsoft.ML.Data.RankingMetrics">
       <Member Id="P:Microsoft.ML.Data.RankingMetrics.DiscountedCumulativeGains" />
