@@ -1,25 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Framework Name="ml-dotnet-preview-latest">
   <Assemblies>
-    <Assembly Name="Microsoft.ML.Dnn" Version="1.0.0.0" />
+    <Assembly Name="Microsoft.ML.AutoML" Version="1.0.0.0" />
+    <Assembly Name="Microsoft.ML.CodeGenerator" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.DnnImageFeaturizer.AlexNet" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.DnnImageFeaturizer.ResNet101" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.DnnImageFeaturizer.ResNet18" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.DnnImageFeaturizer.ResNet50" Version="1.0.0.0" />
+    <Assembly Name="Microsoft.ML.Ensemble" Version="1.0.0.0" />
+    <Assembly Name="Microsoft.ML.EntryPoints" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.Experimental" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.OnnxConverter" Version="1.0.0.0" />
+    <Assembly Name="Microsoft.ML.Parquet" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.Recommender" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.SamplesUtils" Version="1.0.0.0" />
-    <Assembly Name="Microsoft.ML.Vision" Version="1.0.0.0" />
   </Assemblies>
   <Namespace Name="Microsoft.ML">
     <Type Name="Microsoft.ML.AlexNetExtension" Id="T:Microsoft.ML.AlexNetExtension">
       <Member Id="M:Microsoft.ML.AlexNetExtension.AlexNet(Microsoft.ML.Transforms.Onnx.DnnImageModelSelector,Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String)" />
       <Member Id="M:Microsoft.ML.AlexNetExtension.AlexNet(Microsoft.ML.Transforms.Onnx.DnnImageModelSelector,Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String)" />
-    </Type>
-    <Type Name="Microsoft.ML.DnnCatalog" Id="T:Microsoft.ML.DnnCatalog">
-      <Member Id="M:Microsoft.ML.DnnCatalog.ImageClassification(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,Microsoft.ML.Dnn.ImageClassificationTrainer.Options)" />
-      <Member Id="M:Microsoft.ML.DnnCatalog.ImageClassification(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,System.String,System.String,System.String,System.String,Microsoft.ML.IDataView)" />
     </Type>
     <Type Name="Microsoft.ML.OnnxExportExtensions" Id="T:Microsoft.ML.OnnxExportExtensions">
       <Member Id="M:Microsoft.ML.OnnxExportExtensions.ConvertToOnnx(Microsoft.ML.ModelOperationsCatalog,Microsoft.ML.ITransformer,Microsoft.ML.IDataView,System.IO.Stream)" />
@@ -48,102 +47,181 @@
       <Member Id="M:Microsoft.ML.ResNet50Extension.ResNet50(Microsoft.ML.Transforms.Onnx.DnnImageModelSelector,Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String)" />
       <Member Id="M:Microsoft.ML.ResNet50Extension.ResNet50(Microsoft.ML.Transforms.Onnx.DnnImageModelSelector,Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String)" />
     </Type>
-    <Type Name="Microsoft.ML.VisionCatalog" Id="T:Microsoft.ML.VisionCatalog">
-      <Member Id="M:Microsoft.ML.VisionCatalog.ImageClassification(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,Microsoft.ML.Vision.ImageClassificationTrainer.Options)" />
-      <Member Id="M:Microsoft.ML.VisionCatalog.ImageClassification(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,System.String,System.String,System.String,System.String,Microsoft.ML.IDataView)" />
-    </Type>
   </Namespace>
-  <Namespace Name="Microsoft.ML.Dnn">
-    <Type Name="Microsoft.ML.Dnn.ExponentialLRDecay" Id="T:Microsoft.ML.Dnn.ExponentialLRDecay">
-      <Member Id="F:Microsoft.ML.Dnn.ExponentialLRDecay.DecayRate" />
-      <Member Id="F:Microsoft.ML.Dnn.ExponentialLRDecay.DecaySteps" />
-      <Member Id="F:Microsoft.ML.Dnn.ExponentialLRDecay.GlobalStep" />
-      <Member Id="F:Microsoft.ML.Dnn.ExponentialLRDecay.LearningRate" />
-      <Member Id="F:Microsoft.ML.Dnn.ExponentialLRDecay.NumEpochsPerDecay" />
-      <Member Id="F:Microsoft.ML.Dnn.ExponentialLRDecay.Staircase" />
-      <Member Id="M:Microsoft.ML.Dnn.ExponentialLRDecay.#ctor(System.Single,System.Single,System.Single,System.Boolean)" />
+  <Namespace Name="Microsoft.ML.AutoML">
+    <Type Name="Microsoft.ML.AutoML.AutoCatalog" Id="T:Microsoft.ML.AutoML.AutoCatalog">
+      <Member Id="M:Microsoft.ML.AutoML.AutoCatalog.CreateBinaryClassificationExperiment(Microsoft.ML.AutoML.BinaryExperimentSettings)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoCatalog.CreateBinaryClassificationExperiment(System.UInt32)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoCatalog.CreateMulticlassClassificationExperiment(Microsoft.ML.AutoML.MulticlassExperimentSettings)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoCatalog.CreateMulticlassClassificationExperiment(System.UInt32)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoCatalog.CreateRecommendationExperiment(Microsoft.ML.AutoML.RecommendationExperimentSettings)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoCatalog.CreateRecommendationExperiment(System.UInt32)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoCatalog.CreateRegressionExperiment(Microsoft.ML.AutoML.RegressionExperimentSettings)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoCatalog.CreateRegressionExperiment(System.UInt32)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoCatalog.InferColumns(System.String,Microsoft.ML.AutoML.ColumnInformation,System.Nullable{System.Char},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Boolean,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoCatalog.InferColumns(System.String,System.String,System.Nullable{System.Char},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Boolean,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoCatalog.InferColumns(System.String,System.UInt32,System.Boolean,System.Nullable{System.Char},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Boolean,System.Boolean)" />
     </Type>
-    <Type Name="Microsoft.ML.Dnn.ImageClassificationModelParameters" Id="T:Microsoft.ML.Dnn.ImageClassificationModelParameters">
-      <Member Id="M:Microsoft.ML.Dnn.ImageClassificationModelParameters.Finalize" />
+    <Type Name="Microsoft.ML.AutoML.BinaryClassificationExperiment" Id="T:Microsoft.ML.AutoML.BinaryClassificationExperiment" />
+    <Type Name="Microsoft.ML.AutoML.BinaryClassificationMetric" Id="T:Microsoft.ML.AutoML.BinaryClassificationMetric">
+      <Member Id="F:Microsoft.ML.AutoML.BinaryClassificationMetric.Accuracy" />
+      <Member Id="F:Microsoft.ML.AutoML.BinaryClassificationMetric.AreaUnderPrecisionRecallCurve" />
+      <Member Id="F:Microsoft.ML.AutoML.BinaryClassificationMetric.AreaUnderRocCurve" />
+      <Member Id="F:Microsoft.ML.AutoML.BinaryClassificationMetric.F1Score" />
+      <Member Id="F:Microsoft.ML.AutoML.BinaryClassificationMetric.NegativePrecision" />
+      <Member Id="F:Microsoft.ML.AutoML.BinaryClassificationMetric.NegativeRecall" />
+      <Member Id="F:Microsoft.ML.AutoML.BinaryClassificationMetric.PositivePrecision" />
+      <Member Id="F:Microsoft.ML.AutoML.BinaryClassificationMetric.PositiveRecall" />
     </Type>
-    <Type Name="Microsoft.ML.Dnn.ImageClassificationTrainer" Id="T:Microsoft.ML.Dnn.ImageClassificationTrainer">
-      <Member Id="M:Microsoft.ML.Dnn.ImageClassificationTrainer.Finalize" />
-      <Member Id="M:Microsoft.ML.Dnn.ImageClassificationTrainer.Fit(Microsoft.ML.IDataView,Microsoft.ML.IDataView)" />
-      <Member Id="P:Microsoft.ML.Dnn.ImageClassificationTrainer.Info" />
+    <Type Name="Microsoft.ML.AutoML.BinaryClassificationTrainer" Id="T:Microsoft.ML.AutoML.BinaryClassificationTrainer">
+      <Member Id="F:Microsoft.ML.AutoML.BinaryClassificationTrainer.AveragedPerceptron" />
+      <Member Id="F:Microsoft.ML.AutoML.BinaryClassificationTrainer.FastForest" />
+      <Member Id="F:Microsoft.ML.AutoML.BinaryClassificationTrainer.FastTree" />
+      <Member Id="F:Microsoft.ML.AutoML.BinaryClassificationTrainer.LbfgsLogisticRegression" />
+      <Member Id="F:Microsoft.ML.AutoML.BinaryClassificationTrainer.LightGbm" />
+      <Member Id="F:Microsoft.ML.AutoML.BinaryClassificationTrainer.LinearSvm" />
+      <Member Id="F:Microsoft.ML.AutoML.BinaryClassificationTrainer.SdcaLogisticRegression" />
+      <Member Id="F:Microsoft.ML.AutoML.BinaryClassificationTrainer.SgdCalibrated" />
+      <Member Id="F:Microsoft.ML.AutoML.BinaryClassificationTrainer.SymbolicSgdLogisticRegression" />
     </Type>
-    <Type Name="Microsoft.ML.Dnn.ImageClassificationTrainer/Architecture" Id="T:Microsoft.ML.Dnn.ImageClassificationTrainer.Architecture">
-      <Member Id="F:Microsoft.ML.Dnn.ImageClassificationTrainer.Architecture.InceptionV3" />
-      <Member Id="F:Microsoft.ML.Dnn.ImageClassificationTrainer.Architecture.MobilenetV2" />
-      <Member Id="F:Microsoft.ML.Dnn.ImageClassificationTrainer.Architecture.ResnetV2101" />
-      <Member Id="F:Microsoft.ML.Dnn.ImageClassificationTrainer.Architecture.ResnetV250" />
+    <Type Name="Microsoft.ML.AutoML.BinaryExperimentSettings" Id="T:Microsoft.ML.AutoML.BinaryExperimentSettings">
+      <Member Id="M:Microsoft.ML.AutoML.BinaryExperimentSettings.#ctor" />
+      <Member Id="P:Microsoft.ML.AutoML.BinaryExperimentSettings.OptimizingMetric" />
+      <Member Id="P:Microsoft.ML.AutoML.BinaryExperimentSettings.Trainers" />
     </Type>
-    <Type Name="Microsoft.ML.Dnn.ImageClassificationTrainer/BottleneckMetrics" Id="T:Microsoft.ML.Dnn.ImageClassificationTrainer.BottleneckMetrics">
-      <Member Id="M:Microsoft.ML.Dnn.ImageClassificationTrainer.BottleneckMetrics.#ctor" />
-      <Member Id="M:Microsoft.ML.Dnn.ImageClassificationTrainer.BottleneckMetrics.ToString" />
-      <Member Id="P:Microsoft.ML.Dnn.ImageClassificationTrainer.BottleneckMetrics.DatasetUsed" />
-      <Member Id="P:Microsoft.ML.Dnn.ImageClassificationTrainer.BottleneckMetrics.Index" />
+    <Type Name="Microsoft.ML.AutoML.CacheBeforeTrainer" Id="T:Microsoft.ML.AutoML.CacheBeforeTrainer">
+      <Member Id="F:Microsoft.ML.AutoML.CacheBeforeTrainer.Auto" />
+      <Member Id="F:Microsoft.ML.AutoML.CacheBeforeTrainer.Off" />
+      <Member Id="F:Microsoft.ML.AutoML.CacheBeforeTrainer.On" />
     </Type>
-    <Type Name="Microsoft.ML.Dnn.ImageClassificationTrainer/EarlyStopping" Id="T:Microsoft.ML.Dnn.ImageClassificationTrainer.EarlyStopping">
-      <Member Id="M:Microsoft.ML.Dnn.ImageClassificationTrainer.EarlyStopping.#ctor(System.Single,System.Int32,Microsoft.ML.Dnn.ImageClassificationTrainer.EarlyStoppingMetric,System.Boolean)" />
-      <Member Id="M:Microsoft.ML.Dnn.ImageClassificationTrainer.EarlyStopping.ShouldStop(Microsoft.ML.Dnn.ImageClassificationTrainer.TrainMetrics)" />
-      <Member Id="P:Microsoft.ML.Dnn.ImageClassificationTrainer.EarlyStopping.CheckIncreasing" />
-      <Member Id="P:Microsoft.ML.Dnn.ImageClassificationTrainer.EarlyStopping.MinDelta" />
-      <Member Id="P:Microsoft.ML.Dnn.ImageClassificationTrainer.EarlyStopping.Patience" />
+    <Type Name="Microsoft.ML.AutoML.ColumnInferenceResults" Id="T:Microsoft.ML.AutoML.ColumnInferenceResults">
+      <Member Id="M:Microsoft.ML.AutoML.ColumnInferenceResults.#ctor" />
+      <Member Id="P:Microsoft.ML.AutoML.ColumnInferenceResults.ColumnInformation" />
+      <Member Id="P:Microsoft.ML.AutoML.ColumnInferenceResults.TextLoaderOptions" />
     </Type>
-    <Type Name="Microsoft.ML.Dnn.ImageClassificationTrainer/EarlyStoppingMetric" Id="T:Microsoft.ML.Dnn.ImageClassificationTrainer.EarlyStoppingMetric">
-      <Member Id="F:Microsoft.ML.Dnn.ImageClassificationTrainer.EarlyStoppingMetric.Accuracy" />
-      <Member Id="F:Microsoft.ML.Dnn.ImageClassificationTrainer.EarlyStoppingMetric.Loss" />
+    <Type Name="Microsoft.ML.AutoML.ColumnInformation" Id="T:Microsoft.ML.AutoML.ColumnInformation">
+      <Member Id="M:Microsoft.ML.AutoML.ColumnInformation.#ctor" />
+      <Member Id="P:Microsoft.ML.AutoML.ColumnInformation.CategoricalColumnNames" />
+      <Member Id="P:Microsoft.ML.AutoML.ColumnInformation.ExampleWeightColumnName" />
+      <Member Id="P:Microsoft.ML.AutoML.ColumnInformation.IgnoredColumnNames" />
+      <Member Id="P:Microsoft.ML.AutoML.ColumnInformation.ImagePathColumnNames" />
+      <Member Id="P:Microsoft.ML.AutoML.ColumnInformation.ItemIdColumnName" />
+      <Member Id="P:Microsoft.ML.AutoML.ColumnInformation.LabelColumnName" />
+      <Member Id="P:Microsoft.ML.AutoML.ColumnInformation.NumericColumnNames" />
+      <Member Id="P:Microsoft.ML.AutoML.ColumnInformation.SamplingKeyColumnName" />
+      <Member Id="P:Microsoft.ML.AutoML.ColumnInformation.TextColumnNames" />
+      <Member Id="P:Microsoft.ML.AutoML.ColumnInformation.UserIdColumnName" />
     </Type>
-    <Type Name="Microsoft.ML.Dnn.ImageClassificationTrainer/ImageClassificationMetrics" Id="T:Microsoft.ML.Dnn.ImageClassificationTrainer.ImageClassificationMetrics">
-      <Member Id="M:Microsoft.ML.Dnn.ImageClassificationTrainer.ImageClassificationMetrics.#ctor" />
-      <Member Id="M:Microsoft.ML.Dnn.ImageClassificationTrainer.ImageClassificationMetrics.ToString" />
-      <Member Id="P:Microsoft.ML.Dnn.ImageClassificationTrainer.ImageClassificationMetrics.Bottleneck" />
-      <Member Id="P:Microsoft.ML.Dnn.ImageClassificationTrainer.ImageClassificationMetrics.Train" />
+    <Type Name="Microsoft.ML.AutoML.CrossValidationExperimentResult`1" Id="T:Microsoft.ML.AutoML.CrossValidationExperimentResult`1">
+      <Member Id="F:Microsoft.ML.AutoML.CrossValidationExperimentResult`1.BestRun" />
+      <Member Id="F:Microsoft.ML.AutoML.CrossValidationExperimentResult`1.RunDetails" />
     </Type>
-    <Type Name="Microsoft.ML.Dnn.ImageClassificationTrainer/ImageClassificationMetrics/Dataset" Id="T:Microsoft.ML.Dnn.ImageClassificationTrainer.ImageClassificationMetrics.Dataset">
-      <Member Id="F:Microsoft.ML.Dnn.ImageClassificationTrainer.ImageClassificationMetrics.Dataset.Train" />
-      <Member Id="F:Microsoft.ML.Dnn.ImageClassificationTrainer.ImageClassificationMetrics.Dataset.Validation" />
+    <Type Name="Microsoft.ML.AutoML.CrossValidationRunDetail`1" Id="T:Microsoft.ML.AutoML.CrossValidationRunDetail`1">
+      <Member Id="P:Microsoft.ML.AutoML.CrossValidationRunDetail`1.Results" />
     </Type>
-    <Type Name="Microsoft.ML.Dnn.ImageClassificationTrainer/Options" Id="T:Microsoft.ML.Dnn.ImageClassificationTrainer.Options">
-      <Member Id="F:Microsoft.ML.Dnn.ImageClassificationTrainer.Options.Arch" />
-      <Member Id="F:Microsoft.ML.Dnn.ImageClassificationTrainer.Options.BatchSize" />
-      <Member Id="F:Microsoft.ML.Dnn.ImageClassificationTrainer.Options.EarlyStoppingCriteria" />
-      <Member Id="F:Microsoft.ML.Dnn.ImageClassificationTrainer.Options.Epoch" />
-      <Member Id="F:Microsoft.ML.Dnn.ImageClassificationTrainer.Options.FinalModelPrefix" />
-      <Member Id="F:Microsoft.ML.Dnn.ImageClassificationTrainer.Options.LearningRate" />
-      <Member Id="F:Microsoft.ML.Dnn.ImageClassificationTrainer.Options.LearningRateScheduler" />
-      <Member Id="F:Microsoft.ML.Dnn.ImageClassificationTrainer.Options.MetricsCallback" />
-      <Member Id="F:Microsoft.ML.Dnn.ImageClassificationTrainer.Options.ModelSavePath" />
-      <Member Id="F:Microsoft.ML.Dnn.ImageClassificationTrainer.Options.PredictedLabelColumnName" />
-      <Member Id="F:Microsoft.ML.Dnn.ImageClassificationTrainer.Options.ReuseTrainSetBottleneckCachedValues" />
-      <Member Id="F:Microsoft.ML.Dnn.ImageClassificationTrainer.Options.ReuseValidationSetBottleneckCachedValues" />
-      <Member Id="F:Microsoft.ML.Dnn.ImageClassificationTrainer.Options.ScoreColumnName" />
-      <Member Id="F:Microsoft.ML.Dnn.ImageClassificationTrainer.Options.TestOnTrainSet" />
-      <Member Id="F:Microsoft.ML.Dnn.ImageClassificationTrainer.Options.TrainSetBottleneckCachedValuesFilePath" />
-      <Member Id="F:Microsoft.ML.Dnn.ImageClassificationTrainer.Options.ValidationSet" />
-      <Member Id="F:Microsoft.ML.Dnn.ImageClassificationTrainer.Options.ValidationSetBottleneckCachedValuesFilePath" />
-      <Member Id="M:Microsoft.ML.Dnn.ImageClassificationTrainer.Options.#ctor" />
+    <Type Name="Microsoft.ML.AutoML.ExperimentBase`2" Id="T:Microsoft.ML.AutoML.ExperimentBase`2">
+      <Member Id="M:Microsoft.ML.AutoML.ExperimentBase`2.Execute(Microsoft.ML.IDataView,Microsoft.ML.AutoML.ColumnInformation,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.IProgress{Microsoft.ML.AutoML.RunDetail{`0}})" />
+      <Member Id="M:Microsoft.ML.AutoML.ExperimentBase`2.Execute(Microsoft.ML.IDataView,Microsoft.ML.IDataView,Microsoft.ML.AutoML.ColumnInformation,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.IProgress{Microsoft.ML.AutoML.RunDetail{`0}})" />
+      <Member Id="M:Microsoft.ML.AutoML.ExperimentBase`2.Execute(Microsoft.ML.IDataView,Microsoft.ML.IDataView,System.String,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.IProgress{Microsoft.ML.AutoML.RunDetail{`0}})" />
+      <Member Id="M:Microsoft.ML.AutoML.ExperimentBase`2.Execute(Microsoft.ML.IDataView,System.String,System.String,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.IProgress{Microsoft.ML.AutoML.RunDetail{`0}})" />
+      <Member Id="M:Microsoft.ML.AutoML.ExperimentBase`2.Execute(Microsoft.ML.IDataView,System.UInt32,Microsoft.ML.AutoML.ColumnInformation,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.IProgress{Microsoft.ML.AutoML.CrossValidationRunDetail{`0}})" />
+      <Member Id="M:Microsoft.ML.AutoML.ExperimentBase`2.Execute(Microsoft.ML.IDataView,System.UInt32,System.String,System.String,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.Progress{Microsoft.ML.AutoML.CrossValidationRunDetail{`0}})" />
     </Type>
-    <Type Name="Microsoft.ML.Dnn.ImageClassificationTrainer/TrainMetrics" Id="T:Microsoft.ML.Dnn.ImageClassificationTrainer.TrainMetrics">
-      <Member Id="M:Microsoft.ML.Dnn.ImageClassificationTrainer.TrainMetrics.#ctor" />
-      <Member Id="M:Microsoft.ML.Dnn.ImageClassificationTrainer.TrainMetrics.ToString" />
-      <Member Id="P:Microsoft.ML.Dnn.ImageClassificationTrainer.TrainMetrics.Accuracy" />
-      <Member Id="P:Microsoft.ML.Dnn.ImageClassificationTrainer.TrainMetrics.BatchProcessedCount" />
-      <Member Id="P:Microsoft.ML.Dnn.ImageClassificationTrainer.TrainMetrics.CrossEntropy" />
-      <Member Id="P:Microsoft.ML.Dnn.ImageClassificationTrainer.TrainMetrics.DatasetUsed" />
-      <Member Id="P:Microsoft.ML.Dnn.ImageClassificationTrainer.TrainMetrics.Epoch" />
-      <Member Id="P:Microsoft.ML.Dnn.ImageClassificationTrainer.TrainMetrics.LearningRate" />
+    <Type Name="Microsoft.ML.AutoML.ExperimentResult`1" Id="T:Microsoft.ML.AutoML.ExperimentResult`1">
+      <Member Id="F:Microsoft.ML.AutoML.ExperimentResult`1.BestRun" />
+      <Member Id="F:Microsoft.ML.AutoML.ExperimentResult`1.RunDetails" />
     </Type>
-    <Type Name="Microsoft.ML.Dnn.LearningRateScheduler" Id="T:Microsoft.ML.Dnn.LearningRateScheduler" />
-    <Type Name="Microsoft.ML.Dnn.LsrDecay" Id="T:Microsoft.ML.Dnn.LsrDecay">
-      <Member Id="F:Microsoft.ML.Dnn.LsrDecay.BaseLearningRate" />
-      <Member Id="M:Microsoft.ML.Dnn.LsrDecay.#ctor(System.Collections.Generic.IReadOnlyList{Microsoft.ML.Dnn.LsrDecay.LearningRateSchedulerItem},System.Single)" />
-      <Member Id="M:Microsoft.ML.Dnn.LsrDecay.#ctor(System.Single)" />
+    <Type Name="Microsoft.ML.AutoML.ExperimentSettings" Id="T:Microsoft.ML.AutoML.ExperimentSettings">
+      <Member Id="M:Microsoft.ML.AutoML.ExperimentSettings.#ctor" />
+      <Member Id="P:Microsoft.ML.AutoML.ExperimentSettings.CacheBeforeTrainer" />
+      <Member Id="P:Microsoft.ML.AutoML.ExperimentSettings.CacheDirectory" />
+      <Member Id="P:Microsoft.ML.AutoML.ExperimentSettings.CancellationToken" />
+      <Member Id="P:Microsoft.ML.AutoML.ExperimentSettings.MaxExperimentTimeInSeconds" />
     </Type>
-    <Type Name="Microsoft.ML.Dnn.LsrDecay/LearningRateSchedulerItem" Id="T:Microsoft.ML.Dnn.LsrDecay.LearningRateSchedulerItem">
-      <Member Id="F:Microsoft.ML.Dnn.LsrDecay.LearningRateSchedulerItem.Epoch" />
-      <Member Id="F:Microsoft.ML.Dnn.LsrDecay.LearningRateSchedulerItem.ScalingFactor" />
-      <Member Id="M:Microsoft.ML.Dnn.LsrDecay.LearningRateSchedulerItem.#ctor(System.Int32,System.Single)" />
+    <Type Name="Microsoft.ML.AutoML.InferenceException" Id="T:Microsoft.ML.AutoML.InferenceException">
+      <Member Id="F:Microsoft.ML.AutoML.InferenceException.InferenceExceptionType" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.InferenceExceptionType" Id="T:Microsoft.ML.AutoML.InferenceExceptionType">
+      <Member Id="F:Microsoft.ML.AutoML.InferenceExceptionType.ColumnDataType" />
+      <Member Id="F:Microsoft.ML.AutoML.InferenceExceptionType.ColumnSplit" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.MLContextExtension" Id="T:Microsoft.ML.AutoML.MLContextExtension">
+      <Member Id="M:Microsoft.ML.AutoML.MLContextExtension.Auto(Microsoft.ML.MLContext)" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.MulticlassClassificationExperiment" Id="T:Microsoft.ML.AutoML.MulticlassClassificationExperiment" />
+    <Type Name="Microsoft.ML.AutoML.MulticlassClassificationMetric" Id="T:Microsoft.ML.AutoML.MulticlassClassificationMetric">
+      <Member Id="F:Microsoft.ML.AutoML.MulticlassClassificationMetric.LogLoss" />
+      <Member Id="F:Microsoft.ML.AutoML.MulticlassClassificationMetric.LogLossReduction" />
+      <Member Id="F:Microsoft.ML.AutoML.MulticlassClassificationMetric.MacroAccuracy" />
+      <Member Id="F:Microsoft.ML.AutoML.MulticlassClassificationMetric.MicroAccuracy" />
+      <Member Id="F:Microsoft.ML.AutoML.MulticlassClassificationMetric.TopKAccuracy" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.MulticlassClassificationTrainer" Id="T:Microsoft.ML.AutoML.MulticlassClassificationTrainer">
+      <Member Id="F:Microsoft.ML.AutoML.MulticlassClassificationTrainer.AveragedPerceptronOva" />
+      <Member Id="F:Microsoft.ML.AutoML.MulticlassClassificationTrainer.FastForestOva" />
+      <Member Id="F:Microsoft.ML.AutoML.MulticlassClassificationTrainer.FastTreeOva" />
+      <Member Id="F:Microsoft.ML.AutoML.MulticlassClassificationTrainer.LbfgsLogisticRegressionOva" />
+      <Member Id="F:Microsoft.ML.AutoML.MulticlassClassificationTrainer.LbfgsMaximumEntropy" />
+      <Member Id="F:Microsoft.ML.AutoML.MulticlassClassificationTrainer.LightGbm" />
+      <Member Id="F:Microsoft.ML.AutoML.MulticlassClassificationTrainer.LinearSupportVectorMachinesOva" />
+      <Member Id="F:Microsoft.ML.AutoML.MulticlassClassificationTrainer.SdcaMaximumEntropy" />
+      <Member Id="F:Microsoft.ML.AutoML.MulticlassClassificationTrainer.SgdCalibratedOva" />
+      <Member Id="F:Microsoft.ML.AutoML.MulticlassClassificationTrainer.SymbolicSgdLogisticRegressionOva" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.MulticlassExperimentSettings" Id="T:Microsoft.ML.AutoML.MulticlassExperimentSettings">
+      <Member Id="M:Microsoft.ML.AutoML.MulticlassExperimentSettings.#ctor" />
+      <Member Id="P:Microsoft.ML.AutoML.MulticlassExperimentSettings.OptimizingMetric" />
+      <Member Id="P:Microsoft.ML.AutoML.MulticlassExperimentSettings.Trainers" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.RecommendationExperiment" Id="T:Microsoft.ML.AutoML.RecommendationExperiment" />
+    <Type Name="Microsoft.ML.AutoML.RecommendationExperimentSettings" Id="T:Microsoft.ML.AutoML.RecommendationExperimentSettings">
+      <Member Id="M:Microsoft.ML.AutoML.RecommendationExperimentSettings.#ctor" />
+      <Member Id="P:Microsoft.ML.AutoML.RecommendationExperimentSettings.OptimizingMetric" />
+      <Member Id="P:Microsoft.ML.AutoML.RecommendationExperimentSettings.Trainers" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.RecommendationTrainer" Id="T:Microsoft.ML.AutoML.RecommendationTrainer">
+      <Member Id="F:Microsoft.ML.AutoML.RecommendationTrainer.MatrixFactorization" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.RegressionExperiment" Id="T:Microsoft.ML.AutoML.RegressionExperiment" />
+    <Type Name="Microsoft.ML.AutoML.RegressionExperimentResultExtensions" Id="T:Microsoft.ML.AutoML.RegressionExperimentResultExtensions">
+      <Member Id="M:Microsoft.ML.AutoML.RegressionExperimentResultExtensions.Best(System.Collections.Generic.IEnumerable{Microsoft.ML.AutoML.CrossValidationRunDetail{Microsoft.ML.Data.RegressionMetrics}},Microsoft.ML.AutoML.RegressionMetric)" />
+      <Member Id="M:Microsoft.ML.AutoML.RegressionExperimentResultExtensions.Best(System.Collections.Generic.IEnumerable{Microsoft.ML.AutoML.RunDetail{Microsoft.ML.Data.RegressionMetrics}},Microsoft.ML.AutoML.RegressionMetric)" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.RegressionExperimentSettings" Id="T:Microsoft.ML.AutoML.RegressionExperimentSettings">
+      <Member Id="M:Microsoft.ML.AutoML.RegressionExperimentSettings.#ctor" />
+      <Member Id="P:Microsoft.ML.AutoML.RegressionExperimentSettings.OptimizingMetric" />
+      <Member Id="P:Microsoft.ML.AutoML.RegressionExperimentSettings.Trainers" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.RegressionMetric" Id="T:Microsoft.ML.AutoML.RegressionMetric">
+      <Member Id="F:Microsoft.ML.AutoML.RegressionMetric.MeanAbsoluteError" />
+      <Member Id="F:Microsoft.ML.AutoML.RegressionMetric.MeanSquaredError" />
+      <Member Id="F:Microsoft.ML.AutoML.RegressionMetric.RootMeanSquaredError" />
+      <Member Id="F:Microsoft.ML.AutoML.RegressionMetric.RSquared" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.RegressionTrainer" Id="T:Microsoft.ML.AutoML.RegressionTrainer">
+      <Member Id="F:Microsoft.ML.AutoML.RegressionTrainer.FastForest" />
+      <Member Id="F:Microsoft.ML.AutoML.RegressionTrainer.FastTree" />
+      <Member Id="F:Microsoft.ML.AutoML.RegressionTrainer.FastTreeTweedie" />
+      <Member Id="F:Microsoft.ML.AutoML.RegressionTrainer.LbfgsPoissonRegression" />
+      <Member Id="F:Microsoft.ML.AutoML.RegressionTrainer.LightGbm" />
+      <Member Id="F:Microsoft.ML.AutoML.RegressionTrainer.Ols" />
+      <Member Id="F:Microsoft.ML.AutoML.RegressionTrainer.OnlineGradientDescent" />
+      <Member Id="F:Microsoft.ML.AutoML.RegressionTrainer.StochasticDualCoordinateAscent" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.RunDetail" Id="T:Microsoft.ML.AutoML.RunDetail">
+      <Member Id="P:Microsoft.ML.AutoML.RunDetail.Estimator" />
+      <Member Id="P:Microsoft.ML.AutoML.RunDetail.RuntimeInSeconds" />
+      <Member Id="P:Microsoft.ML.AutoML.RunDetail.TrainerName" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.RunDetail`1" Id="T:Microsoft.ML.AutoML.RunDetail`1">
+      <Member Id="P:Microsoft.ML.AutoML.RunDetail`1.Exception" />
+      <Member Id="P:Microsoft.ML.AutoML.RunDetail`1.Model" />
+      <Member Id="P:Microsoft.ML.AutoML.RunDetail`1.ValidationMetrics" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.TrainResult`1" Id="T:Microsoft.ML.AutoML.TrainResult`1">
+      <Member Id="P:Microsoft.ML.AutoML.TrainResult`1.Exception" />
+      <Member Id="P:Microsoft.ML.AutoML.TrainResult`1.Model" />
+      <Member Id="P:Microsoft.ML.AutoML.TrainResult`1.ValidationMetrics" />
     </Type>
   </Namespace>
   <Namespace Name="Microsoft.ML.Experimental">
@@ -237,79 +315,6 @@
     </Type>
     <Type Name="Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer" Id="T:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer">
       <Member Id="M:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer.GetOutputSchema(Microsoft.ML.DataViewSchema)" />
-    </Type>
-  </Namespace>
-  <Namespace Name="Microsoft.ML.Vision">
-    <Type Name="Microsoft.ML.Vision.ImageClassificationModelParameters" Id="T:Microsoft.ML.Vision.ImageClassificationModelParameters">
-      <Member Id="M:Microsoft.ML.Vision.ImageClassificationModelParameters.Finalize" />
-    </Type>
-    <Type Name="Microsoft.ML.Vision.ImageClassificationTrainer" Id="T:Microsoft.ML.Vision.ImageClassificationTrainer">
-      <Member Id="M:Microsoft.ML.Vision.ImageClassificationTrainer.Finalize" />
-      <Member Id="M:Microsoft.ML.Vision.ImageClassificationTrainer.Fit(Microsoft.ML.IDataView,Microsoft.ML.IDataView)" />
-      <Member Id="P:Microsoft.ML.Vision.ImageClassificationTrainer.Info" />
-    </Type>
-    <Type Name="Microsoft.ML.Vision.ImageClassificationTrainer/Architecture" Id="T:Microsoft.ML.Vision.ImageClassificationTrainer.Architecture">
-      <Member Id="F:Microsoft.ML.Vision.ImageClassificationTrainer.Architecture.InceptionV3" />
-      <Member Id="F:Microsoft.ML.Vision.ImageClassificationTrainer.Architecture.MobilenetV2" />
-      <Member Id="F:Microsoft.ML.Vision.ImageClassificationTrainer.Architecture.ResnetV2101" />
-      <Member Id="F:Microsoft.ML.Vision.ImageClassificationTrainer.Architecture.ResnetV250" />
-    </Type>
-    <Type Name="Microsoft.ML.Vision.ImageClassificationTrainer/BottleneckMetrics" Id="T:Microsoft.ML.Vision.ImageClassificationTrainer.BottleneckMetrics">
-      <Member Id="M:Microsoft.ML.Vision.ImageClassificationTrainer.BottleneckMetrics.#ctor" />
-      <Member Id="M:Microsoft.ML.Vision.ImageClassificationTrainer.BottleneckMetrics.ToString" />
-      <Member Id="P:Microsoft.ML.Vision.ImageClassificationTrainer.BottleneckMetrics.DatasetUsed" />
-      <Member Id="P:Microsoft.ML.Vision.ImageClassificationTrainer.BottleneckMetrics.Index" />
-    </Type>
-    <Type Name="Microsoft.ML.Vision.ImageClassificationTrainer/EarlyStopping" Id="T:Microsoft.ML.Vision.ImageClassificationTrainer.EarlyStopping">
-      <Member Id="M:Microsoft.ML.Vision.ImageClassificationTrainer.EarlyStopping.#ctor(System.Single,System.Int32,Microsoft.ML.Vision.ImageClassificationTrainer.EarlyStoppingMetric,System.Boolean)" />
-      <Member Id="M:Microsoft.ML.Vision.ImageClassificationTrainer.EarlyStopping.ShouldStop(Microsoft.ML.Vision.ImageClassificationTrainer.TrainMetrics)" />
-      <Member Id="P:Microsoft.ML.Vision.ImageClassificationTrainer.EarlyStopping.CheckIncreasing" />
-      <Member Id="P:Microsoft.ML.Vision.ImageClassificationTrainer.EarlyStopping.MinDelta" />
-      <Member Id="P:Microsoft.ML.Vision.ImageClassificationTrainer.EarlyStopping.Patience" />
-    </Type>
-    <Type Name="Microsoft.ML.Vision.ImageClassificationTrainer/EarlyStoppingMetric" Id="T:Microsoft.ML.Vision.ImageClassificationTrainer.EarlyStoppingMetric">
-      <Member Id="F:Microsoft.ML.Vision.ImageClassificationTrainer.EarlyStoppingMetric.Accuracy" />
-      <Member Id="F:Microsoft.ML.Vision.ImageClassificationTrainer.EarlyStoppingMetric.Loss" />
-    </Type>
-    <Type Name="Microsoft.ML.Vision.ImageClassificationTrainer/ImageClassificationMetrics" Id="T:Microsoft.ML.Vision.ImageClassificationTrainer.ImageClassificationMetrics">
-      <Member Id="M:Microsoft.ML.Vision.ImageClassificationTrainer.ImageClassificationMetrics.#ctor" />
-      <Member Id="M:Microsoft.ML.Vision.ImageClassificationTrainer.ImageClassificationMetrics.ToString" />
-      <Member Id="P:Microsoft.ML.Vision.ImageClassificationTrainer.ImageClassificationMetrics.Bottleneck" />
-      <Member Id="P:Microsoft.ML.Vision.ImageClassificationTrainer.ImageClassificationMetrics.Train" />
-    </Type>
-    <Type Name="Microsoft.ML.Vision.ImageClassificationTrainer/ImageClassificationMetrics/Dataset" Id="T:Microsoft.ML.Vision.ImageClassificationTrainer.ImageClassificationMetrics.Dataset">
-      <Member Id="F:Microsoft.ML.Vision.ImageClassificationTrainer.ImageClassificationMetrics.Dataset.Train" />
-      <Member Id="F:Microsoft.ML.Vision.ImageClassificationTrainer.ImageClassificationMetrics.Dataset.Validation" />
-    </Type>
-    <Type Name="Microsoft.ML.Vision.ImageClassificationTrainer/Options" Id="T:Microsoft.ML.Vision.ImageClassificationTrainer.Options">
-      <Member Id="F:Microsoft.ML.Vision.ImageClassificationTrainer.Options.Arch" />
-      <Member Id="F:Microsoft.ML.Vision.ImageClassificationTrainer.Options.BatchSize" />
-      <Member Id="F:Microsoft.ML.Vision.ImageClassificationTrainer.Options.EarlyStoppingCriteria" />
-      <Member Id="F:Microsoft.ML.Vision.ImageClassificationTrainer.Options.Epoch" />
-      <Member Id="F:Microsoft.ML.Vision.ImageClassificationTrainer.Options.FinalModelPrefix" />
-      <Member Id="F:Microsoft.ML.Vision.ImageClassificationTrainer.Options.LearningRate" />
-      <Member Id="F:Microsoft.ML.Vision.ImageClassificationTrainer.Options.LearningRateScheduler" />
-      <Member Id="F:Microsoft.ML.Vision.ImageClassificationTrainer.Options.MetricsCallback" />
-      <Member Id="F:Microsoft.ML.Vision.ImageClassificationTrainer.Options.PredictedLabelColumnName" />
-      <Member Id="F:Microsoft.ML.Vision.ImageClassificationTrainer.Options.ReuseTrainSetBottleneckCachedValues" />
-      <Member Id="F:Microsoft.ML.Vision.ImageClassificationTrainer.Options.ReuseValidationSetBottleneckCachedValues" />
-      <Member Id="F:Microsoft.ML.Vision.ImageClassificationTrainer.Options.ScoreColumnName" />
-      <Member Id="F:Microsoft.ML.Vision.ImageClassificationTrainer.Options.TestOnTrainSet" />
-      <Member Id="F:Microsoft.ML.Vision.ImageClassificationTrainer.Options.TrainSetBottleneckCachedValuesFileName" />
-      <Member Id="F:Microsoft.ML.Vision.ImageClassificationTrainer.Options.ValidationSet" />
-      <Member Id="F:Microsoft.ML.Vision.ImageClassificationTrainer.Options.ValidationSetBottleneckCachedValuesFileName" />
-      <Member Id="F:Microsoft.ML.Vision.ImageClassificationTrainer.Options.WorkspacePath" />
-      <Member Id="M:Microsoft.ML.Vision.ImageClassificationTrainer.Options.#ctor" />
-    </Type>
-    <Type Name="Microsoft.ML.Vision.ImageClassificationTrainer/TrainMetrics" Id="T:Microsoft.ML.Vision.ImageClassificationTrainer.TrainMetrics">
-      <Member Id="M:Microsoft.ML.Vision.ImageClassificationTrainer.TrainMetrics.#ctor" />
-      <Member Id="M:Microsoft.ML.Vision.ImageClassificationTrainer.TrainMetrics.ToString" />
-      <Member Id="P:Microsoft.ML.Vision.ImageClassificationTrainer.TrainMetrics.Accuracy" />
-      <Member Id="P:Microsoft.ML.Vision.ImageClassificationTrainer.TrainMetrics.BatchProcessedCount" />
-      <Member Id="P:Microsoft.ML.Vision.ImageClassificationTrainer.TrainMetrics.CrossEntropy" />
-      <Member Id="P:Microsoft.ML.Vision.ImageClassificationTrainer.TrainMetrics.DatasetUsed" />
-      <Member Id="P:Microsoft.ML.Vision.ImageClassificationTrainer.TrainMetrics.Epoch" />
-      <Member Id="P:Microsoft.ML.Vision.ImageClassificationTrainer.TrainMetrics.LearningRate" />
     </Type>
   </Namespace>
 </Framework>
