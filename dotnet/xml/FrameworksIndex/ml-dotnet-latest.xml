@@ -232,6 +232,9 @@
       <Member Id="M:Microsoft.ML.ExplainabilityCatalog.CalculateFeatureContribution(Microsoft.ML.TransformsCatalog,Microsoft.ML.ISingleFeaturePredictionTransformer{Microsoft.ML.Trainers.ICalculateFeatureContribution},System.Int32,System.Int32,System.Boolean)" />
       <Member Id="M:Microsoft.ML.ExplainabilityCatalog.CalculateFeatureContribution``2(Microsoft.ML.TransformsCatalog,Microsoft.ML.ISingleFeaturePredictionTransformer{Microsoft.ML.Calibrators.CalibratedModelParametersBase{``0,``1}},System.Int32,System.Int32,System.Boolean)" />
     </Type>
+    <Type Name="Microsoft.ML.ExpressionCatalog" Id="T:Microsoft.ML.ExpressionCatalog">
+      <Member Id="M:Microsoft.ML.ExpressionCatalog.Expression(Microsoft.ML.TransformsCatalog,System.String,System.String,System.String[])" />
+    </Type>
     <Type Name="Microsoft.ML.ExtensionBaseAttribute" Id="T:Microsoft.ML.ExtensionBaseAttribute">
       <Member Id="P:Microsoft.ML.ExtensionBaseAttribute.ContractName" />
     </Type>
@@ -1030,6 +1033,18 @@
     </Type>
     <Type Name="Microsoft.ML.Data.StructuredDataViewType" Id="T:Microsoft.ML.Data.StructuredDataViewType">
       <Member Id="M:Microsoft.ML.Data.StructuredDataViewType.#ctor(System.Type)" />
+    </Type>
+    <Type Name="Microsoft.ML.Data.SvmLightLoader" Id="T:Microsoft.ML.Data.SvmLightLoader">
+      <Member Id="M:Microsoft.ML.Data.SvmLightLoader.GetOutputSchema" />
+      <Member Id="M:Microsoft.ML.Data.SvmLightLoader.Load(Microsoft.ML.Data.IMultiStreamSource)" />
+      <Member Id="M:Microsoft.ML.Data.SvmLightLoader.Microsoft#ML#ICanSaveModel#Save(Microsoft.ML.ModelSaveContext)" />
+    </Type>
+    <Type Name="Microsoft.ML.Data.SvmLightLoaderSaverCatalog" Id="T:Microsoft.ML.Data.SvmLightLoaderSaverCatalog">
+      <Member Id="M:Microsoft.ML.Data.SvmLightLoaderSaverCatalog.CreateSvmLightLoader(Microsoft.ML.DataOperationsCatalog,System.Nullable{System.Int64},System.Int32,System.Boolean,Microsoft.ML.Data.IMultiStreamSource)" />
+      <Member Id="M:Microsoft.ML.Data.SvmLightLoaderSaverCatalog.CreateSvmLightLoaderWithFeatureNames(Microsoft.ML.DataOperationsCatalog,System.Nullable{System.Int64},Microsoft.ML.Data.IMultiStreamSource)" />
+      <Member Id="M:Microsoft.ML.Data.SvmLightLoaderSaverCatalog.LoadFromSvmLightFile(Microsoft.ML.DataOperationsCatalog,System.String,System.Nullable{System.Int64},System.Int32,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.Data.SvmLightLoaderSaverCatalog.LoadFromSvmLightFileWithFeatureNames(Microsoft.ML.DataOperationsCatalog,System.String,System.Nullable{System.Int64})" />
+      <Member Id="M:Microsoft.ML.Data.SvmLightLoaderSaverCatalog.SaveInSvmLightFormat(Microsoft.ML.DataOperationsCatalog,Microsoft.ML.IDataView,System.IO.Stream,System.Boolean,System.Boolean,System.String,System.String,System.String,System.String)" />
     </Type>
     <Type Name="Microsoft.ML.Data.TextDataViewType" Id="T:Microsoft.ML.Data.TextDataViewType">
       <Member Id="M:Microsoft.ML.Data.TextDataViewType.Equals(Microsoft.ML.Data.DataViewType)" />
@@ -2153,6 +2168,31 @@
       <Member Id="M:Microsoft.ML.Transforms.CustomMappingTransformer`2.Transform(Microsoft.ML.IDataView)" />
       <Member Id="P:Microsoft.ML.Transforms.CustomMappingTransformer`2.Microsoft#ML#ITransformer#IsRowToRowMapper" />
     </Type>
+    <Type Name="Microsoft.ML.Transforms.ErrId" Id="T:Microsoft.ML.Transforms.ErrId">
+      <Member Id="F:Microsoft.ML.Transforms.ErrId.BadChar" />
+      <Member Id="F:Microsoft.ML.Transforms.ErrId.BadEscape" />
+      <Member Id="F:Microsoft.ML.Transforms.ErrId.BadPreProcPos" />
+      <Member Id="F:Microsoft.ML.Transforms.ErrId.CharConstEmpty" />
+      <Member Id="F:Microsoft.ML.Transforms.ErrId.CharConstTooLong" />
+      <Member Id="F:Microsoft.ML.Transforms.ErrId.EndOfPreLineExpected" />
+      <Member Id="F:Microsoft.ML.Transforms.ErrId.FloatOverflow" />
+      <Member Id="F:Microsoft.ML.Transforms.ErrId.IdentExpected" />
+      <Member Id="F:Microsoft.ML.Transforms.ErrId.IntOverflow" />
+      <Member Id="F:Microsoft.ML.Transforms.ErrId.NewlineInConst" />
+      <Member Id="F:Microsoft.ML.Transforms.ErrId.None" />
+      <Member Id="F:Microsoft.ML.Transforms.ErrId.PreProcDirExpected" />
+      <Member Id="F:Microsoft.ML.Transforms.ErrId.UniEscInPreProc" />
+      <Member Id="F:Microsoft.ML.Transforms.ErrId.UnterminatedComment" />
+      <Member Id="F:Microsoft.ML.Transforms.ErrId.UnterminatedString" />
+      <Member Id="F:Microsoft.ML.Transforms.ErrId.VerbatimLiteralExpected" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.ExpressionEstimator" Id="T:Microsoft.ML.Transforms.ExpressionEstimator">
+      <Member Id="M:Microsoft.ML.Transforms.ExpressionEstimator.Fit(Microsoft.ML.IDataView)" />
+      <Member Id="M:Microsoft.ML.Transforms.ExpressionEstimator.GetOutputSchema(Microsoft.ML.SchemaShape)" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.ExpressionTransformer" Id="T:Microsoft.ML.Transforms.ExpressionTransformer">
+      <Member Id="F:Microsoft.ML.Transforms.ExpressionTransformer.LoaderSignature" />
+    </Type>
     <Type Name="Microsoft.ML.Transforms.FeatureContributionCalculatingEstimator" Id="T:Microsoft.ML.Transforms.FeatureContributionCalculatingEstimator">
       <Member Id="M:Microsoft.ML.Transforms.FeatureContributionCalculatingEstimator.GetOutputSchema(Microsoft.ML.SchemaShape)" />
     </Type>
@@ -2176,6 +2216,11 @@
       <Member Id="P:Microsoft.ML.Transforms.HashingEstimator.ColumnOptions.UseOrderedHashing" />
     </Type>
     <Type Name="Microsoft.ML.Transforms.HashingTransformer" Id="T:Microsoft.ML.Transforms.HashingTransformer" />
+    <Type Name="Microsoft.ML.Transforms.IFunctionProvider" Id="T:Microsoft.ML.Transforms.IFunctionProvider">
+      <Member Id="M:Microsoft.ML.Transforms.IFunctionProvider.Lookup(System.String)" />
+      <Member Id="M:Microsoft.ML.Transforms.IFunctionProvider.ResolveToConstant(System.String,System.Reflection.MethodInfo,System.Object[])" />
+      <Member Id="P:Microsoft.ML.Transforms.IFunctionProvider.NameSpace" />
+    </Type>
     <Type Name="Microsoft.ML.Transforms.KernelBase" Id="T:Microsoft.ML.Transforms.KernelBase" />
     <Type Name="Microsoft.ML.Transforms.KeyToBinaryVectorMappingEstimator" Id="T:Microsoft.ML.Transforms.KeyToBinaryVectorMappingEstimator">
       <Member Id="M:Microsoft.ML.Transforms.KeyToBinaryVectorMappingEstimator.GetOutputSchema(Microsoft.ML.SchemaShape)" />
@@ -2277,6 +2322,7 @@
       <Member Id="M:Microsoft.ML.Transforms.PrincipalComponentAnalyzer.Fit(Microsoft.ML.IDataView)" />
       <Member Id="M:Microsoft.ML.Transforms.PrincipalComponentAnalyzer.GetOutputSchema(Microsoft.ML.SchemaShape)" />
     </Type>
+    <Type Name="Microsoft.ML.Transforms.SignatureFunctionProvider" Id="T:Microsoft.ML.Transforms.SignatureFunctionProvider" />
     <Type Name="Microsoft.ML.Transforms.TensorFlowEstimator" Id="T:Microsoft.ML.Transforms.TensorFlowEstimator">
       <Member Id="M:Microsoft.ML.Transforms.TensorFlowEstimator.Fit(Microsoft.ML.IDataView)" />
       <Member Id="M:Microsoft.ML.Transforms.TensorFlowEstimator.GetOutputSchema(Microsoft.ML.SchemaShape)" />
