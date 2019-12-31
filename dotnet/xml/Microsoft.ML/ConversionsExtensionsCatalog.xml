@@ -94,6 +94,49 @@
       </Docs>
     </Member>
     <Member MemberName="Hash">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.HashingEstimator Hash (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, params Microsoft.ML.Transforms.HashingEstimator.ColumnOptions[] columns);" FrameworkAlternate="ml-dotnet" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.HashingEstimator Hash(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, class Microsoft.ML.Transforms.HashingEstimator/ColumnOptions[] columns) cil managed" FrameworkAlternate="ml-dotnet" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.Hash(Microsoft.ML.TransformsCatalog.ConversionTransforms,Microsoft.ML.Transforms.HashingEstimator.ColumnOptions[])" FrameworkAlternate="ml-dotnet" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function Hash (catalog As TransformsCatalog.ConversionTransforms, ParamArray columns As HashingEstimator.ColumnOptions()) As HashingEstimator" FrameworkAlternate="ml-dotnet" />
+      <MemberSignature Language="F#" Value="static member Hash : Microsoft.ML.TransformsCatalog.ConversionTransforms * Microsoft.ML.Transforms.HashingEstimator.ColumnOptions[] -&gt; Microsoft.ML.Transforms.HashingEstimator" Usage="Microsoft.ML.ConversionsExtensionsCatalog.Hash (catalog, columns)" FrameworkAlternate="ml-dotnet" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Transforms.HashingEstimator</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog+ConversionTransforms" Index="0" FrameworkAlternate="ml-dotnet" RefType="this" />
+        <Parameter Name="columns" Type="Microsoft.ML.Transforms.HashingEstimator+ColumnOptions[]" Index="1" FrameworkAlternate="ml-dotnet">
+          <Attributes>
+            <Attribute FrameworkAlternate="ml-dotnet">
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="catalog">The transform's catalog.</param>
+        <param name="columns">Advanced options for the estimator that also contain the input and output column names.
+            This estimator operates over text, numeric, boolean, key and <see cref="T:Microsoft.ML.Data.DataViewRowId" /> data types.
+            The new column's data type will be a vector of <see cref="T:System.UInt32" />, or a <see cref="T:System.UInt32" /> based on whether the input column data types
+            are vectors or scalars.</param>
+        <summary>
+            Create a <see cref="T:Microsoft.ML.Transforms.HashingEstimator" />, which hashes the input column's data type <see cref="P:Microsoft.ML.Transforms.HashingEstimator.ColumnOptions.InputColumnName" />
+            to a new column: <see cref="P:Microsoft.ML.Transforms.HashingEstimator.ColumnOptions.Name" />.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>This transform can operate over several columns.</remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+             [!code-csharp[Hash](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/Conversion/HashWithOptions.cs)]
+            ]]></format>
+        </example>
+      </Docs>
+    </Member>
+    <Member MemberName="Hash">
       <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.HashingEstimator Hash (this Microsoft.ML.TransformsCatalog.ConversionTransforms catalog, string outputColumnName, string inputColumnName = null, int numberOfBits = 31, int maximumNumberOfInverts = 0);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.HashingEstimator Hash(class Microsoft.ML.TransformsCatalog/ConversionTransforms catalog, string outputColumnName, string inputColumnName, int32 numberOfBits, int32 maximumNumberOfInverts) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.ConversionsExtensionsCatalog.Hash(Microsoft.ML.TransformsCatalog.ConversionTransforms,System.String,System.String,System.Int32,System.Int32)" />
@@ -460,18 +503,21 @@
         <param name="columns">The input and output columns.
             The input data types can be numeric, text, boolean, <see cref="T:System.DateTime" /> or <see cref="T:System.DateTimeOffset" />.
             </param>
-        <param name="maximumNumberOfKeys">Maximum number of keys to keep per column when auto-training.</param>
-        <param name="keyOrdinality">How items should be ordered when vectorized. If <see cref="F:Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality.ByOccurrence" /> chosen they will be in the order encountered.
-            If <see cref="F:Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality.ByValue" />, items are sorted according to their default comparison, for example, text sorting will be case sensitive (for example, 'A' then 'Z' then 'a').</param>
-        <param name="addKeyValueAnnotationsAsText">Whether key value annotations should be text, regardless of the actual input type.</param>
-        <param name="keyData">The data view containing the terms. If specified, this should be a single column data
-            view, and the key-values will be taken from that column. If unspecified, the key-values will be determined
-            from the input data upon fitting.</param>
+        <param name="maximumNumberOfKeys">Maximum number of keys to keep per column when training.</param>
+        <param name="keyOrdinality">The order in which keys are assigned.
+            If set to <see cref="F:Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality.ByOccurrence" />, keys are assigned in the order encountered.
+            If set to <see cref="F:Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality.ByValue" />, values are sorted, and keys are assigned based on the sort order.</param>
+        <param name="addKeyValueAnnotationsAsText">If set to true, use text type
+            for values, regardless of the actual input type. When doing the reverse
+            mapping, the values are text rather than the original input type.</param>
+        <param name="keyData">Use a pre-defined mapping between values and keys, instead of building
+            the mapping from the input data during training. If specified, this should be a single column <see cref="T:Microsoft.ML.IDataView" /> containing the values.
+            The keys are allocated based on the value of keyOrdinality.</param>
         <summary>
-            Create a <see cref="T:Microsoft.ML.Transforms.ValueToKeyMappingEstimator" />, which converts value types into keys.
+            Create a <see cref="T:Microsoft.ML.Transforms.ValueToKeyMappingEstimator" />, which converts categorical values into keys.
             </summary>
         <returns>To be added.</returns>
-        <remarks>This transform can operate over several columns.</remarks>
+        <remarks>This transform can operate over multiple pairs of columns, creating a mapping for each pair.</remarks>
         <example>
           <format type="text/markdown"><![CDATA[
             [!code-csharp[MapValueToKey](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/Conversion/MapValueToKeyMultiColumn.cs)]
@@ -503,19 +549,22 @@
       </Parameters>
       <Docs>
         <param name="catalog">The conversion transform's catalog.</param>
-        <param name="outputColumnName">Name of the column resulting from the transformation of <paramref name="inputColumnName" />.</param>
-        <param name="inputColumnName">Name of the column to transform. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> will be used as source.
+        <param name="outputColumnName">Name of the column containing the keys.</param>
+        <param name="inputColumnName">Name of the column containing the categorical values. If set to <see langword="null" />, the value of the <paramref name="outputColumnName" /> is used.
             The input data types can be numeric, text, boolean, <see cref="T:System.DateTime" /> or <see cref="T:System.DateTimeOffset" />.
             </param>
-        <param name="maximumNumberOfKeys">Maximum number of keys to keep per column when auto-training.</param>
-        <param name="keyOrdinality">How items should be ordered when vectorized. If <see cref="F:Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality.ByOccurrence" /> chosen they will be in the order encountered.
-            If <see cref="F:Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality.ByValue" />, items are sorted according to their default comparison, for example, text sorting will be case sensitive (for example, 'A' then 'Z' then 'a').</param>
-        <param name="addKeyValueAnnotationsAsText">Whether key value annotations should be text, regardless of the actual input type.</param>
-        <param name="keyData">The data view containing the terms. If specified, this should be a single column data
-            view, and the key-values will be taken from that column. If unspecified, the key-values will be determined
-            from the input data upon fitting.</param>
+        <param name="maximumNumberOfKeys">Maximum number of keys to keep per column when training.</param>
+        <param name="keyOrdinality">The order in which keys are assigned.
+            If set to <see cref="F:Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality.ByOccurrence" />, keys are assigned in the order encountered.
+            If set to <see cref="F:Microsoft.ML.Transforms.ValueToKeyMappingEstimator.KeyOrdinality.ByValue" />, values are sorted, and keys are assigned based on the sort order.</param>
+        <param name="addKeyValueAnnotationsAsText">If set to true, use text type
+            for values, regardless of the actual input type. When doing the reverse
+            mapping, the values are text rather than the original input type.</param>
+        <param name="keyData">Use a pre-defined mapping between values and keys, instead of building
+            the mapping from the input data during training. If specified, this should be a single column <see cref="T:Microsoft.ML.IDataView" /> containing the values.
+            The keys are allocated based on the value of keyOrdinality.</param>
         <summary>
-            Create a <see cref="T:Microsoft.ML.Transforms.ValueToKeyMappingEstimator" />, which converts value types into keys.
+            Create a <see cref="T:Microsoft.ML.Transforms.ValueToKeyMappingEstimator" />, which converts categorical values into numerical keys.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
