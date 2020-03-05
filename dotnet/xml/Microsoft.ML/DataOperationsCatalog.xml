@@ -21,7 +21,7 @@
   </Docs>
   <Members>
     <Member MemberName="BootstrapSample">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.IDataView BootstrapSample (Microsoft.ML.IDataView input, Nullable&lt;int&gt; seed = default, bool complement = false);" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.IDataView BootstrapSample (Microsoft.ML.IDataView input, int? seed = default, bool complement = false);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.IDataView BootstrapSample(class Microsoft.ML.IDataView input, valuetype System.Nullable`1&lt;int32&gt; seed, bool complement) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.DataOperationsCatalog.BootstrapSample(Microsoft.ML.IDataView,System.Nullable{System.Int32},System.Boolean)" />
       <MemberSignature Language="VB.NET" Value="Public Function BootstrapSample (input As IDataView, Optional seed As Nullable(Of Integer) = null, Optional complement As Boolean = false) As IDataView" />
@@ -110,6 +110,7 @@
       <MemberSignature Language="C#" Value="public System.Collections.Generic.IEnumerable&lt;TRow&gt; CreateEnumerable&lt;TRow&gt; (Microsoft.ML.IDataView data, bool reuseRowObject, bool ignoreMissingColumns = false, Microsoft.ML.Data.SchemaDefinition schemaDefinition = default) where TRow : class, new();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.IEnumerable`1&lt;!!TRow&gt; CreateEnumerable&lt;class .ctor TRow&gt;(class Microsoft.ML.IDataView data, bool reuseRowObject, bool ignoreMissingColumns, class Microsoft.ML.Data.SchemaDefinition schemaDefinition) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.DataOperationsCatalog.CreateEnumerable``1(Microsoft.ML.IDataView,System.Boolean,System.Boolean,Microsoft.ML.Data.SchemaDefinition)" />
+      <MemberSignature Language="VB.NET" Value="Public Function CreateEnumerable(Of TRow As {Class, New}) (data As IDataView, reuseRowObject As Boolean, Optional ignoreMissingColumns As Boolean = false, Optional schemaDefinition As SchemaDefinition = null) As IEnumerable(Of TRow)" />
       <MemberSignature Language="F#" Value="member this.CreateEnumerable : Microsoft.ML.IDataView * bool * bool * Microsoft.ML.Data.SchemaDefinition -&gt; seq&lt;'Row (requires 'Row : null and 'Row : (new : unit -&gt; 'Row))&gt; (requires 'Row : null and 'Row : (new : unit -&gt; 'Row))" Usage="dataOperationsCatalog.CreateEnumerable (data, reuseRowObject, ignoreMissingColumns, schemaDefinition)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
@@ -152,7 +153,7 @@
       </Docs>
     </Member>
     <Member MemberName="CrossValidationSplit">
-      <MemberSignature Language="C#" Value="public System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.DataOperationsCatalog.TrainTestData&gt; CrossValidationSplit (Microsoft.ML.IDataView data, int numberOfFolds = 5, string samplingKeyColumnName = default, Nullable&lt;int&gt; seed = default);" />
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.DataOperationsCatalog.TrainTestData&gt; CrossValidationSplit (Microsoft.ML.IDataView data, int numberOfFolds = 5, string samplingKeyColumnName = default, int? seed = default);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.IReadOnlyList`1&lt;valuetype Microsoft.ML.DataOperationsCatalog/TrainTestData&gt; CrossValidationSplit(class Microsoft.ML.IDataView data, int32 numberOfFolds, string samplingKeyColumnName, valuetype System.Nullable`1&lt;int32&gt; seed) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.DataOperationsCatalog.CrossValidationSplit(Microsoft.ML.IDataView,System.Int32,System.String,System.Nullable{System.Int32})" />
       <MemberSignature Language="VB.NET" Value="Public Function CrossValidationSplit (data As IDataView, Optional numberOfFolds As Integer = 5, Optional samplingKeyColumnName As String = null, Optional seed As Nullable(Of Integer) = null) As IReadOnlyList(Of DataOperationsCatalog.TrainTestData)" />
@@ -317,6 +318,7 @@
       <MemberSignature Language="C#" Value="public Microsoft.ML.IDataView LoadFromEnumerable&lt;TRow&gt; (System.Collections.Generic.IEnumerable&lt;TRow&gt; data, Microsoft.ML.Data.SchemaDefinition schemaDefinition = default) where TRow : class;" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.IDataView LoadFromEnumerable&lt;class TRow&gt;(class System.Collections.Generic.IEnumerable`1&lt;!!TRow&gt; data, class Microsoft.ML.Data.SchemaDefinition schemaDefinition) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.DataOperationsCatalog.LoadFromEnumerable``1(System.Collections.Generic.IEnumerable{``0},Microsoft.ML.Data.SchemaDefinition)" />
+      <MemberSignature Language="VB.NET" Value="Public Function LoadFromEnumerable(Of TRow As Class) (data As IEnumerable(Of TRow), Optional schemaDefinition As SchemaDefinition = null) As IDataView" />
       <MemberSignature Language="F#" Value="member this.LoadFromEnumerable : seq&lt;'Row (requires 'Row : null)&gt; * Microsoft.ML.Data.SchemaDefinition -&gt; Microsoft.ML.IDataView (requires 'Row : null)" Usage="dataOperationsCatalog.LoadFromEnumerable (data, schemaDefinition)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
@@ -356,11 +358,6 @@
              </summary>
         <returns>The constructed <see cref="T:Microsoft.ML.IDataView" />.</returns>
         <remarks>To be added.</remarks>
-        <example>
-          <format type="text/markdown"><![CDATA[
-             [!code-csharp[LoadFromEnumerable](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/DataOperations/DataViewEnumerable.cs)]
-             ]]></format>
-        </example>
         <example>
           <format type="text/markdown"><![CDATA[
              [!code-csharp[LoadFromEnumerable](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/DataOperations/LoadFromEnumerable.cs)]
@@ -416,7 +413,7 @@
       </Docs>
     </Member>
     <Member MemberName="ShuffleRows">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.IDataView ShuffleRows (Microsoft.ML.IDataView input, Nullable&lt;int&gt; seed = default, int shufflePoolSize = 1000, bool shuffleSource = true);" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.IDataView ShuffleRows (Microsoft.ML.IDataView input, int? seed = default, int shufflePoolSize = 1000, bool shuffleSource = true);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.IDataView ShuffleRows(class Microsoft.ML.IDataView input, valuetype System.Nullable`1&lt;int32&gt; seed, int32 shufflePoolSize, bool shuffleSource) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.DataOperationsCatalog.ShuffleRows(Microsoft.ML.IDataView,System.Nullable{System.Int32},System.Int32,System.Boolean)" />
       <MemberSignature Language="VB.NET" Value="Public Function ShuffleRows (input As IDataView, Optional seed As Nullable(Of Integer) = null, Optional shufflePoolSize As Integer = 1000, Optional shuffleSource As Boolean = true) As IDataView" />
@@ -535,7 +532,7 @@
       </Docs>
     </Member>
     <Member MemberName="TrainTestSplit">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.DataOperationsCatalog.TrainTestData TrainTestSplit (Microsoft.ML.IDataView data, double testFraction = 0.1, string samplingKeyColumnName = default, Nullable&lt;int&gt; seed = default);" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.DataOperationsCatalog.TrainTestData TrainTestSplit (Microsoft.ML.IDataView data, double testFraction = 0.1, string samplingKeyColumnName = default, int? seed = default);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Microsoft.ML.DataOperationsCatalog/TrainTestData TrainTestSplit(class Microsoft.ML.IDataView data, float64 testFraction, string samplingKeyColumnName, valuetype System.Nullable`1&lt;int32&gt; seed) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.DataOperationsCatalog.TrainTestSplit(Microsoft.ML.IDataView,System.Double,System.String,System.Nullable{System.Int32})" />
       <MemberSignature Language="VB.NET" Value="Public Function TrainTestSplit (data As IDataView, Optional testFraction As Double = 0.1, Optional samplingKeyColumnName As String = null, Optional seed As Nullable(Of Integer) = null) As DataOperationsCatalog.TrainTestData" />
