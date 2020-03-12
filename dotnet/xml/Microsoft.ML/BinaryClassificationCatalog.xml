@@ -74,12 +74,12 @@
         <summary>
             Method to modify the threshold to existing model and return modified model.
             </summary>
-        <returns>New model with modified threashold.</returns>
+        <returns>New model with modified threshold.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="CrossValidate">
-      <MemberSignature Language="C#" Value="public System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.TrainCatalogBase.CrossValidationResult&lt;Microsoft.ML.Data.CalibratedBinaryClassificationMetrics&gt;&gt; CrossValidate (Microsoft.ML.IDataView data, Microsoft.ML.IEstimator&lt;Microsoft.ML.ITransformer&gt; estimator, int numberOfFolds = 5, string labelColumnName = &quot;Label&quot;, string samplingKeyColumnName = null, Nullable&lt;int&gt; seed = null);" />
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.TrainCatalogBase.CrossValidationResult&lt;Microsoft.ML.Data.CalibratedBinaryClassificationMetrics&gt;&gt; CrossValidate (Microsoft.ML.IDataView data, Microsoft.ML.IEstimator&lt;Microsoft.ML.ITransformer&gt; estimator, int numberOfFolds = 5, string labelColumnName = &quot;Label&quot;, string samplingKeyColumnName = default, int? seed = default);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.IReadOnlyList`1&lt;class Microsoft.ML.TrainCatalogBase/CrossValidationResult`1&lt;class Microsoft.ML.Data.CalibratedBinaryClassificationMetrics&gt;&gt; CrossValidate(class Microsoft.ML.IDataView data, class Microsoft.ML.IEstimator`1&lt;class Microsoft.ML.ITransformer&gt; estimator, int32 numberOfFolds, string labelColumnName, string samplingKeyColumnName, valuetype System.Nullable`1&lt;int32&gt; seed) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.BinaryClassificationCatalog.CrossValidate(Microsoft.ML.IDataView,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.Int32,System.String,System.String,System.Nullable{System.Int32})" />
       <MemberSignature Language="VB.NET" Value="Public Function CrossValidate (data As IDataView, estimator As IEstimator(Of ITransformer), Optional numberOfFolds As Integer = 5, Optional labelColumnName As String = &quot;Label&quot;, Optional samplingKeyColumnName As String = null, Optional seed As Nullable(Of Integer) = null) As IReadOnlyList(Of TrainCatalogBase.CrossValidationResult(Of CalibratedBinaryClassificationMetrics))" />
@@ -112,14 +112,15 @@
         <summary>
             Run cross-validation over <paramref name="numberOfFolds" /> folds of <paramref name="data" />, by fitting <paramref name="estimator" />,
             and respecting <paramref name="samplingKeyColumnName" /> if provided.
-            Then evaluate each sub-model against <paramref name="labelColumnName" /> and return metrics.
+            Then evaluate each sub-model against <paramref name="labelColumnName" /> and return a <see cref="T:Microsoft.ML.Data.CalibratedBinaryClassificationMetrics" /> object, which
+            includes probability-based metrics, for each sub-model. Each sub-model is evaluated on the cross-validation fold that it did not see during training.
             </summary>
         <returns>Per-fold results: metrics, models, scored datasets.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="CrossValidateNonCalibrated">
-      <MemberSignature Language="C#" Value="public System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.TrainCatalogBase.CrossValidationResult&lt;Microsoft.ML.Data.BinaryClassificationMetrics&gt;&gt; CrossValidateNonCalibrated (Microsoft.ML.IDataView data, Microsoft.ML.IEstimator&lt;Microsoft.ML.ITransformer&gt; estimator, int numberOfFolds = 5, string labelColumnName = &quot;Label&quot;, string samplingKeyColumnName = null, Nullable&lt;int&gt; seed = null);" />
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.TrainCatalogBase.CrossValidationResult&lt;Microsoft.ML.Data.BinaryClassificationMetrics&gt;&gt; CrossValidateNonCalibrated (Microsoft.ML.IDataView data, Microsoft.ML.IEstimator&lt;Microsoft.ML.ITransformer&gt; estimator, int numberOfFolds = 5, string labelColumnName = &quot;Label&quot;, string samplingKeyColumnName = default, int? seed = default);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.IReadOnlyList`1&lt;class Microsoft.ML.TrainCatalogBase/CrossValidationResult`1&lt;class Microsoft.ML.Data.BinaryClassificationMetrics&gt;&gt; CrossValidateNonCalibrated(class Microsoft.ML.IDataView data, class Microsoft.ML.IEstimator`1&lt;class Microsoft.ML.ITransformer&gt; estimator, int32 numberOfFolds, string labelColumnName, string samplingKeyColumnName, valuetype System.Nullable`1&lt;int32&gt; seed) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.BinaryClassificationCatalog.CrossValidateNonCalibrated(Microsoft.ML.IDataView,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.Int32,System.String,System.String,System.Nullable{System.Int32})" />
       <MemberSignature Language="VB.NET" Value="Public Function CrossValidateNonCalibrated (data As IDataView, estimator As IEstimator(Of ITransformer), Optional numberOfFolds As Integer = 5, Optional labelColumnName As String = &quot;Label&quot;, Optional samplingKeyColumnName As String = null, Optional seed As Nullable(Of Integer) = null) As IReadOnlyList(Of TrainCatalogBase.CrossValidationResult(Of BinaryClassificationMetrics))" />
@@ -152,7 +153,8 @@
         <summary>
             Run cross-validation over <paramref name="numberOfFolds" /> folds of <paramref name="data" />, by fitting <paramref name="estimator" />,
             and respecting <paramref name="samplingKeyColumnName" /> if provided.
-            Then evaluate each sub-model against <paramref name="labelColumnName" /> and return metrics.
+            Then evaluate each sub-model against <paramref name="labelColumnName" /> and return a <see cref="T:Microsoft.ML.Data.BinaryClassificationMetrics" /> object, which
+            do not include probability-based metrics, for each sub-model. Each sub-model is evaluated on the cross-validation fold that it did not see during training.
             </summary>
         <returns>Per-fold results: metrics, models, scored datasets.</returns>
         <remarks>To be added.</remarks>
