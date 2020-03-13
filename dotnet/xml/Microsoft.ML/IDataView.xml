@@ -45,7 +45,7 @@
       </Docs>
     </Member>
     <Member MemberName="GetRowCount">
-      <MemberSignature Language="C#" Value="public Nullable&lt;long&gt; GetRowCount ();" />
+      <MemberSignature Language="C#" Value="public long? GetRowCount ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Nullable`1&lt;int64&gt; GetRowCount() cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.IDataView.GetRowCount" />
       <MemberSignature Language="VB.NET" Value="Public Function GetRowCount () As Nullable(Of Long)" />
@@ -74,7 +74,7 @@
       </Docs>
     </Member>
     <Member MemberName="GetRowCursor">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.DataViewRowCursor GetRowCursor (System.Collections.Generic.IEnumerable&lt;Microsoft.ML.DataViewSchema.Column&gt; columnsNeeded, Random rand = null);" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.DataViewRowCursor GetRowCursor (System.Collections.Generic.IEnumerable&lt;Microsoft.ML.DataViewSchema.Column&gt; columnsNeeded, Random rand = default);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.DataViewRowCursor GetRowCursor(class System.Collections.Generic.IEnumerable`1&lt;valuetype Microsoft.ML.DataViewSchema/Column&gt; columnsNeeded, class System.Random rand) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.IDataView.GetRowCursor(System.Collections.Generic.IEnumerable{Microsoft.ML.DataViewSchema.Column},System.Random)" />
       <MemberSignature Language="VB.NET" Value="Public Function GetRowCursor (columnsNeeded As IEnumerable(Of DataViewSchema.Column), Optional rand As Random = null) As DataViewRowCursor" />
@@ -92,20 +92,19 @@
         <Parameter Name="rand" Type="System.Random" />
       </Parameters>
       <Docs>
-        <param name="columnsNeeded">To be added.</param>
-        <param name="rand">To be added.</param>
+        <param name="columnsNeeded">The active columns needed. If passed an empty <see cref="T:System.Collections.IEnumerable" /> no column is requested.</param>
+        <param name="rand">An instance of <see cref="T:System.Random" /> to seed randomizing the access for a shuffled cursor.</param>
         <summary>
-            Get a row cursor. The active column indices are those for which needCol(col) returns true.
-            The schema of the returned cursor will be the same as the schema of the IDataView, but getting
-            a getter for inactive columns will throw. The <paramref name="columnsNeeded" /> indicate the columns that are needed
-            to iterate over.If set to an empty <see cref="T:System.Collections.IEnumerable" /> no column is requested.
+            Get a row cursor. The <paramref name="columnsNeeded" /> indicate the active columns that are needed
+            to iterate over. If set to an empty <see cref="T:System.Collections.IEnumerable" /> no column is requested. The schema of the returned
+            cursor will be the same as the schema of the IDataView, but getting a getter for inactive columns will throw.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetRowCursorSet">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.DataViewRowCursor[] GetRowCursorSet (System.Collections.Generic.IEnumerable&lt;Microsoft.ML.DataViewSchema.Column&gt; columnsNeeded, int n, Random rand = null);" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.DataViewRowCursor[] GetRowCursorSet (System.Collections.Generic.IEnumerable&lt;Microsoft.ML.DataViewSchema.Column&gt; columnsNeeded, int n, Random rand = default);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.DataViewRowCursor[] GetRowCursorSet(class System.Collections.Generic.IEnumerable`1&lt;valuetype Microsoft.ML.DataViewSchema/Column&gt; columnsNeeded, int32 n, class System.Random rand) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.IDataView.GetRowCursorSet(System.Collections.Generic.IEnumerable{Microsoft.ML.DataViewSchema.Column},System.Int32,System.Random)" />
       <MemberSignature Language="VB.NET" Value="Public Function GetRowCursorSet (columnsNeeded As IEnumerable(Of DataViewSchema.Column), n As Integer, Optional rand As Random = null) As DataViewRowCursor()" />
