@@ -18,7 +18,7 @@
   </Docs>
   <Members>
     <Member MemberName="CreateSvmLightLoader">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.SvmLightLoader CreateSvmLightLoader (this Microsoft.ML.DataOperationsCatalog catalog, Nullable&lt;long&gt; numberOfRows = null, int inputSize = 0, bool zeroBased = false, Microsoft.ML.Data.IMultiStreamSource dataSample = null);" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.SvmLightLoader CreateSvmLightLoader (this Microsoft.ML.DataOperationsCatalog catalog, long? numberOfRows = default, int inputSize = 0, bool zeroBased = false, Microsoft.ML.Data.IMultiStreamSource dataSample = default);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.SvmLightLoader CreateSvmLightLoader(class Microsoft.ML.DataOperationsCatalog catalog, valuetype System.Nullable`1&lt;int64&gt; numberOfRows, int32 inputSize, bool zeroBased, class Microsoft.ML.Data.IMultiStreamSource dataSample) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.SvmLightLoaderSaverCatalog.CreateSvmLightLoader(Microsoft.ML.DataOperationsCatalog,System.Nullable{System.Int64},System.Int32,System.Boolean,Microsoft.ML.Data.IMultiStreamSource)" />
       <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function CreateSvmLightLoader (catalog As DataOperationsCatalog, Optional numberOfRows As Nullable(Of Long) = null, Optional inputSize As Integer = 0, Optional zeroBased As Boolean = false, Optional dataSample As IMultiStreamSource = null) As SvmLightLoader" />
@@ -40,9 +40,9 @@
       </Parameters>
       <Docs>
         <param name="catalog">The <see cref="T:Microsoft.ML.DataOperationsCatalog" /> catalog.</param>
-        <param name="numberOfRows">The number of rows from the sample to be used for determining the number of features.</param>
         <param name="inputSize">The number of features in the Features column. If 0 is specified, the
             loader will determine it by looking at the file sample given in <paramref name="dataSample" />.</param>
+        <param name="numberOfRows">The number of rows from the sample to be used for determining the number of features.</param>
         <param name="zeroBased">If the file contains zero-based indices, this parameter should be set to true. If they are one-based
             it should be set to false.</param>
         <param name="dataSample">A data sample to be used for determining the number of features in the Features column.</param>
@@ -51,10 +51,15 @@
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[LoadingSvmLight](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/DataOperations/LoadingSvmLight.cs)]
+            ]]></format>
+        </example>
       </Docs>
     </Member>
     <Member MemberName="CreateSvmLightLoaderWithFeatureNames">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.SvmLightLoader CreateSvmLightLoaderWithFeatureNames (this Microsoft.ML.DataOperationsCatalog catalog, Nullable&lt;long&gt; numberOfRows = null, Microsoft.ML.Data.IMultiStreamSource dataSample = null);" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Data.SvmLightLoader CreateSvmLightLoaderWithFeatureNames (this Microsoft.ML.DataOperationsCatalog catalog, long? numberOfRows = default, Microsoft.ML.Data.IMultiStreamSource dataSample = default);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Data.SvmLightLoader CreateSvmLightLoaderWithFeatureNames(class Microsoft.ML.DataOperationsCatalog catalog, valuetype System.Nullable`1&lt;int64&gt; numberOfRows, class Microsoft.ML.Data.IMultiStreamSource dataSample) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.SvmLightLoaderSaverCatalog.CreateSvmLightLoaderWithFeatureNames(Microsoft.ML.DataOperationsCatalog,System.Nullable{System.Int64},Microsoft.ML.Data.IMultiStreamSource)" />
       <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function CreateSvmLightLoaderWithFeatureNames (catalog As DataOperationsCatalog, Optional numberOfRows As Nullable(Of Long) = null, Optional dataSample As IMultiStreamSource = null) As SvmLightLoader" />
@@ -84,7 +89,7 @@
       </Docs>
     </Member>
     <Member MemberName="LoadFromSvmLightFile">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.IDataView LoadFromSvmLightFile (this Microsoft.ML.DataOperationsCatalog catalog, string path, Nullable&lt;long&gt; numberOfRows = null, int inputSize = 0, bool zeroBased = false);" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.IDataView LoadFromSvmLightFile (this Microsoft.ML.DataOperationsCatalog catalog, string path, long? numberOfRows = default, int inputSize = 0, bool zeroBased = false);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.IDataView LoadFromSvmLightFile(class Microsoft.ML.DataOperationsCatalog catalog, string path, valuetype System.Nullable`1&lt;int64&gt; numberOfRows, int32 inputSize, bool zeroBased) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.SvmLightLoaderSaverCatalog.LoadFromSvmLightFile(Microsoft.ML.DataOperationsCatalog,System.String,System.Nullable{System.Int64},System.Int32,System.Boolean)" />
       <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function LoadFromSvmLightFile (catalog As DataOperationsCatalog, path As String, Optional numberOfRows As Nullable(Of Long) = null, Optional inputSize As Integer = 0, Optional zeroBased As Boolean = false) As IDataView" />
@@ -107,11 +112,11 @@
       <Docs>
         <param name="catalog">The <see cref="T:Microsoft.ML.DataOperationsCatalog" /> catalog.</param>
         <param name="path">The path to the file.</param>
-        <param name="numberOfRows">The number of rows from the sample to be used for determining the number of features.</param>
         <param name="inputSize">The number of features in the Features column. If 0 is specified, the
             loader will determine it by looking at the file given in <paramref name="path" />.</param>
         <param name="zeroBased">If the file contains zero-based indices, this parameter should be set to true. If they are one-based
             it should be set to false.</param>
+        <param name="numberOfRows">The number of rows from the sample to be used for determining the number of features.</param>
         <summary>
             Load a <see cref="T:Microsoft.ML.IDataView" /> from a text file using <see cref="T:Microsoft.ML.Data.SvmLightLoader" />.
             </summary>
@@ -120,7 +125,7 @@
       </Docs>
     </Member>
     <Member MemberName="LoadFromSvmLightFileWithFeatureNames">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.IDataView LoadFromSvmLightFileWithFeatureNames (this Microsoft.ML.DataOperationsCatalog catalog, string path, Nullable&lt;long&gt; numberOfRows = null);" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.IDataView LoadFromSvmLightFileWithFeatureNames (this Microsoft.ML.DataOperationsCatalog catalog, string path, long? numberOfRows = default);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.IDataView LoadFromSvmLightFileWithFeatureNames(class Microsoft.ML.DataOperationsCatalog catalog, string path, valuetype System.Nullable`1&lt;int64&gt; numberOfRows) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.SvmLightLoaderSaverCatalog.LoadFromSvmLightFileWithFeatureNames(Microsoft.ML.DataOperationsCatalog,System.String,System.Nullable{System.Int64})" />
       <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function LoadFromSvmLightFileWithFeatureNames (catalog As DataOperationsCatalog, path As String, Optional numberOfRows As Nullable(Of Long) = null) As IDataView" />
@@ -151,9 +156,10 @@
       </Docs>
     </Member>
     <Member MemberName="SaveInSvmLightFormat">
-      <MemberSignature Language="C#" Value="public static void SaveInSvmLightFormat (this Microsoft.ML.DataOperationsCatalog catalog, Microsoft.ML.IDataView data, System.IO.Stream stream, bool zeroBasedIndexing = false, bool binaryLabel = false, string labelColumnName = &quot;Label&quot;, string featureColumnName = &quot;Features&quot;, string rowGroupColumnName = null, string exampleWeightColumnName = null);" />
+      <MemberSignature Language="C#" Value="public static void SaveInSvmLightFormat (this Microsoft.ML.DataOperationsCatalog catalog, Microsoft.ML.IDataView data, System.IO.Stream stream, bool zeroBasedIndexing = false, bool binaryLabel = false, string labelColumnName = &quot;Label&quot;, string featureColumnName = &quot;Features&quot;, string rowGroupColumnName = default, string exampleWeightColumnName = default);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SaveInSvmLightFormat(class Microsoft.ML.DataOperationsCatalog catalog, class Microsoft.ML.IDataView data, class System.IO.Stream stream, bool zeroBasedIndexing, bool binaryLabel, string labelColumnName, string featureColumnName, string rowGroupColumnName, string exampleWeightColumnName) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.SvmLightLoaderSaverCatalog.SaveInSvmLightFormat(Microsoft.ML.DataOperationsCatalog,Microsoft.ML.IDataView,System.IO.Stream,System.Boolean,System.Boolean,System.String,System.String,System.String,System.String)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Sub SaveInSvmLightFormat (catalog As DataOperationsCatalog, data As IDataView, stream As Stream, Optional zeroBasedIndexing As Boolean = false, Optional binaryLabel As Boolean = false, Optional labelColumnName As String = &quot;Label&quot;, Optional featureColumnName As String = &quot;Features&quot;, Optional rowGroupColumnName As String = null, Optional exampleWeightColumnName As String = null)" />
       <MemberSignature Language="F#" Value="static member SaveInSvmLightFormat : Microsoft.ML.DataOperationsCatalog * Microsoft.ML.IDataView * System.IO.Stream * bool * bool * string * string * string * string -&gt; unit" Usage="Microsoft.ML.Data.SvmLightLoaderSaverCatalog.SaveInSvmLightFormat (catalog, data, stream, zeroBasedIndexing, binaryLabel, labelColumnName, featureColumnName, rowGroupColumnName, exampleWeightColumnName)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>

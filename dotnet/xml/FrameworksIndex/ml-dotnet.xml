@@ -335,7 +335,11 @@
     </Type>
     <Type Name="Microsoft.ML.LoggingEventArgs" Id="T:Microsoft.ML.LoggingEventArgs">
       <Member Id="M:Microsoft.ML.LoggingEventArgs.#ctor(System.String)" />
+      <Member Id="M:Microsoft.ML.LoggingEventArgs.#ctor(System.String,Microsoft.ML.Runtime.ChannelMessageKind,System.String)" />
+      <Member Id="P:Microsoft.ML.LoggingEventArgs.Kind" />
       <Member Id="P:Microsoft.ML.LoggingEventArgs.Message" />
+      <Member Id="P:Microsoft.ML.LoggingEventArgs.RawMessage" />
+      <Member Id="P:Microsoft.ML.LoggingEventArgs.Source" />
     </Type>
     <Type Name="Microsoft.ML.MklComponentsCatalog" Id="T:Microsoft.ML.MklComponentsCatalog">
       <Member Id="M:Microsoft.ML.MklComponentsCatalog.Ols(Microsoft.ML.RegressionCatalog.RegressionTrainers,Microsoft.ML.Trainers.OlsTrainer.Options)" />
@@ -471,6 +475,8 @@
       <Member Id="M:Microsoft.ML.StandardTrainersCatalog.LbfgsMaximumEntropy(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,System.String,System.String,System.String,System.Single,System.Single,System.Single,System.Int32,System.Boolean)" />
       <Member Id="M:Microsoft.ML.StandardTrainersCatalog.LbfgsPoissonRegression(Microsoft.ML.RegressionCatalog.RegressionTrainers,Microsoft.ML.Trainers.LbfgsPoissonRegressionTrainer.Options)" />
       <Member Id="M:Microsoft.ML.StandardTrainersCatalog.LbfgsPoissonRegression(Microsoft.ML.RegressionCatalog.RegressionTrainers,System.String,System.String,System.String,System.Single,System.Single,System.Single,System.Int32,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.StandardTrainersCatalog.LdSvm(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,Microsoft.ML.Trainers.LdSvmTrainer.Options)" />
+      <Member Id="M:Microsoft.ML.StandardTrainersCatalog.LdSvm(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,System.String,System.String,System.String,System.Int32,System.Int32,System.Boolean,System.Boolean)" />
       <Member Id="M:Microsoft.ML.StandardTrainersCatalog.LinearSvm(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,Microsoft.ML.Trainers.LinearSvmTrainer.Options)" />
       <Member Id="M:Microsoft.ML.StandardTrainersCatalog.LinearSvm(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,System.String,System.String,System.String,System.Int32)" />
       <Member Id="M:Microsoft.ML.StandardTrainersCatalog.NaiveBayes(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,System.String,System.String)" />
@@ -1416,6 +1422,24 @@
       <Member Id="F:Microsoft.ML.Trainers.LbfgsTrainerBase`3.OptionsBase.StochasticGradientDescentInitilaizationTolerance" />
       <Member Id="M:Microsoft.ML.Trainers.LbfgsTrainerBase`3.OptionsBase.#ctor" />
     </Type>
+    <Type Name="Microsoft.ML.Trainers.LdSvmModelParameters" Id="T:Microsoft.ML.Trainers.LdSvmModelParameters">
+      <Member Id="P:Microsoft.ML.Trainers.LdSvmModelParameters.InputType" />
+      <Member Id="P:Microsoft.ML.Trainers.LdSvmModelParameters.OutputType" />
+    </Type>
+    <Type Name="Microsoft.ML.Trainers.LdSvmTrainer" Id="T:Microsoft.ML.Trainers.LdSvmTrainer">
+      <Member Id="P:Microsoft.ML.Trainers.LdSvmTrainer.Info" />
+    </Type>
+    <Type Name="Microsoft.ML.Trainers.LdSvmTrainer/Options" Id="T:Microsoft.ML.Trainers.LdSvmTrainer.Options">
+      <Member Id="F:Microsoft.ML.Trainers.LdSvmTrainer.Options.Cache" />
+      <Member Id="F:Microsoft.ML.Trainers.LdSvmTrainer.Options.LambdaTheta" />
+      <Member Id="F:Microsoft.ML.Trainers.LdSvmTrainer.Options.LambdaThetaprime" />
+      <Member Id="F:Microsoft.ML.Trainers.LdSvmTrainer.Options.LambdaW" />
+      <Member Id="F:Microsoft.ML.Trainers.LdSvmTrainer.Options.NumberOfIterations" />
+      <Member Id="F:Microsoft.ML.Trainers.LdSvmTrainer.Options.Sigma" />
+      <Member Id="F:Microsoft.ML.Trainers.LdSvmTrainer.Options.TreeDepth" />
+      <Member Id="F:Microsoft.ML.Trainers.LdSvmTrainer.Options.UseBias" />
+      <Member Id="M:Microsoft.ML.Trainers.LdSvmTrainer.Options.#ctor" />
+    </Type>
     <Type Name="Microsoft.ML.Trainers.LearningRateScheduler" Id="T:Microsoft.ML.Trainers.LearningRateScheduler" />
     <Type Name="Microsoft.ML.Trainers.LinearBinaryModelParameters" Id="T:Microsoft.ML.Trainers.LinearBinaryModelParameters">
       <Member Id="F:Microsoft.ML.Trainers.LinearBinaryModelParameters.Statistics" />
@@ -2119,6 +2143,7 @@
       <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.OptionsBase.Seed" />
       <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.OptionsBase.Silent" />
       <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.OptionsBase.UseCategoricalSplit" />
+      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.OptionsBase.UseZeroAsMissingValue" />
       <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.OptionsBase.Verbose" />
       <Member Id="P:Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.OptionsBase.Booster" />
     </Type>
@@ -2334,7 +2359,7 @@
       <Member Id="M:Microsoft.ML.Transforms.TensorFlowModel.ScoreTensorFlowModel(System.String[],System.String[],System.Boolean)" />
     </Type>
     <Type Name="Microsoft.ML.Transforms.TensorFlowTransformer" Id="T:Microsoft.ML.Transforms.TensorFlowTransformer">
-      <Member Id="M:Microsoft.ML.Transforms.TensorFlowTransformer.Finalize" />
+      <Member Id="M:Microsoft.ML.Transforms.TensorFlowTransformer.Dispose" />
     </Type>
     <Type Name="Microsoft.ML.Transforms.TransformInputBase" Id="T:Microsoft.ML.Transforms.TransformInputBase" />
     <Type Name="Microsoft.ML.Transforms.TypeConvertingEstimator" Id="T:Microsoft.ML.Transforms.TypeConvertingEstimator">
@@ -2485,7 +2510,6 @@
     </Type>
     <Type Name="Microsoft.ML.Transforms.Text.LatentDirichletAllocationTransformer" Id="T:Microsoft.ML.Transforms.Text.LatentDirichletAllocationTransformer">
       <Member Id="M:Microsoft.ML.Transforms.Text.LatentDirichletAllocationTransformer.Dispose" />
-      <Member Id="M:Microsoft.ML.Transforms.Text.LatentDirichletAllocationTransformer.Finalize" />
     </Type>
     <Type Name="Microsoft.ML.Transforms.Text.LatentDirichletAllocationTransformer/ModelParameters" Id="T:Microsoft.ML.Transforms.Text.LatentDirichletAllocationTransformer.ModelParameters">
       <Member Id="F:Microsoft.ML.Transforms.Text.LatentDirichletAllocationTransformer.ModelParameters.ItemScoresPerTopic" />
@@ -2727,10 +2751,10 @@
   </Namespace>
   <Namespace Name="Microsoft.ML.Vision">
     <Type Name="Microsoft.ML.Vision.ImageClassificationModelParameters" Id="T:Microsoft.ML.Vision.ImageClassificationModelParameters">
-      <Member Id="M:Microsoft.ML.Vision.ImageClassificationModelParameters.Finalize" />
+      <Member Id="M:Microsoft.ML.Vision.ImageClassificationModelParameters.Dispose" />
     </Type>
     <Type Name="Microsoft.ML.Vision.ImageClassificationTrainer" Id="T:Microsoft.ML.Vision.ImageClassificationTrainer">
-      <Member Id="M:Microsoft.ML.Vision.ImageClassificationTrainer.Finalize" />
+      <Member Id="M:Microsoft.ML.Vision.ImageClassificationTrainer.Dispose" />
       <Member Id="M:Microsoft.ML.Vision.ImageClassificationTrainer.Fit(Microsoft.ML.IDataView,Microsoft.ML.IDataView)" />
       <Member Id="P:Microsoft.ML.Vision.ImageClassificationTrainer.Info" />
     </Type>
