@@ -47,7 +47,7 @@
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Whether the input may include quoted values, which can contain separator characters, colons, and distinguish empty values from missing values. When true, consecutive separators denote a missing value and an empty value is denoted by "". When false, consecutive separators denote an empty value.", ShortName="quote")</AttributeName>
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="Whether the input may include double-quoted values. This parameter is used to distinguish separator characters in an input value from actual separators. When true, separators within double quotes are treated as part of the input value. When false, all separators, even those within quotes, are treated as delimiting a new column.", ShortName="quote")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -277,6 +277,35 @@
       <Docs>
         <summary>
             Maximum number of rows to produce.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MissingRealsAsNaNs">
+      <MemberSignature Language="C#" Value="public bool MissingRealsAsNaNs;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool MissingRealsAsNaNs" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Data.TextLoader.Options.MissingRealsAsNaNs" />
+      <MemberSignature Language="VB.NET" Value="Public MissingRealsAsNaNs As Boolean " />
+      <MemberSignature Language="F#" Value="val mutable MissingRealsAsNaNs : bool" Usage="Microsoft.ML.Data.TextLoader.Options.MissingRealsAsNaNs" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Microsoft.ML.CommandLine.Argument(Microsoft.ML.CommandLine.ArgumentType.AtMostOnce, HelpText="If true, empty float fields will be loaded as NaN. If false, they'll be loaded as 0. Default is false.", ShortName="missingrealnan")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            If true, missing real fields (i.e. double or single fields) will be loaded as NaN.
+            If false, they'll be loaded as 0. Default is false.
+            A field is considered "missing" if it's empty, if it only has whitespace, or if there are missing columns
+            at the end of a given row.
             </summary>
         <remarks>To be added.</remarks>
       </Docs>
