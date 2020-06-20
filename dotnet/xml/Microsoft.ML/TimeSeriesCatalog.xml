@@ -383,11 +383,11 @@
       </Docs>
     </Member>
     <Member MemberName="LocalizeRootCause">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.TimeSeries.RootCause LocalizeRootCause (this Microsoft.ML.AnomalyDetectionCatalog catalog, Microsoft.ML.TimeSeries.RootCauseLocalizationInput src, double beta = 0.5);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.TimeSeries.RootCause LocalizeRootCause(class Microsoft.ML.AnomalyDetectionCatalog catalog, class Microsoft.ML.TimeSeries.RootCauseLocalizationInput src, float64 beta) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TimeSeriesCatalog.LocalizeRootCause(Microsoft.ML.AnomalyDetectionCatalog,Microsoft.ML.TimeSeries.RootCauseLocalizationInput,System.Double)" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function LocalizeRootCause (catalog As AnomalyDetectionCatalog, src As RootCauseLocalizationInput, Optional beta As Double = 0.5) As RootCause" />
-      <MemberSignature Language="F#" Value="static member LocalizeRootCause : Microsoft.ML.AnomalyDetectionCatalog * Microsoft.ML.TimeSeries.RootCauseLocalizationInput * double -&gt; Microsoft.ML.TimeSeries.RootCause" Usage="Microsoft.ML.TimeSeriesCatalog.LocalizeRootCause (catalog, src, beta)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.TimeSeries.RootCause LocalizeRootCause (this Microsoft.ML.AnomalyDetectionCatalog catalog, Microsoft.ML.TimeSeries.RootCauseLocalizationInput src, double beta = 0.3, double rootCauseThreshold = 0.95);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.TimeSeries.RootCause LocalizeRootCause(class Microsoft.ML.AnomalyDetectionCatalog catalog, class Microsoft.ML.TimeSeries.RootCauseLocalizationInput src, float64 beta, float64 rootCauseThreshold) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TimeSeriesCatalog.LocalizeRootCause(Microsoft.ML.AnomalyDetectionCatalog,Microsoft.ML.TimeSeries.RootCauseLocalizationInput,System.Double,System.Double)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function LocalizeRootCause (catalog As AnomalyDetectionCatalog, src As RootCauseLocalizationInput, Optional beta As Double = 0.3, Optional rootCauseThreshold As Double = 0.95) As RootCause" />
+      <MemberSignature Language="F#" Value="static member LocalizeRootCause : Microsoft.ML.AnomalyDetectionCatalog * Microsoft.ML.TimeSeries.RootCauseLocalizationInput * double * double -&gt; Microsoft.ML.TimeSeries.RootCause" Usage="Microsoft.ML.TimeSeriesCatalog.LocalizeRootCause (catalog, src, beta, rootCauseThreshold)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
@@ -400,6 +400,7 @@
         <Parameter Name="catalog" Type="Microsoft.ML.AnomalyDetectionCatalog" RefType="this" />
         <Parameter Name="src" Type="Microsoft.ML.TimeSeries.RootCauseLocalizationInput" />
         <Parameter Name="beta" Type="System.Double" />
+        <Parameter Name="rootCauseThreshold" Type="System.Double" />
       </Parameters>
       <Docs>
         <param name="catalog">The anomaly detection catalog.</param>
@@ -408,6 +409,8 @@
             It is used when score is calculated for each root cause item. The range of beta should be in [0,1].
             For a larger beta, root cause items which have a large difference between value and expected value will get a high score.
             For a small beta, root cause items which have a high relative change will get a low score.</param>
+        <param name="rootCauseThreshold">A threshold to determine whether the point should be root cause. The range of this threshold should be in [0,1].
+            If the point's delta is equal to or larger than rootCauseThreshold multiplied by anomaly dimension point's delta, this point is treated as a root cause. Different threshold will turn out different results. Users can choose the delta according to their data and requirments.</param>
         <summary>
             Create <see cref="T:Microsoft.ML.TimeSeries.RootCause" />, which localizes root causes using decision tree algorithm.
             </summary>
