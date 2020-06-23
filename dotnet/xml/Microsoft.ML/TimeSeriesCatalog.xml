@@ -261,6 +261,63 @@
         </example>
       </Docs>
     </Member>
+    <Member MemberName="DetectSeasonality">
+      <MemberSignature Language="C#" Value="public static int DetectSeasonality (this Microsoft.ML.AnomalyDetectionCatalog catalog, Microsoft.ML.IDataView input, string inputColumnName, int seasonalityWindowSize = -1, double randomnessThreshold = 0.95);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig int32 DetectSeasonality(class Microsoft.ML.AnomalyDetectionCatalog catalog, class Microsoft.ML.IDataView input, string inputColumnName, int32 seasonalityWindowSize, float64 randomnessThreshold) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TimeSeriesCatalog.DetectSeasonality(Microsoft.ML.AnomalyDetectionCatalog,Microsoft.ML.IDataView,System.String,System.Int32,System.Double)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function DetectSeasonality (catalog As AnomalyDetectionCatalog, input As IDataView, inputColumnName As String, Optional seasonalityWindowSize As Integer = -1, Optional randomnessThreshold As Double = 0.95) As Integer" />
+      <MemberSignature Language="F#" Value="static member DetectSeasonality : Microsoft.ML.AnomalyDetectionCatalog * Microsoft.ML.IDataView * string * int * double -&gt; int" Usage="Microsoft.ML.TimeSeriesCatalog.DetectSeasonality (catalog, input, inputColumnName, seasonalityWindowSize, randomnessThreshold)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="catalog" Type="Microsoft.ML.AnomalyDetectionCatalog" RefType="this" />
+        <Parameter Name="input" Type="Microsoft.ML.IDataView" />
+        <Parameter Name="inputColumnName" Type="System.String" />
+        <Parameter Name="seasonalityWindowSize" Type="System.Int32" />
+        <Parameter Name="randomnessThreshold" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="catalog">The detect seasonality catalog.</param>
+        <param name="input">Input DataView.The data is an instance of <see cref="T:Microsoft.ML.IDataView" />.</param>
+        <param name="inputColumnName">Name of column to process. The column data must be <see cref="T:System.Double" />.</param>
+        <param name="seasonalityWindowSize">An upper bound on the number of values to be considered in the input values.
+            When set to -1, use the whole input to fit model; when set to a positive integer, only the first windowSize number
+            of values will be considered. Default value is -1.</param>
+        <param name="randomnessThreshold">
+          <a href="https://en.wikipedia.org/wiki/Correlogram">Randomness threshold</a>
+            that specifies how confidently the input values follow a predictable pattern recurring as seasonal data.
+            The range is between [0, 1]. By default, it is set as 0.95.
+            </param>
+        <summary>
+          <para>
+            In time series data, seasonality (or periodicity) is the presence of variations that occur at specific regular intervals,
+            such as weekly, monthly, or quarterly.
+            </para>
+          <para>
+            This method detects this predictable interval (or period) by adopting techniques of fourier analysis.
+            Assuming the input values have the same time interval (e.g., sensor data collected at every second ordered by timestamps),
+            this method takes a list of time-series data, and returns the regular period for the input seasonal data,
+            if a predictable fluctuation or pattern can be found that recurs or repeats over this period throughout the input values.
+            </para>
+          <para>
+            Returns -1 if no such pattern is found, that is, the input values do not follow a seasonal fluctuation.
+            </para>
+        </summary>
+        <returns>The regular interval for the input as seasonal data, otherwise return -1.</returns>
+        <remarks>To be added.</remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[LocalizeRootCause](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/TimeSeries/DetectSeasonality.cs)]
+            ]]></format>
+        </example>
+      </Docs>
+    </Member>
     <Member MemberName="DetectSpikeBySsa">
       <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.TimeSeries.SsaSpikeEstimator DetectSpikeBySsa (this Microsoft.ML.TransformsCatalog catalog, string outputColumnName, string inputColumnName, int confidence, int pvalueHistoryLength, int trainingWindowSize, int seasonalityWindowSize, Microsoft.ML.Transforms.TimeSeries.AnomalySide side = Microsoft.ML.Transforms.TimeSeries.AnomalySide.TwoSided, Microsoft.ML.Transforms.TimeSeries.ErrorFunction errorFunction = Microsoft.ML.Transforms.TimeSeries.ErrorFunction.SignedDifference);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.TimeSeries.SsaSpikeEstimator DetectSpikeBySsa(class Microsoft.ML.TransformsCatalog catalog, string outputColumnName, string inputColumnName, int32 confidence, int32 pvalueHistoryLength, int32 trainingWindowSize, int32 seasonalityWindowSize, valuetype Microsoft.ML.Transforms.TimeSeries.AnomalySide side, valuetype Microsoft.ML.Transforms.TimeSeries.ErrorFunction errorFunction) cil managed" />
