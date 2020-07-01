@@ -520,5 +520,43 @@
         </example>
       </Docs>
     </Member>
+    <Member MemberName="LocalizeRootCauses">
+      <MemberSignature Language="C#" Value="public static System.Collections.Generic.List&lt;Microsoft.ML.TimeSeries.RootCause&gt; LocalizeRootCauses (this Microsoft.ML.AnomalyDetectionCatalog catalog, Microsoft.ML.TimeSeries.RootCauseLocalizationInput src, double beta = 0.5, double rootCauseThreshold = 0.95);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Collections.Generic.List`1&lt;class Microsoft.ML.TimeSeries.RootCause&gt; LocalizeRootCauses(class Microsoft.ML.AnomalyDetectionCatalog catalog, class Microsoft.ML.TimeSeries.RootCauseLocalizationInput src, float64 beta, float64 rootCauseThreshold) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.TimeSeriesCatalog.LocalizeRootCauses(Microsoft.ML.AnomalyDetectionCatalog,Microsoft.ML.TimeSeries.RootCauseLocalizationInput,System.Double,System.Double)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function LocalizeRootCauses (catalog As AnomalyDetectionCatalog, src As RootCauseLocalizationInput, Optional beta As Double = 0.5, Optional rootCauseThreshold As Double = 0.95) As List(Of RootCause)" />
+      <MemberSignature Language="F#" Value="static member LocalizeRootCauses : Microsoft.ML.AnomalyDetectionCatalog * Microsoft.ML.TimeSeries.RootCauseLocalizationInput * double * double -&gt; System.Collections.Generic.List&lt;Microsoft.ML.TimeSeries.RootCause&gt;" Usage="Microsoft.ML.TimeSeriesCatalog.LocalizeRootCauses (catalog, src, beta, rootCauseThreshold)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.TimeSeries</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;Microsoft.ML.TimeSeries.RootCause&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="catalog" Type="Microsoft.ML.AnomalyDetectionCatalog" RefType="this" />
+        <Parameter Name="src" Type="Microsoft.ML.TimeSeries.RootCauseLocalizationInput" />
+        <Parameter Name="beta" Type="System.Double" />
+        <Parameter Name="rootCauseThreshold" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="catalog">The anomaly detection catalog.</param>
+        <param name="src">Root cause's input. The data is an instance of <see cref="T:Microsoft.ML.TimeSeries.RootCauseLocalizationInput" />.</param>
+        <param name="beta">Beta is a weight parameter for user to choose. It is used when score is calculated for each root cause item. The range of beta should be in [0,1]. For a larger beta, root cause point which has a large difference between value and expected value will get a high score. On the contrary, for a small beta, root cause items which has a high relative change will get a high score.</param>
+        <param name="rootCauseThreshold">A threshold to determine whether the point should be root cause. The range of this threshold should be in [0,1].
+            If the point's delta is equal to or larger than rootCauseThreshold multiplied by anomaly dimension point's delta, this point is treated as a root cause. Different threshold will turn out different results. Users can choose the delta according to their data and requirments.</param>
+        <summary>
+            Outputs an ordered list of <see cref="T:Microsoft.ML.TimeSeries.RootCause" />s. The order corresponds to which prepared cause is most likely to be the root cause.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+            [!code-csharp[LocalizeRootCauseMultipleDimensions](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/TimeSeries/LocalizeRootCauseMultipleDimensions.cs)]
+            ]]></format>
+        </example>
+      </Docs>
+    </Member>
   </Members>
 </Type>
