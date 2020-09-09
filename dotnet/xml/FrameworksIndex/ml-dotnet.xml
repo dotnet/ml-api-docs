@@ -406,6 +406,8 @@
       <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeMeanVariance(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Int64,System.Boolean,System.Boolean)" />
       <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeMinMax(Microsoft.ML.TransformsCatalog,Microsoft.ML.InputOutputColumnPair[],System.Int64,System.Boolean)" />
       <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeMinMax(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Int64,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeRobustScaling(Microsoft.ML.TransformsCatalog,Microsoft.ML.InputOutputColumnPair[],System.Int64,System.Boolean,System.UInt32,System.UInt32)" />
+      <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeRobustScaling(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Int64,System.Boolean,System.UInt32,System.UInt32)" />
       <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeSupervisedBinning(Microsoft.ML.TransformsCatalog,Microsoft.ML.InputOutputColumnPair[],System.String,System.Int64,System.Boolean,System.Int32,System.Int32)" />
       <Member Id="M:Microsoft.ML.NormalizationCatalog.NormalizeSupervisedBinning(Microsoft.ML.TransformsCatalog,System.String,System.String,System.String,System.Int64,System.Boolean,System.Int32,System.Int32)" />
     </Type>
@@ -439,6 +441,7 @@
       <Member Id="P:Microsoft.ML.PredictionEngineBase`2.OutputSchema" />
     </Type>
     <Type Name="Microsoft.ML.RankingCatalog" Id="T:Microsoft.ML.RankingCatalog">
+      <Member Id="M:Microsoft.ML.RankingCatalog.CrossValidate(Microsoft.ML.IDataView,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.Int32,System.String,System.String,System.Nullable{System.Int32})" />
       <Member Id="M:Microsoft.ML.RankingCatalog.Evaluate(Microsoft.ML.IDataView,Microsoft.ML.Data.RankingEvaluatorOptions,System.String,System.String,System.String)" />
       <Member Id="M:Microsoft.ML.RankingCatalog.Evaluate(Microsoft.ML.IDataView,System.String,System.String,System.String)" />
       <Member Id="P:Microsoft.ML.RankingCatalog.Trainers" />
@@ -539,12 +542,15 @@
     <Type Name="Microsoft.ML.TimeSeriesCatalog" Id="T:Microsoft.ML.TimeSeriesCatalog">
       <Member Id="M:Microsoft.ML.TimeSeriesCatalog.DetectAnomalyBySrCnn(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Double)" />
       <Member Id="M:Microsoft.ML.TimeSeriesCatalog.DetectChangePointBySsa(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,Microsoft.ML.Transforms.TimeSeries.ErrorFunction,Microsoft.ML.Transforms.TimeSeries.MartingaleType,System.Double)" />
+      <Member Id="M:Microsoft.ML.TimeSeriesCatalog.DetectEntireAnomalyBySrCnn(Microsoft.ML.AnomalyDetectionCatalog,Microsoft.ML.IDataView,System.String,System.String,Microsoft.ML.TimeSeries.SrCnnEntireAnomalyDetectorOptions)" />
       <Member Id="M:Microsoft.ML.TimeSeriesCatalog.DetectEntireAnomalyBySrCnn(Microsoft.ML.AnomalyDetectionCatalog,Microsoft.ML.IDataView,System.String,System.String,System.Double,System.Int32,System.Double,Microsoft.ML.TimeSeries.SrCnnDetectMode)" />
       <Member Id="M:Microsoft.ML.TimeSeriesCatalog.DetectIidChangePoint(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Int32,System.Int32,Microsoft.ML.Transforms.TimeSeries.MartingaleType,System.Double)" />
       <Member Id="M:Microsoft.ML.TimeSeriesCatalog.DetectIidSpike(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Int32,System.Int32,Microsoft.ML.Transforms.TimeSeries.AnomalySide)" />
+      <Member Id="M:Microsoft.ML.TimeSeriesCatalog.DetectSeasonality(Microsoft.ML.AnomalyDetectionCatalog,Microsoft.ML.IDataView,System.String,System.Int32,System.Double)" />
       <Member Id="M:Microsoft.ML.TimeSeriesCatalog.DetectSpikeBySsa(Microsoft.ML.TransformsCatalog,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,Microsoft.ML.Transforms.TimeSeries.AnomalySide,Microsoft.ML.Transforms.TimeSeries.ErrorFunction)" />
       <Member Id="M:Microsoft.ML.TimeSeriesCatalog.ForecastBySsa(Microsoft.ML.ForecastingCatalog,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,System.Single,Microsoft.ML.Transforms.TimeSeries.RankSelectionMethod,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Boolean,System.Boolean,System.Nullable{Microsoft.ML.Transforms.TimeSeries.GrowthRatio},System.String,System.String,System.Single,System.Boolean)" />
-      <Member Id="M:Microsoft.ML.TimeSeriesCatalog.LocalizeRootCause(Microsoft.ML.AnomalyDetectionCatalog,Microsoft.ML.TimeSeries.RootCauseLocalizationInput,System.Double)" />
+      <Member Id="M:Microsoft.ML.TimeSeriesCatalog.LocalizeRootCause(Microsoft.ML.AnomalyDetectionCatalog,Microsoft.ML.TimeSeries.RootCauseLocalizationInput,System.Double,System.Double)" />
+      <Member Id="M:Microsoft.ML.TimeSeriesCatalog.LocalizeRootCauses(Microsoft.ML.AnomalyDetectionCatalog,Microsoft.ML.TimeSeries.RootCauseLocalizationInput,System.Double,System.Double)" />
     </Type>
     <Type Name="Microsoft.ML.TrainCatalogBase" Id="T:Microsoft.ML.TrainCatalogBase" />
     <Type Name="Microsoft.ML.TrainCatalogBase/CatalogInstantiatorBase" Id="T:Microsoft.ML.TrainCatalogBase.CatalogInstantiatorBase" />
@@ -768,7 +774,9 @@
     </Type>
     <Type Name="Microsoft.ML.Data.DatabaseSource" Id="T:Microsoft.ML.Data.DatabaseSource">
       <Member Id="M:Microsoft.ML.Data.DatabaseSource.#ctor(System.Data.Common.DbProviderFactory,System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.Data.DatabaseSource.#ctor(System.Data.Common.DbProviderFactory,System.String,System.String,System.Int32)" />
       <Member Id="P:Microsoft.ML.Data.DatabaseSource.CommandText" />
+      <Member Id="P:Microsoft.ML.Data.DatabaseSource.CommandTimeoutInSeconds" />
       <Member Id="P:Microsoft.ML.Data.DatabaseSource.ConnectionString" />
       <Member Id="P:Microsoft.ML.Data.DatabaseSource.ProviderFactory" />
     </Type>
@@ -1091,6 +1099,7 @@
       <Member Id="F:Microsoft.ML.Data.TextLoader.Options.HeaderFile" />
       <Member Id="F:Microsoft.ML.Data.TextLoader.Options.InputSize" />
       <Member Id="F:Microsoft.ML.Data.TextLoader.Options.MaxRows" />
+      <Member Id="F:Microsoft.ML.Data.TextLoader.Options.MissingRealsAsNaNs" />
       <Member Id="F:Microsoft.ML.Data.TextLoader.Options.ReadMultilines" />
       <Member Id="F:Microsoft.ML.Data.TextLoader.Options.Separators" />
       <Member Id="F:Microsoft.ML.Data.TextLoader.Options.TrimWhitespace" />
@@ -1285,27 +1294,17 @@
       <Member Id="F:Microsoft.ML.TimeSeries.AnomalyDirection.Same" />
       <Member Id="F:Microsoft.ML.TimeSeries.AnomalyDirection.Up" />
     </Type>
-    <Type Name="Microsoft.ML.TimeSeries.BestDimension" Id="T:Microsoft.ML.TimeSeries.BestDimension">
-      <Member Id="M:Microsoft.ML.TimeSeries.BestDimension.#ctor" />
-      <Member Id="M:Microsoft.ML.TimeSeries.BestDimension.CompareTo(System.Object)" />
-    </Type>
     <Type Name="Microsoft.ML.TimeSeries.MetricSlice" Id="T:Microsoft.ML.TimeSeries.MetricSlice">
+      <Member Id="M:Microsoft.ML.TimeSeries.MetricSlice.#ctor" />
       <Member Id="M:Microsoft.ML.TimeSeries.MetricSlice.#ctor(System.DateTime,System.Collections.Generic.List{Microsoft.ML.TimeSeries.TimeSeriesPoint})" />
       <Member Id="P:Microsoft.ML.TimeSeries.MetricSlice.Points" />
       <Member Id="P:Microsoft.ML.TimeSeries.MetricSlice.TimeStamp" />
     </Type>
     <Type Name="Microsoft.ML.TimeSeries.RootCause" Id="T:Microsoft.ML.TimeSeries.RootCause">
       <Member Id="M:Microsoft.ML.TimeSeries.RootCause.#ctor" />
+      <Member Id="P:Microsoft.ML.TimeSeries.RootCause.Gain" />
+      <Member Id="P:Microsoft.ML.TimeSeries.RootCause.GainRatio" />
       <Member Id="P:Microsoft.ML.TimeSeries.RootCause.Items" />
-    </Type>
-    <Type Name="Microsoft.ML.TimeSeries.RootCauseAnalyzer" Id="T:Microsoft.ML.TimeSeries.RootCauseAnalyzer">
-      <Member Id="M:Microsoft.ML.TimeSeries.RootCauseAnalyzer.#ctor(Microsoft.ML.TimeSeries.RootCauseLocalizationInput,System.Double)" />
-      <Member Id="M:Microsoft.ML.TimeSeries.RootCauseAnalyzer.Analyze" />
-      <Member Id="M:Microsoft.ML.TimeSeries.RootCauseAnalyzer.GetEntropy(System.Int32,System.Int32)" />
-      <Member Id="M:Microsoft.ML.TimeSeries.RootCauseAnalyzer.GetSubDim(System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.List{System.String})" />
-      <Member Id="M:Microsoft.ML.TimeSeries.RootCauseAnalyzer.GetTopAnomaly(System.Collections.Generic.List{Microsoft.ML.TimeSeries.TimeSeriesPoint},Microsoft.ML.TimeSeries.TimeSeriesPoint,System.Collections.Generic.List{Microsoft.ML.TimeSeries.TimeSeriesPoint},System.String,System.Boolean)" />
-      <Member Id="M:Microsoft.ML.TimeSeries.RootCauseAnalyzer.GetTotalPointsForAnomalyTimestamp(Microsoft.ML.TimeSeries.RootCauseLocalizationInput)" />
-      <Member Id="M:Microsoft.ML.TimeSeries.RootCauseAnalyzer.SelectBestDimension(System.Collections.Generic.List{Microsoft.ML.TimeSeries.TimeSeriesPoint},System.Collections.Generic.List{Microsoft.ML.TimeSeries.TimeSeriesPoint},System.Collections.Generic.List{System.String})" />
     </Type>
     <Type Name="Microsoft.ML.TimeSeries.RootCauseItem" Id="T:Microsoft.ML.TimeSeries.RootCauseItem">
       <Member Id="F:Microsoft.ML.TimeSeries.RootCauseItem.Dimension" />
@@ -1317,20 +1316,36 @@
       <Member Id="M:Microsoft.ML.TimeSeries.RootCauseItem.Equals(Microsoft.ML.TimeSeries.RootCauseItem)" />
     </Type>
     <Type Name="Microsoft.ML.TimeSeries.RootCauseLocalizationInput" Id="T:Microsoft.ML.TimeSeries.RootCauseLocalizationInput">
+      <Member Id="M:Microsoft.ML.TimeSeries.RootCauseLocalizationInput.#ctor" />
       <Member Id="M:Microsoft.ML.TimeSeries.RootCauseLocalizationInput.#ctor(System.DateTime,System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.List{Microsoft.ML.TimeSeries.MetricSlice},Microsoft.ML.TimeSeries.AggregateType,System.Object)" />
-      <Member Id="M:Microsoft.ML.TimeSeries.RootCauseLocalizationInput.#ctor(System.DateTime,System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.List{Microsoft.ML.TimeSeries.MetricSlice},System.String)" />
+      <Member Id="M:Microsoft.ML.TimeSeries.RootCauseLocalizationInput.#ctor(System.DateTime,System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.List{Microsoft.ML.TimeSeries.MetricSlice},System.Object)" />
       <Member Id="P:Microsoft.ML.TimeSeries.RootCauseLocalizationInput.AggregateSymbol" />
       <Member Id="P:Microsoft.ML.TimeSeries.RootCauseLocalizationInput.AggregateType" />
       <Member Id="P:Microsoft.ML.TimeSeries.RootCauseLocalizationInput.AnomalyDimension" />
       <Member Id="P:Microsoft.ML.TimeSeries.RootCauseLocalizationInput.AnomalyTimestamp" />
       <Member Id="P:Microsoft.ML.TimeSeries.RootCauseLocalizationInput.Slices" />
     </Type>
+    <Type Name="Microsoft.ML.TimeSeries.SrCnnDeseasonalityMode" Id="T:Microsoft.ML.TimeSeries.SrCnnDeseasonalityMode">
+      <Member Id="F:Microsoft.ML.TimeSeries.SrCnnDeseasonalityMode.Mean" />
+      <Member Id="F:Microsoft.ML.TimeSeries.SrCnnDeseasonalityMode.Median" />
+      <Member Id="F:Microsoft.ML.TimeSeries.SrCnnDeseasonalityMode.Stl" />
+    </Type>
     <Type Name="Microsoft.ML.TimeSeries.SrCnnDetectMode" Id="T:Microsoft.ML.TimeSeries.SrCnnDetectMode">
       <Member Id="F:Microsoft.ML.TimeSeries.SrCnnDetectMode.AnomalyAndExpectedValue" />
       <Member Id="F:Microsoft.ML.TimeSeries.SrCnnDetectMode.AnomalyAndMargin" />
       <Member Id="F:Microsoft.ML.TimeSeries.SrCnnDetectMode.AnomalyOnly" />
     </Type>
+    <Type Name="Microsoft.ML.TimeSeries.SrCnnEntireAnomalyDetectorOptions" Id="T:Microsoft.ML.TimeSeries.SrCnnEntireAnomalyDetectorOptions">
+      <Member Id="F:Microsoft.ML.TimeSeries.SrCnnEntireAnomalyDetectorOptions.BatchSize" />
+      <Member Id="F:Microsoft.ML.TimeSeries.SrCnnEntireAnomalyDetectorOptions.DeseasonalityMode" />
+      <Member Id="F:Microsoft.ML.TimeSeries.SrCnnEntireAnomalyDetectorOptions.DetectMode" />
+      <Member Id="F:Microsoft.ML.TimeSeries.SrCnnEntireAnomalyDetectorOptions.Period" />
+      <Member Id="F:Microsoft.ML.TimeSeries.SrCnnEntireAnomalyDetectorOptions.Sensitivity" />
+      <Member Id="F:Microsoft.ML.TimeSeries.SrCnnEntireAnomalyDetectorOptions.Threshold" />
+      <Member Id="M:Microsoft.ML.TimeSeries.SrCnnEntireAnomalyDetectorOptions.#ctor" />
+    </Type>
     <Type Name="Microsoft.ML.TimeSeries.TimeSeriesPoint" Id="T:Microsoft.ML.TimeSeries.TimeSeriesPoint">
+      <Member Id="M:Microsoft.ML.TimeSeries.TimeSeriesPoint.#ctor" />
       <Member Id="M:Microsoft.ML.TimeSeries.TimeSeriesPoint.#ctor(System.Collections.Generic.Dictionary{System.String,System.Object})" />
       <Member Id="M:Microsoft.ML.TimeSeries.TimeSeriesPoint.#ctor(System.Double,System.Double,System.Boolean,System.Collections.Generic.Dictionary{System.String,System.Object})" />
       <Member Id="M:Microsoft.ML.TimeSeries.TimeSeriesPoint.Equals(Microsoft.ML.TimeSeries.TimeSeriesPoint)" />
@@ -2371,6 +2386,7 @@
       <Member Id="F:Microsoft.ML.Transforms.MissingValueReplacingEstimator.ReplacementMode.Maximum" />
       <Member Id="F:Microsoft.ML.Transforms.MissingValueReplacingEstimator.ReplacementMode.Mean" />
       <Member Id="F:Microsoft.ML.Transforms.MissingValueReplacingEstimator.ReplacementMode.Minimum" />
+      <Member Id="F:Microsoft.ML.Transforms.MissingValueReplacingEstimator.ReplacementMode.Mode" />
     </Type>
     <Type Name="Microsoft.ML.Transforms.MissingValueReplacingTransformer" Id="T:Microsoft.ML.Transforms.MissingValueReplacingTransformer" />
     <Type Name="Microsoft.ML.Transforms.MutualInformationFeatureSelectingEstimator" Id="T:Microsoft.ML.Transforms.MutualInformationFeatureSelectingEstimator">
@@ -2611,6 +2627,7 @@
     </Type>
     <Type Name="Microsoft.ML.Transforms.Text.LatentDirichletAllocationTransformer" Id="T:Microsoft.ML.Transforms.Text.LatentDirichletAllocationTransformer">
       <Member Id="M:Microsoft.ML.Transforms.Text.LatentDirichletAllocationTransformer.Dispose" />
+      <Member Id="M:Microsoft.ML.Transforms.Text.LatentDirichletAllocationTransformer.GetLdaDetails(System.Int32)" />
     </Type>
     <Type Name="Microsoft.ML.Transforms.Text.LatentDirichletAllocationTransformer/ModelParameters" Id="T:Microsoft.ML.Transforms.Text.LatentDirichletAllocationTransformer.ModelParameters">
       <Member Id="F:Microsoft.ML.Transforms.Text.LatentDirichletAllocationTransformer.ModelParameters.ItemScoresPerTopic" />
