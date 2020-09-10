@@ -20,6 +20,47 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
+    <Member MemberName="CrossValidate">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.TrainCatalogBase.CrossValidationResult&lt;Microsoft.ML.Data.RankingMetrics&gt;&gt; CrossValidate (Microsoft.ML.IDataView data, Microsoft.ML.IEstimator&lt;Microsoft.ML.ITransformer&gt; estimator, int numberOfFolds = 5, string labelColumnName = &quot;Label&quot;, string rowGroupColumnName = &quot;GroupId&quot;, int? seed = default);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.IReadOnlyList`1&lt;class Microsoft.ML.TrainCatalogBase/CrossValidationResult`1&lt;class Microsoft.ML.Data.RankingMetrics&gt;&gt; CrossValidate(class Microsoft.ML.IDataView data, class Microsoft.ML.IEstimator`1&lt;class Microsoft.ML.ITransformer&gt; estimator, int32 numberOfFolds, string labelColumnName, string rowGroupColumnName, valuetype System.Nullable`1&lt;int32&gt; seed) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.RankingCatalog.CrossValidate(Microsoft.ML.IDataView,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.Int32,System.String,System.String,System.Nullable{System.Int32})" />
+      <MemberSignature Language="VB.NET" Value="Public Function CrossValidate (data As IDataView, estimator As IEstimator(Of ITransformer), Optional numberOfFolds As Integer = 5, Optional labelColumnName As String = &quot;Label&quot;, Optional rowGroupColumnName As String = &quot;GroupId&quot;, Optional seed As Nullable(Of Integer) = Nothing) As IReadOnlyList(Of TrainCatalogBase.CrossValidationResult(Of RankingMetrics))" />
+      <MemberSignature Language="F#" Value="member this.CrossValidate : Microsoft.ML.IDataView * Microsoft.ML.IEstimator&lt;Microsoft.ML.ITransformer&gt; * int * string * string * Nullable&lt;int&gt; -&gt; System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.TrainCatalogBase.CrossValidationResult&lt;Microsoft.ML.Data.RankingMetrics&gt;&gt;" Usage="rankingCatalog.CrossValidate (data, estimator, numberOfFolds, labelColumnName, rowGroupColumnName, seed)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.TrainCatalogBase+CrossValidationResult&lt;Microsoft.ML.Data.RankingMetrics&gt;&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data" Type="Microsoft.ML.IDataView" Index="0" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="estimator" Type="Microsoft.ML.IEstimator&lt;Microsoft.ML.ITransformer&gt;" Index="1" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="numberOfFolds" Type="System.Int32" Index="2" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="labelColumnName" Type="System.String" Index="3" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="rowGroupColumnName" Type="System.String" Index="4" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="seed" Type="System.Nullable&lt;System.Int32&gt;" Index="5" FrameworkAlternate="ml-dotnet" />
+      </Parameters>
+      <Docs>
+        <param name="data">The data to run cross-validation on.</param>
+        <param name="estimator">The estimator to fit.</param>
+        <param name="numberOfFolds">Number of cross-validation folds.</param>
+        <param name="labelColumnName">The label column (for evaluation).</param>
+        <param name="rowGroupColumnName">The name of the groupId column in <paramref name="data" />, which is used to group rows.
+            This column will automatically be used as SamplingKeyColumn when splitting the data for Cross Validation,
+            as this is required by the ranking algorithms
+            If <see langword="null" /> no row grouping will be performed. </param>
+        <param name="seed">  Seed for the random number generator used to select rows for cross-validation folds.</param>
+        <summary>
+            Run cross-validation over <paramref name="numberOfFolds" /> folds of <paramref name="data" />, by fitting <paramref name="estimator" />,
+            and respecting <paramref name="rowGroupColumnName" />if provided.
+            Then evaluate each sub-model against <paramref name="labelColumnName" /> and return metrics.
+            </summary>
+        <returns>Per-fold results: metrics, models, scored datasets.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Evaluate">
       <MemberSignature Language="C#" Value="public Microsoft.ML.Data.RankingMetrics Evaluate (Microsoft.ML.IDataView data, string labelColumnName = &quot;Label&quot;, string rowGroupColumnName = &quot;GroupId&quot;, string scoreColumnName = &quot;Score&quot;);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Data.RankingMetrics Evaluate(class Microsoft.ML.IDataView data, string labelColumnName, string rowGroupColumnName, string scoreColumnName) cil managed" />
