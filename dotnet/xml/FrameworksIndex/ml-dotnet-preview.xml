@@ -21,6 +21,7 @@
       <Member Id="M:Microsoft.ML.AlexNetExtension.AlexNet(Microsoft.ML.Transforms.Onnx.DnnImageModelSelector,Microsoft.ML.Runtime.IHostEnvironment,System.String,System.String,System.String)" />
     </Type>
     <Type Name="Microsoft.ML.OnnxExportExtensions" Id="T:Microsoft.ML.OnnxExportExtensions">
+      <Member Id="M:Microsoft.ML.OnnxExportExtensions.ConvertToOnnx(Microsoft.ML.ModelOperationsCatalog,Microsoft.ML.ITransformer,Microsoft.ML.IDataView,System.Int32,System.IO.Stream)" />
       <Member Id="M:Microsoft.ML.OnnxExportExtensions.ConvertToOnnx(Microsoft.ML.ModelOperationsCatalog,Microsoft.ML.ITransformer,Microsoft.ML.IDataView,System.IO.Stream)" />
     </Type>
     <Type Name="Microsoft.ML.RecommendationCatalog" Id="T:Microsoft.ML.RecommendationCatalog">
@@ -54,6 +55,8 @@
       <Member Id="M:Microsoft.ML.AutoML.AutoCatalog.CreateBinaryClassificationExperiment(System.UInt32)" />
       <Member Id="M:Microsoft.ML.AutoML.AutoCatalog.CreateMulticlassClassificationExperiment(Microsoft.ML.AutoML.MulticlassExperimentSettings)" />
       <Member Id="M:Microsoft.ML.AutoML.AutoCatalog.CreateMulticlassClassificationExperiment(System.UInt32)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoCatalog.CreateRankingExperiment(Microsoft.ML.AutoML.RankingExperimentSettings)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoCatalog.CreateRankingExperiment(System.UInt32)" />
       <Member Id="M:Microsoft.ML.AutoML.AutoCatalog.CreateRecommendationExperiment(Microsoft.ML.AutoML.RecommendationExperimentSettings)" />
       <Member Id="M:Microsoft.ML.AutoML.AutoCatalog.CreateRecommendationExperiment(System.UInt32)" />
       <Member Id="M:Microsoft.ML.AutoML.AutoCatalog.CreateRegressionExperiment(Microsoft.ML.AutoML.RegressionExperimentSettings)" />
@@ -103,6 +106,7 @@
       <Member Id="M:Microsoft.ML.AutoML.ColumnInformation.#ctor" />
       <Member Id="P:Microsoft.ML.AutoML.ColumnInformation.CategoricalColumnNames" />
       <Member Id="P:Microsoft.ML.AutoML.ColumnInformation.ExampleWeightColumnName" />
+      <Member Id="P:Microsoft.ML.AutoML.ColumnInformation.GroupIdColumnName" />
       <Member Id="P:Microsoft.ML.AutoML.ColumnInformation.IgnoredColumnNames" />
       <Member Id="P:Microsoft.ML.AutoML.ColumnInformation.ImagePathColumnNames" />
       <Member Id="P:Microsoft.ML.AutoML.ColumnInformation.ItemIdColumnName" />
@@ -172,6 +176,24 @@
       <Member Id="M:Microsoft.ML.AutoML.MulticlassExperimentSettings.#ctor" />
       <Member Id="P:Microsoft.ML.AutoML.MulticlassExperimentSettings.OptimizingMetric" />
       <Member Id="P:Microsoft.ML.AutoML.MulticlassExperimentSettings.Trainers" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.RankingExperiment" Id="T:Microsoft.ML.AutoML.RankingExperiment" />
+    <Type Name="Microsoft.ML.AutoML.RankingExperimentResultExtensions" Id="T:Microsoft.ML.AutoML.RankingExperimentResultExtensions">
+      <Member Id="M:Microsoft.ML.AutoML.RankingExperimentResultExtensions.Best(System.Collections.Generic.IEnumerable{Microsoft.ML.AutoML.CrossValidationRunDetail{Microsoft.ML.Data.RankingMetrics}},Microsoft.ML.AutoML.RankingMetric)" />
+      <Member Id="M:Microsoft.ML.AutoML.RankingExperimentResultExtensions.Best(System.Collections.Generic.IEnumerable{Microsoft.ML.AutoML.RunDetail{Microsoft.ML.Data.RankingMetrics}},Microsoft.ML.AutoML.RankingMetric)" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.RankingExperimentSettings" Id="T:Microsoft.ML.AutoML.RankingExperimentSettings">
+      <Member Id="M:Microsoft.ML.AutoML.RankingExperimentSettings.#ctor" />
+      <Member Id="P:Microsoft.ML.AutoML.RankingExperimentSettings.OptimizingMetric" />
+      <Member Id="P:Microsoft.ML.AutoML.RankingExperimentSettings.Trainers" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.RankingMetric" Id="T:Microsoft.ML.AutoML.RankingMetric">
+      <Member Id="F:Microsoft.ML.AutoML.RankingMetric.Dcg" />
+      <Member Id="F:Microsoft.ML.AutoML.RankingMetric.Ndcg" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.RankingTrainer" Id="T:Microsoft.ML.AutoML.RankingTrainer">
+      <Member Id="F:Microsoft.ML.AutoML.RankingTrainer.FastTreeRanking" />
+      <Member Id="F:Microsoft.ML.AutoML.RankingTrainer.LightGbmRanking" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.RecommendationExperiment" Id="T:Microsoft.ML.AutoML.RecommendationExperiment" />
     <Type Name="Microsoft.ML.AutoML.RecommendationExperimentSettings" Id="T:Microsoft.ML.AutoML.RecommendationExperimentSettings">
@@ -248,6 +270,7 @@
       <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.DownloadTensorFlowSentimentModel" />
       <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.GenerateBinaryLabelFloatFeatureVectorFloatWeightSamples(System.Int32)" />
       <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.GenerateFloatLabelFloatFeatureVectorSamples(System.Int32,System.Double)" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.GenerateFloatLabelFloatFeatureVectorUlongGroupIdSamples(System.Int32,System.Double,System.UInt64,System.UInt64)" />
       <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.GenerateRandomMulticlassClassificationExamples(System.Int32)" />
       <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.GetAdultDataset" />
       <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.GetBreastCancerDataset" />
@@ -256,6 +279,7 @@
       <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.GetSampleImages" />
       <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.LoadFeaturizedAdultDataset(Microsoft.ML.MLContext)" />
       <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.LoadHousingRegressionDataset(Microsoft.ML.MLContext)" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.LoadRawAdultDataset(Microsoft.ML.MLContext)" />
     </Type>
     <Type Name="Microsoft.ML.SamplesUtils.DatasetUtils/BinaryLabelFloatFeatureVectorFloatWeightSample" Id="T:Microsoft.ML.SamplesUtils.DatasetUtils.BinaryLabelFloatFeatureVectorFloatWeightSample">
       <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.BinaryLabelFloatFeatureVectorFloatWeightSample.Features" />
@@ -273,6 +297,12 @@
       <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.FloatLabelFloatFeatureVectorSample.Features" />
       <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.FloatLabelFloatFeatureVectorSample.Label" />
       <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.FloatLabelFloatFeatureVectorSample.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.SamplesUtils.DatasetUtils/FloatLabelFloatFeatureVectorUlongGroupIdSample" Id="T:Microsoft.ML.SamplesUtils.DatasetUtils.FloatLabelFloatFeatureVectorUlongGroupIdSample">
+      <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.FloatLabelFloatFeatureVectorUlongGroupIdSample.Features" />
+      <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.FloatLabelFloatFeatureVectorUlongGroupIdSample.GroupId" />
+      <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.FloatLabelFloatFeatureVectorUlongGroupIdSample.Label" />
+      <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.FloatLabelFloatFeatureVectorUlongGroupIdSample.#ctor" />
     </Type>
     <Type Name="Microsoft.ML.SamplesUtils.DatasetUtils/MulticlassClassificationExample" Id="T:Microsoft.ML.SamplesUtils.DatasetUtils.MulticlassClassificationExample">
       <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.MulticlassClassificationExample.Features" />
