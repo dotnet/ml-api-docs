@@ -1,0 +1,109 @@
+<Type Name="TimeSeriesImputerEstimator" FullName="Microsoft.ML.Featurizers.TimeSeriesImputerEstimator">
+  <TypeSignature Language="C#" Value="public sealed class TimeSeriesImputerEstimator : Microsoft.ML.IEstimator&lt;Microsoft.ML.Featurizers.TimeSeriesImputerTransformer&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit TimeSeriesImputerEstimator extends System.Object implements class Microsoft.ML.IEstimator`1&lt;class Microsoft.ML.Featurizers.TimeSeriesImputerTransformer&gt;" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Featurizers.TimeSeriesImputerEstimator" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class TimeSeriesImputerEstimator&#xA;Implements IEstimator(Of TimeSeriesImputerTransformer)" />
+  <TypeSignature Language="F#" Value="type TimeSeriesImputerEstimator = class&#xA;    interface IEstimator&lt;TimeSeriesImputerTransformer&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Featurizers</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.IEstimator&lt;Microsoft.ML.Featurizers.TimeSeriesImputerTransformer&gt;</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+             Imputes missing rows and column data per grain, based on the dates in the date column.
+            
+             </summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[
+            
+             ###  Estimator Characteristics
+             |  |  |
+             | -- | -- |
+             | Does this estimator need to look at the data to train its parameters? | Yes |
+             | Input column data type | All Types |
+             | Output column data type | All Types |
+             | Exportable to ONNX | No |
+            
+             The TimeSeriesImputer imputes missing rows and column data per grain (category), based on the dates in the date column. This operation needs to happen to every column in the IDataView,
+             If you "filter" a column using the filterColumns and filterMode parameters, if a row is imputed the default value for that type will be used.
+             Currently only float/double/string columns are supported for imputation strategies, and an empty string is considered "missing" for the
+             purpose of this estimator. A new column is added to the schema after this operation is run. The column is called "IsRowImputed" and is a
+             boolean value representing if the row was created as a result of this operation or not.
+            
+             The imputation strategies that are currently supported are ForwardFill, where the last good value is propagated forward, Backfill, where the next good value is propagated backwards,
+             and Median, where the mathmatical median is used to fill in missing values.
+            
+             NOTE: It is not recommended to chain this multiple times. If a column is filtered, the default value is placed when a row is imputed, and the
+             default value is not null. Thus any other TimeSeriesImputers will not be able to replace those values anymore causing essentially a very
+             computationally expensive NO-OP.
+            
+             ]]></format>
+    </remarks>
+    <altmember cref="M:Microsoft.ML.Featurizers.TimeSeriesImputerExtensionClass.ReplaceMissingTimeSeriesValues(Microsoft.ML.TransformsCatalog,System.String,System.String[],Microsoft.ML.Featurizers.TimeSeriesImputerEstimator.ImputationStrategy)" />
+    <altmember cref="M:Microsoft.ML.Featurizers.TimeSeriesImputerExtensionClass.ReplaceMissingTimeSeriesValues(Microsoft.ML.TransformsCatalog,System.String,System.String[],System.String[],Microsoft.ML.Featurizers.TimeSeriesImputerEstimator.FilterMode,Microsoft.ML.Featurizers.TimeSeriesImputerEstimator.ImputationStrategy,System.Boolean)" />
+  </Docs>
+  <Members>
+    <Member MemberName="Fit">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Featurizers.TimeSeriesImputerTransformer Fit (Microsoft.ML.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Featurizers.TimeSeriesImputerTransformer Fit(class Microsoft.ML.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Featurizers.TimeSeriesImputerEstimator.Fit(Microsoft.ML.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Fit (input As IDataView) As TimeSeriesImputerTransformer" />
+      <MemberSignature Language="F#" Value="abstract member Fit : Microsoft.ML.IDataView -&gt; Microsoft.ML.Featurizers.TimeSeriesImputerTransformer&#xA;override this.Fit : Microsoft.ML.IDataView -&gt; Microsoft.ML.Featurizers.TimeSeriesImputerTransformer" Usage="timeSeriesImputerEstimator.Fit input" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.IEstimator`1.Fit(Microsoft.ML.IDataView)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Featurizers</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Featurizers.TimeSeriesImputerTransformer</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetOutputSchema">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.SchemaShape GetOutputSchema (Microsoft.ML.SchemaShape inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.SchemaShape GetOutputSchema(class Microsoft.ML.SchemaShape inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Featurizers.TimeSeriesImputerEstimator.GetOutputSchema(Microsoft.ML.SchemaShape)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetOutputSchema (inputSchema As SchemaShape) As SchemaShape" />
+      <MemberSignature Language="F#" Value="abstract member GetOutputSchema : Microsoft.ML.SchemaShape -&gt; Microsoft.ML.SchemaShape&#xA;override this.GetOutputSchema : Microsoft.ML.SchemaShape -&gt; Microsoft.ML.SchemaShape" Usage="timeSeriesImputerEstimator.GetOutputSchema inputSchema" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.IEstimator`1.GetOutputSchema(Microsoft.ML.SchemaShape)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Featurizers</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.SchemaShape</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.SchemaShape" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
