@@ -1,0 +1,118 @@
+<Type Name="CalibratedBinaryClassificationMetrics" FullName="Microsoft.ML.Data.CalibratedBinaryClassificationMetrics">
+  <TypeSignature Language="C#" Value="public sealed class CalibratedBinaryClassificationMetrics : Microsoft.ML.Data.BinaryClassificationMetrics" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit CalibratedBinaryClassificationMetrics extends Microsoft.ML.Data.BinaryClassificationMetrics" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Data.CalibratedBinaryClassificationMetrics" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class CalibratedBinaryClassificationMetrics&#xA;Inherits BinaryClassificationMetrics" />
+  <TypeSignature Language="F#" Value="type CalibratedBinaryClassificationMetrics = class&#xA;    inherit BinaryClassificationMetrics" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Data</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Microsoft.ML.Data.BinaryClassificationMetrics</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+            Evaluation results for binary classifiers, including probabilistic metrics.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Entropy">
+      <MemberSignature Language="C#" Value="public double Entropy { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 Entropy" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Data.CalibratedBinaryClassificationMetrics.Entropy" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Entropy As Double" />
+      <MemberSignature Language="F#" Value="member this.Entropy : double" Usage="Microsoft.ML.Data.CalibratedBinaryClassificationMetrics.Entropy" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Gets the test-set entropy, which is the prior log-loss based on the proportion of positive
+            and negative instances in the test set. A classifier's <see cref="P:Microsoft.ML.Data.CalibratedBinaryClassificationMetrics.LogLoss" /> lower than
+            the entropy indicates that a classifier does better than predicting the proportion of positive
+            instances as the probability for each instance.
+            </summary>
+        <value>To be added.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+            $Entropy = -p log_2(p) - (1 - p) log_2(1 - p)$, where $p$ is the proportion of the positive class
+            in the test set.
+            ]]></format>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LogLoss">
+      <MemberSignature Language="C#" Value="public double LogLoss { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 LogLoss" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Data.CalibratedBinaryClassificationMetrics.LogLoss" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property LogLoss As Double" />
+      <MemberSignature Language="F#" Value="member this.LogLoss : double" Usage="Microsoft.ML.Data.CalibratedBinaryClassificationMetrics.LogLoss" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Gets the log-loss of the classifier. Log-loss measures the performance of a classifier
+            with respect to how much the predicted probabilities diverge from the true class label. Lower
+            log-loss indicates a better model. A perfect model, which predicts a probability of 1 for the
+            true class, will have a log-loss of 0.
+            </summary>
+        <value>To be added.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+            The log-loss metric, is computed as follows:
+            $LogLoss = - \frac{1}{m} \sum{i = 1}^m ln(p_i)$
+            where m is the number of instances in the test set and
+            $p_i$ is the probability returned by the classifier if the instance belongs to class 1,
+            and 1 minus the probability returned by the classifier if the instance belongs to class 0.
+            ]]></format>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LogLossReduction">
+      <MemberSignature Language="C#" Value="public double LogLossReduction { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 LogLossReduction" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Data.CalibratedBinaryClassificationMetrics.LogLossReduction" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property LogLossReduction As Double" />
+      <MemberSignature Language="F#" Value="member this.LogLossReduction : double" Usage="Microsoft.ML.Data.CalibratedBinaryClassificationMetrics.LogLossReduction" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Gets the log-loss reduction (also known as relative log-loss, or reduction in information gain - RIG)
+            of the classifier. It gives a measure of how much a model improves on a model that gives random predictions.
+            Log-loss reduction closer to 1 indicates a better model.
+            </summary>
+        <value>To be added.</value>
+        <remarks>
+          <format type="text/markdown"><![CDATA[
+            The log-loss reduction is scaled relative to a classifier that predicts the prior for every example:
+            $LogLossReduction = \frac{LogLoss(prior) - LogLoss(classifier)}{LogLoss(prior)}$
+            This metric can be interpreted as the advantage of the classifier over a random prediction.
+            For example, if the RIG equals 0.2, it can be interpreted as "the probability of a correct prediction is
+            20% better than random guessing".
+            ]]></format>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

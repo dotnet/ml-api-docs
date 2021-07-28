@@ -1,0 +1,228 @@
+<Type Name="MatrixFactorizationTrainer" FullName="Microsoft.ML.Trainers.MatrixFactorizationTrainer">
+  <TypeSignature Language="C#" Value="public sealed class MatrixFactorizationTrainer : Microsoft.ML.IEstimator&lt;Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer&gt;, Microsoft.ML.Trainers.ITrainerEstimator&lt;Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer,Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit MatrixFactorizationTrainer extends System.Object implements class Microsoft.ML.IEstimator`1&lt;class Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer&gt;, class Microsoft.ML.Trainers.ITrainerEstimator`2&lt;class Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer, class Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters&gt;" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Trainers.MatrixFactorizationTrainer" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class MatrixFactorizationTrainer&#xA;Implements IEstimator(Of MatrixFactorizationPredictionTransformer), ITrainerEstimator(Of MatrixFactorizationPredictionTransformer, MatrixFactorizationModelParameters)" />
+  <TypeSignature Language="F#" Value="type MatrixFactorizationTrainer = class&#xA;    interface ITrainerEstimator&lt;MatrixFactorizationPredictionTransformer, MatrixFactorizationModelParameters&gt;&#xA;    interface IEstimator&lt;MatrixFactorizationPredictionTransformer&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.IEstimator&lt;Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer&gt;</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.IEstimator&lt;TTransformer&gt;</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Trainers.ITrainerEstimator&lt;Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer,Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters&gt;</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+             The <see cref="T:Microsoft.ML.IEstimator`1" /> to predict elements in a matrix using matrix factorization (also known as a type of <a href="https://en.wikipedia.org/wiki/Collaborative_filtering">collaborative filtering</a>).
+             </summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[
+             To create this trainer, use [MatrixFactorization](xref:Microsoft.ML.RecommendationCatalog.RecommendationTrainers.MatrixFactorization(System.String,System.String,System.String,System.Int32,System.Double,System.Int32))
+             or [MatrixFactorization(Options)](xref:Microsoft.ML.RecommendationCatalog.RecommendationTrainers.MatrixFactorization(Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options)).
+            
+             ### Input and Output Columns
+             There are three input columns required, one for matrix row indexes, one for matrix column indexes, and one for
+             values (i.e., labels) in matrix.
+             They together define a matrix in [COO](https://en.wikipedia.org/wiki/Sparse_matrix#Coordinate_list_(COO)) format.
+             The type for label column is a vector of <xref:System.Single> while the other two columns are
+             [key](xref:Microsoft.ML.Data.KeyDataViewType) type scalar.
+            
+             | Output Column Name | Column Type | Description|
+             | -- | -- | -- |
+             | `Score` | <xref:System.Single> | The predicted matrix value at the location specified by input columns (row index column and column index column). |
+            
+             ### Trainer Characteristics
+             |  |  |
+             | -- | -- |
+             | Machine learning task | Recommender systems |
+             | Is normalization required? | Yes |
+             | Is caching required? | Yes |
+             | Required NuGet in addition to Microsoft.ML | Microsoft.ML.Recommender |
+             | Exportable to ONNX | No |
+            
+             ### Background
+             The basic idea of matrix factorization is finding two low-rank factor matrices to approximate the training matrix.
+             In this module, the expected training data (the factorized matrix) is a list of tuples.
+             Every tuple consists of a column index, a row index,
+             and the value at the location specified by the two indices. For an example data structure of a tuple, one can use:
+            
+             ```csharp
+             // The following variables defines the shape of a m-by-n matrix. Indexes start with 0; that is, our indexing system
+             // is 0-based.
+             const int m = 60;
+             const int n = 100;
+            
+             // A tuple of row index, column index, and rating. It specifies a value in the rating matrix.
+             class MatrixElement
+             {
+                 // Matrix column index starts from 0 and is at most n-1.
+                 [KeyType(n)]
+                 public uint MatrixColumnIndex;
+                 // Matrix row index starts from 0 and is at most m-1.
+                 [KeyType(m)]
+                 public uint MatrixRowIndex;
+                 // The rating at the MatrixColumnIndex-th column and the MatrixRowIndex-th row.
+                 public float Value;
+             }
+             ```
+            
+             Notice that it's not necessary to specify all entries in the training matrix, so matrix factorization can be used to fill <i>missing values</i>.
+             This behavior is very helpful when building recommender systems.
+            
+             To provide a better understanding on practical uses of matrix factorization, let's consider music recommendation as an example.
+             Assume that user IDs and music IDs are used as row and column indexes, respectively, and matrix's values are ratings provided by those users.
+             That is, rating $r$ at row $u$ and column $v$ means that user $u$ give $r$ to item $v$.
+             An incomplete matrix is very common because not all users may provide their feedbacks to all products (for example, no one can rate ten million songs).
+             Assume that $R\in{\mathbb R}^{m\times n}$ is a m-by-n rating matrix and the [rank](https://en.wikipedia.org/wiki/Rank_(linear_algebra)) of the two factor matrices are $P\in {\mathbb R}^{k\times m}$ and $Q\in {\mathbb R}^{k\times n}$, where $k$ is the approximation rank.
+             The predicted rating at the $u$-th row and the $v$-th column in $R$ would be the inner product of the $u$-th row of $P$ and the $v$-th row of $Q$; that is, $R$ is approximated by the product of $P$'s transpose ($P^T$) and $Q$.
+             Note that $k$ is usually much smaller than $m$ and $n$, so $P^T Q$ is usually called a low-rank approximation of $R$.
+            
+             This trainer includes a [stochastic gradient method](https://en.wikipedia.org/wiki/Stochastic_gradient_descent) and a [coordinate descent method](https://en.wikipedia.org/wiki/Coordinate_descent) for finding $P$ and $Q$ via minimizing the distance between (non-missing part of) $R$ and its approximation $P^T Q$.
+             The coordinate descent method included is specifically for one-class matrix factorization where all observed ratings are positive signals (that is, all rating values are 1).
+             Notice that the only way to invoke one-class matrix factorization is to assign [one-class squared loss](xref:Microsoft.ML.Trainers.MatrixFactorizationTrainer.LossFunctionType.SquareLossOneClass)
+             to [loss function](xref:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options.LossFunction)
+             when calling [MatrixFactorization(Options)](xref:Microsoft.ML.RecommendationCatalog.RecommendationTrainers.MatrixFactorization(Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options)).
+             See Page 6 and Page 28 [here](https://www.csie.ntu.edu.tw/~cjlin/talks/facebook.pdf) for a brief introduction to standard matrix factorization and one-class matrix factorization.
+             The [default setting](xref:Microsoft.ML.Trainers.MatrixFactorizationTrainer.LossFunctionType.SquareLossRegression) induces standard matrix factorization.
+             The underlying library used in ML.NET matrix factorization can be found on [a Github repository](https://github.com/cjlin1/libmf).
+            
+             For users interested in the mathematical details, please see the references below.
+            
+             * For the multi-threading implementation of the used stochastic gradient method, see [A Fast Parallel Stochastic Gradient Method for Matrix Factorization in Shared Memory Systems](https://www.csie.ntu.edu.tw/~cjlin/papers/libmf/libmf_journal.pdf).
+             * For the computation happening inside a single thread, see [A Learning-rate Schedule for Stochastic Gradient Methods to Matrix Factorization](https://www.csie.ntu.edu.tw/~cjlin/papers/libmf/mf_adaptive_pakdd.pdf).
+             * For the parallel coordinate descent method used and one-class matrix factorization formula, see [Selection of Negative Samples for One-class Matrix Factorization](https://www.csie.ntu.edu.tw/~cjlin/papers/one-class-mf/biased-mf-sdm-with-supp.pdf).
+             * For details in the underlying library used, see [LIBMF: A Library for Parallel Matrix Factorization in Shared-memory Systems](https://www.csie.ntu.edu.tw/~cjlin/papers/libmf/libmf_open_source.pdf).
+            
+             Check the See Also section for links to usage examples.
+             ]]></format>
+    </remarks>
+    <altmember cref="M:Microsoft.ML.RecommendationCatalog.RecommendationTrainers.MatrixFactorization(System.String,System.String,System.String,System.Int32,System.Double,System.Int32)" />
+    <altmember cref="M:Microsoft.ML.RecommendationCatalog.RecommendationTrainers.MatrixFactorization(Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options)" />
+    <altmember cref="T:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Options" />
+  </Docs>
+  <Members>
+    <Member MemberName="Fit">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer Fit (Microsoft.ML.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer Fit(class Microsoft.ML.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Fit(Microsoft.ML.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Fit (input As IDataView) As MatrixFactorizationPredictionTransformer" />
+      <MemberSignature Language="F#" Value="abstract member Fit : Microsoft.ML.IDataView -&gt; Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer&#xA;override this.Fit : Microsoft.ML.IDataView -&gt; Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer" Usage="matrixFactorizationTrainer.Fit input" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.IEstimator`1.Fit(Microsoft.ML.IDataView)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="input">The training data set.</param>
+        <summary>
+          <summary> Trains and returns a <see cref="T:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer" />.</summary>
+        </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Fit">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer Fit (Microsoft.ML.IDataView trainData, Microsoft.ML.IDataView validationData);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer Fit(class Microsoft.ML.IDataView trainData, class Microsoft.ML.IDataView validationData) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Fit(Microsoft.ML.IDataView,Microsoft.ML.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Fit (trainData As IDataView, validationData As IDataView) As MatrixFactorizationPredictionTransformer" />
+      <MemberSignature Language="F#" Value="member this.Fit : Microsoft.ML.IDataView * Microsoft.ML.IDataView -&gt; Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer" Usage="matrixFactorizationTrainer.Fit (trainData, validationData)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="trainData" Type="Microsoft.ML.IDataView" />
+        <Parameter Name="validationData" Type="Microsoft.ML.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="trainData">The training data set.</param>
+        <param name="validationData">The validation data set.</param>
+        <summary>
+            Trains a <see cref="T:Microsoft.ML.Trainers.MatrixFactorizationTrainer" /> using both training and validation data, returns a <see cref="T:Microsoft.ML.Trainers.Recommender.MatrixFactorizationPredictionTransformer" />.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetOutputSchema">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.SchemaShape GetOutputSchema (Microsoft.ML.SchemaShape inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.SchemaShape GetOutputSchema(class Microsoft.ML.SchemaShape inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.MatrixFactorizationTrainer.GetOutputSchema(Microsoft.ML.SchemaShape)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetOutputSchema (inputSchema As SchemaShape) As SchemaShape" />
+      <MemberSignature Language="F#" Value="abstract member GetOutputSchema : Microsoft.ML.SchemaShape -&gt; Microsoft.ML.SchemaShape&#xA;override this.GetOutputSchema : Microsoft.ML.SchemaShape -&gt; Microsoft.ML.SchemaShape" Usage="matrixFactorizationTrainer.GetOutputSchema inputSchema" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.IEstimator`1.GetOutputSchema(Microsoft.ML.SchemaShape)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.SchemaShape</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.SchemaShape" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
+        <summary>
+            Schema propagation for transformers. Returns the output schema of the data, if
+            the input schema is like the one provided.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Info">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.TrainerInfo Info { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.TrainerInfo Info" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.MatrixFactorizationTrainer.Info" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Info As TrainerInfo" />
+      <MemberSignature Language="F#" Value="member this.Info : Microsoft.ML.TrainerInfo" Usage="Microsoft.ML.Trainers.MatrixFactorizationTrainer.Info" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Trainers.ITrainerEstimator`2.Info</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.TrainerInfo</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The <see cref="T:Microsoft.ML.TrainerInfo" /> contains general parameters for this trainer.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

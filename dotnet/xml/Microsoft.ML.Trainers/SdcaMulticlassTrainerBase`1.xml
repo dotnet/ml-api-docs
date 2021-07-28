@@ -1,0 +1,83 @@
+<Type Name="SdcaMulticlassTrainerBase&lt;TModel&gt;" FullName="Microsoft.ML.Trainers.SdcaMulticlassTrainerBase&lt;TModel&gt;">
+  <TypeSignature Language="C#" Value="public abstract class SdcaMulticlassTrainerBase&lt;TModel&gt; : Microsoft.ML.Trainers.SdcaTrainerBase&lt;Microsoft.ML.Trainers.SdcaMulticlassTrainerBase&lt;TModel&gt;.MulticlassOptions,Microsoft.ML.Data.MulticlassPredictionTransformer&lt;TModel&gt;,TModel&gt; where TModel : class" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit SdcaMulticlassTrainerBase`1&lt;class TModel&gt; extends Microsoft.ML.Trainers.SdcaTrainerBase`3&lt;class Microsoft.ML.Trainers.SdcaMulticlassTrainerBase`1/MulticlassOptions&lt;!TModel&gt;, class Microsoft.ML.Data.MulticlassPredictionTransformer`1&lt;!TModel&gt;, !TModel&gt;" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Trainers.SdcaMulticlassTrainerBase`1" />
+  <TypeSignature Language="VB.NET" Value="Public MustInherit Class SdcaMulticlassTrainerBase(Of TModel)&#xA;Inherits SdcaTrainerBase(Of SdcaMulticlassTrainerBase(Of TModel).MulticlassOptions, MulticlassPredictionTransformer(Of TModel), TModel)" />
+  <TypeSignature Language="F#" Value="type SdcaMulticlassTrainerBase&lt;'Model (requires 'Model : null)&gt; = class&#xA;    inherit SdcaTrainerBase&lt;SdcaMulticlassTrainerBase&lt;'Model&gt;.MulticlassOptions, MulticlassPredictionTransformer&lt;'Model&gt;, 'Model (requires 'Model : null)&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.StandardTrainers</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <TypeParameters>
+    <TypeParameter Name="TModel">
+      <Constraints>
+        <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
+      </Constraints>
+    </TypeParameter>
+  </TypeParameters>
+  <Base>
+    <BaseTypeName>Microsoft.ML.Trainers.SdcaTrainerBase&lt;Microsoft.ML.Trainers.SdcaMulticlassTrainerBase&lt;TModel&gt;+MulticlassOptions,Microsoft.ML.Data.MulticlassPredictionTransformer&lt;TModel&gt;,TModel&gt;</BaseTypeName>
+    <BaseTypeArguments>
+      <BaseTypeArgument TypeParamName="TOptions">Microsoft.ML.Trainers.SdcaMulticlassTrainerBase&lt;TModel&gt;+MulticlassOptions</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TTransformer">Microsoft.ML.Data.MulticlassPredictionTransformer&lt;TModel&gt;</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="TModel">TModel</BaseTypeArgument>
+    </BaseTypeArguments>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <typeparam name="TModel">To be added.</typeparam>
+    <summary>
+             The <see cref="T:Microsoft.ML.IEstimator`1" /> to predict a target using a linear multiclass classifier model trained with a coordinate descent method.
+             Depending on the used loss function, the trained model can be, for example, maximum entropy classifier or multi-class support vector machine.
+             </summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[
+             To create this trainer for maximum entropy classifier, use [SdcaMaximumEntropy](xref:Microsoft.ML.StandardTrainersCatalog.SdcaMaximumEntropy(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,System.String,System.String,System.String,System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Int32})) or
+             [SdcaMaximumEntropy(Options)](xref:Microsoft.ML.StandardTrainersCatalog.SdcaMaximumEntropy(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,Microsoft.ML.Trainers.SdcaMaximumEntropyMulticlassTrainer.Options)).
+             To create this trainer for a [loss function](xref:Microsoft.ML.Trainers.ISupportSdcaClassificationLoss) (such as support vector machine's [hinge loss](xref:Microsoft.ML.Trainers.HingeLoss)) of your choice,
+             use [SdcaNonCalibrated](xref:Microsoft.ML.StandardTrainersCatalog.SdcaNonCalibrated(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,System.String,System.String,System.String,Microsoft.ML.Trainers.ISupportSdcaClassificationLoss,System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Int32})) or
+             [SdcaNonCalibrated(Options)](xref:Microsoft.ML.StandardTrainersCatalog.SdcaNonCalibrated(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,Microsoft.ML.Trainers.SdcaNonCalibratedMulticlassTrainer.Options)).
+            
+             [!include[io](~/../docs/samples/docs/api-reference/io-columns-multiclass-classification.md)]
+            
+             ### Trainer Characteristics
+             |  |  |
+             | -- | -- |
+             | Machine learning task | Multiclass classification |
+             | Is normalization required? | Yes |
+             | Is caching required? | No |
+             | Required NuGet in addition to Microsoft.ML | None |
+             | Exportable to ONNX | Yes |
+            
+             ### Scoring Function
+             This trains linear model to solve multiclass classification problems.
+             Assume that the number of classes is $m$ and number of features is $n$.
+             It assigns the $c$-th class a coefficient vector $\textbf{w}_c \in {\mathbb R}^n$ and a bias $b_c \in {\mathbb R}$, for $c=1,\dots,m$.
+             Given a feature vector $\textbf{x} \in {\mathbb R}^n$, the $c$-th class's score would be $\hat{y}^c = \textbf{w}_c^T \textbf{x} + b_c$.
+             If $\textbf{x}$ belongs to class $c$, then $\hat{y}^c$ should be much larger than 0.
+             In contrast, a $\hat{y}^c$ much smaller than 0 means the desired label should not be $c$.
+            
+             If and only if the trained model is a maximum entropy classifier, you can interpret the output score vector as the predicted class probabilities because [softmax function](https://en.wikipedia.org/wiki/Softmax_function) may be applied to post-process all classes' scores.
+             More specifically, the probability of $\textbf{x}$ belonging to class $c$ is computed by $\tilde{P}( c | \textbf{x} ) = \frac{ e^{\hat{y}^c} }{ \sum_{c' = 1}^m e^{\hat{y}^{c'}} }$ and store at the $c$-th element in the score vector.
+             In other cases, the output score vector is just $[\hat{y}^1, \dots, \hat{y}^m]$.
+            
+             ### Training Algorithm Details
+             The optimization algorithm is an extension of [a coordinate descent method](http://jmlr.org/papers/volume14/shalev-shwartz13a/shalev-shwartz13a.pdf)
+             following a similar path proposed in an earlier [paper](https://www.csie.ntu.edu.tw/~cjlin/papers/maxent_dual.pdf).
+             It is usually much faster than [L-BFGS](https://en.wikipedia.org/wiki/Limited-memory_BFGS) and
+             [truncated Newton methods](https://en.wikipedia.org/wiki/Truncated_Newton_method) for large-scale and sparse data sets.
+            
+             [!include[regularization](~/../docs/samples/docs/api-reference/regularization-l1-l2.md)]
+            
+             Check the See Also section for links to usage examples.
+             ]]></format>
+    </remarks>
+    <altmember cref="M:Microsoft.ML.StandardTrainersCatalog.SdcaMaximumEntropy(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,Microsoft.ML.Trainers.SdcaMaximumEntropyMulticlassTrainer.Options)" />
+    <altmember cref="M:Microsoft.ML.StandardTrainersCatalog.SdcaMaximumEntropy(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,System.String,System.String,System.String,System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Int32})" />
+    <altmember cref="T:Microsoft.ML.Trainers.SdcaMaximumEntropyMulticlassTrainer.Options" />
+    <altmember cref="M:Microsoft.ML.StandardTrainersCatalog.SdcaNonCalibrated(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,Microsoft.ML.Trainers.SdcaNonCalibratedMulticlassTrainer.Options)" />
+    <altmember cref="M:Microsoft.ML.StandardTrainersCatalog.SdcaNonCalibrated(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,System.String,System.String,System.String,Microsoft.ML.Trainers.ISupportSdcaClassificationLoss,System.Nullable{System.Single},System.Nullable{System.Single},System.Nullable{System.Int32})" />
+    <altmember cref="T:Microsoft.ML.Trainers.SdcaNonCalibratedMulticlassTrainer.Options" />
+  </Docs>
+  <Members />
+</Type>

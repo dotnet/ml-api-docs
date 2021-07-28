@@ -1,0 +1,545 @@
+<Type Name="MLContext" FullName="Microsoft.ML.MLContext">
+  <TypeSignature Language="C#" Value="public sealed class MLContext" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit MLContext extends System.Object implements class Microsoft.ML.Runtime.IChannelProvider, class Microsoft.ML.Runtime.IExceptionContext, class Microsoft.ML.Runtime.IHostEnvironment, class Microsoft.ML.Runtime.IProgressChannelProvider" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.MLContext" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class MLContext" />
+  <TypeSignature Language="F#" Value="type MLContext = class&#xA;    interface IHostEnvironment&#xA;    interface IChannelProvider&#xA;    interface IExceptionContext&#xA;    interface IProgressChannelProvider" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Data</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.IChannelProvider</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.IExceptionContext</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.IHostEnvironment</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.Runtime.IProgressChannelProvider</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+            The common context for all ML.NET operations. Once instantiated by the user, it provides a way to
+            create components for data preparation, feature engineering, training, prediction, and model evaluation.
+            It also allows logging, execution control, and the ability to set repeatable random numbers.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public MLContext (int? seed = default);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype System.Nullable`1&lt;int32&gt; seed) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.MLContext.#ctor(System.Nullable{System.Int32})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (Optional seed As Nullable(Of Integer) = Nothing)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.MLContext : Nullable&lt;int&gt; -&gt; Microsoft.ML.MLContext" Usage="new Microsoft.ML.MLContext seed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="seed" Type="System.Nullable&lt;System.Int32&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="seed">Seed for MLContext's random number generator. See the remarks for more details.</param>
+        <summary>
+             Create the ML context.
+             </summary>
+        <remarks>
+             Many operations in ML.NET require randomness, such as
+             random data shuffling, random sampling, random parameter initialization,
+             random permutation, random feature selection, and many more.
+             MLContext's random number generator is the global source of randomness for
+             all of such random operations.
+            
+             If a fixed seed is provided by <paramref name="seed" />, MLContext environment becomes
+             deterministic, meaning that the results are repeatable and will remain the same across multiple runs.
+             For instance in many of ML.NET's API reference example code snippets, a seed is provided.
+             That's because we want the users to get the same output as what's included in example comments,
+             when they run the example on their own machine.
+            
+             Generally though, repeatability is not a requirement and that's the default behavior.
+             If a seed is not provided by <paramref name="seed" />, i.e. it's set to <see langword="null" />,
+             MLContext environment becomes non-deterministic and outputs change across multiple runs.
+            
+             There are many operations in ML.NET that don't use any randomness, such as
+             min-max normalization, concatenating columns, missing value indication, etc.
+             The behavior of those operations are deterministic regardless of the seed value.
+            
+             Also ML.NET trainers don't use randomness *after* the training is finished.
+             So, the predictions from a loaded model don't depend on the seed value.
+             </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AnomalyDetection">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.AnomalyDetectionCatalog AnomalyDetection { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.AnomalyDetectionCatalog AnomalyDetection" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.MLContext.AnomalyDetection" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property AnomalyDetection As AnomalyDetectionCatalog" />
+      <MemberSignature Language="F#" Value="member this.AnomalyDetection : Microsoft.ML.AnomalyDetectionCatalog" Usage="Microsoft.ML.MLContext.AnomalyDetection" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.AnomalyDetectionCatalog</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Trainers and tasks specific to anomaly detection problems.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BinaryClassification">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.BinaryClassificationCatalog BinaryClassification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.BinaryClassificationCatalog BinaryClassification" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.MLContext.BinaryClassification" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property BinaryClassification As BinaryClassificationCatalog" />
+      <MemberSignature Language="F#" Value="member this.BinaryClassification : Microsoft.ML.BinaryClassificationCatalog" Usage="Microsoft.ML.MLContext.BinaryClassification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.BinaryClassificationCatalog</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Trainers and tasks specific to binary classification problems.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Clustering">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.ClusteringCatalog Clustering { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.ClusteringCatalog Clustering" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.MLContext.Clustering" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Clustering As ClusteringCatalog" />
+      <MemberSignature Language="F#" Value="member this.Clustering : Microsoft.ML.ClusteringCatalog" Usage="Microsoft.ML.MLContext.Clustering" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.ClusteringCatalog</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Trainers and tasks specific to clustering problems.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ComponentCatalog">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Runtime.ComponentCatalog ComponentCatalog { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.Runtime.ComponentCatalog ComponentCatalog" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.MLContext.ComponentCatalog" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property ComponentCatalog As ComponentCatalog" />
+      <MemberSignature Language="F#" Value="member this.ComponentCatalog : Microsoft.ML.Runtime.ComponentCatalog" Usage="Microsoft.ML.MLContext.ComponentCatalog" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Runtime.IHostEnvironment.ComponentCatalog</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.ComponentCatalog</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            This is a catalog of components that will be used for model loading.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Data">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.DataOperationsCatalog Data { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.DataOperationsCatalog Data" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.MLContext.Data" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Data As DataOperationsCatalog" />
+      <MemberSignature Language="F#" Value="member this.Data : Microsoft.ML.DataOperationsCatalog" Usage="Microsoft.ML.MLContext.Data" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.DataOperationsCatalog</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Data loading and saving.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Forecasting">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.ForecastingCatalog Forecasting { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.ForecastingCatalog Forecasting" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.MLContext.Forecasting" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Forecasting As ForecastingCatalog" />
+      <MemberSignature Language="F#" Value="member this.Forecasting : Microsoft.ML.ForecastingCatalog" Usage="Microsoft.ML.MLContext.Forecasting" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.ForecastingCatalog</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Trainers and tasks specific to forecasting problems.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Log">
+      <MemberSignature Language="C#" Value="public event EventHandler&lt;Microsoft.ML.LoggingEventArgs&gt; Log;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler`1&lt;class Microsoft.ML.LoggingEventArgs&gt; Log" />
+      <MemberSignature Language="DocId" Value="E:Microsoft.ML.MLContext.Log" />
+      <MemberSignature Language="VB.NET" Value="Public Event Log As EventHandler(Of LoggingEventArgs) " />
+      <MemberSignature Language="F#" Value="member this.Log : EventHandler&lt;Microsoft.ML.LoggingEventArgs&gt; " Usage="member this.Log : System.EventHandler&lt;Microsoft.ML.LoggingEventArgs&gt; " />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler&lt;Microsoft.ML.LoggingEventArgs&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The handler for the log messages.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Microsoft.ML.Runtime.IChannelProvider.Start">
+      <MemberSignature Language="C#" Value="Microsoft.ML.Runtime.IChannel IChannelProvider.Start (string name);" />
+      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class Microsoft.ML.Runtime.IChannel Microsoft.ML.Runtime.IChannelProvider.Start(string name) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.MLContext.Microsoft#ML#Runtime#IChannelProvider#Start(System.String)" />
+      <MemberSignature Language="VB.NET" Value="Function Start (name As String) As IChannel Implements IChannelProvider.Start" />
+      <MemberSignature Language="F#" Value="abstract member Microsoft.ML.Runtime.IChannelProvider.Start : string -&gt; Microsoft.ML.Runtime.IChannel&#xA;override this.Microsoft.ML.Runtime.IChannelProvider.Start : string -&gt; Microsoft.ML.Runtime.IChannel" Usage="mLContext.Microsoft.ML.Runtime.IChannelProvider.Start name" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.IChannelProvider.Start(System.String)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.IChannel</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="name">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Microsoft.ML.Runtime.IChannelProvider.StartPipe&lt;TMessage&gt;">
+      <MemberSignature Language="C#" Value="Microsoft.ML.Runtime.IPipe&lt;TMessage&gt; IChannelProvider.StartPipe&lt;TMessage&gt; (string name);" />
+      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class Microsoft.ML.Runtime.IPipe`1&lt;!!TMessage&gt; Microsoft.ML.Runtime.IChannelProvider.StartPipe&lt;TMessage&gt;(string name) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.MLContext.Microsoft#ML#Runtime#IChannelProvider#StartPipe``1(System.String)" />
+      <MemberSignature Language="VB.NET" Value="Function StartPipe(Of TMessage) (name As String) As IPipe(Of TMessage) Implements IChannelProvider.StartPipe" />
+      <MemberSignature Language="F#" Value="abstract member Microsoft.ML.Runtime.IChannelProvider.StartPipe : string -&gt; Microsoft.ML.Runtime.IPipe&lt;'Message&gt;&#xA;override this.Microsoft.ML.Runtime.IChannelProvider.StartPipe : string -&gt; Microsoft.ML.Runtime.IPipe&lt;'Message&gt;" Usage="mLContext.Microsoft.ML.Runtime.IChannelProvider.StartPipe name" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.IChannelProvider.StartPipe``1(System.String)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.IPipe&lt;TMessage&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TMessage" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TMessage">To be added.</typeparam>
+        <param name="name">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Microsoft.ML.Runtime.IExceptionContext.ContextDescription">
+      <MemberSignature Language="C#" Value="string Microsoft.ML.Runtime.IExceptionContext.ContextDescription { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Microsoft.ML.Runtime.IExceptionContext.ContextDescription" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.MLContext.Microsoft#ML#Runtime#IExceptionContext#ContextDescription" />
+      <MemberSignature Language="VB.NET" Value=" ReadOnly Property ContextDescription As String Implements IExceptionContext.ContextDescription" />
+      <MemberSignature Language="F#" Value="member this.Microsoft.ML.Runtime.IExceptionContext.ContextDescription : string" Usage="Microsoft.ML.Runtime.IExceptionContext.ContextDescription" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:Microsoft.ML.Runtime.IExceptionContext.ContextDescription</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Microsoft.ML.Runtime.IExceptionContext.Process&lt;TException&gt;">
+      <MemberSignature Language="C#" Value="TException IExceptionContext.Process&lt;TException&gt; (TException ex) where TException : Exception;" />
+      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance !!TException Microsoft.ML.Runtime.IExceptionContext.Process&lt;(class System.Exception) TException&gt;(!!TException ex) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.MLContext.Microsoft#ML#Runtime#IExceptionContext#Process``1(``0)" />
+      <MemberSignature Language="VB.NET" Value="Function Process(Of TException As Exception) (ex As TException) As TException Implements IExceptionContext.Process" />
+      <MemberSignature Language="F#" Value="abstract member Microsoft.ML.Runtime.IExceptionContext.Process : 'Exception -&gt; 'Exception (requires 'Exception :&gt; Exception)&#xA;override this.Microsoft.ML.Runtime.IExceptionContext.Process : 'Exception -&gt; 'Exception (requires 'Exception :&gt; Exception)" Usage="mLContext.Microsoft.ML.Runtime.IExceptionContext.Process ex" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.IExceptionContext.Process``1(``0)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>TException</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TException">
+          <Constraints>
+            <BaseTypeName>System.Exception</BaseTypeName>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="ex" Type="TException" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TException">To be added.</typeparam>
+        <param name="ex">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Microsoft.ML.Runtime.IHostEnvironment.Register">
+      <MemberSignature Language="C#" Value="Microsoft.ML.Runtime.IHost IHostEnvironment.Register (string name, int? seed, bool? verbose);" />
+      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class Microsoft.ML.Runtime.IHost Microsoft.ML.Runtime.IHostEnvironment.Register(string name, valuetype System.Nullable`1&lt;int32&gt; seed, valuetype System.Nullable`1&lt;bool&gt; verbose) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.MLContext.Microsoft#ML#Runtime#IHostEnvironment#Register(System.String,System.Nullable{System.Int32},System.Nullable{System.Boolean})" />
+      <MemberSignature Language="VB.NET" Value="Function Register (name As String, seed As Nullable(Of Integer), verbose As Nullable(Of Boolean)) As IHost Implements IHostEnvironment.Register" />
+      <MemberSignature Language="F#" Value="abstract member Microsoft.ML.Runtime.IHostEnvironment.Register : string * Nullable&lt;int&gt; * Nullable&lt;bool&gt; -&gt; Microsoft.ML.Runtime.IHost&#xA;override this.Microsoft.ML.Runtime.IHostEnvironment.Register : string * Nullable&lt;int&gt; * Nullable&lt;bool&gt; -&gt; Microsoft.ML.Runtime.IHost" Usage="mLContext.Microsoft.ML.Runtime.IHostEnvironment.Register (name, seed, verbose)" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.IHostEnvironment.Register(System.String,System.Nullable{System.Int32},System.Nullable{System.Boolean})</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.IHost</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="seed" Type="System.Nullable&lt;System.Int32&gt;" />
+        <Parameter Name="verbose" Type="System.Nullable&lt;System.Boolean&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="name">To be added.</param>
+        <param name="seed">To be added.</param>
+        <param name="verbose">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Microsoft.ML.Runtime.IProgressChannelProvider.StartProgressChannel">
+      <MemberSignature Language="C#" Value="Microsoft.ML.Runtime.IProgressChannel IProgressChannelProvider.StartProgressChannel (string name);" />
+      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class Microsoft.ML.Runtime.IProgressChannel Microsoft.ML.Runtime.IProgressChannelProvider.StartProgressChannel(string name) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.MLContext.Microsoft#ML#Runtime#IProgressChannelProvider#StartProgressChannel(System.String)" />
+      <MemberSignature Language="VB.NET" Value="Function StartProgressChannel (name As String) As IProgressChannel Implements IProgressChannelProvider.StartProgressChannel" />
+      <MemberSignature Language="F#" Value="abstract member Microsoft.ML.Runtime.IProgressChannelProvider.StartProgressChannel : string -&gt; Microsoft.ML.Runtime.IProgressChannel&#xA;override this.Microsoft.ML.Runtime.IProgressChannelProvider.StartProgressChannel : string -&gt; Microsoft.ML.Runtime.IProgressChannel" Usage="mLContext.Microsoft.ML.Runtime.IProgressChannelProvider.StartProgressChannel name" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.Runtime.IProgressChannelProvider.StartProgressChannel(System.String)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Runtime.IProgressChannel</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="name">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Model">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.ModelOperationsCatalog Model { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.ModelOperationsCatalog Model" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.MLContext.Model" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Model As ModelOperationsCatalog" />
+      <MemberSignature Language="F#" Value="member this.Model : Microsoft.ML.ModelOperationsCatalog" Usage="Microsoft.ML.MLContext.Model" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.ModelOperationsCatalog</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Operations with trained models.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MulticlassClassification">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.MulticlassClassificationCatalog MulticlassClassification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.MulticlassClassificationCatalog MulticlassClassification" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.MLContext.MulticlassClassification" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property MulticlassClassification As MulticlassClassificationCatalog" />
+      <MemberSignature Language="F#" Value="member this.MulticlassClassification : Microsoft.ML.MulticlassClassificationCatalog" Usage="Microsoft.ML.MLContext.MulticlassClassification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.MulticlassClassificationCatalog</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Trainers and tasks specific to multiclass classification problems.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Ranking">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.RankingCatalog Ranking { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.RankingCatalog Ranking" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.MLContext.Ranking" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Ranking As RankingCatalog" />
+      <MemberSignature Language="F#" Value="member this.Ranking : Microsoft.ML.RankingCatalog" Usage="Microsoft.ML.MLContext.Ranking" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.RankingCatalog</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Trainers and tasks specific to ranking problems.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Regression">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.RegressionCatalog Regression { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.RegressionCatalog Regression" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.MLContext.Regression" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Regression As RegressionCatalog" />
+      <MemberSignature Language="F#" Value="member this.Regression : Microsoft.ML.RegressionCatalog" Usage="Microsoft.ML.MLContext.Regression" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.RegressionCatalog</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Trainers and tasks specific to regression problems.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TempFilePath">
+      <MemberSignature Language="C#" Value="public string TempFilePath { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string TempFilePath" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.MLContext.TempFilePath" />
+      <MemberSignature Language="VB.NET" Value="Public Property TempFilePath As String" />
+      <MemberSignature Language="F#" Value="member this.TempFilePath : string with get, set" Usage="Microsoft.ML.MLContext.TempFilePath" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Gets or sets the location for the temp files created by ML.NET.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Transforms">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.TransformsCatalog Transforms { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.ML.TransformsCatalog Transforms" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.MLContext.Transforms" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property Transforms As TransformsCatalog" />
+      <MemberSignature Language="F#" Value="member this.Transforms : Microsoft.ML.TransformsCatalog" Usage="Microsoft.ML.MLContext.Transforms" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.TransformsCatalog</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Data processing operations.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

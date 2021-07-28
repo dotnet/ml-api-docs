@@ -1,0 +1,131 @@
+<Type Name="OneHotHashEncodingEstimator" FullName="Microsoft.ML.Transforms.OneHotHashEncodingEstimator">
+  <TypeSignature Language="C#" Value="public sealed class OneHotHashEncodingEstimator : Microsoft.ML.IEstimator&lt;Microsoft.ML.Transforms.OneHotHashEncodingTransformer&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit OneHotHashEncodingEstimator extends System.Object implements class Microsoft.ML.IEstimator`1&lt;class Microsoft.ML.Transforms.OneHotHashEncodingTransformer&gt;" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Transforms.OneHotHashEncodingEstimator" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class OneHotHashEncodingEstimator&#xA;Implements IEstimator(Of OneHotHashEncodingTransformer)" />
+  <TypeSignature Language="F#" Value="type OneHotHashEncodingEstimator = class&#xA;    interface IEstimator&lt;OneHotHashEncodingTransformer&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.IEstimator&lt;Microsoft.ML.Transforms.OneHotHashEncodingTransformer&gt;</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+             Converts one or more input columns of categorical values into as many output columns of hash-based one-hot encoded vectors.
+             </summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[
+            
+             ###  Estimator Characteristics
+             |  |  |
+             | -- | -- |
+             | Does this estimator need to look at the data to train its parameters? | Yes |
+             | Input column data type | Scalar or vector of numeric, boolean, [text](xref:Microsoft.ML.Data.TextDataViewType), or [key](xref:Microsoft.ML.Data.KeyDataViewType) type. |
+             | Output column data type | Scalar or vector of [key](xref:Microsoft.ML.Data.KeyDataViewType), or vector of <xref:System.Single> type. |
+             | Exportable to ONNX | No |
+            
+             The resulting <xref:Microsoft.ML.Transforms.OneHotEncodingTransformer> converts one or more input columns into as many output
+             columns of one-hot encoded vectors, where indexing is done by hashing the value and using the hash as an index.
+            
+             The <xref:Microsoft.ML.Transforms.OneHotEncodingEstimator> is often used to convert categorical data into a form that can be
+             provided to a machine learning algorithm.
+            
+             The output of this transform is specified by <xref:Microsoft.ML.Transforms.OneHotEncodingEstimator.OutputKind>:
+            
+             - <xref:Microsoft.ML.Transforms.OneHotEncodingEstimator.OutputKind.Indicator> produces an [indicator vector](https://en.wikipedia.org/wiki/Indicator_vector).
+             Each slot in this vector corresponds to a category in the dictionary, so its length is the size of the built dictionary.
+             If a value is not found in the dictioray, the output is the zero vector.
+            
+             - <xref:Microsoft.ML.Transforms.OneHotEncodingEstimator.OutputKind.Bag> produces one vector such that each slot stores the number
+             of occurances of the corresponding value in the input vector.
+             Each slot in this vector corresponds to a value in the dictionary, so its length is the size of the built dictionary.
+             <xref:Microsoft.ML.Transforms.OneHotEncodingEstimator.OutputKind.Indicator> and <xref:Microsoft.ML.Transforms.OneHotEncodingEstimator.OutputKind.Bag>
+             differ simply in how the bit-vectors generated from individual slots in the input column are aggregated:
+             for Indicator they are concatenated and for Bag they are added. When the source column is a Scalar, the Indicator and Bag options are identical.
+            
+             - <xref:Microsoft.ML.Transforms.OneHotEncodingEstimator.OutputKind.Key> produces keys in a <xref:Microsoft.ML.Data.KeyDataViewType> column.
+             If the input column is a vector, the output contains a vectory [key](xref:Microsoft.ML.Data.KeyDataViewType) type, where each slot of the
+             vector corresponds to the respective slot of the input vector.
+             If a category is not found in the bulit dictionary, it is assigned the value zero.
+            
+             - <xref:Microsoft.ML.Transforms.OneHotEncodingEstimator.OutputKind.Binary> produces a binary encoded vector to represent the values found in the dictionary
+             that are present in the input column. If a value in the input column is not found in the dictionary, the output is the zero vector.
+            
+             The OneHotEncodingTransformer can be applied to one or more columns, in which case it builds and uses a separate dictionary
+             for each column that it is applied to.
+            
+             Check the See Also section for links to usage examples.
+             ]]></format>
+    </remarks>
+    <altmember cref="M:Microsoft.ML.CategoricalCatalog.OneHotHashEncoding(Microsoft.ML.TransformsCatalog.CategoricalTransforms,System.String,System.String,Microsoft.ML.Transforms.OneHotEncodingEstimator.OutputKind,System.Int32,System.UInt32,System.Boolean,System.Int32)" />
+    <altmember cref="M:Microsoft.ML.CategoricalCatalog.OneHotHashEncoding(Microsoft.ML.TransformsCatalog.CategoricalTransforms,Microsoft.ML.InputOutputColumnPair[],Microsoft.ML.Transforms.OneHotEncodingEstimator.OutputKind,System.Int32,System.UInt32,System.Boolean,System.Int32)" />
+  </Docs>
+  <Members>
+    <Member MemberName="Fit">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Transforms.OneHotHashEncodingTransformer Fit (Microsoft.ML.IDataView input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Transforms.OneHotHashEncodingTransformer Fit(class Microsoft.ML.IDataView input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.OneHotHashEncodingEstimator.Fit(Microsoft.ML.IDataView)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Fit (input As IDataView) As OneHotHashEncodingTransformer" />
+      <MemberSignature Language="F#" Value="abstract member Fit : Microsoft.ML.IDataView -&gt; Microsoft.ML.Transforms.OneHotHashEncodingTransformer&#xA;override this.Fit : Microsoft.ML.IDataView -&gt; Microsoft.ML.Transforms.OneHotHashEncodingTransformer" Usage="oneHotHashEncodingEstimator.Fit input" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.IEstimator`1.Fit(Microsoft.ML.IDataView)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Transforms.OneHotHashEncodingTransformer</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.ML.IDataView" />
+      </Parameters>
+      <Docs>
+        <param name="input">To be added.</param>
+        <summary>
+            Trains and returns a <see cref="T:Microsoft.ML.Transforms.OneHotHashEncodingTransformer" />.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetOutputSchema">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.SchemaShape GetOutputSchema (Microsoft.ML.SchemaShape inputSchema);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.SchemaShape GetOutputSchema(class Microsoft.ML.SchemaShape inputSchema) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Transforms.OneHotHashEncodingEstimator.GetOutputSchema(Microsoft.ML.SchemaShape)" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetOutputSchema (inputSchema As SchemaShape) As SchemaShape" />
+      <MemberSignature Language="F#" Value="abstract member GetOutputSchema : Microsoft.ML.SchemaShape -&gt; Microsoft.ML.SchemaShape&#xA;override this.GetOutputSchema : Microsoft.ML.SchemaShape -&gt; Microsoft.ML.SchemaShape" Usage="oneHotHashEncodingEstimator.GetOutputSchema inputSchema" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.IEstimator`1.GetOutputSchema(Microsoft.ML.SchemaShape)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.SchemaShape</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inputSchema" Type="Microsoft.ML.SchemaShape" />
+      </Parameters>
+      <Docs>
+        <param name="inputSchema">To be added.</param>
+        <summary>
+            Returns the <see cref="T:Microsoft.ML.SchemaShape" /> of the schema which will be produced by the transformer.
+            Used for schema propagation and verification in a pipeline.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

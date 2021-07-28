@@ -1,0 +1,239 @@
+<Type Name="CustomMappingCatalog" FullName="Microsoft.ML.CustomMappingCatalog">
+  <TypeSignature Language="C#" Value="public static class CustomMappingCatalog" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit CustomMappingCatalog extends System.Object" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.CustomMappingCatalog" />
+  <TypeSignature Language="VB.NET" Value="Public Module CustomMappingCatalog" />
+  <TypeSignature Language="F#" Value="type CustomMappingCatalog = class" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+            Class containing an extension method for <see cref="T:Microsoft.ML.TransformsCatalog" /> to create instances of
+            user-defined one-to-one row mapping transformer components.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="CustomMapping&lt;TSrc,TDst&gt;">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.CustomMappingEstimator&lt;TSrc,TDst&gt; CustomMapping&lt;TSrc,TDst&gt; (this Microsoft.ML.TransformsCatalog catalog, Action&lt;TSrc,TDst&gt; mapAction, string contractName, Microsoft.ML.Data.SchemaDefinition inputSchemaDefinition = default, Microsoft.ML.Data.SchemaDefinition outputSchemaDefinition = default) where TSrc : class, new() where TDst : class, new();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.CustomMappingEstimator`2&lt;!!TSrc, !!TDst&gt; CustomMapping&lt;class .ctor TSrc, class .ctor TDst&gt;(class Microsoft.ML.TransformsCatalog catalog, class System.Action`2&lt;!!TSrc, !!TDst&gt; mapAction, string contractName, class Microsoft.ML.Data.SchemaDefinition inputSchemaDefinition, class Microsoft.ML.Data.SchemaDefinition outputSchemaDefinition) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.CustomMappingCatalog.CustomMapping``2(Microsoft.ML.TransformsCatalog,System.Action{``0,``1},System.String,Microsoft.ML.Data.SchemaDefinition,Microsoft.ML.Data.SchemaDefinition)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function CustomMapping(Of TSrc As {Class, New}, TDst As {Class, New}) (catalog As TransformsCatalog, mapAction As Action(Of TSrc, TDst), contractName As String, Optional inputSchemaDefinition As SchemaDefinition = Nothing, Optional outputSchemaDefinition As SchemaDefinition = Nothing) As CustomMappingEstimator(Of TSrc, TDst)" />
+      <MemberSignature Language="F#" Value="static member CustomMapping : Microsoft.ML.TransformsCatalog * Action&lt;'Src, 'Dst (requires 'Src : null and 'Src : (new : unit -&gt; 'Src) and 'Dst : null and 'Dst : (new : unit -&gt; 'Dst))&gt; * string * Microsoft.ML.Data.SchemaDefinition * Microsoft.ML.Data.SchemaDefinition -&gt; Microsoft.ML.Transforms.CustomMappingEstimator&lt;'Src, 'Dst (requires 'Src : null and 'Src : (new : unit -&gt; 'Src) and 'Dst : null and 'Dst : (new : unit -&gt; 'Dst))&gt; (requires 'Src : null and 'Src : (new : unit -&gt; 'Src) and 'Dst : null and 'Dst : (new : unit -&gt; 'Dst))" Usage="Microsoft.ML.CustomMappingCatalog.CustomMapping (catalog, mapAction, contractName, inputSchemaDefinition, outputSchemaDefinition)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Transforms.CustomMappingEstimator&lt;TSrc,TDst&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TSrc">
+          <Constraints>
+            <ParameterAttribute>DefaultConstructorConstraint</ParameterAttribute>
+            <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
+          </Constraints>
+        </TypeParameter>
+        <TypeParameter Name="TDst">
+          <Constraints>
+            <ParameterAttribute>DefaultConstructorConstraint</ParameterAttribute>
+            <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog" RefType="this" />
+        <Parameter Name="mapAction" Type="System.Action&lt;TSrc,TDst&gt;" />
+        <Parameter Name="contractName" Type="System.String" />
+        <Parameter Name="inputSchemaDefinition" Type="Microsoft.ML.Data.SchemaDefinition" />
+        <Parameter Name="outputSchemaDefinition" Type="Microsoft.ML.Data.SchemaDefinition" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TSrc">The class defining which columns to take from the incoming data.</typeparam>
+        <typeparam name="TDst">The class defining which new columns are added to the data.</typeparam>
+        <param name="catalog">The transform catalog</param>
+        <param name="mapAction">The mapping action. This must be thread-safe and free from side effects.
+            If the resulting transformer needs to be save-able, the class defining <paramref name="mapAction" /> should implement
+            <see cref="T:Microsoft.ML.Transforms.CustomMappingFactory`2" /> and needs to be decorated with
+            <see cref="T:Microsoft.ML.Transforms.CustomMappingFactoryAttributeAttribute" /> with the provided <paramref name="contractName" />.
+            In versions v1.5-preview2 and earlier, the assembly containing the class should be registered in the environment where it is loaded back
+            using <see cref="M:Microsoft.ML.Runtime.ComponentCatalog.RegisterAssembly(System.Reflection.Assembly,System.Boolean)" />.</param>
+        <param name="contractName">The contract name, used by ML.NET for loading the model.
+            If <see langword="null" /> is specified, resulting transformer would not be save-able.</param>
+        <param name="inputSchemaDefinition">Additional parameters for schema mapping between <typeparamref name="TSrc" /> and input data.
+            Useful when dealing with annotations.</param>
+        <param name="outputSchemaDefinition">Additional parameters for schema mapping between <typeparamref name="TDst" /> and output data.
+            Useful when dealing with annotations.</param>
+        <summary>
+            Create a <see cref="T:Microsoft.ML.Transforms.CustomMappingEstimator`2" />, which applies a custom mapping of input columns to output columns.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+        <example>
+          <format type="text/markdown"><![CDATA[
+             [!code-csharp[CustomMapping](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/CustomMapping.cs)]
+             [!code-csharp[CustomMapping](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/CustomMappingSaveAndLoad.cs)]
+             [!code-csharp[CustomMapping](~/../docs/samples/docs/samples/Microsoft.ML.Samples/Dynamic/Transforms/CustomMappingWithInMemoryCustomType.cs)]
+            ]]></format>
+        </example>
+      </Docs>
+    </Member>
+    <Member MemberName="FilterByCustomPredicate&lt;TSrc&gt;">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.IDataView FilterByCustomPredicate&lt;TSrc&gt; (this Microsoft.ML.DataOperationsCatalog catalog, Microsoft.ML.IDataView input, Func&lt;TSrc,bool&gt; filterPredicate) where TSrc : class, new();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.IDataView FilterByCustomPredicate&lt;class .ctor TSrc&gt;(class Microsoft.ML.DataOperationsCatalog catalog, class Microsoft.ML.IDataView input, class System.Func`2&lt;!!TSrc, bool&gt; filterPredicate) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.CustomMappingCatalog.FilterByCustomPredicate``1(Microsoft.ML.DataOperationsCatalog,Microsoft.ML.IDataView,System.Func{``0,System.Boolean})" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function FilterByCustomPredicate(Of TSrc As {Class, New}) (catalog As DataOperationsCatalog, input As IDataView, filterPredicate As Func(Of TSrc, Boolean)) As IDataView" />
+      <MemberSignature Language="F#" Value="static member FilterByCustomPredicate : Microsoft.ML.DataOperationsCatalog * Microsoft.ML.IDataView * Func&lt;'Src, bool (requires 'Src : null and 'Src : (new : unit -&gt; 'Src))&gt; -&gt; Microsoft.ML.IDataView (requires 'Src : null and 'Src : (new : unit -&gt; 'Src))" Usage="Microsoft.ML.CustomMappingCatalog.FilterByCustomPredicate (catalog, input, filterPredicate)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.IDataView</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TSrc">
+          <Constraints>
+            <ParameterAttribute>DefaultConstructorConstraint</ParameterAttribute>
+            <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="catalog" Type="Microsoft.ML.DataOperationsCatalog" RefType="this" />
+        <Parameter Name="input" Type="Microsoft.ML.IDataView" />
+        <Parameter Name="filterPredicate" Type="System.Func&lt;TSrc,System.Boolean&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TSrc">The class defining which columns to take from the incoming data.</typeparam>
+        <param name="catalog">The data operations catalog.</param>
+        <param name="input">The input data.</param>
+        <param name="filterPredicate">A predicate, that takes an input of type <typeparamref name="TSrc" /> and returns true if the row should be filtered (dropped) and false otherwise.</param>
+        <summary>
+            Drop rows where a specified predicate returns true.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FilterByStatefulCustomPredicate&lt;TSrc,TState&gt;">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.IDataView FilterByStatefulCustomPredicate&lt;TSrc,TState&gt; (this Microsoft.ML.DataOperationsCatalog catalog, Microsoft.ML.IDataView input, Func&lt;TSrc,TState,bool&gt; filterPredicate, Action&lt;TState&gt; stateInitAction) where TSrc : class, new() where TState : class, new();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.IDataView FilterByStatefulCustomPredicate&lt;class .ctor TSrc, class .ctor TState&gt;(class Microsoft.ML.DataOperationsCatalog catalog, class Microsoft.ML.IDataView input, class System.Func`3&lt;!!TSrc, !!TState, bool&gt; filterPredicate, class System.Action`1&lt;!!TState&gt; stateInitAction) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.CustomMappingCatalog.FilterByStatefulCustomPredicate``2(Microsoft.ML.DataOperationsCatalog,Microsoft.ML.IDataView,System.Func{``0,``1,System.Boolean},System.Action{``1})" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function FilterByStatefulCustomPredicate(Of TSrc As {Class, New}, TState As {Class, New}) (catalog As DataOperationsCatalog, input As IDataView, filterPredicate As Func(Of TSrc, TState, Boolean), stateInitAction As Action(Of TState)) As IDataView" />
+      <MemberSignature Language="F#" Value="static member FilterByStatefulCustomPredicate : Microsoft.ML.DataOperationsCatalog * Microsoft.ML.IDataView * Func&lt;'Src, 'State, bool (requires 'Src : null and 'Src : (new : unit -&gt; 'Src) and 'State : null and 'State : (new : unit -&gt; 'State))&gt; * Action&lt;'State (requires 'State : null and 'State : (new : unit -&gt; 'State))&gt; -&gt; Microsoft.ML.IDataView (requires 'Src : null and 'Src : (new : unit -&gt; 'Src) and 'State : null and 'State : (new : unit -&gt; 'State))" Usage="Microsoft.ML.CustomMappingCatalog.FilterByStatefulCustomPredicate (catalog, input, filterPredicate, stateInitAction)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.IDataView</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TSrc">
+          <Constraints>
+            <ParameterAttribute>DefaultConstructorConstraint</ParameterAttribute>
+            <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
+          </Constraints>
+        </TypeParameter>
+        <TypeParameter Name="TState">
+          <Constraints>
+            <ParameterAttribute>DefaultConstructorConstraint</ParameterAttribute>
+            <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="catalog" Type="Microsoft.ML.DataOperationsCatalog" RefType="this" />
+        <Parameter Name="input" Type="Microsoft.ML.IDataView" />
+        <Parameter Name="filterPredicate" Type="System.Func&lt;TSrc,TState,System.Boolean&gt;" />
+        <Parameter Name="stateInitAction" Type="System.Action&lt;TState&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TSrc">The class defining which columns to take from the incoming data.</typeparam>
+        <typeparam name="TState">The type that describes per-cursor state.</typeparam>
+        <param name="catalog">The data operations catalog.</param>
+        <param name="input">The input data.</param>
+        <param name="filterPredicate">A predicate, that takes an input of type <typeparamref name="TSrc" /> and a state object of type
+            <typeparamref name="TState" />, and returns true if the row should be filtered (dropped) and false otherwise.</param>
+        <param name="stateInitAction">The action to initialize the state object, that is called once before the cursor is initialized.</param>
+        <summary>
+            Drop rows where a specified predicate returns true. This filter allows to maintain a per-cursor state.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StatefulCustomMapping&lt;TSrc,TDst,TState&gt;">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Transforms.StatefulCustomMappingEstimator&lt;TSrc,TDst,TState&gt; StatefulCustomMapping&lt;TSrc,TDst,TState&gt; (this Microsoft.ML.TransformsCatalog catalog, Action&lt;TSrc,TDst,TState&gt; mapAction, Action&lt;TState&gt; stateInitAction, string contractName) where TSrc : class, new() where TDst : class, new() where TState : class, new();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Transforms.StatefulCustomMappingEstimator`3&lt;!!TSrc, !!TDst, !!TState&gt; StatefulCustomMapping&lt;class .ctor TSrc, class .ctor TDst, class .ctor TState&gt;(class Microsoft.ML.TransformsCatalog catalog, class System.Action`3&lt;!!TSrc, !!TDst, !!TState&gt; mapAction, class System.Action`1&lt;!!TState&gt; stateInitAction, string contractName) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.CustomMappingCatalog.StatefulCustomMapping``3(Microsoft.ML.TransformsCatalog,System.Action{``0,``1,``2},System.Action{``2},System.String)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function StatefulCustomMapping(Of TSrc As {Class, New}, TDst As {Class, New}, TState As {Class, New}) (catalog As TransformsCatalog, mapAction As Action(Of TSrc, TDst, TState), stateInitAction As Action(Of TState), contractName As String) As StatefulCustomMappingEstimator(Of TSrc, TDst, TState)" />
+      <MemberSignature Language="F#" Value="static member StatefulCustomMapping : Microsoft.ML.TransformsCatalog * Action&lt;'Src, 'Dst, 'State (requires 'Src : null and 'Src : (new : unit -&gt; 'Src) and 'Dst : null and 'Dst : (new : unit -&gt; 'Dst) and 'State : null and 'State : (new : unit -&gt; 'State))&gt; * Action&lt;'State (requires 'State : null and 'State : (new : unit -&gt; 'State))&gt; * string -&gt; Microsoft.ML.Transforms.StatefulCustomMappingEstimator&lt;'Src, 'Dst, 'State (requires 'Src : null and 'Src : (new : unit -&gt; 'Src) and 'Dst : null and 'Dst : (new : unit -&gt; 'Dst) and 'State : null and 'State : (new : unit -&gt; 'State))&gt; (requires 'Src : null and 'Src : (new : unit -&gt; 'Src) and 'Dst : null and 'Dst : (new : unit -&gt; 'Dst) and 'State : null and 'State : (new : unit -&gt; 'State))" Usage="Microsoft.ML.CustomMappingCatalog.StatefulCustomMapping (catalog, mapAction, stateInitAction, contractName)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Transforms</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Transforms.StatefulCustomMappingEstimator&lt;TSrc,TDst,TState&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TSrc">
+          <Constraints>
+            <ParameterAttribute>DefaultConstructorConstraint</ParameterAttribute>
+            <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
+          </Constraints>
+        </TypeParameter>
+        <TypeParameter Name="TDst">
+          <Constraints>
+            <ParameterAttribute>DefaultConstructorConstraint</ParameterAttribute>
+            <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
+          </Constraints>
+        </TypeParameter>
+        <TypeParameter Name="TState">
+          <Constraints>
+            <ParameterAttribute>DefaultConstructorConstraint</ParameterAttribute>
+            <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="catalog" Type="Microsoft.ML.TransformsCatalog" RefType="this" />
+        <Parameter Name="mapAction" Type="System.Action&lt;TSrc,TDst,TState&gt;" />
+        <Parameter Name="stateInitAction" Type="System.Action&lt;TState&gt;" />
+        <Parameter Name="contractName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TSrc">The class defining which columns to take from the incoming data.</typeparam>
+        <typeparam name="TState">The type that describes per-cursor state.</typeparam>
+        <typeparam name="TDst">The class defining which new columns are added to the data.</typeparam>
+        <param name="catalog">The transform catalog.</param>
+        <param name="mapAction">The mapping action. In addition to the input and output objects, the action is given a state object that it can look at and/or modify.
+            If the resulting transformer needs to be save-able, the class defining <paramref name="mapAction" /> should implement
+            <see cref="T:Microsoft.ML.Transforms.StatefulCustomMappingFactory`3" /> and needs to be decorated with
+            <see cref="T:Microsoft.ML.Transforms.CustomMappingFactoryAttributeAttribute" /> with the provided <paramref name="contractName" />.
+            The assembly containing the class should be registered in the environment where it is loaded back
+            using <see cref="M:Microsoft.ML.Runtime.ComponentCatalog.RegisterAssembly(System.Reflection.Assembly,System.Boolean)" />.</param>
+        <param name="stateInitAction">The action to initialize the state object, that is called once before the cursor is initialized.</param>
+        <param name="contractName">The contract name, used by ML.NET for loading the model.
+            If <see langword="null" /> is specified, resulting transformer would not be save-able.</param>
+        <summary>
+            Create a <see cref="T:Microsoft.ML.Transforms.StatefulCustomMappingEstimator`3" />, which applies a custom mapping of input columns to output columns,
+            while allowing a per-cursor state.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

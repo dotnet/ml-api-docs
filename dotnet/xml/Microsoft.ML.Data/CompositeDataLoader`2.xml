@@ -1,0 +1,247 @@
+<Type Name="CompositeDataLoader&lt;TSource,TLastTransformer&gt;" FullName="Microsoft.ML.Data.CompositeDataLoader&lt;TSource,TLastTransformer&gt;">
+  <TypeSignature Language="C#" Value="public sealed class CompositeDataLoader&lt;TSource,TLastTransformer&gt; : IDisposable, Microsoft.ML.IDataLoader&lt;TSource&gt; where TLastTransformer : class, ITransformer" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit CompositeDataLoader`2&lt;TSource, class (class Microsoft.ML.ITransformer) TLastTransformer&gt; extends System.Object implements class Microsoft.ML.ICanSaveModel, class Microsoft.ML.IDataLoader`1&lt;!TSource&gt;, class System.IDisposable" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Data.CompositeDataLoader`2" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class CompositeDataLoader(Of TSource, TLastTransformer)&#xA;Implements IDataLoader(Of TSource), IDisposable" />
+  <TypeSignature Language="F#" Value="type CompositeDataLoader&lt;'Source, 'LastTransformer (requires 'LastTransformer : null and 'LastTransformer :&gt; ITransformer)&gt; = class&#xA;    interface IDataLoader&lt;'Source&gt;&#xA;    interface ICanSaveModel&#xA;    interface IDisposable" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Data</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <TypeParameters>
+    <TypeParameter Name="TSource" />
+    <TypeParameter Name="TLastTransformer">
+      <Constraints>
+        <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
+        <InterfaceName>Microsoft.ML.ITransformer</InterfaceName>
+      </Constraints>
+    </TypeParameter>
+  </TypeParameters>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.ICanSaveModel</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Microsoft.ML.IDataLoader&lt;TSource&gt;</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.IDisposable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <typeparam name="TSource">To be added.</typeparam>
+    <typeparam name="TLastTransformer">To be added.</typeparam>
+    <summary>
+            This class represents a data loader that applies a transformer chain after loading.
+            It also has methods to save itself to a repository.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CompositeDataLoader (Microsoft.ML.IDataLoader&lt;TSource&gt; loader, Microsoft.ML.Data.TransformerChain&lt;TLastTransformer&gt; transformerChain = default);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Microsoft.ML.IDataLoader`1&lt;!TSource&gt; loader, class Microsoft.ML.Data.TransformerChain`1&lt;!TLastTransformer&gt; transformerChain) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.CompositeDataLoader`2.#ctor(Microsoft.ML.IDataLoader{`0},Microsoft.ML.Data.TransformerChain{`1})" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New (loader As IDataLoader(Of TSource), Optional transformerChain As TransformerChain(Of TLastTransformer) = Nothing)" />
+      <MemberSignature Language="F#" Value="new Microsoft.ML.Data.CompositeDataLoader&lt;'Source, 'LastTransformer (requires 'LastTransformer : null and 'LastTransformer :&gt; Microsoft.ML.ITransformer)&gt; : Microsoft.ML.IDataLoader&lt;'Source&gt; * Microsoft.ML.Data.TransformerChain&lt;'LastTransformer (requires 'LastTransformer : null and 'LastTransformer :&gt; Microsoft.ML.ITransformer)&gt; -&gt; Microsoft.ML.Data.CompositeDataLoader&lt;'Source, 'LastTransformer (requires 'LastTransformer : null and 'LastTransformer :&gt; Microsoft.ML.ITransformer)&gt;" Usage="new Microsoft.ML.Data.CompositeDataLoader&lt;'Source, 'LastTransformer (requires 'LastTransformer : null and 'LastTransformer :&gt; Microsoft.ML.ITransformer)&gt; (loader, transformerChain)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="loader" Type="Microsoft.ML.IDataLoader&lt;TSource&gt;" />
+        <Parameter Name="transformerChain" Type="Microsoft.ML.Data.TransformerChain&lt;TLastTransformer&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="loader">To be added.</param>
+        <param name="transformerChain">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AppendTransformer&lt;TNewLast&gt;">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.Data.CompositeDataLoader&lt;TSource,TNewLast&gt; AppendTransformer&lt;TNewLast&gt; (TNewLast transformer) where TNewLast : class, Microsoft.ML.ITransformer;" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.Data.CompositeDataLoader`2&lt;!TSource, !!TNewLast&gt; AppendTransformer&lt;class (class Microsoft.ML.ITransformer) TNewLast&gt;(!!TNewLast transformer) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.CompositeDataLoader`2.AppendTransformer``1(``0)" />
+      <MemberSignature Language="VB.NET" Value="Public Function AppendTransformer(Of TNewLast As {Class, ITransformer}) (transformer As TNewLast) As CompositeDataLoader(Of TSource, TNewLast)" />
+      <MemberSignature Language="F#" Value="member this.AppendTransformer : 'NewLast -&gt; Microsoft.ML.Data.CompositeDataLoader&lt;'Source, 'NewLast (requires 'NewLast : null and 'NewLast :&gt; Microsoft.ML.ITransformer)&gt; (requires 'NewLast : null and 'NewLast :&gt; Microsoft.ML.ITransformer)" Usage="compositeDataLoader.AppendTransformer transformer" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.CompositeDataLoader&lt;TSource,TNewLast&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TNewLast">
+          <Constraints>
+            <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
+            <InterfaceName>Microsoft.ML.ITransformer</InterfaceName>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="transformer" Type="TNewLast" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TNewLast">To be added.</typeparam>
+        <param name="transformer">To be added.</param>
+        <summary>
+            Append a new transformer to the end.
+            </summary>
+        <returns>The new composite data loader</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dispose">
+      <MemberSignature Language="C#" Value="public void Dispose ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Dispose() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.CompositeDataLoader`2.Dispose" />
+      <MemberSignature Language="VB.NET" Value="Public Sub Dispose ()" />
+      <MemberSignature Language="F#" Value="abstract member Dispose : unit -&gt; unit&#xA;override this.Dispose : unit -&gt; unit" Usage="compositeDataLoader.Dispose " />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:System.IDisposable.Dispose</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetOutputSchema">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.DataViewSchema GetOutputSchema ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.DataViewSchema GetOutputSchema() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.CompositeDataLoader`2.GetOutputSchema" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetOutputSchema () As DataViewSchema" />
+      <MemberSignature Language="F#" Value="abstract member GetOutputSchema : unit -&gt; Microsoft.ML.DataViewSchema&#xA;override this.GetOutputSchema : unit -&gt; Microsoft.ML.DataViewSchema" Usage="compositeDataLoader.GetOutputSchema " />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.IDataLoader`1.GetOutputSchema</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.DataViewSchema</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Load">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.IDataView Load (TSource input);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.IDataView Load(!TSource input) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.CompositeDataLoader`2.Load(`0)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Load (input As TSource) As IDataView" />
+      <MemberSignature Language="F#" Value="abstract member Load : 'Source -&gt; Microsoft.ML.IDataView&#xA;override this.Load : 'Source -&gt; Microsoft.ML.IDataView" Usage="compositeDataLoader.Load input" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.IDataLoader`1.Load(`0)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.IDataView</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="TSource" />
+      </Parameters>
+      <Docs>
+        <param name="input">To be added.</param>
+        <summary>
+            Produce the data view from the specified input.
+            Note that <see cref="T:Microsoft.ML.IDataView" />'s are lazy, so no actual loading happens here, just schema validation.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Loader">
+      <MemberSignature Language="C#" Value="public readonly Microsoft.ML.IDataLoader&lt;TSource&gt; Loader;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly class Microsoft.ML.IDataLoader`1&lt;!TSource&gt; Loader" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Data.CompositeDataLoader`2.Loader" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Loader As IDataLoader(Of TSource) " />
+      <MemberSignature Language="F#" Value="val mutable Loader : Microsoft.ML.IDataLoader&lt;'Source&gt;" Usage="Microsoft.ML.Data.CompositeDataLoader&lt;'Source, 'LastTransformer (requires 'LastTransformer : null and 'LastTransformer :&gt; Microsoft.ML.ITransformer)&gt;.Loader" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.IDataLoader&lt;TSource&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The underlying data loader.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Microsoft.ML.ICanSaveModel.Save">
+      <MemberSignature Language="C#" Value="void ICanSaveModel.Save (Microsoft.ML.ModelSaveContext ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance void Microsoft.ML.ICanSaveModel.Save(class Microsoft.ML.ModelSaveContext ctx) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.CompositeDataLoader`2.Microsoft#ML#ICanSaveModel#Save(Microsoft.ML.ModelSaveContext)" />
+      <MemberSignature Language="VB.NET" Value="Sub Save (ctx As ModelSaveContext) Implements ICanSaveModel.Save" />
+      <MemberSignature Language="F#" Value="abstract member Microsoft.ML.ICanSaveModel.Save : Microsoft.ML.ModelSaveContext -&gt; unit&#xA;override this.Microsoft.ML.ICanSaveModel.Save : Microsoft.ML.ModelSaveContext -&gt; unit" Usage="compositeDataLoader.Microsoft.ML.ICanSaveModel.Save ctx" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.ICanSaveModel.Save(Microsoft.ML.ModelSaveContext)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ctx" Type="Microsoft.ML.ModelSaveContext" />
+      </Parameters>
+      <Docs>
+        <param name="ctx">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Transformer">
+      <MemberSignature Language="C#" Value="public readonly Microsoft.ML.Data.TransformerChain&lt;TLastTransformer&gt; Transformer;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly class Microsoft.ML.Data.TransformerChain`1&lt;!TLastTransformer&gt; Transformer" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Data.CompositeDataLoader`2.Transformer" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Transformer As TransformerChain(Of TLastTransformer) " />
+      <MemberSignature Language="F#" Value="val mutable Transformer : Microsoft.ML.Data.TransformerChain&lt;'LastTransformer (requires 'LastTransformer : null and 'LastTransformer :&gt; Microsoft.ML.ITransformer)&gt;" Usage="Microsoft.ML.Data.CompositeDataLoader&lt;'Source, 'LastTransformer (requires 'LastTransformer : null and 'LastTransformer :&gt; Microsoft.ML.ITransformer)&gt;.Transformer" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Data</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Data.TransformerChain&lt;TLastTransformer&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            The chain of transformers (possibly empty) that are applied to data upon loading.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
