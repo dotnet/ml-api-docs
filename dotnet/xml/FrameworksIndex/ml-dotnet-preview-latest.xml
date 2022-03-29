@@ -126,6 +126,14 @@
     <Type Name="Microsoft.ML.AutoML.CrossValidationRunDetail`1" Id="T:Microsoft.ML.AutoML.CrossValidationRunDetail`1">
       <Member Id="P:Microsoft.ML.AutoML.CrossValidationRunDetail`1.Results" />
     </Type>
+    <Type Name="Microsoft.ML.AutoML.Entity" Id="T:Microsoft.ML.AutoML.Entity">
+      <Member Id="M:Microsoft.ML.AutoML.Entity.#ctor" />
+      <Member Id="M:Microsoft.ML.AutoML.Entity.FromExpression(System.String)" />
+      <Member Id="M:Microsoft.ML.AutoML.Entity.op_Addition(Microsoft.ML.AutoML.Entity,Microsoft.ML.AutoML.Entity)" />
+      <Member Id="M:Microsoft.ML.AutoML.Entity.op_Multiply(Microsoft.ML.AutoML.Entity,Microsoft.ML.AutoML.Entity)" />
+      <Member Id="P:Microsoft.ML.AutoML.Entity.Left" />
+      <Member Id="P:Microsoft.ML.AutoML.Entity.Right" />
+    </Type>
     <Type Name="Microsoft.ML.AutoML.ExperimentBase`2" Id="T:Microsoft.ML.AutoML.ExperimentBase`2">
       <Member Id="M:Microsoft.ML.AutoML.ExperimentBase`2.Execute(Microsoft.ML.IDataView,Microsoft.ML.AutoML.ColumnInformation,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.IProgress{Microsoft.ML.AutoML.RunDetail{`0}})" />
       <Member Id="M:Microsoft.ML.AutoML.ExperimentBase`2.Execute(Microsoft.ML.IDataView,Microsoft.ML.IDataView,Microsoft.ML.AutoML.ColumnInformation,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.IProgress{Microsoft.ML.AutoML.RunDetail{`0}})" />
@@ -268,6 +276,48 @@
       <Member Id="M:Microsoft.ML.AutoML.CodeGen.ConvertTypeOption.#ctor" />
       <Member Id="P:Microsoft.ML.AutoML.CodeGen.ConvertTypeOption.InputColumnNames" />
       <Member Id="P:Microsoft.ML.AutoML.CodeGen.ConvertTypeOption.OutputColumnNames" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.CodeGen.EstimatorType" Id="T:Microsoft.ML.AutoML.CodeGen.EstimatorType">
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.ApplyOnnxModel" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.Concatenate" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.ConvertType" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.ExtractPixels" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.FastForestBinary" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.FastForestOva" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.FastForestRegression" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.FastTreeBinary" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.FastTreeOva" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.FastTreeRegression" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.FastTreeTweedieRegression" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.FeaturizeText" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.ForecastBySsa" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.ImageClassificationMulti" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.LbfgsLogisticRegressionBinary" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.LbfgsLogisticRegressionOva" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.LbfgsMaximumEntropyMulti" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.LbfgsPoissonRegressionRegression" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.LightGbmBinary" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.LightGbmMulti" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.LightGbmRegression" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.LoadImages" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.LoadRawImageBytes" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.MapKeyToValue" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.MapValueToKey" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.MatrixFactorization" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.Naive" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.NormalizeMinMax" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.OneHotEncoding" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.OneHotHashEncoding" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.ReplaceMissingValues" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.ResizeImages" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.SdcaLogisticRegressionBinary" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.SdcaLogisticRegressionOva" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.SdcaMaximumEntropyMulti" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.SdcaRegression" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.Unknown" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.CodeGen.EstimatorTypeExtension" Id="T:Microsoft.ML.AutoML.CodeGen.EstimatorTypeExtension">
+      <Member Id="M:Microsoft.ML.AutoML.CodeGen.EstimatorTypeExtension.IsTrainer(Microsoft.ML.AutoML.CodeGen.EstimatorType)" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.CodeGen.ExtractPixelsOption" Id="T:Microsoft.ML.AutoML.CodeGen.ExtractPixelsOption">
       <Member Id="M:Microsoft.ML.AutoML.CodeGen.ExtractPixelsOption.#ctor" />
@@ -579,6 +629,138 @@
       <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.NonCalibratedBinaryClassifierOutput.Label" />
       <Member Id="F:Microsoft.ML.SamplesUtils.DatasetUtils.NonCalibratedBinaryClassifierOutput.Score" />
       <Member Id="M:Microsoft.ML.SamplesUtils.DatasetUtils.NonCalibratedBinaryClassifierOutput.#ctor" />
+    </Type>
+  </Namespace>
+  <Namespace Name="Microsoft.ML.SearchSpace">
+    <Type Name="Microsoft.ML.SearchSpace.BooleanChoiceAttribute" Id="T:Microsoft.ML.SearchSpace.BooleanChoiceAttribute">
+      <Member Id="M:Microsoft.ML.SearchSpace.BooleanChoiceAttribute.#ctor" />
+      <Member Id="M:Microsoft.ML.SearchSpace.BooleanChoiceAttribute.#ctor(System.Boolean)" />
+    </Type>
+    <Type Name="Microsoft.ML.SearchSpace.ChoiceAttribute" Id="T:Microsoft.ML.SearchSpace.ChoiceAttribute">
+      <Member Id="M:Microsoft.ML.SearchSpace.ChoiceAttribute.#ctor(System.Object[])" />
+      <Member Id="M:Microsoft.ML.SearchSpace.ChoiceAttribute.#ctor(System.Object[],System.Object)" />
+    </Type>
+    <Type Name="Microsoft.ML.SearchSpace.OptionAttribute" Id="T:Microsoft.ML.SearchSpace.OptionAttribute">
+      <Member Id="M:Microsoft.ML.SearchSpace.OptionAttribute.#ctor" />
+    </Type>
+    <Type Name="Microsoft.ML.SearchSpace.Parameter" Id="T:Microsoft.ML.SearchSpace.Parameter">
+      <Member Id="M:Microsoft.ML.SearchSpace.Parameter.Add(System.Collections.Generic.KeyValuePair{System.String,Microsoft.ML.SearchSpace.Parameter})" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Parameter.Add(System.String,Microsoft.ML.SearchSpace.Parameter)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Parameter.AsType``1" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Parameter.Clear" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Parameter.Contains(System.Collections.Generic.KeyValuePair{System.String,Microsoft.ML.SearchSpace.Parameter})" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Parameter.ContainsKey(System.String)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Parameter.CopyTo(System.Collections.Generic.KeyValuePair{System.String,Microsoft.ML.SearchSpace.Parameter}[],System.Int32)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Parameter.CreateNestedParameter(System.Collections.Generic.KeyValuePair{System.String,Microsoft.ML.SearchSpace.Parameter}[])" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Parameter.FromBool(System.Boolean)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Parameter.FromDouble(System.Double)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Parameter.FromEnum``1(``0)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Parameter.FromFloat(System.Single)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Parameter.FromIEnumerable``1(System.Collections.Generic.IEnumerable{``0})" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Parameter.FromInt(System.Int32)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Parameter.FromLong(System.Int64)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Parameter.FromObject``1(``0)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Parameter.FromString(System.String)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Parameter.Remove(System.Collections.Generic.KeyValuePair{System.String,Microsoft.ML.SearchSpace.Parameter})" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Parameter.Remove(System.String)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Parameter.System#Collections#Generic#IEnumerable&lt;System#Collections#Generic#KeyValuePair&lt;System#String,Microsoft#ML#SearchSpace#Parameter&gt;&gt;#GetEnumerator" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Parameter.System#Collections#IEnumerable#GetEnumerator" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Parameter.TryGetValue(System.String,Microsoft.ML.SearchSpace.Parameter@)" />
+      <Member Id="P:Microsoft.ML.SearchSpace.Parameter.Count" />
+      <Member Id="P:Microsoft.ML.SearchSpace.Parameter.IsReadOnly" />
+      <Member Id="P:Microsoft.ML.SearchSpace.Parameter.Item(System.String)" />
+      <Member Id="P:Microsoft.ML.SearchSpace.Parameter.Keys" />
+      <Member Id="P:Microsoft.ML.SearchSpace.Parameter.ParameterType" />
+      <Member Id="P:Microsoft.ML.SearchSpace.Parameter.System#Collections#Generic#IDictionary&lt;System#String,Microsoft#ML#SearchSpace#Parameter&gt;#Values" />
+    </Type>
+    <Type Name="Microsoft.ML.SearchSpace.ParameterType" Id="T:Microsoft.ML.SearchSpace.ParameterType">
+      <Member Id="F:Microsoft.ML.SearchSpace.ParameterType.Array" />
+      <Member Id="F:Microsoft.ML.SearchSpace.ParameterType.Bool" />
+      <Member Id="F:Microsoft.ML.SearchSpace.ParameterType.Integer" />
+      <Member Id="F:Microsoft.ML.SearchSpace.ParameterType.Number" />
+      <Member Id="F:Microsoft.ML.SearchSpace.ParameterType.Object" />
+      <Member Id="F:Microsoft.ML.SearchSpace.ParameterType.String" />
+    </Type>
+    <Type Name="Microsoft.ML.SearchSpace.RangeAttribute" Id="T:Microsoft.ML.SearchSpace.RangeAttribute">
+      <Member Id="M:Microsoft.ML.SearchSpace.RangeAttribute.#ctor(System.Double,System.Double,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.RangeAttribute.#ctor(System.Double,System.Double,System.Double,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.RangeAttribute.#ctor(System.Int32,System.Int32,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.RangeAttribute.#ctor(System.Int32,System.Int32,System.Int32,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.RangeAttribute.#ctor(System.Single,System.Single,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.RangeAttribute.#ctor(System.Single,System.Single,System.Single,System.Boolean)" />
+    </Type>
+    <Type Name="Microsoft.ML.SearchSpace.SearchSpace" Id="T:Microsoft.ML.SearchSpace.SearchSpace">
+      <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace.#ctor" />
+      <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace.#ctor(System.Type,Microsoft.ML.SearchSpace.Parameter)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace.Add(System.Collections.Generic.KeyValuePair{System.String,Microsoft.ML.SearchSpace.Option.OptionBase})" />
+      <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace.Add(System.String,Microsoft.ML.SearchSpace.Option.OptionBase)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace.Clear" />
+      <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace.Contains(System.Collections.Generic.KeyValuePair{System.String,Microsoft.ML.SearchSpace.Option.OptionBase})" />
+      <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace.ContainsKey(System.String)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace.CopyTo(System.Collections.Generic.KeyValuePair{System.String,Microsoft.ML.SearchSpace.Option.OptionBase}[],System.Int32)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace.GetEnumerator" />
+      <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace.MappingToFeatureSpace(Microsoft.ML.SearchSpace.Parameter)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace.Remove(System.Collections.Generic.KeyValuePair{System.String,Microsoft.ML.SearchSpace.Option.OptionBase})" />
+      <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace.Remove(System.String)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace.SampleFromFeatureSpace(System.Double[])" />
+      <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace.System#Collections#IEnumerable#GetEnumerator" />
+      <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace.TryGetValue(System.String,Microsoft.ML.SearchSpace.Option.OptionBase@)" />
+      <Member Id="P:Microsoft.ML.SearchSpace.SearchSpace.Count" />
+      <Member Id="P:Microsoft.ML.SearchSpace.SearchSpace.Default" />
+      <Member Id="P:Microsoft.ML.SearchSpace.SearchSpace.FeatureSpaceDim" />
+      <Member Id="P:Microsoft.ML.SearchSpace.SearchSpace.IsReadOnly" />
+      <Member Id="P:Microsoft.ML.SearchSpace.SearchSpace.Item(System.String)" />
+      <Member Id="P:Microsoft.ML.SearchSpace.SearchSpace.Keys" />
+      <Member Id="P:Microsoft.ML.SearchSpace.SearchSpace.Step" />
+      <Member Id="P:Microsoft.ML.SearchSpace.SearchSpace.Values" />
+    </Type>
+    <Type Name="Microsoft.ML.SearchSpace.SearchSpace`1" Id="T:Microsoft.ML.SearchSpace.SearchSpace`1">
+      <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace`1.#ctor" />
+      <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace`1.#ctor(`0)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace`1.MappingToFeatureSpace(`0)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace`1.SampleFromFeatureSpace(System.Double[])" />
+    </Type>
+  </Namespace>
+  <Namespace Name="Microsoft.ML.SearchSpace.Option">
+    <Type Name="Microsoft.ML.SearchSpace.Option.ChoiceOption" Id="T:Microsoft.ML.SearchSpace.Option.ChoiceOption">
+      <Member Id="M:Microsoft.ML.SearchSpace.Option.ChoiceOption.#ctor(System.Object[])" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Option.ChoiceOption.#ctor(System.Object[],System.Object)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Option.ChoiceOption.MappingToFeatureSpace(Microsoft.ML.SearchSpace.Parameter)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Option.ChoiceOption.SampleFromFeatureSpace(System.Double[])" />
+      <Member Id="P:Microsoft.ML.SearchSpace.Option.ChoiceOption.Choices" />
+      <Member Id="P:Microsoft.ML.SearchSpace.Option.ChoiceOption.FeatureSpaceDim" />
+      <Member Id="P:Microsoft.ML.SearchSpace.Option.ChoiceOption.Step" />
+    </Type>
+    <Type Name="Microsoft.ML.SearchSpace.Option.OptionBase" Id="T:Microsoft.ML.SearchSpace.Option.OptionBase">
+      <Member Id="M:Microsoft.ML.SearchSpace.Option.OptionBase.#ctor" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Option.OptionBase.MappingToFeatureSpace(Microsoft.ML.SearchSpace.Parameter)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Option.OptionBase.SampleFromFeatureSpace(System.Double[])" />
+      <Member Id="P:Microsoft.ML.SearchSpace.Option.OptionBase.Default" />
+      <Member Id="P:Microsoft.ML.SearchSpace.Option.OptionBase.FeatureSpaceDim" />
+      <Member Id="P:Microsoft.ML.SearchSpace.Option.OptionBase.Step" />
+    </Type>
+    <Type Name="Microsoft.ML.SearchSpace.Option.UniformDoubleOption" Id="T:Microsoft.ML.SearchSpace.Option.UniformDoubleOption">
+      <Member Id="M:Microsoft.ML.SearchSpace.Option.UniformDoubleOption.#ctor(System.Double,System.Double,System.Boolean,System.Nullable{System.Double})" />
+    </Type>
+    <Type Name="Microsoft.ML.SearchSpace.Option.UniformIntOption" Id="T:Microsoft.ML.SearchSpace.Option.UniformIntOption">
+      <Member Id="M:Microsoft.ML.SearchSpace.Option.UniformIntOption.#ctor(System.Int32,System.Int32,System.Boolean,System.Nullable{System.Int32})" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Option.UniformIntOption.MappingToFeatureSpace(Microsoft.ML.SearchSpace.Parameter)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Option.UniformIntOption.SampleFromFeatureSpace(System.Double[])" />
+    </Type>
+    <Type Name="Microsoft.ML.SearchSpace.Option.UniformNumericOption" Id="T:Microsoft.ML.SearchSpace.Option.UniformNumericOption">
+      <Member Id="M:Microsoft.ML.SearchSpace.Option.UniformNumericOption.#ctor(System.Double,System.Double,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Option.UniformNumericOption.MappingToFeatureSpace(Microsoft.ML.SearchSpace.Parameter)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Option.UniformNumericOption.SampleFromFeatureSpace(System.Double[])" />
+      <Member Id="P:Microsoft.ML.SearchSpace.Option.UniformNumericOption.FeatureSpaceDim" />
+      <Member Id="P:Microsoft.ML.SearchSpace.Option.UniformNumericOption.LogBase" />
+      <Member Id="P:Microsoft.ML.SearchSpace.Option.UniformNumericOption.Max" />
+      <Member Id="P:Microsoft.ML.SearchSpace.Option.UniformNumericOption.Min" />
+      <Member Id="P:Microsoft.ML.SearchSpace.Option.UniformNumericOption.Step" />
+    </Type>
+    <Type Name="Microsoft.ML.SearchSpace.Option.UniformSingleOption" Id="T:Microsoft.ML.SearchSpace.Option.UniformSingleOption">
+      <Member Id="M:Microsoft.ML.SearchSpace.Option.UniformSingleOption.#ctor(System.Single,System.Single,System.Boolean,System.Nullable{System.Single})" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Option.UniformSingleOption.MappingToFeatureSpace(Microsoft.ML.SearchSpace.Parameter)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Option.UniformSingleOption.SampleFromFeatureSpace(System.Double[])" />
     </Type>
   </Namespace>
   <Namespace Name="Microsoft.ML.Trainers">
