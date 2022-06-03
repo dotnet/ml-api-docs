@@ -40,11 +40,34 @@
       </Docs>
     </Member>
     <Member MemberName="Run">
-      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;Microsoft.ML.AutoML.TrialResult&gt; Run ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Threading.Tasks.Task`1&lt;class Microsoft.ML.AutoML.TrialResult&gt; Run() cil managed" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.AutoML.TrialResult Run ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.AutoML.TrialResult Run() cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.AutoML.AutoMLExperiment.Run" />
-      <MemberSignature Language="VB.NET" Value="Public Function Run () As Task(Of TrialResult)" />
-      <MemberSignature Language="F#" Value="member this.Run : unit -&gt; System.Threading.Tasks.Task&lt;Microsoft.ML.AutoML.TrialResult&gt;" Usage="autoMLExperiment.Run " />
+      <MemberSignature Language="VB.NET" Value="Public Function Run () As TrialResult" />
+      <MemberSignature Language="F#" Value="member this.Run : unit -&gt; Microsoft.ML.AutoML.TrialResult" Usage="autoMLExperiment.Run " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.AutoML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.AutoML.TrialResult</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            Run experiment and return the best trial result synchronizely.
+            </summary>
+        <returns />
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RunAsync">
+      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;Microsoft.ML.AutoML.TrialResult&gt; RunAsync (System.Threading.CancellationToken ct = default);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Threading.Tasks.Task`1&lt;class Microsoft.ML.AutoML.TrialResult&gt; RunAsync(valuetype System.Threading.CancellationToken ct) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.AutoML.AutoMLExperiment.RunAsync(System.Threading.CancellationToken)" />
+      <MemberSignature Language="VB.NET" Value="Public Function RunAsync (Optional ct As CancellationToken = Nothing) As Task(Of TrialResult)" />
+      <MemberSignature Language="F#" Value="member this.RunAsync : System.Threading.CancellationToken -&gt; System.Threading.Tasks.Task&lt;Microsoft.ML.AutoML.TrialResult&gt;" Usage="autoMLExperiment.RunAsync ct" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.AutoML</AssemblyName>
@@ -53,10 +76,16 @@
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;Microsoft.ML.AutoML.TrialResult&gt;</ReturnType>
       </ReturnValue>
-      <Parameters />
+      <Parameters>
+        <Parameter Name="ct" Type="System.Threading.CancellationToken" />
+      </Parameters>
       <Docs>
+        <param name="ct">To be added.</param>
         <summary>
-            Run experiment and return the best trial result.
+            Run experiment and return the best trial result asynchronizely. The experiment returns the current best trial result if there's any trial completed when <paramref name="ct" /> get cancelled,
+            and throws <see cref="T:System.TimeoutException" /> with message "Training time finished without completing a trial run" when no trial has completed.
+            Another thing needs to notice is that this function won't immediately return after <paramref name="ct" /> get cancelled. Instead, it will call <see cref="M:Microsoft.ML.MLContext.CancelExecution" /> to cancel all training process
+            and wait all running trials get cancelled or completed.
             </summary>
         <returns />
         <remarks>To be added.</remarks>
@@ -195,10 +224,10 @@
       </Docs>
     </Member>
     <Member MemberName="SetEvaluateMetric">
-      <MemberSignature Language="C#" Value="public Microsoft.ML.AutoML.AutoMLExperiment SetEvaluateMetric (Microsoft.ML.AutoML.RegressionMetric metric, string labelColumn = &quot;label&quot;, string scoreColumn = &quot;Score&quot;);" />
+      <MemberSignature Language="C#" Value="public Microsoft.ML.AutoML.AutoMLExperiment SetEvaluateMetric (Microsoft.ML.AutoML.RegressionMetric metric, string labelColumn = &quot;Label&quot;, string scoreColumn = &quot;Score&quot;);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.AutoML.AutoMLExperiment SetEvaluateMetric(valuetype Microsoft.ML.AutoML.RegressionMetric metric, string labelColumn, string scoreColumn) cil managed" />
       <MemberSignature Language="DocId" Value="M:Microsoft.ML.AutoML.AutoMLExperiment.SetEvaluateMetric(Microsoft.ML.AutoML.RegressionMetric,System.String,System.String)" />
-      <MemberSignature Language="VB.NET" Value="Public Function SetEvaluateMetric (metric As RegressionMetric, Optional labelColumn As String = &quot;label&quot;, Optional scoreColumn As String = &quot;Score&quot;) As AutoMLExperiment" />
+      <MemberSignature Language="VB.NET" Value="Public Function SetEvaluateMetric (metric As RegressionMetric, Optional labelColumn As String = &quot;Label&quot;, Optional scoreColumn As String = &quot;Score&quot;) As AutoMLExperiment" />
       <MemberSignature Language="F#" Value="member this.SetEvaluateMetric : Microsoft.ML.AutoML.RegressionMetric * string * string -&gt; Microsoft.ML.AutoML.AutoMLExperiment" Usage="autoMLExperiment.SetEvaluateMetric (metric, labelColumn, scoreColumn)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
