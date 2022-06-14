@@ -17,8 +17,35 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>
+             The <see cref="T:Microsoft.ML.IEstimator`1" /> for training a Deep Neural Network(DNN) to classify text.
+             </summary>
+    <remarks>
+      <format type="text/markdown"><![CDATA[
+             To create this trainer, use [TextClassification](xref:Microsoft.ML.TorchSharpCatalog.TextClassification(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,Int32,System.String,System.String,System.String,System.String,Int32,Int32,Int32,Microsoft.ML.TorchSharp.NasBert.BertArchitecture,Microsoft.ML.IDataView)).
+            
+             ### Input and Output Columns
+             The input label column data must be [key](xref:Microsoft.ML.Data.KeyDataViewType) type and the sentence columns must be of type<xref:Microsoft.ML.Data.TextDataViewType>.
+            
+             This trainer outputs the following columns:
+            
+             | Output Column Name | Column Type | Description|
+             | -- | -- | -- |
+             | `PredictedLabel` | [key](xref:Microsoft.ML.Data.KeyDataViewType) type | The predicted label's index. If its value is i, the actual label would be the i-th category in the key-valued input label type. |
+            
+             ### Trainer Characteristics
+             |  |  |
+             | -- | -- |
+             | Machine learning task | Multiclass classification |
+             | Is normalization required? | No |
+             | Is caching required? | No |
+             | Required NuGet in addition to Microsoft.ML | Microsoft.ML.TorchSharp and libtorch-cpu or libtorch-cuda-11.3 or any of the OS specific variants. |
+             | Exportable to ONNX | No |
+                ///
+             ### Training Algorithm Details
+             Trains a Deep Neural Network(DNN) by leveraging an existing pre-trained NAS-BERT roBERTa model for the purpose of classifying text.
+             ]]></format>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="Fit">
