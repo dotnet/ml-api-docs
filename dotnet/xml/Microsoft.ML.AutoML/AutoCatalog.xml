@@ -475,6 +475,76 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Featurizer">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.AutoML.MultiModelPipeline Featurizer (Microsoft.ML.IDataView data, Microsoft.ML.AutoML.ColumnInformation columnInformation, string outputColumnName = &quot;Features&quot;);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.AutoML.MultiModelPipeline Featurizer(class Microsoft.ML.IDataView data, class Microsoft.ML.AutoML.ColumnInformation columnInformation, string outputColumnName) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.AutoML.AutoCatalog.Featurizer(Microsoft.ML.IDataView,Microsoft.ML.AutoML.ColumnInformation,System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Featurizer (data As IDataView, columnInformation As ColumnInformation, Optional outputColumnName As String = &quot;Features&quot;) As MultiModelPipeline" />
+      <MemberSignature Language="F#" Value="member this.Featurizer : Microsoft.ML.IDataView * Microsoft.ML.AutoML.ColumnInformation * string -&gt; Microsoft.ML.AutoML.MultiModelPipeline" Usage="autoCatalog.Featurizer (data, columnInformation, outputColumnName)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.AutoML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.AutoML.MultiModelPipeline</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data" Type="Microsoft.ML.IDataView" />
+        <Parameter Name="columnInformation" Type="Microsoft.ML.AutoML.ColumnInformation" />
+        <Parameter Name="outputColumnName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="data">input data.</param>
+        <param name="columnInformation">column information.</param>
+        <param name="outputColumnName">output feature column.</param>
+        <summary>
+            Create a single featurize pipeline according to <paramref name="columnInformation" />. This function will collect all columns in <paramref name="columnInformation" />,
+            featurizing them using <see cref="M:Microsoft.ML.AutoML.AutoCatalog.CatalogFeaturizer(System.String[],System.String[])" />, <see cref="M:Microsoft.ML.AutoML.AutoCatalog.NumericFeaturizer(System.String[],System.String[])" /> or <see cref="M:Microsoft.ML.AutoML.AutoCatalog.TextFeaturizer(System.String,System.String)" />. And combine
+            them into a single feature column as output.
+            </summary>
+        <returns>A <see cref="T:Microsoft.ML.AutoML.MultiModelPipeline" /> for featurization.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Featurizer">
+      <MemberSignature Language="C#" Value="public Microsoft.ML.AutoML.MultiModelPipeline Featurizer (Microsoft.ML.IDataView data, string outputColumnName = &quot;Features&quot;, string[] catalogColumns = default, string[] numericColumns = default, string[] textColumns = default, string[] excludeColumns = default);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.AutoML.MultiModelPipeline Featurizer(class Microsoft.ML.IDataView data, string outputColumnName, string[] catalogColumns, string[] numericColumns, string[] textColumns, string[] excludeColumns) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.AutoML.AutoCatalog.Featurizer(Microsoft.ML.IDataView,System.String,System.String[],System.String[],System.String[],System.String[])" />
+      <MemberSignature Language="VB.NET" Value="Public Function Featurizer (data As IDataView, Optional outputColumnName As String = &quot;Features&quot;, Optional catalogColumns As String() = Nothing, Optional numericColumns As String() = Nothing, Optional textColumns As String() = Nothing, Optional excludeColumns As String() = Nothing) As MultiModelPipeline" />
+      <MemberSignature Language="F#" Value="member this.Featurizer : Microsoft.ML.IDataView * string * string[] * string[] * string[] * string[] -&gt; Microsoft.ML.AutoML.MultiModelPipeline" Usage="autoCatalog.Featurizer (data, outputColumnName, catalogColumns, numericColumns, textColumns, excludeColumns)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.AutoML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.AutoML.MultiModelPipeline</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data" Type="Microsoft.ML.IDataView" />
+        <Parameter Name="outputColumnName" Type="System.String" />
+        <Parameter Name="catalogColumns" Type="System.String[]" />
+        <Parameter Name="numericColumns" Type="System.String[]" />
+        <Parameter Name="textColumns" Type="System.String[]" />
+        <Parameter Name="excludeColumns" Type="System.String[]" />
+      </Parameters>
+      <Docs>
+        <param name="data">input data.</param>
+        <param name="catalogColumns">columns that should be treated as catalog. If not specified, it will automatically infer if a column is catalog or not.</param>
+        <param name="numericColumns">columns that should be treated as numeric. If not specified, it will automatically infer if a column is catalog or not.</param>
+        <param name="textColumns">columns that should be treated as text. If not specified, it will automatically infer if a column is catalog or not.</param>
+        <param name="outputColumnName">output feature column.</param>
+        <param name="excludeColumns">columns that won't be included when featurizing, like label</param>
+        <summary>
+            Create a single featurize pipeline according to <paramref name="data" />. This function will collect all columns in <paramref name="data" /> and not in <paramref name="excludeColumns" />,
+            featurizing them using <see cref="M:Microsoft.ML.AutoML.AutoCatalog.CatalogFeaturizer(System.String[],System.String[])" />, <see cref="M:Microsoft.ML.AutoML.AutoCatalog.NumericFeaturizer(System.String[],System.String[])" /> or <see cref="M:Microsoft.ML.AutoML.AutoCatalog.TextFeaturizer(System.String,System.String)" />. And combine
+            them into a single feature column as output.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="InferColumns">
       <MemberSignature Language="C#" Value="public Microsoft.ML.AutoML.ColumnInferenceResults InferColumns (string path, Microsoft.ML.AutoML.ColumnInformation columnInformation, char? separatorChar = default, bool? allowQuoting = default, bool? allowSparse = default, bool trimWhitespace = false, bool groupColumns = true);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.ML.AutoML.ColumnInferenceResults InferColumns(string path, class Microsoft.ML.AutoML.ColumnInformation columnInformation, valuetype System.Nullable`1&lt;char&gt; separatorChar, valuetype System.Nullable`1&lt;bool&gt; allowQuoting, valuetype System.Nullable`1&lt;bool&gt; allowSparse, bool trimWhitespace, bool groupColumns) cil managed" />
