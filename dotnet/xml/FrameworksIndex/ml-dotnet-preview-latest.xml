@@ -99,27 +99,35 @@
     </Type>
     <Type Name="Microsoft.ML.AutoML.AutoMLExperiment" Id="T:Microsoft.ML.AutoML.AutoMLExperiment">
       <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.#ctor(Microsoft.ML.MLContext,Microsoft.ML.AutoML.AutoMLExperiment.AutoMLExperimentSettings)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.AddSearchSpace(System.String,Microsoft.ML.SearchSpace.SearchSpace)" />
       <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.Run" />
       <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.RunAsync(System.Threading.CancellationToken)" />
-      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetDataset(Microsoft.ML.DataOperationsCatalog.TrainTestData)" />
-      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetDataset(Microsoft.ML.IDataView,Microsoft.ML.IDataView)" />
-      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetDataset(Microsoft.ML.IDataView,System.Int32)" />
-      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetEvaluateMetric(Microsoft.ML.AutoML.BinaryClassificationMetric,System.String,System.String)" />
-      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetEvaluateMetric(Microsoft.ML.AutoML.MulticlassClassificationMetric,System.String,System.String)" />
-      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetEvaluateMetric(Microsoft.ML.AutoML.RegressionMetric,System.String,System.String)" />
-      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetIsMaximizeMetric(System.Boolean)" />
-      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetMonitor(Microsoft.ML.AutoML.IMonitor)" />
-      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetPipeline(Microsoft.ML.AutoML.MultiModelPipeline)" />
-      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetPipeline(Microsoft.ML.AutoML.SweepableEstimatorPipeline)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetIsMaximize(System.Boolean)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetMonitor``1" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetMonitor``1(``0)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetMonitor``1(System.Func{System.IServiceProvider,``0})" />
       <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetTrainingTimeInSeconds(System.UInt32)" />
-      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetTrialRunner(Microsoft.ML.AutoML.ITrialRunner)" />
-      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetTunerFactory``1" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetTrialRunner``1" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetTrialRunner``1(``0)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetTrialRunner``1(System.Func{System.IServiceProvider,``0})" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetTuner``1" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetTuner``1(``0)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetTuner``1(System.Func{System.IServiceProvider,``0})" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.AutoMLExperiment/AutoMLExperimentSettings" Id="T:Microsoft.ML.AutoML.AutoMLExperiment.AutoMLExperimentSettings">
       <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.AutoMLExperimentSettings.#ctor" />
-      <Member Id="P:Microsoft.ML.AutoML.AutoMLExperiment.AutoMLExperimentSettings.IsMaximizeMetric" />
-      <Member Id="P:Microsoft.ML.AutoML.AutoMLExperiment.AutoMLExperimentSettings.Pipeline" />
+      <Member Id="P:Microsoft.ML.AutoML.AutoMLExperiment.AutoMLExperimentSettings.IsMaximize" />
+      <Member Id="P:Microsoft.ML.AutoML.AutoMLExperiment.AutoMLExperimentSettings.SearchSpace" />
       <Member Id="P:Microsoft.ML.AutoML.AutoMLExperiment.AutoMLExperimentSettings.Seed" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.AutoMLExperimentExtension" Id="T:Microsoft.ML.AutoML.AutoMLExperimentExtension">
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetBinaryClassificationMetric(Microsoft.ML.AutoML.AutoMLExperiment,Microsoft.ML.AutoML.BinaryClassificationMetric,System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetDataset(Microsoft.ML.AutoML.AutoMLExperiment,Microsoft.ML.DataOperationsCatalog.TrainTestData)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetDataset(Microsoft.ML.AutoML.AutoMLExperiment,Microsoft.ML.IDataView,Microsoft.ML.IDataView)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetDataset(Microsoft.ML.AutoML.AutoMLExperiment,Microsoft.ML.IDataView,System.Int32)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetMulticlassClassificationMetric(Microsoft.ML.AutoML.AutoMLExperiment,Microsoft.ML.AutoML.MulticlassClassificationMetric,System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetPipeline(Microsoft.ML.AutoML.AutoMLExperiment,Microsoft.ML.AutoML.SweepablePipeline)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetRegressionMetric(Microsoft.ML.AutoML.AutoMLExperiment,Microsoft.ML.AutoML.RegressionMetric,System.String,System.String)" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.BinaryClassificationExperiment" Id="T:Microsoft.ML.AutoML.BinaryClassificationExperiment">
       <Member Id="M:Microsoft.ML.AutoML.BinaryClassificationExperiment.Execute(Microsoft.ML.IDataView,Microsoft.ML.AutoML.ColumnInformation,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.IProgress{Microsoft.ML.AutoML.RunDetail{Microsoft.ML.Data.BinaryClassificationMetrics}})" />
@@ -175,17 +183,17 @@
       <Member Id="P:Microsoft.ML.AutoML.ColumnInformation.TextColumnNames" />
       <Member Id="P:Microsoft.ML.AutoML.ColumnInformation.UserIdColumnName" />
     </Type>
-    <Type Name="Microsoft.ML.AutoML.CrossValidateDatasetManager" Id="T:Microsoft.ML.AutoML.CrossValidateDatasetManager">
-      <Member Id="M:Microsoft.ML.AutoML.CrossValidateDatasetManager.#ctor" />
-      <Member Id="P:Microsoft.ML.AutoML.CrossValidateDatasetManager.Dataset" />
-      <Member Id="P:Microsoft.ML.AutoML.CrossValidateDatasetManager.Fold" />
-    </Type>
     <Type Name="Microsoft.ML.AutoML.CrossValidationExperimentResult`1" Id="T:Microsoft.ML.AutoML.CrossValidationExperimentResult`1">
       <Member Id="F:Microsoft.ML.AutoML.CrossValidationExperimentResult`1.BestRun" />
       <Member Id="F:Microsoft.ML.AutoML.CrossValidationExperimentResult`1.RunDetails" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.CrossValidationRunDetail`1" Id="T:Microsoft.ML.AutoML.CrossValidationRunDetail`1">
       <Member Id="P:Microsoft.ML.AutoML.CrossValidationRunDetail`1.Results" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.EciCostFrugalTuner" Id="T:Microsoft.ML.AutoML.EciCostFrugalTuner">
+      <Member Id="M:Microsoft.ML.AutoML.EciCostFrugalTuner.#ctor(Microsoft.ML.AutoML.SweepablePipeline,Microsoft.ML.AutoML.IMetricManager,Microsoft.ML.AutoML.AutoMLExperiment.AutoMLExperimentSettings)" />
+      <Member Id="M:Microsoft.ML.AutoML.EciCostFrugalTuner.Propose(Microsoft.ML.AutoML.TrialSettings)" />
+      <Member Id="M:Microsoft.ML.AutoML.EciCostFrugalTuner.Update(Microsoft.ML.AutoML.TrialResult)" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.Entity" Id="T:Microsoft.ML.AutoML.Entity">
       <Member Id="M:Microsoft.ML.AutoML.Entity.#ctor" />
@@ -226,6 +234,13 @@
       <Member Id="P:Microsoft.ML.AutoML.ExperimentSettings.MaxExperimentTimeInSeconds" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.IDatasetManager" Id="T:Microsoft.ML.AutoML.IDatasetManager" />
+    <Type Name="Microsoft.ML.AutoML.IEvaluateMetricManager" Id="T:Microsoft.ML.AutoML.IEvaluateMetricManager">
+      <Member Id="M:Microsoft.ML.AutoML.IEvaluateMetricManager.Evaluate(Microsoft.ML.MLContext,Microsoft.ML.IDataView)" />
+      <Member Id="P:Microsoft.ML.AutoML.IEvaluateMetricManager.MetricName" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.IMetricManager" Id="T:Microsoft.ML.AutoML.IMetricManager">
+      <Member Id="P:Microsoft.ML.AutoML.IMetricManager.IsMaximize" />
+    </Type>
     <Type Name="Microsoft.ML.AutoML.IMonitor" Id="T:Microsoft.ML.AutoML.IMonitor">
       <Member Id="M:Microsoft.ML.AutoML.IMonitor.ReportBestTrial(Microsoft.ML.AutoML.TrialResult)" />
       <Member Id="M:Microsoft.ML.AutoML.IMonitor.ReportCompletedTrial(Microsoft.ML.AutoML.TrialResult)" />
@@ -239,18 +254,18 @@
       <Member Id="F:Microsoft.ML.AutoML.InferenceExceptionType.ColumnDataType" />
       <Member Id="F:Microsoft.ML.AutoML.InferenceExceptionType.ColumnSplit" />
     </Type>
-    <Type Name="Microsoft.ML.AutoML.ITrialRunner" Id="T:Microsoft.ML.AutoML.ITrialRunner">
-      <Member Id="M:Microsoft.ML.AutoML.ITrialRunner.Run(Microsoft.ML.AutoML.TrialSettings,System.IServiceProvider)" />
+    <Type Name="Microsoft.ML.AutoML.ISweepable" Id="T:Microsoft.ML.AutoML.ISweepable">
+      <Member Id="P:Microsoft.ML.AutoML.ISweepable.SearchSpace" />
     </Type>
-    <Type Name="Microsoft.ML.AutoML.ITrialRunnerFactory" Id="T:Microsoft.ML.AutoML.ITrialRunnerFactory">
-      <Member Id="M:Microsoft.ML.AutoML.ITrialRunnerFactory.CreateTrialRunner" />
+    <Type Name="Microsoft.ML.AutoML.ISweepable`1" Id="T:Microsoft.ML.AutoML.ISweepable`1">
+      <Member Id="M:Microsoft.ML.AutoML.ISweepable`1.BuildFromOption(Microsoft.ML.MLContext,Microsoft.ML.SearchSpace.Parameter)" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.ITrialRunner" Id="T:Microsoft.ML.AutoML.ITrialRunner">
+      <Member Id="M:Microsoft.ML.AutoML.ITrialRunner.Run(Microsoft.ML.AutoML.TrialSettings)" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.ITuner" Id="T:Microsoft.ML.AutoML.ITuner">
       <Member Id="M:Microsoft.ML.AutoML.ITuner.Propose(Microsoft.ML.AutoML.TrialSettings)" />
       <Member Id="M:Microsoft.ML.AutoML.ITuner.Update(Microsoft.ML.AutoML.TrialResult)" />
-    </Type>
-    <Type Name="Microsoft.ML.AutoML.ITunerFactory" Id="T:Microsoft.ML.AutoML.ITunerFactory">
-      <Member Id="M:Microsoft.ML.AutoML.ITunerFactory.CreateTuner(Microsoft.ML.AutoML.TrialSettings)" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.MLContextExtension" Id="T:Microsoft.ML.AutoML.MLContextExtension">
       <Member Id="M:Microsoft.ML.AutoML.MLContextExtension.Auto(Microsoft.ML.MLContext)" />
@@ -282,13 +297,6 @@
       <Member Id="M:Microsoft.ML.AutoML.MulticlassExperimentSettings.#ctor" />
       <Member Id="P:Microsoft.ML.AutoML.MulticlassExperimentSettings.OptimizingMetric" />
       <Member Id="P:Microsoft.ML.AutoML.MulticlassExperimentSettings.Trainers" />
-    </Type>
-    <Type Name="Microsoft.ML.AutoML.MultiModelPipeline" Id="T:Microsoft.ML.AutoML.MultiModelPipeline">
-      <Member Id="M:Microsoft.ML.AutoML.MultiModelPipeline.#ctor" />
-      <Member Id="M:Microsoft.ML.AutoML.MultiModelPipeline.Append(Microsoft.ML.AutoML.SweepableEstimator[])" />
-      <Member Id="M:Microsoft.ML.AutoML.MultiModelPipeline.AppendOrSkip(Microsoft.ML.AutoML.SweepableEstimator[])" />
-      <Member Id="M:Microsoft.ML.AutoML.MultiModelPipeline.BuildSweepableEstimatorPipeline(System.String)" />
-      <Member Id="P:Microsoft.ML.AutoML.MultiModelPipeline.Estimators" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.RankingExperiment" Id="T:Microsoft.ML.AutoML.RankingExperiment" />
     <Type Name="Microsoft.ML.AutoML.RankingExperimentResultExtensions" Id="T:Microsoft.ML.AutoML.RankingExperimentResultExtensions">
@@ -360,34 +368,28 @@
       <Member Id="M:Microsoft.ML.AutoML.SweepableEstimator.BuildFromOption(Microsoft.ML.MLContext,Microsoft.ML.SearchSpace.Parameter)" />
       <Member Id="P:Microsoft.ML.AutoML.SweepableEstimator.SearchSpace" />
     </Type>
-    <Type Name="Microsoft.ML.AutoML.SweepableEstimatorPipeline" Id="T:Microsoft.ML.AutoML.SweepableEstimatorPipeline">
-      <Member Id="M:Microsoft.ML.AutoML.SweepableEstimatorPipeline.#ctor" />
-      <Member Id="M:Microsoft.ML.AutoML.SweepableEstimatorPipeline.Append(Microsoft.ML.AutoML.SweepableEstimator)" />
-      <Member Id="M:Microsoft.ML.AutoML.SweepableEstimatorPipeline.BuildTrainingPipeline(Microsoft.ML.MLContext,Microsoft.ML.SearchSpace.Parameter)" />
-      <Member Id="M:Microsoft.ML.AutoML.SweepableEstimatorPipeline.ToString" />
-      <Member Id="P:Microsoft.ML.AutoML.SweepableEstimatorPipeline.Estimators" />
-      <Member Id="P:Microsoft.ML.AutoML.SweepableEstimatorPipeline.Parameter" />
-      <Member Id="P:Microsoft.ML.AutoML.SweepableEstimatorPipeline.SearchSpace" />
-    </Type>
     <Type Name="Microsoft.ML.AutoML.SweepableExtension" Id="T:Microsoft.ML.AutoML.SweepableExtension">
-      <Member Id="M:Microsoft.ML.AutoML.SweepableExtension.Append(Microsoft.ML.AutoML.MultiModelPipeline,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer})" />
-      <Member Id="M:Microsoft.ML.AutoML.SweepableExtension.Append(Microsoft.ML.AutoML.SweepableEstimator,Microsoft.ML.AutoML.SweepableEstimator)" />
       <Member Id="M:Microsoft.ML.AutoML.SweepableExtension.Append(Microsoft.ML.AutoML.SweepableEstimator,Microsoft.ML.AutoML.SweepableEstimator[])" />
+      <Member Id="M:Microsoft.ML.AutoML.SweepableExtension.Append(Microsoft.ML.AutoML.SweepableEstimator,Microsoft.ML.AutoML.SweepablePipeline)" />
       <Member Id="M:Microsoft.ML.AutoML.SweepableExtension.Append(Microsoft.ML.AutoML.SweepableEstimator,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer})" />
-      <Member Id="M:Microsoft.ML.AutoML.SweepableExtension.Append(Microsoft.ML.AutoML.SweepableEstimatorPipeline,Microsoft.ML.AutoML.SweepableEstimator[])" />
-      <Member Id="M:Microsoft.ML.AutoML.SweepableExtension.Append(Microsoft.ML.AutoML.SweepableEstimatorPipeline,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer})" />
+      <Member Id="M:Microsoft.ML.AutoML.SweepableExtension.Append(Microsoft.ML.AutoML.SweepablePipeline,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer})" />
       <Member Id="M:Microsoft.ML.AutoML.SweepableExtension.Append(Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},Microsoft.ML.AutoML.SweepableEstimator)" />
       <Member Id="M:Microsoft.ML.AutoML.SweepableExtension.Append(Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},Microsoft.ML.AutoML.SweepableEstimator[])" />
+      <Member Id="M:Microsoft.ML.AutoML.SweepableExtension.Append(Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},Microsoft.ML.AutoML.SweepablePipeline)" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.SweepablePipeline" Id="T:Microsoft.ML.AutoML.SweepablePipeline">
+      <Member Id="M:Microsoft.ML.AutoML.SweepablePipeline.Append(Microsoft.ML.AutoML.ISweepable{Microsoft.ML.IEstimator{Microsoft.ML.ITransformer}}[])" />
+      <Member Id="M:Microsoft.ML.AutoML.SweepablePipeline.BuildFromOption(Microsoft.ML.MLContext,Microsoft.ML.SearchSpace.Parameter)" />
+      <Member Id="M:Microsoft.ML.AutoML.SweepablePipeline.BuildSweepableEstimatorPipeline(System.String)" />
+      <Member Id="M:Microsoft.ML.AutoML.SweepablePipeline.ToString(Microsoft.ML.SearchSpace.Parameter)" />
+      <Member Id="P:Microsoft.ML.AutoML.SweepablePipeline.CurrentParameter" />
+      <Member Id="P:Microsoft.ML.AutoML.SweepablePipeline.Estimators" />
+      <Member Id="P:Microsoft.ML.AutoML.SweepablePipeline.SearchSpace" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.TrainResult`1" Id="T:Microsoft.ML.AutoML.TrainResult`1">
       <Member Id="P:Microsoft.ML.AutoML.TrainResult`1.Exception" />
       <Member Id="P:Microsoft.ML.AutoML.TrainResult`1.Model" />
       <Member Id="P:Microsoft.ML.AutoML.TrainResult`1.ValidationMetrics" />
-    </Type>
-    <Type Name="Microsoft.ML.AutoML.TrainTestDatasetManager" Id="T:Microsoft.ML.AutoML.TrainTestDatasetManager">
-      <Member Id="M:Microsoft.ML.AutoML.TrainTestDatasetManager.#ctor" />
-      <Member Id="P:Microsoft.ML.AutoML.TrainTestDatasetManager.TestDataset" />
-      <Member Id="P:Microsoft.ML.AutoML.TrainTestDatasetManager.TrainDataset" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.TrialResult" Id="T:Microsoft.ML.AutoML.TrialResult">
       <Member Id="M:Microsoft.ML.AutoML.TrialResult.#ctor" />
@@ -398,10 +400,7 @@
     </Type>
     <Type Name="Microsoft.ML.AutoML.TrialSettings" Id="T:Microsoft.ML.AutoML.TrialSettings">
       <Member Id="M:Microsoft.ML.AutoML.TrialSettings.#ctor" />
-      <Member Id="P:Microsoft.ML.AutoML.TrialSettings.ExperimentSettings" />
       <Member Id="P:Microsoft.ML.AutoML.TrialSettings.Parameter" />
-      <Member Id="P:Microsoft.ML.AutoML.TrialSettings.Pipeline" />
-      <Member Id="P:Microsoft.ML.AutoML.TrialSettings.Schema" />
       <Member Id="P:Microsoft.ML.AutoML.TrialSettings.TrialId" />
     </Type>
   </Namespace>
