@@ -121,13 +121,19 @@
     </Type>
     <Type Name="Microsoft.ML.AutoML.AutoMLExperimentExtension" Id="T:Microsoft.ML.AutoML.AutoMLExperimentExtension">
       <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetBinaryClassificationMetric(Microsoft.ML.AutoML.AutoMLExperiment,Microsoft.ML.AutoML.BinaryClassificationMetric,System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetCheckpoint(Microsoft.ML.AutoML.AutoMLExperiment,System.String)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetCostFrugalTuner(Microsoft.ML.AutoML.AutoMLExperiment)" />
       <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetDataset(Microsoft.ML.AutoML.AutoMLExperiment,Microsoft.ML.DataOperationsCatalog.TrainTestData)" />
       <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetDataset(Microsoft.ML.AutoML.AutoMLExperiment,Microsoft.ML.IDataView,Microsoft.ML.IDataView)" />
       <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetDataset(Microsoft.ML.AutoML.AutoMLExperiment,Microsoft.ML.IDataView,System.Int32)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetEciCostFrugalTuner(Microsoft.ML.AutoML.AutoMLExperiment)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetGridSearchTuner(Microsoft.ML.AutoML.AutoMLExperiment,System.Int32)" />
       <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetMulticlassClassificationMetric(Microsoft.ML.AutoML.AutoMLExperiment,Microsoft.ML.AutoML.MulticlassClassificationMetric,System.String,System.String)" />
       <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetPerformanceMonitor(Microsoft.ML.AutoML.AutoMLExperiment,System.Int32)" />
       <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetPipeline(Microsoft.ML.AutoML.AutoMLExperiment,Microsoft.ML.AutoML.SweepablePipeline)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetRandomSearchTuner(Microsoft.ML.AutoML.AutoMLExperiment,System.Nullable{System.Int32})" />
       <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetRegressionMetric(Microsoft.ML.AutoML.AutoMLExperiment,Microsoft.ML.AutoML.RegressionMetric,System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetSmacTuner(Microsoft.ML.AutoML.AutoMLExperiment,System.Int32,System.Int32,System.Int32,System.Int32,System.Single,System.Int32,System.Int32,System.Double,System.Int32)" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.BinaryClassificationExperiment" Id="T:Microsoft.ML.AutoML.BinaryClassificationExperiment">
       <Member Id="M:Microsoft.ML.AutoML.BinaryClassificationExperiment.Execute(Microsoft.ML.IDataView,Microsoft.ML.AutoML.ColumnInformation,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.IProgress{Microsoft.ML.AutoML.RunDetail{Microsoft.ML.Data.BinaryClassificationMetrics}})" />
@@ -190,11 +196,6 @@
     <Type Name="Microsoft.ML.AutoML.CrossValidationRunDetail`1" Id="T:Microsoft.ML.AutoML.CrossValidationRunDetail`1">
       <Member Id="P:Microsoft.ML.AutoML.CrossValidationRunDetail`1.Results" />
     </Type>
-    <Type Name="Microsoft.ML.AutoML.EciCostFrugalTuner" Id="T:Microsoft.ML.AutoML.EciCostFrugalTuner">
-      <Member Id="M:Microsoft.ML.AutoML.EciCostFrugalTuner.#ctor(Microsoft.ML.AutoML.SweepablePipeline,Microsoft.ML.AutoML.AutoMLExperiment.AutoMLExperimentSettings)" />
-      <Member Id="M:Microsoft.ML.AutoML.EciCostFrugalTuner.Propose(Microsoft.ML.AutoML.TrialSettings)" />
-      <Member Id="M:Microsoft.ML.AutoML.EciCostFrugalTuner.Update(Microsoft.ML.AutoML.TrialResult)" />
-    </Type>
     <Type Name="Microsoft.ML.AutoML.Entity" Id="T:Microsoft.ML.AutoML.Entity">
       <Member Id="M:Microsoft.ML.AutoML.Entity.#ctor" />
       <Member Id="M:Microsoft.ML.AutoML.Entity.FromExpression(System.String)" />
@@ -237,10 +238,10 @@
     <Type Name="Microsoft.ML.AutoML.IDatasetManager" Id="T:Microsoft.ML.AutoML.IDatasetManager" />
     <Type Name="Microsoft.ML.AutoML.IEvaluateMetricManager" Id="T:Microsoft.ML.AutoML.IEvaluateMetricManager">
       <Member Id="M:Microsoft.ML.AutoML.IEvaluateMetricManager.Evaluate(Microsoft.ML.MLContext,Microsoft.ML.IDataView)" />
-      <Member Id="P:Microsoft.ML.AutoML.IEvaluateMetricManager.MetricName" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.IMetricManager" Id="T:Microsoft.ML.AutoML.IMetricManager">
       <Member Id="P:Microsoft.ML.AutoML.IMetricManager.IsMaximize" />
+      <Member Id="P:Microsoft.ML.AutoML.IMetricManager.MetricName" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.IMonitor" Id="T:Microsoft.ML.AutoML.IMonitor">
       <Member Id="M:Microsoft.ML.AutoML.IMonitor.ReportBestTrial(Microsoft.ML.AutoML.TrialResult)" />
@@ -399,6 +400,8 @@
     </Type>
     <Type Name="Microsoft.ML.AutoML.TrialResult" Id="T:Microsoft.ML.AutoML.TrialResult">
       <Member Id="M:Microsoft.ML.AutoML.TrialResult.#ctor" />
+      <Member Id="M:Microsoft.ML.AutoML.TrialResult.Equals(Microsoft.ML.AutoML.TrialResult,Microsoft.ML.AutoML.TrialResult)" />
+      <Member Id="M:Microsoft.ML.AutoML.TrialResult.GetHashCode(Microsoft.ML.AutoML.TrialResult)" />
       <Member Id="P:Microsoft.ML.AutoML.TrialResult.DurationInMilliseconds" />
       <Member Id="P:Microsoft.ML.AutoML.TrialResult.Loss" />
       <Member Id="P:Microsoft.ML.AutoML.TrialResult.Metric" />
@@ -821,6 +824,7 @@
       <Member Id="M:Microsoft.ML.SearchSpace.Parameter.CopyTo(System.Collections.Generic.KeyValuePair{System.String,Microsoft.ML.SearchSpace.Parameter}[],System.Int32)" />
       <Member Id="M:Microsoft.ML.SearchSpace.Parameter.CreateNestedParameter(System.Collections.Generic.KeyValuePair{System.String,Microsoft.ML.SearchSpace.Parameter}[])" />
       <Member Id="M:Microsoft.ML.SearchSpace.Parameter.Equals(Microsoft.ML.SearchSpace.Parameter)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Parameter.Equals(Microsoft.ML.SearchSpace.Parameter,Microsoft.ML.SearchSpace.Parameter)" />
       <Member Id="M:Microsoft.ML.SearchSpace.Parameter.FromBool(System.Boolean)" />
       <Member Id="M:Microsoft.ML.SearchSpace.Parameter.FromDouble(System.Double)" />
       <Member Id="M:Microsoft.ML.SearchSpace.Parameter.FromEnum``1(``0)" />
@@ -831,10 +835,12 @@
       <Member Id="M:Microsoft.ML.SearchSpace.Parameter.FromObject``1(``0)" />
       <Member Id="M:Microsoft.ML.SearchSpace.Parameter.FromString(System.String)" />
       <Member Id="M:Microsoft.ML.SearchSpace.Parameter.GetHashCode" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Parameter.GetHashCode(Microsoft.ML.SearchSpace.Parameter)" />
       <Member Id="M:Microsoft.ML.SearchSpace.Parameter.Remove(System.Collections.Generic.KeyValuePair{System.String,Microsoft.ML.SearchSpace.Parameter})" />
       <Member Id="M:Microsoft.ML.SearchSpace.Parameter.Remove(System.String)" />
       <Member Id="M:Microsoft.ML.SearchSpace.Parameter.System#Collections#Generic#IEnumerable&lt;System#Collections#Generic#KeyValuePair&lt;System#String,Microsoft#ML#SearchSpace#Parameter&gt;&gt;#GetEnumerator" />
       <Member Id="M:Microsoft.ML.SearchSpace.Parameter.System#Collections#IEnumerable#GetEnumerator" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Parameter.ToString" />
       <Member Id="M:Microsoft.ML.SearchSpace.Parameter.TryGetValue(System.String,Microsoft.ML.SearchSpace.Parameter@)" />
       <Member Id="P:Microsoft.ML.SearchSpace.Parameter.Count" />
       <Member Id="P:Microsoft.ML.SearchSpace.Parameter.IsReadOnly" />
@@ -869,6 +875,7 @@
       <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace.ContainsKey(System.String)" />
       <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace.CopyTo(System.Collections.Generic.KeyValuePair{System.String,Microsoft.ML.SearchSpace.Option.OptionBase}[],System.Int32)" />
       <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace.GetEnumerator" />
+      <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace.GetHashCode" />
       <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace.MappingToFeatureSpace(Microsoft.ML.SearchSpace.Parameter)" />
       <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace.Remove(System.Collections.Generic.KeyValuePair{System.String,Microsoft.ML.SearchSpace.Option.OptionBase})" />
       <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace.Remove(System.String)" />
