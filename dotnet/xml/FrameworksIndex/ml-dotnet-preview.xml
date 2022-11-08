@@ -16,6 +16,7 @@
     <Assembly Name="Microsoft.ML.Recommender" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.SamplesUtils" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.SearchSpace" Version="1.0.0.0" />
+    <Assembly Name="Microsoft.ML.Tokenizers" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.TorchSharp" Version="1.0.0.0" />
   </Assemblies>
   <Namespace Name="Microsoft.Data.Analysis">
@@ -745,6 +746,8 @@
       <Member Id="M:Microsoft.Data.Analysis.DataFrame.ReverseXor(System.Boolean,System.Boolean)" />
       <Member Id="M:Microsoft.Data.Analysis.DataFrame.RightShift(System.Int32,System.Boolean)" />
       <Member Id="M:Microsoft.Data.Analysis.DataFrame.Sample(System.Int32)" />
+      <Member Id="M:Microsoft.Data.Analysis.DataFrame.SaveCsv(Microsoft.Data.Analysis.DataFrame,System.IO.Stream,System.Char,System.Boolean,System.Text.Encoding,System.Globalization.CultureInfo)" />
+      <Member Id="M:Microsoft.Data.Analysis.DataFrame.SaveCsv(Microsoft.Data.Analysis.DataFrame,System.String,System.Char,System.Boolean,System.Text.Encoding,System.Globalization.CultureInfo)" />
       <Member Id="M:Microsoft.Data.Analysis.DataFrame.Subtract``1(``0,System.Boolean)" />
       <Member Id="M:Microsoft.Data.Analysis.DataFrame.Subtract``1(System.Collections.Generic.IReadOnlyList{``0},System.Boolean)" />
       <Member Id="M:Microsoft.Data.Analysis.DataFrame.Tail(System.Int32)" />
@@ -1038,6 +1041,24 @@
       <Member Id="M:Microsoft.Data.Analysis.DataFrameRowCollection.System#Collections#IEnumerable#GetEnumerator" />
       <Member Id="P:Microsoft.Data.Analysis.DataFrameRowCollection.Count" />
       <Member Id="P:Microsoft.Data.Analysis.DataFrameRowCollection.Item(System.Int64)" />
+    </Type>
+    <Type Name="Microsoft.Data.Analysis.DateTimeDataFrameColumn" Id="T:Microsoft.Data.Analysis.DateTimeDataFrameColumn">
+      <Member Id="M:Microsoft.Data.Analysis.DateTimeDataFrameColumn.#ctor(System.String,System.Collections.Generic.IEnumerable{System.DateTime})" />
+      <Member Id="M:Microsoft.Data.Analysis.DateTimeDataFrameColumn.#ctor(System.String,System.Collections.Generic.IEnumerable{System.Nullable{System.DateTime}})" />
+      <Member Id="M:Microsoft.Data.Analysis.DateTimeDataFrameColumn.#ctor(System.String,System.Int64)" />
+      <Member Id="M:Microsoft.Data.Analysis.DateTimeDataFrameColumn.#ctor(System.String,System.ReadOnlyMemory{System.Byte},System.ReadOnlyMemory{System.Byte},System.Int32,System.Int32)" />
+      <Member Id="M:Microsoft.Data.Analysis.DateTimeDataFrameColumn.ElementwiseEquals(Microsoft.Data.Analysis.DateTimeDataFrameColumn)" />
+      <Member Id="M:Microsoft.Data.Analysis.DateTimeDataFrameColumn.ElementwiseEquals(System.DateTime)" />
+      <Member Id="M:Microsoft.Data.Analysis.DateTimeDataFrameColumn.ElementwiseGreaterThan(Microsoft.Data.Analysis.DateTimeDataFrameColumn)" />
+      <Member Id="M:Microsoft.Data.Analysis.DateTimeDataFrameColumn.ElementwiseGreaterThan(System.DateTime)" />
+      <Member Id="M:Microsoft.Data.Analysis.DateTimeDataFrameColumn.ElementwiseGreaterThanOrEqual(Microsoft.Data.Analysis.DateTimeDataFrameColumn)" />
+      <Member Id="M:Microsoft.Data.Analysis.DateTimeDataFrameColumn.ElementwiseGreaterThanOrEqual(System.DateTime)" />
+      <Member Id="M:Microsoft.Data.Analysis.DateTimeDataFrameColumn.ElementwiseLessThan(Microsoft.Data.Analysis.DateTimeDataFrameColumn)" />
+      <Member Id="M:Microsoft.Data.Analysis.DateTimeDataFrameColumn.ElementwiseLessThan(System.DateTime)" />
+      <Member Id="M:Microsoft.Data.Analysis.DateTimeDataFrameColumn.ElementwiseLessThanOrEqual(Microsoft.Data.Analysis.DateTimeDataFrameColumn)" />
+      <Member Id="M:Microsoft.Data.Analysis.DateTimeDataFrameColumn.ElementwiseLessThanOrEqual(System.DateTime)" />
+      <Member Id="M:Microsoft.Data.Analysis.DateTimeDataFrameColumn.ElementwiseNotEquals(Microsoft.Data.Analysis.DateTimeDataFrameColumn)" />
+      <Member Id="M:Microsoft.Data.Analysis.DateTimeDataFrameColumn.ElementwiseNotEquals(System.DateTime)" />
     </Type>
     <Type Name="Microsoft.Data.Analysis.DecimalDataFrameColumn" Id="T:Microsoft.Data.Analysis.DecimalDataFrameColumn">
       <Member Id="M:Microsoft.Data.Analysis.DecimalDataFrameColumn.#ctor(System.String,System.Collections.Generic.IEnumerable{System.Decimal})" />
@@ -5758,6 +5779,8 @@
       <Member Id="M:Microsoft.ML.AutoML.AutoCatalog.CreateRegressionExperiment(Microsoft.ML.AutoML.RegressionExperimentSettings)" />
       <Member Id="M:Microsoft.ML.AutoML.AutoCatalog.CreateRegressionExperiment(System.UInt32)" />
       <Member Id="M:Microsoft.ML.AutoML.AutoCatalog.CreateSweepableEstimator``1(System.Func{Microsoft.ML.MLContext,``0,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer}},Microsoft.ML.SearchSpace.SearchSpace{``0})" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoCatalog.Featurizer(Microsoft.ML.IDataView,Microsoft.ML.AutoML.ColumnInformation,System.String)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoCatalog.Featurizer(Microsoft.ML.IDataView,System.String,System.String[],System.String[],System.String[],System.String[],System.String[])" />
       <Member Id="M:Microsoft.ML.AutoML.AutoCatalog.InferColumns(System.String,Microsoft.ML.AutoML.ColumnInformation,System.Nullable{System.Char},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Boolean,System.Boolean)" />
       <Member Id="M:Microsoft.ML.AutoML.AutoCatalog.InferColumns(System.String,System.String,System.Nullable{System.Char},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Boolean,System.Boolean)" />
       <Member Id="M:Microsoft.ML.AutoML.AutoCatalog.InferColumns(System.String,System.UInt32,System.Boolean,System.Nullable{System.Char},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Boolean,System.Boolean)" />
@@ -5766,29 +5789,51 @@
     </Type>
     <Type Name="Microsoft.ML.AutoML.AutoMLExperiment" Id="T:Microsoft.ML.AutoML.AutoMLExperiment">
       <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.#ctor(Microsoft.ML.MLContext,Microsoft.ML.AutoML.AutoMLExperiment.AutoMLExperimentSettings)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.AddSearchSpace(System.String,Microsoft.ML.SearchSpace.SearchSpace)" />
       <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.Run" />
       <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.RunAsync(System.Threading.CancellationToken)" />
-      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetDataset(Microsoft.ML.DataOperationsCatalog.TrainTestData)" />
-      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetDataset(Microsoft.ML.IDataView,Microsoft.ML.IDataView)" />
-      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetDataset(Microsoft.ML.IDataView,System.Int32)" />
-      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetEvaluateMetric(Microsoft.ML.AutoML.BinaryClassificationMetric,System.String,System.String)" />
-      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetEvaluateMetric(Microsoft.ML.AutoML.MulticlassClassificationMetric,System.String,System.String)" />
-      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetEvaluateMetric(Microsoft.ML.AutoML.RegressionMetric,System.String,System.String)" />
-      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetIsMaximizeMetric(System.Boolean)" />
-      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetMonitor(Microsoft.ML.AutoML.IMonitor)" />
-      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetPipeline(Microsoft.ML.AutoML.MultiModelPipeline)" />
-      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetPipeline(Microsoft.ML.AutoML.SweepableEstimatorPipeline)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetMaximumMemoryUsageInMegaByte(System.Double)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetMaxModelToExplore(System.Int32)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetMonitor``1" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetMonitor``1(``0)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetMonitor``1(System.Func{System.IServiceProvider,``0})" />
       <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetTrainingTimeInSeconds(System.UInt32)" />
-      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetTrialRunner(Microsoft.ML.AutoML.ITrialRunner)" />
-      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetTunerFactory``1" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetTrialRunner``1" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetTrialRunner``1(``0)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetTrialRunner``1(System.Func{System.IServiceProvider,``0})" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetTuner``1" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetTuner``1(``0)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.SetTuner``1(System.Func{System.IServiceProvider,``0})" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.AutoMLExperiment/AutoMLExperimentSettings" Id="T:Microsoft.ML.AutoML.AutoMLExperiment.AutoMLExperimentSettings">
       <Member Id="M:Microsoft.ML.AutoML.AutoMLExperiment.AutoMLExperimentSettings.#ctor" />
-      <Member Id="P:Microsoft.ML.AutoML.AutoMLExperiment.AutoMLExperimentSettings.IsMaximizeMetric" />
-      <Member Id="P:Microsoft.ML.AutoML.AutoMLExperiment.AutoMLExperimentSettings.Pipeline" />
+      <Member Id="P:Microsoft.ML.AutoML.AutoMLExperiment.AutoMLExperimentSettings.SearchSpace" />
       <Member Id="P:Microsoft.ML.AutoML.AutoMLExperiment.AutoMLExperimentSettings.Seed" />
     </Type>
-    <Type Name="Microsoft.ML.AutoML.BinaryClassificationExperiment" Id="T:Microsoft.ML.AutoML.BinaryClassificationExperiment" />
+    <Type Name="Microsoft.ML.AutoML.AutoMLExperimentExtension" Id="T:Microsoft.ML.AutoML.AutoMLExperimentExtension">
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetBinaryClassificationMetric(Microsoft.ML.AutoML.AutoMLExperiment,Microsoft.ML.AutoML.BinaryClassificationMetric,System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetCheckpoint(Microsoft.ML.AutoML.AutoMLExperiment,System.String)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetCostFrugalTuner(Microsoft.ML.AutoML.AutoMLExperiment)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetDataset(Microsoft.ML.AutoML.AutoMLExperiment,Microsoft.ML.DataOperationsCatalog.TrainTestData)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetDataset(Microsoft.ML.AutoML.AutoMLExperiment,Microsoft.ML.IDataView,Microsoft.ML.IDataView)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetDataset(Microsoft.ML.AutoML.AutoMLExperiment,Microsoft.ML.IDataView,System.Int32)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetEciCostFrugalTuner(Microsoft.ML.AutoML.AutoMLExperiment)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetGridSearchTuner(Microsoft.ML.AutoML.AutoMLExperiment,System.Int32)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetMulticlassClassificationMetric(Microsoft.ML.AutoML.AutoMLExperiment,Microsoft.ML.AutoML.MulticlassClassificationMetric,System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetPerformanceMonitor(Microsoft.ML.AutoML.AutoMLExperiment,System.Int32)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetPipeline(Microsoft.ML.AutoML.AutoMLExperiment,Microsoft.ML.AutoML.SweepablePipeline)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetRandomSearchTuner(Microsoft.ML.AutoML.AutoMLExperiment,System.Nullable{System.Int32})" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetRegressionMetric(Microsoft.ML.AutoML.AutoMLExperiment,Microsoft.ML.AutoML.RegressionMetric,System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetSmacTuner(Microsoft.ML.AutoML.AutoMLExperiment,System.Int32,System.Int32,System.Int32,System.Int32,System.Single,System.Int32,System.Int32,System.Double,System.Int32)" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.BinaryClassificationExperiment" Id="T:Microsoft.ML.AutoML.BinaryClassificationExperiment">
+      <Member Id="M:Microsoft.ML.AutoML.BinaryClassificationExperiment.Execute(Microsoft.ML.IDataView,Microsoft.ML.AutoML.ColumnInformation,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.IProgress{Microsoft.ML.AutoML.RunDetail{Microsoft.ML.Data.BinaryClassificationMetrics}})" />
+      <Member Id="M:Microsoft.ML.AutoML.BinaryClassificationExperiment.Execute(Microsoft.ML.IDataView,Microsoft.ML.IDataView,Microsoft.ML.AutoML.ColumnInformation,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.IProgress{Microsoft.ML.AutoML.RunDetail{Microsoft.ML.Data.BinaryClassificationMetrics}})" />
+      <Member Id="M:Microsoft.ML.AutoML.BinaryClassificationExperiment.Execute(Microsoft.ML.IDataView,Microsoft.ML.IDataView,System.String,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.IProgress{Microsoft.ML.AutoML.RunDetail{Microsoft.ML.Data.BinaryClassificationMetrics}})" />
+      <Member Id="M:Microsoft.ML.AutoML.BinaryClassificationExperiment.Execute(Microsoft.ML.IDataView,System.String,System.String,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.IProgress{Microsoft.ML.AutoML.RunDetail{Microsoft.ML.Data.BinaryClassificationMetrics}})" />
+      <Member Id="M:Microsoft.ML.AutoML.BinaryClassificationExperiment.Execute(Microsoft.ML.IDataView,System.UInt32,Microsoft.ML.AutoML.ColumnInformation,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.IProgress{Microsoft.ML.AutoML.CrossValidationRunDetail{Microsoft.ML.Data.BinaryClassificationMetrics}})" />
+      <Member Id="M:Microsoft.ML.AutoML.BinaryClassificationExperiment.Execute(Microsoft.ML.IDataView,System.UInt32,System.String,System.String,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.IProgress{Microsoft.ML.AutoML.CrossValidationRunDetail{Microsoft.ML.Data.BinaryClassificationMetrics}})" />
+    </Type>
     <Type Name="Microsoft.ML.AutoML.BinaryClassificationMetric" Id="T:Microsoft.ML.AutoML.BinaryClassificationMetric">
       <Member Id="F:Microsoft.ML.AutoML.BinaryClassificationMetric.Accuracy" />
       <Member Id="F:Microsoft.ML.AutoML.BinaryClassificationMetric.AreaUnderPrecisionRecallCurve" />
@@ -5800,15 +5845,11 @@
       <Member Id="F:Microsoft.ML.AutoML.BinaryClassificationMetric.PositiveRecall" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.BinaryClassificationTrainer" Id="T:Microsoft.ML.AutoML.BinaryClassificationTrainer">
-      <Member Id="F:Microsoft.ML.AutoML.BinaryClassificationTrainer.AveragedPerceptron" />
       <Member Id="F:Microsoft.ML.AutoML.BinaryClassificationTrainer.FastForest" />
       <Member Id="F:Microsoft.ML.AutoML.BinaryClassificationTrainer.FastTree" />
       <Member Id="F:Microsoft.ML.AutoML.BinaryClassificationTrainer.LbfgsLogisticRegression" />
       <Member Id="F:Microsoft.ML.AutoML.BinaryClassificationTrainer.LightGbm" />
-      <Member Id="F:Microsoft.ML.AutoML.BinaryClassificationTrainer.LinearSvm" />
       <Member Id="F:Microsoft.ML.AutoML.BinaryClassificationTrainer.SdcaLogisticRegression" />
-      <Member Id="F:Microsoft.ML.AutoML.BinaryClassificationTrainer.SgdCalibrated" />
-      <Member Id="F:Microsoft.ML.AutoML.BinaryClassificationTrainer.SymbolicSgdLogisticRegression" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.BinaryExperimentSettings" Id="T:Microsoft.ML.AutoML.BinaryExperimentSettings">
       <Member Id="M:Microsoft.ML.AutoML.BinaryExperimentSettings.#ctor" />
@@ -5838,11 +5879,6 @@
       <Member Id="P:Microsoft.ML.AutoML.ColumnInformation.SamplingKeyColumnName" />
       <Member Id="P:Microsoft.ML.AutoML.ColumnInformation.TextColumnNames" />
       <Member Id="P:Microsoft.ML.AutoML.ColumnInformation.UserIdColumnName" />
-    </Type>
-    <Type Name="Microsoft.ML.AutoML.CrossValidateDatasetManager" Id="T:Microsoft.ML.AutoML.CrossValidateDatasetManager">
-      <Member Id="M:Microsoft.ML.AutoML.CrossValidateDatasetManager.#ctor" />
-      <Member Id="P:Microsoft.ML.AutoML.CrossValidateDatasetManager.Dataset" />
-      <Member Id="P:Microsoft.ML.AutoML.CrossValidateDatasetManager.Fold" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.CrossValidationExperimentResult`1" Id="T:Microsoft.ML.AutoML.CrossValidationExperimentResult`1">
       <Member Id="F:Microsoft.ML.AutoML.CrossValidationExperimentResult`1.BestRun" />
@@ -5888,12 +5924,20 @@
       <Member Id="P:Microsoft.ML.AutoML.ExperimentSettings.CacheDirectoryName" />
       <Member Id="P:Microsoft.ML.AutoML.ExperimentSettings.CancellationToken" />
       <Member Id="P:Microsoft.ML.AutoML.ExperimentSettings.MaxExperimentTimeInSeconds" />
+      <Member Id="P:Microsoft.ML.AutoML.ExperimentSettings.MaximumMemoryUsageInMegaByte" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.IDatasetManager" Id="T:Microsoft.ML.AutoML.IDatasetManager" />
+    <Type Name="Microsoft.ML.AutoML.IEvaluateMetricManager" Id="T:Microsoft.ML.AutoML.IEvaluateMetricManager">
+      <Member Id="M:Microsoft.ML.AutoML.IEvaluateMetricManager.Evaluate(Microsoft.ML.MLContext,Microsoft.ML.IDataView)" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.IMetricManager" Id="T:Microsoft.ML.AutoML.IMetricManager">
+      <Member Id="P:Microsoft.ML.AutoML.IMetricManager.IsMaximize" />
+      <Member Id="P:Microsoft.ML.AutoML.IMetricManager.MetricName" />
+    </Type>
     <Type Name="Microsoft.ML.AutoML.IMonitor" Id="T:Microsoft.ML.AutoML.IMonitor">
       <Member Id="M:Microsoft.ML.AutoML.IMonitor.ReportBestTrial(Microsoft.ML.AutoML.TrialResult)" />
       <Member Id="M:Microsoft.ML.AutoML.IMonitor.ReportCompletedTrial(Microsoft.ML.AutoML.TrialResult)" />
-      <Member Id="M:Microsoft.ML.AutoML.IMonitor.ReportFailTrial(Microsoft.ML.AutoML.TrialResult)" />
+      <Member Id="M:Microsoft.ML.AutoML.IMonitor.ReportFailTrial(Microsoft.ML.AutoML.TrialSettings,System.Exception)" />
       <Member Id="M:Microsoft.ML.AutoML.IMonitor.ReportRunningTrial(Microsoft.ML.AutoML.TrialSettings)" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.InferenceException" Id="T:Microsoft.ML.AutoML.InferenceException">
@@ -5903,23 +5947,30 @@
       <Member Id="F:Microsoft.ML.AutoML.InferenceExceptionType.ColumnDataType" />
       <Member Id="F:Microsoft.ML.AutoML.InferenceExceptionType.ColumnSplit" />
     </Type>
-    <Type Name="Microsoft.ML.AutoML.ITrialRunner" Id="T:Microsoft.ML.AutoML.ITrialRunner">
-      <Member Id="M:Microsoft.ML.AutoML.ITrialRunner.Run(Microsoft.ML.AutoML.TrialSettings,System.IServiceProvider)" />
+    <Type Name="Microsoft.ML.AutoML.ISweepable" Id="T:Microsoft.ML.AutoML.ISweepable">
+      <Member Id="P:Microsoft.ML.AutoML.ISweepable.SearchSpace" />
     </Type>
-    <Type Name="Microsoft.ML.AutoML.ITrialRunnerFactory" Id="T:Microsoft.ML.AutoML.ITrialRunnerFactory">
-      <Member Id="M:Microsoft.ML.AutoML.ITrialRunnerFactory.CreateTrialRunner" />
+    <Type Name="Microsoft.ML.AutoML.ISweepable`1" Id="T:Microsoft.ML.AutoML.ISweepable`1">
+      <Member Id="M:Microsoft.ML.AutoML.ISweepable`1.BuildFromOption(Microsoft.ML.MLContext,Microsoft.ML.SearchSpace.Parameter)" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.ITrialRunner" Id="T:Microsoft.ML.AutoML.ITrialRunner">
+      <Member Id="M:Microsoft.ML.AutoML.ITrialRunner.RunAsync(Microsoft.ML.AutoML.TrialSettings,System.Threading.CancellationToken)" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.ITuner" Id="T:Microsoft.ML.AutoML.ITuner">
       <Member Id="M:Microsoft.ML.AutoML.ITuner.Propose(Microsoft.ML.AutoML.TrialSettings)" />
       <Member Id="M:Microsoft.ML.AutoML.ITuner.Update(Microsoft.ML.AutoML.TrialResult)" />
     </Type>
-    <Type Name="Microsoft.ML.AutoML.ITunerFactory" Id="T:Microsoft.ML.AutoML.ITunerFactory">
-      <Member Id="M:Microsoft.ML.AutoML.ITunerFactory.CreateTuner(Microsoft.ML.AutoML.TrialSettings)" />
-    </Type>
     <Type Name="Microsoft.ML.AutoML.MLContextExtension" Id="T:Microsoft.ML.AutoML.MLContextExtension">
       <Member Id="M:Microsoft.ML.AutoML.MLContextExtension.Auto(Microsoft.ML.MLContext)" />
     </Type>
-    <Type Name="Microsoft.ML.AutoML.MulticlassClassificationExperiment" Id="T:Microsoft.ML.AutoML.MulticlassClassificationExperiment" />
+    <Type Name="Microsoft.ML.AutoML.MulticlassClassificationExperiment" Id="T:Microsoft.ML.AutoML.MulticlassClassificationExperiment">
+      <Member Id="M:Microsoft.ML.AutoML.MulticlassClassificationExperiment.Execute(Microsoft.ML.IDataView,Microsoft.ML.AutoML.ColumnInformation,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.IProgress{Microsoft.ML.AutoML.RunDetail{Microsoft.ML.Data.MulticlassClassificationMetrics}})" />
+      <Member Id="M:Microsoft.ML.AutoML.MulticlassClassificationExperiment.Execute(Microsoft.ML.IDataView,Microsoft.ML.IDataView,Microsoft.ML.AutoML.ColumnInformation,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.IProgress{Microsoft.ML.AutoML.RunDetail{Microsoft.ML.Data.MulticlassClassificationMetrics}})" />
+      <Member Id="M:Microsoft.ML.AutoML.MulticlassClassificationExperiment.Execute(Microsoft.ML.IDataView,Microsoft.ML.IDataView,System.String,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.IProgress{Microsoft.ML.AutoML.RunDetail{Microsoft.ML.Data.MulticlassClassificationMetrics}})" />
+      <Member Id="M:Microsoft.ML.AutoML.MulticlassClassificationExperiment.Execute(Microsoft.ML.IDataView,System.String,System.String,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.IProgress{Microsoft.ML.AutoML.RunDetail{Microsoft.ML.Data.MulticlassClassificationMetrics}})" />
+      <Member Id="M:Microsoft.ML.AutoML.MulticlassClassificationExperiment.Execute(Microsoft.ML.IDataView,System.UInt32,Microsoft.ML.AutoML.ColumnInformation,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.IProgress{Microsoft.ML.AutoML.CrossValidationRunDetail{Microsoft.ML.Data.MulticlassClassificationMetrics}})" />
+      <Member Id="M:Microsoft.ML.AutoML.MulticlassClassificationExperiment.Execute(Microsoft.ML.IDataView,System.UInt32,System.String,System.String,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.IProgress{Microsoft.ML.AutoML.CrossValidationRunDetail{Microsoft.ML.Data.MulticlassClassificationMetrics}})" />
+    </Type>
     <Type Name="Microsoft.ML.AutoML.MulticlassClassificationMetric" Id="T:Microsoft.ML.AutoML.MulticlassClassificationMetric">
       <Member Id="F:Microsoft.ML.AutoML.MulticlassClassificationMetric.LogLoss" />
       <Member Id="F:Microsoft.ML.AutoML.MulticlassClassificationMetric.LogLossReduction" />
@@ -5928,28 +5979,17 @@
       <Member Id="F:Microsoft.ML.AutoML.MulticlassClassificationMetric.TopKAccuracy" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.MulticlassClassificationTrainer" Id="T:Microsoft.ML.AutoML.MulticlassClassificationTrainer">
-      <Member Id="F:Microsoft.ML.AutoML.MulticlassClassificationTrainer.AveragedPerceptronOva" />
       <Member Id="F:Microsoft.ML.AutoML.MulticlassClassificationTrainer.FastForestOva" />
       <Member Id="F:Microsoft.ML.AutoML.MulticlassClassificationTrainer.FastTreeOva" />
       <Member Id="F:Microsoft.ML.AutoML.MulticlassClassificationTrainer.LbfgsLogisticRegressionOva" />
       <Member Id="F:Microsoft.ML.AutoML.MulticlassClassificationTrainer.LbfgsMaximumEntropy" />
       <Member Id="F:Microsoft.ML.AutoML.MulticlassClassificationTrainer.LightGbm" />
-      <Member Id="F:Microsoft.ML.AutoML.MulticlassClassificationTrainer.LinearSupportVectorMachinesOva" />
       <Member Id="F:Microsoft.ML.AutoML.MulticlassClassificationTrainer.SdcaMaximumEntropy" />
-      <Member Id="F:Microsoft.ML.AutoML.MulticlassClassificationTrainer.SgdCalibratedOva" />
-      <Member Id="F:Microsoft.ML.AutoML.MulticlassClassificationTrainer.SymbolicSgdLogisticRegressionOva" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.MulticlassExperimentSettings" Id="T:Microsoft.ML.AutoML.MulticlassExperimentSettings">
       <Member Id="M:Microsoft.ML.AutoML.MulticlassExperimentSettings.#ctor" />
       <Member Id="P:Microsoft.ML.AutoML.MulticlassExperimentSettings.OptimizingMetric" />
       <Member Id="P:Microsoft.ML.AutoML.MulticlassExperimentSettings.Trainers" />
-    </Type>
-    <Type Name="Microsoft.ML.AutoML.MultiModelPipeline" Id="T:Microsoft.ML.AutoML.MultiModelPipeline">
-      <Member Id="M:Microsoft.ML.AutoML.MultiModelPipeline.#ctor" />
-      <Member Id="M:Microsoft.ML.AutoML.MultiModelPipeline.Append(Microsoft.ML.AutoML.SweepableEstimator[])" />
-      <Member Id="M:Microsoft.ML.AutoML.MultiModelPipeline.AppendOrSkip(Microsoft.ML.AutoML.SweepableEstimator[])" />
-      <Member Id="M:Microsoft.ML.AutoML.MultiModelPipeline.BuildSweepableEstimatorPipeline(System.String)" />
-      <Member Id="P:Microsoft.ML.AutoML.MultiModelPipeline.Estimators" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.RankingExperiment" Id="T:Microsoft.ML.AutoML.RankingExperiment" />
     <Type Name="Microsoft.ML.AutoML.RankingExperimentResultExtensions" Id="T:Microsoft.ML.AutoML.RankingExperimentResultExtensions">
@@ -5979,7 +6019,14 @@
     <Type Name="Microsoft.ML.AutoML.RecommendationTrainer" Id="T:Microsoft.ML.AutoML.RecommendationTrainer">
       <Member Id="F:Microsoft.ML.AutoML.RecommendationTrainer.MatrixFactorization" />
     </Type>
-    <Type Name="Microsoft.ML.AutoML.RegressionExperiment" Id="T:Microsoft.ML.AutoML.RegressionExperiment" />
+    <Type Name="Microsoft.ML.AutoML.RegressionExperiment" Id="T:Microsoft.ML.AutoML.RegressionExperiment">
+      <Member Id="M:Microsoft.ML.AutoML.RegressionExperiment.Execute(Microsoft.ML.IDataView,Microsoft.ML.AutoML.ColumnInformation,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.IProgress{Microsoft.ML.AutoML.RunDetail{Microsoft.ML.Data.RegressionMetrics}})" />
+      <Member Id="M:Microsoft.ML.AutoML.RegressionExperiment.Execute(Microsoft.ML.IDataView,Microsoft.ML.IDataView,Microsoft.ML.AutoML.ColumnInformation,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.IProgress{Microsoft.ML.AutoML.RunDetail{Microsoft.ML.Data.RegressionMetrics}})" />
+      <Member Id="M:Microsoft.ML.AutoML.RegressionExperiment.Execute(Microsoft.ML.IDataView,Microsoft.ML.IDataView,System.String,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.IProgress{Microsoft.ML.AutoML.RunDetail{Microsoft.ML.Data.RegressionMetrics}})" />
+      <Member Id="M:Microsoft.ML.AutoML.RegressionExperiment.Execute(Microsoft.ML.IDataView,System.String,System.String,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.IProgress{Microsoft.ML.AutoML.RunDetail{Microsoft.ML.Data.RegressionMetrics}})" />
+      <Member Id="M:Microsoft.ML.AutoML.RegressionExperiment.Execute(Microsoft.ML.IDataView,System.UInt32,Microsoft.ML.AutoML.ColumnInformation,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.IProgress{Microsoft.ML.AutoML.CrossValidationRunDetail{Microsoft.ML.Data.RegressionMetrics}})" />
+      <Member Id="M:Microsoft.ML.AutoML.RegressionExperiment.Execute(Microsoft.ML.IDataView,System.UInt32,System.String,System.String,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},System.IProgress{Microsoft.ML.AutoML.CrossValidationRunDetail{Microsoft.ML.Data.RegressionMetrics}})" />
+    </Type>
     <Type Name="Microsoft.ML.AutoML.RegressionExperimentResultExtensions" Id="T:Microsoft.ML.AutoML.RegressionExperimentResultExtensions">
       <Member Id="M:Microsoft.ML.AutoML.RegressionExperimentResultExtensions.Best(System.Collections.Generic.IEnumerable{Microsoft.ML.AutoML.CrossValidationRunDetail{Microsoft.ML.Data.RegressionMetrics}},Microsoft.ML.AutoML.RegressionMetric)" />
       <Member Id="M:Microsoft.ML.AutoML.RegressionExperimentResultExtensions.Best(System.Collections.Generic.IEnumerable{Microsoft.ML.AutoML.RunDetail{Microsoft.ML.Data.RegressionMetrics}},Microsoft.ML.AutoML.RegressionMetric)" />
@@ -6001,8 +6048,6 @@
       <Member Id="F:Microsoft.ML.AutoML.RegressionTrainer.FastTreeTweedie" />
       <Member Id="F:Microsoft.ML.AutoML.RegressionTrainer.LbfgsPoissonRegression" />
       <Member Id="F:Microsoft.ML.AutoML.RegressionTrainer.LightGbm" />
-      <Member Id="F:Microsoft.ML.AutoML.RegressionTrainer.Ols" />
-      <Member Id="F:Microsoft.ML.AutoML.RegressionTrainer.OnlineGradientDescent" />
       <Member Id="F:Microsoft.ML.AutoML.RegressionTrainer.StochasticDualCoordinateAscent" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.RunDetail" Id="T:Microsoft.ML.AutoML.RunDetail">
@@ -6021,48 +6066,44 @@
       <Member Id="M:Microsoft.ML.AutoML.SweepableEstimator.BuildFromOption(Microsoft.ML.MLContext,Microsoft.ML.SearchSpace.Parameter)" />
       <Member Id="P:Microsoft.ML.AutoML.SweepableEstimator.SearchSpace" />
     </Type>
-    <Type Name="Microsoft.ML.AutoML.SweepableEstimatorPipeline" Id="T:Microsoft.ML.AutoML.SweepableEstimatorPipeline">
-      <Member Id="M:Microsoft.ML.AutoML.SweepableEstimatorPipeline.#ctor" />
-      <Member Id="M:Microsoft.ML.AutoML.SweepableEstimatorPipeline.Append(Microsoft.ML.AutoML.SweepableEstimator)" />
-      <Member Id="M:Microsoft.ML.AutoML.SweepableEstimatorPipeline.BuildTrainingPipeline(Microsoft.ML.MLContext,Microsoft.ML.SearchSpace.Parameter)" />
-      <Member Id="M:Microsoft.ML.AutoML.SweepableEstimatorPipeline.ToString" />
-      <Member Id="P:Microsoft.ML.AutoML.SweepableEstimatorPipeline.Estimators" />
-      <Member Id="P:Microsoft.ML.AutoML.SweepableEstimatorPipeline.Parameter" />
-      <Member Id="P:Microsoft.ML.AutoML.SweepableEstimatorPipeline.SearchSpace" />
-    </Type>
     <Type Name="Microsoft.ML.AutoML.SweepableExtension" Id="T:Microsoft.ML.AutoML.SweepableExtension">
-      <Member Id="M:Microsoft.ML.AutoML.SweepableExtension.Append(Microsoft.ML.AutoML.MultiModelPipeline,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer})" />
-      <Member Id="M:Microsoft.ML.AutoML.SweepableExtension.Append(Microsoft.ML.AutoML.SweepableEstimator,Microsoft.ML.AutoML.SweepableEstimator)" />
       <Member Id="M:Microsoft.ML.AutoML.SweepableExtension.Append(Microsoft.ML.AutoML.SweepableEstimator,Microsoft.ML.AutoML.SweepableEstimator[])" />
+      <Member Id="M:Microsoft.ML.AutoML.SweepableExtension.Append(Microsoft.ML.AutoML.SweepableEstimator,Microsoft.ML.AutoML.SweepablePipeline)" />
       <Member Id="M:Microsoft.ML.AutoML.SweepableExtension.Append(Microsoft.ML.AutoML.SweepableEstimator,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer})" />
-      <Member Id="M:Microsoft.ML.AutoML.SweepableExtension.Append(Microsoft.ML.AutoML.SweepableEstimatorPipeline,Microsoft.ML.AutoML.SweepableEstimator[])" />
-      <Member Id="M:Microsoft.ML.AutoML.SweepableExtension.Append(Microsoft.ML.AutoML.SweepableEstimatorPipeline,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer})" />
+      <Member Id="M:Microsoft.ML.AutoML.SweepableExtension.Append(Microsoft.ML.AutoML.SweepablePipeline,Microsoft.ML.IEstimator{Microsoft.ML.ITransformer})" />
       <Member Id="M:Microsoft.ML.AutoML.SweepableExtension.Append(Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},Microsoft.ML.AutoML.SweepableEstimator)" />
       <Member Id="M:Microsoft.ML.AutoML.SweepableExtension.Append(Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},Microsoft.ML.AutoML.SweepableEstimator[])" />
+      <Member Id="M:Microsoft.ML.AutoML.SweepableExtension.Append(Microsoft.ML.IEstimator{Microsoft.ML.ITransformer},Microsoft.ML.AutoML.SweepablePipeline)" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.SweepablePipeline" Id="T:Microsoft.ML.AutoML.SweepablePipeline">
+      <Member Id="M:Microsoft.ML.AutoML.SweepablePipeline.Append(Microsoft.ML.AutoML.ISweepable{Microsoft.ML.IEstimator{Microsoft.ML.ITransformer}}[])" />
+      <Member Id="M:Microsoft.ML.AutoML.SweepablePipeline.BuildFromOption(Microsoft.ML.MLContext,Microsoft.ML.SearchSpace.Parameter)" />
+      <Member Id="M:Microsoft.ML.AutoML.SweepablePipeline.BuildSweepableEstimatorPipeline(System.String)" />
+      <Member Id="M:Microsoft.ML.AutoML.SweepablePipeline.ToString(Microsoft.ML.SearchSpace.Parameter)" />
+      <Member Id="P:Microsoft.ML.AutoML.SweepablePipeline.CurrentParameter" />
+      <Member Id="P:Microsoft.ML.AutoML.SweepablePipeline.Estimators" />
+      <Member Id="P:Microsoft.ML.AutoML.SweepablePipeline.SearchSpace" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.TrainResult`1" Id="T:Microsoft.ML.AutoML.TrainResult`1">
       <Member Id="P:Microsoft.ML.AutoML.TrainResult`1.Exception" />
       <Member Id="P:Microsoft.ML.AutoML.TrainResult`1.Model" />
       <Member Id="P:Microsoft.ML.AutoML.TrainResult`1.ValidationMetrics" />
     </Type>
-    <Type Name="Microsoft.ML.AutoML.TrainTestDatasetManager" Id="T:Microsoft.ML.AutoML.TrainTestDatasetManager">
-      <Member Id="M:Microsoft.ML.AutoML.TrainTestDatasetManager.#ctor" />
-      <Member Id="P:Microsoft.ML.AutoML.TrainTestDatasetManager.TestDataset" />
-      <Member Id="P:Microsoft.ML.AutoML.TrainTestDatasetManager.TrainDataset" />
-    </Type>
     <Type Name="Microsoft.ML.AutoML.TrialResult" Id="T:Microsoft.ML.AutoML.TrialResult">
       <Member Id="M:Microsoft.ML.AutoML.TrialResult.#ctor" />
+      <Member Id="M:Microsoft.ML.AutoML.TrialResult.Equals(Microsoft.ML.AutoML.TrialResult,Microsoft.ML.AutoML.TrialResult)" />
+      <Member Id="M:Microsoft.ML.AutoML.TrialResult.GetHashCode(Microsoft.ML.AutoML.TrialResult)" />
       <Member Id="P:Microsoft.ML.AutoML.TrialResult.DurationInMilliseconds" />
+      <Member Id="P:Microsoft.ML.AutoML.TrialResult.Loss" />
       <Member Id="P:Microsoft.ML.AutoML.TrialResult.Metric" />
       <Member Id="P:Microsoft.ML.AutoML.TrialResult.Model" />
+      <Member Id="P:Microsoft.ML.AutoML.TrialResult.PeakCpu" />
+      <Member Id="P:Microsoft.ML.AutoML.TrialResult.PeakMemoryInMegaByte" />
       <Member Id="P:Microsoft.ML.AutoML.TrialResult.TrialSettings" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.TrialSettings" Id="T:Microsoft.ML.AutoML.TrialSettings">
       <Member Id="M:Microsoft.ML.AutoML.TrialSettings.#ctor" />
-      <Member Id="P:Microsoft.ML.AutoML.TrialSettings.ExperimentSettings" />
       <Member Id="P:Microsoft.ML.AutoML.TrialSettings.Parameter" />
-      <Member Id="P:Microsoft.ML.AutoML.TrialSettings.Pipeline" />
-      <Member Id="P:Microsoft.ML.AutoML.TrialSettings.Schema" />
       <Member Id="P:Microsoft.ML.AutoML.TrialSettings.TrialId" />
     </Type>
   </Namespace>
@@ -6085,10 +6126,17 @@
       <Member Id="P:Microsoft.ML.AutoML.CodeGen.ConvertTypeOption.InputColumnNames" />
       <Member Id="P:Microsoft.ML.AutoML.CodeGen.ConvertTypeOption.OutputColumnNames" />
     </Type>
+    <Type Name="Microsoft.ML.AutoML.CodeGen.DnnFeaturizerImageOption" Id="T:Microsoft.ML.AutoML.CodeGen.DnnFeaturizerImageOption">
+      <Member Id="M:Microsoft.ML.AutoML.CodeGen.DnnFeaturizerImageOption.#ctor" />
+      <Member Id="P:Microsoft.ML.AutoML.CodeGen.DnnFeaturizerImageOption.InputColumnName" />
+      <Member Id="P:Microsoft.ML.AutoML.CodeGen.DnnFeaturizerImageOption.ModelFactory" />
+      <Member Id="P:Microsoft.ML.AutoML.CodeGen.DnnFeaturizerImageOption.OutputColumnName" />
+    </Type>
     <Type Name="Microsoft.ML.AutoML.CodeGen.EstimatorType" Id="T:Microsoft.ML.AutoML.CodeGen.EstimatorType">
       <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.ApplyOnnxModel" />
       <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.Concatenate" />
       <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.ConvertType" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.DnnFeaturizerImage" />
       <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.ExtractPixels" />
       <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.FastForestBinary" />
       <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.FastForestOva" />
@@ -6122,6 +6170,7 @@
       <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.SdcaLogisticRegressionOva" />
       <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.SdcaMaximumEntropyMulti" />
       <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.SdcaRegression" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.TextClassifcationMulti" />
       <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.Unknown" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.CodeGen.EstimatorTypeExtension" Id="T:Microsoft.ML.AutoML.CodeGen.EstimatorTypeExtension">
@@ -6264,6 +6313,17 @@
       <Member Id="P:Microsoft.ML.AutoML.CodeGen.SsaOption.TrainSize" />
       <Member Id="P:Microsoft.ML.AutoML.CodeGen.SsaOption.WindowSize" />
     </Type>
+    <Type Name="Microsoft.ML.AutoML.CodeGen.TextClassificationOption" Id="T:Microsoft.ML.AutoML.CodeGen.TextClassificationOption">
+      <Member Id="M:Microsoft.ML.AutoML.CodeGen.TextClassificationOption.#ctor" />
+      <Member Id="P:Microsoft.ML.AutoML.CodeGen.TextClassificationOption.Architecture" />
+      <Member Id="P:Microsoft.ML.AutoML.CodeGen.TextClassificationOption.BatchSize" />
+      <Member Id="P:Microsoft.ML.AutoML.CodeGen.TextClassificationOption.LabelColumnName" />
+      <Member Id="P:Microsoft.ML.AutoML.CodeGen.TextClassificationOption.MaxEpochs" />
+      <Member Id="P:Microsoft.ML.AutoML.CodeGen.TextClassificationOption.OutputColumnName" />
+      <Member Id="P:Microsoft.ML.AutoML.CodeGen.TextClassificationOption.ScoreColumnName" />
+      <Member Id="P:Microsoft.ML.AutoML.CodeGen.TextClassificationOption.Sentence1ColumnName" />
+      <Member Id="P:Microsoft.ML.AutoML.CodeGen.TextClassificationOption.Sentence2ColumnName" />
+    </Type>
   </Namespace>
   <Namespace Name="Microsoft.ML.CodeGenerator.CodeGenerator">
     <Type Name="Microsoft.ML.CodeGenerator.CodeGenerator.IWritable" Id="T:Microsoft.ML.CodeGenerator.CodeGenerator.IWritable">
@@ -6359,6 +6419,7 @@
       <Member Id="M:Microsoft.ML.SearchSpace.Parameter.CopyTo(System.Collections.Generic.KeyValuePair{System.String,Microsoft.ML.SearchSpace.Parameter}[],System.Int32)" />
       <Member Id="M:Microsoft.ML.SearchSpace.Parameter.CreateNestedParameter(System.Collections.Generic.KeyValuePair{System.String,Microsoft.ML.SearchSpace.Parameter}[])" />
       <Member Id="M:Microsoft.ML.SearchSpace.Parameter.Equals(Microsoft.ML.SearchSpace.Parameter)" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Parameter.Equals(Microsoft.ML.SearchSpace.Parameter,Microsoft.ML.SearchSpace.Parameter)" />
       <Member Id="M:Microsoft.ML.SearchSpace.Parameter.FromBool(System.Boolean)" />
       <Member Id="M:Microsoft.ML.SearchSpace.Parameter.FromDouble(System.Double)" />
       <Member Id="M:Microsoft.ML.SearchSpace.Parameter.FromEnum``1(``0)" />
@@ -6369,10 +6430,12 @@
       <Member Id="M:Microsoft.ML.SearchSpace.Parameter.FromObject``1(``0)" />
       <Member Id="M:Microsoft.ML.SearchSpace.Parameter.FromString(System.String)" />
       <Member Id="M:Microsoft.ML.SearchSpace.Parameter.GetHashCode" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Parameter.GetHashCode(Microsoft.ML.SearchSpace.Parameter)" />
       <Member Id="M:Microsoft.ML.SearchSpace.Parameter.Remove(System.Collections.Generic.KeyValuePair{System.String,Microsoft.ML.SearchSpace.Parameter})" />
       <Member Id="M:Microsoft.ML.SearchSpace.Parameter.Remove(System.String)" />
       <Member Id="M:Microsoft.ML.SearchSpace.Parameter.System#Collections#Generic#IEnumerable&lt;System#Collections#Generic#KeyValuePair&lt;System#String,Microsoft#ML#SearchSpace#Parameter&gt;&gt;#GetEnumerator" />
       <Member Id="M:Microsoft.ML.SearchSpace.Parameter.System#Collections#IEnumerable#GetEnumerator" />
+      <Member Id="M:Microsoft.ML.SearchSpace.Parameter.ToString" />
       <Member Id="M:Microsoft.ML.SearchSpace.Parameter.TryGetValue(System.String,Microsoft.ML.SearchSpace.Parameter@)" />
       <Member Id="P:Microsoft.ML.SearchSpace.Parameter.Count" />
       <Member Id="P:Microsoft.ML.SearchSpace.Parameter.IsReadOnly" />
@@ -6407,6 +6470,7 @@
       <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace.ContainsKey(System.String)" />
       <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace.CopyTo(System.Collections.Generic.KeyValuePair{System.String,Microsoft.ML.SearchSpace.Option.OptionBase}[],System.Int32)" />
       <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace.GetEnumerator" />
+      <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace.GetHashCode" />
       <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace.MappingToFeatureSpace(Microsoft.ML.SearchSpace.Parameter)" />
       <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace.Remove(System.Collections.Generic.KeyValuePair{System.String,Microsoft.ML.SearchSpace.Option.OptionBase})" />
       <Member Id="M:Microsoft.ML.SearchSpace.SearchSpace.Remove(System.String)" />
@@ -6495,6 +6559,165 @@
       <Member Id="M:Microsoft.ML.SearchSpace.Option.UniformSingleOption.SampleFromFeatureSpace(System.Double[])" />
     </Type>
   </Namespace>
+  <Namespace Name="Microsoft.ML.Tokenizers">
+    <Type Name="Microsoft.ML.Tokenizers.AddedToken" Id="T:Microsoft.ML.Tokenizers.AddedToken">
+      <Member Id="M:Microsoft.ML.Tokenizers.AddedToken.#ctor" />
+      <Member Id="M:Microsoft.ML.Tokenizers.AddedToken.#ctor(System.String,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.AddedToken.Equals(Microsoft.ML.Tokenizers.AddedToken)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.AddedToken.GetHashCode" />
+      <Member Id="M:Microsoft.ML.Tokenizers.AddedToken.op_Implicit(System.String)~Microsoft.ML.Tokenizers.AddedToken" />
+      <Member Id="P:Microsoft.ML.Tokenizers.AddedToken.Content" />
+    </Type>
+    <Type Name="Microsoft.ML.Tokenizers.Bpe" Id="T:Microsoft.ML.Tokenizers.Bpe">
+      <Member Id="M:Microsoft.ML.Tokenizers.Bpe.#ctor" />
+      <Member Id="M:Microsoft.ML.Tokenizers.Bpe.#ctor(System.String,System.String,System.String,System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.Bpe.GetTrainer" />
+      <Member Id="M:Microsoft.ML.Tokenizers.Bpe.GetVocab" />
+      <Member Id="M:Microsoft.ML.Tokenizers.Bpe.GetVocabSize" />
+      <Member Id="M:Microsoft.ML.Tokenizers.Bpe.IdToToken(System.Int32,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.Bpe.Save(System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.Bpe.Tokenize(System.String)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.Bpe.TokenToId(System.String)" />
+      <Member Id="P:Microsoft.ML.Tokenizers.Bpe.ContinuingSubwordPrefix" />
+      <Member Id="P:Microsoft.ML.Tokenizers.Bpe.Decoder" />
+      <Member Id="P:Microsoft.ML.Tokenizers.Bpe.EndOfWordSuffix" />
+      <Member Id="P:Microsoft.ML.Tokenizers.Bpe.FuseUnknownTokens" />
+      <Member Id="P:Microsoft.ML.Tokenizers.Bpe.UnknownToken" />
+    </Type>
+    <Type Name="Microsoft.ML.Tokenizers.BpeDecoder" Id="T:Microsoft.ML.Tokenizers.BpeDecoder">
+      <Member Id="M:Microsoft.ML.Tokenizers.BpeDecoder.#ctor" />
+      <Member Id="M:Microsoft.ML.Tokenizers.BpeDecoder.#ctor(System.String)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.BpeDecoder.Decode(System.Collections.Generic.IEnumerable{System.String})" />
+    </Type>
+    <Type Name="Microsoft.ML.Tokenizers.BpeTrainer" Id="T:Microsoft.ML.Tokenizers.BpeTrainer">
+      <Member Id="M:Microsoft.ML.Tokenizers.BpeTrainer.#ctor" />
+      <Member Id="M:Microsoft.ML.Tokenizers.BpeTrainer.#ctor(System.Collections.Generic.IEnumerable{Microsoft.ML.Tokenizers.AddedToken},System.Int32,System.Int32,Microsoft.ML.Tokenizers.ReportProgress,System.Nullable{System.Int32},System.Collections.Generic.HashSet{System.Char},System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.BpeTrainer.Feed(System.Collections.Generic.IEnumerable{System.String},System.Func{System.String,System.Collections.Generic.IEnumerable{System.String}})" />
+      <Member Id="M:Microsoft.ML.Tokenizers.BpeTrainer.Train(Microsoft.ML.Tokenizers.Model)" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BpeTrainer.ContinuingSubwordPrefix" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BpeTrainer.EndOfWordSuffix" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BpeTrainer.InitialAlphabet" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BpeTrainer.LimitAlphabet" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BpeTrainer.MinFrequency" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BpeTrainer.SpecialTokens" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BpeTrainer.VocabSize" />
+    </Type>
+    <Type Name="Microsoft.ML.Tokenizers.EnglishRoberta" Id="T:Microsoft.ML.Tokenizers.EnglishRoberta">
+      <Member Id="M:Microsoft.ML.Tokenizers.EnglishRoberta.#ctor(System.IO.Stream,System.IO.Stream,System.IO.Stream)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.EnglishRoberta.#ctor(System.String,System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.EnglishRoberta.AddMaskSymbol(System.String)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.EnglishRoberta.GetTrainer" />
+      <Member Id="M:Microsoft.ML.Tokenizers.EnglishRoberta.GetVocab" />
+      <Member Id="M:Microsoft.ML.Tokenizers.EnglishRoberta.GetVocabSize" />
+      <Member Id="M:Microsoft.ML.Tokenizers.EnglishRoberta.IdsToOccurrenceRanks(System.Collections.Generic.IReadOnlyList{System.Int32})" />
+      <Member Id="M:Microsoft.ML.Tokenizers.EnglishRoberta.IdsToOccurrenceValues(System.Collections.Generic.IReadOnlyList{System.Int32})" />
+      <Member Id="M:Microsoft.ML.Tokenizers.EnglishRoberta.IdToToken(System.Int32,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.EnglishRoberta.OccurrenceRanksIds(System.Collections.Generic.IReadOnlyList{System.Int32})" />
+      <Member Id="M:Microsoft.ML.Tokenizers.EnglishRoberta.Save(System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.EnglishRoberta.Tokenize(System.String)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.EnglishRoberta.TokenToId(System.String)" />
+      <Member Id="P:Microsoft.ML.Tokenizers.EnglishRoberta.PadIndex" />
+      <Member Id="P:Microsoft.ML.Tokenizers.EnglishRoberta.SymbolsCount" />
+    </Type>
+    <Type Name="Microsoft.ML.Tokenizers.LowerCaseNormalizer" Id="T:Microsoft.ML.Tokenizers.LowerCaseNormalizer">
+      <Member Id="M:Microsoft.ML.Tokenizers.LowerCaseNormalizer.#ctor" />
+      <Member Id="M:Microsoft.ML.Tokenizers.LowerCaseNormalizer.Normalize(System.String)" />
+    </Type>
+    <Type Name="Microsoft.ML.Tokenizers.Model" Id="T:Microsoft.ML.Tokenizers.Model">
+      <Member Id="M:Microsoft.ML.Tokenizers.Model.#ctor" />
+      <Member Id="M:Microsoft.ML.Tokenizers.Model.GetTrainer" />
+      <Member Id="M:Microsoft.ML.Tokenizers.Model.GetVocab" />
+      <Member Id="M:Microsoft.ML.Tokenizers.Model.GetVocabSize" />
+      <Member Id="M:Microsoft.ML.Tokenizers.Model.IdToToken(System.Int32,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.Model.Save(System.String,System.String)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.Model.Tokenize(System.String)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.Model.TokenToId(System.String)" />
+    </Type>
+    <Type Name="Microsoft.ML.Tokenizers.NormalizedString" Id="T:Microsoft.ML.Tokenizers.NormalizedString">
+      <Member Id="M:Microsoft.ML.Tokenizers.NormalizedString.#ctor(System.String,System.String,System.Int32[],System.Boolean)" />
+      <Member Id="P:Microsoft.ML.Tokenizers.NormalizedString.CanMapToOriginal" />
+      <Member Id="P:Microsoft.ML.Tokenizers.NormalizedString.IsOneToOneMapping" />
+      <Member Id="P:Microsoft.ML.Tokenizers.NormalizedString.Normalized" />
+      <Member Id="P:Microsoft.ML.Tokenizers.NormalizedString.NormalizedToOriginalMapping" />
+      <Member Id="P:Microsoft.ML.Tokenizers.NormalizedString.Original" />
+    </Type>
+    <Type Name="Microsoft.ML.Tokenizers.Normalizer" Id="T:Microsoft.ML.Tokenizers.Normalizer">
+      <Member Id="M:Microsoft.ML.Tokenizers.Normalizer.#ctor" />
+      <Member Id="M:Microsoft.ML.Tokenizers.Normalizer.Normalize(System.String)" />
+    </Type>
+    <Type Name="Microsoft.ML.Tokenizers.PreTokenizer" Id="T:Microsoft.ML.Tokenizers.PreTokenizer">
+      <Member Id="M:Microsoft.ML.Tokenizers.PreTokenizer.#ctor" />
+      <Member Id="M:Microsoft.ML.Tokenizers.PreTokenizer.PreTokenize(System.String)" />
+    </Type>
+    <Type Name="Microsoft.ML.Tokenizers.Progress" Id="T:Microsoft.ML.Tokenizers.Progress">
+      <Member Id="M:Microsoft.ML.Tokenizers.Progress.#ctor(Microsoft.ML.Tokenizers.ProgressState,System.String,System.Int32)" />
+      <Member Id="P:Microsoft.ML.Tokenizers.Progress.Message" />
+      <Member Id="P:Microsoft.ML.Tokenizers.Progress.State" />
+      <Member Id="P:Microsoft.ML.Tokenizers.Progress.Value" />
+    </Type>
+    <Type Name="Microsoft.ML.Tokenizers.ProgressState" Id="T:Microsoft.ML.Tokenizers.ProgressState">
+      <Member Id="F:Microsoft.ML.Tokenizers.ProgressState.End" />
+      <Member Id="F:Microsoft.ML.Tokenizers.ProgressState.Increment" />
+      <Member Id="F:Microsoft.ML.Tokenizers.ProgressState.Start" />
+    </Type>
+    <Type Name="Microsoft.ML.Tokenizers.ReportProgress" Id="T:Microsoft.ML.Tokenizers.ReportProgress" />
+    <Type Name="Microsoft.ML.Tokenizers.RobertaPreTokenizer" Id="T:Microsoft.ML.Tokenizers.RobertaPreTokenizer">
+      <Member Id="F:Microsoft.ML.Tokenizers.RobertaPreTokenizer.Instance" />
+      <Member Id="M:Microsoft.ML.Tokenizers.RobertaPreTokenizer.#ctor" />
+      <Member Id="M:Microsoft.ML.Tokenizers.RobertaPreTokenizer.PreTokenize(System.String)" />
+    </Type>
+    <Type Name="Microsoft.ML.Tokenizers.Split" Id="T:Microsoft.ML.Tokenizers.Split">
+      <Member Id="M:Microsoft.ML.Tokenizers.Split.#ctor(System.String,System.ValueTuple{System.Int32,System.Int32})" />
+      <Member Id="M:Microsoft.ML.Tokenizers.Split.Equals(Microsoft.ML.Tokenizers.Split)" />
+      <Member Id="P:Microsoft.ML.Tokenizers.Split.Offset" />
+      <Member Id="P:Microsoft.ML.Tokenizers.Split.TokenString" />
+    </Type>
+    <Type Name="Microsoft.ML.Tokenizers.Token" Id="T:Microsoft.ML.Tokenizers.Token">
+      <Member Id="M:Microsoft.ML.Tokenizers.Token.#ctor(System.Int32,System.String,System.ValueTuple{System.Int32,System.Int32})" />
+      <Member Id="P:Microsoft.ML.Tokenizers.Token.Id" />
+      <Member Id="P:Microsoft.ML.Tokenizers.Token.Offset" />
+      <Member Id="P:Microsoft.ML.Tokenizers.Token.Value" />
+    </Type>
+    <Type Name="Microsoft.ML.Tokenizers.Tokenizer" Id="T:Microsoft.ML.Tokenizers.Tokenizer">
+      <Member Id="M:Microsoft.ML.Tokenizers.Tokenizer.#ctor(Microsoft.ML.Tokenizers.Model,Microsoft.ML.Tokenizers.PreTokenizer,Microsoft.ML.Tokenizers.Normalizer)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.Tokenizer.Decode(System.Collections.Generic.IEnumerable{System.Int32},System.Boolean)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.Tokenizer.Decode(System.Int32,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.Tokenizer.Encode(System.String)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.Tokenizer.TrainFromFiles(Microsoft.ML.Tokenizers.Trainer,Microsoft.ML.Tokenizers.ReportProgress,System.String[])" />
+      <Member Id="P:Microsoft.ML.Tokenizers.Tokenizer.Decoder" />
+      <Member Id="P:Microsoft.ML.Tokenizers.Tokenizer.Model" />
+      <Member Id="P:Microsoft.ML.Tokenizers.Tokenizer.Normalizer" />
+      <Member Id="P:Microsoft.ML.Tokenizers.Tokenizer.PreTokenizer" />
+    </Type>
+    <Type Name="Microsoft.ML.Tokenizers.TokenizerDecoder" Id="T:Microsoft.ML.Tokenizers.TokenizerDecoder">
+      <Member Id="M:Microsoft.ML.Tokenizers.TokenizerDecoder.#ctor" />
+      <Member Id="M:Microsoft.ML.Tokenizers.TokenizerDecoder.Decode(System.Collections.Generic.IEnumerable{System.String})" />
+    </Type>
+    <Type Name="Microsoft.ML.Tokenizers.TokenizerResult" Id="T:Microsoft.ML.Tokenizers.TokenizerResult">
+      <Member Id="M:Microsoft.ML.Tokenizers.TokenizerResult.#ctor(System.String,System.String,System.Collections.Generic.IReadOnlyList{Microsoft.ML.Tokenizers.Split},System.Boolean)" />
+      <Member Id="P:Microsoft.ML.Tokenizers.TokenizerResult.Ids" />
+      <Member Id="P:Microsoft.ML.Tokenizers.TokenizerResult.NormalizedString" />
+      <Member Id="P:Microsoft.ML.Tokenizers.TokenizerResult.Offsets" />
+      <Member Id="P:Microsoft.ML.Tokenizers.TokenizerResult.OffsetsMappedToOriginalString" />
+      <Member Id="P:Microsoft.ML.Tokenizers.TokenizerResult.OriginalString" />
+      <Member Id="P:Microsoft.ML.Tokenizers.TokenizerResult.Tokens" />
+    </Type>
+    <Type Name="Microsoft.ML.Tokenizers.Trainer" Id="T:Microsoft.ML.Tokenizers.Trainer">
+      <Member Id="M:Microsoft.ML.Tokenizers.Trainer.#ctor" />
+      <Member Id="M:Microsoft.ML.Tokenizers.Trainer.Feed(System.Collections.Generic.IEnumerable{System.String},System.Func{System.String,System.Collections.Generic.IEnumerable{System.String}})" />
+      <Member Id="M:Microsoft.ML.Tokenizers.Trainer.Train(Microsoft.ML.Tokenizers.Model)" />
+      <Member Id="P:Microsoft.ML.Tokenizers.Trainer.Progress" />
+    </Type>
+    <Type Name="Microsoft.ML.Tokenizers.UpperCaseNormalizer" Id="T:Microsoft.ML.Tokenizers.UpperCaseNormalizer">
+      <Member Id="M:Microsoft.ML.Tokenizers.UpperCaseNormalizer.#ctor" />
+      <Member Id="M:Microsoft.ML.Tokenizers.UpperCaseNormalizer.Normalize(System.String)" />
+    </Type>
+    <Type Name="Microsoft.ML.Tokenizers.WhiteSpace" Id="T:Microsoft.ML.Tokenizers.WhiteSpace">
+      <Member Id="F:Microsoft.ML.Tokenizers.WhiteSpace.Instance" />
+      <Member Id="M:Microsoft.ML.Tokenizers.WhiteSpace.#ctor" />
+      <Member Id="M:Microsoft.ML.Tokenizers.WhiteSpace.PreTokenize(System.String)" />
+    </Type>
+  </Namespace>
   <Namespace Name="Microsoft.ML.TorchSharp.NasBert">
     <Type Name="Microsoft.ML.TorchSharp.NasBert.BertArchitecture" Id="T:Microsoft.ML.TorchSharp.NasBert.BertArchitecture">
       <Member Id="F:Microsoft.ML.TorchSharp.NasBert.BertArchitecture.Roberta" />
@@ -6505,26 +6728,48 @@
       <Member Id="F:Microsoft.ML.TorchSharp.NasBert.BertTaskType.SentenceRegression" />
       <Member Id="F:Microsoft.ML.TorchSharp.NasBert.BertTaskType.TextClassification" />
     </Type>
-    <Type Name="Microsoft.ML.TorchSharp.NasBert.TextClassificationTrainer" Id="T:Microsoft.ML.TorchSharp.NasBert.TextClassificationTrainer">
-      <Member Id="M:Microsoft.ML.TorchSharp.NasBert.TextClassificationTrainer.Fit(Microsoft.ML.IDataView)" />
-      <Member Id="M:Microsoft.ML.TorchSharp.NasBert.TextClassificationTrainer.GetOutputSchema(Microsoft.ML.SchemaShape)" />
+    <Type Name="Microsoft.ML.TorchSharp.NasBert.NasBertTrainer" Id="T:Microsoft.ML.TorchSharp.NasBert.NasBertTrainer">
+      <Member Id="M:Microsoft.ML.TorchSharp.NasBert.NasBertTrainer.#ctor" />
+      <Member Id="M:Microsoft.ML.TorchSharp.NasBert.NasBertTrainer.Fit(Microsoft.ML.IDataView)" />
+      <Member Id="M:Microsoft.ML.TorchSharp.NasBert.NasBertTrainer.GetOutputSchema(Microsoft.ML.SchemaShape)" />
     </Type>
-    <Type Name="Microsoft.ML.TorchSharp.NasBert.TextClassificationTransformer" Id="T:Microsoft.ML.TorchSharp.NasBert.TextClassificationTransformer">
-      <Member Id="F:Microsoft.ML.TorchSharp.NasBert.TextClassificationTransformer.LabelColumn" />
-      <Member Id="F:Microsoft.ML.TorchSharp.NasBert.TextClassificationTransformer.SentenceColumn" />
-      <Member Id="F:Microsoft.ML.TorchSharp.NasBert.TextClassificationTransformer.SentenceColumn2" />
-      <Member Id="M:Microsoft.ML.TorchSharp.NasBert.TextClassificationTransformer.GetOutputSchema(Microsoft.ML.SchemaShape)" />
+    <Type Name="Microsoft.ML.TorchSharp.NasBert.NasBertTrainer`2" Id="T:Microsoft.ML.TorchSharp.NasBert.NasBertTrainer`2">
+      <Member Id="M:Microsoft.ML.TorchSharp.NasBert.NasBertTrainer`2.Fit(Microsoft.ML.IDataView)" />
+      <Member Id="M:Microsoft.ML.TorchSharp.NasBert.NasBertTrainer`2.GetOutputSchema(Microsoft.ML.SchemaShape)" />
     </Type>
+    <Type Name="Microsoft.ML.TorchSharp.NasBert.NasBertTransformer" Id="T:Microsoft.ML.TorchSharp.NasBert.NasBertTransformer" />
+    <Type Name="Microsoft.ML.TorchSharp.NasBert.NasBertTransformer`2" Id="T:Microsoft.ML.TorchSharp.NasBert.NasBertTransformer`2">
+      <Member Id="F:Microsoft.ML.TorchSharp.NasBert.NasBertTransformer`2.LabelColumn" />
+      <Member Id="F:Microsoft.ML.TorchSharp.NasBert.NasBertTransformer`2.SentenceColumn" />
+      <Member Id="F:Microsoft.ML.TorchSharp.NasBert.NasBertTransformer`2.SentenceColumn2" />
+      <Member Id="M:Microsoft.ML.TorchSharp.NasBert.NasBertTransformer`2.GetOutputSchema(Microsoft.ML.SchemaShape)" />
+    </Type>
+    <Type Name="Microsoft.ML.TorchSharp.NasBert.SentenceSimilarityTrainer" Id="T:Microsoft.ML.TorchSharp.NasBert.SentenceSimilarityTrainer" />
+    <Type Name="Microsoft.ML.TorchSharp.NasBert.SentenceSimilarityTransformer" Id="T:Microsoft.ML.TorchSharp.NasBert.SentenceSimilarityTransformer" />
+    <Type Name="Microsoft.ML.TorchSharp.NasBert.TextClassificationTrainer" Id="T:Microsoft.ML.TorchSharp.NasBert.TextClassificationTrainer" />
+    <Type Name="Microsoft.ML.TorchSharp.NasBert.TextClassificationTransformer" Id="T:Microsoft.ML.TorchSharp.NasBert.TextClassificationTransformer" />
   </Namespace>
   <Namespace Name="Microsoft.ML.TorchSharp.NasBert.Modules">
     <Type Name="Microsoft.ML.TorchSharp.NasBert.Modules.GeLUFast" Id="T:Microsoft.ML.TorchSharp.NasBert.Modules.GeLUFast">
       <Member Id="M:Microsoft.ML.TorchSharp.NasBert.Modules.GeLUFast.#ctor" />
       <Member Id="M:Microsoft.ML.TorchSharp.NasBert.Modules.GeLUFast.forward(TorchSharp.torch.Tensor)" />
     </Type>
+    <Type Name="Microsoft.ML.TorchSharp.NasBert.Modules.IIncrementalState" Id="T:Microsoft.ML.TorchSharp.NasBert.Modules.IIncrementalState">
+      <Member Id="M:Microsoft.ML.TorchSharp.NasBert.Modules.IIncrementalState.GetIncrementalState(TorchSharp.torch.nn.Module,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,TorchSharp.torch.Tensor}},System.String)" />
+      <Member Id="M:Microsoft.ML.TorchSharp.NasBert.Modules.IIncrementalState.InitIncrementalState" />
+      <Member Id="M:Microsoft.ML.TorchSharp.NasBert.Modules.IIncrementalState.SetIncrementalState(TorchSharp.torch.nn.Module,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,TorchSharp.torch.Tensor}},System.String,System.Collections.Generic.Dictionary{System.String,TorchSharp.torch.Tensor})" />
+    </Type>
+    <Type Name="Microsoft.ML.TorchSharp.NasBert.Modules.IncrementalState" Id="T:Microsoft.ML.TorchSharp.NasBert.Modules.IncrementalState">
+      <Member Id="M:Microsoft.ML.TorchSharp.NasBert.Modules.IncrementalState.#ctor" />
+      <Member Id="M:Microsoft.ML.TorchSharp.NasBert.Modules.IncrementalState.GetIncrementalState(TorchSharp.torch.nn.Module,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,TorchSharp.torch.Tensor}},System.String)" />
+      <Member Id="M:Microsoft.ML.TorchSharp.NasBert.Modules.IncrementalState.InitIncrementalState" />
+      <Member Id="M:Microsoft.ML.TorchSharp.NasBert.Modules.IncrementalState.SetIncrementalState(TorchSharp.torch.nn.Module,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,TorchSharp.torch.Tensor}},System.String,System.Collections.Generic.Dictionary{System.String,TorchSharp.torch.Tensor})" />
+    </Type>
   </Namespace>
   <Namespace Name="Microsoft.ML.TorchSharp">
     <Type Name="Microsoft.ML.TorchSharp.TorchSharpCatalog" Id="T:Microsoft.ML.TorchSharp.TorchSharpCatalog">
-      <Member Id="M:Microsoft.ML.TorchSharp.TorchSharpCatalog.TextClassification(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,System.Int32,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,Microsoft.ML.TorchSharp.NasBert.BertArchitecture,Microsoft.ML.IDataView)" />
+      <Member Id="M:Microsoft.ML.TorchSharp.TorchSharpCatalog.SentenceSimilarity(Microsoft.ML.RegressionCatalog.RegressionTrainers,System.String,System.String,System.String,System.String,System.Int32,System.Int32,Microsoft.ML.TorchSharp.NasBert.BertArchitecture,Microsoft.ML.IDataView)" />
+      <Member Id="M:Microsoft.ML.TorchSharp.TorchSharpCatalog.TextClassification(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Int32,Microsoft.ML.TorchSharp.NasBert.BertArchitecture,Microsoft.ML.IDataView)" />
     </Type>
   </Namespace>
   <Namespace Name="Microsoft.ML.TorchSharp.Utils">
