@@ -1,0 +1,167 @@
+<Type Name="MatrixFactorizationModelParameters" FullName="Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters">
+  <TypeSignature Language="C#" Value="public sealed class MatrixFactorizationModelParameters : Microsoft.ML.ICanSaveModel" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit MatrixFactorizationModelParameters extends System.Object implements class Microsoft.ML.ICanSaveModel" />
+  <TypeSignature Language="DocId" Value="T:Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters" />
+  <TypeSignature Language="VB.NET" Value="Public NotInheritable Class MatrixFactorizationModelParameters&#xA;Implements ICanSaveModel" />
+  <TypeSignature Language="F#" Value="type MatrixFactorizationModelParameters = class&#xA;    interface ICanSaveModel" />
+  <AssemblyInfo>
+    <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.ML.ICanSaveModel</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+            Model parameters for <see cref="T:Microsoft.ML.Trainers.MatrixFactorizationTrainer" />.
+            </summary>
+    <remarks>
+      <see cref="T:Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters" /> stores two factor matrices, P and Q, for approximating the training matrix, R, by P * Q,
+            where * is a matrix multiplication. This model expects two inputs, row index and column index, and produces the (approximated)
+            value at the location specified by the two inputs in R. More specifically, if input row and column indices are u and v, respectively.
+            The output (a scalar) would be the inner product of the u-th row in P and the v-th column in Q.
+            </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="ApproximationRank">
+      <MemberSignature Language="C#" Value="public readonly int ApproximationRank;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly int32 ApproximationRank" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters.ApproximationRank" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly ApproximationRank As Integer " />
+      <MemberSignature Language="F#" Value="val mutable ApproximationRank : int" Usage="Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters.ApproximationRank" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary> The rank of the factor matrices.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LeftFactorMatrix">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.IReadOnlyList&lt;float&gt; LeftFactorMatrix { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.IReadOnlyList`1&lt;float32&gt; LeftFactorMatrix" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters.LeftFactorMatrix" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property LeftFactorMatrix As IReadOnlyList(Of Single)" />
+      <MemberSignature Language="F#" Value="member this.LeftFactorMatrix : System.Collections.Generic.IReadOnlyList&lt;single&gt;" Usage="Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters.LeftFactorMatrix" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IReadOnlyList&lt;System.Single&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Left approximation matrix
+            </summary>
+        <value>To be added.</value>
+        <remarks>
+            This is two dimensional matrix with size of <see cref="F:Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters.NumberOfRows" /> * <see cref="F:Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters.ApproximationRank" /> flattened into one-dimensional matrix.
+            Row by row.
+            </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Microsoft.ML.ICanSaveModel.Save">
+      <MemberSignature Language="C#" Value="void ICanSaveModel.Save (Microsoft.ML.ModelSaveContext ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance void Microsoft.ML.ICanSaveModel.Save(class Microsoft.ML.ModelSaveContext ctx) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters.Microsoft#ML#ICanSaveModel#Save(Microsoft.ML.ModelSaveContext)" />
+      <MemberSignature Language="VB.NET" Value="Sub Save (ctx As ModelSaveContext) Implements ICanSaveModel.Save" />
+      <MemberSignature Language="F#" Value="abstract member Microsoft.ML.ICanSaveModel.Save : Microsoft.ML.ModelSaveContext -&gt; unit&#xA;override this.Microsoft.ML.ICanSaveModel.Save : Microsoft.ML.ModelSaveContext -&gt; unit" Usage="matrixFactorizationModelParameters.Microsoft.ML.ICanSaveModel.Save ctx" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:Microsoft.ML.ICanSaveModel.Save(Microsoft.ML.ModelSaveContext)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ctx" Type="Microsoft.ML.ModelSaveContext" />
+      </Parameters>
+      <Docs>
+        <param name="ctx">To be added.</param>
+        <summary>
+            Save model to the given context
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NumberOfColumns">
+      <MemberSignature Language="C#" Value="public readonly int NumberOfColumns;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly int32 NumberOfColumns" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters.NumberOfColumns" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly NumberOfColumns As Integer " />
+      <MemberSignature Language="F#" Value="val mutable NumberOfColumns : int" Usage="Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters.NumberOfColumns" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary> The number of columns.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NumberOfRows">
+      <MemberSignature Language="C#" Value="public readonly int NumberOfRows;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly int32 NumberOfRows" />
+      <MemberSignature Language="DocId" Value="F:Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters.NumberOfRows" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly NumberOfRows As Integer " />
+      <MemberSignature Language="F#" Value="val mutable NumberOfRows : int" Usage="Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters.NumberOfRows" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary> The number of rows.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RightFactorMatrix">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.IReadOnlyList&lt;float&gt; RightFactorMatrix { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.IReadOnlyList`1&lt;float32&gt; RightFactorMatrix" />
+      <MemberSignature Language="DocId" Value="P:Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters.RightFactorMatrix" />
+      <MemberSignature Language="VB.NET" Value="Public ReadOnly Property RightFactorMatrix As IReadOnlyList(Of Single)" />
+      <MemberSignature Language="F#" Value="member this.RightFactorMatrix : System.Collections.Generic.IReadOnlyList&lt;single&gt;" Usage="Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters.RightFactorMatrix" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Recommender</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IReadOnlyList&lt;System.Single&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Right approximation matrix
+            </summary>
+        <value>To be added.</value>
+        <remarks>
+            This is two dimensional matrix with size of <see cref="F:Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters.ApproximationRank" /> * <see cref="F:Microsoft.ML.Trainers.Recommender.MatrixFactorizationModelParameters.NumberOfColumns" /> flattened into one-dimensional matrix.
+            Row by row.
+            </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
