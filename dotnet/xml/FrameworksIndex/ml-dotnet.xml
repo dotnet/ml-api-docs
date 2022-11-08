@@ -10,7 +10,6 @@
     <Assembly Name="Microsoft.ML.FastTree" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.ImageAnalytics" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.KMeansClustering" Version="1.0.0.0" />
-    <Assembly Name="Microsoft.ML.LightGbm" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.Mkl.Components" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.OnnxTransformer" Version="1.0.0.0" />
     <Assembly Name="Microsoft.ML.PCA" Version="1.0.0.0" />
@@ -329,16 +328,6 @@
       <Member Id="M:Microsoft.ML.LearningPipelineExtensions.AppendCacheCheckpoint``1(Microsoft.ML.IEstimator{``0},Microsoft.ML.Runtime.IHostEnvironment)" />
       <Member Id="M:Microsoft.ML.LearningPipelineExtensions.WithOnFitDelegate``1(Microsoft.ML.IEstimator{``0},System.Action{``0})" />
     </Type>
-    <Type Name="Microsoft.ML.LightGbmExtensions" Id="T:Microsoft.ML.LightGbmExtensions">
-      <Member Id="M:Microsoft.ML.LightGbmExtensions.LightGbm(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,Microsoft.ML.Trainers.LightGbm.LightGbmBinaryTrainer.Options)" />
-      <Member Id="M:Microsoft.ML.LightGbmExtensions.LightGbm(Microsoft.ML.BinaryClassificationCatalog.BinaryClassificationTrainers,System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Double},System.Int32)" />
-      <Member Id="M:Microsoft.ML.LightGbmExtensions.LightGbm(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,Microsoft.ML.Trainers.LightGbm.LightGbmMulticlassTrainer.Options)" />
-      <Member Id="M:Microsoft.ML.LightGbmExtensions.LightGbm(Microsoft.ML.MulticlassClassificationCatalog.MulticlassClassificationTrainers,System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Double},System.Int32)" />
-      <Member Id="M:Microsoft.ML.LightGbmExtensions.LightGbm(Microsoft.ML.RankingCatalog.RankingTrainers,Microsoft.ML.Trainers.LightGbm.LightGbmRankingTrainer.Options)" />
-      <Member Id="M:Microsoft.ML.LightGbmExtensions.LightGbm(Microsoft.ML.RankingCatalog.RankingTrainers,System.String,System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Double},System.Int32)" />
-      <Member Id="M:Microsoft.ML.LightGbmExtensions.LightGbm(Microsoft.ML.RegressionCatalog.RegressionTrainers,Microsoft.ML.Trainers.LightGbm.LightGbmRegressionTrainer.Options)" />
-      <Member Id="M:Microsoft.ML.LightGbmExtensions.LightGbm(Microsoft.ML.RegressionCatalog.RegressionTrainers,System.String,System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Double},System.Int32)" />
-    </Type>
     <Type Name="Microsoft.ML.LoggingEventArgs" Id="T:Microsoft.ML.LoggingEventArgs">
       <Member Id="M:Microsoft.ML.LoggingEventArgs.#ctor(System.String)" />
       <Member Id="M:Microsoft.ML.LoggingEventArgs.#ctor(System.String,Microsoft.ML.Runtime.ChannelMessageKind,System.String)" />
@@ -367,7 +356,9 @@
       <Member Id="P:Microsoft.ML.MLContext.Clustering" />
       <Member Id="P:Microsoft.ML.MLContext.ComponentCatalog" />
       <Member Id="P:Microsoft.ML.MLContext.Data" />
+      <Member Id="P:Microsoft.ML.MLContext.FallbackToCpu" />
       <Member Id="P:Microsoft.ML.MLContext.Forecasting" />
+      <Member Id="P:Microsoft.ML.MLContext.GpuDeviceId" />
       <Member Id="P:Microsoft.ML.MLContext.Microsoft#ML#Runtime#IExceptionContext#ContextDescription" />
       <Member Id="P:Microsoft.ML.MLContext.Model" />
       <Member Id="P:Microsoft.ML.MLContext.MulticlassClassification" />
@@ -944,6 +935,24 @@
       <Member Id="P:Microsoft.ML.Data.MetricStatistics.StandardDeviation" />
       <Member Id="P:Microsoft.ML.Data.MetricStatistics.StandardError" />
     </Type>
+    <Type Name="Microsoft.ML.Data.MLImage" Id="T:Microsoft.ML.Data.MLImage">
+      <Member Id="M:Microsoft.ML.Data.MLImage.CreateFromFile(System.String)" />
+      <Member Id="M:Microsoft.ML.Data.MLImage.CreateFromPixels(System.Int32,System.Int32,Microsoft.ML.Data.MLPixelFormat,System.ReadOnlySpan{System.Byte})" />
+      <Member Id="M:Microsoft.ML.Data.MLImage.CreateFromStream(System.IO.Stream)" />
+      <Member Id="M:Microsoft.ML.Data.MLImage.Dispose" />
+      <Member Id="M:Microsoft.ML.Data.MLImage.Save(System.String)" />
+      <Member Id="P:Microsoft.ML.Data.MLImage.BitsPerPixel" />
+      <Member Id="P:Microsoft.ML.Data.MLImage.Height" />
+      <Member Id="P:Microsoft.ML.Data.MLImage.PixelFormat" />
+      <Member Id="P:Microsoft.ML.Data.MLImage.Pixels" />
+      <Member Id="P:Microsoft.ML.Data.MLImage.Tag" />
+      <Member Id="P:Microsoft.ML.Data.MLImage.Width" />
+    </Type>
+    <Type Name="Microsoft.ML.Data.MLPixelFormat" Id="T:Microsoft.ML.Data.MLPixelFormat">
+      <Member Id="F:Microsoft.ML.Data.MLPixelFormat.Bgra32" />
+      <Member Id="F:Microsoft.ML.Data.MLPixelFormat.Rgba32" />
+      <Member Id="F:Microsoft.ML.Data.MLPixelFormat.Unknown" />
+    </Type>
     <Type Name="Microsoft.ML.Data.MulticlassClassificationMetrics" Id="T:Microsoft.ML.Data.MulticlassClassificationMetrics">
       <Member Id="P:Microsoft.ML.Data.MulticlassClassificationMetrics.ConfusionMatrix" />
       <Member Id="P:Microsoft.ML.Data.MulticlassClassificationMetrics.LogLoss" />
@@ -1155,10 +1164,12 @@
       <Member Id="M:Microsoft.ML.Data.TransformerChain`1.GetEnumerator" />
       <Member Id="M:Microsoft.ML.Data.TransformerChain`1.GetModelFor(Microsoft.ML.Data.TransformerScope)" />
       <Member Id="M:Microsoft.ML.Data.TransformerChain`1.GetOutputSchema(Microsoft.ML.DataViewSchema)" />
+      <Member Id="M:Microsoft.ML.Data.TransformerChain`1.GetOutputSchema(Microsoft.ML.DataViewSchema,Microsoft.ML.Data.TransformerScope)" />
       <Member Id="M:Microsoft.ML.Data.TransformerChain`1.Microsoft#ML#ICanSaveModel#Save(Microsoft.ML.ModelSaveContext)" />
       <Member Id="M:Microsoft.ML.Data.TransformerChain`1.Microsoft#ML#ITransformer#GetRowToRowMapper(Microsoft.ML.DataViewSchema)" />
       <Member Id="M:Microsoft.ML.Data.TransformerChain`1.System#Collections#IEnumerable#GetEnumerator" />
       <Member Id="M:Microsoft.ML.Data.TransformerChain`1.Transform(Microsoft.ML.IDataView)" />
+      <Member Id="M:Microsoft.ML.Data.TransformerChain`1.Transform(Microsoft.ML.IDataView,Microsoft.ML.Data.TransformerScope)" />
       <Member Id="P:Microsoft.ML.Data.TransformerChain`1.Microsoft#ML#ITransformer#IsRowToRowMapper" />
     </Type>
     <Type Name="Microsoft.ML.Data.TransformerScope" Id="T:Microsoft.ML.Data.TransformerScope">
@@ -2133,6 +2144,7 @@
       <Member Id="F:Microsoft.ML.Trainers.FastTree.TreeOptions.MaximumBinCountPerFeature" />
       <Member Id="F:Microsoft.ML.Trainers.FastTree.TreeOptions.MaximumCategoricalGroupCountPerNode" />
       <Member Id="F:Microsoft.ML.Trainers.FastTree.TreeOptions.MaximumCategoricalSplitPointCount" />
+      <Member Id="F:Microsoft.ML.Trainers.FastTree.TreeOptions.MemoryStatistics" />
       <Member Id="F:Microsoft.ML.Trainers.FastTree.TreeOptions.MinimumExampleCountPerLeaf" />
       <Member Id="F:Microsoft.ML.Trainers.FastTree.TreeOptions.MinimumExampleFractionForCategoricalSplit" />
       <Member Id="F:Microsoft.ML.Trainers.FastTree.TreeOptions.MinimumExamplesForCategoricalSplit" />
@@ -2145,131 +2157,6 @@
       <Member Id="F:Microsoft.ML.Trainers.FastTree.TreeOptions.SparsifyThreshold" />
       <Member Id="F:Microsoft.ML.Trainers.FastTree.TreeOptions.TestFrequency" />
       <Member Id="M:Microsoft.ML.Trainers.FastTree.TreeOptions.#ctor" />
-    </Type>
-  </Namespace>
-  <Namespace Name="Microsoft.ML.Trainers.LightGbm">
-    <Type Name="Microsoft.ML.Trainers.LightGbm.BoosterParameterBase" Id="T:Microsoft.ML.Trainers.LightGbm.BoosterParameterBase">
-      <Member Id="M:Microsoft.ML.Trainers.LightGbm.BoosterParameterBase.#ctor(Microsoft.ML.Trainers.LightGbm.BoosterParameterBase.OptionsBase)" />
-    </Type>
-    <Type Name="Microsoft.ML.Trainers.LightGbm.BoosterParameterBase/OptionsBase" Id="T:Microsoft.ML.Trainers.LightGbm.BoosterParameterBase.OptionsBase">
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.BoosterParameterBase.OptionsBase.FeatureFraction" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.BoosterParameterBase.OptionsBase.L1Regularization" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.BoosterParameterBase.OptionsBase.L2Regularization" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.BoosterParameterBase.OptionsBase.MaximumTreeDepth" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.BoosterParameterBase.OptionsBase.MinimumChildWeight" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.BoosterParameterBase.OptionsBase.MinimumSplitGain" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.BoosterParameterBase.OptionsBase.SubsampleFraction" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.BoosterParameterBase.OptionsBase.SubsampleFrequency" />
-      <Member Id="M:Microsoft.ML.Trainers.LightGbm.BoosterParameterBase.OptionsBase.#ctor" />
-      <Member Id="M:Microsoft.ML.Trainers.LightGbm.BoosterParameterBase.OptionsBase.Microsoft#ML#Runtime#IComponentFactory&lt;Microsoft#ML#Trainers#LightGbm#BoosterParameterBase&gt;#CreateComponent(Microsoft.ML.Runtime.IHostEnvironment)" />
-    </Type>
-    <Type Name="Microsoft.ML.Trainers.LightGbm.DartBooster" Id="T:Microsoft.ML.Trainers.LightGbm.DartBooster" />
-    <Type Name="Microsoft.ML.Trainers.LightGbm.DartBooster/Options" Id="T:Microsoft.ML.Trainers.LightGbm.DartBooster.Options">
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.DartBooster.Options.MaximumNumberOfDroppedTreesPerRound" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.DartBooster.Options.SkipDropFraction" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.DartBooster.Options.TreeDropFraction" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.DartBooster.Options.UniformDrop" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.DartBooster.Options.XgboostDartMode" />
-      <Member Id="M:Microsoft.ML.Trainers.LightGbm.DartBooster.Options.#ctor" />
-    </Type>
-    <Type Name="Microsoft.ML.Trainers.LightGbm.GossBooster" Id="T:Microsoft.ML.Trainers.LightGbm.GossBooster" />
-    <Type Name="Microsoft.ML.Trainers.LightGbm.GossBooster/Options" Id="T:Microsoft.ML.Trainers.LightGbm.GossBooster.Options">
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.GossBooster.Options.OtherRate" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.GossBooster.Options.TopRate" />
-      <Member Id="M:Microsoft.ML.Trainers.LightGbm.GossBooster.Options.#ctor" />
-    </Type>
-    <Type Name="Microsoft.ML.Trainers.LightGbm.GradientBooster" Id="T:Microsoft.ML.Trainers.LightGbm.GradientBooster" />
-    <Type Name="Microsoft.ML.Trainers.LightGbm.GradientBooster/Options" Id="T:Microsoft.ML.Trainers.LightGbm.GradientBooster.Options">
-      <Member Id="M:Microsoft.ML.Trainers.LightGbm.GradientBooster.Options.#ctor" />
-    </Type>
-    <Type Name="Microsoft.ML.Trainers.LightGbm.LightGbmBinaryModelParameters" Id="T:Microsoft.ML.Trainers.LightGbm.LightGbmBinaryModelParameters" />
-    <Type Name="Microsoft.ML.Trainers.LightGbm.LightGbmBinaryTrainer" Id="T:Microsoft.ML.Trainers.LightGbm.LightGbmBinaryTrainer">
-      <Member Id="M:Microsoft.ML.Trainers.LightGbm.LightGbmBinaryTrainer.Fit(Microsoft.ML.IDataView,Microsoft.ML.IDataView)" />
-    </Type>
-    <Type Name="Microsoft.ML.Trainers.LightGbm.LightGbmBinaryTrainer/Options" Id="T:Microsoft.ML.Trainers.LightGbm.LightGbmBinaryTrainer.Options">
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmBinaryTrainer.Options.EvaluationMetric" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmBinaryTrainer.Options.Sigmoid" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmBinaryTrainer.Options.UnbalancedSets" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmBinaryTrainer.Options.WeightOfPositiveExamples" />
-      <Member Id="M:Microsoft.ML.Trainers.LightGbm.LightGbmBinaryTrainer.Options.#ctor" />
-    </Type>
-    <Type Name="Microsoft.ML.Trainers.LightGbm.LightGbmBinaryTrainer/Options/EvaluateMetricType" Id="T:Microsoft.ML.Trainers.LightGbm.LightGbmBinaryTrainer.Options.EvaluateMetricType">
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmBinaryTrainer.Options.EvaluateMetricType.AreaUnderCurve" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmBinaryTrainer.Options.EvaluateMetricType.Default" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmBinaryTrainer.Options.EvaluateMetricType.Error" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmBinaryTrainer.Options.EvaluateMetricType.Logloss" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmBinaryTrainer.Options.EvaluateMetricType.None" />
-    </Type>
-    <Type Name="Microsoft.ML.Trainers.LightGbm.LightGbmMulticlassTrainer" Id="T:Microsoft.ML.Trainers.LightGbm.LightGbmMulticlassTrainer">
-      <Member Id="M:Microsoft.ML.Trainers.LightGbm.LightGbmMulticlassTrainer.Fit(Microsoft.ML.IDataView,Microsoft.ML.IDataView)" />
-    </Type>
-    <Type Name="Microsoft.ML.Trainers.LightGbm.LightGbmMulticlassTrainer/Options" Id="T:Microsoft.ML.Trainers.LightGbm.LightGbmMulticlassTrainer.Options">
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmMulticlassTrainer.Options.EvaluationMetric" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmMulticlassTrainer.Options.Sigmoid" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmMulticlassTrainer.Options.UnbalancedSets" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmMulticlassTrainer.Options.UseSoftmax" />
-      <Member Id="M:Microsoft.ML.Trainers.LightGbm.LightGbmMulticlassTrainer.Options.#ctor" />
-    </Type>
-    <Type Name="Microsoft.ML.Trainers.LightGbm.LightGbmMulticlassTrainer/Options/EvaluateMetricType" Id="T:Microsoft.ML.Trainers.LightGbm.LightGbmMulticlassTrainer.Options.EvaluateMetricType">
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmMulticlassTrainer.Options.EvaluateMetricType.Default" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmMulticlassTrainer.Options.EvaluateMetricType.Error" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmMulticlassTrainer.Options.EvaluateMetricType.LogLoss" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmMulticlassTrainer.Options.EvaluateMetricType.None" />
-    </Type>
-    <Type Name="Microsoft.ML.Trainers.LightGbm.LightGbmRankingModelParameters" Id="T:Microsoft.ML.Trainers.LightGbm.LightGbmRankingModelParameters" />
-    <Type Name="Microsoft.ML.Trainers.LightGbm.LightGbmRankingTrainer" Id="T:Microsoft.ML.Trainers.LightGbm.LightGbmRankingTrainer">
-      <Member Id="M:Microsoft.ML.Trainers.LightGbm.LightGbmRankingTrainer.Fit(Microsoft.ML.IDataView,Microsoft.ML.IDataView)" />
-    </Type>
-    <Type Name="Microsoft.ML.Trainers.LightGbm.LightGbmRankingTrainer/Options" Id="T:Microsoft.ML.Trainers.LightGbm.LightGbmRankingTrainer.Options">
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmRankingTrainer.Options.CustomGains" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmRankingTrainer.Options.EvaluationMetric" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmRankingTrainer.Options.Sigmoid" />
-      <Member Id="M:Microsoft.ML.Trainers.LightGbm.LightGbmRankingTrainer.Options.#ctor" />
-    </Type>
-    <Type Name="Microsoft.ML.Trainers.LightGbm.LightGbmRankingTrainer/Options/EvaluateMetricType" Id="T:Microsoft.ML.Trainers.LightGbm.LightGbmRankingTrainer.Options.EvaluateMetricType">
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmRankingTrainer.Options.EvaluateMetricType.Default" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmRankingTrainer.Options.EvaluateMetricType.MeanAveragedPrecision" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmRankingTrainer.Options.EvaluateMetricType.None" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmRankingTrainer.Options.EvaluateMetricType.NormalizedDiscountedCumulativeGain" />
-    </Type>
-    <Type Name="Microsoft.ML.Trainers.LightGbm.LightGbmRegressionModelParameters" Id="T:Microsoft.ML.Trainers.LightGbm.LightGbmRegressionModelParameters" />
-    <Type Name="Microsoft.ML.Trainers.LightGbm.LightGbmRegressionTrainer" Id="T:Microsoft.ML.Trainers.LightGbm.LightGbmRegressionTrainer">
-      <Member Id="M:Microsoft.ML.Trainers.LightGbm.LightGbmRegressionTrainer.Fit(Microsoft.ML.IDataView,Microsoft.ML.IDataView)" />
-    </Type>
-    <Type Name="Microsoft.ML.Trainers.LightGbm.LightGbmRegressionTrainer/Options" Id="T:Microsoft.ML.Trainers.LightGbm.LightGbmRegressionTrainer.Options">
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmRegressionTrainer.Options.EvaluationMetric" />
-      <Member Id="M:Microsoft.ML.Trainers.LightGbm.LightGbmRegressionTrainer.Options.#ctor" />
-    </Type>
-    <Type Name="Microsoft.ML.Trainers.LightGbm.LightGbmRegressionTrainer/Options/EvaluateMetricType" Id="T:Microsoft.ML.Trainers.LightGbm.LightGbmRegressionTrainer.Options.EvaluateMetricType">
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmRegressionTrainer.Options.EvaluateMetricType.Default" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmRegressionTrainer.Options.EvaluateMetricType.MeanAbsoluteError" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmRegressionTrainer.Options.EvaluateMetricType.MeanSquaredError" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmRegressionTrainer.Options.EvaluateMetricType.None" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmRegressionTrainer.Options.EvaluateMetricType.RootMeanSquaredError" />
-    </Type>
-    <Type Name="Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4" Id="T:Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4">
-      <Member Id="P:Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.Info" />
-    </Type>
-    <Type Name="Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4/OptionsBase" Id="T:Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.OptionsBase">
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.OptionsBase.BatchSize" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.OptionsBase.CategoricalSmoothing" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.OptionsBase.EarlyStoppingRound" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.OptionsBase.HandleMissingValue" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.OptionsBase.L2CategoricalRegularization" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.OptionsBase.LearningRate" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.OptionsBase.MaximumBinCountPerFeature" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.OptionsBase.MaximumCategoricalSplitPointCount" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.OptionsBase.MinimumExampleCountPerGroup" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.OptionsBase.MinimumExampleCountPerLeaf" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.OptionsBase.NumberOfIterations" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.OptionsBase.NumberOfLeaves" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.OptionsBase.NumberOfThreads" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.OptionsBase.Seed" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.OptionsBase.Silent" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.OptionsBase.UseCategoricalSplit" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.OptionsBase.UseZeroAsMissingValue" />
-      <Member Id="F:Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.OptionsBase.Verbose" />
-      <Member Id="P:Microsoft.ML.Trainers.LightGbm.LightGbmTrainerBase`4.OptionsBase.Booster" />
     </Type>
   </Namespace>
   <Namespace Name="Microsoft.ML.Transforms">
