@@ -182,11 +182,11 @@
       </Docs>
     </Member>
     <Member MemberName="SetDataset">
-      <MemberSignature Language="C#" Value="public static Microsoft.ML.AutoML.AutoMLExperiment SetDataset (this Microsoft.ML.AutoML.AutoMLExperiment experiment, Microsoft.ML.IDataView dataset, int fold = 10);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.AutoML.AutoMLExperiment SetDataset(class Microsoft.ML.AutoML.AutoMLExperiment experiment, class Microsoft.ML.IDataView dataset, int32 fold) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetDataset(Microsoft.ML.AutoML.AutoMLExperiment,Microsoft.ML.IDataView,System.Int32)" />
-      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function SetDataset (experiment As AutoMLExperiment, dataset As IDataView, Optional fold As Integer = 10) As AutoMLExperiment" />
-      <MemberSignature Language="F#" Value="static member SetDataset : Microsoft.ML.AutoML.AutoMLExperiment * Microsoft.ML.IDataView * int -&gt; Microsoft.ML.AutoML.AutoMLExperiment" Usage="Microsoft.ML.AutoML.AutoMLExperimentExtension.SetDataset (experiment, dataset, fold)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.AutoML.AutoMLExperiment SetDataset (this Microsoft.ML.AutoML.AutoMLExperiment experiment, Microsoft.ML.IDataView dataset, int fold = 10, string samplingKeyColumnName = default);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.AutoML.AutoMLExperiment SetDataset(class Microsoft.ML.AutoML.AutoMLExperiment experiment, class Microsoft.ML.IDataView dataset, int32 fold, string samplingKeyColumnName) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetDataset(Microsoft.ML.AutoML.AutoMLExperiment,Microsoft.ML.IDataView,System.Int32,System.String)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function SetDataset (experiment As AutoMLExperiment, dataset As IDataView, Optional fold As Integer = 10, Optional samplingKeyColumnName As String = Nothing) As AutoMLExperiment" />
+      <MemberSignature Language="F#" Value="static member SetDataset : Microsoft.ML.AutoML.AutoMLExperiment * Microsoft.ML.IDataView * int * string -&gt; Microsoft.ML.AutoML.AutoMLExperiment" Usage="Microsoft.ML.AutoML.AutoMLExperimentExtension.SetDataset (experiment, dataset, fold, samplingKeyColumnName)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.AutoML</AssemblyName>
@@ -199,13 +199,15 @@
         <Parameter Name="experiment" Type="Microsoft.ML.AutoML.AutoMLExperiment" RefType="this" />
         <Parameter Name="dataset" Type="Microsoft.ML.IDataView" />
         <Parameter Name="fold" Type="System.Int32" />
+        <Parameter Name="samplingKeyColumnName" Type="System.String" />
       </Parameters>
       <Docs>
         <param name="experiment">
           <see cref="T:Microsoft.ML.AutoML.AutoMLExperiment" />
         </param>
         <param name="dataset">dataset for cross-validation split.</param>
-        <param name="fold" />
+        <param name="fold">number of cross-validation folds</param>
+        <param name="samplingKeyColumnName">column name for sampling key</param>
         <summary>
             Set cross-validation dataset for <see cref="T:Microsoft.ML.AutoML.AutoMLExperiment" />. This will make <see cref="T:Microsoft.ML.AutoML.AutoMLExperiment" /> use n=<paramref name="fold" /> cross-validation split on <paramref name="dataset" />
             to train and evaluate a model.
@@ -328,10 +330,90 @@
         <Parameter Name="checkIntervalInMilliseconds" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="experiment">To be added.</param>
-        <param name="checkIntervalInMilliseconds">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="experiment">
+          <see cref="T:Microsoft.ML.AutoML.AutoMLExperiment" />
+        </param>
+        <param name="checkIntervalInMilliseconds">the interval in milliseconds for <see cref="T:Microsoft.ML.AutoML.DefaultPerformanceMonitor" /> to sample <see cref="T:Microsoft.ML.AutoML.TrialPerformanceMetrics" /></param>
+        <summary>
+            Set <see cref="T:Microsoft.ML.AutoML.DefaultPerformanceMonitor" /> as <see cref="T:Microsoft.ML.AutoML.IPerformanceMonitor" /> for <see cref="T:Microsoft.ML.AutoML.AutoMLExperiment" />.
+            </summary>
+        <returns />
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetPerformanceMonitor&lt;TPerformanceMonitor&gt;">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.AutoML.AutoMLExperiment SetPerformanceMonitor&lt;TPerformanceMonitor&gt; (this Microsoft.ML.AutoML.AutoMLExperiment experiment) where TPerformanceMonitor : class, Microsoft.ML.AutoML.IPerformanceMonitor;" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.AutoML.AutoMLExperiment SetPerformanceMonitor&lt;class (class Microsoft.ML.AutoML.IPerformanceMonitor) TPerformanceMonitor&gt;(class Microsoft.ML.AutoML.AutoMLExperiment experiment) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetPerformanceMonitor``1(Microsoft.ML.AutoML.AutoMLExperiment)" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function SetPerformanceMonitor(Of TPerformanceMonitor As {Class, IPerformanceMonitor}) (experiment As AutoMLExperiment) As AutoMLExperiment" />
+      <MemberSignature Language="F#" Value="static member SetPerformanceMonitor : Microsoft.ML.AutoML.AutoMLExperiment -&gt; Microsoft.ML.AutoML.AutoMLExperiment (requires 'PerformanceMonitor : null and 'PerformanceMonitor :&gt; Microsoft.ML.AutoML.IPerformanceMonitor)" Usage="Microsoft.ML.AutoML.AutoMLExperimentExtension.SetPerformanceMonitor experiment" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.AutoML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.AutoML.AutoMLExperiment</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TPerformanceMonitor">
+          <Constraints>
+            <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
+            <InterfaceName>Microsoft.ML.AutoML.IPerformanceMonitor</InterfaceName>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="experiment" Type="Microsoft.ML.AutoML.AutoMLExperiment" RefType="this" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TPerformanceMonitor" />
+        <param name="experiment">
+          <see cref="T:Microsoft.ML.AutoML.AutoMLExperiment" />
+        </param>
+        <summary>
+            Set a custom performance monitor as <see cref="T:Microsoft.ML.AutoML.IPerformanceMonitor" /> for <see cref="T:Microsoft.ML.AutoML.AutoMLExperiment" />.
+            </summary>
+        <returns />
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetPerformanceMonitor&lt;TPerformanceMonitor&gt;">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.AutoML.AutoMLExperiment SetPerformanceMonitor&lt;TPerformanceMonitor&gt; (this Microsoft.ML.AutoML.AutoMLExperiment experiment, Func&lt;IServiceProvider,TPerformanceMonitor&gt; factory) where TPerformanceMonitor : class, Microsoft.ML.AutoML.IPerformanceMonitor;" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.AutoML.AutoMLExperiment SetPerformanceMonitor&lt;class (class Microsoft.ML.AutoML.IPerformanceMonitor) TPerformanceMonitor&gt;(class Microsoft.ML.AutoML.AutoMLExperiment experiment, class System.Func`2&lt;class System.IServiceProvider, !!TPerformanceMonitor&gt; factory) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetPerformanceMonitor``1(Microsoft.ML.AutoML.AutoMLExperiment,System.Func{System.IServiceProvider,``0})" />
+      <MemberSignature Language="VB.NET" Value="&lt;Extension()&gt;&#xA;Public Function SetPerformanceMonitor(Of TPerformanceMonitor As {Class, IPerformanceMonitor}) (experiment As AutoMLExperiment, factory As Func(Of IServiceProvider, TPerformanceMonitor)) As AutoMLExperiment" />
+      <MemberSignature Language="F#" Value="static member SetPerformanceMonitor : Microsoft.ML.AutoML.AutoMLExperiment * Func&lt;IServiceProvider, 'PerformanceMonitor (requires 'PerformanceMonitor : null and 'PerformanceMonitor :&gt; Microsoft.ML.AutoML.IPerformanceMonitor)&gt; -&gt; Microsoft.ML.AutoML.AutoMLExperiment (requires 'PerformanceMonitor : null and 'PerformanceMonitor :&gt; Microsoft.ML.AutoML.IPerformanceMonitor)" Usage="Microsoft.ML.AutoML.AutoMLExperimentExtension.SetPerformanceMonitor (experiment, factory)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.AutoML</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.AutoML.AutoMLExperiment</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TPerformanceMonitor">
+          <Constraints>
+            <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
+            <InterfaceName>Microsoft.ML.AutoML.IPerformanceMonitor</InterfaceName>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="experiment" Type="Microsoft.ML.AutoML.AutoMLExperiment" RefType="this" />
+        <Parameter Name="factory" Type="System.Func&lt;System.IServiceProvider,TPerformanceMonitor&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TPerformanceMonitor" />
+        <param name="experiment">
+          <see cref="T:Microsoft.ML.AutoML.AutoMLExperiment" />
+        </param>
+        <param name="factory" />
+        <summary>
+            Set a custom performance monitor as <see cref="T:Microsoft.ML.AutoML.IPerformanceMonitor" /> for <see cref="T:Microsoft.ML.AutoML.AutoMLExperiment" />.
+            </summary>
+        <returns />
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
