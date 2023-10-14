@@ -125,7 +125,7 @@
       <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetCheckpoint(Microsoft.ML.AutoML.AutoMLExperiment,System.String)" />
       <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetCostFrugalTuner(Microsoft.ML.AutoML.AutoMLExperiment)" />
       <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetDataset(Microsoft.ML.AutoML.AutoMLExperiment,Microsoft.ML.DataOperationsCatalog.TrainTestData)" />
-      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetDataset(Microsoft.ML.AutoML.AutoMLExperiment,Microsoft.ML.IDataView,Microsoft.ML.IDataView)" />
+      <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetDataset(Microsoft.ML.AutoML.AutoMLExperiment,Microsoft.ML.IDataView,Microsoft.ML.IDataView,System.Boolean)" />
       <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetDataset(Microsoft.ML.AutoML.AutoMLExperiment,Microsoft.ML.IDataView,System.Int32,System.String)" />
       <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetEciCostFrugalTuner(Microsoft.ML.AutoML.AutoMLExperiment)" />
       <Member Id="M:Microsoft.ML.AutoML.AutoMLExperimentExtension.SetGridSearchTuner(Microsoft.ML.AutoML.AutoMLExperiment,System.Int32)" />
@@ -255,6 +255,11 @@
       <Member Id="M:Microsoft.ML.AutoML.FairnessTrialResult.#ctor" />
       <Member Id="P:Microsoft.ML.AutoML.FairnessTrialResult.FairnessMetric" />
     </Type>
+    <Type Name="Microsoft.ML.AutoML.ICrossValidateDatasetManager" Id="T:Microsoft.ML.AutoML.ICrossValidateDatasetManager">
+      <Member Id="P:Microsoft.ML.AutoML.ICrossValidateDatasetManager.Dataset" />
+      <Member Id="P:Microsoft.ML.AutoML.ICrossValidateDatasetManager.Fold" />
+      <Member Id="P:Microsoft.ML.AutoML.ICrossValidateDatasetManager.SamplingKeyColumnName" />
+    </Type>
     <Type Name="Microsoft.ML.AutoML.IDatasetManager" Id="T:Microsoft.ML.AutoML.IDatasetManager" />
     <Type Name="Microsoft.ML.AutoML.IEvaluateMetricManager" Id="T:Microsoft.ML.AutoML.IEvaluateMetricManager">
       <Member Id="M:Microsoft.ML.AutoML.IEvaluateMetricManager.Evaluate(Microsoft.ML.MLContext,Microsoft.ML.IDataView)" />
@@ -290,6 +295,10 @@
     </Type>
     <Type Name="Microsoft.ML.AutoML.ISweepable`1" Id="T:Microsoft.ML.AutoML.ISweepable`1">
       <Member Id="M:Microsoft.ML.AutoML.ISweepable`1.BuildFromOption(Microsoft.ML.MLContext,Microsoft.ML.SearchSpace.Parameter)" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.ITrainValidateDatasetManager" Id="T:Microsoft.ML.AutoML.ITrainValidateDatasetManager">
+      <Member Id="M:Microsoft.ML.AutoML.ITrainValidateDatasetManager.LoadTrainDataset(Microsoft.ML.MLContext,Microsoft.ML.AutoML.TrialSettings)" />
+      <Member Id="M:Microsoft.ML.AutoML.ITrainValidateDatasetManager.LoadValidateDataset(Microsoft.ML.MLContext,Microsoft.ML.AutoML.TrialSettings)" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.ITrialRunner" Id="T:Microsoft.ML.AutoML.ITrialRunner">
       <Member Id="M:Microsoft.ML.AutoML.ITrialRunner.RunAsync(Microsoft.ML.AutoML.TrialSettings,System.Threading.CancellationToken)" />
@@ -472,6 +481,7 @@
       <Member Id="M:Microsoft.ML.AutoML.CodeGen.ConvertTypeOption.#ctor" />
       <Member Id="P:Microsoft.ML.AutoML.CodeGen.ConvertTypeOption.InputColumnNames" />
       <Member Id="P:Microsoft.ML.AutoML.CodeGen.ConvertTypeOption.OutputColumnNames" />
+      <Member Id="P:Microsoft.ML.AutoML.CodeGen.ConvertTypeOption.TargetType" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.CodeGen.DnnFeaturizerImageOption" Id="T:Microsoft.ML.AutoML.CodeGen.DnnFeaturizerImageOption">
       <Member Id="M:Microsoft.ML.AutoML.CodeGen.DnnFeaturizerImageOption.#ctor" />
@@ -512,6 +522,7 @@
       <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.ObjectDetectionMulti" />
       <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.OneHotEncoding" />
       <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.OneHotHashEncoding" />
+      <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.QuestionAnsweringMulti" />
       <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.ReplaceMissingValues" />
       <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.ResizeImages" />
       <Member Id="F:Microsoft.ML.AutoML.CodeGen.EstimatorType.SdcaLogisticRegressionBinary" />
@@ -647,6 +658,19 @@
       <Member Id="M:Microsoft.ML.AutoML.CodeGen.OneHotOption.#ctor" />
       <Member Id="P:Microsoft.ML.AutoML.CodeGen.OneHotOption.InputColumnNames" />
       <Member Id="P:Microsoft.ML.AutoML.CodeGen.OneHotOption.OutputColumnNames" />
+    </Type>
+    <Type Name="Microsoft.ML.AutoML.CodeGen.QuestionAnsweringOption" Id="T:Microsoft.ML.AutoML.CodeGen.QuestionAnsweringOption">
+      <Member Id="M:Microsoft.ML.AutoML.CodeGen.QuestionAnsweringOption.#ctor" />
+      <Member Id="P:Microsoft.ML.AutoML.CodeGen.QuestionAnsweringOption.AnswerIndexStartColumnName" />
+      <Member Id="P:Microsoft.ML.AutoML.CodeGen.QuestionAnsweringOption.Architecture" />
+      <Member Id="P:Microsoft.ML.AutoML.CodeGen.QuestionAnsweringOption.BatchSize" />
+      <Member Id="P:Microsoft.ML.AutoML.CodeGen.QuestionAnsweringOption.ContextColumnName" />
+      <Member Id="P:Microsoft.ML.AutoML.CodeGen.QuestionAnsweringOption.MaxEpochs" />
+      <Member Id="P:Microsoft.ML.AutoML.CodeGen.QuestionAnsweringOption.PredictedAnswerColumnName" />
+      <Member Id="P:Microsoft.ML.AutoML.CodeGen.QuestionAnsweringOption.QuestionColumnName" />
+      <Member Id="P:Microsoft.ML.AutoML.CodeGen.QuestionAnsweringOption.ScoreColumnName" />
+      <Member Id="P:Microsoft.ML.AutoML.CodeGen.QuestionAnsweringOption.TopKAnswers" />
+      <Member Id="P:Microsoft.ML.AutoML.CodeGen.QuestionAnsweringOption.TrainingAnswerColumnName" />
     </Type>
     <Type Name="Microsoft.ML.AutoML.CodeGen.ReplaceMissingValueOption" Id="T:Microsoft.ML.AutoML.CodeGen.ReplaceMissingValueOption">
       <Member Id="M:Microsoft.ML.AutoML.CodeGen.ReplaceMissingValueOption.#ctor" />
