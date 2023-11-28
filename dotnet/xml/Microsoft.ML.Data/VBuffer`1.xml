@@ -1,9 +1,9 @@
 <Type Name="VBuffer&lt;T&gt;" FullName="Microsoft.ML.Data.VBuffer&lt;T&gt;">
-  <TypeSignature Language="C#" Value="public readonly struct VBuffer&lt;T&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit VBuffer`1&lt;T&gt; extends System.ValueType" />
+  <TypeSignature Language="C#" Value="public readonly struct VBuffer&lt;T&gt; : System.Collections.IEnumerable" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit VBuffer`1&lt;T&gt; extends System.ValueType implements class System.Collections.IEnumerable" />
   <TypeSignature Language="DocId" Value="T:Microsoft.ML.Data.VBuffer`1" />
-  <TypeSignature Language="VB.NET" Value="Public Structure VBuffer(Of T)" />
-  <TypeSignature Language="F#" Value="type VBuffer&lt;'T&gt; = struct" />
+  <TypeSignature Language="VB.NET" Value="Public Structure VBuffer(Of T)&#xA;Implements IEnumerable" />
+  <TypeSignature Language="F#" Value="type VBuffer&lt;'T&gt; = struct&#xA;    interface IEnumerable" />
   <AssemblyInfo>
     <AssemblyName>Microsoft.ML.DataView</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -14,7 +14,11 @@
   <Base>
     <BaseTypeName>System.ValueType</BaseTypeName>
   </Base>
-  <Interfaces />
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.Collections.IEnumerable</InterfaceName>
+    </Interface>
+  </Interfaces>
   <Docs>
     <typeparam name="T">The type of the vector. There are no compile-time restrictions on what this could be, but
              this code and practically all code that uses <see cref="T:Microsoft.ML.Data.VBuffer`1" /> makes the assumption that an assignment of
@@ -298,6 +302,32 @@
       <Docs>
         <summary>
             Returns an enumerable with <see cref="F:Microsoft.ML.Data.VBuffer`1.Length" /> items, representing the values.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetEnumerator">
+      <MemberSignature Language="C#" Value="public System.Collections.IEnumerator GetEnumerator ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Collections.IEnumerator GetEnumerator() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Data.VBuffer`1.GetEnumerator" />
+      <MemberSignature Language="VB.NET" Value="Public Function GetEnumerator () As IEnumerator" />
+      <MemberSignature Language="F#" Value="abstract member GetEnumerator : unit -&gt; System.Collections.IEnumerator&#xA;override this.GetEnumerator : unit -&gt; System.Collections.IEnumerator" Usage="vBuffer.GetEnumerator " />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:System.Collections.IEnumerable.GetEnumerator</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.DataView</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.IEnumerator</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            Returns an enumerator that iterates through the values in VBuffer.
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
