@@ -257,11 +257,11 @@
       </Docs>
     </Member>
     <Member MemberName="Append">
-      <MemberSignature Language="C#" Value="public Microsoft.Data.Analysis.DataFrame Append (System.Collections.Generic.IEnumerable&lt;Microsoft.Data.Analysis.DataFrameRow&gt; rows, bool inPlace = false);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.Data.Analysis.DataFrame Append(class System.Collections.Generic.IEnumerable`1&lt;class Microsoft.Data.Analysis.DataFrameRow&gt; rows, bool inPlace) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.Data.Analysis.DataFrame.Append(System.Collections.Generic.IEnumerable{Microsoft.Data.Analysis.DataFrameRow},System.Boolean)" />
-      <MemberSignature Language="VB.NET" Value="Public Function Append (rows As IEnumerable(Of DataFrameRow), Optional inPlace As Boolean = false) As DataFrame" />
-      <MemberSignature Language="F#" Value="member this.Append : seq&lt;Microsoft.Data.Analysis.DataFrameRow&gt; * bool -&gt; Microsoft.Data.Analysis.DataFrame" Usage="dataFrame.Append (rows, inPlace)" />
+      <MemberSignature Language="C#" Value="public Microsoft.Data.Analysis.DataFrame Append (System.Collections.Generic.IEnumerable&lt;Microsoft.Data.Analysis.DataFrameRow&gt; rows, bool inPlace = false, System.Globalization.CultureInfo cultureInfo = default);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.Data.Analysis.DataFrame Append(class System.Collections.Generic.IEnumerable`1&lt;class Microsoft.Data.Analysis.DataFrameRow&gt; rows, bool inPlace, class System.Globalization.CultureInfo cultureInfo) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.Analysis.DataFrame.Append(System.Collections.Generic.IEnumerable{Microsoft.Data.Analysis.DataFrameRow},System.Boolean,System.Globalization.CultureInfo)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Append (rows As IEnumerable(Of DataFrameRow), Optional inPlace As Boolean = false, Optional cultureInfo As CultureInfo = Nothing) As DataFrame" />
+      <MemberSignature Language="F#" Value="member this.Append : seq&lt;Microsoft.Data.Analysis.DataFrameRow&gt; * bool * System.Globalization.CultureInfo -&gt; Microsoft.Data.Analysis.DataFrame" Usage="dataFrame.Append (rows, inPlace, cultureInfo)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.Data.Analysis</AssemblyName>
@@ -273,24 +273,27 @@
       <Parameters>
         <Parameter Name="rows" Type="System.Collections.Generic.IEnumerable&lt;Microsoft.Data.Analysis.DataFrameRow&gt;" />
         <Parameter Name="inPlace" Type="System.Boolean" />
+        <Parameter Name="cultureInfo" Type="System.Globalization.CultureInfo" />
       </Parameters>
       <Docs>
         <param name="rows">The rows to be appended to this DataFrame </param>
         <param name="inPlace">If set, appends <paramref name="rows" /> in place. Otherwise, a new DataFrame is returned with the <paramref name="rows" /> appended</param>
+        <param name="cultureInfo">culture info for formatting values</param>
         <summary> 
             Appends rows to the DataFrame 
             </summary>
         <returns>To be added.</returns>
         <remarks>If an input column's value doesn't match a DataFrameColumn's data type, a conversion will be attempted</remarks>
         <remarks>If a <seealso cref="T:Microsoft.Data.Analysis.DataFrameRow" /> in <paramref name="rows" /> is null, a null value is appended to each column</remarks>
+        <remarks> Values are appended based on the column names</remarks>
       </Docs>
     </Member>
     <Member MemberName="Append">
-      <MemberSignature Language="C#" Value="public Microsoft.Data.Analysis.DataFrame Append (System.Collections.Generic.IEnumerable&lt;System.Collections.Generic.KeyValuePair&lt;string,object&gt;&gt; row, bool inPlace = false);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.Data.Analysis.DataFrame Append(class System.Collections.Generic.IEnumerable`1&lt;valuetype System.Collections.Generic.KeyValuePair`2&lt;string, object&gt;&gt; row, bool inPlace) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.Data.Analysis.DataFrame.Append(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}},System.Boolean)" />
-      <MemberSignature Language="VB.NET" Value="Public Function Append (row As IEnumerable(Of KeyValuePair(Of String, Object)), Optional inPlace As Boolean = false) As DataFrame" />
-      <MemberSignature Language="F#" Value="member this.Append : seq&lt;System.Collections.Generic.KeyValuePair&lt;string, obj&gt;&gt; * bool -&gt; Microsoft.Data.Analysis.DataFrame" Usage="dataFrame.Append (row, inPlace)" />
+      <MemberSignature Language="C#" Value="public Microsoft.Data.Analysis.DataFrame Append (System.Collections.Generic.IEnumerable&lt;System.Collections.Generic.KeyValuePair&lt;string,object&gt;&gt; row, bool inPlace = false, System.Globalization.CultureInfo cultureInfo = default);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.Data.Analysis.DataFrame Append(class System.Collections.Generic.IEnumerable`1&lt;valuetype System.Collections.Generic.KeyValuePair`2&lt;string, object&gt;&gt; row, bool inPlace, class System.Globalization.CultureInfo cultureInfo) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.Analysis.DataFrame.Append(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}},System.Boolean,System.Globalization.CultureInfo)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Append (row As IEnumerable(Of KeyValuePair(Of String, Object)), Optional inPlace As Boolean = false, Optional cultureInfo As CultureInfo = Nothing) As DataFrame" />
+      <MemberSignature Language="F#" Value="member this.Append : seq&lt;System.Collections.Generic.KeyValuePair&lt;string, obj&gt;&gt; * bool * System.Globalization.CultureInfo -&gt; Microsoft.Data.Analysis.DataFrame" Usage="dataFrame.Append (row, inPlace, cultureInfo)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.Data.Analysis</AssemblyName>
@@ -302,10 +305,12 @@
       <Parameters>
         <Parameter Name="row" Type="System.Collections.Generic.IEnumerable&lt;System.Collections.Generic.KeyValuePair&lt;System.String,System.Object&gt;&gt;" />
         <Parameter Name="inPlace" Type="System.Boolean" />
+        <Parameter Name="cultureInfo" Type="System.Globalization.CultureInfo" />
       </Parameters>
       <Docs>
         <param name="row">An enumeration of column name and value to be appended</param>
         <param name="inPlace">If set, appends <paramref name="row" /> in place. Otherwise, a new DataFrame is returned with an appended <paramref name="row" /></param>
+        <param name="cultureInfo">Culture info for formatting values</param>
         <summary> 
             Appends a row by enumerating column names and values from <paramref name="row" /></summary>
         <returns>To be added.</returns>
@@ -313,11 +318,11 @@
       </Docs>
     </Member>
     <Member MemberName="Append">
-      <MemberSignature Language="C#" Value="public Microsoft.Data.Analysis.DataFrame Append (System.Collections.Generic.IEnumerable&lt;object&gt; row = default, bool inPlace = false);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.Data.Analysis.DataFrame Append(class System.Collections.Generic.IEnumerable`1&lt;object&gt; row, bool inPlace) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.Data.Analysis.DataFrame.Append(System.Collections.Generic.IEnumerable{System.Object},System.Boolean)" />
-      <MemberSignature Language="VB.NET" Value="Public Function Append (Optional row As IEnumerable(Of Object) = Nothing, Optional inPlace As Boolean = false) As DataFrame" />
-      <MemberSignature Language="F#" Value="member this.Append : seq&lt;obj&gt; * bool -&gt; Microsoft.Data.Analysis.DataFrame" Usage="dataFrame.Append (row, inPlace)" />
+      <MemberSignature Language="C#" Value="public Microsoft.Data.Analysis.DataFrame Append (System.Collections.Generic.IEnumerable&lt;object&gt; row = default, bool inPlace = false, System.Globalization.CultureInfo cultureInfo = default);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.Data.Analysis.DataFrame Append(class System.Collections.Generic.IEnumerable`1&lt;object&gt; row, bool inPlace, class System.Globalization.CultureInfo cultureInfo) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.Analysis.DataFrame.Append(System.Collections.Generic.IEnumerable{System.Object},System.Boolean,System.Globalization.CultureInfo)" />
+      <MemberSignature Language="VB.NET" Value="Public Function Append (Optional row As IEnumerable(Of Object) = Nothing, Optional inPlace As Boolean = false, Optional cultureInfo As CultureInfo = Nothing) As DataFrame" />
+      <MemberSignature Language="F#" Value="member this.Append : seq&lt;obj&gt; * bool * System.Globalization.CultureInfo -&gt; Microsoft.Data.Analysis.DataFrame" Usage="dataFrame.Append (row, inPlace, cultureInfo)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.Data.Analysis</AssemblyName>
@@ -329,10 +334,12 @@
       <Parameters>
         <Parameter Name="row" Type="System.Collections.Generic.IEnumerable&lt;System.Object&gt;" />
         <Parameter Name="inPlace" Type="System.Boolean" />
+        <Parameter Name="cultureInfo" Type="System.Globalization.CultureInfo" />
       </Parameters>
       <Docs>
         <param name="row" />
         <param name="inPlace">If set, appends a <paramref name="row" /> in place. Otherwise, a new DataFrame is returned with an appended <paramref name="row" /></param>
+        <param name="cultureInfo">Culture info for formatting values</param>
         <summary> 
             Appends a row to the DataFrame 
             </summary>
@@ -1121,6 +1128,30 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="FromSchema">
+      <MemberSignature Language="C#" Value="public static Microsoft.Data.Analysis.DataFrame FromSchema (System.Data.Common.DbDataReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.Data.Analysis.DataFrame FromSchema(class System.Data.Common.DbDataReader reader) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.Analysis.DataFrame.FromSchema(System.Data.Common.DbDataReader)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function FromSchema (reader As DbDataReader) As DataFrame" />
+      <MemberSignature Language="F#" Value="static member FromSchema : System.Data.Common.DbDataReader -&gt; Microsoft.Data.Analysis.DataFrame" Usage="Microsoft.Data.Analysis.DataFrame.FromSchema reader" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.Analysis</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.Data.Analysis.DataFrame</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="reader" Type="System.Data.Common.DbDataReader" />
+      </Parameters>
+      <Docs>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="GroupBy">
       <MemberSignature Language="C#" Value="public Microsoft.Data.Analysis.GroupBy GroupBy (string columnName);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.Data.Analysis.GroupBy GroupBy(string columnName) cil managed" />
@@ -1491,11 +1522,11 @@
       </Docs>
     </Member>
     <Member MemberName="LoadCsv">
-      <MemberSignature Language="C#" Value="public static Microsoft.Data.Analysis.DataFrame LoadCsv (System.IO.Stream csvStream, char separator = ',', bool header = true, string[] columnNames = default, Type[] dataTypes = default, long numberOfRowsToRead = -1, int guessRows = 10, bool addIndexColumn = false, System.Text.Encoding encoding = default);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.Data.Analysis.DataFrame LoadCsv(class System.IO.Stream csvStream, char separator, bool header, string[] columnNames, class System.Type[] dataTypes, int64 numberOfRowsToRead, int32 guessRows, bool addIndexColumn, class System.Text.Encoding encoding) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.Data.Analysis.DataFrame.LoadCsv(System.IO.Stream,System.Char,System.Boolean,System.String[],System.Type[],System.Int64,System.Int32,System.Boolean,System.Text.Encoding)" />
-      <MemberSignature Language="VB.NET" Value="Public Shared Function LoadCsv (csvStream As Stream, Optional separator As Char = ',', Optional header As Boolean = true, Optional columnNames As String() = Nothing, Optional dataTypes As Type() = Nothing, Optional numberOfRowsToRead As Long = -1, Optional guessRows As Integer = 10, Optional addIndexColumn As Boolean = false, Optional encoding As Encoding = Nothing) As DataFrame" />
-      <MemberSignature Language="F#" Value="static member LoadCsv : System.IO.Stream * char * bool * string[] * Type[] * int64 * int * bool * System.Text.Encoding -&gt; Microsoft.Data.Analysis.DataFrame" Usage="Microsoft.Data.Analysis.DataFrame.LoadCsv (csvStream, separator, header, columnNames, dataTypes, numberOfRowsToRead, guessRows, addIndexColumn, encoding)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.Data.Analysis.DataFrame LoadCsv (System.IO.Stream csvStream, char separator = ',', bool header = true, string[] columnNames = default, Type[] dataTypes = default, long numberOfRowsToRead = -1, int guessRows = 10, bool addIndexColumn = false, System.Text.Encoding encoding = default, bool renameDuplicatedColumns = false, System.Globalization.CultureInfo cultureInfo = default);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.Data.Analysis.DataFrame LoadCsv(class System.IO.Stream csvStream, char separator, bool header, string[] columnNames, class System.Type[] dataTypes, int64 numberOfRowsToRead, int32 guessRows, bool addIndexColumn, class System.Text.Encoding encoding, bool renameDuplicatedColumns, class System.Globalization.CultureInfo cultureInfo) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.Analysis.DataFrame.LoadCsv(System.IO.Stream,System.Char,System.Boolean,System.String[],System.Type[],System.Int64,System.Int32,System.Boolean,System.Text.Encoding,System.Boolean,System.Globalization.CultureInfo)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function LoadCsv (csvStream As Stream, Optional separator As Char = ',', Optional header As Boolean = true, Optional columnNames As String() = Nothing, Optional dataTypes As Type() = Nothing, Optional numberOfRowsToRead As Long = -1, Optional guessRows As Integer = 10, Optional addIndexColumn As Boolean = false, Optional encoding As Encoding = Nothing, Optional renameDuplicatedColumns As Boolean = false, Optional cultureInfo As CultureInfo = Nothing) As DataFrame" />
+      <MemberSignature Language="F#" Value="static member LoadCsv : System.IO.Stream * char * bool * string[] * Type[] * int64 * int * bool * System.Text.Encoding * bool * System.Globalization.CultureInfo -&gt; Microsoft.Data.Analysis.DataFrame" Usage="Microsoft.Data.Analysis.DataFrame.LoadCsv (csvStream, separator, header, columnNames, dataTypes, numberOfRowsToRead, guessRows, addIndexColumn, encoding, renameDuplicatedColumns, cultureInfo)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.Data.Analysis</AssemblyName>
@@ -1514,6 +1545,8 @@
         <Parameter Name="guessRows" Type="System.Int32" />
         <Parameter Name="addIndexColumn" Type="System.Boolean" />
         <Parameter Name="encoding" Type="System.Text.Encoding" />
+        <Parameter Name="renameDuplicatedColumns" Type="System.Boolean" />
+        <Parameter Name="cultureInfo" Type="System.Globalization.CultureInfo" />
       </Parameters>
       <Docs>
         <param name="csvStream">stream of CSV data to be read in</param>
@@ -1525,6 +1558,8 @@
         <param name="guessRows">number of rows used to guess types</param>
         <param name="addIndexColumn">add one column with the row index</param>
         <param name="encoding">The character encoding. Defaults to UTF8 if not specified</param>
+        <param name="renameDuplicatedColumns">If set to true, columns with repeated names are auto-renamed.</param>
+        <param name="cultureInfo">culture info for formatting values</param>
         <summary>
             Reads a seekable stream of CSV data into a DataFrame.
             </summary>
@@ -1535,11 +1570,11 @@
       </Docs>
     </Member>
     <Member MemberName="LoadCsv">
-      <MemberSignature Language="C#" Value="public static Microsoft.Data.Analysis.DataFrame LoadCsv (string filename, char separator = ',', bool header = true, string[] columnNames = default, Type[] dataTypes = default, int numRows = -1, int guessRows = 10, bool addIndexColumn = false, System.Text.Encoding encoding = default);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.Data.Analysis.DataFrame LoadCsv(string filename, char separator, bool header, string[] columnNames, class System.Type[] dataTypes, int32 numRows, int32 guessRows, bool addIndexColumn, class System.Text.Encoding encoding) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.Data.Analysis.DataFrame.LoadCsv(System.String,System.Char,System.Boolean,System.String[],System.Type[],System.Int32,System.Int32,System.Boolean,System.Text.Encoding)" />
-      <MemberSignature Language="VB.NET" Value="Public Shared Function LoadCsv (filename As String, Optional separator As Char = ',', Optional header As Boolean = true, Optional columnNames As String() = Nothing, Optional dataTypes As Type() = Nothing, Optional numRows As Integer = -1, Optional guessRows As Integer = 10, Optional addIndexColumn As Boolean = false, Optional encoding As Encoding = Nothing) As DataFrame" />
-      <MemberSignature Language="F#" Value="static member LoadCsv : string * char * bool * string[] * Type[] * int * int * bool * System.Text.Encoding -&gt; Microsoft.Data.Analysis.DataFrame" Usage="Microsoft.Data.Analysis.DataFrame.LoadCsv (filename, separator, header, columnNames, dataTypes, numRows, guessRows, addIndexColumn, encoding)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.Data.Analysis.DataFrame LoadCsv (string filename, char separator = ',', bool header = true, string[] columnNames = default, Type[] dataTypes = default, int numRows = -1, int guessRows = 10, bool addIndexColumn = false, System.Text.Encoding encoding = default, bool renameDuplicatedColumns = false, System.Globalization.CultureInfo cultureInfo = default);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.Data.Analysis.DataFrame LoadCsv(string filename, char separator, bool header, string[] columnNames, class System.Type[] dataTypes, int32 numRows, int32 guessRows, bool addIndexColumn, class System.Text.Encoding encoding, bool renameDuplicatedColumns, class System.Globalization.CultureInfo cultureInfo) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.Analysis.DataFrame.LoadCsv(System.String,System.Char,System.Boolean,System.String[],System.Type[],System.Int32,System.Int32,System.Boolean,System.Text.Encoding,System.Boolean,System.Globalization.CultureInfo)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function LoadCsv (filename As String, Optional separator As Char = ',', Optional header As Boolean = true, Optional columnNames As String() = Nothing, Optional dataTypes As Type() = Nothing, Optional numRows As Integer = -1, Optional guessRows As Integer = 10, Optional addIndexColumn As Boolean = false, Optional encoding As Encoding = Nothing, Optional renameDuplicatedColumns As Boolean = false, Optional cultureInfo As CultureInfo = Nothing) As DataFrame" />
+      <MemberSignature Language="F#" Value="static member LoadCsv : string * char * bool * string[] * Type[] * int * int * bool * System.Text.Encoding * bool * System.Globalization.CultureInfo -&gt; Microsoft.Data.Analysis.DataFrame" Usage="Microsoft.Data.Analysis.DataFrame.LoadCsv (filename, separator, header, columnNames, dataTypes, numRows, guessRows, addIndexColumn, encoding, renameDuplicatedColumns, cultureInfo)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.Data.Analysis</AssemblyName>
@@ -1558,6 +1593,8 @@
         <Parameter Name="guessRows" Type="System.Int32" />
         <Parameter Name="addIndexColumn" Type="System.Boolean" />
         <Parameter Name="encoding" Type="System.Text.Encoding" />
+        <Parameter Name="renameDuplicatedColumns" Type="System.Boolean" />
+        <Parameter Name="cultureInfo" Type="System.Globalization.CultureInfo" />
       </Parameters>
       <Docs>
         <param name="filename">filename</param>
@@ -1569,6 +1606,8 @@
         <param name="guessRows">number of rows used to guess types</param>
         <param name="addIndexColumn">add one column with the row index</param>
         <param name="encoding">The character encoding. Defaults to UTF8 if not specified</param>
+        <param name="renameDuplicatedColumns">If set to true, columns with repeated names are auto-renamed.</param>
+        <param name="cultureInfo">culture info for formatting values</param>
         <summary>
             Reads a text file as a DataFrame.
             </summary>
@@ -1577,11 +1616,11 @@
       </Docs>
     </Member>
     <Member MemberName="LoadCsvFromString">
-      <MemberSignature Language="C#" Value="public static Microsoft.Data.Analysis.DataFrame LoadCsvFromString (string csvString, char separator = ',', bool header = true, string[] columnNames = default, Type[] dataTypes = default, long numberOfRowsToRead = -1, int guessRows = 10, bool addIndexColumn = false);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.Data.Analysis.DataFrame LoadCsvFromString(string csvString, char separator, bool header, string[] columnNames, class System.Type[] dataTypes, int64 numberOfRowsToRead, int32 guessRows, bool addIndexColumn) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.Data.Analysis.DataFrame.LoadCsvFromString(System.String,System.Char,System.Boolean,System.String[],System.Type[],System.Int64,System.Int32,System.Boolean)" />
-      <MemberSignature Language="VB.NET" Value="Public Shared Function LoadCsvFromString (csvString As String, Optional separator As Char = ',', Optional header As Boolean = true, Optional columnNames As String() = Nothing, Optional dataTypes As Type() = Nothing, Optional numberOfRowsToRead As Long = -1, Optional guessRows As Integer = 10, Optional addIndexColumn As Boolean = false) As DataFrame" />
-      <MemberSignature Language="F#" Value="static member LoadCsvFromString : string * char * bool * string[] * Type[] * int64 * int * bool -&gt; Microsoft.Data.Analysis.DataFrame" Usage="Microsoft.Data.Analysis.DataFrame.LoadCsvFromString (csvString, separator, header, columnNames, dataTypes, numberOfRowsToRead, guessRows, addIndexColumn)" />
+      <MemberSignature Language="C#" Value="public static Microsoft.Data.Analysis.DataFrame LoadCsvFromString (string csvString, char separator = ',', bool header = true, string[] columnNames = default, Type[] dataTypes = default, long numberOfRowsToRead = -1, int guessRows = 10, bool addIndexColumn = false, bool renameDuplicatedColumns = false, System.Globalization.CultureInfo cultureInfo = default);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.Data.Analysis.DataFrame LoadCsvFromString(string csvString, char separator, bool header, string[] columnNames, class System.Type[] dataTypes, int64 numberOfRowsToRead, int32 guessRows, bool addIndexColumn, bool renameDuplicatedColumns, class System.Globalization.CultureInfo cultureInfo) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.Analysis.DataFrame.LoadCsvFromString(System.String,System.Char,System.Boolean,System.String[],System.Type[],System.Int64,System.Int32,System.Boolean,System.Boolean,System.Globalization.CultureInfo)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function LoadCsvFromString (csvString As String, Optional separator As Char = ',', Optional header As Boolean = true, Optional columnNames As String() = Nothing, Optional dataTypes As Type() = Nothing, Optional numberOfRowsToRead As Long = -1, Optional guessRows As Integer = 10, Optional addIndexColumn As Boolean = false, Optional renameDuplicatedColumns As Boolean = false, Optional cultureInfo As CultureInfo = Nothing) As DataFrame" />
+      <MemberSignature Language="F#" Value="static member LoadCsvFromString : string * char * bool * string[] * Type[] * int64 * int * bool * bool * System.Globalization.CultureInfo -&gt; Microsoft.Data.Analysis.DataFrame" Usage="Microsoft.Data.Analysis.DataFrame.LoadCsvFromString (csvString, separator, header, columnNames, dataTypes, numberOfRowsToRead, guessRows, addIndexColumn, renameDuplicatedColumns, cultureInfo)" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.Data.Analysis</AssemblyName>
@@ -1599,6 +1638,8 @@
         <Parameter Name="numberOfRowsToRead" Type="System.Int64" />
         <Parameter Name="guessRows" Type="System.Int32" />
         <Parameter Name="addIndexColumn" Type="System.Boolean" />
+        <Parameter Name="renameDuplicatedColumns" Type="System.Boolean" />
+        <Parameter Name="cultureInfo" Type="System.Globalization.CultureInfo" />
       </Parameters>
       <Docs>
         <param name="csvString">csv data passed in as a string</param>
@@ -1609,12 +1650,88 @@
         <param name="numberOfRowsToRead">number of rows to read not including the header(if present)</param>
         <param name="guessRows">number of rows used to guess types</param>
         <param name="addIndexColumn">add one column with the row index</param>
+        <param name="renameDuplicatedColumns">If set to true, columns with repeated names are auto-renamed.</param>
+        <param name="cultureInfo">culture info for formatting values</param>
         <summary>
             Reads CSV data passed in as a string into a DataFrame.
             </summary>
         <returns>
           <see cref="T:Microsoft.Data.Analysis.DataFrame" />
         </returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadFrom">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task&lt;Microsoft.Data.Analysis.DataFrame&gt; LoadFrom (System.Data.Common.DbDataAdapter adapter);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Threading.Tasks.Task`1&lt;class Microsoft.Data.Analysis.DataFrame&gt; LoadFrom(class System.Data.Common.DbDataAdapter adapter) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.Analysis.DataFrame.LoadFrom(System.Data.Common.DbDataAdapter)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function LoadFrom (adapter As DbDataAdapter) As Task(Of DataFrame)" />
+      <MemberSignature Language="F#" Value="static member LoadFrom : System.Data.Common.DbDataAdapter -&gt; System.Threading.Tasks.Task&lt;Microsoft.Data.Analysis.DataFrame&gt;" Usage="Microsoft.Data.Analysis.DataFrame.LoadFrom adapter" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.Analysis</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;Microsoft.Data.Analysis.DataFrame&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="adapter" Type="System.Data.Common.DbDataAdapter" />
+      </Parameters>
+      <Docs>
+        <param name="adapter">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadFrom">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task&lt;Microsoft.Data.Analysis.DataFrame&gt; LoadFrom (System.Data.Common.DbDataReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Threading.Tasks.Task`1&lt;class Microsoft.Data.Analysis.DataFrame&gt; LoadFrom(class System.Data.Common.DbDataReader reader) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.Analysis.DataFrame.LoadFrom(System.Data.Common.DbDataReader)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function LoadFrom (reader As DbDataReader) As Task(Of DataFrame)" />
+      <MemberSignature Language="F#" Value="static member LoadFrom : System.Data.Common.DbDataReader -&gt; System.Threading.Tasks.Task&lt;Microsoft.Data.Analysis.DataFrame&gt;" Usage="Microsoft.Data.Analysis.DataFrame.LoadFrom reader" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.Analysis</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;Microsoft.Data.Analysis.DataFrame&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="reader" Type="System.Data.Common.DbDataReader" />
+      </Parameters>
+      <Docs>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadFrom">
+      <MemberSignature Language="C#" Value="public static Microsoft.Data.Analysis.DataFrame LoadFrom (System.Collections.Generic.IEnumerable&lt;System.Collections.Generic.IList&lt;object&gt;&gt; vals, System.Collections.Generic.IList&lt;(string, Type)&gt; columnInfos);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.Data.Analysis.DataFrame LoadFrom(class System.Collections.Generic.IEnumerable`1&lt;class System.Collections.Generic.IList`1&lt;object&gt;&gt; vals, class System.Collections.Generic.IList`1&lt;valuetype System.ValueTuple`2&lt;string, class System.Type&gt;&gt; columnInfos) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.Analysis.DataFrame.LoadFrom(System.Collections.Generic.IEnumerable{System.Collections.Generic.IList{System.Object}},System.Collections.Generic.IList{System.ValueTuple{System.String,System.Type}})" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function LoadFrom (vals As IEnumerable(Of IList(Of Object)), columnInfos As IList(Of ValueTuple(Of String, Type))) As DataFrame" />
+      <MemberSignature Language="F#" Value="static member LoadFrom : seq&lt;System.Collections.Generic.IList&lt;obj&gt;&gt; * System.Collections.Generic.IList&lt;ValueTuple&lt;string, Type&gt;&gt; -&gt; Microsoft.Data.Analysis.DataFrame" Usage="Microsoft.Data.Analysis.DataFrame.LoadFrom (vals, columnInfos)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.Analysis</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.Data.Analysis.DataFrame</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="vals" Type="System.Collections.Generic.IEnumerable&lt;System.Collections.Generic.IList&lt;System.Object&gt;&gt;" />
+        <Parameter Name="columnInfos" Type="System.Collections.Generic.IList&lt;System.ValueTuple&lt;System.String,System.Type&gt;&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="vals">To be added.</param>
+        <param name="columnInfos">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -5411,6 +5528,54 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="SaveTo">
+      <MemberSignature Language="C#" Value="public void SaveTo (System.Data.DataTable table);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SaveTo(class System.Data.DataTable table) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.Analysis.DataFrame.SaveTo(System.Data.DataTable)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub SaveTo (table As DataTable)" />
+      <MemberSignature Language="F#" Value="member this.SaveTo : System.Data.DataTable -&gt; unit" Usage="dataFrame.SaveTo table" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.Analysis</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="table" Type="System.Data.DataTable" />
+      </Parameters>
+      <Docs>
+        <param name="table">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SaveTo">
+      <MemberSignature Language="C#" Value="public void SaveTo (System.Data.Common.DbDataAdapter dataAdapter, System.Data.Common.DbProviderFactory factory);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SaveTo(class System.Data.Common.DbDataAdapter dataAdapter, class System.Data.Common.DbProviderFactory factory) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.Analysis.DataFrame.SaveTo(System.Data.Common.DbDataAdapter,System.Data.Common.DbProviderFactory)" />
+      <MemberSignature Language="VB.NET" Value="Public Sub SaveTo (dataAdapter As DbDataAdapter, factory As DbProviderFactory)" />
+      <MemberSignature Language="F#" Value="member this.SaveTo : System.Data.Common.DbDataAdapter * System.Data.Common.DbProviderFactory -&gt; unit" Usage="dataFrame.SaveTo (dataAdapter, factory)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.Analysis</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="dataAdapter" Type="System.Data.Common.DbDataAdapter" />
+        <Parameter Name="factory" Type="System.Data.Common.DbProviderFactory" />
+      </Parameters>
+      <Docs>
+        <param name="dataAdapter">To be added.</param>
+        <param name="factory">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Subtract&lt;T&gt;">
       <MemberSignature Language="C#" Value="public Microsoft.Data.Analysis.DataFrame Subtract&lt;T&gt; (System.Collections.Generic.IReadOnlyList&lt;T&gt; values, bool inPlace = false) where T : struct;" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Microsoft.Data.Analysis.DataFrame Subtract&lt;struct .ctor (class System.ValueType) T&gt;(class System.Collections.Generic.IReadOnlyList`1&lt;!!T&gt; values, bool inPlace) cil managed" />
@@ -5534,7 +5699,7 @@
       <Parameters />
       <Docs>
         <summary>
-            Returns an <see cref="T:System.Collections.Generic.IEnumerable`1" /> without copying data
+            Returns an <see cref="T:System.Collections.Generic.IEnumerable`1" /> mostly without copying data
             </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -5560,6 +5725,27 @@
             A preview of the contents of this <see cref="T:Microsoft.Data.Analysis.DataFrame" /> as a string.
             </summary>
         <returns>A preview of the contents of this <see cref="T:Microsoft.Data.Analysis.DataFrame" />.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToTable">
+      <MemberSignature Language="C#" Value="public System.Data.DataTable ToTable ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Data.DataTable ToTable() cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.Data.Analysis.DataFrame.ToTable" />
+      <MemberSignature Language="VB.NET" Value="Public Function ToTable () As DataTable" />
+      <MemberSignature Language="F#" Value="member this.ToTable : unit -&gt; System.Data.DataTable" Usage="dataFrame.ToTable " />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.Data.Analysis</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Data.DataTable</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
