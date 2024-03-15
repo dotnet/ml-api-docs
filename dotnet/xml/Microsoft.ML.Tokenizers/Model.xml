@@ -35,6 +35,127 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="CountTokens">
+      <MemberSignature Language="C#" Value="public virtual int CountTokens (ReadOnlySpan&lt;char&gt; text, bool isSpecialToken);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance int32 CountTokens(valuetype System.ReadOnlySpan`1&lt;char&gt; text, bool isSpecialToken) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Tokenizers.Model.CountTokens(System.ReadOnlySpan{System.Char},System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public Overridable Function CountTokens (text As ReadOnlySpan(Of Char), isSpecialToken As Boolean) As Integer" />
+      <MemberSignature Language="F#" Value="abstract member CountTokens : ReadOnlySpan&lt;char&gt; * bool -&gt; int&#xA;override this.CountTokens : ReadOnlySpan&lt;char&gt; * bool -&gt; int" Usage="model.CountTokens (text, isSpecialToken)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Tokenizers</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="text" Type="System.ReadOnlySpan&lt;System.Char&gt;" Index="0" FrameworkAlternate="ml-dotnet-preview" />
+        <Parameter Name="isSpecialToken" Type="System.Boolean" Index="1" FrameworkAlternate="ml-dotnet-preview" />
+      </Parameters>
+      <Docs>
+        <param name="text">The text to encode. If the value of the parameter <paramref name="isSpecialToken" /> is true, the entire text will be treated as a special token.</param>
+        <param name="isSpecialToken">Specifies whether the entire <paramref name="text" /> is considered a special token.</param>
+        <summary>
+            Get the number of tokens that the input text will be encoded to.
+            </summary>
+        <returns>The number of tokens that the input text will be encoded to.</returns>
+        <remarks>
+            This method does the default implementation that uses the EncodeToIds method to get the number of token's Ids.
+            Tokenizer's models which care about performance may choose to override this method to provide a more efficient implementation.
+            </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Decode">
+      <MemberSignature Language="C#" Value="public virtual string? Decode (System.Collections.Generic.IEnumerable&lt;int&gt; ids, Microsoft.ML.Tokenizers.TokenizerDecoder? decoder = default, bool considerSpecialTokens = true);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string Decode(class System.Collections.Generic.IEnumerable`1&lt;int32&gt; ids, class Microsoft.ML.Tokenizers.TokenizerDecoder decoder, bool considerSpecialTokens) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Tokenizers.Model.Decode(System.Collections.Generic.IEnumerable{System.Int32},Microsoft.ML.Tokenizers.TokenizerDecoder,System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public Overridable Function Decode (ids As IEnumerable(Of Integer), Optional decoder As TokenizerDecoder = Nothing, Optional considerSpecialTokens As Boolean = true) As String" />
+      <MemberSignature Language="F#" Value="abstract member Decode : seq&lt;int&gt; * Microsoft.ML.Tokenizers.TokenizerDecoder * bool -&gt; string&#xA;override this.Decode : seq&lt;int&gt; * Microsoft.ML.Tokenizers.TokenizerDecoder * bool -&gt; string" Usage="model.Decode (ids, decoder, considerSpecialTokens)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Tokenizers</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ids" Type="System.Collections.Generic.IEnumerable&lt;System.Int32&gt;" Index="0" FrameworkAlternate="ml-dotnet-preview" />
+        <Parameter Name="decoder" Type="Microsoft.ML.Tokenizers.TokenizerDecoder" Index="1" FrameworkAlternate="ml-dotnet-preview" />
+        <Parameter Name="considerSpecialTokens" Type="System.Boolean" Index="2" FrameworkAlternate="ml-dotnet-preview" />
+      </Parameters>
+      <Docs>
+        <param name="ids">The list of ids that we want to decode.</param>
+        <param name="considerSpecialTokens">Whether the special tokens should be kept in the decoded string.</param>
+        <param name="decoder">The optional Decoder to merge the given list of tokens in a string.</param>
+        <summary>
+            Decode the given ids, back to a String.
+            </summary>
+        <returns>The decoded string.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Encode">
+      <MemberSignature Language="C#" Value="public abstract System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.Tokenizers.Token&gt; Encode (string text, bool isSpecialToken = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Collections.Generic.IReadOnlyList`1&lt;class Microsoft.ML.Tokenizers.Token&gt; Encode(string text, bool isSpecialToken) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Tokenizers.Model.Encode(System.String,System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function Encode (text As String, Optional isSpecialToken As Boolean = false) As IReadOnlyList(Of Token)" />
+      <MemberSignature Language="F#" Value="abstract member Encode : string * bool -&gt; System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.Tokenizers.Token&gt;" Usage="model.Encode (text, isSpecialToken)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Tokenizers</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.Tokenizers.Token&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="text" Type="System.String" Index="0" FrameworkAlternate="ml-dotnet-preview" />
+        <Parameter Name="isSpecialToken" Type="System.Boolean" Index="1" FrameworkAlternate="ml-dotnet-preview" />
+      </Parameters>
+      <Docs>
+        <param name="text">The text to encode. If the value of the parameter <paramref name="isSpecialToken" /> is true, the entire text will be treated as a special token.</param>
+        <param name="isSpecialToken">Specifies whether the entire <paramref name="text" /> is considered a special token.</param>
+        <summary>
+            Encode a text to a list of tokens.
+            </summary>
+        <returns>The list of tokens generated from the text tokenization.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EncodeToIds">
+      <MemberSignature Language="C#" Value="public virtual void EncodeToIds (ReadOnlySpan&lt;char&gt; text, bool isSpecialToken, System.Collections.Generic.IList&lt;int&gt; accumulatedIds);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void EncodeToIds(valuetype System.ReadOnlySpan`1&lt;char&gt; text, bool isSpecialToken, class System.Collections.Generic.IList`1&lt;int32&gt; accumulatedIds) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Tokenizers.Model.EncodeToIds(System.ReadOnlySpan{System.Char},System.Boolean,System.Collections.Generic.IList{System.Int32})" />
+      <MemberSignature Language="VB.NET" Value="Public Overridable Sub EncodeToIds (text As ReadOnlySpan(Of Char), isSpecialToken As Boolean, accumulatedIds As IList(Of Integer))" />
+      <MemberSignature Language="F#" Value="abstract member EncodeToIds : ReadOnlySpan&lt;char&gt; * bool * System.Collections.Generic.IList&lt;int&gt; -&gt; unit&#xA;override this.EncodeToIds : ReadOnlySpan&lt;char&gt; * bool * System.Collections.Generic.IList&lt;int&gt; -&gt; unit" Usage="model.EncodeToIds (text, isSpecialToken, accumulatedIds)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Tokenizers</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="text" Type="System.ReadOnlySpan&lt;System.Char&gt;" Index="0" FrameworkAlternate="ml-dotnet-preview" />
+        <Parameter Name="isSpecialToken" Type="System.Boolean" Index="1" FrameworkAlternate="ml-dotnet-preview" />
+        <Parameter Name="accumulatedIds" Type="System.Collections.Generic.IList&lt;System.Int32&gt;" Index="2" FrameworkAlternate="ml-dotnet-preview" />
+      </Parameters>
+      <Docs>
+        <param name="text">The text to encode. If the value of the parameter <paramref name="isSpecialToken" /> is true, the entire text will be treated as a special token.</param>
+        <param name="isSpecialToken">Specifies whether the entire <paramref name="text" /> is considered a special token.</param>
+        <param name="accumulatedIds">The list of accumulated encoded Ids.</param>
+        <summary>
+            Encode a text to a list of Ids and add them to the accumulatedIds list.
+            </summary>
+        <remarks>
+            This method does the default implementation that uses the Encode method to get the token's Ids.
+            Tokenizer's models which care about performance may choose to override this method to provide a more efficient implementation.
+            </remarks>
+      </Docs>
+    </Member>
     <Member MemberName="GetTrainer">
       <MemberSignature Language="C#" Value="public abstract Microsoft.ML.Tokenizers.Trainer? GetTrainer ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Microsoft.ML.Tokenizers.Trainer GetTrainer() cil managed" />
@@ -119,8 +240,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="id" Type="System.Int32" />
-        <Parameter Name="skipSpecialTokens" Type="System.Boolean" />
+        <Parameter Name="id" Type="System.Int32" Index="0" FrameworkAlternate="ml-dotnet" />
+        <Parameter Name="skipSpecialTokens" Type="System.Boolean" Index="1" FrameworkAlternate="ml-dotnet" />
       </Parameters>
       <Docs>
         <param name="id">To be added.</param>
@@ -145,8 +266,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="id" Type="System.Int32" />
-        <Parameter Name="skipSpecialTokens" Type="System.Boolean" />
+        <Parameter Name="id" Type="System.Int32" Index="0" FrameworkAlternate="ml-dotnet;ml-dotnet-2.0.0" />
+        <Parameter Name="skipSpecialTokens" Type="System.Boolean" Index="1" FrameworkAlternate="ml-dotnet;ml-dotnet-2.0.0" />
       </Parameters>
       <Docs>
         <param name="id">The Id to map to the token.</param>
@@ -173,7 +294,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="ch" Type="System.Char" />
+        <Parameter Name="ch" Type="System.Char" Index="0" FrameworkAlternate="ml-dotnet" />
       </Parameters>
       <Docs>
         <param name="ch" />
@@ -181,6 +302,62 @@
             Return true if the char is valid in the tokenizer; otherwise return false.
             </summary>
         <returns />
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MapIdToToken">
+      <MemberSignature Language="C#" Value="public abstract string? MapIdToToken (int id, bool considerSpecialTokens = true);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string MapIdToToken(int32 id, bool considerSpecialTokens) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Tokenizers.Model.MapIdToToken(System.Int32,System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function MapIdToToken (id As Integer, Optional considerSpecialTokens As Boolean = true) As String" />
+      <MemberSignature Language="F#" Value="abstract member MapIdToToken : int * bool -&gt; string" Usage="model.MapIdToToken (id, considerSpecialTokens)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Tokenizers</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="id" Type="System.Int32" Index="0" FrameworkAlternate="ml-dotnet-preview" />
+        <Parameter Name="considerSpecialTokens" Type="System.Boolean" Index="1" FrameworkAlternate="ml-dotnet-preview" />
+      </Parameters>
+      <Docs>
+        <param name="id">The Id to map to the token.</param>
+        <param name="considerSpecialTokens">Indicate if want to consider the special tokens during the decoding.</param>
+        <summary>
+            Map the encoded Id to the token.
+            </summary>
+        <returns>The mapped token of the Id.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MapTokenToId">
+      <MemberSignature Language="C#" Value="public abstract int? MapTokenToId (ReadOnlySpan&lt;char&gt; token, bool considerSpecialTokens = true);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Nullable`1&lt;int32&gt; MapTokenToId(valuetype System.ReadOnlySpan`1&lt;char&gt; token, bool considerSpecialTokens) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Tokenizers.Model.MapTokenToId(System.ReadOnlySpan{System.Char},System.Boolean)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function MapTokenToId (token As ReadOnlySpan(Of Char), Optional considerSpecialTokens As Boolean = true) As Nullable(Of Integer)" />
+      <MemberSignature Language="F#" Value="abstract member MapTokenToId : ReadOnlySpan&lt;char&gt; * bool -&gt; Nullable&lt;int&gt;" Usage="model.MapTokenToId (token, considerSpecialTokens)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Tokenizers</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Nullable&lt;System.Int32&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="token" Type="System.ReadOnlySpan&lt;System.Char&gt;" Index="0" FrameworkAlternate="ml-dotnet-preview" />
+        <Parameter Name="considerSpecialTokens" Type="System.Boolean" Index="1" FrameworkAlternate="ml-dotnet-preview" />
+      </Parameters>
+      <Docs>
+        <param name="token">The token to map to Id</param>
+        <param name="considerSpecialTokens">Indicate if want to consider the special tokens during the encoding.</param>
+        <summary>
+            Map the token to encoded id with the option to skip the special tokens.
+            </summary>
+        <returns>The mapped Id of the token.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -199,8 +376,8 @@
         <ReturnType>System.String[]</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="path" Type="System.String" />
-        <Parameter Name="prefix" Type="System.String" />
+        <Parameter Name="path" Type="System.String" Index="0" FrameworkAlternate="ml-dotnet;ml-dotnet-2.0.0" />
+        <Parameter Name="prefix" Type="System.String" Index="1" FrameworkAlternate="ml-dotnet;ml-dotnet-2.0.0" />
       </Parameters>
       <Docs>
         <param name="path">The file system path to store the generated files at.</param>
@@ -227,7 +404,7 @@
         <ReturnType>System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.Tokenizers.Token&gt;</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="sequence" Type="System.String" />
+        <Parameter Name="sequence" Type="System.String" Index="0" FrameworkAlternate="ml-dotnet;ml-dotnet-2.0.0" />
       </Parameters>
       <Docs>
         <param name="sequence">The sequence to tokenize.</param>
@@ -253,7 +430,7 @@
         <ReturnType>System.Nullable&lt;System.Int32&gt;</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="token" Type="System.String" />
+        <Parameter Name="token" Type="System.String" Index="0" FrameworkAlternate="ml-dotnet;ml-dotnet-2.0.0" />
       </Parameters>
       <Docs>
         <param name="token">The token to map to the Id.</param>
