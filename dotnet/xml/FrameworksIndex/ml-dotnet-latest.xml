@@ -360,11 +360,16 @@
     <Type Name="Microsoft.ML.MLContext" Id="T:Microsoft.ML.MLContext">
       <Member Id="E:Microsoft.ML.MLContext.Log" />
       <Member Id="M:Microsoft.ML.MLContext.#ctor(System.Nullable{System.Int32})" />
+      <Member Id="M:Microsoft.ML.MLContext.GetOptionOrDefault``1(System.String)" />
       <Member Id="M:Microsoft.ML.MLContext.Microsoft#ML#Runtime#IChannelProvider#Start(System.String)" />
       <Member Id="M:Microsoft.ML.MLContext.Microsoft#ML#Runtime#IChannelProvider#StartPipe``1(System.String)" />
       <Member Id="M:Microsoft.ML.MLContext.Microsoft#ML#Runtime#IExceptionContext#Process``1(``0)" />
       <Member Id="M:Microsoft.ML.MLContext.Microsoft#ML#Runtime#IHostEnvironment#Register(System.String,System.Nullable{System.Int32},System.Nullable{System.Boolean})" />
       <Member Id="M:Microsoft.ML.MLContext.Microsoft#ML#Runtime#IProgressChannelProvider#StartProgressChannel(System.String)" />
+      <Member Id="M:Microsoft.ML.MLContext.RemoveOption(System.String)" />
+      <Member Id="M:Microsoft.ML.MLContext.SetOption``1(System.String,``0)" />
+      <Member Id="M:Microsoft.ML.MLContext.TryAddOption``1(System.String,``0)" />
+      <Member Id="M:Microsoft.ML.MLContext.TryGetOption``1(System.String,``0@)" />
       <Member Id="P:Microsoft.ML.MLContext.AnomalyDetection" />
       <Member Id="P:Microsoft.ML.MLContext.BinaryClassification" />
       <Member Id="P:Microsoft.ML.MLContext.Clustering" />
@@ -423,10 +428,17 @@
     </Type>
     <Type Name="Microsoft.ML.OnnxCatalog" Id="T:Microsoft.ML.OnnxCatalog">
       <Member Id="M:Microsoft.ML.OnnxCatalog.ApplyOnnxModel(Microsoft.ML.TransformsCatalog,Microsoft.ML.Transforms.Onnx.OnnxOptions)" />
+      <Member Id="M:Microsoft.ML.OnnxCatalog.ApplyOnnxModel(Microsoft.ML.TransformsCatalog,System.IO.Stream,System.Collections.Generic.IDictionary{System.String,System.Int32[]},System.Nullable{System.Int32},System.Boolean)" />
+      <Member Id="M:Microsoft.ML.OnnxCatalog.ApplyOnnxModel(Microsoft.ML.TransformsCatalog,System.IO.Stream,System.Nullable{System.Int32},System.Boolean)" />
       <Member Id="M:Microsoft.ML.OnnxCatalog.ApplyOnnxModel(Microsoft.ML.TransformsCatalog,System.String,System.Collections.Generic.IDictionary{System.String,System.Int32[]},System.Nullable{System.Int32},System.Boolean)" />
       <Member Id="M:Microsoft.ML.OnnxCatalog.ApplyOnnxModel(Microsoft.ML.TransformsCatalog,System.String,System.Nullable{System.Int32},System.Boolean)" />
+      <Member Id="M:Microsoft.ML.OnnxCatalog.ApplyOnnxModel(Microsoft.ML.TransformsCatalog,System.String,System.String,System.IO.Stream,System.Collections.Generic.IDictionary{System.String,System.Int32[]},System.Nullable{System.Int32},System.Boolean)" />
+      <Member Id="M:Microsoft.ML.OnnxCatalog.ApplyOnnxModel(Microsoft.ML.TransformsCatalog,System.String,System.String,System.IO.Stream,System.Nullable{System.Int32},System.Boolean)" />
       <Member Id="M:Microsoft.ML.OnnxCatalog.ApplyOnnxModel(Microsoft.ML.TransformsCatalog,System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Int32[]},System.Nullable{System.Int32},System.Boolean)" />
       <Member Id="M:Microsoft.ML.OnnxCatalog.ApplyOnnxModel(Microsoft.ML.TransformsCatalog,System.String,System.String,System.String,System.Nullable{System.Int32},System.Boolean)" />
+      <Member Id="M:Microsoft.ML.OnnxCatalog.ApplyOnnxModel(Microsoft.ML.TransformsCatalog,System.String[],System.String[],System.IO.Stream,System.Collections.Generic.IDictionary{System.String,System.Int32[]},System.Nullable{System.Int32},System.Boolean)" />
+      <Member Id="M:Microsoft.ML.OnnxCatalog.ApplyOnnxModel(Microsoft.ML.TransformsCatalog,System.String[],System.String[],System.IO.Stream,System.Collections.Generic.IDictionary{System.String,System.Int32[]},System.Nullable{System.Int32},System.Boolean,System.Int32)" />
+      <Member Id="M:Microsoft.ML.OnnxCatalog.ApplyOnnxModel(Microsoft.ML.TransformsCatalog,System.String[],System.String[],System.IO.Stream,System.Nullable{System.Int32},System.Boolean)" />
       <Member Id="M:Microsoft.ML.OnnxCatalog.ApplyOnnxModel(Microsoft.ML.TransformsCatalog,System.String[],System.String[],System.String,System.Collections.Generic.IDictionary{System.String,System.Int32[]},System.Nullable{System.Int32},System.Boolean)" />
       <Member Id="M:Microsoft.ML.OnnxCatalog.ApplyOnnxModel(Microsoft.ML.TransformsCatalog,System.String[],System.String[],System.String,System.Collections.Generic.IDictionary{System.String,System.Int32[]},System.Nullable{System.Int32},System.Boolean,System.Int32)" />
       <Member Id="M:Microsoft.ML.OnnxCatalog.ApplyOnnxModel(Microsoft.ML.TransformsCatalog,System.String[],System.String[],System.String,System.Nullable{System.Int32},System.Boolean)" />
@@ -2702,6 +2714,30 @@
       <Member Id="M:Microsoft.ML.Transforms.Onnx.OnnxSequenceTypeAttribute.Equals(Microsoft.ML.Data.DataViewTypeAttribute)" />
       <Member Id="M:Microsoft.ML.Transforms.Onnx.OnnxSequenceTypeAttribute.GetHashCode" />
       <Member Id="M:Microsoft.ML.Transforms.Onnx.OnnxSequenceTypeAttribute.Register" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.Onnx.OnnxSessionOptions" Id="T:Microsoft.ML.Transforms.Onnx.OnnxSessionOptions">
+      <Member Id="F:Microsoft.ML.Transforms.Onnx.OnnxSessionOptions.LogSeverityLevel" />
+      <Member Id="M:Microsoft.ML.Transforms.Onnx.OnnxSessionOptions.#ctor" />
+      <Member Id="P:Microsoft.ML.Transforms.Onnx.OnnxSessionOptions.CreateSessionOptions" />
+      <Member Id="P:Microsoft.ML.Transforms.Onnx.OnnxSessionOptions.EnableCpuMemArena" />
+      <Member Id="P:Microsoft.ML.Transforms.Onnx.OnnxSessionOptions.EnableMemoryPattern" />
+      <Member Id="P:Microsoft.ML.Transforms.Onnx.OnnxSessionOptions.EnableProfiling" />
+      <Member Id="P:Microsoft.ML.Transforms.Onnx.OnnxSessionOptions.ExecutionMode" />
+      <Member Id="P:Microsoft.ML.Transforms.Onnx.OnnxSessionOptions.GlobalInterOpNumThreads" />
+      <Member Id="P:Microsoft.ML.Transforms.Onnx.OnnxSessionOptions.GlobalIntraOpNumThreads" />
+      <Member Id="P:Microsoft.ML.Transforms.Onnx.OnnxSessionOptions.GraphOptimizationLevel" />
+      <Member Id="P:Microsoft.ML.Transforms.Onnx.OnnxSessionOptions.InterOpNumThreads" />
+      <Member Id="P:Microsoft.ML.Transforms.Onnx.OnnxSessionOptions.IntraOpNumThreads" />
+      <Member Id="P:Microsoft.ML.Transforms.Onnx.OnnxSessionOptions.LogId" />
+      <Member Id="P:Microsoft.ML.Transforms.Onnx.OnnxSessionOptions.LogVerbosityLevel" />
+      <Member Id="P:Microsoft.ML.Transforms.Onnx.OnnxSessionOptions.OptimizedModelFilePath" />
+      <Member Id="P:Microsoft.ML.Transforms.Onnx.OnnxSessionOptions.PerSessionThreads" />
+      <Member Id="P:Microsoft.ML.Transforms.Onnx.OnnxSessionOptions.ProfileOutputPathPrefix" />
+    </Type>
+    <Type Name="Microsoft.ML.Transforms.Onnx.OnnxSessionOptions/CreateOnnxSessionOptions" Id="T:Microsoft.ML.Transforms.Onnx.OnnxSessionOptions.CreateOnnxSessionOptions" />
+    <Type Name="Microsoft.ML.Transforms.Onnx.OnnxSessionOptionsExtensions" Id="T:Microsoft.ML.Transforms.Onnx.OnnxSessionOptionsExtensions">
+      <Member Id="M:Microsoft.ML.Transforms.Onnx.OnnxSessionOptionsExtensions.GetOnnxSessionOption(Microsoft.ML.Runtime.IHostEnvironment)" />
+      <Member Id="M:Microsoft.ML.Transforms.Onnx.OnnxSessionOptionsExtensions.SetOnnxSessionOption(Microsoft.ML.Runtime.IHostEnvironment,Microsoft.ML.Transforms.Onnx.OnnxSessionOptions)" />
     </Type>
     <Type Name="Microsoft.ML.Transforms.Onnx.OnnxTransformer" Id="T:Microsoft.ML.Transforms.Onnx.OnnxTransformer">
       <Member Id="M:Microsoft.ML.Transforms.Onnx.OnnxTransformer.Dispose" />
