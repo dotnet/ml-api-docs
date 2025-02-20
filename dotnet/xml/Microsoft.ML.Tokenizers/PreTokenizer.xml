@@ -36,57 +36,231 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="PreTokenize">
-      <MemberSignature Language="C#" Value="public abstract System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.Tokenizers.Split&gt; PreTokenize (string sentence);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Collections.Generic.IReadOnlyList`1&lt;class Microsoft.ML.Tokenizers.Split&gt; PreTokenize(string sentence) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Tokenizers.PreTokenizer.PreTokenize(System.String)" />
-      <MemberSignature Language="VB.NET" Value="Public MustOverride Function PreTokenize (sentence As String) As IReadOnlyList(Of Split)" />
-      <MemberSignature Language="F#" Value="abstract member PreTokenize : string -&gt; System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.Tokenizers.Split&gt;" Usage="preTokenizer.PreTokenize sentence" />
+    <Member MemberName="CreateWhiteSpace">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Tokenizers.PreTokenizer CreateWhiteSpace (System.Collections.Generic.IReadOnlyDictionary&lt;string,int&gt;? specialTokens = default);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Tokenizers.PreTokenizer CreateWhiteSpace(class System.Collections.Generic.IReadOnlyDictionary`2&lt;string, int32&gt; specialTokens) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Tokenizers.PreTokenizer.CreateWhiteSpace(System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32})" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function CreateWhiteSpace (Optional specialTokens As IReadOnlyDictionary(Of String, Integer) = Nothing) As PreTokenizer" />
+      <MemberSignature Language="F#" Value="static member CreateWhiteSpace : System.Collections.Generic.IReadOnlyDictionary&lt;string, int&gt; -&gt; Microsoft.ML.Tokenizers.PreTokenizer" Usage="Microsoft.ML.Tokenizers.PreTokenizer.CreateWhiteSpace specialTokens" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Tokenizers</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.Tokenizers.Split&gt;</ReturnType>
+        <ReturnType>Microsoft.ML.Tokenizers.PreTokenizer</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="sentence" Type="System.String" Index="0" FrameworkAlternate="ml-dotnet;ml-dotnet-2.0.0" />
+        <Parameter Name="specialTokens" Type="System.Collections.Generic.IReadOnlyDictionary&lt;System.String,System.Int32&gt;" Index="0" FrameworkAlternate="ml-dotnet;ml-dotnet-3.0.0" />
       </Parameters>
       <Docs>
-        <param name="sentence">The string to split into tokens.</param>
+        <param name="specialTokens">The dictionary containing the special tokens and their corresponding ids.</param>
         <summary>
-            Splits the given string in multiple substrings at the word boundary, keeping track of the offsets of said substrings from the original string.
+            Create a new instance of the <see cref="T:Microsoft.ML.Tokenizers.PreTokenizer" /> class which split the text at the white spaces.
             </summary>
-        <returns>The list of the splits containing the tokens and the token's offsets to the original string.</returns>
+        <returns>The pre-tokenizer that splits the text at the white spaces.</returns>
+        <remarks>
+            This pre-tokenizer uses the regex pattern "\S+" to split the text into tokens.
+            </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateWhiteSpaceOrPunctuationPreTokenizer">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Tokenizers.PreTokenizer CreateWhiteSpaceOrPunctuationPreTokenizer (System.Collections.Generic.IReadOnlyDictionary&lt;string,int&gt;? specialTokensEncoder = default);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Tokenizers.PreTokenizer CreateWhiteSpaceOrPunctuationPreTokenizer(class System.Collections.Generic.IReadOnlyDictionary`2&lt;string, int32&gt; specialTokensEncoder) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Tokenizers.PreTokenizer.CreateWhiteSpaceOrPunctuationPreTokenizer(System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32})" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function CreateWhiteSpaceOrPunctuationPreTokenizer (Optional specialTokensEncoder As IReadOnlyDictionary(Of String, Integer) = Nothing) As PreTokenizer" />
+      <MemberSignature Language="F#" Value="static member CreateWhiteSpaceOrPunctuationPreTokenizer : System.Collections.Generic.IReadOnlyDictionary&lt;string, int&gt; -&gt; Microsoft.ML.Tokenizers.PreTokenizer" Usage="Microsoft.ML.Tokenizers.PreTokenizer.CreateWhiteSpaceOrPunctuationPreTokenizer specialTokensEncoder" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Tokenizers</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Tokenizers.PreTokenizer</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="specialTokensEncoder" Type="System.Collections.Generic.IReadOnlyDictionary&lt;System.String,System.Int32&gt;" Index="0" FrameworkAlternate="ml-dotnet-preview" />
+      </Parameters>
+      <Docs>
+        <param name="specialTokensEncoder">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateWhiteSpacePreTokenizer">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Tokenizers.PreTokenizer CreateWhiteSpacePreTokenizer (System.Collections.Generic.IReadOnlyDictionary&lt;string,int&gt;? specialTokensEncoder = default);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Tokenizers.PreTokenizer CreateWhiteSpacePreTokenizer(class System.Collections.Generic.IReadOnlyDictionary`2&lt;string, int32&gt; specialTokensEncoder) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Tokenizers.PreTokenizer.CreateWhiteSpacePreTokenizer(System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32})" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function CreateWhiteSpacePreTokenizer (Optional specialTokensEncoder As IReadOnlyDictionary(Of String, Integer) = Nothing) As PreTokenizer" />
+      <MemberSignature Language="F#" Value="static member CreateWhiteSpacePreTokenizer : System.Collections.Generic.IReadOnlyDictionary&lt;string, int&gt; -&gt; Microsoft.ML.Tokenizers.PreTokenizer" Usage="Microsoft.ML.Tokenizers.PreTokenizer.CreateWhiteSpacePreTokenizer specialTokensEncoder" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Tokenizers</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Tokenizers.PreTokenizer</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="specialTokensEncoder" Type="System.Collections.Generic.IReadOnlyDictionary&lt;System.String,System.Int32&gt;" Index="0" FrameworkAlternate="ml-dotnet-preview" />
+      </Parameters>
+      <Docs>
+        <param name="specialTokensEncoder">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateWordOrNonWord">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Tokenizers.PreTokenizer CreateWordOrNonWord (System.Collections.Generic.IReadOnlyDictionary&lt;string,int&gt;? specialTokens = default);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Tokenizers.PreTokenizer CreateWordOrNonWord(class System.Collections.Generic.IReadOnlyDictionary`2&lt;string, int32&gt; specialTokens) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Tokenizers.PreTokenizer.CreateWordOrNonWord(System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32})" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function CreateWordOrNonWord (Optional specialTokens As IReadOnlyDictionary(Of String, Integer) = Nothing) As PreTokenizer" />
+      <MemberSignature Language="F#" Value="static member CreateWordOrNonWord : System.Collections.Generic.IReadOnlyDictionary&lt;string, int&gt; -&gt; Microsoft.ML.Tokenizers.PreTokenizer" Usage="Microsoft.ML.Tokenizers.PreTokenizer.CreateWordOrNonWord specialTokens" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Tokenizers</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Tokenizers.PreTokenizer</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="specialTokens" Type="System.Collections.Generic.IReadOnlyDictionary&lt;System.String,System.Int32&gt;" Index="0" FrameworkAlternate="ml-dotnet;ml-dotnet-3.0.0" />
+      </Parameters>
+      <Docs>
+        <param name="specialTokens">The dictionary containing the special tokens and their corresponding ids.</param>
+        <summary>
+            Create a new instance of the <see cref="T:Microsoft.ML.Tokenizers.PreTokenizer" /> class which split the text at the word or non-word boundary.
+            The word is a set of alphabet, numeric, and underscore characters.
+            </summary>
+        <returns>The pre-tokenizer that splits the text at the word boundary.</returns>
+        <remarks>
+            This pre-tokenizer uses the regex pattern "\w+|[^\w\s]+" to split the text into tokens.
+            </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateWordOrNonWordPreTokenizer">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Tokenizers.PreTokenizer CreateWordOrNonWordPreTokenizer (System.Collections.Generic.IReadOnlyDictionary&lt;string,int&gt;? specialTokensEncoder = default);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Tokenizers.PreTokenizer CreateWordOrNonWordPreTokenizer(class System.Collections.Generic.IReadOnlyDictionary`2&lt;string, int32&gt; specialTokensEncoder) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Tokenizers.PreTokenizer.CreateWordOrNonWordPreTokenizer(System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32})" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function CreateWordOrNonWordPreTokenizer (Optional specialTokensEncoder As IReadOnlyDictionary(Of String, Integer) = Nothing) As PreTokenizer" />
+      <MemberSignature Language="F#" Value="static member CreateWordOrNonWordPreTokenizer : System.Collections.Generic.IReadOnlyDictionary&lt;string, int&gt; -&gt; Microsoft.ML.Tokenizers.PreTokenizer" Usage="Microsoft.ML.Tokenizers.PreTokenizer.CreateWordOrNonWordPreTokenizer specialTokensEncoder" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Tokenizers</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Tokenizers.PreTokenizer</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="specialTokensEncoder" Type="System.Collections.Generic.IReadOnlyDictionary&lt;System.String,System.Int32&gt;" Index="0" FrameworkAlternate="ml-dotnet-preview" />
+      </Parameters>
+      <Docs>
+        <param name="specialTokensEncoder">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateWordOrPunctuation">
+      <MemberSignature Language="C#" Value="public static Microsoft.ML.Tokenizers.PreTokenizer CreateWordOrPunctuation (System.Collections.Generic.IReadOnlyDictionary&lt;string,int&gt;? specialTokens = default);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Microsoft.ML.Tokenizers.PreTokenizer CreateWordOrPunctuation(class System.Collections.Generic.IReadOnlyDictionary`2&lt;string, int32&gt; specialTokens) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Tokenizers.PreTokenizer.CreateWordOrPunctuation(System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32})" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Function CreateWordOrPunctuation (Optional specialTokens As IReadOnlyDictionary(Of String, Integer) = Nothing) As PreTokenizer" />
+      <MemberSignature Language="F#" Value="static member CreateWordOrPunctuation : System.Collections.Generic.IReadOnlyDictionary&lt;string, int&gt; -&gt; Microsoft.ML.Tokenizers.PreTokenizer" Usage="Microsoft.ML.Tokenizers.PreTokenizer.CreateWordOrPunctuation specialTokens" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Tokenizers</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.ML.Tokenizers.PreTokenizer</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="specialTokens" Type="System.Collections.Generic.IReadOnlyDictionary&lt;System.String,System.Int32&gt;" Index="0" FrameworkAlternate="ml-dotnet;ml-dotnet-3.0.0" />
+      </Parameters>
+      <Docs>
+        <param name="specialTokens">The dictionary containing the special tokens and their corresponding ids.</param>
+        <summary>
+            Create a new instance of the <see cref="T:Microsoft.ML.Tokenizers.PreTokenizer" /> class which split the text at the whitespace or punctuation characters.
+            </summary>
+        <returns>The pre-tokenizer that splits the text at the whitespace or punctuation characters.</returns>
+        <remarks>
+            This pre-tokenizer uses the regex pattern "\w+|[\p{P}]" to split the text into tokens.
+            </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PreTokenize">
+      <MemberSignature Language="C#" Value="public abstract System.Collections.Generic.IEnumerable&lt;(int Offset, int Length)&gt; PreTokenize (ReadOnlySpan&lt;char&gt; text);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Collections.Generic.IEnumerable`1&lt;valuetype System.ValueTuple`2&lt;int32, int32&gt;&gt; PreTokenize(valuetype System.ReadOnlySpan`1&lt;char&gt; text) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Tokenizers.PreTokenizer.PreTokenize(System.ReadOnlySpan{System.Char})" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function PreTokenize (text As ReadOnlySpan(Of Char)) As IEnumerable(Of ValueTuple(Of Integer, Integer))" />
+      <MemberSignature Language="F#" Value="abstract member PreTokenize : ReadOnlySpan&lt;char&gt; -&gt; seq&lt;ValueTuple&lt;int, int&gt;&gt;" Usage="preTokenizer.PreTokenize text" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>Microsoft.ML.Tokenizers</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;System.ValueTuple&lt;System.Int32,System.Int32&gt;&gt;</ReturnType>
+        <Attributes>
+          <Attribute FrameworkAlternate="ml-dotnet">
+            <AttributeName Language="C#">[System.Runtime.CompilerServices.TupleElementNames(new System.String[] { "Offset", "Length" })]</AttributeName>
+            <AttributeName Language="F#">[&lt;System.Runtime.CompilerServices.TupleElementNames(new System.String[] { "Offset", "Length" })&gt;]</AttributeName>
+          </Attribute>
+        </Attributes>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="text" Type="System.ReadOnlySpan&lt;System.Char&gt;" Index="0" FrameworkAlternate="ml-dotnet;ml-dotnet-3.0.0;ml-dotnet-preview" />
+      </Parameters>
+      <Docs>
+        <param name="text">The character span to split into tokens.</param>
+        <summary>
+            Get the offsets and lengths of the tokens relative to the original string.
+            </summary>
+        <returns>The offsets and lengths of the tokens, expressed as pairs, are relative to the original string.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="PreTokenize">
-      <MemberSignature Language="C#" Value="public abstract System.Collections.Generic.IEnumerable&lt;Microsoft.ML.Tokenizers.Split&gt; PreTokenize (string text, bool considerSpecialTokens = true);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Collections.Generic.IEnumerable`1&lt;valuetype Microsoft.ML.Tokenizers.Split&gt; PreTokenize(string text, bool considerSpecialTokens) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Tokenizers.PreTokenizer.PreTokenize(System.String,System.Boolean)" />
-      <MemberSignature Language="VB.NET" Value="Public MustOverride Function PreTokenize (text As String, Optional considerSpecialTokens As Boolean = true) As IEnumerable(Of Split)" />
-      <MemberSignature Language="F#" Value="abstract member PreTokenize : string * bool -&gt; seq&lt;Microsoft.ML.Tokenizers.Split&gt;" Usage="preTokenizer.PreTokenize (text, considerSpecialTokens)" />
+      <MemberSignature Language="C#" Value="public abstract System.Collections.Generic.IEnumerable&lt;(int Offset, int Length)&gt; PreTokenize (string text);" FrameworkAlternate="ml-dotnet;ml-dotnet-3.0.0;ml-dotnet-preview" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Collections.Generic.IEnumerable`1&lt;valuetype System.ValueTuple`2&lt;int32, int32&gt;&gt; PreTokenize(string text) cil managed" FrameworkAlternate="ml-dotnet;ml-dotnet-3.0.0;ml-dotnet-preview" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Tokenizers.PreTokenizer.PreTokenize(System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function PreTokenize (text As String) As IEnumerable(Of ValueTuple(Of Integer, Integer))" FrameworkAlternate="ml-dotnet;ml-dotnet-3.0.0;ml-dotnet-preview" />
+      <MemberSignature Language="F#" Value="abstract member PreTokenize : string -&gt; seq&lt;ValueTuple&lt;int, int&gt;&gt;" Usage="preTokenizer.PreTokenize text" FrameworkAlternate="ml-dotnet;ml-dotnet-3.0.0;ml-dotnet-preview" />
+      <MemberSignature Language="C#" Value="public abstract System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.Tokenizers.Split&gt; PreTokenize (string sentence);" FrameworkAlternate="ml-dotnet-2.0.0" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Collections.Generic.IReadOnlyList`1&lt;class Microsoft.ML.Tokenizers.Split&gt; PreTokenize(string sentence) cil managed" FrameworkAlternate="ml-dotnet-2.0.0" />
+      <MemberSignature Language="VB.NET" Value="Public MustOverride Function PreTokenize (sentence As String) As IReadOnlyList(Of Split)" FrameworkAlternate="ml-dotnet-2.0.0" />
+      <MemberSignature Language="F#" Value="abstract member PreTokenize : string -&gt; System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.Tokenizers.Split&gt;" Usage="preTokenizer.PreTokenize sentence" FrameworkAlternate="ml-dotnet-2.0.0" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Tokenizers</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.IEnumerable&lt;Microsoft.ML.Tokenizers.Split&gt;</ReturnType>
+        <ReturnType FrameworkAlternate="ml-dotnet;ml-dotnet-3.0.0;ml-dotnet-preview">System.Collections.Generic.IEnumerable&lt;System.ValueTuple&lt;System.Int32,System.Int32&gt;&gt;</ReturnType>
+        <Attributes>
+          <Attribute FrameworkAlternate="ml-dotnet">
+            <AttributeName Language="C#">[System.Runtime.CompilerServices.TupleElementNames(new System.String[] { "Offset", "Length" })]</AttributeName>
+            <AttributeName Language="F#">[&lt;System.Runtime.CompilerServices.TupleElementNames(new System.String[] { "Offset", "Length" })&gt;]</AttributeName>
+          </Attribute>
+        </Attributes>
+        <ReturnType FrameworkAlternate="ml-dotnet-2.0.0">System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.Tokenizers.Split&gt;</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="text" Type="System.String" Index="0" FrameworkAlternate="ml-dotnet-preview" />
-        <Parameter Name="considerSpecialTokens" Type="System.Boolean" Index="1" FrameworkAlternate="ml-dotnet-preview" />
+        <Parameter Name="text" Type="System.String" Index="0" FrameworkAlternate="ml-dotnet;ml-dotnet-3.0.0;ml-dotnet-preview" />
+        <Parameter Name="sentence" Type="System.String" Index="0" FrameworkAlternate="ml-dotnet-2.0.0" />
       </Parameters>
       <Docs>
         <param name="text">The string to split into tokens.</param>
-        <param name="considerSpecialTokens">Indicates whether to consider the special tokens.</param>
+        <param name="sentence">The string to split into tokens.</param>
         <summary>
-            Splits the given string in multiple substrings at the word boundary, keeping track of the offsets of said substrings from the original string.
+            Get the offsets and lengths of the tokens relative to the <paramref name="text" />.
             </summary>
-        <returns>The list of the splits containing the tokens and the token's offsets to the original string.</returns>
+        <returns>The offsets and lengths of the tokens, expressed as pairs, are relative to the original string.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
