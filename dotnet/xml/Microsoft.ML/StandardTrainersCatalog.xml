@@ -168,11 +168,11 @@
         <param name="labelColumnName">The name of the label column. The column data must be <see cref="T:System.Boolean" />.</param>
         <param name="featureColumnName">The name of the feature column. The column data must be a known-sized vector of <see cref="T:System.Single" />.</param>
         <param name="exampleWeightColumnName">The name of the example weight column (optional).</param>
+        <param name="enforceNonNegativity">Enforce non-negative weights.</param>
         <param name="l1Regularization">The L1 <a href="https://en.wikipedia.org/wiki/Regularization_(mathematics)">regularization</a> hyperparameter. Higher values will tend to lead to more sparse model.</param>
         <param name="l2Regularization">The L2 weight for <a href="https://en.wikipedia.org/wiki/Regularization_(mathematics)">regularization</a>.</param>
-        <param name="optimizationTolerance">Threshold for optimizer convergence.</param>
         <param name="historySize">Memory size for <see cref="T:Microsoft.ML.Trainers.LbfgsLogisticRegressionBinaryTrainer" />. Low=faster, less accurate.</param>
-        <param name="enforceNonNegativity">Enforce non-negative weights.</param>
+        <param name="optimizationTolerance">Threshold for optimizer convergence.</param>
         <summary>
              Create <see cref="T:Microsoft.ML.Trainers.LbfgsLogisticRegressionBinaryTrainer" />, which predicts a target using a linear binary classification model trained over boolean label data.
             </summary>
@@ -248,11 +248,11 @@
         <param name="labelColumnName">The name of the label column. The column data must be <see cref="T:Microsoft.ML.Data.KeyDataViewType" />.</param>
         <param name="featureColumnName">The name of the feature column. The column data must be a known-sized vector of <see cref="T:System.Single" />.</param>
         <param name="exampleWeightColumnName">The name of the example weight column (optional).</param>
+        <param name="enforceNonNegativity">Enforce non-negative weights.</param>
         <param name="l1Regularization">The L1 <a href="https://en.wikipedia.org/wiki/Regularization_(mathematics)">regularization</a> hyperparameter. Higher values will tend to lead to more sparse model.</param>
         <param name="l2Regularization">The L2 weight for <a href="https://en.wikipedia.org/wiki/Regularization_(mathematics)">regularization</a>.</param>
-        <param name="optimizationTolerance">Threshold for optimizer convergence.</param>
         <param name="historySize">Memory size for <see cref="T:Microsoft.ML.Trainers.LbfgsMaximumEntropyMulticlassTrainer" />. Low=faster, less accurate.</param>
-        <param name="enforceNonNegativity">Enforce non-negative weights.</param>
+        <param name="optimizationTolerance">Threshold for optimizer convergence.</param>
         <summary>
             Create <see cref="T:Microsoft.ML.Trainers.LbfgsMaximumEntropyMulticlassTrainer" />, which predicts a target using a maximum entropy classification model trained with the L-BFGS method.
             </summary>
@@ -567,9 +567,9 @@
         <typeparam name="TModel">The type of the model. This type parameter will usually be inferred automatically from <paramref name="binaryEstimator" />.</typeparam>
         <param name="catalog">The multiclass classification catalog trainer object.</param>
         <param name="binaryEstimator">An instance of a binary <see cref="T:Microsoft.ML.Trainers.ITrainerEstimator`2" /> used as the base trainer.</param>
+        <param name="calibrator">The calibrator. If a calibrator is not explicitly provided, it will default to <see cref="T:Microsoft.ML.Calibrators.PlattCalibratorTrainer" /></param>
         <param name="labelColumnName">The name of the label column.</param>
         <param name="imputeMissingLabelsAsNegative">Whether to treat missing labels as having negative labels, instead of keeping them missing.</param>
-        <param name="calibrator">The calibrator. If a calibrator is not explicitly provided, it will default to <see cref="T:Microsoft.ML.Calibrators.PlattCalibratorTrainer" /></param>
         <param name="maximumCalibrationExampleCount">Number of instances to train the calibrator.</param>
         <param name="useProbabilities">Use probabilities (vs. raw outputs) to identify top-score category.</param>
         <summary>
@@ -702,9 +702,9 @@
         <typeparam name="TModel">The type of the model. This type parameter will usually be inferred automatically from <paramref name="binaryEstimator" />.</typeparam>
         <param name="catalog">The multiclass classification catalog trainer object.</param>
         <param name="binaryEstimator">An instance of a binary <see cref="T:Microsoft.ML.Trainers.ITrainerEstimator`2" /> used as the base trainer.</param>
+        <param name="calibrator">The calibrator. If a calibrator is not explicitly provided, it will default to <see cref="T:Microsoft.ML.Calibrators.PlattCalibratorTrainer" /></param>
         <param name="labelColumnName">The name of the label column.</param>
         <param name="imputeMissingLabelsAsNegative">Whether to treat missing labels as having negative labels, instead of keeping them missing.</param>
-        <param name="calibrator">The calibrator. If a calibrator is not explicitly provided, it will default to <see cref="T:Microsoft.ML.Calibrators.PlattCalibratorTrainer" /></param>
         <param name="maximumCalibrationExampleCount">Number of instances to train the calibrator.</param>
         <summary>
             Create a <see cref="T:Microsoft.ML.Trainers.PairwiseCouplingTrainer" />, which predicts a multiclass target using pairwise coupling strategy with

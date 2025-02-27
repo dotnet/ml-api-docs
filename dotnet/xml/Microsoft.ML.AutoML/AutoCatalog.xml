@@ -64,6 +64,12 @@
         <Parameter Name="sdcaSearchSpace" Type="Microsoft.ML.SearchSpace.SearchSpace&lt;Microsoft.ML.AutoML.CodeGen.SdcaOption&gt;" Index="17" FrameworkAlternate="ml-dotnet-2.0.0" />
       </Parameters>
       <Docs>
+        <param name="useLbfgs">To be added.</param>
+        <param name="useSdca">To be added.</param>
+        <param name="lbfgsOption">To be added.</param>
+        <param name="sdcaOption">To be added.</param>
+        <param name="lbfgsSearchSpace">To be added.</param>
+        <param name="sdcaSearchSpace">To be added.</param>
         <param name="labelColumnName">label column name.</param>
         <param name="featureColumnName">feature column name.</param>
         <param name="exampleWeightColumnName">example weight column name.</param>
@@ -71,23 +77,17 @@
         <param name="useLgbm">true if use lgbm as available trainer.</param>
         <param name="useFastTree">true if use fast tree as available trainer.</param>
         <param name="useLbfgsLogisticRegression">true if use <see cref="T:Microsoft.ML.Trainers.LbfgsLogisticRegressionBinaryTrainer" /> as available trainer.</param>
-        <param name="useLbfgs">To be added.</param>
         <param name="useSdcaLogisticRegression">true if use <see cref="T:Microsoft.ML.Trainers.SdcaLogisticRegressionBinaryTrainer" /> as available trainer.</param>
-        <param name="useSdca">To be added.</param>
         <param name="fastTreeOption">if provided, use it as initial option for fast tree, otherwise the default option will be used.</param>
         <param name="lgbmOption">if provided, use it as initial option for lgbm, otherwise the default option will be used.</param>
         <param name="fastForestOption">if provided, use it as initial option for fast forest, otherwise the default option will be used.</param>
         <param name="lbfgsLogisticRegressionOption">if provided, use it as initial option for <paramref name="lbfgsLogisticRegressionSearchSpace" />, otherwise the default option will be used.</param>
-        <param name="lbfgsOption">To be added.</param>
         <param name="sdcaLogisticRegressionOption">if provided, use it as initial option for <paramref name="sdcaLogisticRegressionSearchSpace" />, otherwise the default option will be used.</param>
-        <param name="sdcaOption">To be added.</param>
         <param name="fastTreeSearchSpace">if provided, use it as search space for fast tree, otherwise the default search space will be used.</param>
         <param name="lgbmSearchSpace">if provided, use it as search space for lgbm, otherwise the default search space will be used.</param>
         <param name="fastForestSearchSpace">if provided, use it as search space for fast forest, otherwise the default search space will be used.</param>
         <param name="lbfgsLogisticRegressionSearchSpace">if provided, use it as search space for <see cref="T:Microsoft.ML.Trainers.LbfgsLogisticRegressionBinaryTrainer" />, otherwise the default search space will be used.</param>
-        <param name="lbfgsSearchSpace">To be added.</param>
         <param name="sdcaLogisticRegressionSearchSpace">if provided, use it as search space for <see cref="T:Microsoft.ML.Trainers.SdcaLogisticRegressionBinaryTrainer" />, otherwise the default search space will be used.</param>
-        <param name="sdcaSearchSpace">To be added.</param>
         <summary>
             Create a list of <see cref="T:Microsoft.ML.AutoML.SweepableEstimator" /> for binary classification.
             </summary>
@@ -530,11 +530,11 @@
       </Parameters>
       <Docs>
         <param name="data">input data.</param>
-        <param name="outputColumnName">output feature column.</param>
         <param name="catelogicalColumns">columns that should be treated as catalog. If not specified, it will automatically infer if a column is catalog or not.</param>
         <param name="numericColumns">columns that should be treated as numeric. If not specified, it will automatically infer if a column is catalog or not.</param>
         <param name="textColumns">columns that should be treated as text. If not specified, it will automatically infer if a column is catalog or not.</param>
         <param name="imagePathColumns">columns that should be treated as image path. If not specified, it will automatically infer if a column is catalog or not.</param>
+        <param name="outputColumnName">output feature column.</param>
         <param name="excludeColumns">columns that won't be included when featurizing, like label</param>
         <summary>
             Create a single featurize pipeline according to <paramref name="data" />. This function will collect all columns in <paramref name="data" /> and not in <paramref name="excludeColumns" />,
@@ -860,6 +860,9 @@
         <Parameter Name="sdcaSearchSpace" Type="Microsoft.ML.SearchSpace.SearchSpace&lt;Microsoft.ML.AutoML.CodeGen.SdcaOption&gt;" Index="17" />
       </Parameters>
       <Docs>
+        <param name="useLbfgs">To be added.</param>
+        <param name="lbfgsOption">To be added.</param>
+        <param name="lbfgsSearchSpace">To be added.</param>
         <param name="labelColumnName">label column name.</param>
         <param name="featureColumnName">feature column name.</param>
         <param name="exampleWeightColumnName">example weight column name.</param>
@@ -867,19 +870,16 @@
         <param name="useLgbm">true if use lgbm as available trainer.</param>
         <param name="useFastTree">true if use fast tree as available trainer.</param>
         <param name="useLbfgsPoissonRegression">true if use <see cref="T:Microsoft.ML.Trainers.LbfgsPoissonRegressionTrainer" /> as available trainer.</param>
-        <param name="useLbfgs">To be added.</param>
         <param name="useSdca">true if use <see cref="T:Microsoft.ML.Trainers.SdcaRegressionTrainer" /> as available trainer.</param>
         <param name="fastTreeOption">if provided, use it as initial option for fast tree, otherwise the default option will be used.</param>
         <param name="lgbmOption">if provided, use it as initial option for lgbm, otherwise the default option will be used.</param>
         <param name="fastForestOption">if provided, use it as initial option for fast forest, otherwise the default option will be used.</param>
         <param name="lbfgsPoissonRegressionOption">if provided, use it as initial option for <paramref name="lbfgsPoissonRegressionSearchSpace" />, otherwise the default option will be used.</param>
-        <param name="lbfgsOption">To be added.</param>
         <param name="sdcaOption">if provided, use it as initial option for <paramref name="sdcaSearchSpace" />, otherwise the default option will be used.</param>
         <param name="fastTreeSearchSpace">if provided, use it as search space for fast tree, otherwise the default search space will be used.</param>
         <param name="lgbmSearchSpace">if provided, use it as search space for lgbm, otherwise the default search space will be used.</param>
         <param name="fastForestSearchSpace">if provided, use it as search space for fast forest, otherwise the default search space will be used.</param>
         <param name="lbfgsPoissonRegressionSearchSpace">if provided, use it as search space for <see cref="T:Microsoft.ML.Trainers.LbfgsPoissonRegressionTrainer" />, otherwise the default search space will be used.</param>
-        <param name="lbfgsSearchSpace">To be added.</param>
         <param name="sdcaSearchSpace">if provided, use it as search space for sdca, otherwise the default search space will be used.</param>
         <summary>
             Create a list of <see cref="T:Microsoft.ML.AutoML.SweepableEstimator" /> for regression.
