@@ -67,6 +67,7 @@
       <Member Id="M:Microsoft.Data.Analysis.ArrowStringDataFrameColumn.GetReadOnlyDataBuffers" />
       <Member Id="M:Microsoft.Data.Analysis.ArrowStringDataFrameColumn.GetReadOnlyNullBitMapBuffers" />
       <Member Id="M:Microsoft.Data.Analysis.ArrowStringDataFrameColumn.GetReadOnlyOffsetsBuffers" />
+      <Member Id="M:Microsoft.Data.Analysis.ArrowStringDataFrameColumn.GetSortIndices(System.Boolean,System.Boolean)" />
       <Member Id="M:Microsoft.Data.Analysis.ArrowStringDataFrameColumn.GetValue(System.Int64)" />
       <Member Id="M:Microsoft.Data.Analysis.ArrowStringDataFrameColumn.GetValues(System.Int64,System.Int32)" />
       <Member Id="M:Microsoft.Data.Analysis.ArrowStringDataFrameColumn.GroupBy(System.Int32,Microsoft.Data.Analysis.DataFrame)" />
@@ -859,6 +860,7 @@
       <Member Id="M:Microsoft.Data.Analysis.DataFrameColumn.GetGroupedOccurrences(Microsoft.Data.Analysis.DataFrameColumn,System.Collections.Generic.HashSet{System.Int64}@)" />
       <Member Id="M:Microsoft.Data.Analysis.DataFrameColumn.GetGroupedOccurrences``1(Microsoft.Data.Analysis.DataFrameColumn,System.Collections.Generic.HashSet{System.Int64}@)" />
       <Member Id="M:Microsoft.Data.Analysis.DataFrameColumn.GetMaxRecordBatchLength(System.Int64)" />
+      <Member Id="M:Microsoft.Data.Analysis.DataFrameColumn.GetSortIndices(System.Boolean,System.Boolean)" />
       <Member Id="M:Microsoft.Data.Analysis.DataFrameColumn.GetValue(System.Int64)" />
       <Member Id="M:Microsoft.Data.Analysis.DataFrameColumn.GetValueGetterUsingCursor(Microsoft.ML.DataViewRowCursor,Microsoft.ML.DataViewSchema.Column)" />
       <Member Id="M:Microsoft.Data.Analysis.DataFrameColumn.GetValues(System.Int64,System.Int32)" />
@@ -3408,6 +3410,7 @@
       <Member Id="M:Microsoft.Data.Analysis.PrimitiveDataFrameColumn`1.GetMaxRecordBatchLength(System.Int64)" />
       <Member Id="M:Microsoft.Data.Analysis.PrimitiveDataFrameColumn`1.GetReadOnlyDataBuffers" />
       <Member Id="M:Microsoft.Data.Analysis.PrimitiveDataFrameColumn`1.GetReadOnlyNullBitMapBuffers" />
+      <Member Id="M:Microsoft.Data.Analysis.PrimitiveDataFrameColumn`1.GetSortIndices(System.Boolean,System.Boolean)" />
       <Member Id="M:Microsoft.Data.Analysis.PrimitiveDataFrameColumn`1.GetTypedValue(System.Int64)" />
       <Member Id="M:Microsoft.Data.Analysis.PrimitiveDataFrameColumn`1.GetValue(System.Int64)" />
       <Member Id="M:Microsoft.Data.Analysis.PrimitiveDataFrameColumn`1.GetValueGetterUsingCursor(Microsoft.ML.DataViewRowCursor,Microsoft.ML.DataViewSchema.Column)" />
@@ -4388,6 +4391,7 @@
       <Member Id="M:Microsoft.Data.Analysis.StringDataFrameColumn.GetEnumerator" />
       <Member Id="M:Microsoft.Data.Analysis.StringDataFrameColumn.GetEnumeratorCore" />
       <Member Id="M:Microsoft.Data.Analysis.StringDataFrameColumn.GetGroupedOccurrences(Microsoft.Data.Analysis.DataFrameColumn,System.Collections.Generic.HashSet{System.Int64}@)" />
+      <Member Id="M:Microsoft.Data.Analysis.StringDataFrameColumn.GetSortIndices(System.Boolean,System.Boolean)" />
       <Member Id="M:Microsoft.Data.Analysis.StringDataFrameColumn.GetValue(System.Int64)" />
       <Member Id="M:Microsoft.Data.Analysis.StringDataFrameColumn.GetValueGetterUsingCursor(Microsoft.ML.DataViewRowCursor,Microsoft.ML.DataViewSchema.Column)" />
       <Member Id="M:Microsoft.Data.Analysis.StringDataFrameColumn.GetValues(System.Int64,System.Int32)" />
@@ -5797,6 +5801,7 @@
       <Member Id="M:Microsoft.Data.Analysis.VBufferDataFrameColumn`1.GetEnumerator" />
       <Member Id="M:Microsoft.Data.Analysis.VBufferDataFrameColumn`1.GetEnumeratorCore" />
       <Member Id="M:Microsoft.Data.Analysis.VBufferDataFrameColumn`1.GetGroupedOccurrences(Microsoft.Data.Analysis.DataFrameColumn,System.Collections.Generic.HashSet{System.Int64}@)" />
+      <Member Id="M:Microsoft.Data.Analysis.VBufferDataFrameColumn`1.GetSortIndices(System.Boolean,System.Boolean)" />
       <Member Id="M:Microsoft.Data.Analysis.VBufferDataFrameColumn`1.GetTypedValue(System.Int64)" />
       <Member Id="M:Microsoft.Data.Analysis.VBufferDataFrameColumn`1.GetValue(System.Int64)" />
       <Member Id="M:Microsoft.Data.Analysis.VBufferDataFrameColumn`1.GetValueGetterUsingCursor(Microsoft.ML.DataViewRowCursor,Microsoft.ML.DataViewSchema.Column)" />
@@ -8181,12 +8186,25 @@
     </Type>
   </Namespace>
   <Namespace Name="Microsoft.ML.Tokenizers">
+    <Type Name="Microsoft.ML.Tokenizers.BertOptions" Id="T:Microsoft.ML.Tokenizers.BertOptions">
+      <Member Id="M:Microsoft.ML.Tokenizers.BertOptions.#ctor" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BertOptions.ApplyBasicTokenization" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BertOptions.ClassificationToken" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BertOptions.IndividuallyTokenizeCjk" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BertOptions.LowerCaseBeforeTokenization" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BertOptions.MaskingToken" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BertOptions.PaddingToken" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BertOptions.RemoveNonSpacingMarks" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BertOptions.SeparatorToken" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BertOptions.SplitOnSpecialTokens" />
+    </Type>
     <Type Name="Microsoft.ML.Tokenizers.BertTokenizer" Id="T:Microsoft.ML.Tokenizers.BertTokenizer">
       <Member Id="M:Microsoft.ML.Tokenizers.BertTokenizer.BuildInputsWithSpecialTokens(System.Collections.Generic.IEnumerable{System.Int32},System.Collections.Generic.IEnumerable{System.Int32})" />
       <Member Id="M:Microsoft.ML.Tokenizers.BertTokenizer.BuildInputsWithSpecialTokens(System.Collections.Generic.IEnumerable{System.Int32},System.Span{System.Int32},System.Int32@,System.Collections.Generic.IEnumerable{System.Int32})" />
-      <Member Id="M:Microsoft.ML.Tokenizers.BertTokenizer.Create(System.IO.Stream,System.Boolean,System.Boolean,System.Boolean,System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)" />
-      <Member Id="M:Microsoft.ML.Tokenizers.BertTokenizer.Create(System.String,System.Boolean,System.Boolean,System.Boolean,System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)" />
-      <Member Id="M:Microsoft.ML.Tokenizers.BertTokenizer.CreateAsync(System.IO.Stream,System.Boolean,System.Boolean,System.Boolean,System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.BertTokenizer.Create(System.IO.Stream,Microsoft.ML.Tokenizers.BertOptions)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.BertTokenizer.Create(System.String,Microsoft.ML.Tokenizers.BertOptions)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.BertTokenizer.CreateAsync(System.IO.Stream,Microsoft.ML.Tokenizers.BertOptions,System.Threading.CancellationToken)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.BertTokenizer.CreateAsync(System.String,Microsoft.ML.Tokenizers.BertOptions,System.Threading.CancellationToken)" />
       <Member Id="M:Microsoft.ML.Tokenizers.BertTokenizer.CreateTokenTypeIdsFromSequences(System.Collections.Generic.IEnumerable{System.Int32},System.Collections.Generic.IEnumerable{System.Int32})" />
       <Member Id="M:Microsoft.ML.Tokenizers.BertTokenizer.CreateTokenTypeIdsFromSequences(System.Collections.Generic.IEnumerable{System.Int32},System.Span{System.Int32},System.Int32@,System.Collections.Generic.IEnumerable{System.Int32})" />
       <Member Id="M:Microsoft.ML.Tokenizers.BertTokenizer.EncodeToIds(System.ReadOnlySpan{System.Char},System.Boolean,System.Boolean)" />
@@ -8199,19 +8217,30 @@
       <Member Id="M:Microsoft.ML.Tokenizers.BertTokenizer.EncodeToIds(System.String,System.Int32,System.String@,System.Int32@,System.Boolean,System.Boolean)" />
       <Member Id="M:Microsoft.ML.Tokenizers.BertTokenizer.GetSpecialTokensMask(System.Collections.Generic.IEnumerable{System.Int32},System.Collections.Generic.IEnumerable{System.Int32},System.Boolean)" />
       <Member Id="M:Microsoft.ML.Tokenizers.BertTokenizer.GetSpecialTokensMask(System.Collections.Generic.IEnumerable{System.Int32},System.Span{System.Int32},System.Int32@,System.Collections.Generic.IEnumerable{System.Int32},System.Boolean)" />
-      <Member Id="P:Microsoft.ML.Tokenizers.BertTokenizer.ClsToken" />
-      <Member Id="P:Microsoft.ML.Tokenizers.BertTokenizer.ClsTokenId" />
-      <Member Id="P:Microsoft.ML.Tokenizers.BertTokenizer.DoBasicTokenization" />
-      <Member Id="P:Microsoft.ML.Tokenizers.BertTokenizer.DoLowerCase" />
-      <Member Id="P:Microsoft.ML.Tokenizers.BertTokenizer.MaskToken" />
-      <Member Id="P:Microsoft.ML.Tokenizers.BertTokenizer.MaskTokenId" />
-      <Member Id="P:Microsoft.ML.Tokenizers.BertTokenizer.PadToken" />
-      <Member Id="P:Microsoft.ML.Tokenizers.BertTokenizer.PadTokenId" />
-      <Member Id="P:Microsoft.ML.Tokenizers.BertTokenizer.SepToken" />
-      <Member Id="P:Microsoft.ML.Tokenizers.BertTokenizer.SepTokenId" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BertTokenizer.ApplyBasicTokenization" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BertTokenizer.ClassificationToken" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BertTokenizer.ClassificationTokenId" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BertTokenizer.IndividuallyTokenizeCjk" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BertTokenizer.LowerCaseBeforeTokenization" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BertTokenizer.MaskingToken" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BertTokenizer.MaskingTokenId" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BertTokenizer.PaddingToken" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BertTokenizer.PaddingTokenId" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BertTokenizer.RemoveNonSpacingMarks" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BertTokenizer.SeparatorToken" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BertTokenizer.SeparatorTokenId" />
       <Member Id="P:Microsoft.ML.Tokenizers.BertTokenizer.SplitOnSpecialTokens" />
-      <Member Id="P:Microsoft.ML.Tokenizers.BertTokenizer.StripAccents" />
-      <Member Id="P:Microsoft.ML.Tokenizers.BertTokenizer.TokenizeChineseChars" />
+    </Type>
+    <Type Name="Microsoft.ML.Tokenizers.BitVector" Id="T:Microsoft.ML.Tokenizers.BitVector">
+      <Member Id="M:Microsoft.ML.Tokenizers.BitVector.#ctor" />
+      <Member Id="M:Microsoft.ML.Tokenizers.BitVector.Append" />
+      <Member Id="M:Microsoft.ML.Tokenizers.BitVector.Build" />
+      <Member Id="M:Microsoft.ML.Tokenizers.BitVector.Rank(System.UInt32)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.BitVector.Set(System.UInt32,System.Boolean)" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BitVector.IsEmpty" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BitVector.Item(System.Int32)" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BitVector.NumOnes" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BitVector.Size" />
     </Type>
     <Type Name="Microsoft.ML.Tokenizers.BpeTokenizer" Id="T:Microsoft.ML.Tokenizers.BpeTokenizer">
       <Member Id="M:Microsoft.ML.Tokenizers.BpeTokenizer.CountTokens(System.String,System.ReadOnlySpan{System.Char},Microsoft.ML.Tokenizers.EncodeSettings)" />
@@ -8227,12 +8256,12 @@
       <Member Id="M:Microsoft.ML.Tokenizers.BpeTokenizer.EncodeToIds(System.String,System.ReadOnlySpan{System.Char},Microsoft.ML.Tokenizers.EncodeSettings)" />
       <Member Id="M:Microsoft.ML.Tokenizers.BpeTokenizer.EncodeToTokens(System.String,System.ReadOnlySpan{System.Char},Microsoft.ML.Tokenizers.EncodeSettings)" />
       <Member Id="M:Microsoft.ML.Tokenizers.BpeTokenizer.GetIndexByTokenCount(System.String,System.ReadOnlySpan{System.Char},Microsoft.ML.Tokenizers.EncodeSettings,System.Boolean,System.String@,System.Int32@)" />
-      <Member Id="P:Microsoft.ML.Tokenizers.BpeTokenizer.AddedTokens" />
       <Member Id="P:Microsoft.ML.Tokenizers.BpeTokenizer.ContinuingSubwordPrefix" />
       <Member Id="P:Microsoft.ML.Tokenizers.BpeTokenizer.EndOfWordSuffix" />
       <Member Id="P:Microsoft.ML.Tokenizers.BpeTokenizer.FuseUnknownTokens" />
       <Member Id="P:Microsoft.ML.Tokenizers.BpeTokenizer.Normalizer" />
       <Member Id="P:Microsoft.ML.Tokenizers.BpeTokenizer.PreTokenizer" />
+      <Member Id="P:Microsoft.ML.Tokenizers.BpeTokenizer.SpecialTokens" />
       <Member Id="P:Microsoft.ML.Tokenizers.BpeTokenizer.UnknownToken" />
       <Member Id="P:Microsoft.ML.Tokenizers.BpeTokenizer.Vocabulary" />
     </Type>
@@ -8259,7 +8288,6 @@
       <Member Id="M:Microsoft.ML.Tokenizers.CodeGenTokenizer.GetIndexByTokenCountFromEnd(System.ReadOnlySpan{System.Char},System.Int32,System.Boolean,System.Boolean,System.Boolean,System.String@,System.Int32@,System.Boolean,System.Boolean)" />
       <Member Id="M:Microsoft.ML.Tokenizers.CodeGenTokenizer.GetIndexByTokenCountFromEnd(System.String,System.Int32,System.Boolean,System.Boolean,System.Boolean,System.String@,System.Int32@,System.Boolean,System.Boolean)" />
       <Member Id="P:Microsoft.ML.Tokenizers.CodeGenTokenizer.AddBeginningOfSentence" />
-      <Member Id="P:Microsoft.ML.Tokenizers.CodeGenTokenizer.AddedTokens" />
       <Member Id="P:Microsoft.ML.Tokenizers.CodeGenTokenizer.AddEndOfSentence" />
       <Member Id="P:Microsoft.ML.Tokenizers.CodeGenTokenizer.AddPrefixSpace" />
       <Member Id="P:Microsoft.ML.Tokenizers.CodeGenTokenizer.BeginningOfSentenceId" />
@@ -8268,9 +8296,26 @@
       <Member Id="P:Microsoft.ML.Tokenizers.CodeGenTokenizer.EndOfSentenceToken" />
       <Member Id="P:Microsoft.ML.Tokenizers.CodeGenTokenizer.Normalizer" />
       <Member Id="P:Microsoft.ML.Tokenizers.CodeGenTokenizer.PreTokenizer" />
+      <Member Id="P:Microsoft.ML.Tokenizers.CodeGenTokenizer.SpecialTokens" />
       <Member Id="P:Microsoft.ML.Tokenizers.CodeGenTokenizer.UnknownToken" />
       <Member Id="P:Microsoft.ML.Tokenizers.CodeGenTokenizer.UnknownTokenId" />
       <Member Id="P:Microsoft.ML.Tokenizers.CodeGenTokenizer.Vocabulary" />
+    </Type>
+    <Type Name="Microsoft.ML.Tokenizers.DawgBuilder" Id="T:Microsoft.ML.Tokenizers.DawgBuilder">
+      <Member Id="M:Microsoft.ML.Tokenizers.DawgBuilder.#ctor" />
+      <Member Id="M:Microsoft.ML.Tokenizers.DawgBuilder.Child(System.UInt32)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.DawgBuilder.Finish" />
+      <Member Id="M:Microsoft.ML.Tokenizers.DawgBuilder.Init" />
+      <Member Id="M:Microsoft.ML.Tokenizers.DawgBuilder.Insert(System.ReadOnlySpan{System.Byte},System.Int32,System.Int32)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.DawgBuilder.IntersectionId(System.UInt32)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.DawgBuilder.IsIntersection(System.UInt32)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.DawgBuilder.IsLeaf(System.UInt32)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.DawgBuilder.Label(System.UInt32)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.DawgBuilder.Sibling(System.UInt32)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.DawgBuilder.Value(System.UInt32)" />
+      <Member Id="P:Microsoft.ML.Tokenizers.DawgBuilder.NumIntersections" />
+      <Member Id="P:Microsoft.ML.Tokenizers.DawgBuilder.Root" />
+      <Member Id="P:Microsoft.ML.Tokenizers.DawgBuilder.Size" />
     </Type>
     <Type Name="Microsoft.ML.Tokenizers.EncodedToken" Id="T:Microsoft.ML.Tokenizers.EncodedToken">
       <Member Id="M:Microsoft.ML.Tokenizers.EncodedToken.#ctor(System.Int32,System.String,System.Range)" />
@@ -8332,9 +8377,9 @@
     </Type>
     <Type Name="Microsoft.ML.Tokenizers.PreTokenizer" Id="T:Microsoft.ML.Tokenizers.PreTokenizer">
       <Member Id="M:Microsoft.ML.Tokenizers.PreTokenizer.#ctor" />
-      <Member Id="M:Microsoft.ML.Tokenizers.PreTokenizer.CreateWhiteSpaceOrPunctuationPreTokenizer(System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32})" />
-      <Member Id="M:Microsoft.ML.Tokenizers.PreTokenizer.CreateWhiteSpacePreTokenizer(System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32})" />
-      <Member Id="M:Microsoft.ML.Tokenizers.PreTokenizer.CreateWordOrNonWordPreTokenizer(System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32})" />
+      <Member Id="M:Microsoft.ML.Tokenizers.PreTokenizer.CreateWhiteSpace(System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32})" />
+      <Member Id="M:Microsoft.ML.Tokenizers.PreTokenizer.CreateWordOrNonWord(System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32})" />
+      <Member Id="M:Microsoft.ML.Tokenizers.PreTokenizer.CreateWordOrPunctuation(System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32})" />
       <Member Id="M:Microsoft.ML.Tokenizers.PreTokenizer.PreTokenize(System.ReadOnlySpan{System.Char})" />
       <Member Id="M:Microsoft.ML.Tokenizers.PreTokenizer.PreTokenize(System.String)" />
     </Type>
@@ -8365,6 +8410,7 @@
       <Member Id="M:Microsoft.ML.Tokenizers.SentencePieceTokenizer.CountTokens(System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean)" />
       <Member Id="M:Microsoft.ML.Tokenizers.SentencePieceTokenizer.CountTokens(System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.String@,System.Int32@,System.Int32)" />
       <Member Id="M:Microsoft.ML.Tokenizers.SentencePieceTokenizer.CountTokens(System.String,System.ReadOnlySpan{System.Char},Microsoft.ML.Tokenizers.EncodeSettings)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.SentencePieceTokenizer.Create(System.IO.Stream,System.Boolean,System.Boolean,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32})" />
       <Member Id="M:Microsoft.ML.Tokenizers.SentencePieceTokenizer.Decode(System.Collections.Generic.IEnumerable{System.Int32})" />
       <Member Id="M:Microsoft.ML.Tokenizers.SentencePieceTokenizer.Decode(System.Collections.Generic.IEnumerable{System.Int32},System.Boolean)" />
       <Member Id="M:Microsoft.ML.Tokenizers.SentencePieceTokenizer.Decode(System.Collections.Generic.IEnumerable{System.Int32},System.Span{System.Char},System.Boolean,System.Int32@,System.Int32@)" />
@@ -8447,12 +8493,21 @@
       <Member Id="M:Microsoft.ML.Tokenizers.UpperCaseNormalizer.Normalize(System.String)" />
       <Member Id="P:Microsoft.ML.Tokenizers.UpperCaseNormalizer.Instance" />
     </Type>
+    <Type Name="Microsoft.ML.Tokenizers.WordPieceOptions" Id="T:Microsoft.ML.Tokenizers.WordPieceOptions">
+      <Member Id="M:Microsoft.ML.Tokenizers.WordPieceOptions.#ctor" />
+      <Member Id="P:Microsoft.ML.Tokenizers.WordPieceOptions.ContinuingSubwordPrefix" />
+      <Member Id="P:Microsoft.ML.Tokenizers.WordPieceOptions.MaxInputCharsPerWord" />
+      <Member Id="P:Microsoft.ML.Tokenizers.WordPieceOptions.Normalizer" />
+      <Member Id="P:Microsoft.ML.Tokenizers.WordPieceOptions.PreTokenizer" />
+      <Member Id="P:Microsoft.ML.Tokenizers.WordPieceOptions.SpecialTokens" />
+      <Member Id="P:Microsoft.ML.Tokenizers.WordPieceOptions.UnknownToken" />
+    </Type>
     <Type Name="Microsoft.ML.Tokenizers.WordPieceTokenizer" Id="T:Microsoft.ML.Tokenizers.WordPieceTokenizer">
       <Member Id="M:Microsoft.ML.Tokenizers.WordPieceTokenizer.CountTokens(System.String,System.ReadOnlySpan{System.Char},Microsoft.ML.Tokenizers.EncodeSettings)" />
-      <Member Id="M:Microsoft.ML.Tokenizers.WordPieceTokenizer.Create(System.IO.Stream,Microsoft.ML.Tokenizers.PreTokenizer,Microsoft.ML.Tokenizers.Normalizer,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32},System.String,System.String,System.Int32)" />
-      <Member Id="M:Microsoft.ML.Tokenizers.WordPieceTokenizer.Create(System.String,Microsoft.ML.Tokenizers.PreTokenizer,Microsoft.ML.Tokenizers.Normalizer,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32},System.String,System.String,System.Int32)" />
-      <Member Id="M:Microsoft.ML.Tokenizers.WordPieceTokenizer.CreateAsync(System.IO.Stream,Microsoft.ML.Tokenizers.PreTokenizer,Microsoft.ML.Tokenizers.Normalizer,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32},System.String,System.String,System.Int32,System.Threading.CancellationToken)" />
-      <Member Id="M:Microsoft.ML.Tokenizers.WordPieceTokenizer.CreateAsync(System.String,Microsoft.ML.Tokenizers.PreTokenizer,Microsoft.ML.Tokenizers.Normalizer,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Int32},System.String,System.String,System.Int32,System.Threading.CancellationToken)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.WordPieceTokenizer.Create(System.IO.Stream,Microsoft.ML.Tokenizers.WordPieceOptions)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.WordPieceTokenizer.Create(System.String,Microsoft.ML.Tokenizers.WordPieceOptions)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.WordPieceTokenizer.CreateAsync(System.IO.Stream,Microsoft.ML.Tokenizers.WordPieceOptions,System.Threading.CancellationToken)" />
+      <Member Id="M:Microsoft.ML.Tokenizers.WordPieceTokenizer.CreateAsync(System.String,Microsoft.ML.Tokenizers.WordPieceOptions,System.Threading.CancellationToken)" />
       <Member Id="M:Microsoft.ML.Tokenizers.WordPieceTokenizer.Decode(System.Collections.Generic.IEnumerable{System.Int32})" />
       <Member Id="M:Microsoft.ML.Tokenizers.WordPieceTokenizer.Decode(System.Collections.Generic.IEnumerable{System.Int32},System.Boolean)" />
       <Member Id="M:Microsoft.ML.Tokenizers.WordPieceTokenizer.Decode(System.Collections.Generic.IEnumerable{System.Int32},System.Span{System.Char},System.Boolean,System.Int32@,System.Int32@)" />
