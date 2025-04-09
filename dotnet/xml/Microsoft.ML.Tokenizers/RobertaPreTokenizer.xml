@@ -79,56 +79,73 @@
       </Docs>
     </Member>
     <Member MemberName="PreTokenize">
-      <MemberSignature Language="C#" Value="public override System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.Tokenizers.Split&gt; PreTokenize (string? sentence);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class System.Collections.Generic.IReadOnlyList`1&lt;class Microsoft.ML.Tokenizers.Split&gt; PreTokenize(string sentence) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Tokenizers.RobertaPreTokenizer.PreTokenize(System.String)" />
-      <MemberSignature Language="VB.NET" Value="Public Overrides Function PreTokenize (sentence As String) As IReadOnlyList(Of Split)" />
-      <MemberSignature Language="F#" Value="override this.PreTokenize : string -&gt; System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.Tokenizers.Split&gt;" Usage="robertaPreTokenizer.PreTokenize sentence" />
+      <MemberSignature Language="C#" Value="public override System.Collections.Generic.IEnumerable&lt;(int Offset, int Length)&gt; PreTokenize (ReadOnlySpan&lt;char&gt; text);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class System.Collections.Generic.IEnumerable`1&lt;valuetype System.ValueTuple`2&lt;int32, int32&gt;&gt; PreTokenize(valuetype System.ReadOnlySpan`1&lt;char&gt; text) cil managed" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Tokenizers.RobertaPreTokenizer.PreTokenize(System.ReadOnlySpan{System.Char})" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function PreTokenize (text As ReadOnlySpan(Of Char)) As IEnumerable(Of ValueTuple(Of Integer, Integer))" />
+      <MemberSignature Language="F#" Value="override this.PreTokenize : ReadOnlySpan&lt;char&gt; -&gt; seq&lt;ValueTuple&lt;int, int&gt;&gt;" Usage="robertaPreTokenizer.PreTokenize text" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Tokenizers</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.Tokenizers.Split&gt;</ReturnType>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;System.ValueTuple&lt;System.Int32,System.Int32&gt;&gt;</ReturnType>
+        <Attributes>
+          <Attribute FrameworkAlternate="ml-dotnet">
+            <AttributeName Language="C#">[System.Runtime.CompilerServices.TupleElementNames(new System.String[] { "Offset", "Length" })]</AttributeName>
+            <AttributeName Language="F#">[&lt;System.Runtime.CompilerServices.TupleElementNames(new System.String[] { "Offset", "Length" })&gt;]</AttributeName>
+          </Attribute>
+        </Attributes>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="sentence" Type="System.String" Index="0" FrameworkAlternate="ml-dotnet;ml-dotnet-2.0.0" />
+        <Parameter Name="text" Type="System.ReadOnlySpan&lt;System.Char&gt;" Index="0" FrameworkAlternate="ml-dotnet;ml-dotnet-3.0.0;ml-dotnet-preview" />
       </Parameters>
       <Docs>
-        <param name="sentence">The string to split into tokens.</param>
+        <param name="text">The string to split into tokens.</param>
         <summary>
-            Splits the given string in multiple substrings at the word boundary, keeping track of the offsets of said substrings from the original string.
+            Get the offsets and lengths of the tokens relative to the <paramref name="text" />.
             </summary>
-        <returns>The list of the splits containing the tokens and the token's offsets to the original string.</returns>
+        <returns>The offsets and lengths of the tokens, expressed as pairs, are relative to the original string.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="PreTokenize">
-      <MemberSignature Language="C#" Value="public override System.Collections.Generic.IEnumerable&lt;Microsoft.ML.Tokenizers.Split&gt; PreTokenize (string text, bool considerSpecialTokens = true);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class System.Collections.Generic.IEnumerable`1&lt;valuetype Microsoft.ML.Tokenizers.Split&gt; PreTokenize(string text, bool considerSpecialTokens) cil managed" />
-      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Tokenizers.RobertaPreTokenizer.PreTokenize(System.String,System.Boolean)" />
-      <MemberSignature Language="VB.NET" Value="Public Overrides Function PreTokenize (text As String, Optional considerSpecialTokens As Boolean = true) As IEnumerable(Of Split)" />
-      <MemberSignature Language="F#" Value="override this.PreTokenize : string * bool -&gt; seq&lt;Microsoft.ML.Tokenizers.Split&gt;" Usage="robertaPreTokenizer.PreTokenize (text, considerSpecialTokens)" />
+      <MemberSignature Language="C#" Value="public override System.Collections.Generic.IEnumerable&lt;(int Offset, int Length)&gt; PreTokenize (string text);" FrameworkAlternate="ml-dotnet;ml-dotnet-3.0.0;ml-dotnet-preview" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class System.Collections.Generic.IEnumerable`1&lt;valuetype System.ValueTuple`2&lt;int32, int32&gt;&gt; PreTokenize(string text) cil managed" FrameworkAlternate="ml-dotnet;ml-dotnet-3.0.0;ml-dotnet-preview" />
+      <MemberSignature Language="DocId" Value="M:Microsoft.ML.Tokenizers.RobertaPreTokenizer.PreTokenize(System.String)" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function PreTokenize (text As String) As IEnumerable(Of ValueTuple(Of Integer, Integer))" FrameworkAlternate="ml-dotnet;ml-dotnet-3.0.0;ml-dotnet-preview" />
+      <MemberSignature Language="F#" Value="override this.PreTokenize : string -&gt; seq&lt;ValueTuple&lt;int, int&gt;&gt;" Usage="robertaPreTokenizer.PreTokenize text" FrameworkAlternate="ml-dotnet;ml-dotnet-3.0.0;ml-dotnet-preview" />
+      <MemberSignature Language="C#" Value="public override System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.Tokenizers.Split&gt; PreTokenize (string? sentence);" FrameworkAlternate="ml-dotnet-2.0.0" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class System.Collections.Generic.IReadOnlyList`1&lt;class Microsoft.ML.Tokenizers.Split&gt; PreTokenize(string sentence) cil managed" FrameworkAlternate="ml-dotnet-2.0.0" />
+      <MemberSignature Language="VB.NET" Value="Public Overrides Function PreTokenize (sentence As String) As IReadOnlyList(Of Split)" FrameworkAlternate="ml-dotnet-2.0.0" />
+      <MemberSignature Language="F#" Value="override this.PreTokenize : string -&gt; System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.Tokenizers.Split&gt;" Usage="robertaPreTokenizer.PreTokenize sentence" FrameworkAlternate="ml-dotnet-2.0.0" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyName>Microsoft.ML.Tokenizers</AssemblyName>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.IEnumerable&lt;Microsoft.ML.Tokenizers.Split&gt;</ReturnType>
+        <ReturnType FrameworkAlternate="ml-dotnet;ml-dotnet-3.0.0;ml-dotnet-preview">System.Collections.Generic.IEnumerable&lt;System.ValueTuple&lt;System.Int32,System.Int32&gt;&gt;</ReturnType>
+        <Attributes>
+          <Attribute FrameworkAlternate="ml-dotnet">
+            <AttributeName Language="C#">[System.Runtime.CompilerServices.TupleElementNames(new System.String[] { "Offset", "Length" })]</AttributeName>
+            <AttributeName Language="F#">[&lt;System.Runtime.CompilerServices.TupleElementNames(new System.String[] { "Offset", "Length" })&gt;]</AttributeName>
+          </Attribute>
+        </Attributes>
+        <ReturnType FrameworkAlternate="ml-dotnet-2.0.0">System.Collections.Generic.IReadOnlyList&lt;Microsoft.ML.Tokenizers.Split&gt;</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="text" Type="System.String" Index="0" FrameworkAlternate="ml-dotnet-preview" />
-        <Parameter Name="considerSpecialTokens" Type="System.Boolean" Index="1" FrameworkAlternate="ml-dotnet-preview" />
+        <Parameter Name="text" Type="System.String" Index="0" FrameworkAlternate="ml-dotnet;ml-dotnet-3.0.0;ml-dotnet-preview" />
+        <Parameter Name="sentence" Type="System.String" Index="0" FrameworkAlternate="ml-dotnet-2.0.0" />
       </Parameters>
       <Docs>
+        <param name="sentence">The string to split into tokens.</param>
         <param name="text">The string to split into tokens.</param>
-        <param name="considerSpecialTokens">Indicates whether to keep the special tokens.</param>
         <summary>
-            Splits the given string in multiple substrings at the word boundary, keeping track of the offsets of said substrings from the original string.
+            Get the offsets and lengths of the tokens relative to the <paramref name="text" />.
             </summary>
-        <returns>The list of the splits containing the tokens and the token's offsets to the original string.</returns>
+        <returns>The offsets and lengths of the tokens, expressed as pairs, are relative to the original string.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
